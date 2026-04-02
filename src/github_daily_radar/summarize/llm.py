@@ -34,9 +34,9 @@ class EditorialLLM:
                         {
                             "role": "system",
                             "content": (
-                                "你是 GitHub 日报的主编。只根据给定字段输出中文 JSON。"
-                                "返回一个 JSON 数组，每个元素必须包含: "
-                                "title, url, kind, summary, why_now。"
+                                "你是 GitHub 日报的中文主编。只根据给定字段输出中文 JSON。"
+                                "严格只输出一个 JSON 数组，不要 markdown，不要代码块，不要解释文字。"
+                                "每个元素必须包含: title, url, kind, summary, why_now。"
                                 "可选字段: follow_up, section, rank。"
                                 "summary 与 why_now 各 1 句话，尽量简短。"
                                 "不要虚构未提供的事实。"
@@ -47,6 +47,7 @@ class EditorialLLM:
                             "content": json.dumps(candidates, ensure_ascii=False),
                         },
                     ],
+                    "temperature": 0.2,
                 },
             )
             response.raise_for_status()

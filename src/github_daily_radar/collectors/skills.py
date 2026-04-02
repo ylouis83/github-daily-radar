@@ -1,3 +1,4 @@
+import logging
 from datetime import datetime, timezone, timedelta
 
 from github_daily_radar.collectors.base import Collector
@@ -7,6 +8,9 @@ from github_daily_radar.normalize.candidates import (
     candidate_from_graphql_repo,
     candidate_from_repo_search,
 )
+
+
+logger = logging.getLogger(__name__)
 
 
 class SkillCollector(Collector):
@@ -72,7 +76,11 @@ class SkillCollector(Collector):
             )
 
         query = "query {\n" + "\n".join(fragments) + "\n}"
-        payload = self.client.graphql(query, cost=max(1, len(self.seed_repos)))
+        try:
+            payload = self.client.graphql(query, cost=max(1, len(self.seed_repos)))
+        except Exception as exc:  # noqa: BLE001 - seed repo monitoring should degrade gracefully
+            logger.warning("SkillCollector seed GraphQL failed: %s", exc, exc_info=True)
+            return []
         items: list[Candidate] = []
         for alias, repo_full_name in aliases.items():
             node = payload.get("data", {}).get(alias)
@@ -104,7 +112,11 @@ class SkillCollector(Collector):
         seen: set[str] = set()
 
         for query in self.code_queries:
-            payload = self.client.search_code(query)
+            try:
+                payload = self.client.search_code(query)
+            except Exception as exc:  # noqa: BLE001 - one bad code query must not stop skill discovery
+                logger.warning("SkillCollector code query failed for %s: %s", query, exc, exc_info=True)
+                continue
             for item in payload.get("items", []):
                 candidate = candidate_from_code_search(item=item, source_query=query)
                 candidate.kind = "skill"
@@ -114,7 +126,11 @@ class SkillCollector(Collector):
                 candidates.append(candidate)
 
         for query in self.repo_queries:
-            payload = self.client.search_repositories(query, sort="updated", order="desc")
+            try:
+                payload = self.client.search_repositories(query, sort="updated", order="desc")
+            except Exception as exc:  # noqa: BLE001 - keep scanning the remaining queries
+                logger.warning("SkillCollector repo query failed for %s: %s", query, exc, exc_info=True)
+                continue
             for item in payload.get("items", []):
                 candidate = candidate_from_repo_search(item=item, source_query=query)
                 candidate.kind = "skill"

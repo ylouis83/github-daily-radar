@@ -167,6 +167,34 @@ def _chunked(values: list[str], size: int) -> Iterable[list[str]]:
         yield values[index : index + size]
 
 
+def _balanced_groups(values: list[str], group_count: int) -> list[list[str]]:
+    cleaned = [value for value in values if isinstance(value, str) and value.strip()]
+    if not cleaned or group_count <= 0:
+        return []
+    group_count = min(group_count, len(cleaned))
+    base_size, remainder = divmod(len(cleaned), group_count)
+    groups: list[list[str]] = []
+    start = 0
+    for index in range(group_count):
+        size = base_size + (1 if index < remainder else 0)
+        if size <= 0:
+            continue
+        groups.append(cleaned[start : start + size])
+        start += size
+    return groups
+
+
+def _quote_keyword(keyword: str) -> str:
+    keyword = keyword.strip()
+    if " " in keyword and not (keyword.startswith('"') and keyword.endswith('"')):
+        return f'"{keyword}"'
+    return keyword
+
+
+def _keyword_clause(keywords: list[str]) -> str:
+    return " OR ".join(_quote_keyword(keyword) for keyword in keywords if keyword.strip())
+
+
 def _date_clause(*, field: str, days_back: int | None, now: datetime | None = None) -> str:
     if days_back is None:
         return ""
@@ -177,13 +205,16 @@ def build_repo_queries(*, now: datetime | None = None, days_back: int | None = N
     date_clause = _date_clause(field="pushed", days_back=days_back, now=now)
     topics = load_topics()
     seed_orgs = load_seed_orgs()
-    topic_groups = list(_chunked(topics, max(1, len(topics) // 3 or 1)))
+    topic_groups = list(_chunked(topics, min(6, max(1, len(topics) // 3 or 1))))
+    org_groups = _balanced_groups(seed_orgs, 3)
+    moment = now or datetime.now(timezone.utc)
+    org_group = org_groups[moment.astimezone(timezone.utc).date().toordinal() % len(org_groups)] if org_groups else []
     queries = []
     for group in topic_groups[:3]:
         topic_clause = " OR ".join(f"topic:{topic}" for topic in group)
         queries.append(f"({topic_clause}){date_clause}")
-    if seed_orgs:
-        org_clause = " OR ".join(f"org:{org}" for org in seed_orgs)
+    if org_group:
+        org_clause = " OR ".join(f"org:{org}" for org in org_group)
         queries.append(f"({org_clause}){date_clause}")
     return queries
 
@@ -216,13 +247,18 @@ def build_discussion_queries(
     days_back: int | None = None,
 ) -> list[str]:
     repos = seed_repos or load_seed_repos()
+    chunk_size = min(max(1, chunk_size), 4)
     date_clause = _date_clause(field="updated", days_back=days_back, now=now)
-    keyword_clause = " OR ".join(load_discussion_keywords())
+    keyword_groups = _balanced_groups(load_discussion_keywords(), max(1, len(list(_chunked(repos, chunk_size)))))
     queries: list[str] = []
-    for chunk in _chunked(repos, chunk_size):
+    repo_groups = list(_chunked(repos, chunk_size))
+    for index, chunk in enumerate(repo_groups):
+        keyword_group = keyword_groups[index] if index < len(keyword_groups) else keyword_groups[-1] if keyword_groups else []
+        keyword_clause = _keyword_clause(keyword_group)
+        keyword_part = f" ({keyword_clause})" if keyword_clause else ""
         queries.append(
-            f"({_repo_clause(chunk)}) is:issue "
-            f"({keyword_clause}) in:title,body comments:>=3{date_clause}"
+            f"({_repo_clause(chunk)}) is:issue{keyword_part} "
+            f"in:title comments:>=3{date_clause}"
         )
     return queries
 
@@ -235,12 +271,17 @@ def build_issue_pr_queries(
     days_back: int | None = None,
 ) -> list[str]:
     repos = seed_repos or load_seed_repos()
+    chunk_size = min(max(1, chunk_size), 4)
     date_clause = _date_clause(field="updated", days_back=days_back, now=now)
-    keyword_clause = " OR ".join(load_issue_pr_keywords())
+    keyword_groups = _balanced_groups(load_issue_pr_keywords(), max(1, len(list(_chunked(repos, chunk_size)))))
     queries: list[str] = []
-    for chunk in _chunked(repos, chunk_size):
+    repo_groups = list(_chunked(repos, chunk_size))
+    for index, chunk in enumerate(repo_groups):
+        keyword_group = keyword_groups[index] if index < len(keyword_groups) else keyword_groups[-1] if keyword_groups else []
+        keyword_clause = _keyword_clause(keyword_group)
+        keyword_part = f" ({keyword_clause})" if keyword_clause else ""
         queries.append(
-            f"({_repo_clause(chunk)}) is:pr "
-            f"({keyword_clause}) in:title,body comments:>=1{date_clause}"
+            f"({_repo_clause(chunk)}) is:open{keyword_part} "
+            f"in:title comments:>=1{date_clause}"
         )
     return queries

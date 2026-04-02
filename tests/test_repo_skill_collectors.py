@@ -57,8 +57,6 @@ def test_skill_collector_collects_candidates():
                             "full_name": "owner/shared-skill",
                             "html_url": "https://github.com/owner/shared-skill",
                             "owner": {"login": "owner"},
-                            "created_at": "2026-04-01T00:00:00Z",
-                            "updated_at": "2026-04-02T00:00:00Z",
                             "description": "agent workflow prompts",
                             "topics": ["agent"],
                             "stargazers_count": 50,

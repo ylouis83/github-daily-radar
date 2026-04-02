@@ -85,4 +85,25 @@ def test_seed_repo_queries_are_chunked_and_scoped():
     assert "repo:a/b OR repo:c/d" in discussion_queries[0]
     assert "is:issue" in discussion_queries[0]
     assert "updated:>2026-03-19" in discussion_queries[0]
-    assert "is:pr" in issue_queries[0]
+    assert "is:open" in issue_queries[0]
+
+
+def test_query_builders_stay_within_boolean_operator_limits():
+    instant = datetime(2026, 4, 2, 12, 0, tzinfo=timezone.utc)
+    seed_repos = [
+        "modelcontextprotocol/specification",
+        "modelcontextprotocol/servers",
+        "anthropics/claude-code",
+        "cline/cline",
+        "All-Hands-AI/OpenHands",
+        "paul-gauthier/aider",
+        "langchain-ai/langgraph",
+    ]
+
+    repo_queries = build_repo_queries(now=instant, days_back=7)
+    discussion_queries = build_discussion_queries(seed_repos=seed_repos, now=instant, days_back=14)
+    issue_queries = build_issue_pr_queries(seed_repos=seed_repos, now=instant, days_back=14)
+
+    assert all(query.count(" OR ") <= 5 for query in repo_queries)
+    assert all(query.count(" OR ") <= 5 for query in discussion_queries)
+    assert all(query.count(" OR ") <= 5 for query in issue_queries)

@@ -31,9 +31,42 @@ def score_candidate(candidate: Candidate) -> float:
 
 
 def _fallback_summary(candidate: Candidate) -> str:
-    if candidate.body_excerpt:
-        return candidate.body_excerpt.strip()[:120]
-    return f"信号: ⭐{candidate.metrics.stars}  🍴{candidate.metrics.forks}  💬{candidate.metrics.comments}"
+    if candidate.kind == "skill":
+        return "这是一个可复用的技能 / 规则包，适合判断是否加入你的技能库。"
+    if candidate.kind == "discussion":
+        return "这是一个值得关注的提案 / 讨论，适合先看标题和上下文。"
+    if candidate.kind in {"issue", "pr"}:
+        return "这是一个和功能演进相关的 issue / PR，适合先看是否有新方案。"
+    return "这是一个近期活跃的项目，建议先看 README 和最近更新。"
+
+
+def _fallback_why_now(candidate: Candidate) -> str:
+    metrics = candidate.metrics
+    if candidate.kind == "skill":
+        if metrics.stars or metrics.forks:
+            return f"最近有 {metrics.stars} 星 / {metrics.forks} 个 fork，值得快速判断是否纳入技能库。"
+        return "这是一个有复用价值的能力包，适合先扫一眼内容结构。"
+    if candidate.kind == "discussion":
+        if metrics.comments:
+            return f"已经有 {metrics.comments} 条评论，说明讨论热度不低。"
+        return "属于高信号仓库里的提案 / 讨论，适合优先查看。"
+    if candidate.kind in {"issue", "pr"}:
+        if metrics.comments:
+            return f"已有 {metrics.comments} 条评论，说明这个方案已经有人在认真讨论。"
+        return "这是一个可能影响路线图的 issue / PR，适合优先检查。"
+    if metrics.stars or metrics.forks:
+        return f"最近有 {metrics.stars} 星 / {metrics.forks} 个 fork，说明项目正在被关注。"
+    return "这个项目值得先看最近更新和 README，判断是否继续跟踪。"
+
+
+def _fallback_follow_up(candidate: Candidate) -> str:
+    if candidate.kind == "skill":
+        return "建议先看示例和使用说明，再决定是否纳入技能库。"
+    if candidate.kind == "discussion":
+        return "建议先看原帖与评论，再决定是否继续跟进。"
+    if candidate.kind in {"issue", "pr"}:
+        return "建议先看上下文和关联链接，再判断是否值得跟进。"
+    return "建议先看 README、最近提交和 release，再判断是否继续跟踪。"
 
 
 def _bucket_for_kind(kind: str) -> str:
@@ -57,8 +90,8 @@ def build_display_items(candidates: list[Candidate], editorial: list[dict]) -> l
             "title": candidate.title,
             "url": candidate.url,
             "summary": _fallback_summary(candidate),
-            "why_now": None,
-            "follow_up": None,
+            "why_now": _fallback_why_now(candidate),
+            "follow_up": _fallback_follow_up(candidate),
             "editorial_rank": None,
             "section": None,
             "repo_full_name": candidate.repo_full_name,
@@ -70,8 +103,8 @@ def build_display_items(candidates: list[Candidate], editorial: list[dict]) -> l
             item["title"] = editorial_item.get("title", item["title"])
             item["url"] = editorial_item.get("url", item["url"])
             item["summary"] = editorial_item.get("summary") or item["summary"]
-            item["why_now"] = editorial_item.get("why_now")
-            item["follow_up"] = editorial_item.get("follow_up")
+            item["why_now"] = editorial_item.get("why_now") or item["why_now"]
+            item["follow_up"] = editorial_item.get("follow_up") or item["follow_up"]
             rank = editorial_item.get("rank", editorial_item.get("editorial_rank"))
             if rank is not None:
                 item["editorial_rank"] = rank
