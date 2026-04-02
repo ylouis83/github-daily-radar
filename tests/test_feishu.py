@@ -9,7 +9,11 @@ def test_build_digest_card_single_card_with_sections():
             "kind": "project",
             "title": "owner/repo",
             "url": "https://github.com/owner/repo",
+            "trait": "终端原生的智能编码代理",
+            "capability": "通过自然语言命令执行任务",
+            "necessity": "提升编码效率",
             "summary": "一个很酷的项目",
+            "why_now": "今日趋势热度极高",
             "stars": 1200,
             "star_delta_1d": 300,
             "star_velocity": "surge",
@@ -18,6 +22,9 @@ def test_build_digest_card_single_card_with_sections():
             "kind": "skill",
             "title": "owner/skill",
             "url": "https://github.com/owner/skill",
+            "trait": "Claude Code 的 skill 框架",
+            "capability": "把可复用的提示词沉淀成资产",
+            "necessity": "适合纳入技能库",
             "summary": "Claude Code 的 skill 框架",
             "stars": 5000,
             "star_delta_1d": 0,
@@ -27,6 +34,9 @@ def test_build_digest_card_single_card_with_sections():
             "kind": "discussion",
             "title": "RFC: 新架构提案",
             "url": "https://github.com/org/repo/discussions/123",
+            "trait": "讨论新的 Agent 运行时架构",
+            "capability": "聚焦方案取舍",
+            "necessity": "值得跟进结论",
             "summary": "讨论新的 Agent 运行时架构",
             "stars": 0,
             "star_delta_1d": 0,
@@ -46,31 +56,38 @@ def test_build_digest_card_single_card_with_sections():
     all_text = "\n".join(contents)
 
     # 验证概览
-    assert "3 条" in all_text or "今日精选" in all_text
+    assert "3" in all_text and "精选" in all_text
     # 验证分区标题
-    assert "🚀 热门项目" in all_text
+    assert "🚀 必看项目" in all_text
     assert "🧩 发现技能" in all_text
     assert "💬 提案与讨论" in all_text
     # 验证链接可点击
     assert "[owner/repo](https://github.com/owner/repo)" in all_text
     # 验证 star badge
     assert "🔥+300⭐" in all_text
-    # 验证真实摘要（不是模板）
-    assert "一个很酷的项目" in all_text
-    # 验证卡片不再渲染运行信息
+    # 验证画像字段分行显示
+    assert "▸ 特点：" in all_text
+    assert "▸ 核心能力：" in all_text
+    # 验证看点
+    assert "📌" in all_text
+    # 验证不含旧的运行信息标记
     assert "📊" not in all_text
     assert "🔍" not in all_text
     assert "运行信息" not in all_text
     assert "2026-04-02" in all_text
 
 
-def test_build_digest_card_uses_kind_specific_labels():
+def test_build_digest_card_uses_structured_profile():
+    """画像的三个字段应各自独立一行"""
     items = [
         {
             "kind": "project",
             "title": "owner/repo",
             "url": "https://github.com/owner/repo",
-            "summary": "特点：围绕终端式 AI 编程工作流 · 核心能力：把复杂编码任务拆成可执行命令 · 引入必要性：适合想把 AI 编程沉入日常开发的人",
+            "trait": "围绕终端式 AI 编程工作流",
+            "capability": "把复杂编码任务拆成可执行命令",
+            "necessity": "适合想把 AI 编程沉入日常开发的人",
+            "summary": "",
             "why_now": "OSSInsight 近期热度上升",
             "stars": 1200,
             "star_delta_1d": 300,
@@ -80,6 +97,9 @@ def test_build_digest_card_uses_kind_specific_labels():
             "kind": "skill",
             "title": "owner/skill",
             "url": "https://github.com/owner/skill",
+            "trait": "可复用的技能资源",
+            "capability": "沉淀成工作流",
+            "necessity": "值得收藏",
             "summary": "可复用的技能资源",
             "why_now": "适合纳入技能库",
             "stars": 5000,
@@ -90,6 +110,9 @@ def test_build_digest_card_uses_kind_specific_labels():
             "kind": "discussion",
             "title": "RFC: 新架构提案",
             "url": "https://github.com/org/repo/discussions/123",
+            "trait": "焦点明确的讨论",
+            "capability": "核心观点清晰",
+            "necessity": "值得跟进",
             "summary": "值得跟进的讨论",
             "why_now": "评论活跃",
             "stars": 0,
@@ -102,12 +125,16 @@ def test_build_digest_card_uses_kind_specific_labels():
     contents = [el.get("content", "") for el in card["card"]["elements"] if el.get("tag") == "markdown"]
     all_text = "\n".join(contents)
 
-    assert "项目画像：" in all_text
-    assert "技能画像：" in all_text
-    assert "讨论画像：" in all_text
-    assert "特点：" in all_text
-    assert "核心能力：" in all_text
-    assert "引入必要性：" in all_text
+    # 验证 A 版画像三段分行
+    assert "▸ 特点：" in all_text
+    assert "▸ 核心能力：" in all_text
+    assert "▸ 引入必要性：" in all_text
+    # Skill 用"纳入必要性"
+    assert "▸ 纳入必要性：" in all_text
+    # Discussion 用专属标签
+    assert "▸ 焦点：" in all_text
+    assert "▸ 核心观点：" in all_text
+    assert "▸ 跟进必要性：" in all_text
 
 
 def test_build_digest_card_fuses_primary_and_secondary_sections():
@@ -143,8 +170,8 @@ def test_build_digest_card_fuses_primary_and_secondary_sections():
     contents = [el.get("content", "") for el in card["card"]["elements"] if el.get("tag") == "markdown"]
     all_text = "\n".join(contents)
 
-    assert "A 精编版" in all_text
-    assert "B 保留版" in all_text
+    assert "🅰️ 精编版" in all_text
+    assert "🅱️ 扫一眼" in all_text
     assert "owner/repo-a" in all_text
     assert "owner/skill-b" in all_text
     assert isinstance(card, dict)
@@ -167,7 +194,7 @@ def test_build_digest_card_empty_discussion_omits_section():
 
     contents = [el.get("content", "") for el in card["card"]["elements"] if el.get("tag") == "markdown"]
     all_text = "\n".join(contents)
-    # 空分区直接不渲染，不显示"提案与讨论"标题
+    # 空分区直接不渲染
     assert "提案与讨论" not in all_text
 
 
@@ -188,30 +215,55 @@ def test_build_digest_card_is_single_card():
 
     card = build_digest_card(items=items, today=date(2026, 4, 2))
 
-    # 返回的是单个 dict，不是 list
     assert isinstance(card, dict)
     assert card["msg_type"] == "interactive"
 
 
-def test_build_digest_card_truncates_without_cutting_middle_of_token():
-    items = [
+def test_build_digest_card_b_section_is_compact():
+    """B 版条目只展示标题+看点，不含完整画像"""
+    primary = [
         {
             "kind": "project",
-            "title": "owner/repo",
-            "url": "https://github.com/owner/repo",
-            "summary": "freeandopensource" + ("x" * 74) + "-copy-pasteautomationwithbrowserworkflowsandlongdescriptionsdesignedtooverflowthecardandforceboundaryhandling",
+            "title": "owner/primary",
+            "url": "https://github.com/owner/primary",
+            "summary": "主版",
             "stars": 100,
             "star_delta_1d": 0,
             "star_velocity": "",
         }
     ]
+    secondary = [
+        {
+            "kind": "project",
+            "title": "owner/secondary",
+            "url": "https://github.com/owner/secondary",
+            "trait": "不应该出现在 B 版的特点",
+            "capability": "不应该出现",
+            "necessity": "不应该出现",
+            "summary": "补充项目",
+            "why_now": "近期有动态",
+            "stars": 50,
+            "star_delta_1d": 0,
+            "star_velocity": "",
+        }
+    ]
 
-    card = build_digest_card(items=items, today=date(2026, 4, 2))
+    card = build_digest_card(items=primary, secondary_items=secondary, today=date(2026, 4, 2))
     contents = [el.get("content", "") for el in card["card"]["elements"] if el.get("tag") == "markdown"]
-    all_text = "\n".join(contents)
 
-    assert "copy-pa" not in all_text
-    assert "…" in all_text
+    # 找 B 版区域的内容
+    b_started = False
+    b_texts = []
+    for c in contents:
+        if "🅱️" in c:
+            b_started = True
+        elif b_started:
+            b_texts.append(c)
+
+    b_text = "\n".join(b_texts)
+    # B 版不应有完整画像标记
+    assert "▸ 特点：" not in b_text
+    assert "▸ 核心能力：" not in b_text
 
 
 def test_alert_card_has_red_theme():
@@ -224,7 +276,7 @@ def test_alert_card_has_red_theme():
 
 
 def test_star_badge_renders_k_format():
-    """大 star 数应显示为 ⭐131K"""
+    """大 star 数应显示为 ⭐131.0K"""
     items = [
         {
             "kind": "skill",
@@ -240,4 +292,33 @@ def test_star_badge_renders_k_format():
     card = build_digest_card(items=items, today=date(2026, 4, 2))
     contents = [el.get("content", "") for el in card["card"]["elements"] if el.get("tag") == "markdown"]
     all_text = "\n".join(contents)
-    assert "⭐131K" in all_text
+    assert "⭐131.0K" in all_text
+
+
+def test_footer_includes_metrics():
+    """Footer 应包含运行时指标"""
+    items = [
+        {
+            "kind": "project",
+            "title": "test/repo",
+            "url": "https://github.com/test/repo",
+            "summary": "desc",
+            "stars": 10,
+            "star_delta_1d": 0,
+            "star_velocity": "",
+        },
+    ]
+
+    metadata = {
+        "count": 78,
+        "editorial": 5,
+        "api_usage": {"search_used": 18, "graphql_used": 11},
+    }
+    card = build_digest_card(items=items, metadata=metadata, today=date(2026, 4, 2))
+    contents = [el.get("content", "") for el in card["card"]["elements"] if el.get("tag") == "markdown"]
+    all_text = "\n".join(contents)
+
+    assert "候选 78" in all_text
+    assert "LLM 精编 5" in all_text
+    assert "Search 18" in all_text
+    assert "GraphQL 11" in all_text
