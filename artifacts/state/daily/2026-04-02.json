@@ -1,0 +1,433 @@
+{
+  "cards": [
+    {
+      "msg_type": "interactive",
+      "card": {
+        "config": {
+          "wide_screen_mode": true
+        },
+        "header": {
+          "title": {
+            "tag": "plain_text",
+            "content": "GitHub Daily Radar (1/5)"
+          }
+        },
+        "elements": [
+          {
+            "tag": "markdown",
+            "content": "**Discussion**"
+          },
+          {
+            "tag": "markdown",
+            "content": "- [RFC: BucketUI Architecture & Design Proposal](https://github.com/myagentteam/bucketui/issues/1)"
+          },
+          {
+            "tag": "markdown",
+            "content": "  - ## Summary\n\nBucketUI — Multi-tenant Object Storage Admin Console wrapping MinIO (pgsty fork).\n\n**Full spec:** [`docs/superpowers/specs/2026-03-28-bucketui-desig"
+          },
+          {
+            "tag": "markdown",
+            "content": "- [(rfc): Design Proposal for additional CRDs](https://github.com/valkey-io/valkey-operator/pull/63)"
+          },
+          {
+            "tag": "markdown",
+            "content": "  - Would love to get as many opinions on this.\r\n\r\nPlease leave comments on the PR where appropriate.\r\n\r\nI don't anticipate merging this in its current form; rather"
+          },
+          {
+            "tag": "markdown",
+            "content": "- [[FEAT][RFC] Add router-side request queuing proposal](https://github.com/vllm-project/production-stack/pull/876)"
+          },
+          {
+            "tag": "markdown",
+            "content": "  - Refs #855\r\n\r\n## Summary\r\n\r\nThis PR adds an RFC for router-side request queuing in the vLLM router.\r\n\r\nThe proposal introduces router-side admission control in f"
+          },
+          {
+            "tag": "markdown",
+            "content": "- [🎨 Design Proposal: `gh discussion` command group](https://github.com/cli/cli/issues/12810)"
+          },
+          {
+            "tag": "markdown",
+            "content": "  - <!-- See [CONTRIBUTING.md](../CONTRIBUTING.md#proposing-a-design) for more information.-->\n\n### Link to issue for design submission\n\nhttps://github.com/cli/cli/"
+          },
+          {
+            "tag": "markdown",
+            "content": "- [[rfc] Support symbolic shape inference — add RFC](https://github.com/onnx/onnx/pull/7692)"
+          },
+          {
+            "tag": "markdown",
+            "content": "  - Adds an RFC document explaining the symbolic dimension arithmetic feature introduced in this PR, as requested.\n\n### Motivation and Context\n\n- **`docs/proposals/"
+          },
+          {
+            "tag": "markdown",
+            "content": "- [Add *be present* contribution policy](https://github.com/rust-lang/rfcs/pull/3936)"
+          },
+          {
+            "tag": "markdown",
+            "content": "  - *[View all comments](https://triagebot.infra.rust-lang.org/gh-comments/rust-lang/rfcs/pull/3936)*\r\n\r\n*Update*: I'm working on expanding this to a full RFC.  See"
+          },
+          {
+            "tag": "markdown",
+            "content": "- [Proof modes (RFC)](https://github.com/creusot-rs/creusot/pull/1997)"
+          },
+          {
+            "tag": "markdown",
+            "content": "  - Starting with a proposal for what they should look like, before implementing it.\r\n\r\nFixes #1532 (safety mode)  \r\nFixes #1957 (termination mode)  \r\nFixes #1940 ("
+          },
+          {
+            "tag": "markdown",
+            "content": "- [[RFC] Rust supervisor proposal](https://github.com/OpenDevicePartnership/patina/pull/1170)"
+          },
+          {
+            "tag": "markdown",
+            "content": "  - ## Description\r\n\r\nThis proposal intends to provide a supervised Standalone MM solution with Rust.\r\n\r\n- [ ] Impacts functionality?\r\n- [ ] Impacts security?\r\n- [ "
+          },
+          {
+            "tag": "markdown",
+            "content": "- [RFC: CLI Plugin Transitional Migration to CAPI V3](https://github.com/cloudfoundry/community/pull/1452)"
+          },
+          {
+            "tag": "markdown",
+            "content": "  - ## Summary\n\nThe CF CLI plugin interface exposes 10 methods that return CAPI V2-shaped data. With CAPI V2 reaching end of life (RFC-0032), these methods will sto"
+          },
+          {
+            "tag": "markdown",
+            "content": "- [Quantization Bootstrapping RFC](https://github.com/microsoft/DiskANN/pull/848)"
+          },
+          {
+            "tag": "markdown",
+            "content": "`meta`: {'count': 40, 'editorial': 0, 'api_usage': {'total_budget': 36, 'search_budget': 18, 'graphql_budget': 600, 'search_used': 5, 'graphql_used': 0}}"
+          }
+        ]
+      }
+    },
+    {
+      "msg_type": "interactive",
+      "card": {
+        "config": {
+          "wide_screen_mode": true
+        },
+        "header": {
+          "title": {
+            "tag": "plain_text",
+            "content": "GitHub Daily Radar (2/5)"
+          }
+        },
+        "elements": [
+          {
+            "tag": "markdown",
+            "content": "  - This document provides a proposal for quantization bootstrapping, allowing DiskANN to grow incrementally from scratch supporting quantization.\r\n\r\n[Rendered](htt"
+          },
+          {
+            "tag": "markdown",
+            "content": "- [Cargo Design Doc Proposal](https://github.com/space-wizards/docs/pull/618)"
+          },
+          {
+            "tag": "markdown",
+            "content": "  - Cargo is currently in an interesting position in terms of how it relates to the station. Despite their role as the primary supplier of resources: many of its me"
+          },
+          {
+            "tag": "markdown",
+            "content": "- [RFC: vswitch design](https://github.com/au-ts/sddf/issues/636)"
+          },
+          {
+            "tag": "markdown",
+            "content": "  - Author(s) | @JDuchniewicz,  @alexandermbrown \n-- | --\nDate of last update | 27 Mar 2026\n\n####  Original PR with description and design: https://github.com/au-ts"
+          },
+          {
+            "tag": "markdown",
+            "content": "- [Design proposal: Onboarding stepper](https://github.com/Automattic/wp-calypso/pull/109315)"
+          },
+          {
+            "tag": "markdown",
+            "content": "  - This is a design draft part of [DatSci: Optimization - Step by Step Progress Bar In Onboarding Flow](https://linear.app/a8c/project/datsci-optimization-step-by-"
+          },
+          {
+            "tag": "markdown",
+            "content": "- [RFC: proposal for declarative VDUs](https://github.com/apache/couchdb/pull/5792)"
+          },
+          {
+            "tag": "markdown",
+            "content": "  - This PR contains the design documents we have produced as part of the M4 milestone for the STA project to design a declarative way to express document update va"
+          },
+          {
+            "tag": "markdown",
+            "content": "- [Cyborg Additions Proposal](https://github.com/funky-station/docs/pull/52)"
+          },
+          {
+            "tag": "markdown",
+            "content": "  - I have the feeling that borgs are a little monotone when you have played them for a while. So I have come up with some changes to hopefully improve the variety "
+          },
+          {
+            "tag": "markdown",
+            "content": "- [Proposal: `.well-known` URI for skill discovery and distribution](https://github.com/agentskills/agentskills/issues/255)"
+          },
+          {
+            "tag": "markdown",
+            "content": "  - Skill distribution is one of the most-discussed topics in this repo (#27, #42, #63, #81, #210, #214, #243). Today, distributing skills means sharing files ad ho"
+          },
+          {
+            "tag": "markdown",
+            "content": "- [RFC: overlay dirmeta_delegate design](https://github.com/containers/container-libs/pull/701)"
+          },
+          {
+            "tag": "markdown",
+            "content": "  - I'm looking for some early feedback on this.  Don't worry too much about all of the details, this is just AI-guided PoC level for now to show integration with p"
+          },
+          {
+            "tag": "markdown",
+            "content": "- [[RFC] for compression setting](https://github.com/delta-io/delta/pull/6324)"
+          },
+          {
+            "tag": "markdown",
+            "content": "  - #### Which Delta project/connector is this regarding?\r\n\r\n- [ ] Spark\r\n- [ ] Standalone\r\n- [ ] Flink\r\n- [ ] Kernel\r\n- [x] Other (protocol)\r\n\r\n## Description\r\n\r\nA"
+          },
+          {
+            "tag": "markdown",
+            "content": "- [[hipDNN] Add RFC 0008: Backend Caching Design](https://github.com/ROCm/rocm-libraries/pull/5970)"
+          },
+          {
+            "tag": "markdown",
+            "content": "  - ## Motivation\r\n\r\nAdd design document for a caching mechanism that enables hipDNN plugins to persist data across sessions. The design supports two approaches:\r\n\r"
+          },
+          {
+            "tag": "markdown",
+            "content": "- [RFC: Adding progressive XML lint for the specs](https://github.com/onvif/specs/pull/726)"
+          }
+        ]
+      }
+    },
+    {
+      "msg_type": "interactive",
+      "card": {
+        "config": {
+          "wide_screen_mode": true
+        },
+        "header": {
+          "title": {
+            "tag": "plain_text",
+            "content": "GitHub Daily Radar (3/5)"
+          }
+        },
+        "elements": [
+          {
+            "tag": "markdown",
+            "content": "  - While working on fixing #555 , several issues of indenting (replacing spaces with tabs or vice versa), encoding (UTF8 vs Windows-1252) and xml code quality beca"
+          },
+          {
+            "tag": "markdown",
+            "content": "**Issue**"
+          },
+          {
+            "tag": "markdown",
+            "content": "- [Roadmap: Temporal Attestation (WHEN layer) — Contribution Proposal](https://github.com/coinbase/x402/issues/1667)"
+          },
+          {
+            "tag": "markdown",
+            "content": "  - ## The Biggest Unsolved Problem in Agent Ecosystems: DAO Governance Timing\n\nAs agents become first-class economic actors (via x402 for payments, World AgentKit "
+          },
+          {
+            "tag": "markdown",
+            "content": "- [Roadmap](https://github.com/wasmerio/edgejs/issues/8)"
+          },
+          {
+            "tag": "markdown",
+            "content": "  - This roadmap is public so the project and community, perhaps with help of AI agents, can help evolve the runtime forward.\n\n# 0.x - 🏋️‍♂️ Production Readiness\n\n*"
+          },
+          {
+            "tag": "markdown",
+            "content": "- [RFC: BucketUI Architecture & Design Proposal](https://github.com/myagentteam/bucketui/issues/1)"
+          },
+          {
+            "tag": "markdown",
+            "content": "  - ## Summary\n\nBucketUI — Multi-tenant Object Storage Admin Console wrapping MinIO (pgsty fork).\n\n**Full spec:** [`docs/superpowers/specs/2026-03-28-bucketui-desig"
+          },
+          {
+            "tag": "markdown",
+            "content": "- [Roadmap](https://github.com/datum-cloud/datumctl/issues/47)"
+          },
+          {
+            "tag": "markdown",
+            "content": "  - This issue acts like an easy roadmap where we can collect desires, features requests, idea.\n\nI like to have actionable issues and clear stakeholders so my propo"
+          },
+          {
+            "tag": "markdown",
+            "content": "**Pr**"
+          },
+          {
+            "tag": "markdown",
+            "content": "- [RFC: Neuroglancer governance proposal](https://github.com/google/neuroglancer/pull/910)"
+          },
+          {
+            "tag": "markdown",
+            "content": "  - ### Add community governance documentation\r\nThis PR establishes a governance structure for Neuroglancer by adding a GOVERNANCE section to the Sphinx documentati"
+          },
+          {
+            "tag": "markdown",
+            "content": "- [Cargo Design Doc Proposal](https://github.com/space-wizards/docs/pull/618)"
+          },
+          {
+            "tag": "markdown",
+            "content": "  - Cargo is currently in an interesting position in terms of how it relates to the station. Despite their role as the primary supplier of resources: many of its me"
+          },
+          {
+            "tag": "markdown",
+            "content": "- [docs: add roadmap and 6 improvement proposals](https://github.com/grabee-chen/openclaw-security-starter/pull/9)"
+          },
+          {
+            "tag": "markdown",
+            "content": "  - ## Summary / 摘要\n\n為 OpenClaw Security Starter 新增完整的發展路線圖與 6 份改進提案文件，涵蓋健康監控、安全沙箱、審計強化等方向。所有文件皆為雙語（正體中文 + English），並附有 Mermaid 架構圖（dark theme）。\n\nAdd a comprehensiv"
+          },
+          {
+            "tag": "markdown",
+            "content": "- [Design proposal: Onboarding stepper](https://github.com/Automattic/wp-calypso/pull/109315)"
+          },
+          {
+            "tag": "markdown",
+            "content": "  - This is a design draft part of [DatSci: Optimization - Step by Step Progress Bar In Onboarding Flow](https://linear.app/a8c/project/datsci-optimization-step-by-"
+          },
+          {
+            "tag": "markdown",
+            "content": "- [docs(design): add fault injection support design proposal](https://github.com/kgateway-dev/kgateway/pull/13731)"
+          }
+        ]
+      }
+    },
+    {
+      "msg_type": "interactive",
+      "card": {
+        "config": {
+          "wide_screen_mode": true
+        },
+        "header": {
+          "title": {
+            "tag": "plain_text",
+            "content": "GitHub Daily Radar (4/5)"
+          }
+        },
+        "elements": [
+          {
+            "tag": "markdown",
+            "content": "  - # Description\r\n\r\nAdd design proposal for fault injection support in TrafficPolicy.\r\n\r\nrelated to https://github.com/kgateway-dev/kgateway/issues/11188\r\n\r\n# Chan"
+          },
+          {
+            "tag": "markdown",
+            "content": "- [feat: implement roadmap automation and tracking](https://github.com/goddard-ai/goddard/pull/65)"
+          },
+          {
+            "tag": "markdown",
+            "content": "  - This PR implements the \"Roadmap Automation and Tracking\" feature proposal to establish a fully automated pipeline for executing approved product changes directl"
+          },
+          {
+            "tag": "markdown",
+            "content": "- [Authentication and Authorization Design Proposal](https://github.com/volcano-sh/agentcube/pull/241)"
+          },
+          {
+            "tag": "markdown",
+            "content": "  - **What type of PR is this?**\r\n\r\n\r\n/kind documentation\r\n\r\n**What this PR does / why we need it**:\r\n\r\nThis PR introduces a design proposal for implementing authen"
+          },
+          {
+            "tag": "markdown",
+            "content": "- [feat(docs): Refactor the whole docs](https://github.com/external-secrets/external-secrets/pull/6059)"
+          },
+          {
+            "tag": "markdown",
+            "content": "  - New website\r\nNew architecture of docs\r\nClear governance\r\nAuto-generated docs\r\n\r\nThis is my vision for docs :)\r\n\r\n## Problem Statement\r\n\r\nDocs are problematic.\r\n"
+          },
+          {
+            "tag": "markdown",
+            "content": "- [doc: Tracing design proposal](https://github.com/numaproj/numaflow/pull/3185)"
+          },
+          {
+            "tag": "markdown",
+            "content": "  - Proposal: OpenTelemetry Tracing Design for Numaflow"
+          },
+          {
+            "tag": "markdown",
+            "content": "- [Add GSoC 2026 proposal for host-based pipeline deployment](https://github.com/debezium/debezium-design-documents/pull/34)"
+          },
+          {
+            "tag": "markdown",
+            "content": "  - Hi,\r\n\r\nThis PR adds my GSoC 2026 draft proposal for Host-Based Pipeline Deployment for Debezium Platform.\r\n\r\nI would appreciate any feedback on the MVP scope, t"
+          },
+          {
+            "tag": "markdown",
+            "content": "- [Proposal & RoadMap: Extend cache runtime interface for full data lifecycle](https://github.com/fluid-cloudnative/community/pull/79)"
+          },
+          {
+            "tag": "markdown",
+            "content": "  - Add Proposal & RoadMap for 'Extend cache runtime interface for full data lifecycle'.\r\n\r\nThe work tasks are described as follows：\r\n- Curvine Integration：Implemen"
+          },
+          {
+            "tag": "markdown",
+            "content": "- [Create CODE_DESIGN.md](https://github.com/mrc-ide/EpiEstim/pull/235)"
+          },
+          {
+            "tag": "markdown",
+            "content": "  - Fixes #217\r\nAdd RELEASE.R and CODE-DESIGN.md as starting points (CODE-DESIGN.md in particular could be filled in more, especially \"Be Careful\" and a \"Future ide"
+          },
+          {
+            "tag": "markdown",
+            "content": "- [proposal: Enhanced Warm Pool Design](https://github.com/volcano-sh/agentcube/pull/224)"
+          },
+          {
+            "tag": "markdown",
+            "content": "  - This proposal introduces three enhancements to the existing warm pool:\r\n\r\n1. **Dynamic Pool Sizing**: Automatically adjust warm pool size based on historical tr"
+          },
+          {
+            "tag": "markdown",
+            "content": "- [docs: update roadmap — mark H4 wins, H3 progress, sketch Horizon 5](https://github.com/hivemoot/colony/pull/675)"
+          },
+          {
+            "tag": "markdown",
+            "content": "  - Closes #674\n\n## What changed\n\nThe roadmap was last updated in PR #604. Since then, two Horizon 4 items shipped and Horizon 3 governance health gained significan"
+          },
+          {
+            "tag": "markdown",
+            "content": "- [Proposal: Canton Payment Streams](https://github.com/canton-foundation/canton-dev-fund/pull/94)"
+          }
+        ]
+      }
+    },
+    {
+      "msg_type": "interactive",
+      "card": {
+        "config": {
+          "wide_screen_mode": true
+        },
+        "header": {
+          "title": {
+            "tag": "plain_text",
+            "content": "GitHub Daily Radar (5/5)"
+          }
+        },
+        "elements": [
+          {
+            "tag": "markdown",
+            "content": "  - ## Development Fund Proposal Submission\r\n\r\n**Proposal file:**  \r\n/proposals/canton-payment-streams.md\r\n\r\n## Summary\r\nThis proposal requests funding for Canton P"
+          },
+          {
+            "tag": "markdown",
+            "content": "- [docs: Battalion Doctrine Realignment + Simulation Completeness Roadmap (design documents)](https://github.com/B9android/wargames_training/pull/252)"
+          },
+          {
+            "tag": "markdown",
+            "content": "  - ## Summary\n\nAdds two design documents capturing the two major planning tracks discussed:\n\n1. **`docs/design/battalion-doctrine-realignment.md`** — 5-phase plan "
+          }
+        ]
+      }
+    }
+  ],
+  "count": 40,
+  "selected_count": 24,
+  "summary": {
+    "count": 40,
+    "editorial": 0,
+    "api_usage": {
+      "total_budget": 36,
+      "search_budget": 18,
+      "graphql_budget": 600,
+      "search_used": 5,
+      "graphql_used": 0
+    }
+  }
+}
