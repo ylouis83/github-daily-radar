@@ -417,7 +417,7 @@ def _quality_value(item: dict) -> float:
 def _selection_cycle(*, project_first: bool) -> list[str]:
     if project_first:
         return ["project", "project", "skill", "discussion", "other"]
-    return ["project", "skill", "discussion", "other"]
+    return ["skill", "discussion", "project", "other"]
 
 
 def _take_next_bucket_item(items: list[dict], *, repo_counts: dict[str, int], per_repo_cap: int) -> dict | None:

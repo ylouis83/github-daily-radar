@@ -1,10 +1,10 @@
 """Feishu interactive card rendering and delivery.
 
 Design principles:
-  • 高密度 + 低噪音 — 每一行都在输出可操作信号
-  • 三行结构 — 标题 → 看点一句话 → 画像三段
-  • 画像分行 — 特点 / 核心能力 / 必要性 各一行，不做一行塞死
-  • 空分区不渲染 — 不出现"今日暂无"
+  • 单版输出 — 不再分 A/B，一张卡片展示所有精选
+  • 三大分区 — 🚀 核心 AI 项目 / 🧩 MCP & Skills Top 10 / 💬 提案与讨论
+  • 画像三行 — 特点 / 核心能力 / 必要性 各一行
+  • 空分区不渲染
 """
 from __future__ import annotations
 
@@ -22,15 +22,9 @@ _VELOCITY_EMOJI = {
 }
 
 SECTION_ICONS = {
-    "project": "🚀 必看项目",
-    "skill": "🧩 发现技能",
+    "project": "🚀 核心 AI 项目",
+    "skill": "🧩 MCP & Skills Top 10",
     "discussion": "💬 提案与讨论",
-}
-
-SECTION_ICONS_B = {
-    "project": "📦 更多项目",
-    "skill": "🔧 更多技能",
-    "discussion": "🗣️ 更多讨论",
 }
 
 # kind → 画像结构化字段标签
@@ -66,9 +60,7 @@ def _format_star_badge(item: dict) -> str:
         return f"{emoji}+{delta}⭐"
 
     stars = item.get("stars", 0)
-    if stars >= 10000:
-        return f"⭐{stars / 1000:.1f}K"
-    elif stars >= 1000:
+    if stars >= 1000:
         return f"⭐{stars / 1000:.1f}K"
     elif stars > 0:
         return f"⭐{stars}"
@@ -77,8 +69,8 @@ def _format_star_badge(item: dict) -> str:
 
 # ── Item Rendering ────────────────────────────────────────────────
 
-def _render_item_a(item: dict, index: int) -> str:
-    """渲染 A 版条目：标题 + 看点 + 画像三行"""
+def _render_item(item: dict, index: int) -> str:
+    """渲染条目：标题 + 看点 + 画像三行"""
     title = item.get("title", "")
     url = item.get("url", "")
     why_now = item.get("why_now", "")
@@ -111,33 +103,16 @@ def _render_item_a(item: dict, index: int) -> str:
     return "\n".join(lines)
 
 
-def _render_item_b(item: dict, index: int) -> str:
-    """渲染 B 版条目：紧凑两行"""
-    title = item.get("title", "")
-    url = item.get("url", "")
-    why_now = item.get("why_now", "")
-    badge = _format_star_badge(item)
-
-    badge_suffix = f"  {badge}" if badge else ""
-    line1 = f"**{index}.** [{title}]({url}){badge_suffix}" if url else f"**{index}.** {title}{badge_suffix}"
-
-    lines = [line1]
-    if why_now:
-        lines.append(f"      {_truncate_text(why_now, 72)}")
-    return "\n".join(lines)
-
-
 # ── Section Rendering ─────────────────────────────────────────────
 
-def _render_section(section_title: str, items: list[dict], *, compact: bool = False) -> str | None:
+def _render_section(section_title: str, items: list[dict]) -> str | None:
     """渲染一个完整分区，空分区返回 None"""
     if not items:
         return None
 
-    renderer = _render_item_b if compact else _render_item_a
     lines = [section_title, ""]
     for i, item in enumerate(items, 1):
-        lines.append(renderer(item, i))
+        lines.append(_render_item(item, i))
         lines.append("")
     return "\n".join(lines)
 
@@ -152,7 +127,7 @@ def _render_overview(items: list[dict]) -> str:
     for kind, label in [("project", "项目"), ("skill", "技能"), ("discussion", "讨论")]:
         if counts.get(kind, 0):
             parts.append(f"**{counts[kind]}** {label}")
-    return f"精选 **{len(items)}** 条：{'  ·  '.join(parts)}"
+    return f"今日精选 **{len(items)}** 条：{'  ·  '.join(parts)}"
 
 
 def _render_footer(today: date | None = None, metadata: dict | None = None) -> str:
@@ -180,6 +155,12 @@ def _render_footer(today: date | None = None, metadata: dict | None = None) -> s
     return "  |  ".join(parts) if parts else ""
 
 
+def _section_order(*, project_first: bool) -> list[str]:
+    if project_first:
+        return ["project", "skill", "discussion"]
+    return ["skill", "discussion", "project"]
+
+
 # ── Card Assembly ─────────────────────────────────────────────────
 
 def build_digest_card(
@@ -188,59 +169,47 @@ def build_digest_card(
     secondary_items: list[dict] | None = None,
     metadata: dict | None = None,
     today: date | None = None,
+    project_first: bool = True,
 ) -> dict:
-    """构建飞书交互卡片 — 高密度、低噪音、结构化"""
+    """构建飞书交互卡片 — 单版、三分区、结构化"""
     metadata = metadata or {}
     date_str = today.isoformat() if today else ""
 
-    # ── A 版分组 ──
-    a_grouped: dict[str, list[dict]] = defaultdict(list)
-    for item in items:
+    # 合并 items (兼容旧调用方传入 secondary_items 的情况)
+    all_items = list(items)
+    if secondary_items:
+        seen = {item.get("repo_full_name") or item.get("url") for item in all_items}
+        for item in secondary_items:
+            key = item.get("repo_full_name") or item.get("url")
+            if key not in seen:
+                all_items.append(item)
+                seen.add(key)
+
+    # 按 kind 分组
+    grouped: dict[str, list[dict]] = defaultdict(list)
+    for item in all_items:
         kind = item.get("kind", "other")
         if kind in ("issue", "pr"):
             kind = "discussion"
-        a_grouped[kind].append(item)
+        grouped[kind].append(item)
 
     elements: list[dict] = []
 
-    # ── A 概览 ──
+    # ── 概览 ──
     elements.append({
         "tag": "markdown",
-        "content": f"**🅰️ 精编版**\n{_render_overview(items)}",
+        "content": _render_overview(all_items),
     })
     elements.append({"tag": "hr"})
 
-    # ── A 各分区 ──
-    for kind in ["project", "skill", "discussion"]:
-        section_items = a_grouped.get(kind, [])
+    # ── 三大分区 ──
+    for kind in _section_order(project_first=project_first):
+        section_items = grouped.get(kind, [])
         title = SECTION_ICONS.get(kind, kind.title())
-        content = _render_section(f"**{title}**", section_items, compact=False)
+        content = _render_section(f"**{title}**", section_items)
         if content is not None:
             elements.append({"tag": "markdown", "content": content})
             elements.append({"tag": "hr"})
-
-    # ── B 版 ──
-    if secondary_items:
-        b_grouped: dict[str, list[dict]] = defaultdict(list)
-        for item in secondary_items:
-            kind = item.get("kind", "other")
-            if kind in ("issue", "pr"):
-                kind = "discussion"
-            b_grouped[kind].append(item)
-
-        elements.append({
-            "tag": "markdown",
-            "content": f"**🅱️ 扫一眼**\n{_render_overview(secondary_items)}",
-        })
-        elements.append({"tag": "hr"})
-
-        for kind in ["project", "skill", "discussion"]:
-            section_items = b_grouped.get(kind, [])
-            title = SECTION_ICONS_B.get(kind, kind.title())
-            content = _render_section(f"**{title}**", section_items, compact=True)
-            if content is not None:
-                elements.append({"tag": "markdown", "content": content})
-                elements.append({"tag": "hr"})
 
     # ── Footer ──
     footer = _render_footer(today, metadata)

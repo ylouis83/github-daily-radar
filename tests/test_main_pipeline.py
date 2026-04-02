@@ -311,10 +311,11 @@ def test_run_pipeline_uses_editorial_summaries_and_continues_on_collector_failur
 
     captured = {}
 
-    def fake_build_digest_card(*, items, secondary_items=None, metadata=None, today=None):
+    def fake_build_digest_card(*, items, secondary_items=None, metadata=None, today=None, project_first=True):
         captured["items"] = items
         captured["metadata"] = metadata or {}
         captured["today"] = today
+        captured["project_first"] = project_first
         return {"msg_type": "interactive", "card": {"header": {"title": {"content": "test"}}}}
 
     monkeypatch.setattr(main_module, "TrendingCollector", _EmptyCollector)
@@ -371,9 +372,10 @@ def test_run_pipeline_respects_report_limit(monkeypatch, tmp_path: Path):
 
     captured = {}
 
-    def fake_build_digest_card(*, items, secondary_items=None, metadata=None, today=None):
+    def fake_build_digest_card(*, items, secondary_items=None, metadata=None, today=None, project_first=True):
         captured["items"] = items
         captured["metadata"] = metadata or {}
+        captured["project_first"] = project_first
         return {"msg_type": "interactive", "card": {"header": {"title": {"content": "test"}}}}
 
     monkeypatch.setattr(main_module, "TrendingCollector", _EmptyCollector)
@@ -403,8 +405,9 @@ def test_run_pipeline_single_version_selects_all(monkeypatch, tmp_path: Path):
 
     captured = {}
 
-    def fake_build_digest_card(*, items, secondary_items=None, metadata=None, today=None):
+    def fake_build_digest_card(*, items, secondary_items=None, metadata=None, today=None, project_first=True):
         captured["items"] = items
+        captured["project_first"] = project_first
         return {"msg_type": "interactive", "card": {"header": {"title": {"content": "test"}}}}
 
     monkeypatch.setattr(main_module, "TrendingCollector", _EmptyCollector)
@@ -433,9 +436,10 @@ def test_run_pipeline_single_card_is_project_first(monkeypatch, tmp_path: Path):
 
     captured = {}
 
-    def fake_build_digest_card(*, items, secondary_items=None, metadata=None, today=None):
+    def fake_build_digest_card(*, items, secondary_items=None, metadata=None, today=None, project_first=True):
         captured["items"] = items
         captured["metadata"] = metadata or {}
+        captured["project_first"] = project_first
         return {"msg_type": "interactive", "card": {"header": {"title": {"content": "test"}}}}
 
     monkeypatch.setattr(main_module, "TrendingCollector", _EmptyCollector)
@@ -453,6 +457,42 @@ def test_run_pipeline_single_card_is_project_first(monkeypatch, tmp_path: Path):
 
     assert [item["kind"] for item in captured["items"]] == ["project", "skill", "discussion"]
     assert [item["title"] for item in captured["items"]] == ["owner/name", "owner/skill", "Other RFC"]
+    assert captured["project_first"] is True
+
+
+def test_run_pipeline_can_disable_project_first(monkeypatch, tmp_path: Path):
+    monkeypatch.chdir(tmp_path)
+    monkeypatch.setenv("GITHUB_TOKEN", "ghs_test")
+    monkeypatch.setenv("QWEN_API_KEY", "qwen_test")
+    monkeypatch.setenv("FEISHU_WEBHOOK_URL", "https://example.com/hook")
+
+    captured = {}
+
+    def fake_build_digest_card(*, items, secondary_items=None, metadata=None, today=None, project_first=True):
+        captured["items"] = items
+        captured["project_first"] = project_first
+        return {"msg_type": "interactive", "card": {"header": {"title": {"content": "test"}}}}
+
+    monkeypatch.setattr(main_module, "TrendingCollector", _EmptyCollector)
+    monkeypatch.setattr(main_module, "OSSInsightCollector", _EmptyCollector)
+    monkeypatch.setattr(main_module, "RepoCollector", _GoodCollector)
+    monkeypatch.setattr(main_module, "SkillCollector", _GoodSkillCollector)
+    monkeypatch.setattr(main_module, "DiscussionCollector", _OtherRepoDiscussionCollector)
+    monkeypatch.setattr(main_module, "IssuesPrsCollector", _EmptyCollector)
+    monkeypatch.setattr(main_module, "EditorialLLM", _FakeLLM)
+    monkeypatch.setattr(main_module, "build_digest_card", fake_build_digest_card)
+    monkeypatch.setattr(main_module, "send_cards", lambda *args, **kwargs: None)
+    monkeypatch.setattr(
+        main_module,
+        "load_output_daily_item_count_config",
+        lambda: {"min": 3, "max": 5, "project_first": False},
+    )
+
+    settings = Settings.from_env()
+    run_pipeline(settings=settings)
+
+    assert captured["project_first"] is False
+    assert [item["kind"] for item in captured["items"]] == ["skill", "discussion", "project"]
 
 
 def test_run_pipeline_uses_configured_daily_item_count(monkeypatch, tmp_path: Path):
@@ -463,9 +503,10 @@ def test_run_pipeline_uses_configured_daily_item_count(monkeypatch, tmp_path: Pa
 
     captured = {}
 
-    def fake_build_digest_card(*, items, secondary_items=None, metadata=None, today=None):
+    def fake_build_digest_card(*, items, secondary_items=None, metadata=None, today=None, project_first=True):
         captured["items"] = items
         captured["metadata"] = metadata or {}
+        captured["project_first"] = project_first
         return {"msg_type": "interactive", "card": {"header": {"title": {"content": "test"}}}}
 
     monkeypatch.setattr(main_module, "TrendingCollector", _EmptyCollector)

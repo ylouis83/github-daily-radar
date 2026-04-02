@@ -233,3 +233,24 @@ def test_select_top_items_project_heavy_day_keeps_high_quality_non_projects():
     assert selected[0]["kind"] == "project"
     assert "skill-survives" in selected_titles
     assert "discussion-survives" in selected_titles
+
+
+def test_select_top_items_can_disable_project_first_bias():
+    items = [
+        _digest_item("project", "project-a", score=5.0, repo="owner/project-a", editorial_rank=2),
+        _digest_item("discussion", "discussion-a", score=4.0, repo="owner/discussion-a"),
+        _digest_item("project", "project-b", score=3.0, repo="owner/project-b", editorial_rank=1),
+        _digest_item("skill", "skill-a", score=100.0, repo="owner/skill-a"),
+        _digest_item("skill", "skill-b", score=90.0, repo="owner/skill-b"),
+    ]
+
+    selected = select_top_items(items, project_first=False)
+
+    assert [item["title"] for item in selected] == [
+        "skill-a",
+        "discussion-a",
+        "project-b",
+        "skill-b",
+        "project-a",
+    ]
+    assert [item["kind"] for item in selected] == ["skill", "discussion", "project", "skill", "project"]

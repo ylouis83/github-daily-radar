@@ -116,6 +116,7 @@ def run_pipeline(settings: Settings, alert_only: bool = False) -> dict:
     skill_top_n = load_skill_top_n()
     skill_per_repo_cap = load_skill_per_repo_cap()
     daily_item_count = load_output_daily_item_count_config()
+    project_first = bool(daily_item_count["project_first"])
     ossinsight_enabled = load_ossinsight_enabled()
     ossinsight_collector = None
     if ossinsight_enabled:
@@ -276,7 +277,7 @@ def run_pipeline(settings: Settings, alert_only: bool = False) -> dict:
         min_items=int(daily_item_count["min"]),
         max_items=int(daily_item_count["max"]),
         per_repo_cap=skill_per_repo_cap,
-        project_first=bool(daily_item_count["project_first"]),
+        project_first=project_first,
     )
     filtered_kind_counts = Counter(item.kind for item in filtered)
     published_kind_counts = Counter(item["kind"] for item in published_items)
@@ -287,6 +288,7 @@ def run_pipeline(settings: Settings, alert_only: bool = False) -> dict:
         items=published_items,
         metadata=build_card_metadata(metadata),
         today=today,
+        project_first=project_first,
     )
     cards = [card]
 
