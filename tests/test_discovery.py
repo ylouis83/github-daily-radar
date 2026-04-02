@@ -20,8 +20,8 @@ def test_recent_date_uses_utc_cutoff():
 def test_build_repo_and_skill_queries_are_dynamic():
     instant = datetime(2026, 4, 2, 12, 0, tzinfo=timezone.utc)
 
-    repo_queries = build_repo_queries(now=instant)
-    skill_queries = build_skill_queries(now=instant)
+    repo_queries = build_repo_queries(now=instant, days_back=7)
+    skill_queries = build_skill_queries(now=instant, days_back=14)
 
     assert "pushed:>2026-03-26" in repo_queries[0]
     assert "pushed:>2026-03-19" in skill_queries[0]
@@ -38,8 +38,8 @@ def test_seed_repo_queries_are_chunked_and_scoped():
     instant = datetime(2026, 4, 2, 12, 0, tzinfo=timezone.utc)
     seed_repos = ["a/b", "c/d", "e/f", "g/h", "i/j"]
 
-    discussion_queries = build_discussion_queries(seed_repos=seed_repos, now=instant, chunk_size=2)
-    issue_queries = build_issue_pr_queries(seed_repos=seed_repos, now=instant, chunk_size=2)
+    discussion_queries = build_discussion_queries(seed_repos=seed_repos, now=instant, chunk_size=2, days_back=14)
+    issue_queries = build_issue_pr_queries(seed_repos=seed_repos, now=instant, chunk_size=2, days_back=14)
 
     assert len(discussion_queries) == 3
     assert len(issue_queries) == 3

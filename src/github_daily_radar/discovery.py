@@ -50,16 +50,16 @@ def _chunked(values: list[str], size: int) -> Iterable[list[str]]:
         yield values[index : index + size]
 
 
-def build_repo_queries(*, now: datetime | None = None) -> list[str]:
-    cutoff = recent_date(days=7, now=now)
+def build_repo_queries(*, now: datetime | None = None, days_back: int = 365) -> list[str]:
+    cutoff = recent_date(days=days_back, now=now)
     return [
         f"(topic:agent OR topic:workflow OR topic:automation) pushed:>{cutoff}",
         f"(topic:llm OR topic:devtools OR topic:browser-use) pushed:>{cutoff}",
     ]
 
 
-def build_skill_queries(*, now: datetime | None = None) -> list[str]:
-    cutoff = recent_date(days=14, now=now)
+def build_skill_queries(*, now: datetime | None = None, days_back: int = 365) -> list[str]:
+    cutoff = recent_date(days=days_back, now=now)
     return [
         f"(topic:agent OR topic:prompt OR topic:workflow) in:name,description,readme workflow prompt skill pushed:>{cutoff}",
     ]
@@ -74,9 +74,10 @@ def build_discussion_queries(
     seed_repos: list[str] | None = None,
     now: datetime | None = None,
     chunk_size: int = 4,
+    days_back: int = 365,
 ) -> list[str]:
     repos = seed_repos or load_seed_repos()
-    cutoff = recent_date(days=14, now=now)
+    cutoff = recent_date(days=days_back, now=now)
     keyword_clause = " OR ".join(DEFAULT_DISCUSSION_KEYWORDS)
     queries: list[str] = []
     for chunk in _chunked(repos, chunk_size):
@@ -92,9 +93,10 @@ def build_issue_pr_queries(
     seed_repos: list[str] | None = None,
     now: datetime | None = None,
     chunk_size: int = 4,
+    days_back: int = 365,
 ) -> list[str]:
     repos = seed_repos or load_seed_repos()
-    cutoff = recent_date(days=14, now=now)
+    cutoff = recent_date(days=days_back, now=now)
     keyword_clause = " OR ".join(DEFAULT_ISSUE_KEYWORDS)
     queries: list[str] = []
     for chunk in _chunked(repos, chunk_size):
