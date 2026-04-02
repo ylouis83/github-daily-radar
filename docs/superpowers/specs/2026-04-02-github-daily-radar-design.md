@@ -6,13 +6,18 @@ Build a GitHub-native daily radar that discovers high-signal repositories, reusa
 
 ## Product Outcome
 
-The system produces one daily report with roughly 10-20 items across three buckets:
+The system produces one daily report bundle with two Feishu cards:
+
+- `A 精编版`: roughly 8-12 items, optimized for immediate reading and decision-making
+- `B 保留版`: roughly 8-12 additional items, optimized for breadth without becoming noisy
+
+Together they should cover roughly 16-24 items across three buckets:
 
 - `Projects`: new or newly-heating repositories worth attention
 - `Skills`: reusable agent skills, prompt/workflow packs, rulesets, automation playbooks, and similar capability bundles
 - `Ideas & Discussions`: Discussions, Issues, and PRs containing strong ideas, design proposals, emerging patterns, or debates worth tracking
 
-The report should optimize for signal density instead of exhaustiveness. It should avoid repeating the same content every day, but allow reappearance when something has materially progressed.
+The report should optimize for signal density instead of exhaustiveness. It should avoid repeating the same content every day, but allow reappearance when something has materially progressed. The A card must be strong enough to stand alone; the B card is a structured backup layer, not a dump of leftovers.
 
 ## Non-Goals
 
@@ -27,7 +32,7 @@ Phase 1 explicitly does not include:
 
 ## User Experience
 
-The daily Feishu push should feel like a strong editor picked the most interesting GitHub developments for the day. Each entry should include:
+The daily Feishu push should feel like a strong editor picked the most interesting GitHub developments for the day. The output should read naturally in Chinese, while preserving original English repository or thread titles when useful for recognition. Each entry should include:
 
 - title
 - link
@@ -35,7 +40,11 @@ The daily Feishu push should feel like a strong editor picked the most interesti
 - why it matters today
 - a few supporting signals
 
-The digest should be in Chinese, while preserving original English repository or thread titles when useful for recognition.
+The digest should be in Chinese end-to-end:
+
+- card titles, section headers, labels, and summary text should be Chinese
+- original English titles should remain clickable and may be lightly annotated, but should not be translated away
+- sentence length should stay compact enough to fit a mobile Feishu card without feeling cramped
 
 ## Scope
 
@@ -49,6 +58,7 @@ The digest should be in Chinese, while preserving original English repository or
 - state persistence across runs
 - Feishu webhook delivery
 - artifact retention for debugging
+- two-tier Chinese editorial cards (`A 精编版` and `B 保留版`)
 
 ### Out of Scope
 
@@ -85,9 +95,12 @@ Phase 1 should explicitly budget calls by collector. Recommended approach:
 
 - define a per-run `rate_limit_budget`
 - give each collector an explicit slice of that budget
+- reserve a shared REST search throttle of about `25 requests per minute` so the system stays below the tighter search bucket with operational headroom
+- route all REST search traffic through a single throttled client path; search collectors should not fan out concurrent search requests
 - use REST search only for broad discovery
 - use GraphQL for batched metadata enrichment on shortlisted repositories or threads
 - add retry with backoff for transient failures and secondary-limit responses
+- reduce request count with curated query bundles where result quality remains acceptable, instead of expanding one request per topic mechanically
 - record API usage metrics in the daily run summary
 
 The implementation plan should include a simple call-budget estimate for a full daily run before coding begins.
@@ -239,21 +252,112 @@ The code branch remains clean and reviewable. The state branch carries operation
 
 ## Delivery Format
 
-The Feishu digest should use a stable interactive card layout instead of plain rich text. Card format is the default for Phase 1 because it provides higher information density, clearer visual grouping, and easier long-term template maintenance.
+The Feishu digest should use stable interactive cards instead of plain rich text. Card format is the default for Phase 1 because it provides higher information density, clearer visual grouping, and easier long-term template maintenance.
 
-The card should use a stable layout:
+Render two cards in order:
+
+1. `A 精编版`
+2. `B 保留版`
+
+The `A` card should use this stable layout:
 
 1. `今日概览`
-2. `Top Projects`
-3. `Top Skills`
-4. `Top Ideas / Discussions`
+2. `必看项目`
+3. `必看技能`
+4. `必看提案 / 讨论`
 5. `值得继续跟踪`
+
+The `B` card should use a shorter companion layout:
+
+1. `更多值得扫一眼`
+2. `项目补充`
+3. `技能补充`
+4. `提案 / 讨论补充`
 
 Suggested daily counts:
 
-- `Projects`: 4-7
-- `Skills`: 3-5
-- `Ideas / Discussions`: 3-6
+- `A 精编版`: 8-12 items total
+- `B 保留版`: 8-12 items total
+- `Projects`: 4-7 across both cards
+- `Skills`: 3-5 across both cards
+- `Ideas / Discussions`: 6-10 across both cards
+
+## Editorial Upgrade
+
+This section defines the quality bar for the two-card bundle.
+
+### Selection policy
+
+Use a two-tier editorial split:
+
+- `A` contains the highest-confidence, highest-signal candidates after deduplication and diversity filtering
+- `B` contains the next-best candidates that are still worth scanning but do not belong in the first card
+
+The split should not be purely chronological. It should be based on:
+
+- combined deterministic score
+- editor judgment from the LLM
+- source diversity
+- topic diversity
+- dedupe pressure from repeated repos or repeated threads
+
+The implementation should cap repeated items from the same repo so that one active repository cannot flood the entire digest.
+
+### Chinese copy contract
+
+The LLM editorial pass should emit Chinese for all generated copy:
+
+- `overview`
+- `summary`
+- `why_now`
+- `follow_up` or `continue_tracking`
+- section labels
+
+Keep original titles as clickable anchors. For example, the card may show the English PR or repository title as the link text, then use Chinese explanatory lines underneath it.
+
+The copy should follow these constraints:
+
+- one sentence for `summary`
+- one sentence for `why now`
+- no unsupported facts
+- no speculation about implementation details that are not present in the candidate data
+- prefer concrete signals such as stars, comments, maintainer participation, release recency, or proposal strength
+
+### A/B composition rules
+
+`A 精编版` should be the part a reader can finish in one quick pass:
+
+- show only the strongest items
+- prioritize surprising, strategic, or unusually actionable content
+- favor diversity over piling up near-duplicate items from the same repo
+- keep each item to a compact Chinese summary plus a short `why now` line
+
+`B 保留版` should be the safety net:
+
+- keep additional worthwhile items that would otherwise be lost
+- use shorter copy than A
+- emphasize breadth and completeness rather than deep explanation
+- avoid repeating the exact same prose used in A when a shorter restatement is enough
+
+### Fallback behavior
+
+If the editorial pass is thin or fails validation:
+
+- still render Chinese card headers and section labels
+- fall back to deterministic ranking
+- keep the A/B split and item caps
+- use shorter Chinese fallback summaries built from source fields only
+
+## Acceptance Criteria
+
+The output is considered improved only if all of the following are true:
+
+- Feishu cards are clearly Chinese
+- `A 精编版` and `B 保留版` are both present in the same run
+- A reads like an editorial shortlist instead of a raw feed
+- B preserves breadth without overwhelming the reader
+- repeated repos or repeated threads no longer dominate the digest
+- the report stays grounded in source facts and does not invent unsupported claims
 
 If the message would exceed delivery limits, split into:
 
@@ -342,22 +446,28 @@ Phase 1 should keep runtime configuration minimal.
 Secrets:
 
 - `FEISHU_WEBHOOK_URL`
-- `OPENAI_API_KEY` or the final chosen model provider key
+- `QWEN_API_KEY` or the final chosen provider key
 - `GITHUB_TOKEN` from GitHub Actions
+- optional `GITHUB_PAT` override for higher REST and GraphQL limits during scheduled runs
 
 Repository configuration:
 
 - discovery topics
+- curated search query bundles for repos, skills, and discussion discovery
 - seed repositories or organizations
 - maximum items per day
 - cooling window length
 - per-run API budget and per-collector budget slices
+- shared `search_requests_per_minute` throttle
 - `llm_max_candidates`
 - minimum score thresholds
 - bootstrap mode controls
+- default model and provider override controls
 - optional time zone and schedule metadata
 
 Secrets belong in GitHub Secrets. Search scope and ranking preferences should live in repository-managed config.
+
+Phase 1 should ship with a default model profile instead of leaving provider choice fully open. The default editorial model should target `千问的 codingplan`, while allowing explicit provider and model override through configuration for later experimentation or migration.
 
 ## Workflow Design
 
@@ -367,6 +477,14 @@ The GitHub Actions workflow should support both:
 - manual dispatch for testing and iteration
 
 The workflow should also use a concurrency group so only one run updates state at a time.
+
+`workflow_dispatch` should expose a `dry_run` boolean input. In dry-run mode, the workflow should:
+
+- execute collection, scoring, LLM refinement, and digest rendering normally
+- skip Feishu publishing
+- skip state-branch writes
+- save rendered output and intermediate artifacts for inspection
+- report clearly in logs and run metadata that the run was non-publishing
 
 High-level workflow:
 
@@ -398,16 +516,37 @@ Phase 1 should include:
 
 The system is editorially complex, so deterministic tests should target ranking inputs and state transitions more than LLM phrasing.
 
+## Time Zone Semantics
+
+Phase 1 should treat `Asia/Shanghai` as the product time zone for all daily semantics.
+
+This affects:
+
+- what counts as "today" in the digest
+- daily state file naming
+- recency windows shown to the user
+- the recommended scheduled send window
+
+The daily workflow should be scheduled for roughly 09:00-10:00 China Standard Time, which corresponds to about 01:00-02:00 UTC depending on the exact cron expression used.
+
+All GitHub timestamps arrive as UTC and should be converted into the product time zone only for daily grouping, display, and state partitioning. Internal comparison logic may still use UTC as long as day-boundary semantics remain correct for `Asia/Shanghai`.
+
+## Bootstrap Behavior
+
+On the first run, the system has no historical memory, so novelty is not very discriminative. Bootstrap mode should explicitly downweight `novelty` and lean more heavily on `signal` and `utility` for first-run ranking.
+
 ## Phase 1 Acceptance Criteria
 
 Phase 1 is successful when all of the following are true:
 
 - a GitHub Actions workflow runs daily without a server
 - the system discovers projects, skills, and discussions from GitHub
-- it outputs a balanced daily digest of roughly 10-20 items
+- it outputs a balanced daily digest as a two-card bundle, with `A 精编版` and `B 保留版`
+- the two-card bundle covers roughly 16-24 items total across the day
 - it avoids noisy repetition across a 14-day window
 - it can resurface an item when there is meaningful new progress
 - it sends the digest to Feishu via interactive card webhook delivery
+- the digest text is Chinese end-to-end, while preserving useful original English titles
 - it stores enough state to behave consistently across days
 - it leaves debug artifacts when failures occur
 - it stays within a declared API budget for a normal daily run
@@ -418,7 +557,7 @@ Phase 1 is successful when all of the following are true:
 These are implementation choices, not design blockers:
 
 - exact search queries and API mix between REST and GraphQL
-- final LLM provider and prompt strategy
+- exact editorial prompt wording and fallback phrasing for the Chinese cards
 - exact ranking weights for each content type
 - whether state uses JSON files only or a small SQLite file in the `state` branch
 
