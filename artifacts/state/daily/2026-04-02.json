@@ -15,7 +15,11 @@
         "elements": [
           {
             "tag": "markdown",
-            "content": "**今日概览**\n本卡共 0 条，覆盖 0 个项目、0 个技能、0 个提案 / 讨论。\n已按编辑优先级排序，并做了同仓库去重，避免单一仓库刷屏。\n候选 0 条，LLM 精编 0 条，A 0 / B 0，API 搜索 14 次 / GraphQL 0 点。\n这一卡优先展示今天最值得点开的内容。"
+            "content": "**今日概览**\n本卡共 10 条，覆盖 0 个项目、10 个技能、0 个提案 / 讨论。\n已按编辑优先级排序，并做了同仓库去重，避免单一仓库刷屏。\n候选 48 条，LLM 精编 0 条，A 10 / B 10，API 搜索 18 次 / GraphQL 8 点。\n这一卡优先展示今天最值得点开的内容。"
+          },
+          {
+            "tag": "markdown",
+            "content": "**必看技能**\n- [f/prompts.chat](https://github.com/f/prompts.chat)\n  - 摘要：这是一个可复用的技能 / 规则包，适合判断是否加入你的技能库。\n  - 为什么现在：最近有 156350 星 / 20524 个 fork，值得快速判断是否纳入技能库。\n  - 继续关注：建议先看示例和使用说明，再决定是否纳入技能库。\n- [obra/superpowers](https://github.com/obra/superpowers)\n  - 摘要：这是一个可复用的技能 / 规则包，适合判断是否加入你的技能库。\n  - 为什么现在：最近有 130958 星 / 10829 个 fork，值得快速判断是否纳入技能库。\n  - 继续关注：建议先看示例和使用说明，再决定是否纳入技能库。\n- [openai/openai-cookbook](https://github.com/openai/openai-cookbook)\n  - 摘要：这是一个可复用的技能 / 规则包，适合判断是否加入你的技能库。\n  - 为什么现在：最近有 72511 星 / 12236 个 fork，值得快速判断是否纳入技能库。\n  - 继续关注：建议先看示例和使用说明，再决定是否纳入技能库。\n- [punkpeye/awesome-mcp-servers](https://github.com/punkpeye/awesome-mcp-servers)\n  - 摘要：这是一个可复用的技能 / 规则包，适合判断是否加入你的技能库。\n  - 为什么现在：最近有 84066 星 / 8648 个 fork，值得快速判断是否纳入技能库。\n  - 继续关注：建议先看示例和使用说明，再决定是否纳入技能库。\n- [anthropics/claude-cookbooks](https://github.com/anthropics/claude-cookbooks)\n  - 摘要：这是一个可复用的技能 / 规则包，适合判断是否加入你的技能库。\n  - 为什么现在：最近有 37108 星 / 4072 个 fork，值得快速判断是否纳入技能库。\n  - 继续关注：建议先看示例和使用说明，再决定是否纳入技能库。\n- [PatrickJS/awesome-cursorrules](https://github.com/PatrickJS/awesome-cursorrules)\n  - 摘要：这是一个可复用的技能 / 规则包，适合判断是否加入你的技能库。\n  - 为什么现在：最近有 38837 星 / 3289 个 fork，值得快速判断是否纳入技能库。\n  - 继续关注：建议先看示例和使用说明，再决定是否纳入技能库。\n- [leerob/directories](https://github.com/leerob/directories)\n  - 摘要：这是一个可复用的技能 / 规则包，适合判断是否加入你的技能库。\n  - 为什么现在：最近有 3916 星 / 666 个 fork，值得快速判断是否纳入技能库。\n  - 继续关注：建议先看示例和使用说明，再决定是否纳入技能库。\n- [lobehub/lobe-chat-agents](https://github.com/lobehub/lobe-chat-agents)\n  - 摘要：这是一个可复用的技能 / 规则包，适合判断是否加入你的技能库。\n  - 为什么现在：最近有 1018 星 / 284 个 fork，值得快速判断是否纳入技能库。\n  - 继续关注：建议先看示例和使用说明，再决定是否纳入技能库。\n- [fjb040911/ai-rules](https://github.com/fjb040911/ai-rules)\n  - 摘要：这是一个可复用的技能 / 规则包，适合判断是否加入你的技能库。\n  - 为什么现在：最近有 1141 星 / 16 个 fork，值得快速判断是否纳入技能库。\n  - 继续关注：建议先看示例和使用说明，再决定是否纳入技能库。\n- [travisjneuman/.claude](https://github.com/travisjneuman/.claude)\n  - 摘要：这是一个可复用的技能 / 规则包，适合判断是否加入你的技能库。\n  - 为什么现在：最近有 32 星 / 10 个 fork，值得快速判断是否纳入技能库。\n  - 继续关注：建议先看示例和使用说明，再决定是否纳入技能库。"
           }
         ]
       }
@@ -35,27 +39,29 @@
         "elements": [
           {
             "tag": "markdown",
-            "content": "**更多值得扫一眼**\n本卡共 0 条，覆盖 0 个项目、0 个技能、0 个提案 / 讨论。\n已按编辑优先级排序，并做了同仓库去重，避免单一仓库刷屏。\n候选 0 条，LLM 精编 0 条，A 0 / B 0，API 搜索 14 次 / GraphQL 0 点。\n这部分是补充阅读，适合扫尾，不会把主卡撑乱。"
+            "content": "**更多值得扫一眼**\n本卡共 10 条，覆盖 0 个项目、10 个技能、0 个提案 / 讨论。\n已按编辑优先级排序，并做了同仓库去重，避免单一仓库刷屏。\n候选 48 条，LLM 精编 0 条，A 10 / B 10，API 搜索 18 次 / GraphQL 8 点。\n这部分是补充阅读，适合扫尾，不会把主卡撑乱。"
+          },
+          {
+            "tag": "markdown",
+            "content": "**技能补充**\n- [kochetkov-ma/claude-brewcode](https://github.com/kochetkov-ma/claude-brewcode)\n  - 摘要：这是一个可复用的技能 / 规则包，适合判断是否加入你的技能库。\n  - 为什么现在：最近有 16 星 / 2 个 fork，值得快速判断是否纳入技能库。\n  - 继续关注：建议先看示例和使用说明，再决定是否纳入技能库。\n- [ofershap/ai-context-kit](https://github.com/ofershap/ai-context-kit)\n  - 摘要：这是一个可复用的技能 / 规则包，适合判断是否加入你的技能库。\n  - 为什么现在：最近有 6 星 / 1 个 fork，值得快速判断是否纳入技能库。\n  - 继续关注：建议先看示例和使用说明，再决定是否纳入技能库。\n- [vibestackdev/vibe-stack](https://github.com/vibestackdev/vibe-stack)\n  - 摘要：这是一个可复用的技能 / 规则包，适合判断是否加入你的技能库。\n  - 为什么现在：最近有 5 星 / 0 个 fork，值得快速判断是否纳入技能库。\n  - 继续关注：建议先看示例和使用说明，再决定是否纳入技能库。\n- [philipbankier/awesome-agent-skills](https://github.com/philipbankier/awesome-agent-skills)\n  - 摘要：这是一个可复用的技能 / 规则包，适合判断是否加入你的技能库。\n  - 为什么现在：最近有 2 星 / 2 个 fork，值得快速判断是否纳入技能库。\n  - 继续关注：建议先看示例和使用说明，再决定是否纳入技能库。\n- [AntifragileTech/antifragile-claude-code](https://github.com/AntifragileTech/antifragile-claude-code)\n  - 摘要：这是一个可复用的技能 / 规则包，适合判断是否加入你的技能库。\n  - 为什么现在：最近有 4 星 / 0 个 fork，值得快速判断是否纳入技能库。\n  - 继续关注：建议先看示例和使用说明，再决定是否纳入技能库。\n- [HIDORAKAI002/ai-workspace-archive](https://github.com/HIDORAKAI002/ai-workspace-archive)\n  - 摘要：这是一个可复用的技能 / 规则包，适合判断是否加入你的技能库。\n  - 为什么现在：最近有 3 星 / 0 个 fork，值得快速判断是否纳入技能库。\n  - 继续关注：建议先看示例和使用说明，再决定是否纳入技能库。\n- [RajanChavada/Rosetta](https://github.com/RajanChavada/Rosetta)\n  - 摘要：这是一个可复用的技能 / 规则包，适合判断是否加入你的技能库。\n  - 为什么现在：最近有 3 星 / 0 个 fork，值得快速判断是否纳入技能库。\n  - 继续关注：建议先看示例和使用说明，再决定是否纳入技能库。\n- [TheDecipherist/rulecatch-sdk](https://github.com/TheDecipherist/rulecatch-sdk)\n  - 摘要：这是一个可复用的技能 / 规则包，适合判断是否加入你的技能库。\n  - 为什么现在：最近有 3 星 / 0 个 fork，值得快速判断是否纳入技能库。\n  - 继续关注：建议先看示例和使用说明，再决定是否纳入技能库。\n- [kinneyyan/prompts](https://github.com/kinneyyan/prompts)\n  - 摘要：这是一个可复用的技能 / 规则包，适合判断是否加入你的技能库。\n  - 为什么现在：最近有 2 星 / 0 个 fork，值得快速判断是否纳入技能库。\n  - 继续关注：建议先看示例和使用说明，再决定是否纳入技能库。\n- [mehd-io/agent-skills](https://github.com/mehd-io/agent-skills)\n  - 摘要：这是一个可复用的技能 / 规则包，适合判断是否加入你的技能库。\n  - 为什么现在：最近有 2 星 / 0 个 fork，值得快速判断是否纳入技能库。\n  - 继续关注：建议先看示例和使用说明，再决定是否纳入技能库。"
           }
         ]
       }
     }
   ],
-  "count": 0,
-  "selected_count": 0,
+  "count": 48,
+  "selected_count": 24,
   "summary": {
-    "count": 0,
+    "count": 48,
     "editorial": 0,
-    "collector_errors": 4,
-    "coverage_note": "Reduced coverage due to collector failure(s).",
     "api_usage": {
       "total_budget": 36,
       "search_budget": 18,
       "graphql_budget": 600,
-      "search_used": 14,
-      "graphql_used": 0
+      "search_used": 18,
+      "graphql_used": 8
     },
-    "a_count": 0,
-    "b_count": 0
+    "a_count": 10,
+    "b_count": 10
   }
 }
