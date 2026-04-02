@@ -182,7 +182,7 @@ ossinsight:
   language: All
   trending_periods:
     - past_24_hours
-    - past_7_days
+    - past_week
   collection_period: past_28_days
   collection_name_keywords:
     - artificial intelligence

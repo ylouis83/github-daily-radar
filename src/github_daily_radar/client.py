@@ -170,5 +170,5 @@ class OSSInsightClient:
     def list_collections(self) -> dict:
         return self._get("/collections")
 
-    def collection_stars(self, collection_id: int | str, *, period: str = "past_28_days") -> dict:
-        return self._get(f"/collections/{collection_id}/stars", params={"period": period})
+    def collection_ranking_by_stars(self, collection_id: int | str, *, period: str = "past_28_days") -> dict:
+        return self._get(f"/collections/{collection_id}/ranking_by_stars/", params={"period": period})

@@ -260,6 +260,7 @@ def test_run_pipeline_uses_editorial_summaries_and_continues_on_collector_failur
         captured["today"] = today
         return {"msg_type": "interactive", "card": {"header": {"title": {"content": "test"}}}}
 
+    monkeypatch.setattr(main_module, "TrendingCollector", _EmptyCollector)
     monkeypatch.setattr(main_module, "OSSInsightCollector", _GoodOSSInsightCollector)
     monkeypatch.setattr(main_module, "RepoCollector", _GoodCollector)
     monkeypatch.setattr(main_module, "SkillCollector", _BadCollector)
@@ -317,6 +318,7 @@ def test_run_pipeline_respects_report_limit(monkeypatch, tmp_path: Path):
         captured["metadata"] = metadata or {}
         return {"msg_type": "interactive", "card": {"header": {"title": {"content": "test"}}}}
 
+    monkeypatch.setattr(main_module, "TrendingCollector", _EmptyCollector)
     monkeypatch.setattr(main_module, "OSSInsightCollector", _GoodOSSInsightCollector)
     monkeypatch.setattr(main_module, "RepoCollector", _GoodCollector)
     monkeypatch.setattr(main_module, "SkillCollector", _BadCollector)
@@ -348,6 +350,7 @@ def test_run_pipeline_fuses_b_items_into_one_card(monkeypatch, tmp_path: Path):
         captured["secondary_items"] = secondary_items or []
         return {"msg_type": "interactive", "card": {"header": {"title": {"content": "test"}}}}
 
+    monkeypatch.setattr(main_module, "TrendingCollector", _EmptyCollector)
     monkeypatch.setattr(main_module, "OSSInsightCollector", _EmptyCollector)
     monkeypatch.setattr(main_module, "RepoCollector", _ManyProjectCollector)
     monkeypatch.setattr(main_module, "SkillCollector", _EmptyCollector)

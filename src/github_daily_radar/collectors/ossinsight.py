@@ -103,7 +103,7 @@ class OSSInsightCollector(Collector):
         items: list[Candidate] = []
         for collection in self._selected_collections():
             try:
-                payload = self.client.collection_stars(collection["id"], period=self.collection_period)
+                payload = self.client.collection_ranking_by_stars(collection["id"], period=self.collection_period)
             except Exception as exc:  # noqa: BLE001 - collection ranking should fail soft
                 logger.warning(
                     "OSSInsight collection ranking failed for %s: %s",

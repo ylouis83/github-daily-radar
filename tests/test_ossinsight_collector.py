@@ -33,7 +33,7 @@ def test_ossinsight_collector_merges_trending_and_collection_rankings():
             json={"data": {"rows": [{"id": 10010, "name": "Artificial Intelligence"}]}},
         )
     )
-    respx.get("https://api.ossinsight.io/v1/collections/10010/stars").mock(
+    respx.get("https://api.ossinsight.io/v1/collections/10010/ranking_by_stars/").mock(
         return_value=Response(
             200,
             json={

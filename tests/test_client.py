@@ -138,13 +138,13 @@ def test_ossinsight_trending_endpoint_calls_api():
 
 @respx.mock
 def test_ossinsight_collection_endpoint_calls_api():
-    route = respx.get("https://api.ossinsight.io/v1/collections/10010/stars").mock(
+    route = respx.get("https://api.ossinsight.io/v1/collections/10010/ranking_by_stars/").mock(
         return_value=Response(200, json={"data": {"rows": [{"repo_name": "owner/repo"}]}})
     )
 
     client = OSSInsightClient()
 
-    payload = client.collection_stars(10010, period="past_28_days")
+    payload = client.collection_ranking_by_stars(10010, period="past_28_days")
 
     assert route.called is True
     assert payload["data"]["rows"][0]["repo_name"] == "owner/repo"

@@ -32,6 +32,7 @@ from github_daily_radar.collectors.discussions import DiscussionCollector
 from github_daily_radar.collectors.issues_prs import IssuesPrsCollector
 from github_daily_radar.collectors.repos import RepoCollector
 from github_daily_radar.collectors.skills import SkillCollector
+from github_daily_radar.collectors.trending import TrendingCollector
 from github_daily_radar.config import Settings
 from github_daily_radar.publish.feishu import build_alert_cards, build_digest_card, send_cards
 from github_daily_radar.scoring.dedupe import should_reenter
@@ -110,6 +111,7 @@ def run_pipeline(settings: Settings, alert_only: bool = False) -> dict:
     issue_pr_queries = build_issue_pr_queries(seed_repos=seed_repos, now=run_started_at, days_back=30)
     skill_search_cost = len(skill_code_queries) + len(skill_repo_queries)
     collector_specs: list[tuple[str, object, int]] = []
+    collector_specs.append(("trending", TrendingCollector(), 0))
     if ossinsight_collector:
         collector_specs.append(("ossinsight", ossinsight_collector, 0))
     collector_specs.extend(
