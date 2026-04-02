@@ -24,8 +24,8 @@ def test_build_display_items_uses_chinese_fallbacks():
 
     items = build_display_items([candidate], editorial=[])
 
-    # 新行为：fallback 使用真实 body_excerpt，不用模板废话
-    assert items[0]["summary"] == "an english excerpt that should not leak into the default card copy"
+    # 新行为：fallback 不直接泄露英文原文，统一给中文兜底摘要
+    assert items[0]["summary"] == "这是一个值得快速浏览的仓库，先看 README 和最近提交。"
     assert "follow_up" not in items[0]
 
 

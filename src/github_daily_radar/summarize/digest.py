@@ -24,6 +24,10 @@ def _truncate(text: str, max_len: int = 100) -> str:
     return cut.rstrip() + "…"
 
 
+def _has_cjk(text: str) -> bool:
+    return any("\u4e00" <= char <= "\u9fff" for char in text)
+
+
 KIND_ORDER = ["project", "skill", "discussion", "other"]
 KIND_LABELS_A = {
     "project": "必看项目",
@@ -49,11 +53,25 @@ def score_candidate(candidate: Candidate) -> float:
 
 
 def _fallback_summary(candidate: Candidate) -> str:
-    """优先用仓库真实描述，不用模板废话。"""
+    """优先保留中文真实描述，英文兜底改成中文摘要模板。"""
+    if candidate.source_query.startswith("ossinsight:"):
+        return "这是 OSSInsight 监测到的近期热门仓库，适合先看趋势和增量。"
+
     desc = (candidate.body_excerpt or "").strip()
-    if desc and len(desc) > 10:
+    if desc and _has_cjk(desc):
         return _truncate(desc, 100)
-    # 无描述时用指标拼一句
+
+    # 英文或无描述时，用中文模板避免把原文英文直接带进卡片。
+    if candidate.kind == "project":
+        if candidate.metrics.stars >= 100:
+            return "这是近期值得重点关注的仓库，建议先看 README、最近提交和 release。"
+        return "这是一个值得快速浏览的仓库，先看 README 和最近提交。"
+    if candidate.kind == "skill":
+        return "这是一个可复用的 skill / prompt / rules 资源，适合评估是否纳入技能库。"
+    if candidate.kind in {"discussion", "issue", "pr"}:
+        return "这是一个值得跟进的提案或讨论，重点看方案、评论和结论。"
+
+    # 再退一步只给信号，不泄露英文原文。
     m = candidate.metrics
     parts = []
     if m.stars:
@@ -62,7 +80,7 @@ def _fallback_summary(candidate: Candidate) -> str:
         parts.append(f"🍴{m.forks}")
     if m.comments:
         parts.append(f"💬{m.comments}")
-    return " ".join(parts) if parts else "暂无描述"
+    return " ".join(parts) if parts else "这是一个值得关注的条目，建议先看标题和原始链接。"
 
 
 def _fallback_why_now(candidate: Candidate) -> str:
