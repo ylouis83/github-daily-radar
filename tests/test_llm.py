@@ -93,3 +93,38 @@ def test_editorial_llm_falls_back_on_error():
     result = client.rank_and_summarize([{"title": "Repo A", "kind": "project", "url": "https://github.com/a/b"}])
 
     assert result == []
+
+
+@respx.mock
+def test_editorial_llm_falls_back_to_intl_region():
+    respx.post("https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions").mock(
+        return_value=Response(401, json={"error": "unauthorized"})
+    )
+    intl_route = respx.post("https://dashscope-intl.aliyuncs.com/compatible-mode/v1/chat/completions").mock(
+        return_value=Response(
+            200,
+            json={
+                "choices": [
+                    {
+                        "message": {
+                            "content": '[{"kind":"project","title":"Repo A","url":"https://github.com/a/b","summary":"中文摘要","why_now":"国际站点可用"}]'
+                        }
+                    }
+                ]
+            },
+        )
+    )
+
+    client = EditorialLLM(api_key="qwen_test", model="qwen-plus")
+    result = client.rank_and_summarize([{"title": "Repo A", "kind": "project", "url": "https://github.com/a/b"}])
+
+    assert intl_route.called is True
+    assert result == [
+        {
+            "kind": "project",
+            "title": "Repo A",
+            "url": "https://github.com/a/b",
+            "summary": "中文摘要",
+            "why_now": "国际站点可用",
+        }
+    ]
