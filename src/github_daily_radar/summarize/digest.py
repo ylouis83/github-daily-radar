@@ -55,7 +55,12 @@ def score_candidate(candidate: Candidate) -> float:
 def _fallback_summary(candidate: Candidate) -> str:
     """优先保留中文真实描述，英文兜底改成中文摘要模板。"""
     if candidate.source_query.startswith("ossinsight:"):
-        return "这是 OSSInsight 监测到的近期热门仓库，适合先看趋势和增量。"
+        growth = candidate.metrics.star_growth_7d or candidate.metrics.stars
+        if growth >= 1000:
+            return "OSSInsight 监测到热度爆发，建议先看趋势、README 和最近 release。"
+        if growth >= 300:
+            return "OSSInsight 监测到近期热度明显上升，适合先看变更和 release。"
+        return "OSSInsight 监测到近期热度上升，建议先看 README 和最近提交。"
 
     desc = (candidate.body_excerpt or "").strip()
     if desc and _has_cjk(desc):
@@ -63,12 +68,18 @@ def _fallback_summary(candidate: Candidate) -> str:
 
     # 英文或无描述时，用中文模板避免把原文英文直接带进卡片。
     if candidate.kind == "project":
+        if candidate.metrics.has_new_release:
+            return "这是近期值得关注的仓库，建议先看 README、最近提交和 release。"
         if candidate.metrics.stars >= 100:
-            return "这是近期值得重点关注的仓库，建议先看 README、最近提交和 release。"
+            return "这是近期热度很高的仓库，建议先看趋势、README 和最近提交。"
         return "这是一个值得快速浏览的仓库，先看 README 和最近提交。"
     if candidate.kind == "skill":
+        if candidate.metrics.stars >= 100:
+            return "这是一个可复用度很高的技能资源，适合评估是否纳入技能库。"
         return "这是一个可复用的 skill / prompt / rules 资源，适合评估是否纳入技能库。"
     if candidate.kind in {"discussion", "issue", "pr"}:
+        if candidate.metrics.comments >= 20:
+            return "这是一个评论活跃的提案或讨论，重点看争议点和结论。"
         return "这是一个值得跟进的提案或讨论，重点看方案、评论和结论。"
 
     # 再退一步只给信号，不泄露英文原文。
@@ -87,9 +98,23 @@ def _fallback_why_now(candidate: Candidate) -> str:
     """简短信号，不超过 1 句。"""
     m = candidate.metrics
     if candidate.source_query.startswith("ossinsight:") and m.stars:
-        return f"近期 +{m.stars}⭐"
+        if m.star_growth_7d >= 1000:
+            return f"OSSInsight 热度爆发 · +{m.star_growth_7d}⭐"
+        if m.star_growth_7d >= 300:
+            return f"OSSInsight 热度上升 · +{m.star_growth_7d}⭐"
+        return f"OSSInsight 近期 +{m.stars}⭐"
+    if candidate.kind == "project":
+        if m.has_new_release:
+            return "有新 release"
+        if m.star_growth_7d >= 200:
+            return f"近 7 天 +{m.star_growth_7d}⭐"
     if m.comments >= 10:
         return f"{m.comments} 条讨论"
+    if candidate.kind == "skill":
+        if m.stars >= 100:
+            return f"可复用 · ⭐{m.stars}"
+        if m.forks >= 10:
+            return f"适合复用 · 🍴{m.forks}"
     if m.stars >= 100:
         return f"⭐{m.stars}"
     return ""

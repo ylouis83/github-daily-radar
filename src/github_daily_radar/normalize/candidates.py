@@ -24,7 +24,18 @@ def _coerce_int(value: object) -> int:
 
 def candidate_from_code_search(*, item: dict, source_query: str) -> Candidate:
     repository = item.get("repository") or {}
-    return candidate_from_repo_search(item=repository, source_query=source_query, kind="skill")
+    candidate = candidate_from_repo_search(item=repository, source_query=source_query, kind="skill")
+    candidate.raw_signals = {
+        **candidate.raw_signals,
+        "code_search_item": item,
+        "matched_file": item.get("name") or "",
+        "matched_path": item.get("path") or "",
+    }
+    candidate.rule_scores = {
+        **candidate.rule_scores,
+        "code_search_hit": 1.0,
+    }
+    return candidate
 
 
 def candidate_from_repo_search(*, item: dict, source_query: str, kind: str = "project") -> Candidate:

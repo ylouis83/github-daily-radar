@@ -67,6 +67,11 @@ DEFAULT_SKILL_REPO_QUERIES = [
     "mcp server tool in:name,description",
     "agent workflow prompt in:name,description",
 ]
+DEFAULT_SKILL_MIN_STARS = 3
+DEFAULT_PROJECT_MIN_STARS = 20
+DEFAULT_SKILL_SHAPE_FLOOR = 2
+DEFAULT_SKILL_TOP_N = 10
+DEFAULT_SKILL_PER_REPO_CAP = 1
 DEFAULT_DISCUSSION_KEYWORDS = ["proposal", "rfc", "idea", "design"]
 DEFAULT_ISSUE_KEYWORDS = ["proposal", "roadmap", "design"]
 DEFAULT_OSSINSIGHT_PERIODS = ["past_24_hours", "past_7_days"]
@@ -169,6 +174,42 @@ def load_skill_repo_queries(path: Path | None = None) -> list[str]:
     skill_section = raw.get("skills") if isinstance(raw.get("skills"), dict) else {}
     repo_queries = skill_section.get("repo_search_queries") or DEFAULT_SKILL_REPO_QUERIES
     return [query for query in repo_queries if isinstance(query, str) and query.strip()]
+
+
+def load_skill_ranking_config(path: Path | None = None) -> dict:
+    raw = load_radar_config(path)
+    skill_section = raw.get("skills") if isinstance(raw.get("skills"), dict) else {}
+    ranking = skill_section.get("ranking") if isinstance(skill_section.get("ranking"), dict) else {}
+    return ranking or {}
+
+
+def _load_skill_ranking_int(path: Path | None, key: str, default: int) -> int:
+    raw = load_skill_ranking_config(path)
+    value = raw.get(key, default)
+    try:
+        return max(1, int(value))
+    except (TypeError, ValueError):
+        return default
+
+
+def load_skill_min_stars(path: Path | None = None) -> int:
+    return _load_skill_ranking_int(path, "skill_min_stars", DEFAULT_SKILL_MIN_STARS)
+
+
+def load_project_min_stars(path: Path | None = None) -> int:
+    return _load_skill_ranking_int(path, "project_min_stars", DEFAULT_PROJECT_MIN_STARS)
+
+
+def load_skill_shape_floor(path: Path | None = None) -> int:
+    return _load_skill_ranking_int(path, "skill_shape_floor", DEFAULT_SKILL_SHAPE_FLOOR)
+
+
+def load_skill_top_n(path: Path | None = None) -> int:
+    return _load_skill_ranking_int(path, "top_n", DEFAULT_SKILL_TOP_N)
+
+
+def load_skill_per_repo_cap(path: Path | None = None) -> int:
+    return _load_skill_ranking_int(path, "per_repo_cap", DEFAULT_SKILL_PER_REPO_CAP)
 
 
 def load_discussion_keywords(path: Path | None = None) -> list[str]:

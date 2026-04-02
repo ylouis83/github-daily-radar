@@ -122,6 +122,14 @@ skills:
     - "mcp server tool in:name,description sort:stars-desc"
     - "agent workflow prompt in:name,description sort:stars-desc"
 
+  # --- 技能池门槛与 TopN ---
+  ranking:
+    skill_min_stars: 3
+    project_min_stars: 20
+    skill_shape_floor: 2
+    top_n: 10
+    per_repo_cap: 1
+
   # --- Skill 质量信号权重 ---
   # 用于在候选 skill 之间排序
   quality_signals:

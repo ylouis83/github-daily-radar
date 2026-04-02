@@ -18,6 +18,11 @@ from github_daily_radar.discovery import (
     load_radar_config,
     load_seed_orgs,
     load_seed_repos,
+    load_skill_min_stars,
+    load_project_min_stars,
+    load_skill_shape_floor,
+    load_skill_top_n,
+    load_skill_per_repo_cap,
     load_skill_code_queries,
     load_skill_repo_queries,
     load_skill_seed_repos,
@@ -64,6 +69,12 @@ skills:
     - filename:SKILL.md
   repo_search_queries:
     - cursor rules AI in:name,description
+  ranking:
+    skill_min_stars: 5
+    project_min_stars: 30
+    skill_shape_floor: 3
+    top_n: 7
+    per_repo_cap: 2
 discussion_keywords:
   - proposal
 issue_pr_keywords:
@@ -77,6 +88,11 @@ issue_pr_keywords:
     assert load_skill_seed_repos(path) == ["obra/superpowers"]
     assert load_skill_code_queries(path) == ["filename:SKILL.md"]
     assert load_skill_repo_queries(path) == ["cursor rules AI in:name,description"]
+    assert load_skill_min_stars(path) == 5
+    assert load_project_min_stars(path) == 30
+    assert load_skill_shape_floor(path) == 3
+    assert load_skill_top_n(path) == 7
+    assert load_skill_per_repo_cap(path) == 2
     assert load_issue_pr_keywords(path) == ["roadmap"]
     assert load_radar_config(path)["topics"] == ["agent"]
 

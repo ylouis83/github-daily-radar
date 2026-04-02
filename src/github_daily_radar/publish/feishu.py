@@ -21,6 +21,13 @@ SECTION_ICONS = {
     "discussion": "💬 提案与讨论",
 }
 
+ITEM_COPY_LABELS = {
+    "project": {"signal": "看点", "summary": "项目摘要"},
+    "skill": {"signal": "可复用", "summary": "技能摘要"},
+    "discussion": {"signal": "讨论焦点", "summary": "方案摘要"},
+    "other": {"signal": "信号", "summary": "摘要"},
+}
+
 
 def _truncate_text(text: str, max_len: int = 100) -> str:
     """Prefer truncating at a visible boundary instead of mid-token."""
@@ -55,23 +62,34 @@ def _format_star_badge(item: dict) -> str:
 
 def _render_item(item: dict, index: int) -> str:
     """渲染单个条目为紧凑 markdown"""
+    kind = item.get("kind", "other")
+    labels = ITEM_COPY_LABELS.get(kind, ITEM_COPY_LABELS["other"])
     title = item.get("title", "")
     url = item.get("url", "")
     summary = item.get("summary", "")
+    why_now = item.get("why_now", "")
     badge = _format_star_badge(item)
 
     # 第 1 行: 序号 + 可点击链接
     line1 = f"**{index}.** [{title}]({url})" if url else f"**{index}.** {title}"
 
-    # 第 2 行: 星标 + 摘要 (按单词截断)
+    # 第 2 行: 星标 + 当前看点
     parts = []
     if badge:
         parts.append(badge)
-    if summary:
-        parts.append(_truncate_text(summary, 100))
+    if why_now:
+        parts.append(f"{labels['signal']}：{_truncate_text(why_now, 72)}")
     line2 = f"      {' · '.join(parts)}" if parts else ""
 
-    return f"{line1}\n{line2}" if line2 else line1
+    # 第 3 行: 中文摘要
+    line3 = f"      {labels['summary']}：{_truncate_text(summary, 100)}" if summary else ""
+
+    lines = [line1]
+    if line2:
+        lines.append(line2)
+    if line3:
+        lines.append(line3)
+    return "\n".join(lines)
 
 
 def _render_section(section_title: str, items: list[dict]) -> str | None:

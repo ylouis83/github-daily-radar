@@ -64,6 +64,49 @@ def test_build_digest_card_single_card_with_sections():
     assert "2026-04-02" in all_text
 
 
+def test_build_digest_card_uses_kind_specific_labels():
+    items = [
+        {
+            "kind": "project",
+            "title": "owner/repo",
+            "url": "https://github.com/owner/repo",
+            "summary": "这是一个值得关注的仓库",
+            "why_now": "OSSInsight 近期热度上升",
+            "stars": 1200,
+            "star_delta_1d": 300,
+            "star_velocity": "surge",
+        },
+        {
+            "kind": "skill",
+            "title": "owner/skill",
+            "url": "https://github.com/owner/skill",
+            "summary": "可复用的技能资源",
+            "why_now": "适合纳入技能库",
+            "stars": 5000,
+            "star_delta_1d": 0,
+            "star_velocity": "",
+        },
+        {
+            "kind": "discussion",
+            "title": "RFC: 新架构提案",
+            "url": "https://github.com/org/repo/discussions/123",
+            "summary": "值得跟进的讨论",
+            "why_now": "评论活跃",
+            "stars": 0,
+            "star_delta_1d": 0,
+            "star_velocity": "",
+        },
+    ]
+
+    card = build_digest_card(items=items, today=date(2026, 4, 2))
+    contents = [el.get("content", "") for el in card["card"]["elements"] if el.get("tag") == "markdown"]
+    all_text = "\n".join(contents)
+
+    assert "看点：" in all_text
+    assert "可复用：" in all_text
+    assert "讨论焦点：" in all_text
+
+
 def test_build_digest_card_fuses_primary_and_secondary_sections():
     primary_items = [
         {

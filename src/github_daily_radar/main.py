@@ -20,7 +20,12 @@ from github_daily_radar.discovery import (
     load_ossinsight_max_trending_items,
     load_ossinsight_trending_periods,
     load_seed_repos,
+    load_project_min_stars,
+    load_skill_min_stars,
     load_skill_seed_repos,
+    load_skill_shape_floor,
+    load_skill_top_n,
+    load_skill_per_repo_cap,
 )
 from github_daily_radar.collectors.ossinsight import OSSInsightCollector
 from github_daily_radar.collectors.discussions import DiscussionCollector
@@ -83,6 +88,11 @@ def run_pipeline(settings: Settings, alert_only: bool = False) -> dict:
     skill_query_seed = today.toordinal()
     skill_code_queries = cycle_queries(build_skill_code_queries(), limit=2, seed=skill_query_seed)
     skill_repo_queries = cycle_queries(build_skill_repo_queries(days_back=30), limit=2, seed=skill_query_seed + 1)
+    skill_min_stars = load_skill_min_stars()
+    project_min_stars = load_project_min_stars()
+    skill_shape_floor = load_skill_shape_floor()
+    skill_top_n = load_skill_top_n()
+    skill_per_repo_cap = load_skill_per_repo_cap()
     ossinsight_enabled = load_ossinsight_enabled()
     ossinsight_collector = None
     if ossinsight_enabled:
@@ -114,6 +124,11 @@ def run_pipeline(settings: Settings, alert_only: bool = False) -> dict:
                     code_queries=skill_code_queries,
                     repo_queries=skill_repo_queries,
                     seed_repos=skill_seed_repos,
+                    skill_min_stars=skill_min_stars,
+                    project_min_stars=project_min_stars,
+                    skill_shape_floor=skill_shape_floor,
+                    top_n=skill_top_n,
+                    per_repo_cap=skill_per_repo_cap,
                 ),
                 skill_search_cost,
             ),
