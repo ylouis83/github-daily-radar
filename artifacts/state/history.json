@@ -26,7 +26,7 @@
       "date": "2026-04-02",
       "event": "published",
       "metrics": {
-        "stars": 440464,
+        "stars": 440465,
         "forks": 43956,
         "comments": 0,
         "reactions": 0,
@@ -47,7 +47,7 @@
       "date": "2026-04-02",
       "event": "published",
       "metrics": {
-        "stars": 345102,
+        "stars": 345101,
         "forks": 68543,
         "comments": 0,
         "reactions": 0,
@@ -68,7 +68,7 @@
       "date": "2026-04-02",
       "event": "published",
       "metrics": {
-        "stars": 418259,
+        "stars": 418258,
         "forks": 45435,
         "comments": 0,
         "reactions": 0,
@@ -90,7 +90,7 @@
       "event": "published",
       "metrics": {
         "stars": 450990,
-        "forks": 33890,
+        "forks": 33891,
         "comments": 0,
         "reactions": 0,
         "star_growth_7d": 0,
@@ -215,8 +215,8 @@
       "date": "2026-04-02",
       "event": "published",
       "metrics": {
-        "stars": 182086,
-        "forks": 56392,
+        "stars": 182085,
+        "forks": 56393,
         "comments": 0,
         "reactions": 0,
         "star_growth_7d": 0,
@@ -236,7 +236,7 @@
       "date": "2026-04-02",
       "event": "published",
       "metrics": {
-        "stars": 183044,
+        "stars": 183045,
         "forks": 46221,
         "comments": 0,
         "reactions": 0,
@@ -258,7 +258,7 @@
       "event": "published",
       "metrics": {
         "stars": 183294,
-        "forks": 38888,
+        "forks": 38889,
         "comments": 0,
         "reactions": 0,
         "star_growth_7d": 0,
@@ -278,7 +278,7 @@
       "date": "2026-04-02",
       "event": "published",
       "metrics": {
-        "stars": 283438,
+        "stars": 283439,
         "forks": 13052,
         "comments": 0,
         "reactions": 0,
@@ -299,7 +299,7 @@
       "date": "2026-04-02",
       "event": "published",
       "metrics": {
-        "stars": 202853,
+        "stars": 202854,
         "forks": 25210,
         "comments": 0,
         "reactions": 0,
@@ -383,7 +383,7 @@
       "date": "2026-04-02",
       "event": "published",
       "metrics": {
-        "stars": 166736,
+        "stars": 166735,
         "forks": 15263,
         "comments": 0,
         "reactions": 0,
@@ -421,12 +421,12 @@
       "source_query": "(skill OR prompt OR workflow OR agent OR automation) in:name,description,readme"
     },
     {
-      "candidate_id": "repo:google-gemini/gemini-cli",
+      "candidate_id": "repo:z-lab/dflash",
       "date": "2026-04-02",
       "event": "published",
       "metrics": {
-        "stars": 99957,
-        "forks": 12823,
+        "stars": 680,
+        "forks": 48,
         "comments": 0,
         "reactions": 0,
         "star_growth_7d": 0,
@@ -437,101 +437,59 @@
       },
       "scores": {},
       "kind": "project",
-      "title": "google-gemini/gemini-cli",
-      "url": "https://github.com/google-gemini/gemini-cli",
-      "source_query": "(agent OR workflow OR automation OR mcp OR browser-use) in:name,description,readme"
-    },
-    {
-      "candidate_id": "repo:HeJiguang/codescan",
-      "date": "2026-04-02",
-      "event": "published",
-      "metrics": {
-        "stars": 15,
-        "forks": 2,
-        "comments": 0,
-        "reactions": 0,
-        "star_growth_7d": 0,
-        "previous_star_growth_7d": 0,
-        "has_new_release": false,
-        "days_since_previous_release": null,
-        "comment_growth_rate": 0.0
-      },
-      "scores": {},
-      "kind": "project",
-      "title": "HeJiguang/codescan",
-      "url": "https://github.com/HeJiguang/codescan",
-      "source_query": "(agent OR workflow OR automation OR mcp OR browser-use) in:name,description,readme"
-    },
-    {
-      "candidate_id": "repo:thedoggybrad/easylist-mirror",
-      "date": "2026-04-02",
-      "event": "published",
-      "metrics": {
-        "stars": 11,
-        "forks": 0,
-        "comments": 0,
-        "reactions": 0,
-        "star_growth_7d": 0,
-        "previous_star_growth_7d": 0,
-        "has_new_release": false,
-        "days_since_previous_release": null,
-        "comment_growth_rate": 0.0
-      },
-      "scores": {},
-      "kind": "project",
-      "title": "thedoggybrad/easylist-mirror",
-      "url": "https://github.com/thedoggybrad/easylist-mirror",
-      "source_query": "(agent OR workflow OR automation OR mcp OR browser-use) in:name,description,readme"
-    },
-    {
-      "candidate_id": "repo:MW21P/rfpred",
-      "date": "2026-04-02",
-      "event": "published",
-      "metrics": {
-        "stars": 2,
-        "forks": 2,
-        "comments": 0,
-        "reactions": 0,
-        "star_growth_7d": 0,
-        "previous_star_growth_7d": 0,
-        "has_new_release": false,
-        "days_since_previous_release": null,
-        "comment_growth_rate": 0.0
-      },
-      "scores": {},
-      "kind": "project",
-      "title": "MW21P/rfpred",
-      "url": "https://github.com/MW21P/rfpred",
-      "source_query": "(agent OR workflow OR automation OR mcp OR browser-use) in:name,description,readme"
-    },
-    {
-      "candidate_id": "repo:Nikki31Chaudhary/Prediciting-Student-Performance",
-      "date": "2026-04-02",
-      "event": "published",
-      "metrics": {
-        "stars": 2,
-        "forks": 0,
-        "comments": 0,
-        "reactions": 0,
-        "star_growth_7d": 0,
-        "previous_star_growth_7d": 0,
-        "has_new_release": false,
-        "days_since_previous_release": null,
-        "comment_growth_rate": 0.0
-      },
-      "scores": {},
-      "kind": "project",
-      "title": "Nikki31Chaudhary/Prediciting-Student-Performance",
-      "url": "https://github.com/Nikki31Chaudhary/Prediciting-Student-Performance",
+      "title": "z-lab/dflash",
+      "url": "https://github.com/z-lab/dflash",
       "source_query": "(llm OR devtools OR browser-use OR agentic) in:name,description,readme"
     },
     {
-      "candidate_id": "repo:syedzaidaliii/You-Can-t-Fool-Me-Deepfake-Detection",
+      "candidate_id": "repo:FURiOus-ParADox/bsc-bnb-sniper-bot",
+      "date": "2026-04-02",
+      "event": "published",
+      "metrics": {
+        "stars": 51,
+        "forks": 28,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "scores": {},
+      "kind": "project",
+      "title": "FURiOus-ParADox/bsc-bnb-sniper-bot",
+      "url": "https://github.com/FURiOus-ParADox/bsc-bnb-sniper-bot",
+      "source_query": "(agent OR workflow OR automation OR mcp OR browser-use) in:name,description,readme"
+    },
+    {
+      "candidate_id": "repo:FURiOus-ParADox/bsc-bnb-sniper-bot",
+      "date": "2026-04-02",
+      "event": "published",
+      "metrics": {
+        "stars": 51,
+        "forks": 28,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "scores": {},
+      "kind": "project",
+      "title": "FURiOus-ParADox/bsc-bnb-sniper-bot",
+      "url": "https://github.com/FURiOus-ParADox/bsc-bnb-sniper-bot",
+      "source_query": "(llm OR devtools OR browser-use OR agentic) in:name,description,readme"
+    },
+    {
+      "candidate_id": "repo:IJMPLM/platter-compiler-webapp",
       "date": "2026-04-02",
       "event": "published",
       "metrics": {
         "stars": 1,
-        "forks": 1,
+        "forks": 3,
         "comments": 0,
         "reactions": 0,
         "star_growth_7d": 0,
@@ -542,12 +500,33 @@
       },
       "scores": {},
       "kind": "project",
-      "title": "syedzaidaliii/You-Can-t-Fool-Me-Deepfake-Detection",
-      "url": "https://github.com/syedzaidaliii/You-Can-t-Fool-Me-Deepfake-Detection",
+      "title": "IJMPLM/platter-compiler-webapp",
+      "url": "https://github.com/IJMPLM/platter-compiler-webapp",
       "source_query": "(agent OR workflow OR automation OR mcp OR browser-use) in:name,description,readme"
     },
     {
-      "candidate_id": "repo:stephenfeather/opc",
+      "candidate_id": "repo:IJMPLM/platter-compiler-webapp",
+      "date": "2026-04-02",
+      "event": "published",
+      "metrics": {
+        "stars": 1,
+        "forks": 3,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "scores": {},
+      "kind": "project",
+      "title": "IJMPLM/platter-compiler-webapp",
+      "url": "https://github.com/IJMPLM/platter-compiler-webapp",
+      "source_query": "(llm OR devtools OR browser-use OR agentic) in:name,description,readme"
+    },
+    {
+      "candidate_id": "repo:mguozhen/solvea-agent-bus",
       "date": "2026-04-02",
       "event": "published",
       "metrics": {
@@ -563,12 +542,12 @@
       },
       "scores": {},
       "kind": "project",
-      "title": "stephenfeather/opc",
-      "url": "https://github.com/stephenfeather/opc",
+      "title": "mguozhen/solvea-agent-bus",
+      "url": "https://github.com/mguozhen/solvea-agent-bus",
       "source_query": "(agent OR workflow OR automation OR mcp OR browser-use) in:name,description,readme"
     },
     {
-      "candidate_id": "repo:Catherinesjkim/Catherinesjkim",
+      "candidate_id": "repo:mguozhen/solvea-agent-bus",
       "date": "2026-04-02",
       "event": "published",
       "metrics": {
@@ -584,59 +563,38 @@
       },
       "scores": {},
       "kind": "project",
-      "title": "Catherinesjkim/Catherinesjkim",
-      "url": "https://github.com/Catherinesjkim/Catherinesjkim",
+      "title": "mguozhen/solvea-agent-bus",
+      "url": "https://github.com/mguozhen/solvea-agent-bus",
+      "source_query": "(llm OR devtools OR browser-use OR agentic) in:name,description,readme"
+    },
+    {
+      "candidate_id": "repo:psaawkel/fluodata-infrastructure",
+      "date": "2026-04-02",
+      "event": "published",
+      "metrics": {
+        "stars": 0,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "scores": {},
+      "kind": "project",
+      "title": "psaawkel/fluodata-infrastructure",
+      "url": "https://github.com/psaawkel/fluodata-infrastructure",
       "source_query": "(agent OR workflow OR automation OR mcp OR browser-use) in:name,description,readme"
     },
     {
-      "candidate_id": "repo:stephenfeather/opc",
-      "date": "2026-04-02",
-      "event": "published",
-      "metrics": {
-        "stars": 1,
-        "forks": 0,
-        "comments": 0,
-        "reactions": 0,
-        "star_growth_7d": 0,
-        "previous_star_growth_7d": 0,
-        "has_new_release": false,
-        "days_since_previous_release": null,
-        "comment_growth_rate": 0.0
-      },
-      "scores": {},
-      "kind": "project",
-      "title": "stephenfeather/opc",
-      "url": "https://github.com/stephenfeather/opc",
-      "source_query": "(llm OR devtools OR browser-use OR agentic) in:name,description,readme"
-    },
-    {
-      "candidate_id": "repo:Catherinesjkim/Catherinesjkim",
-      "date": "2026-04-02",
-      "event": "published",
-      "metrics": {
-        "stars": 1,
-        "forks": 0,
-        "comments": 0,
-        "reactions": 0,
-        "star_growth_7d": 0,
-        "previous_star_growth_7d": 0,
-        "has_new_release": false,
-        "days_since_previous_release": null,
-        "comment_growth_rate": 0.0
-      },
-      "scores": {},
-      "kind": "project",
-      "title": "Catherinesjkim/Catherinesjkim",
-      "url": "https://github.com/Catherinesjkim/Catherinesjkim",
-      "source_query": "(llm OR devtools OR browser-use OR agentic) in:name,description,readme"
-    },
-    {
-      "candidate_id": "repo:Rajatavaa/GP-AGENT",
+      "candidate_id": "repo:lanyasheng/browser-ops",
       "date": "2026-04-02",
       "event": "published",
       "metrics": {
         "stars": 0,
-        "forks": 1,
+        "forks": 0,
         "comments": 0,
         "reactions": 0,
         "star_growth_7d": 0,
@@ -647,12 +605,12 @@
       },
       "scores": {},
       "kind": "project",
-      "title": "Rajatavaa/GP-AGENT",
-      "url": "https://github.com/Rajatavaa/GP-AGENT",
+      "title": "lanyasheng/browser-ops",
+      "url": "https://github.com/lanyasheng/browser-ops",
       "source_query": "(agent OR workflow OR automation OR mcp OR browser-use) in:name,description,readme"
     },
     {
-      "candidate_id": "repo:Nyxo317/OpenGestureXR",
+      "candidate_id": "repo:kimeisele/steward-federation",
       "date": "2026-04-02",
       "event": "published",
       "metrics": {
@@ -668,12 +626,12 @@
       },
       "scores": {},
       "kind": "project",
-      "title": "Nyxo317/OpenGestureXR",
-      "url": "https://github.com/Nyxo317/OpenGestureXR",
+      "title": "kimeisele/steward-federation",
+      "url": "https://github.com/kimeisele/steward-federation",
       "source_query": "(agent OR workflow OR automation OR mcp OR browser-use) in:name,description,readme"
     },
     {
-      "candidate_id": "repo:SIDDHARTH0424/Git_repo_devops",
+      "candidate_id": "repo:monkeystar0/healthyRecipeBuddy",
       "date": "2026-04-02",
       "event": "published",
       "metrics": {
@@ -689,12 +647,12 @@
       },
       "scores": {},
       "kind": "project",
-      "title": "SIDDHARTH0424/Git_repo_devops",
-      "url": "https://github.com/SIDDHARTH0424/Git_repo_devops",
+      "title": "monkeystar0/healthyRecipeBuddy",
+      "url": "https://github.com/monkeystar0/healthyRecipeBuddy",
       "source_query": "(agent OR workflow OR automation OR mcp OR browser-use) in:name,description,readme"
     },
     {
-      "candidate_id": "repo:maximeKets/linkedin-automation-extension",
+      "candidate_id": "repo:luodaoyi/c2000max-ipk",
       "date": "2026-04-02",
       "event": "published",
       "metrics": {
@@ -710,12 +668,12 @@
       },
       "scores": {},
       "kind": "project",
-      "title": "maximeKets/linkedin-automation-extension",
-      "url": "https://github.com/maximeKets/linkedin-automation-extension",
+      "title": "luodaoyi/c2000max-ipk",
+      "url": "https://github.com/luodaoyi/c2000max-ipk",
       "source_query": "(agent OR workflow OR automation OR mcp OR browser-use) in:name,description,readme"
     },
     {
-      "candidate_id": "repo:KBT0207/tally_app",
+      "candidate_id": "repo:Hemanth-Thulasiraman/Portfolio",
       "date": "2026-04-02",
       "event": "published",
       "metrics": {
@@ -731,12 +689,12 @@
       },
       "scores": {},
       "kind": "project",
-      "title": "KBT0207/tally_app",
-      "url": "https://github.com/KBT0207/tally_app",
+      "title": "Hemanth-Thulasiraman/Portfolio",
+      "url": "https://github.com/Hemanth-Thulasiraman/Portfolio",
       "source_query": "(agent OR workflow OR automation OR mcp OR browser-use) in:name,description,readme"
     },
     {
-      "candidate_id": "repo:PatienceIsKeyX/test3",
+      "candidate_id": "repo:QHCV/everyday-infra-analysis",
       "date": "2026-04-02",
       "event": "published",
       "metrics": {
@@ -752,12 +710,12 @@
       },
       "scores": {},
       "kind": "project",
-      "title": "PatienceIsKeyX/test3",
-      "url": "https://github.com/PatienceIsKeyX/test3",
+      "title": "QHCV/everyday-infra-analysis",
+      "url": "https://github.com/QHCV/everyday-infra-analysis",
       "source_query": "(agent OR workflow OR automation OR mcp OR browser-use) in:name,description,readme"
     },
     {
-      "candidate_id": "repo:tkleisas/yawn",
+      "candidate_id": "repo:AhmedAnsar/leisuresports-inventory",
       "date": "2026-04-02",
       "event": "published",
       "metrics": {
@@ -773,12 +731,12 @@
       },
       "scores": {},
       "kind": "project",
-      "title": "tkleisas/yawn",
-      "url": "https://github.com/tkleisas/yawn",
+      "title": "AhmedAnsar/leisuresports-inventory",
+      "url": "https://github.com/AhmedAnsar/leisuresports-inventory",
       "source_query": "(agent OR workflow OR automation OR mcp OR browser-use) in:name,description,readme"
     },
     {
-      "candidate_id": "repo:satheeshvijayan/satheesh-agentic-stack",
+      "candidate_id": "repo:AIUNION-wtf/AIUNION",
       "date": "2026-04-02",
       "event": "published",
       "metrics": {
@@ -794,12 +752,12 @@
       },
       "scores": {},
       "kind": "project",
-      "title": "satheeshvijayan/satheesh-agentic-stack",
-      "url": "https://github.com/satheeshvijayan/satheesh-agentic-stack",
+      "title": "AIUNION-wtf/AIUNION",
+      "url": "https://github.com/AIUNION-wtf/AIUNION",
       "source_query": "(agent OR workflow OR automation OR mcp OR browser-use) in:name,description,readme"
     },
     {
-      "candidate_id": "repo:unseasonable-deposer640/DevLog",
+      "candidate_id": "repo:bradhawkins85/MyPortal",
       "date": "2026-04-02",
       "event": "published",
       "metrics": {
@@ -815,12 +773,12 @@
       },
       "scores": {},
       "kind": "project",
-      "title": "unseasonable-deposer640/DevLog",
-      "url": "https://github.com/unseasonable-deposer640/DevLog",
+      "title": "bradhawkins85/MyPortal",
+      "url": "https://github.com/bradhawkins85/MyPortal",
       "source_query": "(agent OR workflow OR automation OR mcp OR browser-use) in:name,description,readme"
     },
     {
-      "candidate_id": "repo:tillg/swm_pool_data",
+      "candidate_id": "repo:shelltdf/mindmap_mcp",
       "date": "2026-04-02",
       "event": "published",
       "metrics": {
@@ -836,12 +794,12 @@
       },
       "scores": {},
       "kind": "project",
-      "title": "tillg/swm_pool_data",
-      "url": "https://github.com/tillg/swm_pool_data",
+      "title": "shelltdf/mindmap_mcp",
+      "url": "https://github.com/shelltdf/mindmap_mcp",
       "source_query": "(agent OR workflow OR automation OR mcp OR browser-use) in:name,description,readme"
     },
     {
-      "candidate_id": "repo:AlphaHorizon-AI/OpenClawCollege.com",
+      "candidate_id": "repo:spinelloedoardo-wq/Oktoberfest_pinger",
       "date": "2026-04-02",
       "event": "published",
       "metrics": {
@@ -857,12 +815,12 @@
       },
       "scores": {},
       "kind": "project",
-      "title": "AlphaHorizon-AI/OpenClawCollege.com",
-      "url": "https://github.com/AlphaHorizon-AI/OpenClawCollege.com",
+      "title": "spinelloedoardo-wq/Oktoberfest_pinger",
+      "url": "https://github.com/spinelloedoardo-wq/Oktoberfest_pinger",
       "source_query": "(agent OR workflow OR automation OR mcp OR browser-use) in:name,description,readme"
     },
     {
-      "candidate_id": "repo:keith9918/crypto-trading-simulator",
+      "candidate_id": "repo:meo-lab/meo-lab.github.io",
       "date": "2026-04-02",
       "event": "published",
       "metrics": {
@@ -878,12 +836,12 @@
       },
       "scores": {},
       "kind": "project",
-      "title": "keith9918/crypto-trading-simulator",
-      "url": "https://github.com/keith9918/crypto-trading-simulator",
+      "title": "meo-lab/meo-lab.github.io",
+      "url": "https://github.com/meo-lab/meo-lab.github.io",
       "source_query": "(agent OR workflow OR automation OR mcp OR browser-use) in:name,description,readme"
     },
     {
-      "candidate_id": "repo:diej1222/chemverse",
+      "candidate_id": "repo:noiiiise/polymarket-trading-agent",
       "date": "2026-04-02",
       "event": "published",
       "metrics": {
@@ -899,12 +857,12 @@
       },
       "scores": {},
       "kind": "project",
-      "title": "diej1222/chemverse",
-      "url": "https://github.com/diej1222/chemverse",
+      "title": "noiiiise/polymarket-trading-agent",
+      "url": "https://github.com/noiiiise/polymarket-trading-agent",
       "source_query": "(agent OR workflow OR automation OR mcp OR browser-use) in:name,description,readme"
     },
     {
-      "candidate_id": "repo:rightofactionsyndicalism110/DOMINO",
+      "candidate_id": "repo:BortyMcBot/bort-os",
       "date": "2026-04-02",
       "event": "published",
       "metrics": {
@@ -920,12 +878,75 @@
       },
       "scores": {},
       "kind": "project",
-      "title": "rightofactionsyndicalism110/DOMINO",
-      "url": "https://github.com/rightofactionsyndicalism110/DOMINO",
+      "title": "BortyMcBot/bort-os",
+      "url": "https://github.com/BortyMcBot/bort-os",
+      "source_query": "(agent OR workflow OR automation OR mcp OR browser-use) in:name,description,readme"
+    },
+    {
+      "candidate_id": "repo:kota-kawa/ChatCore-AI",
+      "date": "2026-04-02",
+      "event": "published",
+      "metrics": {
+        "stars": 0,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "scores": {},
+      "kind": "project",
+      "title": "kota-kawa/ChatCore-AI",
+      "url": "https://github.com/kota-kawa/ChatCore-AI",
+      "source_query": "(agent OR workflow OR automation OR mcp OR browser-use) in:name,description,readme"
+    },
+    {
+      "candidate_id": "repo:phunkasemphanom02/action_pk",
+      "date": "2026-04-02",
+      "event": "published",
+      "metrics": {
+        "stars": 0,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "scores": {},
+      "kind": "project",
+      "title": "phunkasemphanom02/action_pk",
+      "url": "https://github.com/phunkasemphanom02/action_pk",
+      "source_query": "(agent OR workflow OR automation OR mcp OR browser-use) in:name,description,readme"
+    },
+    {
+      "candidate_id": "repo:psaawkel/fluodata-infrastructure",
+      "date": "2026-04-02",
+      "event": "published",
+      "metrics": {
+        "stars": 0,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "scores": {},
+      "kind": "project",
+      "title": "psaawkel/fluodata-infrastructure",
+      "url": "https://github.com/psaawkel/fluodata-infrastructure",
       "source_query": "(llm OR devtools OR browser-use OR agentic) in:name,description,readme"
     },
     {
-      "candidate_id": "repo:static-web-apps-testing-org/swa2e316648e14944a1a3892c173a54a142",
+      "candidate_id": "repo:lanyasheng/browser-ops",
       "date": "2026-04-02",
       "event": "published",
       "metrics": {
@@ -941,12 +962,12 @@
       },
       "scores": {},
       "kind": "project",
-      "title": "static-web-apps-testing-org/swa2e316648e14944a1a3892c173a54a142",
-      "url": "https://github.com/static-web-apps-testing-org/swa2e316648e14944a1a3892c173a54a142",
+      "title": "lanyasheng/browser-ops",
+      "url": "https://github.com/lanyasheng/browser-ops",
       "source_query": "(llm OR devtools OR browser-use OR agentic) in:name,description,readme"
     },
     {
-      "candidate_id": "repo:Janiferintrinsical821/Kalshi-Trading-Bot",
+      "candidate_id": "repo:kimeisele/steward-federation",
       "date": "2026-04-02",
       "event": "published",
       "metrics": {
@@ -962,12 +983,12 @@
       },
       "scores": {},
       "kind": "project",
-      "title": "Janiferintrinsical821/Kalshi-Trading-Bot",
-      "url": "https://github.com/Janiferintrinsical821/Kalshi-Trading-Bot",
+      "title": "kimeisele/steward-federation",
+      "url": "https://github.com/kimeisele/steward-federation",
       "source_query": "(llm OR devtools OR browser-use OR agentic) in:name,description,readme"
     },
     {
-      "candidate_id": "repo:lafisteri/images",
+      "candidate_id": "repo:monkeystar0/healthyRecipeBuddy",
       "date": "2026-04-02",
       "event": "published",
       "metrics": {
@@ -983,12 +1004,12 @@
       },
       "scores": {},
       "kind": "project",
-      "title": "lafisteri/images",
-      "url": "https://github.com/lafisteri/images",
+      "title": "monkeystar0/healthyRecipeBuddy",
+      "url": "https://github.com/monkeystar0/healthyRecipeBuddy",
       "source_query": "(llm OR devtools OR browser-use OR agentic) in:name,description,readme"
     },
     {
-      "candidate_id": "repo:Nyxo317/OpenGestureXR",
+      "candidate_id": "repo:Hemanth-Thulasiraman/Portfolio",
       "date": "2026-04-02",
       "event": "published",
       "metrics": {
@@ -1004,12 +1025,12 @@
       },
       "scores": {},
       "kind": "project",
-      "title": "Nyxo317/OpenGestureXR",
-      "url": "https://github.com/Nyxo317/OpenGestureXR",
+      "title": "Hemanth-Thulasiraman/Portfolio",
+      "url": "https://github.com/Hemanth-Thulasiraman/Portfolio",
       "source_query": "(llm OR devtools OR browser-use OR agentic) in:name,description,readme"
     },
     {
-      "candidate_id": "repo:Tanjya/weatherAppJS",
+      "candidate_id": "repo:tom-barkan/FPL-MLprediction-model",
       "date": "2026-04-02",
       "event": "published",
       "metrics": {
@@ -1025,12 +1046,12 @@
       },
       "scores": {},
       "kind": "project",
-      "title": "Tanjya/weatherAppJS",
-      "url": "https://github.com/Tanjya/weatherAppJS",
+      "title": "tom-barkan/FPL-MLprediction-model",
+      "url": "https://github.com/tom-barkan/FPL-MLprediction-model",
       "source_query": "(llm OR devtools OR browser-use OR agentic) in:name,description,readme"
     },
     {
-      "candidate_id": "repo:TaperSpider/call-recording-cleaner-api",
+      "candidate_id": "repo:AhmedAnsar/leisuresports-inventory",
       "date": "2026-04-02",
       "event": "published",
       "metrics": {
@@ -1046,12 +1067,12 @@
       },
       "scores": {},
       "kind": "project",
-      "title": "TaperSpider/call-recording-cleaner-api",
-      "url": "https://github.com/TaperSpider/call-recording-cleaner-api",
+      "title": "AhmedAnsar/leisuresports-inventory",
+      "url": "https://github.com/AhmedAnsar/leisuresports-inventory",
       "source_query": "(llm OR devtools OR browser-use OR agentic) in:name,description,readme"
     },
     {
-      "candidate_id": "repo:WilliamSmithEdward/mudproto",
+      "candidate_id": "repo:kollarsandor/reasoning",
       "date": "2026-04-02",
       "event": "published",
       "metrics": {
@@ -1067,12 +1088,12 @@
       },
       "scores": {},
       "kind": "project",
-      "title": "WilliamSmithEdward/mudproto",
-      "url": "https://github.com/WilliamSmithEdward/mudproto",
+      "title": "kollarsandor/reasoning",
+      "url": "https://github.com/kollarsandor/reasoning",
       "source_query": "(llm OR devtools OR browser-use OR agentic) in:name,description,readme"
     },
     {
-      "candidate_id": "repo:SIDDHARTH0424/Git_repo_devops",
+      "candidate_id": "repo:AIUNION-wtf/AIUNION",
       "date": "2026-04-02",
       "event": "published",
       "metrics": {
@@ -1088,12 +1109,12 @@
       },
       "scores": {},
       "kind": "project",
-      "title": "SIDDHARTH0424/Git_repo_devops",
-      "url": "https://github.com/SIDDHARTH0424/Git_repo_devops",
+      "title": "AIUNION-wtf/AIUNION",
+      "url": "https://github.com/AIUNION-wtf/AIUNION",
       "source_query": "(llm OR devtools OR browser-use OR agentic) in:name,description,readme"
     },
     {
-      "candidate_id": "repo:Snowyheronmusculusadductorlongus456/RegPwnBOF",
+      "candidate_id": "repo:bradhawkins85/MyPortal",
       "date": "2026-04-02",
       "event": "published",
       "metrics": {
@@ -1109,12 +1130,12 @@
       },
       "scores": {},
       "kind": "project",
-      "title": "Snowyheronmusculusadductorlongus456/RegPwnBOF",
-      "url": "https://github.com/Snowyheronmusculusadductorlongus456/RegPwnBOF",
+      "title": "bradhawkins85/MyPortal",
+      "url": "https://github.com/bradhawkins85/MyPortal",
       "source_query": "(llm OR devtools OR browser-use OR agentic) in:name,description,readme"
     },
     {
-      "candidate_id": "repo:safder2000/tallymcp",
+      "candidate_id": "repo:spinelloedoardo-wq/Oktoberfest_pinger",
       "date": "2026-04-02",
       "event": "published",
       "metrics": {
@@ -1130,12 +1151,12 @@
       },
       "scores": {},
       "kind": "project",
-      "title": "safder2000/tallymcp",
-      "url": "https://github.com/safder2000/tallymcp",
+      "title": "spinelloedoardo-wq/Oktoberfest_pinger",
+      "url": "https://github.com/spinelloedoardo-wq/Oktoberfest_pinger",
       "source_query": "(llm OR devtools OR browser-use OR agentic) in:name,description,readme"
     },
     {
-      "candidate_id": "repo:fatimahtariq35/north",
+      "candidate_id": "repo:meo-lab/meo-lab.github.io",
       "date": "2026-04-02",
       "event": "published",
       "metrics": {
@@ -1151,12 +1172,12 @@
       },
       "scores": {},
       "kind": "project",
-      "title": "fatimahtariq35/north",
-      "url": "https://github.com/fatimahtariq35/north",
+      "title": "meo-lab/meo-lab.github.io",
+      "url": "https://github.com/meo-lab/meo-lab.github.io",
       "source_query": "(llm OR devtools OR browser-use OR agentic) in:name,description,readme"
     },
     {
-      "candidate_id": "repo:snucko/nfl",
+      "candidate_id": "repo:noiiiise/polymarket-trading-agent",
       "date": "2026-04-02",
       "event": "published",
       "metrics": {
@@ -1172,12 +1193,12 @@
       },
       "scores": {},
       "kind": "project",
-      "title": "snucko/nfl",
-      "url": "https://github.com/snucko/nfl",
+      "title": "noiiiise/polymarket-trading-agent",
+      "url": "https://github.com/noiiiise/polymarket-trading-agent",
       "source_query": "(llm OR devtools OR browser-use OR agentic) in:name,description,readme"
     },
     {
-      "candidate_id": "repo:jdeworks/make-it-look-good",
+      "candidate_id": "repo:BortyMcBot/bort-os",
       "date": "2026-04-02",
       "event": "published",
       "metrics": {
@@ -1193,12 +1214,12 @@
       },
       "scores": {},
       "kind": "project",
-      "title": "jdeworks/make-it-look-good",
-      "url": "https://github.com/jdeworks/make-it-look-good",
+      "title": "BortyMcBot/bort-os",
+      "url": "https://github.com/BortyMcBot/bort-os",
       "source_query": "(llm OR devtools OR browser-use OR agentic) in:name,description,readme"
     },
     {
-      "candidate_id": "repo:HareeshDaxton/Survival-Prediction",
+      "candidate_id": "repo:kota-kawa/ChatCore-AI",
       "date": "2026-04-02",
       "event": "published",
       "metrics": {
@@ -1214,12 +1235,12 @@
       },
       "scores": {},
       "kind": "project",
-      "title": "HareeshDaxton/Survival-Prediction",
-      "url": "https://github.com/HareeshDaxton/Survival-Prediction",
+      "title": "kota-kawa/ChatCore-AI",
+      "url": "https://github.com/kota-kawa/ChatCore-AI",
       "source_query": "(llm OR devtools OR browser-use OR agentic) in:name,description,readme"
     },
     {
-      "candidate_id": "repo:adrianstanca1/cortexbuild-ultimate",
+      "candidate_id": "repo:Sparnex13/trading-agent",
       "date": "2026-04-02",
       "event": "published",
       "metrics": {
@@ -1235,35 +1256,217 @@
       },
       "scores": {},
       "kind": "project",
-      "title": "adrianstanca1/cortexbuild-ultimate",
-      "url": "https://github.com/adrianstanca1/cortexbuild-ultimate",
-      "source_query": "(llm OR devtools OR browser-use OR agentic) in:name,description,readme"
-    },
-    {
-      "candidate_id": "repo:satheeshvijayan/satheesh-agentic-stack",
-      "date": "2026-04-02",
-      "event": "published",
-      "metrics": {
-        "stars": 0,
-        "forks": 0,
-        "comments": 0,
-        "reactions": 0,
-        "star_growth_7d": 0,
-        "previous_star_growth_7d": 0,
-        "has_new_release": false,
-        "days_since_previous_release": null,
-        "comment_growth_rate": 0.0
-      },
-      "scores": {},
-      "kind": "project",
-      "title": "satheeshvijayan/satheesh-agentic-stack",
-      "url": "https://github.com/satheeshvijayan/satheesh-agentic-stack",
+      "title": "Sparnex13/trading-agent",
+      "url": "https://github.com/Sparnex13/trading-agent",
       "source_query": "(llm OR devtools OR browser-use OR agentic) in:name,description,readme"
     }
   ],
   "candidate_index": {
-    "repo:stephenfeather/opc": {
-      "candidate_id": "repo:stephenfeather/opc",
+    "repo:psaawkel/fluodata-infrastructure": {
+      "candidate_id": "repo:psaawkel/fluodata-infrastructure",
+      "last_seen_at": "2026-04-02",
+      "last_seen_metrics": {
+        "stars": 0,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_seen_scores": {},
+      "last_published_at": "2026-04-02",
+      "last_published_metrics": {
+        "stars": 0,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_published_scores": {}
+    },
+    "repo:lanyasheng/browser-ops": {
+      "candidate_id": "repo:lanyasheng/browser-ops",
+      "last_seen_at": "2026-04-02",
+      "last_seen_metrics": {
+        "stars": 0,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_seen_scores": {},
+      "last_published_at": "2026-04-02",
+      "last_published_metrics": {
+        "stars": 0,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_published_scores": {}
+    },
+    "repo:kimeisele/steward-federation": {
+      "candidate_id": "repo:kimeisele/steward-federation",
+      "last_seen_at": "2026-04-02",
+      "last_seen_metrics": {
+        "stars": 0,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_seen_scores": {},
+      "last_published_at": "2026-04-02",
+      "last_published_metrics": {
+        "stars": 0,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_published_scores": {}
+    },
+    "repo:monkeystar0/healthyRecipeBuddy": {
+      "candidate_id": "repo:monkeystar0/healthyRecipeBuddy",
+      "last_seen_at": "2026-04-02",
+      "last_seen_metrics": {
+        "stars": 0,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_seen_scores": {},
+      "last_published_at": "2026-04-02",
+      "last_published_metrics": {
+        "stars": 0,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_published_scores": {}
+    },
+    "repo:luodaoyi/c2000max-ipk": {
+      "candidate_id": "repo:luodaoyi/c2000max-ipk",
+      "last_seen_at": "2026-04-02",
+      "last_seen_metrics": {
+        "stars": 0,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_seen_scores": {},
+      "last_published_at": "2026-04-02",
+      "last_published_metrics": {
+        "stars": 0,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_published_scores": {}
+    },
+    "repo:FURiOus-ParADox/bsc-bnb-sniper-bot": {
+      "candidate_id": "repo:FURiOus-ParADox/bsc-bnb-sniper-bot",
+      "last_seen_at": "2026-04-02",
+      "last_seen_metrics": {
+        "stars": 51,
+        "forks": 28,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_seen_scores": {},
+      "last_published_at": "2026-04-02",
+      "last_published_metrics": {
+        "stars": 51,
+        "forks": 28,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_published_scores": {}
+    },
+    "repo:Hemanth-Thulasiraman/Portfolio": {
+      "candidate_id": "repo:Hemanth-Thulasiraman/Portfolio",
+      "last_seen_at": "2026-04-02",
+      "last_seen_metrics": {
+        "stars": 0,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_seen_scores": {},
+      "last_published_at": "2026-04-02",
+      "last_published_metrics": {
+        "stars": 0,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_published_scores": {}
+    },
+    "repo:mguozhen/solvea-agent-bus": {
+      "candidate_id": "repo:mguozhen/solvea-agent-bus",
       "last_seen_at": "2026-04-02",
       "last_seen_metrics": {
         "stars": 1,
@@ -1291,8 +1494,8 @@
       },
       "last_published_scores": {}
     },
-    "repo:Nyxo317/OpenGestureXR": {
-      "candidate_id": "repo:Nyxo317/OpenGestureXR",
+    "repo:QHCV/everyday-infra-analysis": {
+      "candidate_id": "repo:QHCV/everyday-infra-analysis",
       "last_seen_at": "2026-04-02",
       "last_seen_metrics": {
         "stars": 0,
@@ -1320,8 +1523,8 @@
       },
       "last_published_scores": {}
     },
-    "repo:SIDDHARTH0424/Git_repo_devops": {
-      "candidate_id": "repo:SIDDHARTH0424/Git_repo_devops",
+    "repo:AhmedAnsar/leisuresports-inventory": {
+      "candidate_id": "repo:AhmedAnsar/leisuresports-inventory",
       "last_seen_at": "2026-04-02",
       "last_seen_metrics": {
         "stars": 0,
@@ -1349,8 +1552,8 @@
       },
       "last_published_scores": {}
     },
-    "repo:maximeKets/linkedin-automation-extension": {
-      "candidate_id": "repo:maximeKets/linkedin-automation-extension",
+    "repo:AIUNION-wtf/AIUNION": {
+      "candidate_id": "repo:AIUNION-wtf/AIUNION",
       "last_seen_at": "2026-04-02",
       "last_seen_metrics": {
         "stars": 0,
@@ -1378,99 +1581,12 @@
       },
       "last_published_scores": {}
     },
-    "repo:KBT0207/tally_app": {
-      "candidate_id": "repo:KBT0207/tally_app",
-      "last_seen_at": "2026-04-02",
-      "last_seen_metrics": {
-        "stars": 0,
-        "forks": 0,
-        "comments": 0,
-        "reactions": 0,
-        "star_growth_7d": 0,
-        "previous_star_growth_7d": 0,
-        "has_new_release": false,
-        "days_since_previous_release": null,
-        "comment_growth_rate": 0.0
-      },
-      "last_seen_scores": {},
-      "last_published_at": "2026-04-02",
-      "last_published_metrics": {
-        "stars": 0,
-        "forks": 0,
-        "comments": 0,
-        "reactions": 0,
-        "star_growth_7d": 0,
-        "previous_star_growth_7d": 0,
-        "has_new_release": false,
-        "days_since_previous_release": null,
-        "comment_growth_rate": 0.0
-      },
-      "last_published_scores": {}
-    },
-    "repo:thedoggybrad/easylist-mirror": {
-      "candidate_id": "repo:thedoggybrad/easylist-mirror",
-      "last_seen_at": "2026-04-02",
-      "last_seen_metrics": {
-        "stars": 11,
-        "forks": 0,
-        "comments": 0,
-        "reactions": 0,
-        "star_growth_7d": 0,
-        "previous_star_growth_7d": 0,
-        "has_new_release": false,
-        "days_since_previous_release": null,
-        "comment_growth_rate": 0.0
-      },
-      "last_seen_scores": {},
-      "last_published_at": "2026-04-02",
-      "last_published_metrics": {
-        "stars": 11,
-        "forks": 0,
-        "comments": 0,
-        "reactions": 0,
-        "star_growth_7d": 0,
-        "previous_star_growth_7d": 0,
-        "has_new_release": false,
-        "days_since_previous_release": null,
-        "comment_growth_rate": 0.0
-      },
-      "last_published_scores": {}
-    },
-    "repo:PatienceIsKeyX/test3": {
-      "candidate_id": "repo:PatienceIsKeyX/test3",
-      "last_seen_at": "2026-04-02",
-      "last_seen_metrics": {
-        "stars": 0,
-        "forks": 0,
-        "comments": 0,
-        "reactions": 0,
-        "star_growth_7d": 0,
-        "previous_star_growth_7d": 0,
-        "has_new_release": false,
-        "days_since_previous_release": null,
-        "comment_growth_rate": 0.0
-      },
-      "last_seen_scores": {},
-      "last_published_at": "2026-04-02",
-      "last_published_metrics": {
-        "stars": 0,
-        "forks": 0,
-        "comments": 0,
-        "reactions": 0,
-        "star_growth_7d": 0,
-        "previous_star_growth_7d": 0,
-        "has_new_release": false,
-        "days_since_previous_release": null,
-        "comment_growth_rate": 0.0
-      },
-      "last_published_scores": {}
-    },
-    "repo:Catherinesjkim/Catherinesjkim": {
-      "candidate_id": "repo:Catherinesjkim/Catherinesjkim",
+    "repo:IJMPLM/platter-compiler-webapp": {
+      "candidate_id": "repo:IJMPLM/platter-compiler-webapp",
       "last_seen_at": "2026-04-02",
       "last_seen_metrics": {
         "stars": 1,
-        "forks": 0,
+        "forks": 3,
         "comments": 0,
         "reactions": 0,
         "star_growth_7d": 0,
@@ -1483,7 +1599,7 @@
       "last_published_at": "2026-04-02",
       "last_published_metrics": {
         "stars": 1,
-        "forks": 0,
+        "forks": 3,
         "comments": 0,
         "reactions": 0,
         "star_growth_7d": 0,
@@ -1494,8 +1610,8 @@
       },
       "last_published_scores": {}
     },
-    "repo:tkleisas/yawn": {
-      "candidate_id": "repo:tkleisas/yawn",
+    "repo:bradhawkins85/MyPortal": {
+      "candidate_id": "repo:bradhawkins85/MyPortal",
       "last_seen_at": "2026-04-02",
       "last_seen_metrics": {
         "stars": 0,
@@ -1523,8 +1639,8 @@
       },
       "last_published_scores": {}
     },
-    "repo:satheeshvijayan/satheesh-agentic-stack": {
-      "candidate_id": "repo:satheeshvijayan/satheesh-agentic-stack",
+    "repo:shelltdf/mindmap_mcp": {
+      "candidate_id": "repo:shelltdf/mindmap_mcp",
       "last_seen_at": "2026-04-02",
       "last_seen_metrics": {
         "stars": 0,
@@ -1552,8 +1668,8 @@
       },
       "last_published_scores": {}
     },
-    "repo:unseasonable-deposer640/DevLog": {
-      "candidate_id": "repo:unseasonable-deposer640/DevLog",
+    "repo:spinelloedoardo-wq/Oktoberfest_pinger": {
+      "candidate_id": "repo:spinelloedoardo-wq/Oktoberfest_pinger",
       "last_seen_at": "2026-04-02",
       "last_seen_metrics": {
         "stars": 0,
@@ -1581,8 +1697,8 @@
       },
       "last_published_scores": {}
     },
-    "repo:tillg/swm_pool_data": {
-      "candidate_id": "repo:tillg/swm_pool_data",
+    "repo:meo-lab/meo-lab.github.io": {
+      "candidate_id": "repo:meo-lab/meo-lab.github.io",
       "last_seen_at": "2026-04-02",
       "last_seen_metrics": {
         "stars": 0,
@@ -1610,37 +1726,8 @@
       },
       "last_published_scores": {}
     },
-    "repo:google-gemini/gemini-cli": {
-      "candidate_id": "repo:google-gemini/gemini-cli",
-      "last_seen_at": "2026-04-02",
-      "last_seen_metrics": {
-        "stars": 99957,
-        "forks": 12823,
-        "comments": 0,
-        "reactions": 0,
-        "star_growth_7d": 0,
-        "previous_star_growth_7d": 0,
-        "has_new_release": false,
-        "days_since_previous_release": null,
-        "comment_growth_rate": 0.0
-      },
-      "last_seen_scores": {},
-      "last_published_at": "2026-04-02",
-      "last_published_metrics": {
-        "stars": 99957,
-        "forks": 12823,
-        "comments": 0,
-        "reactions": 0,
-        "star_growth_7d": 0,
-        "previous_star_growth_7d": 0,
-        "has_new_release": false,
-        "days_since_previous_release": null,
-        "comment_growth_rate": 0.0
-      },
-      "last_published_scores": {}
-    },
-    "repo:AlphaHorizon-AI/OpenClawCollege.com": {
-      "candidate_id": "repo:AlphaHorizon-AI/OpenClawCollege.com",
+    "repo:noiiiise/polymarket-trading-agent": {
+      "candidate_id": "repo:noiiiise/polymarket-trading-agent",
       "last_seen_at": "2026-04-02",
       "last_seen_metrics": {
         "stars": 0,
@@ -1668,124 +1755,8 @@
       },
       "last_published_scores": {}
     },
-    "repo:Rajatavaa/GP-AGENT": {
-      "candidate_id": "repo:Rajatavaa/GP-AGENT",
-      "last_seen_at": "2026-04-02",
-      "last_seen_metrics": {
-        "stars": 0,
-        "forks": 1,
-        "comments": 0,
-        "reactions": 0,
-        "star_growth_7d": 0,
-        "previous_star_growth_7d": 0,
-        "has_new_release": false,
-        "days_since_previous_release": null,
-        "comment_growth_rate": 0.0
-      },
-      "last_seen_scores": {},
-      "last_published_at": "2026-04-02",
-      "last_published_metrics": {
-        "stars": 0,
-        "forks": 1,
-        "comments": 0,
-        "reactions": 0,
-        "star_growth_7d": 0,
-        "previous_star_growth_7d": 0,
-        "has_new_release": false,
-        "days_since_previous_release": null,
-        "comment_growth_rate": 0.0
-      },
-      "last_published_scores": {}
-    },
-    "repo:MW21P/rfpred": {
-      "candidate_id": "repo:MW21P/rfpred",
-      "last_seen_at": "2026-04-02",
-      "last_seen_metrics": {
-        "stars": 2,
-        "forks": 2,
-        "comments": 0,
-        "reactions": 0,
-        "star_growth_7d": 0,
-        "previous_star_growth_7d": 0,
-        "has_new_release": false,
-        "days_since_previous_release": null,
-        "comment_growth_rate": 0.0
-      },
-      "last_seen_scores": {},
-      "last_published_at": "2026-04-02",
-      "last_published_metrics": {
-        "stars": 2,
-        "forks": 2,
-        "comments": 0,
-        "reactions": 0,
-        "star_growth_7d": 0,
-        "previous_star_growth_7d": 0,
-        "has_new_release": false,
-        "days_since_previous_release": null,
-        "comment_growth_rate": 0.0
-      },
-      "last_published_scores": {}
-    },
-    "repo:syedzaidaliii/You-Can-t-Fool-Me-Deepfake-Detection": {
-      "candidate_id": "repo:syedzaidaliii/You-Can-t-Fool-Me-Deepfake-Detection",
-      "last_seen_at": "2026-04-02",
-      "last_seen_metrics": {
-        "stars": 1,
-        "forks": 1,
-        "comments": 0,
-        "reactions": 0,
-        "star_growth_7d": 0,
-        "previous_star_growth_7d": 0,
-        "has_new_release": false,
-        "days_since_previous_release": null,
-        "comment_growth_rate": 0.0
-      },
-      "last_seen_scores": {},
-      "last_published_at": "2026-04-02",
-      "last_published_metrics": {
-        "stars": 1,
-        "forks": 1,
-        "comments": 0,
-        "reactions": 0,
-        "star_growth_7d": 0,
-        "previous_star_growth_7d": 0,
-        "has_new_release": false,
-        "days_since_previous_release": null,
-        "comment_growth_rate": 0.0
-      },
-      "last_published_scores": {}
-    },
-    "repo:HeJiguang/codescan": {
-      "candidate_id": "repo:HeJiguang/codescan",
-      "last_seen_at": "2026-04-02",
-      "last_seen_metrics": {
-        "stars": 15,
-        "forks": 2,
-        "comments": 0,
-        "reactions": 0,
-        "star_growth_7d": 0,
-        "previous_star_growth_7d": 0,
-        "has_new_release": false,
-        "days_since_previous_release": null,
-        "comment_growth_rate": 0.0
-      },
-      "last_seen_scores": {},
-      "last_published_at": "2026-04-02",
-      "last_published_metrics": {
-        "stars": 15,
-        "forks": 2,
-        "comments": 0,
-        "reactions": 0,
-        "star_growth_7d": 0,
-        "previous_star_growth_7d": 0,
-        "has_new_release": false,
-        "days_since_previous_release": null,
-        "comment_growth_rate": 0.0
-      },
-      "last_published_scores": {}
-    },
-    "repo:keith9918/crypto-trading-simulator": {
-      "candidate_id": "repo:keith9918/crypto-trading-simulator",
+    "repo:BortyMcBot/bort-os": {
+      "candidate_id": "repo:BortyMcBot/bort-os",
       "last_seen_at": "2026-04-02",
       "last_seen_metrics": {
         "stars": 0,
@@ -1813,8 +1784,8 @@
       },
       "last_published_scores": {}
     },
-    "repo:diej1222/chemverse": {
-      "candidate_id": "repo:diej1222/chemverse",
+    "repo:kota-kawa/ChatCore-AI": {
+      "candidate_id": "repo:kota-kawa/ChatCore-AI",
       "last_seen_at": "2026-04-02",
       "last_seen_metrics": {
         "stars": 0,
@@ -1842,8 +1813,8 @@
       },
       "last_published_scores": {}
     },
-    "repo:rightofactionsyndicalism110/DOMINO": {
-      "candidate_id": "repo:rightofactionsyndicalism110/DOMINO",
+    "repo:phunkasemphanom02/action_pk": {
+      "candidate_id": "repo:phunkasemphanom02/action_pk",
       "last_seen_at": "2026-04-02",
       "last_seen_metrics": {
         "stars": 0,
@@ -1871,8 +1842,37 @@
       },
       "last_published_scores": {}
     },
-    "repo:static-web-apps-testing-org/swa2e316648e14944a1a3892c173a54a142": {
-      "candidate_id": "repo:static-web-apps-testing-org/swa2e316648e14944a1a3892c173a54a142",
+    "repo:z-lab/dflash": {
+      "candidate_id": "repo:z-lab/dflash",
+      "last_seen_at": "2026-04-02",
+      "last_seen_metrics": {
+        "stars": 680,
+        "forks": 48,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_seen_scores": {},
+      "last_published_at": "2026-04-02",
+      "last_published_metrics": {
+        "stars": 680,
+        "forks": 48,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_published_scores": {}
+    },
+    "repo:tom-barkan/FPL-MLprediction-model": {
+      "candidate_id": "repo:tom-barkan/FPL-MLprediction-model",
       "last_seen_at": "2026-04-02",
       "last_seen_metrics": {
         "stars": 0,
@@ -1900,8 +1900,8 @@
       },
       "last_published_scores": {}
     },
-    "repo:Janiferintrinsical821/Kalshi-Trading-Bot": {
-      "candidate_id": "repo:Janiferintrinsical821/Kalshi-Trading-Bot",
+    "repo:kollarsandor/reasoning": {
+      "candidate_id": "repo:kollarsandor/reasoning",
       "last_seen_at": "2026-04-02",
       "last_seen_metrics": {
         "stars": 0,
@@ -1929,327 +1929,8 @@
       },
       "last_published_scores": {}
     },
-    "repo:lafisteri/images": {
-      "candidate_id": "repo:lafisteri/images",
-      "last_seen_at": "2026-04-02",
-      "last_seen_metrics": {
-        "stars": 0,
-        "forks": 0,
-        "comments": 0,
-        "reactions": 0,
-        "star_growth_7d": 0,
-        "previous_star_growth_7d": 0,
-        "has_new_release": false,
-        "days_since_previous_release": null,
-        "comment_growth_rate": 0.0
-      },
-      "last_seen_scores": {},
-      "last_published_at": "2026-04-02",
-      "last_published_metrics": {
-        "stars": 0,
-        "forks": 0,
-        "comments": 0,
-        "reactions": 0,
-        "star_growth_7d": 0,
-        "previous_star_growth_7d": 0,
-        "has_new_release": false,
-        "days_since_previous_release": null,
-        "comment_growth_rate": 0.0
-      },
-      "last_published_scores": {}
-    },
-    "repo:Nikki31Chaudhary/Prediciting-Student-Performance": {
-      "candidate_id": "repo:Nikki31Chaudhary/Prediciting-Student-Performance",
-      "last_seen_at": "2026-04-02",
-      "last_seen_metrics": {
-        "stars": 2,
-        "forks": 0,
-        "comments": 0,
-        "reactions": 0,
-        "star_growth_7d": 0,
-        "previous_star_growth_7d": 0,
-        "has_new_release": false,
-        "days_since_previous_release": null,
-        "comment_growth_rate": 0.0
-      },
-      "last_seen_scores": {},
-      "last_published_at": "2026-04-02",
-      "last_published_metrics": {
-        "stars": 2,
-        "forks": 0,
-        "comments": 0,
-        "reactions": 0,
-        "star_growth_7d": 0,
-        "previous_star_growth_7d": 0,
-        "has_new_release": false,
-        "days_since_previous_release": null,
-        "comment_growth_rate": 0.0
-      },
-      "last_published_scores": {}
-    },
-    "repo:Tanjya/weatherAppJS": {
-      "candidate_id": "repo:Tanjya/weatherAppJS",
-      "last_seen_at": "2026-04-02",
-      "last_seen_metrics": {
-        "stars": 0,
-        "forks": 0,
-        "comments": 0,
-        "reactions": 0,
-        "star_growth_7d": 0,
-        "previous_star_growth_7d": 0,
-        "has_new_release": false,
-        "days_since_previous_release": null,
-        "comment_growth_rate": 0.0
-      },
-      "last_seen_scores": {},
-      "last_published_at": "2026-04-02",
-      "last_published_metrics": {
-        "stars": 0,
-        "forks": 0,
-        "comments": 0,
-        "reactions": 0,
-        "star_growth_7d": 0,
-        "previous_star_growth_7d": 0,
-        "has_new_release": false,
-        "days_since_previous_release": null,
-        "comment_growth_rate": 0.0
-      },
-      "last_published_scores": {}
-    },
-    "repo:TaperSpider/call-recording-cleaner-api": {
-      "candidate_id": "repo:TaperSpider/call-recording-cleaner-api",
-      "last_seen_at": "2026-04-02",
-      "last_seen_metrics": {
-        "stars": 0,
-        "forks": 0,
-        "comments": 0,
-        "reactions": 0,
-        "star_growth_7d": 0,
-        "previous_star_growth_7d": 0,
-        "has_new_release": false,
-        "days_since_previous_release": null,
-        "comment_growth_rate": 0.0
-      },
-      "last_seen_scores": {},
-      "last_published_at": "2026-04-02",
-      "last_published_metrics": {
-        "stars": 0,
-        "forks": 0,
-        "comments": 0,
-        "reactions": 0,
-        "star_growth_7d": 0,
-        "previous_star_growth_7d": 0,
-        "has_new_release": false,
-        "days_since_previous_release": null,
-        "comment_growth_rate": 0.0
-      },
-      "last_published_scores": {}
-    },
-    "repo:WilliamSmithEdward/mudproto": {
-      "candidate_id": "repo:WilliamSmithEdward/mudproto",
-      "last_seen_at": "2026-04-02",
-      "last_seen_metrics": {
-        "stars": 0,
-        "forks": 0,
-        "comments": 0,
-        "reactions": 0,
-        "star_growth_7d": 0,
-        "previous_star_growth_7d": 0,
-        "has_new_release": false,
-        "days_since_previous_release": null,
-        "comment_growth_rate": 0.0
-      },
-      "last_seen_scores": {},
-      "last_published_at": "2026-04-02",
-      "last_published_metrics": {
-        "stars": 0,
-        "forks": 0,
-        "comments": 0,
-        "reactions": 0,
-        "star_growth_7d": 0,
-        "previous_star_growth_7d": 0,
-        "has_new_release": false,
-        "days_since_previous_release": null,
-        "comment_growth_rate": 0.0
-      },
-      "last_published_scores": {}
-    },
-    "repo:Snowyheronmusculusadductorlongus456/RegPwnBOF": {
-      "candidate_id": "repo:Snowyheronmusculusadductorlongus456/RegPwnBOF",
-      "last_seen_at": "2026-04-02",
-      "last_seen_metrics": {
-        "stars": 0,
-        "forks": 0,
-        "comments": 0,
-        "reactions": 0,
-        "star_growth_7d": 0,
-        "previous_star_growth_7d": 0,
-        "has_new_release": false,
-        "days_since_previous_release": null,
-        "comment_growth_rate": 0.0
-      },
-      "last_seen_scores": {},
-      "last_published_at": "2026-04-02",
-      "last_published_metrics": {
-        "stars": 0,
-        "forks": 0,
-        "comments": 0,
-        "reactions": 0,
-        "star_growth_7d": 0,
-        "previous_star_growth_7d": 0,
-        "has_new_release": false,
-        "days_since_previous_release": null,
-        "comment_growth_rate": 0.0
-      },
-      "last_published_scores": {}
-    },
-    "repo:safder2000/tallymcp": {
-      "candidate_id": "repo:safder2000/tallymcp",
-      "last_seen_at": "2026-04-02",
-      "last_seen_metrics": {
-        "stars": 0,
-        "forks": 0,
-        "comments": 0,
-        "reactions": 0,
-        "star_growth_7d": 0,
-        "previous_star_growth_7d": 0,
-        "has_new_release": false,
-        "days_since_previous_release": null,
-        "comment_growth_rate": 0.0
-      },
-      "last_seen_scores": {},
-      "last_published_at": "2026-04-02",
-      "last_published_metrics": {
-        "stars": 0,
-        "forks": 0,
-        "comments": 0,
-        "reactions": 0,
-        "star_growth_7d": 0,
-        "previous_star_growth_7d": 0,
-        "has_new_release": false,
-        "days_since_previous_release": null,
-        "comment_growth_rate": 0.0
-      },
-      "last_published_scores": {}
-    },
-    "repo:fatimahtariq35/north": {
-      "candidate_id": "repo:fatimahtariq35/north",
-      "last_seen_at": "2026-04-02",
-      "last_seen_metrics": {
-        "stars": 0,
-        "forks": 0,
-        "comments": 0,
-        "reactions": 0,
-        "star_growth_7d": 0,
-        "previous_star_growth_7d": 0,
-        "has_new_release": false,
-        "days_since_previous_release": null,
-        "comment_growth_rate": 0.0
-      },
-      "last_seen_scores": {},
-      "last_published_at": "2026-04-02",
-      "last_published_metrics": {
-        "stars": 0,
-        "forks": 0,
-        "comments": 0,
-        "reactions": 0,
-        "star_growth_7d": 0,
-        "previous_star_growth_7d": 0,
-        "has_new_release": false,
-        "days_since_previous_release": null,
-        "comment_growth_rate": 0.0
-      },
-      "last_published_scores": {}
-    },
-    "repo:snucko/nfl": {
-      "candidate_id": "repo:snucko/nfl",
-      "last_seen_at": "2026-04-02",
-      "last_seen_metrics": {
-        "stars": 0,
-        "forks": 0,
-        "comments": 0,
-        "reactions": 0,
-        "star_growth_7d": 0,
-        "previous_star_growth_7d": 0,
-        "has_new_release": false,
-        "days_since_previous_release": null,
-        "comment_growth_rate": 0.0
-      },
-      "last_seen_scores": {},
-      "last_published_at": "2026-04-02",
-      "last_published_metrics": {
-        "stars": 0,
-        "forks": 0,
-        "comments": 0,
-        "reactions": 0,
-        "star_growth_7d": 0,
-        "previous_star_growth_7d": 0,
-        "has_new_release": false,
-        "days_since_previous_release": null,
-        "comment_growth_rate": 0.0
-      },
-      "last_published_scores": {}
-    },
-    "repo:jdeworks/make-it-look-good": {
-      "candidate_id": "repo:jdeworks/make-it-look-good",
-      "last_seen_at": "2026-04-02",
-      "last_seen_metrics": {
-        "stars": 0,
-        "forks": 0,
-        "comments": 0,
-        "reactions": 0,
-        "star_growth_7d": 0,
-        "previous_star_growth_7d": 0,
-        "has_new_release": false,
-        "days_since_previous_release": null,
-        "comment_growth_rate": 0.0
-      },
-      "last_seen_scores": {},
-      "last_published_at": "2026-04-02",
-      "last_published_metrics": {
-        "stars": 0,
-        "forks": 0,
-        "comments": 0,
-        "reactions": 0,
-        "star_growth_7d": 0,
-        "previous_star_growth_7d": 0,
-        "has_new_release": false,
-        "days_since_previous_release": null,
-        "comment_growth_rate": 0.0
-      },
-      "last_published_scores": {}
-    },
-    "repo:HareeshDaxton/Survival-Prediction": {
-      "candidate_id": "repo:HareeshDaxton/Survival-Prediction",
-      "last_seen_at": "2026-04-02",
-      "last_seen_metrics": {
-        "stars": 0,
-        "forks": 0,
-        "comments": 0,
-        "reactions": 0,
-        "star_growth_7d": 0,
-        "previous_star_growth_7d": 0,
-        "has_new_release": false,
-        "days_since_previous_release": null,
-        "comment_growth_rate": 0.0
-      },
-      "last_seen_scores": {},
-      "last_published_at": "2026-04-02",
-      "last_published_metrics": {
-        "stars": 0,
-        "forks": 0,
-        "comments": 0,
-        "reactions": 0,
-        "star_growth_7d": 0,
-        "previous_star_growth_7d": 0,
-        "has_new_release": false,
-        "days_since_previous_release": null,
-        "comment_growth_rate": 0.0
-      },
-      "last_published_scores": {}
-    },
-    "repo:adrianstanca1/cortexbuild-ultimate": {
-      "candidate_id": "repo:adrianstanca1/cortexbuild-ultimate",
+    "repo:Sparnex13/trading-agent": {
+      "candidate_id": "repo:Sparnex13/trading-agent",
       "last_seen_at": "2026-04-02",
       "last_seen_metrics": {
         "stars": 0,
@@ -2282,7 +1963,7 @@
       "last_seen_at": "2026-04-02",
       "last_seen_metrics": {
         "stars": 450990,
-        "forks": 33890,
+        "forks": 33891,
         "comments": 0,
         "reactions": 0,
         "star_growth_7d": 0,
@@ -2295,7 +1976,7 @@
       "last_published_at": "2026-04-02",
       "last_published_metrics": {
         "stars": 450990,
-        "forks": 33890,
+        "forks": 33891,
         "comments": 0,
         "reactions": 0,
         "star_growth_7d": 0,
@@ -2310,7 +1991,7 @@
       "candidate_id": "repo:freeCodeCamp/freeCodeCamp",
       "last_seen_at": "2026-04-02",
       "last_seen_metrics": {
-        "stars": 440464,
+        "stars": 440465,
         "forks": 43956,
         "comments": 0,
         "reactions": 0,
@@ -2323,7 +2004,7 @@
       "last_seen_scores": {},
       "last_published_at": "2026-04-02",
       "last_published_metrics": {
-        "stars": 440464,
+        "stars": 440465,
         "forks": 43956,
         "comments": 0,
         "reactions": 0,
@@ -2339,7 +2020,7 @@
       "candidate_id": "repo:public-apis/public-apis",
       "last_seen_at": "2026-04-02",
       "last_seen_metrics": {
-        "stars": 418259,
+        "stars": 418258,
         "forks": 45435,
         "comments": 0,
         "reactions": 0,
@@ -2352,7 +2033,7 @@
       "last_seen_scores": {},
       "last_published_at": "2026-04-02",
       "last_published_metrics": {
-        "stars": 418259,
+        "stars": 418258,
         "forks": 45435,
         "comments": 0,
         "reactions": 0,
@@ -2397,7 +2078,7 @@
       "candidate_id": "repo:openclaw/openclaw",
       "last_seen_at": "2026-04-02",
       "last_seen_metrics": {
-        "stars": 345102,
+        "stars": 345101,
         "forks": 68543,
         "comments": 0,
         "reactions": 0,
@@ -2410,7 +2091,7 @@
       "last_seen_scores": {},
       "last_published_at": "2026-04-02",
       "last_published_metrics": {
-        "stars": 345102,
+        "stars": 345101,
         "forks": 68543,
         "comments": 0,
         "reactions": 0,
@@ -2513,7 +2194,7 @@
       "candidate_id": "repo:awesome-selfhosted/awesome-selfhosted",
       "last_seen_at": "2026-04-02",
       "last_seen_metrics": {
-        "stars": 283438,
+        "stars": 283439,
         "forks": 13052,
         "comments": 0,
         "reactions": 0,
@@ -2526,7 +2207,7 @@
       "last_seen_scores": {},
       "last_published_at": "2026-04-02",
       "last_published_metrics": {
-        "stars": 283438,
+        "stars": 283439,
         "forks": 13052,
         "comments": 0,
         "reactions": 0,
@@ -2600,7 +2281,7 @@
       "candidate_id": "repo:ossu/computer-science",
       "last_seen_at": "2026-04-02",
       "last_seen_metrics": {
-        "stars": 202853,
+        "stars": 202854,
         "forks": 25210,
         "comments": 0,
         "reactions": 0,
@@ -2613,7 +2294,7 @@
       "last_seen_scores": {},
       "last_published_at": "2026-04-02",
       "last_published_metrics": {
-        "stars": 202853,
+        "stars": 202854,
         "forks": 25210,
         "comments": 0,
         "reactions": 0,
@@ -2659,7 +2340,7 @@
       "last_seen_at": "2026-04-02",
       "last_seen_metrics": {
         "stars": 183294,
-        "forks": 38888,
+        "forks": 38889,
         "comments": 0,
         "reactions": 0,
         "star_growth_7d": 0,
@@ -2672,7 +2353,7 @@
       "last_published_at": "2026-04-02",
       "last_published_metrics": {
         "stars": 183294,
-        "forks": 38888,
+        "forks": 38889,
         "comments": 0,
         "reactions": 0,
         "star_growth_7d": 0,
@@ -2687,7 +2368,7 @@
       "candidate_id": "repo:Significant-Gravitas/AutoGPT",
       "last_seen_at": "2026-04-02",
       "last_seen_metrics": {
-        "stars": 183044,
+        "stars": 183045,
         "forks": 46221,
         "comments": 0,
         "reactions": 0,
@@ -2700,7 +2381,7 @@
       "last_seen_scores": {},
       "last_published_at": "2026-04-02",
       "last_published_metrics": {
-        "stars": 183044,
+        "stars": 183045,
         "forks": 46221,
         "comments": 0,
         "reactions": 0,
@@ -2716,8 +2397,8 @@
       "candidate_id": "repo:n8n-io/n8n",
       "last_seen_at": "2026-04-02",
       "last_seen_metrics": {
-        "stars": 182086,
-        "forks": 56392,
+        "stars": 182085,
+        "forks": 56393,
         "comments": 0,
         "reactions": 0,
         "star_growth_7d": 0,
@@ -2729,8 +2410,8 @@
       "last_seen_scores": {},
       "last_published_at": "2026-04-02",
       "last_published_metrics": {
-        "stars": 182086,
-        "forks": 56392,
+        "stars": 182085,
+        "forks": 56393,
         "comments": 0,
         "reactions": 0,
         "star_growth_7d": 0,
@@ -2803,7 +2484,7 @@
       "candidate_id": "repo:ollama/ollama",
       "last_seen_at": "2026-04-02",
       "last_seen_metrics": {
-        "stars": 166736,
+        "stars": 166735,
         "forks": 15263,
         "comments": 0,
         "reactions": 0,
@@ -2816,7 +2497,7 @@
       "last_seen_scores": {},
       "last_published_at": "2026-04-02",
       "last_published_metrics": {
-        "stars": 166736,
+        "stars": 166735,
         "forks": 15263,
         "comments": 0,
         "reactions": 0,
