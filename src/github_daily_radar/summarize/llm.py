@@ -1,3 +1,5 @@
+import json
+
 import httpx
 
 
@@ -29,6 +31,17 @@ class EditorialLLM:
                 },
             )
             response.raise_for_status()
-            return response.json().get("choices", [])
-        except httpx.HTTPError:
+            choices = response.json().get("choices", [])
+            if not choices:
+                return []
+            content = choices[0].get("message", {}).get("content")
+            if not content:
+                return []
+            parsed = json.loads(content)
+            if isinstance(parsed, dict):
+                return [parsed]
+            if isinstance(parsed, list):
+                return [item for item in parsed if isinstance(item, dict)]
+            return []
+        except (httpx.HTTPError, ValueError, TypeError):
             return []

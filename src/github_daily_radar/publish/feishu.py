@@ -22,6 +22,10 @@ def build_cards(*, title: str, sections: list[dict], metadata: dict | None = Non
         lines.append(f"**{section['title']}**")
         for item in section.get("items", []):
             lines.append(f"- [{item['title']}]({item['url']})")
+            if item.get("summary"):
+                lines.append(f"  - {item['summary']}")
+            if item.get("why_now"):
+                lines.append(f"  - {item['why_now']}")
 
     chunks = _chunk_lines(lines, max_lines=max_lines)
     cards: list[dict] = []
@@ -40,6 +44,22 @@ def build_cards(*, title: str, sections: list[dict], metadata: dict | None = Non
             }
         )
     return cards
+
+
+def build_alert_cards(*, title: str, message: str, metadata: dict | None = None) -> list[dict]:
+    elements = [{"tag": "markdown", "content": message}]
+    if metadata:
+        elements.append({"tag": "markdown", "content": f"`meta`: {metadata}"})
+    return [
+        {
+            "msg_type": "interactive",
+            "card": {
+                "config": {"wide_screen_mode": True},
+                "header": {"title": {"tag": "plain_text", "content": title}},
+                "elements": elements,
+            },
+        }
+    ]
 
 
 def send_cards(*, webhook_url: str, cards: list[dict]) -> None:
