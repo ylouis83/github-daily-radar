@@ -78,3 +78,24 @@ def test_build_cards_keeps_chinese_labels():
     assert "每日雷达" in header
     elements = [element["content"] for element in cards[0]["card"]["elements"]]
     assert any("摘要：" in content for content in elements)
+
+
+def test_build_cards_does_not_render_runtime_metadata():
+    sections = [
+        {
+            "title": "必看项目",
+            "items": [
+                {
+                    "title": "owner/repo",
+                    "url": "https://github.com/owner/repo",
+                    "summary": "中文摘要",
+                }
+            ],
+        }
+    ]
+
+    cards = build_cards(title="GitHub 每日雷达", sections=sections, metadata={"count": 1}, max_lines=20)
+
+    assert len(cards) == 1
+    elements = [element["content"] for element in cards[0]["card"]["elements"]]
+    assert all("运行信息" not in content for content in elements)

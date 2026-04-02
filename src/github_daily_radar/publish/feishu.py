@@ -48,8 +48,6 @@ def build_cards(*, title: str, sections: list[dict], metadata: dict | None = Non
     cards: list[dict] = []
     for chunk_index, chunk in enumerate(chunks, start=1):
         elements = [{"tag": "markdown", "content": line} for line in chunk]
-        if metadata and chunk_index == 1:
-            elements.append({"tag": "markdown", "content": f"`运行信息`：{metadata}"})
         cards.append(
             {
                 "msg_type": "interactive",
@@ -78,8 +76,6 @@ def build_digest_cards(
         chunks = _chunk_blocks(blocks, max_blocks=max_lines)
         for chunk_index, chunk in enumerate(chunks, start=1):
             elements = [{"tag": "markdown", "content": line} for line in chunk]
-            if metadata and bundle_index == 0 and chunk_index == 1:
-                elements.append({"tag": "markdown", "content": f"`运行信息`：{metadata}"})
             cards.append(
                 {
                     "msg_type": "interactive",
@@ -100,8 +96,6 @@ def build_digest_cards(
 
 def build_alert_cards(*, title: str, message: str, metadata: dict | None = None) -> list[dict]:
     elements = [{"tag": "markdown", "content": message}]
-    if metadata:
-        elements.append({"tag": "markdown", "content": f"`运行信息`：{metadata}"})
     return [
         {
             "msg_type": "interactive",
