@@ -185,6 +185,8 @@ def run_pipeline(settings: Settings, alert_only: bool = False) -> dict:
     metadata["api_usage"] = api_usage
     metadata["collector_stats"] = collector_stats
     display_items = build_display_items(filtered, editorial)
+    if settings.report_limit > 0:
+        display_items = display_items[: settings.report_limit]
     a_items, b_items = split_a_b(display_items, a_max=10, b_max=10)
     published_items = a_items + b_items
     filtered_kind_counts = Counter(item.kind for item in filtered)

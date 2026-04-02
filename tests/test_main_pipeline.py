@@ -250,3 +250,36 @@ def test_run_pipeline_uses_editorial_summaries_and_continues_on_collector_failur
     assert history["run_summaries"][0]["collector_stats"]["ossinsight"]["count"] == 1
     assert history["run_summaries"][0]["collector_stats"]["repos"]["count"] == 1
     assert history["run_summaries"][0]["collector_stats"]["skills"]["error"] == "boom"
+
+
+def test_run_pipeline_respects_report_limit(monkeypatch, tmp_path: Path):
+    monkeypatch.chdir(tmp_path)
+    monkeypatch.setenv("GITHUB_TOKEN", "ghs_test")
+    monkeypatch.setenv("QWEN_API_KEY", "qwen_test")
+    monkeypatch.setenv("FEISHU_WEBHOOK_URL", "https://example.com/hook")
+    monkeypatch.setenv("REPORT_LIMIT", "2")
+
+    captured = {}
+
+    def fake_build_cards(*, title, sections, metadata=None, max_lines=20):
+        captured["title"] = title
+        captured["sections"] = sections
+        captured["metadata"] = metadata or {}
+        return [{"msg_type": "interactive", "card": {"header": {"title": {"content": title}}}}]
+
+    monkeypatch.setattr(main_module, "OSSInsightCollector", _GoodOSSInsightCollector)
+    monkeypatch.setattr(main_module, "RepoCollector", _GoodCollector)
+    monkeypatch.setattr(main_module, "SkillCollector", _BadCollector)
+    monkeypatch.setattr(main_module, "DiscussionCollector", _GoodDiscussionCollector)
+    monkeypatch.setattr(main_module, "IssuesPrsCollector", _GoodIssuesCollector)
+    monkeypatch.setattr(main_module, "EditorialLLM", _FakeLLM)
+    monkeypatch.setattr(main_module, "build_cards", fake_build_cards)
+    monkeypatch.setattr(main_module, "send_cards", lambda *args, **kwargs: None)
+
+    settings = Settings.from_env()
+    result = run_pipeline(settings=settings)
+
+    assert result["count"] == 4
+    assert captured["metadata"]["a_count"] + captured["metadata"]["b_count"] == 2
+    history = json.loads(Path("artifacts/state/history.json").read_text(encoding="utf-8"))
+    assert history["run_summaries"][0]["selected_count"] == 2

@@ -18,6 +18,7 @@ class Settings(BaseSettings):
     api_search_budget: int = Field(default=18, alias="API_SEARCH_BUDGET")
     api_graphql_budget: int = Field(default=600, alias="API_GRAPHQL_BUDGET")
     cooldown_days: int = Field(default=14, alias="COOLDOWN_DAYS")
+    report_limit: int = Field(default=0, alias="REPORT_LIMIT")
     daily_schedule_hour_utc: int = Field(default=1, alias="DAILY_SCHEDULE_HOUR_UTC")
 
     @classmethod
