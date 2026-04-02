@@ -13,6 +13,7 @@ def test_settings_defaults(monkeypatch):
     assert settings.dry_run is False
     assert settings.llm_max_candidates == 24
     assert settings.search_requests_per_minute == 25
+    assert settings.code_search_requests_per_minute == 10
     assert settings.daily_schedule_hour_utc == 1
     assert settings.report_limit == 0
 

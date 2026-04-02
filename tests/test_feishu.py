@@ -57,8 +57,11 @@ def test_build_digest_card_single_card_with_sections():
     assert "🔥+300⭐" in all_text
     # 验证真实摘要（不是模板）
     assert "一个很酷的项目" in all_text
-    # 验证底部运维信息
-    assert "📊" in all_text
+    # 验证卡片不再渲染运行信息
+    assert "📊" not in all_text
+    assert "🔍" not in all_text
+    assert "运行信息" not in all_text
+    assert "2026-04-02" in all_text
 
 
 def test_build_digest_card_empty_discussion_omits_section():
@@ -102,6 +105,27 @@ def test_build_digest_card_is_single_card():
     # 返回的是单个 dict，不是 list
     assert isinstance(card, dict)
     assert card["msg_type"] == "interactive"
+
+
+def test_build_digest_card_truncates_without_cutting_middle_of_token():
+    items = [
+        {
+            "kind": "project",
+            "title": "owner/repo",
+            "url": "https://github.com/owner/repo",
+            "summary": "freeandopensource" + ("x" * 74) + "-copy-pasteautomationwithbrowserworkflowsandlongdescriptionsdesignedtooverflowthecardandforceboundaryhandling",
+            "stars": 100,
+            "star_delta_1d": 0,
+            "star_velocity": "",
+        }
+    ]
+
+    card = build_digest_card(items=items, today=date(2026, 4, 2))
+    contents = [el.get("content", "") for el in card["card"]["elements"] if el.get("tag") == "markdown"]
+    all_text = "\n".join(contents)
+
+    assert "copy-pa" not in all_text
+    assert "…" in all_text
 
 
 def test_alert_card_has_red_theme():

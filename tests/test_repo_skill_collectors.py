@@ -117,7 +117,7 @@ def test_skill_collector_collects_candidates():
 
     assert client.calls[0][0] == "code"
     assert client.calls[1][0] == "repo"
-    assert client.calls[2][0] == "graphql"
-    assert len(items) == 2
-    assert {item.repo_full_name for item in items} == {"owner/shared-skill", "owner/seed-skill"}
+    assert len(client.calls) == 2
+    assert len(items) == 1
+    assert {item.repo_full_name for item in items} == {"owner/shared-skill"}
     assert all(item.kind == "skill" for item in items)

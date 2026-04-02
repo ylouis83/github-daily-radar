@@ -14,6 +14,7 @@ class Settings(BaseSettings):
     default_model: str = Field(default="qwen-plus", alias="LLM_MODEL")
     llm_max_candidates: int = Field(default=24, alias="LLM_MAX_CANDIDATES")
     search_requests_per_minute: int = Field(default=25, alias="SEARCH_REQUESTS_PER_MINUTE")
+    code_search_requests_per_minute: int = Field(default=10, alias="CODE_SEARCH_REQUESTS_PER_MINUTE")
     api_total_budget: int = Field(default=50, alias="API_TOTAL_BUDGET")
     api_search_budget: int = Field(default=28, alias="API_SEARCH_BUDGET")
     api_graphql_budget: int = Field(default=600, alias="API_GRAPHQL_BUDGET")

@@ -37,7 +37,8 @@ jobs:
           DRY_RUN: ${{ inputs.dry_run || false }}
           REPORT_LIMIT: ${{ inputs.report_limit || 0 }}
           TIMEZONE: Asia/Shanghai
-          LLM_MODEL: codingplan
+          LLM_MODEL: qwen-plus
+          CODE_SEARCH_REQUESTS_PER_MINUTE: 10
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_PAT: ${{ secrets.GITHUB_PAT }}
           QWEN_API_KEY: ${{ secrets.QWEN_API_KEY }}
@@ -48,7 +49,7 @@ jobs:
         if: failure()
         run: uv run python -m github_daily_radar.main --alert-only
         env:
-          LLM_MODEL: codingplan
+          LLM_MODEL: qwen-plus
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_PAT: ${{ secrets.GITHUB_PAT }}
           QWEN_API_KEY: ${{ secrets.QWEN_API_KEY }}

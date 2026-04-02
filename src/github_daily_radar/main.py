@@ -75,6 +75,7 @@ def run_pipeline(settings: Settings, alert_only: bool = False) -> dict:
             graphql_budget=settings.api_graphql_budget,
         ),
         search_requests_per_minute=settings.search_requests_per_minute,
+        code_search_requests_per_minute=settings.code_search_requests_per_minute,
     )
 
     seed_repos = load_seed_repos()
@@ -94,25 +95,27 @@ def run_pipeline(settings: Settings, alert_only: bool = False) -> dict:
             max_trending_items=load_ossinsight_max_trending_items(),
             max_collection_ids=load_ossinsight_max_collection_ids(),
         )
-    collectors = []
+    repo_queries = build_repo_queries(now=run_started_at, days_back=7)
+    discussion_queries = build_discussion_queries(seed_repos=seed_repos, now=run_started_at, days_back=30)
+    issue_pr_queries = build_issue_pr_queries(seed_repos=seed_repos, now=run_started_at, days_back=30)
+    skill_search_cost = len(skill_code_queries) + len(skill_repo_queries)
+    collector_specs: list[tuple[str, object, int]] = []
     if ossinsight_collector:
-        collectors.append(ossinsight_collector)
-    collectors.extend(
+        collector_specs.append(("ossinsight", ossinsight_collector, 0))
+    collector_specs.extend(
         [
-            RepoCollector(client=client, queries=build_repo_queries(now=run_started_at, days_back=7)),
-            SkillCollector(
-                client=client,
-                code_queries=skill_code_queries,
-                repo_queries=skill_repo_queries,
-                seed_repos=skill_seed_repos,
-            ),
-            DiscussionCollector(
-                client=client,
-                queries=build_discussion_queries(seed_repos=seed_repos, now=run_started_at, days_back=30),
-            ),
-            IssuesPrsCollector(
-                client=client,
-                queries=build_issue_pr_queries(seed_repos=seed_repos, now=run_started_at, days_back=30),
+            ("repos", RepoCollector(client=client, queries=repo_queries), len(repo_queries)),
+            ("discussions", DiscussionCollector(client=client, queries=discussion_queries), len(discussion_queries)),
+            ("issues_prs", IssuesPrsCollector(client=client, queries=issue_pr_queries), len(issue_pr_queries)),
+            (
+                "skills",
+                SkillCollector(
+                    client=client,
+                    code_queries=skill_code_queries,
+                    repo_queries=skill_repo_queries,
+                    seed_repos=skill_seed_repos,
+                ),
+                skill_search_cost,
             ),
         ]
     )
@@ -120,16 +123,30 @@ def run_pipeline(settings: Settings, alert_only: bool = False) -> dict:
     candidates = []
     collector_errors: list[dict[str, str]] = []
     collector_stats: dict[str, dict] = {}
-    for collector in collectors:
+    collector_skips: list[dict[str, str]] = []
+    for collector_name, collector, estimated_search_cost in collector_specs:
+        remaining_search_budget = client._budget.search_budget - client._budget.search_used
+        if estimated_search_cost and remaining_search_budget < estimated_search_cost:
+            collector_stats[collector_name] = {
+                "count": 0,
+                "kinds": {},
+                "skipped": "insufficient search budget",
+            }
+            collector_skips.append(
+                {
+                    "collector": collector_name,
+                    "reason": "insufficient search budget",
+                }
+            )
+            continue
         try:
             collected = collector.collect()
             candidates.extend(collected)
-            collector_stats[getattr(collector, "name", "collector")] = {
+            collector_stats[collector_name] = {
                 "count": len(collected),
                 "kinds": dict(Counter(item.kind for item in collected)),
             }
         except Exception as exc:  # noqa: BLE001 - keep one collector failure from stopping the rest
-            collector_name = getattr(collector, "name", "collector")
             collector_errors.append({"collector": collector_name, "error": str(exc)})
             collector_stats[collector_name] = {"count": 0, "kinds": {}, "error": str(exc)}
 
@@ -181,6 +198,9 @@ def run_pipeline(settings: Settings, alert_only: bool = False) -> dict:
     if collector_errors:
         metadata["collector_errors"] = len(collector_errors)
         metadata["coverage_note"] = "Reduced coverage due to collector failure(s)."
+    if collector_skips:
+        metadata["collector_skips"] = len(collector_skips)
+        metadata["coverage_note"] = "Reduced coverage due to search budget guard."
     api_usage = client._budget.snapshot()
     metadata["api_usage"] = api_usage
     metadata["collector_stats"] = collector_stats

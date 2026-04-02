@@ -1,8 +1,8 @@
 """Feishu interactive card rendering and delivery."""
 from __future__ import annotations
 
-from collections import Counter, defaultdict
 from datetime import date
+from collections import Counter, defaultdict
 
 import httpx
 
@@ -20,6 +20,20 @@ SECTION_ICONS = {
     "skill": "🧩 发现技能",
     "discussion": "💬 提案与讨论",
 }
+
+
+def _truncate_text(text: str, max_len: int = 100) -> str:
+    """Prefer truncating at a visible boundary instead of mid-token."""
+    cleaned = (text or "").strip()
+    if len(cleaned) <= max_len:
+        return cleaned
+
+    cut = cleaned[:max_len].rstrip()
+    boundary_chars = [" ", "·", "。", "，", "、", ".", ",", ";", "；", ":", "：", "-", "/", "_"]
+    boundary = max((cut.rfind(char) for char in boundary_chars), default=-1)
+    if boundary >= max_len // 2:
+        cut = cut[:boundary].rstrip(" -_/.,;:，。")
+    return cut.rstrip() + "…"
 
 
 def _format_star_badge(item: dict) -> str:
@@ -54,11 +68,7 @@ def _render_item(item: dict, index: int) -> str:
     if badge:
         parts.append(badge)
     if summary:
-        # 按单词边界截断
-        s = summary[:100]
-        if len(summary) > 100 and " " in s:
-            s = s.rsplit(" ", 1)[0] + "…"
-        parts.append(s)
+        parts.append(_truncate_text(summary, 100))
     line2 = f"      {' · '.join(parts)}" if parts else ""
 
     return f"{line1}\n{line2}" if line2 else line1
@@ -94,24 +104,11 @@ def _render_overview(items: list[dict]) -> str:
     return f"今日精选 {len(items)} 条：{'  ·  '.join(parts)}"
 
 
-def _render_footer(metadata: dict, today: date | None = None) -> str:
-    """渲染底部运维数据 1 行"""
-    parts = []
-    count = metadata.get("count", 0)
-    a_count = metadata.get("a_count", 0)
-    if count:
-        parts.append(f"📊 {count}候选→{a_count}精选")
-    api = metadata.get("api_usage", {})
-    if api:
-        search = api.get("search_used", 0)
-        gql = api.get("graphql_used", 0)
-        parts.append(f"🔍{search}搜索 + {gql}GraphQL")
-    editorial = metadata.get("editorial", 0)
-    if editorial:
-        parts.append(f"✍️{editorial}条LLM精编")
-    if today:
-        parts.append(f"🕐{today.isoformat()}")
-    return " · ".join(parts)
+def _render_footer(today: date | None = None) -> str:
+    """仅渲染时间戳，避免把运行信息放进卡片。"""
+    if not today:
+        return ""
+    return f"🕐{today.isoformat()}"
 
 
 def build_digest_card(
@@ -152,10 +149,9 @@ def build_digest_card(
             elements.append({"tag": "hr"})
 
     # 底部运维信息
-    elements.append({
-        "tag": "markdown",
-        "content": _render_footer(metadata, today),
-    })
+    footer = _render_footer(today)
+    if footer:
+        elements.append({"tag": "markdown", "content": footer})
 
     return {
         "msg_type": "interactive",
@@ -176,8 +172,6 @@ def build_digest_card(
 def build_alert_cards(*, title: str, message: str, metadata: dict | None = None) -> list[dict]:
     """构建告警卡片"""
     elements = [{"tag": "markdown", "content": f"⚠️ {message}"}]
-    if metadata:
-        elements.append({"tag": "markdown", "content": f"`{metadata}`"})
     return [
         {
             "msg_type": "interactive",

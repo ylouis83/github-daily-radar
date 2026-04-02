@@ -62,6 +62,27 @@ def test_search_code_calls_api():
 
 
 @respx.mock
+def test_search_code_does_not_retry_on_429():
+    route = respx.get("https://api.github.com/search/code").mock(
+        return_value=Response(429, json={"message": "rate limited"})
+    )
+
+    client = GitHubClient(
+        token="ghs_test",
+        budget=BudgetTracker(total_budget=10, search_budget=2, graphql_budget=10),
+        search_requests_per_minute=100,
+        code_search_requests_per_minute=100,
+    )
+
+    try:
+        client.search_code("filename:SKILL.md")
+    except Exception:
+        pass
+
+    assert len(route.calls) == 1
+
+
+@respx.mock
 def test_search_budget_exhausted_raises():
     respx.get("https://api.github.com/search/issues").mock(return_value=Response(200, json={"items": []}))
 
