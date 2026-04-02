@@ -15,10 +15,12 @@ Optional secrets:
 Optional envs:
 - `DRY_RUN` (true/false)
 - `TIMEZONE` (default `Asia/Shanghai`)
-- `LLM_MODEL` (default `codingplan`)
+- `LLM_MODEL` (default `qwen-plus`)
 - `LLM_MAX_CANDIDATES` (default `24`)
 - `SEARCH_REQUESTS_PER_MINUTE` (default `25`)
 - `COOLDOWN_DAYS` (default `14`)
+
+Discovery seeds live in [`seed_repos.yaml`](./seed_repos.yaml) and can be edited to shift the daily radar toward different GitHub ecosystems.
 
 ## How It Runs
 

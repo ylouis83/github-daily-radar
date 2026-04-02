@@ -1,7 +1,10 @@
+import logging
 import json
 from typing import Any
 
 import httpx
+
+logger = logging.getLogger(__name__)
 
 
 class EditorialLLM:
@@ -56,7 +59,7 @@ class EditorialLLM:
                                 "你是 GitHub 日报的主编。只根据给定字段输出中文 JSON。"
                                 "返回一个 JSON 数组，每个元素必须包含: "
                                 "title, url, kind, summary, why_now。"
-                                "可选字段: section, rank。"
+                                "可选字段: follow_up, section, rank。"
                                 "summary 与 why_now 各 1 句话，尽量简短。"
                                 "不要虚构未提供的事实。"
                             ),
@@ -74,7 +77,12 @@ class EditorialLLM:
                 return []
             content = choices[0].get("message", {}).get("content")
             if not content:
+                logger.warning("Editorial LLM returned an empty response for model=%s", self.model)
                 return []
-            return self._extract_json(content)
-        except (httpx.HTTPError, ValueError, TypeError):
+            parsed = self._extract_json(content)
+            if not parsed:
+                logger.warning("Editorial LLM response could not be parsed for model=%s", self.model)
+            return parsed
+        except (httpx.HTTPError, ValueError, TypeError) as exc:
+            logger.warning("Editorial LLM request failed for model=%s: %s", self.model, exc, exc_info=True)
             return []

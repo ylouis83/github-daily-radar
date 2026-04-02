@@ -14,21 +14,27 @@ def _render_item_lines(item: dict) -> list[str]:
     return lines
 
 
+def _render_section_block(section: dict) -> str:
+    lines = [f"**{section['title']}**"]
+    lines.extend(section.get("lines", []))
+    for item in section.get("items", []):
+        lines.extend(_render_item_lines(item))
+    return "\n".join(lines)
+
+
 def _render_sections(sections: list[dict]) -> list[str]:
-    lines: list[str] = []
+    blocks: list[str] = []
     for section in sections:
-        lines.append(f"**{section['title']}**")
-        for item in section.get("items", []):
-            lines.extend(_render_item_lines(item))
-    return lines
+        blocks.append(_render_section_block(section))
+    return blocks
 
 
-def _chunk_lines(lines: list[str], max_lines: int) -> list[list[str]]:
+def _chunk_blocks(blocks: list[str], max_blocks: int) -> list[list[str]]:
     chunks: list[list[str]] = []
     current: list[str] = []
-    for line in lines:
-        current.append(line)
-        if len(current) >= max_lines:
+    for block in blocks:
+        current.append(block)
+        if len(current) >= max_blocks:
             chunks.append(current)
             current = []
     if current:
@@ -37,8 +43,8 @@ def _chunk_lines(lines: list[str], max_lines: int) -> list[list[str]]:
 
 
 def build_cards(*, title: str, sections: list[dict], metadata: dict | None = None, max_lines: int = 20) -> list[dict]:
-    lines = _render_sections(sections)
-    chunks = _chunk_lines(lines, max_lines=max_lines)
+    blocks = _render_sections(sections)
+    chunks = _chunk_blocks(blocks, max_blocks=max_lines)
     cards: list[dict] = []
     for chunk_index, chunk in enumerate(chunks, start=1):
         elements = [{"tag": "markdown", "content": line} for line in chunk]
@@ -68,8 +74,8 @@ def build_digest_cards(
     for bundle_index, bundle in enumerate(bundles):
         label = bundle["label"]
         sections = bundle.get("sections", [])
-        lines = _render_sections(sections)
-        chunks = _chunk_lines(lines, max_lines=max_lines)
+        blocks = _render_sections(sections)
+        chunks = _chunk_blocks(blocks, max_blocks=max_lines)
         for chunk_index, chunk in enumerate(chunks, start=1):
             elements = [{"tag": "markdown", "content": line} for line in chunk]
             if metadata and bundle_index == 0 and chunk_index == 1:

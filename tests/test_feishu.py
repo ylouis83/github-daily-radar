@@ -4,6 +4,13 @@ from github_daily_radar.publish.feishu import build_cards, build_digest_cards
 def test_build_digest_cards_creates_two_bundles_with_chinese_headers():
     sections_a = [
         {
+            "title": "今日概览",
+            "lines": [
+                "本卡共 2 条，覆盖 1 个项目、1 个提案 / 讨论。",
+                "这一卡优先展示今天最值得点开的内容。",
+            ],
+        },
+        {
             "title": "必看项目",
             "items": [
                 {
@@ -45,6 +52,7 @@ def test_build_digest_cards_creates_two_bundles_with_chinese_headers():
     assert "B 保留版" in header_b
     assert "每日雷达" in header_a
     elements = [element["content"] for element in cards[0]["card"]["elements"]]
+    assert any("本卡共 2 条" in content for content in elements)
     assert any("摘要：" in content for content in elements)
     assert any("为什么现在：" in content for content in elements)
 

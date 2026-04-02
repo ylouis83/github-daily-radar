@@ -102,6 +102,7 @@ class _FakeLLM:
         pass
 
     def rank_and_summarize(self, candidates):
+        _FakeLLM.last_candidates = candidates
         return [
             {
                 "kind": "project",
@@ -171,29 +172,39 @@ def test_run_pipeline_uses_editorial_summaries_and_continues_on_collector_failur
 
     captured = {}
 
-    def fake_build_cards(*, title, sections, metadata=None, max_lines=20):
-        captured.setdefault("calls", []).append(
-            {"title": title, "sections": sections, "metadata": metadata or {}}
-        )
-        return [{"msg_type": "interactive", "card": {"header": {"title": {"content": title}}}}]
+    def fake_build_digest_cards(*, title, bundles, metadata=None, max_lines=20):
+        captured["title"] = title
+        captured["bundles"] = bundles
+        captured["metadata"] = metadata or {}
+        return [
+            {
+                "msg_type": "interactive",
+                "card": {"header": {"title": {"content": f"{title} · {bundle['label']}"}}},
+            }
+            for bundle in bundles
+        ]
 
     monkeypatch.setattr(main_module, "RepoCollector", _GoodCollector)
     monkeypatch.setattr(main_module, "SkillCollector", _BadCollector)
     monkeypatch.setattr(main_module, "DiscussionCollector", _GoodDiscussionCollector)
     monkeypatch.setattr(main_module, "IssuesPrsCollector", _GoodIssuesCollector)
     monkeypatch.setattr(main_module, "EditorialLLM", _FakeLLM)
-    monkeypatch.setattr(main_module, "build_cards", fake_build_cards)
+    monkeypatch.setattr(main_module, "build_digest_cards", fake_build_digest_cards)
     monkeypatch.setattr(main_module, "send_cards", lambda *args, **kwargs: None)
 
     settings = Settings.from_env()
     result = run_pipeline(settings=settings)
 
     assert result["count"] == 3
-    titles = [call["title"] for call in captured["calls"]]
-    assert any("A 精编版" in title for title in titles)
-    assert any("B 保留版" in title for title in titles)
-    assert captured["calls"][0]["sections"][0]["items"][0]["summary"] == "中文摘要"
-    assert captured["calls"][0]["metadata"]["collector_errors"] == 1
+    assert _FakeLLM.last_candidates[0]["title"] == "owner/name"
+    assert _FakeLLM.last_candidates[1]["title"] == "Proposal"
+    assert _FakeLLM.last_candidates[2]["title"] == "RFC"
+    assert captured["title"] == "GitHub Daily Radar"
+    labels = [bundle["label"] for bundle in captured["bundles"]]
+    assert labels == ["A 精编版", "B 保留版"]
+    assert captured["bundles"][0]["sections"][0]["title"] == "今日概览"
+    assert captured["bundles"][0]["sections"][1]["items"][0]["summary"] == "中文摘要"
+    assert captured["metadata"] == {}
 
     history = json.loads(Path("artifacts/state/history.json").read_text(encoding="utf-8"))
     assert history["candidate_index"]["repo:owner/name"]["last_seen_metrics"]["stars"] == 10

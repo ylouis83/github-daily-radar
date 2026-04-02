@@ -6,21 +6,17 @@ from math import log1p
 from github_daily_radar.models import Candidate
 
 
-KIND_ORDER = ["project", "skill", "discussion", "issue", "pr", "other"]
+KIND_ORDER = ["project", "skill", "discussion", "other"]
 KIND_LABELS_A = {
     "project": "必看项目",
     "skill": "必看技能",
     "discussion": "必看提案 / 讨论",
-    "issue": "必看提案 / 讨论",
-    "pr": "必看提案 / 讨论",
     "other": "其他",
 }
 KIND_LABELS_B = {
     "project": "项目补充",
     "skill": "技能补充",
     "discussion": "提案 / 讨论补充",
-    "issue": "提案 / 讨论补充",
-    "pr": "提案 / 讨论补充",
     "other": "其他",
 }
 
@@ -40,6 +36,16 @@ def _fallback_summary(candidate: Candidate) -> str:
     return f"信号: ⭐{candidate.metrics.stars}  🍴{candidate.metrics.forks}  💬{candidate.metrics.comments}"
 
 
+def _bucket_for_kind(kind: str) -> str:
+    if kind == "project":
+        return "project"
+    if kind == "skill":
+        return "skill"
+    if kind in {"discussion", "issue", "pr"}:
+        return "discussion"
+    return "other"
+
+
 def build_display_items(candidates: list[Candidate], editorial: list[dict]) -> list[dict]:
     editorial_by_url = {item.get("url"): item for item in editorial if item.get("url")}
     editorial_by_title = {item.get("title"): item for item in editorial if item.get("title")}
@@ -52,6 +58,7 @@ def build_display_items(candidates: list[Candidate], editorial: list[dict]) -> l
             "url": candidate.url,
             "summary": _fallback_summary(candidate),
             "why_now": None,
+            "follow_up": None,
             "editorial_rank": None,
             "section": None,
             "repo_full_name": candidate.repo_full_name,
@@ -64,6 +71,7 @@ def build_display_items(candidates: list[Candidate], editorial: list[dict]) -> l
             item["url"] = editorial_item.get("url", item["url"])
             item["summary"] = editorial_item.get("summary") or item["summary"]
             item["why_now"] = editorial_item.get("why_now")
+            item["follow_up"] = editorial_item.get("follow_up")
             rank = editorial_item.get("rank", editorial_item.get("editorial_rank"))
             if rank is not None:
                 item["editorial_rank"] = rank
@@ -119,6 +127,47 @@ def split_a_b(
     return a_items, b_items
 
 
+def _overview_lines(items: list[dict], *, variant: str, metadata: dict | None = None) -> list[str]:
+    by_bucket = defaultdict(int)
+    for item in items:
+        by_bucket[_bucket_for_kind(item.get("kind", "other"))] += 1
+
+    lines = [
+        f"本卡共 {len(items)} 条，覆盖 {by_bucket['project']} 个项目、{by_bucket['skill']} 个技能、{by_bucket['discussion']} 个提案 / 讨论。",
+        "已按编辑优先级排序，并做了同仓库去重，避免单一仓库刷屏。",
+    ]
+    if metadata:
+        parts: list[str] = []
+        count = metadata.get("count")
+        editorial = metadata.get("editorial")
+        a_count = metadata.get("a_count")
+        b_count = metadata.get("b_count")
+        api_usage = metadata.get("api_usage") or {}
+        if count is not None:
+            parts.append(f"候选 {count} 条")
+        if editorial is not None:
+            parts.append(f"LLM 精编 {editorial} 条")
+        if a_count is not None and b_count is not None:
+            parts.append(f"A {a_count} / B {b_count}")
+        if api_usage:
+            search_used = api_usage.get("search_used")
+            graphql_used = api_usage.get("graphql_used")
+            if search_used is not None or graphql_used is not None:
+                parts.append(f"API 搜索 {search_used} 次 / GraphQL {graphql_used} 点")
+        if parts:
+            lines.append("，".join(parts) + "。")
+    lines.append("这一卡优先展示今天最值得点开的内容。" if variant == "A" else "这部分是补充阅读，适合扫尾，不会把主卡撑乱。")
+    return lines
+
+
+def build_card_sections(items: list[dict], *, variant: str, metadata: dict | None = None) -> list[dict]:
+    kind_labels = KIND_LABELS_A if variant == "A" else KIND_LABELS_B
+    overview_title = "今日概览" if variant == "A" else "更多值得扫一眼"
+    sections: list[dict] = [{"title": overview_title, "lines": _overview_lines(items, variant=variant, metadata=metadata)}]
+    sections.extend(group_digest_items(items, kind_labels=kind_labels))
+    return sections
+
+
 def group_digest_items(
     items: list[dict],
     *,
@@ -129,7 +178,7 @@ def group_digest_items(
     ordered_kinds = ordered_kinds or KIND_ORDER
     grouped: dict[str, list[dict]] = defaultdict(list)
     for item in items:
-        grouped[item.get("kind", "other")].append(item)
+        grouped[_bucket_for_kind(item.get("kind", "other"))].append(item)
 
     def sort_key(item: dict) -> tuple[int, int, float, str]:
         rank = item.get("editorial_rank")
