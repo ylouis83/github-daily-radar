@@ -1,0 +1,218 @@
+# ==========================================
+# GitHub Daily Radar - 前沿 AI 技术追踪矩阵
+# ==========================================
+# 用途: 定义雷达的搜索范围、关注领域、种子仓库
+# 修改后无需改代码，下次运行自动生效
+
+# ------------------------------------------
+# 1. Topics (用于 RepoCollector / SkillCollector)
+#    作用: 在全 GitHub 发现最新爆火的未知项目
+#    注意: GitHub Search API 的 topic: 仅对 /search/repositories 有效
+# ------------------------------------------
+topics:
+  # -- Agent 与自动化 (当前最火赛道) --
+  - agent
+  - ai-agents
+  - agentic-workflow
+  - browser-use             # 浏览器自动化控制
+  - computer-use            # OS 级别控制
+
+  # -- AI 辅助编程 --
+  - ai-coding
+  - coding-assistant
+  - swe-agent
+
+  # -- 互操作协议与工具 --
+  - mcp                     # Model Context Protocol
+  - model-context-protocol
+  - tool-use
+
+  # -- 核心大模型基建 --
+  - llm
+  - vlm                     # 多模态/视觉大模型
+  - llm-inference           # 大模型推理
+
+  # -- 检索增强生成 --
+  - rag
+  - graphrag
+
+  # -- Skills & Prompts 生态 --
+  - cursor-rules            # Cursor rules 生态
+  - ai-prompts              # 高质量 prompt 集散
+
+# ------------------------------------------
+# 2. Seed Orgs (用于 RepoCollector)
+#    作用: 全局扫描顶级 AI 机构的新仓库和架构级动作
+# ------------------------------------------
+seed_orgs:
+  - openai
+  - anthropics
+  - google-deepmind
+  - meta-llama
+  - huggingface
+  - mistralai
+  - vllm-project
+  - langchain-ai
+  - modelcontextprotocol    # MCP 官方组织
+  - QwenLM                  # 阿里通义千问团队
+  - crewAIInc               # CrewAI 多智能体框架
+  - All-Hands-AI            # OpenHands (OpenDevin)
+
+# ------------------------------------------
+# 3. Seed Repos (用于 DiscussionCollector / IssuesPrsCollector)
+#    作用: 只在"富矿区"搜索 RFC / Proposal / Discussion
+#    这是消除噪音的终极武器 — 绝不会搜到游戏设计的提案
+# ------------------------------------------
+seed_repos:
+  # --- [1] 协议规范与工具链 (Protocols) ---
+  - modelcontextprotocol/specification # AI 连接万物标准协议的演进
+  - modelcontextprotocol/servers       # 官方 MCP Server 实现与新工具接入
+
+  # --- [2] AI 编程与软件工程智能体 (AI Coding) ---
+  - anthropics/claude-code             # Claude 官方终端程序员
+  - cline/cline                        # 极火的 VSCode AI 编程插件 (原 Claude Dev)
+  - All-Hands-AI/OpenHands             # 顶级开源全栈 AI 工程师 (原 OpenDevin)
+  - paul-gauthier/aider                # 终端 AI 结对编程标杆
+
+  # --- [3] 智能体框架与编排 (Agent Frameworks) ---
+  - langchain-ai/langgraph             # 工业级复杂流式 Agent 编排设计
+  - pydantic/pydantic-ai               # 基于 Pydantic 的严谨/生产级 Agent 框架
+  - browser-use/browser-use            # 基于视觉的浏览器控制 Agent
+  - openai/openai-agents-python        # OpenAI 官方 Agent SDK
+  - huggingface/smolagents             # HF 极简优雅 Agent 框架
+  - microsoft/autogen                  # 微软经典多智能体协作框架
+
+  # --- [4] 模型推理与底层基建 (Inference & Infra) ---
+  - vllm-project/vllm                  # 工业界标配 LLM 推理引擎 (含金量极高)
+  - sgl-project/sglang                 # 极致加速的结构化生成与推理框架
+  - ggerganov/llama.cpp                # 端侧/CPU 跑大模型的王者
+  - ollama/ollama                      # 本地运行大模型的首选基建
+
+  # --- [5] RAG 与平台架构 (RAG & Platforms) ---
+  - run-llama/llama_index              # RAG 领域标杆
+  - langgenius/dify                    # 最火的开源 LLMOps 与应用编排平台
+  - open-webui/open-webui              # 最强本地大模型 UI，插件生态极度活跃
+
+# ------------------------------------------
+# 4. Skill 发现配置
+#    作用: 三层策略发现全网顶级可复用 AI 能力包
+# ------------------------------------------
+skills:
+
+  # --- 层 1: Skill 富矿仓库 ---
+  # 这些仓库本身就是 skill/rule 的集散地
+  # 监控它们的新 PR / commit / release = 发现新 skill
+  seed_skill_repos:
+    - obra/superpowers                 # 最成熟的 Claude Code skill 框架
+    - PatrickJS/awesome-cursorrules    # Cursor rules 最大社区聚合
+    - pontusab/cursor.directory        # Cursor rules 社区目录
+    - anthropics/anthropic-cookbook     # Anthropic 官方 recipes & patterns
+    - openai/openai-cookbook            # OpenAI 官方 recipes & patterns
+    - punkpeye/awesome-mcp-servers     # MCP Server 最大聚合仓库
+    - f/awesome-chatgpt-prompts        # ChatGPT prompt 经典集合
+    - lobehub/lobe-chat-agents         # LobeChat 插件/Agent 生态
+
+  # --- 层 2: Code Search 特征文件 ---
+  # 直接搜 skill 的"指纹文件"，发现不在任何列表里的新仓库
+  # 每个 query 消耗 1 次 search budget
+  code_search_queries:
+    - "filename:SKILL.md path:skills"                              # superpowers 生态
+    - "filename:.cursorrules OR filename:cursorrules.md"            # Cursor rules 生态
+    - "filename:CLAUDE.md NOT repo:anthropics/claude-code"         # Claude Code 指令
+    - "filename:AGENTS.md NOT repo:openai/openai-agents-python"    # Codex 生态
+
+  # --- 层 3: Repo Search 关键词 ---
+  # 搜新建/近期更新的 skill/rule/prompt 集合类仓库
+  repo_search_queries:
+    - "cursor rules AI in:name,description sort:stars-desc"
+    - "claude skills agent prompt in:name,description sort:stars-desc"
+    - "mcp server tool in:name,description sort:stars-desc"
+
+  # --- Skill 质量信号权重 ---
+  # 用于在候选 skill 之间排序
+  quality_signals:
+    has_examples_dir: 2        # 有 examples/ 目录
+    has_tests_dir: 2           # 有 tests/ 目录
+    has_readme_usage: 1        # README 包含 usage/install 说明
+    has_metadata_file: 1       # 有 package.json / pyproject.toml 等
+    recent_commits_30d: 2      # 30 天内有 commit (活跃维护)
+    star_count_log: 1          # log(stars) 加权
+
+# ------------------------------------------
+# 5. Discussion / Issues / PR 搜索关键词
+#    在 seed_repos 范围内搜索这些关键词
+# ------------------------------------------
+discussion_keywords:
+  - "proposal"
+  - "rfc"
+  - "design"
+  - "roadmap"
+  - "architecture"
+
+issue_pr_keywords:
+  - "proposal"
+  - "rfc"
+  - "design"
+  - "feature request"
+  - "roadmap"
+
+# ------------------------------------------
+# 6. Search Budget 分配
+#    GitHub Search API: 30 次/分钟 (认证用户)
+#    保守预算 18 次/run，留 12 次余量给 retry
+# ------------------------------------------
+budget:
+  total_search: 18
+  allocation:
+    repo_collector: 4          # 4 个 topic 复合 query
+    skill_collector: 6         # 2 code search + 2 repo search + 2 seed 动态
+    discussion_collector: 4    # seed repos 分 4 组合并 query
+    issues_prs_collector: 4    # seed repos 分 4 组合并 query
+  graphql_budget: 600          # GraphQL: 1000 pts/hr，保守用 600
+  search_throttle_rpm: 25      # 每分钟最多 25 次搜索请求
+
+# ------------------------------------------
+# 7. 输出控制
+# ------------------------------------------
+output:
+  # 每日推送条数
+  daily_item_count:
+    projects: 4-7
+    skills: 3-5
+    ideas_discussions: 3-6
+  
+  # LLM 编辑
+  llm_max_candidates: 24       # 最多送 24 个候选给 LLM 精排
+  
+  # 去重
+  cooldown_days: 14            # 14 天冷却窗口
+  
+  # 时区
+  timezone: "Asia/Shanghai"
+
+# ------------------------------------------
+# 8. Query 构建模板
+#    collector 根据这些模板 + topics/seed_repos 动态生成实际 query
+#    {recent_7d} 和 {recent_30d} 在运行时替换为实际日期
+# ------------------------------------------
+query_templates:
+  # RepoCollector: 把 topics 合并成复合 query
+  repo_queries:
+    - "(topic:{topics_group_1}) pushed:>{recent_7d} sort:stars-desc"
+    - "(topic:{topics_group_2}) pushed:>{recent_7d} sort:updated-desc"
+    - "(topic:{topics_group_3}) created:>{recent_7d} sort:stars-desc"
+    - "org:{seed_org} pushed:>{recent_7d} sort:updated-desc"
+
+  # DiscussionCollector: seed repos + 关键词
+  discussion_queries:
+    - "repo:{seed_group_1} {keywords} in:title comments:>=5"
+    - "repo:{seed_group_2} {keywords} in:title comments:>=5"
+    - "repo:{seed_group_3} {keywords} in:title comments:>=3"
+    - "repo:{seed_group_4} {keywords} in:title comments:>=3"
+
+  # IssuesPrsCollector: seed repos + 关键词
+  issues_pr_queries:
+    - "repo:{seed_group_1} {keywords} in:title comments:>=3"
+    - "repo:{seed_group_2} {keywords} in:title comments:>=3"
+    - "repo:{seed_group_3} {keywords} in:title is:open"
+    - "repo:{seed_group_4} {keywords} in:title is:open"

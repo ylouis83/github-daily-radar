@@ -24,7 +24,7 @@ class EditorialLLM:
         with httpx.Client(
             base_url=base_url,
             headers={"Authorization": f"Bearer {self._api_key}"},
-            timeout=60.0,
+            timeout=120.0,
         ) as http_client:
             response = http_client.post(
                 "/chat/completions",

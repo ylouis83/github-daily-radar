@@ -1,6 +1,11 @@
 from github_daily_radar.models import Candidate, CandidateMetrics
 
 
+def candidate_from_code_search(*, item: dict, source_query: str) -> Candidate:
+    repository = item["repository"]
+    return candidate_from_repo_search(item=repository, source_query=source_query)
+
+
 def candidate_from_repo_search(*, item: dict, source_query: str) -> Candidate:
     return Candidate(
         candidate_id=f"repo:{item['full_name']}",
@@ -43,4 +48,32 @@ def candidate_from_issue_search(*, item: dict, source_query: str, kind: str = "i
         raw_signals={"search_item": item},
         rule_scores={},
         dedupe_key=str(item["id"]),
+    )
+
+
+def candidate_from_graphql_repo(*, item: dict, source_query: str) -> Candidate:
+    topics = [node["topic"]["name"] for node in item.get("repositoryTopics", {}).get("nodes", []) if node.get("topic")]
+    latest_release = item.get("releases", {}).get("nodes", [])
+    release = latest_release[0] if latest_release else None
+    return Candidate(
+        candidate_id=f"repo:{item['nameWithOwner']}",
+        kind="skill",
+        source_query=source_query,
+        title=item["nameWithOwner"],
+        url=item["url"],
+        repo_full_name=item["nameWithOwner"],
+        author=item.get("owner", {}).get("login", ""),
+        created_at=item["createdAt"],
+        updated_at=item["updatedAt"],
+        body_excerpt=item.get("description") or "",
+        topics=topics,
+        labels=[],
+        metrics=CandidateMetrics(
+            stars=item.get("stargazerCount", 0),
+            forks=item.get("forkCount", 0),
+            has_new_release=bool(release),
+        ),
+        raw_signals={"graphql_item": item, "latest_release": release},
+        rule_scores={},
+        dedupe_key=item["nameWithOwner"],
     )

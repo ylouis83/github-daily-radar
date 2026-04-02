@@ -8,8 +8,10 @@ from github_daily_radar.discovery import (
     build_discussion_queries,
     build_issue_pr_queries,
     build_repo_queries,
-    build_skill_queries,
+    build_skill_code_queries,
+    build_skill_repo_queries,
     load_seed_repos,
+    load_skill_seed_repos,
 )
 from github_daily_radar.collectors.discussions import DiscussionCollector
 from github_daily_radar.collectors.issues_prs import IssuesPrsCollector
@@ -70,9 +72,15 @@ def run_pipeline(settings: Settings, alert_only: bool = False) -> dict:
     )
 
     seed_repos = load_seed_repos()
+    skill_seed_repos = load_skill_seed_repos()
     collectors = [
-        RepoCollector(client=client, queries=build_repo_queries()),
-        SkillCollector(client=client, queries=build_skill_queries()),
+        RepoCollector(client=client, queries=build_repo_queries(days_back=7)),
+        SkillCollector(
+            client=client,
+            code_queries=build_skill_code_queries(),
+            repo_queries=build_skill_repo_queries(days_back=30),
+            seed_repos=skill_seed_repos,
+        ),
         DiscussionCollector(client=client, queries=build_discussion_queries(seed_repos=seed_repos)),
         IssuesPrsCollector(client=client, queries=build_issue_pr_queries(seed_repos=seed_repos)),
     ]

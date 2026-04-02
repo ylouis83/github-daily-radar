@@ -6,7 +6,14 @@ from github_daily_radar.discovery import (
     build_issue_pr_queries,
     build_repo_queries,
     build_skill_queries,
+    load_issue_pr_keywords,
+    load_radar_config,
+    load_seed_orgs,
     load_seed_repos,
+    load_skill_code_queries,
+    load_skill_repo_queries,
+    load_skill_seed_repos,
+    load_topics,
     recent_date,
 )
 
@@ -32,6 +39,38 @@ def test_load_seed_repos_reads_yaml(tmp_path: Path):
     path.write_text("seed_repos:\n  - a/b\n  - c/d\n", encoding="utf-8")
 
     assert load_seed_repos(path) == ["a/b", "c/d"]
+
+
+def test_load_skill_matrix_reads_yaml(tmp_path: Path):
+    path = tmp_path / "seed_repos.yaml"
+    path.write_text(
+        """
+topics:
+  - agent
+seed_orgs:
+  - openai
+skills:
+  seed_skill_repos:
+    - obra/superpowers
+  code_search_queries:
+    - filename:SKILL.md
+  repo_search_queries:
+    - cursor rules AI in:name,description
+discussion_keywords:
+  - proposal
+issue_pr_keywords:
+  - roadmap
+""".strip(),
+        encoding="utf-8",
+    )
+
+    assert load_topics(path) == ["agent"]
+    assert load_seed_orgs(path) == ["openai"]
+    assert load_skill_seed_repos(path) == ["obra/superpowers"]
+    assert load_skill_code_queries(path) == ["filename:SKILL.md"]
+    assert load_skill_repo_queries(path) == ["cursor rules AI in:name,description"]
+    assert load_issue_pr_keywords(path) == ["roadmap"]
+    assert load_radar_config(path)["topics"] == ["agent"]
 
 
 def test_seed_repo_queries_are_chunked_and_scoped():

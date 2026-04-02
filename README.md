@@ -20,7 +20,7 @@ Optional envs:
 - `SEARCH_REQUESTS_PER_MINUTE` (default `25`)
 - `COOLDOWN_DAYS` (default `14`)
 
-Discovery seeds live in [`seed_repos.yaml`](./seed_repos.yaml) and can be edited to shift the daily radar toward different GitHub ecosystems.
+Discovery matrix lives in [`config/radar.yaml`](./config/radar.yaml) and can be edited to shift the daily radar toward different GitHub ecosystems. The older [`seed_repos.yaml`](./seed_repos.yaml) remains as a fallback.
 
 ## How It Runs
 

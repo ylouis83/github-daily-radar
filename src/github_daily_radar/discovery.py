@@ -6,6 +6,61 @@ from typing import Iterable
 
 import yaml
 
+DEFAULT_TOPICS = [
+    "agent",
+    "ai-agents",
+    "agentic-workflow",
+    "browser-use",
+    "computer-use",
+    "ai-coding",
+    "coding-assistant",
+    "swe-agent",
+    "mcp",
+    "model-context-protocol",
+    "tool-use",
+    "llm",
+    "vlm",
+    "llm-inference",
+    "rag",
+    "graphrag",
+    "cursor-rules",
+    "ai-prompts",
+]
+DEFAULT_SEED_ORGS = [
+    "openai",
+    "anthropics",
+    "google-deepmind",
+    "meta-llama",
+    "huggingface",
+    "mistralai",
+    "vllm-project",
+    "langchain-ai",
+    "modelcontextprotocol",
+    "QwenLM",
+    "crewAIInc",
+    "All-Hands-AI",
+]
+DEFAULT_SKILL_SEED_REPOS = [
+    "obra/superpowers",
+    "PatrickJS/awesome-cursorrules",
+    "pontusab/cursor.directory",
+    "anthropics/anthropic-cookbook",
+    "openai/openai-cookbook",
+    "punkpeye/awesome-mcp-servers",
+    "f/awesome-chatgpt-prompts",
+    "lobehub/lobe-chat-agents",
+]
+DEFAULT_SKILL_CODE_QUERIES = [
+    "filename:SKILL.md path:skills",
+    "filename:.cursorrules OR filename:cursorrules.md",
+    "filename:CLAUDE.md NOT repo:anthropics/claude-code",
+    "filename:AGENTS.md NOT repo:openai/openai-agents-python",
+]
+DEFAULT_SKILL_REPO_QUERIES = [
+    "cursor rules AI in:name,description",
+    "claude skills agent prompt in:name,description",
+    "mcp server tool in:name,description",
+]
 DEFAULT_DISCUSSION_KEYWORDS = ["proposal", "rfc", "idea", "design"]
 DEFAULT_ISSUE_KEYWORDS = ["proposal", "roadmap", "design"]
 
@@ -29,14 +84,76 @@ def _repo_root() -> Path:
     return Path(__file__).resolve().parents[2]
 
 
+def _config_paths(path: Path | None = None) -> list[Path]:
+    if path is not None:
+        return [path]
+    return [
+        _repo_root() / "config" / "radar.yaml",
+        _repo_root() / "seed_repos.yaml",
+    ]
+
+
+def load_radar_config(path: Path | None = None) -> dict:
+    for config_path in _config_paths(path):
+        if not config_path.exists():
+            continue
+        raw = yaml.safe_load(config_path.read_text(encoding="utf-8")) or {}
+        return raw if isinstance(raw, dict) else {}
+    return {}
+
+
 def load_seed_repos(path: Path | None = None) -> list[str]:
-    config_path = path or _repo_root() / "seed_repos.yaml"
-    if not config_path.exists():
+    raw = load_radar_config(path)
+    if not raw:
         return list(_DEFAULT_SEED_REPOS)
 
-    raw = yaml.safe_load(config_path.read_text(encoding="utf-8")) or {}
     seed_repos = raw.get("seed_repos") or _DEFAULT_SEED_REPOS
     return [repo for repo in seed_repos if isinstance(repo, str) and repo.strip()]
+
+
+def load_topics(path: Path | None = None) -> list[str]:
+    raw = load_radar_config(path)
+    topics = raw.get("topics") or DEFAULT_TOPICS
+    return [topic for topic in topics if isinstance(topic, str) and topic.strip()]
+
+
+def load_seed_orgs(path: Path | None = None) -> list[str]:
+    raw = load_radar_config(path)
+    seed_orgs = raw.get("seed_orgs") or DEFAULT_SEED_ORGS
+    return [org for org in seed_orgs if isinstance(org, str) and org.strip()]
+
+
+def load_skill_seed_repos(path: Path | None = None) -> list[str]:
+    raw = load_radar_config(path)
+    skill_section = raw.get("skills") if isinstance(raw.get("skills"), dict) else {}
+    seed_skill_repos = skill_section.get("seed_skill_repos") or DEFAULT_SKILL_SEED_REPOS
+    return [repo for repo in seed_skill_repos if isinstance(repo, str) and repo.strip()]
+
+
+def load_skill_code_queries(path: Path | None = None) -> list[str]:
+    raw = load_radar_config(path)
+    skill_section = raw.get("skills") if isinstance(raw.get("skills"), dict) else {}
+    code_queries = skill_section.get("code_search_queries") or DEFAULT_SKILL_CODE_QUERIES
+    return [query for query in code_queries if isinstance(query, str) and query.strip()]
+
+
+def load_skill_repo_queries(path: Path | None = None) -> list[str]:
+    raw = load_radar_config(path)
+    skill_section = raw.get("skills") if isinstance(raw.get("skills"), dict) else {}
+    repo_queries = skill_section.get("repo_search_queries") or DEFAULT_SKILL_REPO_QUERIES
+    return [query for query in repo_queries if isinstance(query, str) and query.strip()]
+
+
+def load_discussion_keywords(path: Path | None = None) -> list[str]:
+    raw = load_radar_config(path)
+    keywords = raw.get("discussion_keywords") or DEFAULT_DISCUSSION_KEYWORDS
+    return [keyword for keyword in keywords if isinstance(keyword, str) and keyword.strip()]
+
+
+def load_issue_pr_keywords(path: Path | None = None) -> list[str]:
+    raw = load_radar_config(path)
+    keywords = raw.get("issue_pr_keywords") or DEFAULT_ISSUE_KEYWORDS
+    return [keyword for keyword in keywords if isinstance(keyword, str) and keyword.strip()]
 
 
 def recent_date(*, days: int, now: datetime | None = None) -> str:
@@ -58,10 +175,17 @@ def _date_clause(*, field: str, days_back: int | None, now: datetime | None = No
 
 def build_repo_queries(*, now: datetime | None = None, days_back: int | None = None) -> list[str]:
     date_clause = _date_clause(field="pushed", days_back=days_back, now=now)
-    return [
-        f"(agent OR workflow OR automation OR mcp OR browser-use) in:name,description,readme{date_clause}",
-        f"(llm OR devtools OR browser-use OR agentic) in:name,description,readme{date_clause}",
-    ]
+    topics = load_topics()
+    seed_orgs = load_seed_orgs()
+    topic_groups = list(_chunked(topics, max(1, len(topics) // 3 or 1)))
+    queries = []
+    for group in topic_groups[:3]:
+        topic_clause = " OR ".join(f"topic:{topic}" for topic in group)
+        queries.append(f"({topic_clause}){date_clause}")
+    if seed_orgs:
+        org_clause = " OR ".join(f"org:{org}" for org in seed_orgs)
+        queries.append(f"({org_clause}){date_clause}")
+    return queries
 
 
 def build_skill_queries(*, now: datetime | None = None, days_back: int | None = None) -> list[str]:
@@ -69,6 +193,15 @@ def build_skill_queries(*, now: datetime | None = None, days_back: int | None = 
     return [
         f"(skill OR prompt OR workflow OR agent OR automation) in:name,description,readme{date_clause}",
     ]
+
+
+def build_skill_code_queries() -> list[str]:
+    return load_skill_code_queries()
+
+
+def build_skill_repo_queries(*, now: datetime | None = None, days_back: int | None = None) -> list[str]:
+    date_clause = _date_clause(field="pushed", days_back=days_back, now=now)
+    return [f"{query}{date_clause}".strip() for query in load_skill_repo_queries()]
 
 
 def _repo_clause(repos: list[str]) -> str:
@@ -84,7 +217,7 @@ def build_discussion_queries(
 ) -> list[str]:
     repos = seed_repos or load_seed_repos()
     date_clause = _date_clause(field="updated", days_back=days_back, now=now)
-    keyword_clause = " OR ".join(DEFAULT_DISCUSSION_KEYWORDS)
+    keyword_clause = " OR ".join(load_discussion_keywords())
     queries: list[str] = []
     for chunk in _chunked(repos, chunk_size):
         queries.append(
@@ -103,7 +236,7 @@ def build_issue_pr_queries(
 ) -> list[str]:
     repos = seed_repos or load_seed_repos()
     date_clause = _date_clause(field="updated", days_back=days_back, now=now)
-    keyword_clause = " OR ".join(DEFAULT_ISSUE_KEYWORDS)
+    keyword_clause = " OR ".join(load_issue_pr_keywords())
     queries: list[str] = []
     for chunk in _chunked(repos, chunk_size):
         queries.append(

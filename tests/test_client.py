@@ -23,6 +23,45 @@ def test_search_repositories_calls_api():
 
 
 @respx.mock
+def test_search_code_calls_api():
+    route = respx.get("https://api.github.com/search/code").mock(
+        return_value=Response(
+            200,
+            json={
+                "items": [
+                    {
+                        "name": "SKILL.md",
+                        "path": "skills/SKILL.md",
+                        "repository": {
+                            "full_name": "owner/skill-pack",
+                            "html_url": "https://github.com/owner/skill-pack",
+                            "owner": {"login": "owner"},
+                            "created_at": "2026-04-01T00:00:00Z",
+                            "updated_at": "2026-04-02T00:00:00Z",
+                            "description": "skill pack",
+                            "topics": ["agent"],
+                            "stargazers_count": 10,
+                            "forks_count": 1,
+                        },
+                    }
+                ]
+            },
+        )
+    )
+
+    client = GitHubClient(
+        token="ghs_test",
+        budget=BudgetTracker(total_budget=10, search_budget=2, graphql_budget=10),
+        search_requests_per_minute=100,
+    )
+
+    payload = client.search_code("filename:SKILL.md")
+
+    assert route.called is True
+    assert payload["items"][0]["repository"]["full_name"] == "owner/skill-pack"
+
+
+@respx.mock
 def test_search_budget_exhausted_raises():
     respx.get("https://api.github.com/search/issues").mock(return_value=Response(200, json={"items": []}))
 

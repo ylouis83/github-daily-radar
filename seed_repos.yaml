@@ -1,3 +1,37 @@
+topics:
+  - agent
+  - ai-agents
+  - agentic-workflow
+  - browser-use
+  - computer-use
+  - ai-coding
+  - coding-assistant
+  - swe-agent
+  - mcp
+  - model-context-protocol
+  - tool-use
+  - llm
+  - vlm
+  - llm-inference
+  - rag
+  - graphrag
+  - cursor-rules
+  - ai-prompts
+
+seed_orgs:
+  - openai
+  - anthropics
+  - google-deepmind
+  - meta-llama
+  - huggingface
+  - mistralai
+  - vllm-project
+  - langchain-ai
+  - modelcontextprotocol
+  - QwenLM
+  - crewAIInc
+  - All-Hands-AI
+
 seed_repos:
   - langchain-ai/langchain
   - microsoft/autogen
@@ -11,3 +45,56 @@ seed_repos:
   - lobehub/lobe-chat
   - pydantic/pydantic-ai
   - obra/superpowers
+
+skills:
+  seed_skill_repos:
+    - obra/superpowers
+    - PatrickJS/awesome-cursorrules
+    - pontusab/cursor.directory
+    - anthropics/anthropic-cookbook
+    - openai/openai-cookbook
+    - modelcontextprotocol/servers
+    - punkpeye/awesome-mcp-servers
+    - f/awesome-chatgpt-prompts
+    - ai-boost/awesome-prompts
+    - langchain-ai/langgraph/examples
+    - crewAIInc/crewAI-examples
+    - lobehub/lobe-chat-agents
+  code_search_queries:
+    - "filename:SKILL.md path:skills"
+    - "filename:.cursorrules OR filename:cursorrules.md"
+    - "filename:CLAUDE.md NOT repo:anthropics/claude-code"
+    - "filename:AGENTS.md NOT repo:openai/openai-agents-python"
+    - "filename:copilot-instructions.md"
+  repo_search_queries:
+    - "cursor rules AI in:name,description"
+    - "claude skills agent prompt in:name,description"
+    - "mcp server tool in:name,description"
+
+discussion_keywords:
+  - proposal
+  - rfc
+  - design
+  - roadmap
+  - architecture
+
+issue_pr_keywords:
+  - proposal
+  - rfc
+  - design
+  - feature request
+  - roadmap
+
+budget:
+  total_search: 18
+  graphql_budget: 600
+  search_throttle_rpm: 25
+
+output:
+  daily_item_count:
+    projects: 4-7
+    skills: 3-5
+    ideas_discussions: 3-6
+  llm_max_candidates: 24
+  cooldown_days: 14
+  timezone: Asia/Shanghai
