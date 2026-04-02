@@ -30,30 +30,30 @@
           },
           {
             "tag": "markdown",
-            "content": "**🧩 发现技能**\n\n**1.** [f/prompts.chat](https://github.com/f/prompts.chat)\n      ⭐156K · f.k.a. Awesome ChatGPT Prompts. Share, discover, and collect prompts from the community.…\n\n**2.** [obra/superpowers](https://github.com/obra/superpowers)\n      ⭐131K · An agentic skills framework & software development methodology that works.\n\n**3.** [openai/openai-cookbook](https://github.com/openai/openai-cookbook)\n      ⭐72K · Examples and guides for using the OpenAI API\n\n**4.** [punkpeye/awesome-mcp-servers](https://github.com/punkpeye/awesome-mcp-servers)\n      ⭐84K · A collection of MCP servers.\n\n**5.** [anthropics/claude-cookbooks](https://github.com/anthropics/claude-cookbooks)\n      ⭐37K · A collection of notebooks/recipes showcasing some fun and effective ways of using Claude.\n"
+            "content": "**🧩 发现技能**\n\n**1.** [yfmeii/weapp-dev-mcp](https://github.com/yfmeii/weapp-dev-mcp)\n      ⭐91 · FastMCP server for automating WeChat Mini Program developer tooling\n\n**2.** [travisjneuman/.claude](https://github.com/travisjneuman/.claude)\n      ⭐32 · The Ultimate Claude Code Toolkit — 119 skills, 67 agents,…\n\n**3.** [initMAX/zabbix-mcp-server](https://github.com/initMAX/zabbix-mcp-server)\n      ⭐33 · MCP server for the complete Zabbix API — 220 tools, multi-server support, bearer auth,…\n\n**4.** [kochetkov-ma/claude-brewcode](https://github.com/kochetkov-ma/claude-brewcode)\n      ⭐16 · Brewcode - full-featured development platform for Claude Code: infinite focus tasks with automatic…\n\n**5.** [AlleyBo55/gocode](https://github.com/AlleyBo55/gocode)\n      ⭐2 · Claude Code rewritten in Go..             High-performance AI agent harness runtime in Go.…\n"
           },
           {
             "tag": "hr"
           },
           {
             "tag": "markdown",
-            "content": "📊 58候选→10精选 · 🔍20搜索 + 11GraphQL · 🕐2026-04-02"
+            "content": "🕐2026-04-02"
           }
         ]
       }
     }
   ],
-  "count": 58,
+  "count": 48,
   "selected_count": 20,
   "summary": {
-    "count": 58,
+    "count": 48,
     "editorial": 0,
     "api_usage": {
       "total_budget": 50,
       "search_budget": 28,
       "graphql_budget": 600,
-      "search_used": 20,
-      "graphql_used": 11
+      "search_used": 16,
+      "graphql_used": 0
     },
     "collector_stats": {
       "ossinsight": {
@@ -66,12 +66,6 @@
         "count": 0,
         "kinds": {}
       },
-      "skills": {
-        "count": 50,
-        "kinds": {
-          "skill": 50
-        }
-      },
       "discussions": {
         "count": 0,
         "kinds": {}
@@ -79,13 +73,19 @@
       "issues_prs": {
         "count": 0,
         "kinds": {}
+      },
+      "skills": {
+        "count": 40,
+        "kinds": {
+          "skill": 40
+        }
       }
     },
     "a_count": 10,
     "b_count": 10,
     "filtered_kind_counts": {
       "project": 8,
-      "skill": 50
+      "skill": 40
     },
     "published_kind_counts": {
       "project": 8,
