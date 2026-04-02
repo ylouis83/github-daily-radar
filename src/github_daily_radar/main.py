@@ -76,7 +76,7 @@ def run_pipeline(settings: Settings, alert_only: bool = False) -> dict:
     seed_repos = load_seed_repos()
     skill_seed_repos = load_skill_seed_repos()
     collectors = [
-        RepoCollector(client=client, queries=build_repo_queries(now=run_started_at, days_back=7)),
+        RepoCollector(client=client, queries=build_repo_queries(now=run_started_at, days_back=30)),
         SkillCollector(
             client=client,
             code_queries=build_skill_code_queries(),
@@ -85,11 +85,11 @@ def run_pipeline(settings: Settings, alert_only: bool = False) -> dict:
         ),
         DiscussionCollector(
             client=client,
-            queries=build_discussion_queries(seed_repos=seed_repos, now=run_started_at, days_back=14),
+            queries=build_discussion_queries(seed_repos=seed_repos, now=run_started_at, days_back=30),
         ),
         IssuesPrsCollector(
             client=client,
-            queries=build_issue_pr_queries(seed_repos=seed_repos, now=run_started_at, days_back=14),
+            queries=build_issue_pr_queries(seed_repos=seed_repos, now=run_started_at, days_back=30),
         ),
     ]
 
