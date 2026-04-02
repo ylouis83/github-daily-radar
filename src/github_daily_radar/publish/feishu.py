@@ -49,21 +49,25 @@ def _render_item(item: dict, index: int) -> str:
     # 第 1 行: 序号 + 可点击链接
     line1 = f"**{index}.** [{title}]({url})" if url else f"**{index}.** {title}"
 
-    # 第 2 行: 星标 + 摘要
+    # 第 2 行: 星标 + 摘要 (按单词截断)
     parts = []
     if badge:
         parts.append(badge)
     if summary:
-        parts.append(summary[:100])
+        # 按单词边界截断
+        s = summary[:100]
+        if len(summary) > 100 and " " in s:
+            s = s.rsplit(" ", 1)[0] + "…"
+        parts.append(s)
     line2 = f"      {' · '.join(parts)}" if parts else ""
 
     return f"{line1}\n{line2}" if line2 else line1
 
 
-def _render_section(section_title: str, items: list[dict]) -> str:
-    """渲染一个完整分区"""
+def _render_section(section_title: str, items: list[dict]) -> str | None:
+    """渲染一个完整分区，空分区返回 None"""
     if not items:
-        return f"{section_title}\n\n*(今日暂无)*"
+        return None
 
     lines = [section_title, ""]
     for i, item in enumerate(items, 1):
@@ -90,7 +94,7 @@ def _render_overview(items: list[dict]) -> str:
     return f"今日精选 {len(items)} 条：{'  ·  '.join(parts)}"
 
 
-def _render_footer(metadata: dict) -> str:
+def _render_footer(metadata: dict, today: date | None = None) -> str:
     """渲染底部运维数据 1 行"""
     parts = []
     count = metadata.get("count", 0)
@@ -105,6 +109,8 @@ def _render_footer(metadata: dict) -> str:
     editorial = metadata.get("editorial", 0)
     if editorial:
         parts.append(f"✍️{editorial}条LLM精编")
+    if today:
+        parts.append(f"🕐{today.isoformat()}")
     return " · ".join(parts)
 
 
@@ -136,20 +142,19 @@ def build_digest_card(
     })
     elements.append({"tag": "hr"})
 
-    # 各分区
+    # 各分区 — 空分区不渲染
     for kind in ["project", "skill", "discussion"]:
         section_items = grouped.get(kind, [])
         title = SECTION_ICONS.get(kind, kind.title())
         content = _render_section(f"**{title}**", section_items)
-        elements.append({"tag": "markdown", "content": content})
-        if kind != "discussion":
+        if content is not None:
+            elements.append({"tag": "markdown", "content": content})
             elements.append({"tag": "hr"})
 
-    # 底部分隔 + 运维信息
-    elements.append({"tag": "hr"})
+    # 底部运维信息
     elements.append({
         "tag": "markdown",
-        "content": _render_footer(metadata),
+        "content": _render_footer(metadata, today),
     })
 
     return {

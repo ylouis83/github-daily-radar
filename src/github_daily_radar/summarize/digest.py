@@ -7,6 +7,23 @@ from math import log1p
 from github_daily_radar.models import Candidate
 
 
+def _truncate(text: str, max_len: int = 100) -> str:
+    """按单词/标点边界截断，不切半个词。"""
+    if len(text) <= max_len:
+        return text
+    cut = text[:max_len]
+    # 英文按空格截断
+    if " " in cut:
+        cut = cut.rsplit(" ", 1)[0]
+    # 中文按最后一个句号/逗号截断
+    for sep in ("。", "，", "、", ". ", ", "):
+        pos = cut.rfind(sep)
+        if pos > max_len // 2:
+            cut = cut[: pos + len(sep)]
+            break
+    return cut.rstrip() + "…"
+
+
 KIND_ORDER = ["project", "skill", "discussion", "other"]
 KIND_LABELS_A = {
     "project": "必看项目",
@@ -35,7 +52,7 @@ def _fallback_summary(candidate: Candidate) -> str:
     """优先用仓库真实描述，不用模板废话。"""
     desc = (candidate.body_excerpt or "").strip()
     if desc and len(desc) > 10:
-        return desc[:120]
+        return _truncate(desc, 100)
     # 无描述时用指标拼一句
     m = candidate.metrics
     parts = []

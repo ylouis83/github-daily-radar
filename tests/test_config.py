@@ -9,7 +9,7 @@ def test_settings_defaults(monkeypatch):
     settings = Settings.from_env()
 
     assert settings.timezone == "Asia/Shanghai"
-    assert settings.default_model == "codingplan"
+    assert settings.default_model == "qwen-plus"
     assert settings.dry_run is False
     assert settings.llm_max_candidates == 24
     assert settings.search_requests_per_minute == 25

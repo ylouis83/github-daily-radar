@@ -61,7 +61,7 @@ def test_build_digest_card_single_card_with_sections():
     assert "📊" in all_text
 
 
-def test_build_digest_card_empty_discussion_shows_placeholder():
+def test_build_digest_card_empty_discussion_omits_section():
     items = [
         {
             "kind": "project",
@@ -78,7 +78,8 @@ def test_build_digest_card_empty_discussion_shows_placeholder():
 
     contents = [el.get("content", "") for el in card["card"]["elements"] if el.get("tag") == "markdown"]
     all_text = "\n".join(contents)
-    assert "今日暂无" in all_text
+    # 空分区直接不渲染，不显示"提案与讨论"标题
+    assert "提案与讨论" not in all_text
 
 
 def test_build_digest_card_is_single_card():

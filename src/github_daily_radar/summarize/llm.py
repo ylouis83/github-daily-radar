@@ -7,10 +7,9 @@ import httpx
 logger = logging.getLogger(__name__)
 
 DEFAULT_BASE_URLS = [
-    "https://coding.dashscope.aliyuncs.com/v1",
     "https://dashscope.aliyuncs.com/compatible-mode/v1",
     "https://dashscope-intl.aliyuncs.com/compatible-mode/v1",
-    "https://dashscope-us.aliyuncs.com/compatible-mode/v1",
+    "https://coding.dashscope.aliyuncs.com/v1",
 ]
 
 
@@ -100,7 +99,7 @@ class EditorialLLM:
                 return self._post_chat_completions(base_url=base_url, candidates=candidates)
             except httpx.HTTPStatusError as exc:
                 status_code = exc.response.status_code
-                if status_code in {401, 404} and index < len(self._base_urls) - 1:
+                if status_code in {400, 401, 404} and index < len(self._base_urls) - 1:
                     logger.warning(
                         "Editorial LLM endpoint %s returned %s, trying fallback region for model=%s",
                         base_url,

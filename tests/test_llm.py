@@ -3,21 +3,22 @@ from httpx import Response
 
 from github_daily_radar.summarize.llm import EditorialLLM
 
-CODING_ENDPOINT = "https://coding.dashscope.aliyuncs.com/v1/chat/completions"
+# 新端点顺序: 通用 → 国际 → 编码
 COMPAT_ENDPOINT = "https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions"
 INTL_ENDPOINT = "https://dashscope-intl.aliyuncs.com/compatible-mode/v1/chat/completions"
+CODING_ENDPOINT = "https://coding.dashscope.aliyuncs.com/v1/chat/completions"
 
 
 @respx.mock
 def test_editorial_llm_posts_chat_request():
-    route = respx.post(CODING_ENDPOINT).mock(
+    route = respx.post(COMPAT_ENDPOINT).mock(
         return_value=Response(
             200,
             json={"choices": [{"message": {"content": "[]"}}]},
         )
     )
 
-    client = EditorialLLM(api_key="qwen_test", model="codingplan")
+    client = EditorialLLM(api_key="qwen_test", model="qwen-plus")
     result = client.rank_and_summarize([{"title": "Repo A", "kind": "project", "url": "https://github.com/a/b"}])
 
     assert route.called is True
@@ -26,7 +27,7 @@ def test_editorial_llm_posts_chat_request():
 
 @respx.mock
 def test_editorial_llm_parses_json_payload():
-    route = respx.post(CODING_ENDPOINT).mock(
+    route = respx.post(COMPAT_ENDPOINT).mock(
         return_value=Response(
             200,
             json={
@@ -41,7 +42,7 @@ def test_editorial_llm_parses_json_payload():
         )
     )
 
-    client = EditorialLLM(api_key="qwen_test", model="codingplan")
+    client = EditorialLLM(api_key="qwen_test", model="qwen-plus")
     result = client.rank_and_summarize([{"title": "Repo A", "kind": "project", "url": "https://github.com/a/b"}])
 
     assert route.called is True
@@ -58,7 +59,7 @@ def test_editorial_llm_parses_json_payload():
 
 @respx.mock
 def test_editorial_llm_extracts_json_from_wrapped_text():
-    respx.post(CODING_ENDPOINT).mock(
+    respx.post(COMPAT_ENDPOINT).mock(
         return_value=Response(
             200,
             json={
@@ -73,7 +74,7 @@ def test_editorial_llm_extracts_json_from_wrapped_text():
         )
     )
 
-    client = EditorialLLM(api_key="qwen_test", model="codingplan")
+    client = EditorialLLM(api_key="qwen_test", model="qwen-plus")
     result = client.rank_and_summarize([{"title": "Repo A", "kind": "project", "url": "https://github.com/a/b"}])
 
     assert result == [
@@ -89,11 +90,11 @@ def test_editorial_llm_extracts_json_from_wrapped_text():
 
 @respx.mock
 def test_editorial_llm_falls_back_on_error():
-    respx.post(CODING_ENDPOINT).mock(
+    respx.post(COMPAT_ENDPOINT).mock(
         return_value=Response(500, json={"error": "boom"})
     )
 
-    client = EditorialLLM(api_key="qwen_test", model="codingplan")
+    client = EditorialLLM(api_key="qwen_test", model="qwen-plus")
     result = client.rank_and_summarize([{"title": "Repo A", "kind": "project", "url": "https://github.com/a/b"}])
 
     assert result == []
@@ -101,9 +102,6 @@ def test_editorial_llm_falls_back_on_error():
 
 @respx.mock
 def test_editorial_llm_falls_back_to_intl_region():
-    respx.post(CODING_ENDPOINT).mock(
-        return_value=Response(401, json={"error": "unauthorized"})
-    )
     respx.post(COMPAT_ENDPOINT).mock(
         return_value=Response(401, json={"error": "unauthorized"})
     )
@@ -122,7 +120,7 @@ def test_editorial_llm_falls_back_to_intl_region():
         )
     )
 
-    client = EditorialLLM(api_key="qwen_test", model="qwen3.5-plus")
+    client = EditorialLLM(api_key="qwen_test", model="qwen-plus")
     result = client.rank_and_summarize([{"title": "Repo A", "kind": "project", "url": "https://github.com/a/b"}])
 
     assert intl_route.called is True
