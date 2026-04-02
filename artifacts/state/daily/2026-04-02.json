@@ -15,7 +15,7 @@
         "elements": [
           {
             "tag": "markdown",
-            "content": "**A 精编版 · 今日概览**\n本卡共 2 条，覆盖 2 个项目、0 个技能、0 个提案 / 讨论。\n已按编辑优先级排序，并做了同仓库去重，避免单一仓库刷屏。\n候选 58 条，LLM 精编 0 条，A 2 / B 0，API 搜索 18 次 / GraphQL 11 点。\n这一卡优先展示今天最值得点开的内容。"
+            "content": "**A 精编版 · 今日概览**\n本卡共 2 条，覆盖 2 个项目、0 个技能、0 个提案 / 讨论。\n已按编辑优先级排序，并做了同仓库去重，避免单一仓库刷屏。\n候选 78 条，LLM 精编 0 条，A 2 / B 0，API 搜索 18 次 / GraphQL 11 点。\n这一卡优先展示今天最值得点开的内容。"
           },
           {
             "tag": "markdown",
@@ -23,20 +23,20 @@
           },
           {
             "tag": "markdown",
-            "content": "**B 保留版 · 更多值得扫一眼**\n本卡共 0 条，覆盖 0 个项目、0 个技能、0 个提案 / 讨论。\n已按编辑优先级排序，并做了同仓库去重，避免单一仓库刷屏。\n候选 58 条，LLM 精编 0 条，A 2 / B 0，API 搜索 18 次 / GraphQL 11 点。\n这部分是补充阅读，适合扫尾，不会把主卡撑乱。"
+            "content": "**B 保留版 · 更多值得扫一眼**\n本卡共 0 条，覆盖 0 个项目、0 个技能、0 个提案 / 讨论。\n已按编辑优先级排序，并做了同仓库去重，避免单一仓库刷屏。\n候选 78 条，LLM 精编 0 条，A 2 / B 0，API 搜索 18 次 / GraphQL 11 点。\n这部分是补充阅读，适合扫尾，不会把主卡撑乱。"
           },
           {
             "tag": "markdown",
-            "content": "`运行信息`：{'count': 58, 'editorial': 0, 'api_usage': {'total_budget': 36, 'search_budget': 18, 'graphql_budget': 600, 'search_used': 18, 'graphql_used': 11}, 'collector_stats': {'ossinsight': {'count': 8, 'kinds': {'project': 8}}, 'repos': {'count': 0, 'kinds': {}}, 'skills': {'count': 50, 'kinds': {'skill': 50}}, 'discussions': {'count': 0, 'kinds': {}}, 'issues_prs': {'count': 0, 'kinds': {}}}, 'a_count': 2, 'b_count': 0, 'filtered_kind_counts': {'project': 8, 'skill': 50}, 'published_kind_counts': {'project': 2}}"
+            "content": "`运行信息`：{'count': 78, 'editorial': 0, 'api_usage': {'total_budget': 36, 'search_budget': 18, 'graphql_budget': 600, 'search_used': 18, 'graphql_used': 11}, 'collector_stats': {'ossinsight': {'count': 8, 'kinds': {'project': 8}}, 'repos': {'count': 0, 'kinds': {}}, 'skills': {'count': 70, 'kinds': {'skill': 70}}, 'discussions': {'count': 0, 'kinds': {}}, 'issues_prs': {'count': 0, 'kinds': {}}}, 'a_count': 2, 'b_count': 0, 'filtered_kind_counts': {'project': 8, 'skill': 70}, 'published_kind_counts': {'project': 2}}"
           }
         ]
       }
     }
   ],
-  "count": 58,
+  "count": 78,
   "selected_count": 2,
   "summary": {
-    "count": 58,
+    "count": 78,
     "editorial": 0,
     "api_usage": {
       "total_budget": 36,
@@ -57,9 +57,9 @@
         "kinds": {}
       },
       "skills": {
-        "count": 50,
+        "count": 70,
         "kinds": {
-          "skill": 50
+          "skill": 70
         }
       },
       "discussions": {
@@ -75,7 +75,7 @@
     "b_count": 0,
     "filtered_kind_counts": {
       "project": 8,
-      "skill": 50
+      "skill": 70
     },
     "published_kind_counts": {
       "project": 2
