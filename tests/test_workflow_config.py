@@ -1,0 +1,15 @@
+from pathlib import Path
+
+
+def test_workflow_contains_dry_run_and_concurrency():
+    workflow = Path(".github/workflows/daily-radar.yml").read_text(encoding="utf-8")
+    assert "dry_run:" in workflow
+    assert "concurrency:" in workflow
+    assert "workflow_dispatch:" in workflow
+    assert "if: failure()" in workflow
+    assert "bash scripts/sync_state_branch.sh" in workflow
+
+
+def test_state_sync_script_uses_worktree():
+    script = Path("scripts/sync_state_branch.sh").read_text(encoding="utf-8")
+    assert "git worktree add" in script
