@@ -50,18 +50,24 @@ def _chunked(values: list[str], size: int) -> Iterable[list[str]]:
         yield values[index : index + size]
 
 
-def build_repo_queries(*, now: datetime | None = None, days_back: int = 365) -> list[str]:
-    cutoff = recent_date(days=days_back, now=now)
+def _date_clause(*, field: str, days_back: int | None, now: datetime | None = None) -> str:
+    if days_back is None:
+        return ""
+    return f" {field}:>{recent_date(days=days_back, now=now)}"
+
+
+def build_repo_queries(*, now: datetime | None = None, days_back: int | None = None) -> list[str]:
+    date_clause = _date_clause(field="pushed", days_back=days_back, now=now)
     return [
-        f"(topic:agent OR topic:workflow OR topic:automation) pushed:>{cutoff}",
-        f"(topic:llm OR topic:devtools OR topic:browser-use) pushed:>{cutoff}",
+        f"(agent OR workflow OR automation OR mcp OR browser-use) in:name,description,readme{date_clause}",
+        f"(llm OR devtools OR browser-use OR agentic) in:name,description,readme{date_clause}",
     ]
 
 
-def build_skill_queries(*, now: datetime | None = None, days_back: int = 365) -> list[str]:
-    cutoff = recent_date(days=days_back, now=now)
+def build_skill_queries(*, now: datetime | None = None, days_back: int | None = None) -> list[str]:
+    date_clause = _date_clause(field="pushed", days_back=days_back, now=now)
     return [
-        f"(topic:agent OR topic:prompt OR topic:workflow) in:name,description,readme workflow prompt skill pushed:>{cutoff}",
+        f"(skill OR prompt OR workflow OR agent OR automation) in:name,description,readme{date_clause}",
     ]
 
 
@@ -74,16 +80,16 @@ def build_discussion_queries(
     seed_repos: list[str] | None = None,
     now: datetime | None = None,
     chunk_size: int = 4,
-    days_back: int = 365,
+    days_back: int | None = None,
 ) -> list[str]:
     repos = seed_repos or load_seed_repos()
-    cutoff = recent_date(days=days_back, now=now)
+    date_clause = _date_clause(field="updated", days_back=days_back, now=now)
     keyword_clause = " OR ".join(DEFAULT_DISCUSSION_KEYWORDS)
     queries: list[str] = []
     for chunk in _chunked(repos, chunk_size):
         queries.append(
             f"({_repo_clause(chunk)}) is:issue "
-            f"({keyword_clause}) in:title,body comments:>=3 updated:>{cutoff}"
+            f"({keyword_clause}) in:title,body comments:>=3{date_clause}"
         )
     return queries
 
@@ -93,15 +99,15 @@ def build_issue_pr_queries(
     seed_repos: list[str] | None = None,
     now: datetime | None = None,
     chunk_size: int = 4,
-    days_back: int = 365,
+    days_back: int | None = None,
 ) -> list[str]:
     repos = seed_repos or load_seed_repos()
-    cutoff = recent_date(days=days_back, now=now)
+    date_clause = _date_clause(field="updated", days_back=days_back, now=now)
     keyword_clause = " OR ".join(DEFAULT_ISSUE_KEYWORDS)
     queries: list[str] = []
     for chunk in _chunked(repos, chunk_size):
         queries.append(
             f"({_repo_clause(chunk)}) is:pr "
-            f"({keyword_clause}) in:title,body comments:>=1 updated:>{cutoff}"
+            f"({keyword_clause}) in:title,body comments:>=1{date_clause}"
         )
     return queries
