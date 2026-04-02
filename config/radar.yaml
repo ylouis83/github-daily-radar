@@ -166,7 +166,30 @@ budget:
   search_throttle_rpm: 25      # 每分钟最多 25 次搜索请求
 
 # ------------------------------------------
-# 7. 输出控制
+# 7. OSSInsight 趋势源
+#    作用: 借用 OSSInsight 的全网趋势和 collection 排名作为项目发现参考
+# ------------------------------------------
+ossinsight:
+  enabled: true
+  language: All
+  trending_periods:
+    - past_24_hours
+    - past_7_days
+  collection_period: past_28_days
+  collection_name_keywords:
+    - artificial intelligence
+    - chatgpt
+    - llm
+    - machine learning
+    - agent
+    - rag
+    - prompt
+    - mcp
+  max_trending_items: 20
+  max_collection_ids: 3
+
+# ------------------------------------------
+# 8. 输出控制
 # ------------------------------------------
 output:
   # 每日推送条数
@@ -185,7 +208,7 @@ output:
   timezone: "Asia/Shanghai"
 
 # ------------------------------------------
-# 8. Query 构建模板
+# 9. Query 构建模板
 #    collector 根据这些模板 + topics/seed_repos 动态生成实际 query
 #    {recent_7d} 和 {recent_30d} 在运行时替换为实际日期
 # ------------------------------------------

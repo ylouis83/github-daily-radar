@@ -15,6 +15,13 @@ def _pick_first(item: dict, keys: tuple[str, ...], default: str) -> str:
     return default
 
 
+def _coerce_int(value: object) -> int:
+    try:
+        return int(float(value))
+    except (TypeError, ValueError):
+        return 0
+
+
 def candidate_from_code_search(*, item: dict, source_query: str) -> Candidate:
     repository = item.get("repository") or {}
     return candidate_from_repo_search(item=repository, source_query=source_query, kind="skill")
@@ -106,4 +113,54 @@ def candidate_from_graphql_repo(*, item: dict, source_query: str) -> Candidate:
         raw_signals={"graphql_item": item, "latest_release": release},
         rule_scores={},
         dedupe_key=item["nameWithOwner"],
+    )
+
+
+def candidate_from_ossinsight_repo(*, item: dict, source_query: str, collection_name: str | None = None) -> Candidate:
+    repo_full_name = _pick_first(item, ("repo_name", "nameWithOwner", "full_name"), "unknown/unknown")
+    url = _pick_first(item, ("repo_url", "url"), f"https://github.com/{repo_full_name}")
+    description = item.get("description") or item.get("repo_description") or item.get("repo_about") or ""
+    created_at = _utc_now_iso()
+    updated_at = _utc_now_iso()
+    stars = item.get("current_period_growth", item.get("stars", item.get("star_growth", 0)))
+    forks = item.get("forks", item.get("fork_count", 0))
+    total_score = item.get("total_score", item.get("total", 0))
+    collection_names = item.get("collection_names")
+    if isinstance(collection_names, list):
+        topics = [str(name) for name in collection_names if isinstance(name, str) and name.strip()]
+    elif isinstance(collection_names, str):
+        topics = [part.strip() for part in collection_names.split(",") if part.strip()]
+    else:
+        topics = []
+    if collection_name and collection_name not in topics:
+        topics.insert(0, collection_name)
+
+    owner = repo_full_name.split("/", 1)[0] if "/" in repo_full_name else ""
+    kind = "project"
+    return Candidate(
+        candidate_id=f"{kind}:{repo_full_name}",
+        kind=kind,
+        source_query=source_query,
+        title=repo_full_name,
+        url=url,
+        repo_full_name=repo_full_name,
+        author=owner,
+        created_at=created_at,
+        updated_at=updated_at,
+        body_excerpt=description,
+        topics=topics,
+        labels=[],
+        metrics=CandidateMetrics(
+            stars=_coerce_int(stars),
+            forks=_coerce_int(forks),
+            reactions=_coerce_int(total_score),
+            star_growth_7d=_coerce_int(stars),
+        ),
+        raw_signals={"ossinsight_item": item, "collection_name": collection_name},
+        rule_scores={
+            "ossinsight_total_score": float(total_score or 0),
+            "ossinsight_source": source_query,
+            "ossinsight_collection": collection_name or "",
+        },
+        dedupe_key=repo_full_name,
     )

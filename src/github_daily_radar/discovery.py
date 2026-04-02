@@ -69,6 +69,23 @@ DEFAULT_SKILL_REPO_QUERIES = [
 ]
 DEFAULT_DISCUSSION_KEYWORDS = ["proposal", "rfc", "idea", "design"]
 DEFAULT_ISSUE_KEYWORDS = ["proposal", "roadmap", "design"]
+DEFAULT_OSSINSIGHT_PERIODS = ["past_24_hours", "past_7_days"]
+DEFAULT_OSSINSIGHT_LANGUAGE = "All"
+DEFAULT_OSSINSIGHT_COLLECTION_PERIOD = "past_28_days"
+DEFAULT_OSSINSIGHT_COLLECTION_NAME_KEYWORDS = [
+    "artificial intelligence",
+    "chatgpt",
+    "llm",
+    "machine learning",
+    "agent",
+    "rag",
+    "prompt",
+    "mcp",
+    "computer vision",
+    "nlp",
+]
+DEFAULT_OSSINSIGHT_MAX_TRENDING_ITEMS = 20
+DEFAULT_OSSINSIGHT_MAX_COLLECTION_IDS = 3
 
 _DEFAULT_SEED_REPOS = [
     "modelcontextprotocol/specification",
@@ -164,6 +181,58 @@ def load_issue_pr_keywords(path: Path | None = None) -> list[str]:
     raw = load_radar_config(path)
     keywords = raw.get("issue_pr_keywords") or DEFAULT_ISSUE_KEYWORDS
     return [keyword for keyword in keywords if isinstance(keyword, str) and keyword.strip()]
+
+
+def load_ossinsight_config(path: Path | None = None) -> dict:
+    raw = load_radar_config(path)
+    ossinsight = raw.get("ossinsight") if isinstance(raw.get("ossinsight"), dict) else {}
+    return ossinsight or {}
+
+
+def load_ossinsight_enabled(path: Path | None = None) -> bool:
+    return bool(load_ossinsight_config(path).get("enabled", True))
+
+
+def load_ossinsight_trending_periods(path: Path | None = None) -> list[str]:
+    raw = load_ossinsight_config(path)
+    periods = raw.get("trending_periods") or DEFAULT_OSSINSIGHT_PERIODS
+    return [period for period in periods if isinstance(period, str) and period.strip()]
+
+
+def load_ossinsight_language(path: Path | None = None) -> str:
+    raw = load_ossinsight_config(path)
+    language = raw.get("language") or DEFAULT_OSSINSIGHT_LANGUAGE
+    return language if isinstance(language, str) and language.strip() else DEFAULT_OSSINSIGHT_LANGUAGE
+
+
+def load_ossinsight_collection_period(path: Path | None = None) -> str:
+    raw = load_ossinsight_config(path)
+    period = raw.get("collection_period") or DEFAULT_OSSINSIGHT_COLLECTION_PERIOD
+    return period if isinstance(period, str) and period.strip() else DEFAULT_OSSINSIGHT_COLLECTION_PERIOD
+
+
+def load_ossinsight_collection_name_keywords(path: Path | None = None) -> list[str]:
+    raw = load_ossinsight_config(path)
+    keywords = raw.get("collection_name_keywords") or DEFAULT_OSSINSIGHT_COLLECTION_NAME_KEYWORDS
+    return [keyword for keyword in keywords if isinstance(keyword, str) and keyword.strip()]
+
+
+def load_ossinsight_max_trending_items(path: Path | None = None) -> int:
+    raw = load_ossinsight_config(path)
+    value = raw.get("max_trending_items", DEFAULT_OSSINSIGHT_MAX_TRENDING_ITEMS)
+    try:
+        return max(1, int(value))
+    except (TypeError, ValueError):
+        return DEFAULT_OSSINSIGHT_MAX_TRENDING_ITEMS
+
+
+def load_ossinsight_max_collection_ids(path: Path | None = None) -> int:
+    raw = load_ossinsight_config(path)
+    value = raw.get("max_collection_ids", DEFAULT_OSSINSIGHT_MAX_COLLECTION_IDS)
+    try:
+        return max(1, int(value))
+    except (TypeError, ValueError):
+        return DEFAULT_OSSINSIGHT_MAX_COLLECTION_IDS
 
 
 def recent_date(*, days: int, now: datetime | None = None) -> str:

@@ -1,7 +1,7 @@
 import respx
 from httpx import Response
 
-from github_daily_radar.client import BudgetTracker, GitHubClient
+from github_daily_radar.client import BudgetTracker, GitHubClient, OSSInsightClient
 
 
 @respx.mock
@@ -99,3 +99,31 @@ def test_graphql_budget_exhausted_raises():
         assert "graphql budget exhausted" in str(exc)
     else:
         raise AssertionError("Expected graphql budget exhaustion")
+
+
+@respx.mock
+def test_ossinsight_trending_endpoint_calls_api():
+    route = respx.get("https://api.ossinsight.io/v1/trends/repos/").mock(
+        return_value=Response(200, json={"data": {"rows": [{"repo_name": "owner/repo"}]}})
+    )
+
+    client = OSSInsightClient()
+
+    payload = client.list_trending_repos(period="past_24_hours", language="All")
+
+    assert route.called is True
+    assert payload["data"]["rows"][0]["repo_name"] == "owner/repo"
+
+
+@respx.mock
+def test_ossinsight_collection_endpoint_calls_api():
+    route = respx.get("https://api.ossinsight.io/v1/collections/10010/stars").mock(
+        return_value=Response(200, json={"data": {"rows": [{"repo_name": "owner/repo"}]}})
+    )
+
+    client = OSSInsightClient()
+
+    payload = client.collection_stars(10010, period="past_28_days")
+
+    assert route.called is True
+    assert payload["data"]["rows"][0]["repo_name"] == "owner/repo"

@@ -7,6 +7,13 @@ from github_daily_radar.discovery import (
     build_repo_queries,
     build_skill_queries,
     cycle_queries,
+    load_ossinsight_collection_name_keywords,
+    load_ossinsight_collection_period,
+    load_ossinsight_enabled,
+    load_ossinsight_language,
+    load_ossinsight_max_collection_ids,
+    load_ossinsight_max_trending_items,
+    load_ossinsight_trending_periods,
     load_issue_pr_keywords,
     load_radar_config,
     load_seed_orgs,
@@ -72,6 +79,33 @@ issue_pr_keywords:
     assert load_skill_repo_queries(path) == ["cursor rules AI in:name,description"]
     assert load_issue_pr_keywords(path) == ["roadmap"]
     assert load_radar_config(path)["topics"] == ["agent"]
+
+
+def test_load_ossinsight_matrix_reads_yaml(tmp_path: Path):
+    path = tmp_path / "seed_repos.yaml"
+    path.write_text(
+        """
+ossinsight:
+  enabled: false
+  language: Python
+  trending_periods:
+    - past_24_hours
+  collection_period: past_7_days
+  collection_name_keywords:
+    - ai
+  max_trending_items: 12
+  max_collection_ids: 2
+""".strip(),
+        encoding="utf-8",
+    )
+
+    assert load_ossinsight_enabled(path) is False
+    assert load_ossinsight_language(path) == "Python"
+    assert load_ossinsight_trending_periods(path) == ["past_24_hours"]
+    assert load_ossinsight_collection_period(path) == "past_7_days"
+    assert load_ossinsight_collection_name_keywords(path) == ["ai"]
+    assert load_ossinsight_max_trending_items(path) == 12
+    assert load_ossinsight_max_collection_ids(path) == 2
 
 
 def test_seed_repo_queries_are_chunked_and_scoped():

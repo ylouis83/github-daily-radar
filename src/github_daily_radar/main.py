@@ -4,7 +4,7 @@ from datetime import date, datetime, timezone
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
-from github_daily_radar.client import BudgetTracker, GitHubClient
+from github_daily_radar.client import BudgetTracker, GitHubClient, OSSInsightClient
 from github_daily_radar.discovery import (
     build_discussion_queries,
     build_issue_pr_queries,
@@ -12,23 +12,26 @@ from github_daily_radar.discovery import (
     build_skill_code_queries,
     build_skill_repo_queries,
     cycle_queries,
+    load_ossinsight_collection_name_keywords,
+    load_ossinsight_collection_period,
+    load_ossinsight_enabled,
+    load_ossinsight_language,
+    load_ossinsight_max_collection_ids,
+    load_ossinsight_max_trending_items,
+    load_ossinsight_trending_periods,
     load_seed_repos,
     load_skill_seed_repos,
 )
+from github_daily_radar.collectors.ossinsight import OSSInsightCollector
 from github_daily_radar.collectors.discussions import DiscussionCollector
 from github_daily_radar.collectors.issues_prs import IssuesPrsCollector
 from github_daily_radar.collectors.repos import RepoCollector
 from github_daily_radar.collectors.skills import SkillCollector
 from github_daily_radar.config import Settings
-from github_daily_radar.publish.feishu import build_alert_cards, build_digest_cards, send_cards
+from github_daily_radar.publish.feishu import build_alert_cards, build_cards, send_cards
 from github_daily_radar.scoring.dedupe import should_reenter
 from github_daily_radar.state.store import StateStore
-from github_daily_radar.summarize.digest import (
-    build_display_items,
-    build_card_sections,
-    score_candidate,
-    split_a_b,
-)
+from github_daily_radar.summarize.digest import build_display_items, build_card_sections_with_label, score_candidate, split_a_b
 from github_daily_radar.summarize.llm import EditorialLLM
 
 
@@ -79,23 +82,40 @@ def run_pipeline(settings: Settings, alert_only: bool = False) -> dict:
     skill_query_seed = today.toordinal()
     skill_code_queries = cycle_queries(build_skill_code_queries(), limit=2, seed=skill_query_seed)
     skill_repo_queries = cycle_queries(build_skill_repo_queries(days_back=30), limit=2, seed=skill_query_seed + 1)
-    collectors = [
-        RepoCollector(client=client, queries=build_repo_queries(now=run_started_at, days_back=7)),
-        SkillCollector(
-            client=client,
-            code_queries=skill_code_queries,
-            repo_queries=skill_repo_queries,
-            seed_repos=skill_seed_repos,
-        ),
-        DiscussionCollector(
-            client=client,
-            queries=build_discussion_queries(seed_repos=seed_repos, now=run_started_at, days_back=30),
-        ),
-        IssuesPrsCollector(
-            client=client,
-            queries=build_issue_pr_queries(seed_repos=seed_repos, now=run_started_at, days_back=30),
-        ),
-    ]
+    ossinsight_enabled = load_ossinsight_enabled()
+    ossinsight_collector = None
+    if ossinsight_enabled:
+        ossinsight_collector = OSSInsightCollector(
+            client=OSSInsightClient(),
+            trending_periods=load_ossinsight_trending_periods(),
+            language=load_ossinsight_language(),
+            collection_period=load_ossinsight_collection_period(),
+            collection_name_keywords=load_ossinsight_collection_name_keywords(),
+            max_trending_items=load_ossinsight_max_trending_items(),
+            max_collection_ids=load_ossinsight_max_collection_ids(),
+        )
+    collectors = []
+    if ossinsight_collector:
+        collectors.append(ossinsight_collector)
+    collectors.extend(
+        [
+            RepoCollector(client=client, queries=build_repo_queries(now=run_started_at, days_back=7)),
+            SkillCollector(
+                client=client,
+                code_queries=skill_code_queries,
+                repo_queries=skill_repo_queries,
+                seed_repos=skill_seed_repos,
+            ),
+            DiscussionCollector(
+                client=client,
+                queries=build_discussion_queries(seed_repos=seed_repos, now=run_started_at, days_back=30),
+            ),
+            IssuesPrsCollector(
+                client=client,
+                queries=build_issue_pr_queries(seed_repos=seed_repos, now=run_started_at, days_back=30),
+            ),
+        ]
+    )
 
     candidates = []
     collector_errors: list[dict[str, str]] = []
@@ -112,6 +132,16 @@ def run_pipeline(settings: Settings, alert_only: bool = False) -> dict:
             collector_name = getattr(collector, "name", "collector")
             collector_errors.append({"collector": collector_name, "error": str(exc)})
             collector_stats[collector_name] = {"count": 0, "kinds": {}, "error": str(exc)}
+
+    raw_candidate_count = len(candidates)
+    unique_candidates = []
+    seen_candidate_ids: set[str] = set()
+    for candidate in candidates:
+        if candidate.candidate_id in seen_candidate_ids:
+            continue
+        seen_candidate_ids.add(candidate.candidate_id)
+        unique_candidates.append(candidate)
+    candidates = unique_candidates
 
     state.record_seen(today, candidates)
 
@@ -163,16 +193,9 @@ def run_pipeline(settings: Settings, alert_only: bool = False) -> dict:
     metadata["b_count"] = len(b_items)
     metadata["filtered_kind_counts"] = dict(filtered_kind_counts)
     metadata["published_kind_counts"] = dict(published_kind_counts)
-    sections_a = build_card_sections(a_items, variant="A", metadata=metadata)
-    sections_b = build_card_sections(b_items, variant="B", metadata=metadata)
-    cards = build_digest_cards(
-        title="GitHub Daily Radar",
-        bundles=[
-            {"label": "A 精编版", "sections": sections_a},
-            {"label": "B 保留版", "sections": sections_b},
-        ],
-        metadata=None,
-    )
+    sections_a = build_card_sections_with_label(a_items, variant="A", metadata=metadata, bundle_label="A 精编版")
+    sections_b = build_card_sections_with_label(b_items, variant="B", metadata=metadata, bundle_label="B 保留版")
+    cards = build_cards(title="GitHub 每日雷达", sections=sections_a + sections_b, metadata=metadata, max_lines=50)
 
     if should_publish(dry_run=settings.dry_run, alert_only=alert_only):
         send_cards(webhook_url=settings.feishu_webhook_url, cards=cards)
@@ -191,6 +214,7 @@ def run_pipeline(settings: Settings, alert_only: bool = False) -> dict:
             today,
             {
                 "candidate_count": len(candidates),
+                "raw_candidate_count": raw_candidate_count,
                 "selected_count": len(published_items),
                 "filtered_kind_counts": dict(filtered_kind_counts),
                 "published_kind_counts": dict(published_kind_counts),

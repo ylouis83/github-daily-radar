@@ -95,6 +95,25 @@ budget:
   graphql_budget: 600
   search_throttle_rpm: 25
 
+ossinsight:
+  enabled: true
+  language: All
+  trending_periods:
+    - past_24_hours
+    - past_7_days
+  collection_period: past_28_days
+  collection_name_keywords:
+    - artificial intelligence
+    - chatgpt
+    - llm
+    - machine learning
+    - agent
+    - rag
+    - prompt
+    - mcp
+  max_trending_items: 20
+  max_collection_ids: 3
+
 output:
   daily_item_count:
     projects: 4-7

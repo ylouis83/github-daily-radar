@@ -22,6 +22,8 @@ Optional envs:
 
 Discovery matrix lives in [`config/radar.yaml`](./config/radar.yaml) and can be edited to shift the daily radar toward different GitHub ecosystems. The older [`seed_repos.yaml`](./seed_repos.yaml) remains as a fallback.
 
+The radar now also borrows from OSSInsight's public trend and collection APIs to surface hot repositories without spending GitHub search budget.
+
 ## How It Runs
 
-The workflow `daily-radar.yml` runs on a daily cron and on manual dispatch. It collects candidates, ranks them, asks an editorial LLM for summaries, renders Feishu interactive cards, posts to your webhook, then syncs state artifacts to the `state` branch. Use `dry_run` for testing to skip publishing and state updates.
+The workflow `daily-radar.yml` runs on a daily cron and on manual dispatch. It collects candidates, ranks them, asks an editorial LLM for summaries, renders one fused Feishu interactive card with A/B sections, posts to your webhook, then syncs state artifacts to the `state` branch. Use `dry_run` for testing to skip publishing and state updates.

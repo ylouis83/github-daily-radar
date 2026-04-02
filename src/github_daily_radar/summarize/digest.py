@@ -32,6 +32,8 @@ def score_candidate(candidate: Candidate) -> float:
 
 
 def _fallback_summary(candidate: Candidate) -> str:
+    if candidate.source_query.startswith("ossinsight:"):
+        return "这是 OSSInsight 监测到的近期热门仓库，适合先看趋势和增量。"
     if candidate.kind == "skill":
         return "这是一个可复用的技能 / 规则包，适合判断是否加入你的技能库。"
     if candidate.kind == "discussion":
@@ -43,6 +45,10 @@ def _fallback_summary(candidate: Candidate) -> str:
 
 def _fallback_why_now(candidate: Candidate) -> str:
     metrics = candidate.metrics
+    if candidate.source_query.startswith("ossinsight:"):
+        if metrics.stars or metrics.reactions:
+            return f"OSSInsight 近期热度上升，最近增量约 {metrics.stars}。"
+        return "OSSInsight 监测到它进入近期热榜，适合先快速浏览。"
     if candidate.kind == "skill":
         if metrics.stars or metrics.forks:
             return f"最近有 {metrics.stars} 星 / {metrics.forks} 个 fork，值得快速判断是否纳入技能库。"
@@ -215,8 +221,21 @@ def _overview_lines(items: list[dict], *, variant: str, metadata: dict | None = 
 
 
 def build_card_sections(items: list[dict], *, variant: str, metadata: dict | None = None) -> list[dict]:
+    return build_card_sections_with_label(items, variant=variant, metadata=metadata, bundle_label=None)
+
+
+def build_card_sections_with_label(
+    items: list[dict],
+    *,
+    variant: str,
+    metadata: dict | None = None,
+    bundle_label: str | None = None,
+) -> list[dict]:
     kind_labels = KIND_LABELS_A if variant == "A" else KIND_LABELS_B
-    overview_title = "今日概览" if variant == "A" else "更多值得扫一眼"
+    if bundle_label:
+        overview_title = f"{bundle_label} · 今日概览" if variant == "A" else f"{bundle_label} · 更多值得扫一眼"
+    else:
+        overview_title = "今日概览" if variant == "A" else "更多值得扫一眼"
     sections: list[dict] = [{"title": overview_title, "lines": _overview_lines(items, variant=variant, metadata=metadata)}]
     sections.extend(group_digest_items(items, kind_labels=kind_labels))
     return sections

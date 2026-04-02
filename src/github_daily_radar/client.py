@@ -124,3 +124,26 @@ class GitHubClient:
         response = self._http.post("/graphql", json={"query": query, "variables": variables or {}})
         response.raise_for_status()
         return response.json()
+
+
+class OSSInsightClient:
+    def __init__(self, base_url: str = "https://api.ossinsight.io/v1") -> None:
+        self._http = httpx.Client(base_url=base_url, timeout=30.0)
+
+    @retry(wait=wait_exponential(multiplier=1, min=1, max=8), stop=stop_after_attempt(3), retry=retry_if_exception_type(httpx.HTTPError))
+    def _get(self, path: str, params: dict | None = None) -> dict:
+        response = self._http.get(path, params=params or {})
+        response.raise_for_status()
+        return response.json()
+
+    def list_trending_repos(self, *, period: str, language: str | None = None) -> dict:
+        params = {"period": period}
+        if language:
+            params["language"] = language
+        return self._get("/trends/repos/", params=params)
+
+    def list_collections(self) -> dict:
+        return self._get("/collections")
+
+    def collection_stars(self, collection_id: int | str, *, period: str = "past_28_days") -> dict:
+        return self._get(f"/collections/{collection_id}/stars", params={"period": period})
