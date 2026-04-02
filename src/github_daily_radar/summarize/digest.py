@@ -87,6 +87,7 @@ def build_display_items(candidates: list[Candidate], editorial: list[dict]) -> l
     items: list[dict] = []
     for candidate in candidates:
         item = {
+            "candidate_id": candidate.candidate_id,
             "kind": candidate.kind,
             "title": candidate.title,
             "url": candidate.url,
@@ -96,6 +97,9 @@ def build_display_items(candidates: list[Candidate], editorial: list[dict]) -> l
             "editorial_rank": None,
             "section": None,
             "repo_full_name": candidate.repo_full_name,
+            "source_query": candidate.source_query,
+            "metrics": candidate.metrics.model_dump(),
+            "rule_scores": dict(candidate.rule_scores),
             "score": score_candidate(candidate),
         }
         editorial_item = editorial_by_url.get(candidate.url) or editorial_by_title.get(candidate.title)

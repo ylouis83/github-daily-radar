@@ -148,14 +148,30 @@ class StateStore:
 
     def record_published(self, day: date, candidates: list[Candidate]) -> None:
         for candidate in candidates:
+            if isinstance(candidate, Candidate):
+                candidate_id = candidate.candidate_id
+                metrics = candidate.metrics.model_dump()
+                scores = dict(candidate.rule_scores)
+                kind = candidate.kind
+                title = candidate.title
+                url = candidate.url
+                source_query = candidate.source_query
+            else:
+                candidate_id = candidate.get("candidate_id") or f"{candidate.get('kind', 'item')}:{candidate.get('repo_full_name') or candidate.get('url') or candidate.get('title')}"
+                metrics = candidate.get("metrics")
+                scores = candidate.get("rule_scores") or candidate.get("scores") or {}
+                kind = candidate.get("kind")
+                title = candidate.get("title")
+                url = candidate.get("url")
+                source_query = candidate.get("source_query")
             self._append_history_entry(
                 day,
-                candidate.candidate_id,
-                metrics=candidate.metrics.model_dump(),
-                scores=dict(candidate.rule_scores),
+                candidate_id,
+                metrics=metrics,
+                scores=scores,
                 event="published",
-                kind=candidate.kind,
-                title=candidate.title,
-                url=candidate.url,
-                source_query=candidate.source_query,
+                kind=kind,
+                title=title,
+                url=url,
+                source_query=source_query,
             )

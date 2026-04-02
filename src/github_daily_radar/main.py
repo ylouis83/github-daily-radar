@@ -140,8 +140,9 @@ def run_pipeline(settings: Settings, alert_only: bool = False) -> dict:
         metadata["coverage_note"] = "Reduced coverage due to collector failure(s)."
     api_usage = client._budget.snapshot()
     metadata["api_usage"] = api_usage
-    display_items = build_display_items(ranked_candidates, editorial)
+    display_items = build_display_items(filtered, editorial)
     a_items, b_items = split_a_b(display_items, a_max=10, b_max=10)
+    published_items = a_items + b_items
     metadata["a_count"] = len(a_items)
     metadata["b_count"] = len(b_items)
     sections_a = build_card_sections(a_items, variant="A", metadata=metadata)
@@ -164,7 +165,7 @@ def run_pipeline(settings: Settings, alert_only: bool = False) -> dict:
             {
                 "cards": cards,
                 "count": len(filtered),
-                "selected_count": len(ranked_candidates[: settings.llm_max_candidates]),
+                "selected_count": len(published_items),
                 "summary": metadata,
             },
         )
@@ -172,13 +173,13 @@ def run_pipeline(settings: Settings, alert_only: bool = False) -> dict:
             today,
             {
                 "candidate_count": len(candidates),
-                "selected_count": len(filtered),
+                "selected_count": len(published_items),
                 "collector_errors": collector_errors,
                 "api_usage": api_usage,
                 "timezone": settings.timezone,
             },
         )
-        state.record_published(today, ranked_candidates)
+        state.record_published(today, published_items)
 
     return {"cards": cards, "count": len(filtered), "summary": metadata}
 
