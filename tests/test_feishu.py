@@ -304,6 +304,16 @@ def test_build_digest_card_backward_compat_secondary_items():
             "star_delta_1d": 0,
             "star_velocity": "",
         },
+        {
+            "kind": "project",
+            "title": "owner/primary",
+            "url": "https://github.com/owner/primary",
+            "repo_full_name": "owner/primary",
+            "summary": "重复",
+            "stars": 100,
+            "star_delta_1d": 0,
+            "star_velocity": "",
+        },
     ]
 
     card = build_digest_card(items=primary, secondary_items=secondary, today=date(2026, 4, 2))

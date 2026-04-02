@@ -162,7 +162,7 @@ def _section_order(*, project_first: bool) -> list[str]:
 
 
 def _item_identity(item: dict) -> str:
-    for key in ("candidate_id", "url", "repo_full_name", "title"):
+    for key in ("url", "candidate_id", "repo_full_name", "title"):
         value = item.get(key)
         if isinstance(value, str) and value.strip():
             return f"{key}:{value}"
