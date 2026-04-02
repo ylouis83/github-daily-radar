@@ -71,6 +71,27 @@ Use a mixed pipeline:
 
 This balances coverage, maintainability, and editorial quality. Rules keep the system stable and cheap. The LLM is used where judgment matters most: summarization, grouping, and final ranking.
 
+## API Budget and Rate Limits
+
+GitHub API budget is a first-class design constraint for Phase 1.
+
+The design should assume:
+
+- REST search has a separate and relatively tight budget from core REST usage
+- GraphQL is preferable for batch enrichment after discovery
+- GitHub Actions' default `GITHUB_TOKEN` has a lower GraphQL primary rate limit than a normal user token, so the system should be designed around conservative usage instead of optimistic assumptions
+
+Phase 1 should explicitly budget calls by collector. Recommended approach:
+
+- define a per-run `rate_limit_budget`
+- give each collector an explicit slice of that budget
+- use REST search only for broad discovery
+- use GraphQL for batched metadata enrichment on shortlisted repositories or threads
+- add retry with backoff for transient failures and secondary-limit responses
+- record API usage metrics in the daily run summary
+
+The implementation plan should include a simple call-budget estimate for a full daily run before coding begins.
+
 ## Data Model
 
 The system should normalize all sources into a shared `Candidate` structure. Core fields:
@@ -117,15 +138,17 @@ Strong project signals:
 
 ### Skills
 
-Skills should be interpreted broadly. A candidate can qualify if it looks like a reusable capability package, not only if it has a literal `SKILL.md`.
+Skills should be interpreted broadly, but Phase 1 should avoid expensive full-repository tree inspection during initial discovery. A candidate can qualify if it looks like a reusable capability package, not only if it has a literal `SKILL.md`.
 
-Examples:
+Primary discovery sources for Phase 1:
 
-- repositories with `SKILL.md`
-- `skills/`, `prompts/`, `agents/`, `rules/`, or `workflows/` directories
+- repositories surfaced through topic filters and README keyword hits
+- known agent ecosystem repositories and seed repository lists
 - agent-focused recipes and prompt packs
 - workflow collections for Codex, Claude Code, Cline, Cursor, and similar agent ecosystems
 - repositories that package automation playbooks, operator manuals, or prompt-driven capability systems
+
+Expensive structure checks such as looking for `SKILL.md`, `skills/`, `prompts/`, `agents/`, `rules/`, or `workflows/` directories should only run on a narrowed shortlist, not on the full candidate pool.
 
 Strong skill signals:
 
@@ -160,9 +183,9 @@ Each candidate should receive four coarse scores:
 - `novelty`: how new it is, or how materially new its current development is
 - `signal`: how much real attention, engagement, or maintainer involvement it has
 - `utility`: how reusable, instructive, or strategically useful it appears
-- `taste`: whether it feels genuinely interesting versus merely popular noise
+- `taste`: a lightweight editorial prior, mostly determined in the LLM pass rather than by complex rules
 
-Projects, skills, and discussions will use different heuristics to populate these dimensions, but the output scale should be shared so the system can rank across content types.
+Projects, skills, and discussions will use different heuristics to populate these dimensions, but the output scale should be shared so the system can rank across content types. In Phase 1, `taste` should be a minimal heuristic signal at rule time and a stronger judgment in the LLM editorial pass.
 
 ### LLM Editorial Pass
 
@@ -183,13 +206,17 @@ Default behavior:
 
 - do not resend the same item within a 14-day cooling window
 
+Phase 1 should use explicit re-entry thresholds instead of qualitative judgment alone.
+
 Allow re-entry if one of the following is true:
 
-- a repository shows clear momentum increase
-- a significant release shipped
-- a discussion, issue, or PR gained substantial new participation
+- a repository's short-term star growth is at least 2x the growth seen at the last publish point
+- a new release shipped and the previous release is at least 7 days older
+- a discussion, issue, or PR increased comment volume by at least 50% since the last publish point
 - an idea thread turned into implementation or was adopted upstream
 - a skill package became more concrete, complete, or reusable
+
+The implementation may also support a manual allowlist override for force-resurfacing a candidate during the cooling window.
 
 The state system should store:
 
@@ -212,7 +239,9 @@ The code branch remains clean and reviewable. The state branch carries operation
 
 ## Delivery Format
 
-The Feishu digest should use a stable layout:
+The Feishu digest should use a stable interactive card layout instead of plain rich text. Card format is the default for Phase 1 because it provides higher information density, clearer visual grouping, and easier long-term template maintenance.
+
+The card should use a stable layout:
 
 1. `今日概览`
 2. `Top Projects`
@@ -233,6 +262,19 @@ If the message would exceed delivery limits, split into:
 
 Every successful run should also save the full digest as an artifact for debugging and traceability.
 
+## Monitoring and Alerts
+
+The system should make silent failure unlikely.
+
+Phase 1 should include:
+
+- workflow failure alerts to Feishu
+- run metadata in the daily digest, including candidate counts, selected counts, API usage, and elapsed time
+- workflow concurrency protection so scheduled and manual runs cannot corrupt shared state
+- bootstrap-mode handling for the first run, when there is no prior history yet
+
+Bootstrap behavior should prefer a clean initial send plus immediate state initialization so the second run can behave normally.
+
 ## Failure Handling
 
 The pipeline should degrade gracefully.
@@ -251,6 +293,10 @@ If one collector fails:
 - continue with the others when practical
 - note reduced coverage in the overview section
 
+If no daily digest is published for multiple consecutive scheduled runs:
+
+- emit an explicit alert rather than only relying on GitHub Actions failure visibility
+
 ## Repository Structure
 
 Recommended initial layout:
@@ -258,15 +304,16 @@ Recommended initial layout:
 ```text
 github-daily-radar/
   src/github_daily_radar/
+    client.py
     config.py
     models.py
     main.py
     collectors/
+      base.py
       repos.py
       skills.py
       discussions.py
-      issues.py
-      prs.py
+      issues_prs.py
     normalize/
       candidates.py
     scoring/
@@ -283,6 +330,8 @@ github-daily-radar/
   .github/workflows/
     daily-radar.yml
 ```
+
+`client.py` should encapsulate GitHub REST and GraphQL access, retry, backoff, and rate-limit tracking. `collectors/base.py` should define a shared collector interface so collectors can report candidate counts and budget usage consistently. `issues_prs.py` is intentionally combined for Phase 1 because those discovery paths are structurally similar and do not justify separate maintenance yet.
 
 This structure keeps concerns clear: discovery, normalization, scoring, summarization, persistence, and delivery.
 
@@ -302,7 +351,10 @@ Repository configuration:
 - seed repositories or organizations
 - maximum items per day
 - cooling window length
+- per-run API budget and per-collector budget slices
+- `llm_max_candidates`
 - minimum score thresholds
+- bootstrap mode controls
 - optional time zone and schedule metadata
 
 Secrets belong in GitHub Secrets. Search scope and ranking preferences should live in repository-managed config.
@@ -314,18 +366,22 @@ The GitHub Actions workflow should support both:
 - scheduled daily execution
 - manual dispatch for testing and iteration
 
+The workflow should also use a concurrency group so only one run updates state at a time.
+
 High-level workflow:
 
 1. checkout code
 2. install dependencies
 3. load current state
-4. collect candidates
-5. normalize and score
-6. refine with LLM
-7. render digest
-8. send to Feishu
-9. persist updated state
-10. upload artifacts
+4. fetch current rate-limit context
+5. collect candidates within per-collector budgets
+6. normalize and score
+7. refine with LLM on a capped shortlist
+8. render digest card payloads
+9. send to Feishu
+10. persist updated state
+11. upload artifacts
+12. send failure alert if needed
 
 ## Testing Strategy
 
@@ -337,6 +393,8 @@ Phase 1 should include:
 - unit tests for Feishu formatting
 - a fixed-input snapshot test for digest rendering
 - at least one manual-dispatch workflow path for dry-run validation
+- unit tests around bootstrap-mode behavior
+- unit tests for re-entry threshold logic
 
 The system is editorially complex, so deterministic tests should target ranking inputs and state transitions more than LLM phrasing.
 
@@ -349,9 +407,11 @@ Phase 1 is successful when all of the following are true:
 - it outputs a balanced daily digest of roughly 10-20 items
 - it avoids noisy repetition across a 14-day window
 - it can resurface an item when there is meaningful new progress
-- it sends the digest to Feishu via webhook
+- it sends the digest to Feishu via interactive card webhook delivery
 - it stores enough state to behave consistently across days
 - it leaves debug artifacts when failures occur
+- it stays within a declared API budget for a normal daily run
+- it prevents concurrent runs from corrupting state
 
 ## Open Decisions Carried into Planning
 
@@ -361,6 +421,5 @@ These are implementation choices, not design blockers:
 - final LLM provider and prompt strategy
 - exact ranking weights for each content type
 - whether state uses JSON files only or a small SQLite file in the `state` branch
-- whether Feishu output uses plain rich text first or card format first
 
 The plan should keep these choices explicit and pick the simplest viable path for Phase 1.
