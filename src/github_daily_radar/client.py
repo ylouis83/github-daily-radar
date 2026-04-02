@@ -24,6 +24,15 @@ class BudgetTracker:
             raise RuntimeError("graphql budget exhausted")
         self.graphql_used += cost
 
+    def snapshot(self) -> dict[str, int]:
+        return {
+            "total_budget": self.total_budget,
+            "search_budget": self.search_budget,
+            "graphql_budget": self.graphql_budget,
+            "search_used": self.search_used,
+            "graphql_used": self.graphql_used,
+        }
+
 
 class GitHubClient:
     def __init__(self, token: str, budget: BudgetTracker, search_requests_per_minute: int = 25) -> None:

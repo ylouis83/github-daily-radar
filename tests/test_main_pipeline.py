@@ -1,4 +1,5 @@
 from datetime import datetime, timezone
+import json
 from pathlib import Path
 
 from github_daily_radar import main as main_module
@@ -189,3 +190,8 @@ def test_run_pipeline_uses_editorial_summaries_and_continues_on_collector_failur
     assert result["count"] == 3
     assert captured["sections"][0]["items"][0]["summary"] == "中文摘要"
     assert captured["metadata"]["collector_errors"] == 1
+
+    history = json.loads(Path("artifacts/state/history.json").read_text(encoding="utf-8"))
+    assert history["candidate_index"]["repo:owner/name"]["last_seen_metrics"]["stars"] == 10
+    assert history["candidate_index"]["repo:owner/name"]["last_published_metrics"]["stars"] == 10
+    assert history["run_summaries"][0]["candidate_count"] == 3

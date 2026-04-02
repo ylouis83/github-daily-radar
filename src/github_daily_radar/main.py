@@ -131,6 +131,8 @@ def run_pipeline(settings: Settings, alert_only: bool = False) -> dict:
         except Exception as exc:  # noqa: BLE001 - keep one collector failure from stopping the rest
             collector_errors.append({"collector": getattr(collector, "name", "collector"), "error": str(exc)})
 
+    state.record_seen(today, candidates)
+
     filtered = []
     for candidate in candidates:
         if state.is_in_cooldown(candidate.candidate_id, settings.cooldown_days, today):
@@ -156,6 +158,8 @@ def run_pipeline(settings: Settings, alert_only: bool = False) -> dict:
     if collector_errors:
         metadata["collector_errors"] = len(collector_errors)
         metadata["coverage_note"] = "Reduced coverage due to collector failure(s)."
+    api_usage = client._budget.snapshot()
+    metadata["api_usage"] = api_usage
     cards = build_cards(
         title="GitHub Daily Radar",
         sections=sections,
@@ -166,10 +170,28 @@ def run_pipeline(settings: Settings, alert_only: bool = False) -> dict:
         send_cards(webhook_url=settings.feishu_webhook_url, cards=cards)
 
     if should_update_state(dry_run=settings.dry_run, alert_only=alert_only):
-        state.write_daily_state(today.isoformat(), {"cards": cards, "count": len(filtered)})
+        state.write_daily_state(
+            today.isoformat(),
+            {
+                "cards": cards,
+                "count": len(filtered),
+                "selected_count": len(filtered[: settings.llm_max_candidates]),
+                "summary": metadata,
+            },
+        )
+        state.record_run_summary(
+            today,
+            {
+                "candidate_count": len(candidates),
+                "selected_count": len(filtered),
+                "collector_errors": collector_errors,
+                "api_usage": api_usage,
+                "timezone": settings.timezone,
+            },
+        )
         state.record_published(today, filtered)
 
-    return {"cards": cards, "count": len(filtered)}
+    return {"cards": cards, "count": len(filtered), "summary": metadata}
 
 
 def main() -> None:
