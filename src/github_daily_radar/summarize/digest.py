@@ -286,7 +286,12 @@ def build_display_items(candidates: list[Candidate], editorial: list[dict]) -> l
             "score": score_candidate(candidate),
             # star 相关字段供 feishu 卡片渲染 badge
             "stars": candidate.metrics.stars,
-            "star_delta_1d": candidate.metrics.star_growth_7d,
+            # OSSInsight past_week 返回的是 7 天增量，不应当作 1 天增量
+            "star_delta_1d": (
+                candidate.metrics.star_growth_7d
+                if not candidate.source_query.startswith("ossinsight:trending:past_week")
+                else candidate.metrics.star_growth_7d // 7
+            ),
             "star_velocity": (
                 "surge" if candidate.metrics.star_growth_7d >= 200
                 else "rising" if candidate.metrics.star_growth_7d >= 50
@@ -380,7 +385,12 @@ def split_a_b(
     if len(a_items) < a_min:
         a_items = ordered[:a_min]
 
-    remaining = [item for item in ordered if item not in a_items]
+    a_repos = {item.get("repo_full_name") or item.get("url") for item in a_items}
+    remaining = [
+        item for item in ordered
+        if item not in a_items
+        and (item.get("repo_full_name") or item.get("url")) not in a_repos
+    ]
     remaining_buckets: dict[str, deque[dict]] = {
         kind: deque(item for item in remaining if _bucket_for_kind(item.get("kind", "other")) == kind)
         for kind in KIND_ORDER
