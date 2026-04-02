@@ -16,28 +16,42 @@
         "elements": [
           {
             "tag": "markdown",
-            "content": "**A 精编版 · 今日概览**\n今日精选 10 条：10 技能"
+            "content": "**A 精编版 · 今日概览**\n今日精选 10 条：5 项目  ·  5 技能"
           },
           {
             "tag": "hr"
           },
           {
             "tag": "markdown",
-            "content": "**🧩 发现技能**\n\n**1.** [paiml/paiml-mcp-agent-toolkit](https://github.com/paiml/paiml-mcp-agent-toolkit)\n      ⭐144 · 这是一个旨在让代理代码更具确定性的 MCP 服务器工具包。\n\n**2.** [travisjneuman/.claude](https://github.com/travisjneuman/.claude)\n      ⭐32 · 提供包含 119 个技能和 67 个代理的终极 Claude Code 配置工具包。\n\n**3.** [kochetkov-ma/claude-brewcode](https://github.com/kochetkov-ma/claude-brewcode)\n      ⭐16 · 为 Claude Code 提供无限焦点任务和自动上下文移交的全功能开发平台。\n\n**4.** [AlleyBo55/gocode](https://github.com/AlleyBo55/gocode)\n      ⭐2 · 使用 Go 重写的高性能 AI 代理 harness 运行时，支持单二进制文件部署。\n\n**5.** [AntifragileTech/antifragile-claude-code](https://github.com/AntifragileTech/antifragile-claude-code)\n      ⭐4 · 包含 514 个技能和 68 个代理的大型 Claude Code 资源库，支持一键安装。\n\n**6.** [mehd-io/agent-skills](https://github.com/mehd-io/agent-skills)\n      ⭐3 · 提供适用于 Claude Code 和 ChatGPT 等工具的开源可复用 LLM 代理技能提示。\n\n**7.** [kinneyyan/prompts](https://github.com/kinneyyan/prompts)\n      ⭐2 · 收集了日常编码代理工作中使用的规则、工作流、技能和子代理配置。\n\n**8.** [tako068/awesome-agent-skills-mcp](https://github.com/tako068/awesome-agent-skills-mcp)\n      ⭐2 · 通过 MCP 服务器提供强大工具来管理和优化代理功能。\n\n**9.** [the911fund/skill-of-skills](https://github.com/the911fund/skill-of-skills)\n      ⭐2 · 跨多个 AI 编码工具自动发现和索引技能、插件及 MCP 服务器的引擎。\n\n**10.** [unbound9527/claude-code-study-zh_CN](https://github.com/unbound9527/claude-code-study-zh_CN)\n      ⭐2 · 专为中文开发者打造的系统化学习路径，涵盖从安装到工程实践的全栈内容。\n"
+            "content": "**🚀 热门项目**\n\n**1.** [anthropics/claude-code](https://github.com/anthropics/claude-code)\n      🔥+1161⭐ · Claude Code 是一款驻留在终端的智能编码工具，能理解代码库并执行常规任务。\n\n**2.** [Yeachan-Heo/oh-my-codex](https://github.com/Yeachan-Heo/oh-my-codex)\n      🔥+410⭐ · OmX 为 Codex 添加了钩子、代理团队和 HUD 等扩展功能。\n\n**3.** [luongnv89/claude-howto](https://github.com/luongnv89/claude-howto)\n      🔥+270⭐ · 这是一个视觉化且基于示例的 Claude Code 指南，提供从基础到高级的模板。\n\n**4.** [Yeachan-Heo/oh-my-claudecode](https://github.com/Yeachan-Heo/oh-my-claudecode)\n      🔥+212⭐ · 该项目专注于为 Claude Code 提供优先的多代理编排功能。\n\n**5.** [NousResearch/hermes-agent](https://github.com/NousResearch/hermes-agent)\n      📈+135⭐ · Hermes Agent 是一个旨在随用户共同成长的智能代理。\n"
           },
           {
             "tag": "hr"
           },
           {
             "tag": "markdown",
-            "content": "**B 保留版 · 更多值得扫一眼**\n今日精选 10 条：10 技能"
+            "content": "**🧩 发现技能**\n\n**1.** [MarcusJellinghaus/mcp-workspace](https://github.com/MarcusJellinghaus/mcp-workspace)\n      ⭐45 · 这是一个安全的 MCP 工作区服务器，为 AI 助手提供文件及 Git 工具。\n\n**2.** [travisjneuman/.claude](https://github.com/travisjneuman/.claude)\n      ⭐32 · 这是一个终极 Claude Code 工具包，包含大量技能、代理和命令配置。\n\n**3.** [kochetkov-ma/claude-brewcode](https://github.com/kochetkov-ma/claude-brewcode)\n      ⭐16 · Brewcode 是为 Claude Code 打造的全功能开发平台，支持任务聚焦和提示优化。\n\n**4.** [AlleyBo55/gocode](https://github.com/AlleyBo55/gocode)\n      ⭐2 · 这是用 Go 语言重写的高性能 AI 代理 harness 运行时，单二进制无依赖。\n\n**5.** [AntifragileTech/antifragile-claude-code](https://github.com/AntifragileTech/antifragile-claude-code)\n      ⭐4 · 该项目包含数百个技能、代理和命令，可通过一个提示安装。\n"
           },
           {
             "tag": "hr"
           },
           {
             "tag": "markdown",
-            "content": "**🧩 发现技能**\n\n**1.** [Daenerys888/noapi-google-search-mcp](https://github.com/Daenerys888/noapi-google-search-mcp)\n      ⭐1 · 无需 API 即可让本地大模型实现实时 Google 搜索和视频洞察的 MCP 工具。\n\n**2.** [adihebbalae/copilot-code](https://github.com/adihebbalae/copilot-code)\n      ⭐1 · 模仿 Claude Code 的多代理 GitHub Copilot 编排样板，包含状态管理。\n\n**3.** [alexyyyander/prompt-injection-defense](https://github.com/alexyyyander/prompt-injection-defense)\n      ⭐1 · 涵盖 12 类攻击的语言级攻击防御技能，适用于多种大模型。\n\n**4.** [ly1595/nmap-mcp](https://github.com/ly1595/nmap-mcp)\n      ⭐1 · 支持多种扫描类型和时序模板的生产就绪型 Nmap MCP 服务器。\n\n**5.** [shripadk1999/EVOKORE-MCP](https://github.com/shripadk1999/EVOKORE-MCP)\n      ⭐1 · 聚合多个服务器的专用代理技能，支持动态工具管理和人工安全控制。\n\n**6.** [viniciusparede/workflow](https://github.com/viniciusparede/workflow)\n      ⭐1 · 包含 Claude Code 和 Gemini 的 AI 辅助项目编排模板及单体仓库结构。\n\n**7.** [sproutn-iq123/noun-mcp](https://github.com/sproutn-iq123/noun-mcp)\n      允许在 Cursor 和 Claude Desktop 中搜索和使用 Noun Project 图标的 MCP 服务器。\n\n**8.** [timothywarner-org/agent-security-quorum](https://github.com/timothywarner-org/agent-security-quorum)\n      使用多模型共识自动扫描代理技能定义，阻止提示词注入和权限提升。\n\n**9.** [45d5r/databricks-mcp-server](https://github.com/45d5r/databricks-mcp-server)\n      🚀 Deliver model context services for Databricks with a protocol server using Pyt\n\n**10.** [Hovsteder/powersun-tron-mcp](https://github.com/Hovsteder/powersun-tron-mcp)\n      TRON Energy & Bandwidth MCP Server + DEX Swap Aggregator for AI agents.…\n"
+            "content": "**B 保留版 · 更多值得扫一眼**\n今日精选 10 条：5 项目  ·  5 技能"
+          },
+          {
+            "tag": "hr"
+          },
+          {
+            "tag": "markdown",
+            "content": "**🚀 热门项目**\n\n**1.** [shareAI-lab/learn-claude-code](https://github.com/shareAI-lab/learn-claude-code)\n      📈+120⭐ · 这是一个从零构建的类 Claude Code 代理，强调 Bash 的重要性。\n\n**2.** [code-yeongyu/oh-my-openagent](https://github.com/code-yeongyu/oh-my-openagent)\n      📈+140⭐ · omo 是一个最佳的代理 harness 工具，前身是 oh-my-opencode。\n\n**3.** [badlogic/pi-mono](https://github.com/badlogic/pi-mono)\n      📈+67⭐ · 这是一个包含编码代理 CLI、统一 LLM API 及多种 UI 库的 AI 代理工具包。\n\n**4.** [Bhaktiswarup/think_tank](https://github.com/Bhaktiswarup/think_tank)\n      ⭐2 · 该项目允许用户与 AI 代理协作探讨多样主题，并将见解存储到 Notion。\n\n**5.** [SkintLabs/WonderwallAi](https://github.com/SkintLabs/WonderwallAi)\n      ⭐2 · 这是一个开源的 AI 防火墙 SDK，提供提示注入检测和 PII 过滤等功能。\n"
+          },
+          {
+            "tag": "hr"
+          },
+          {
+            "tag": "markdown",
+            "content": "**🧩 发现技能**\n\n**1.** [mehd-io/agent-skills](https://github.com/mehd-io/agent-skills)\n      ⭐3 · 这是一组可重用的 LLM 代理技能，包含适用于多种 AI 工具的开源提示。\n\n**2.** [kinneyyan/prompts](https://github.com/kinneyyan/prompts)\n      ⭐2 · 这是一套包含规则、工作流、技能和钩子的集合，用于日常编码代理工作。\n\n**3.** [the911fund/skill-of-skills](https://github.com/the911fund/skill-of-skills)\n      ⭐2 · 这是一个 AI 编码工具的自动发现引擎，索引跨平台的技能与集成。\n\n**4.** [unbound9527/claude-code-study-zh_CN](https://github.com/unbound9527/claude-code-study-zh_CN)\n      ⭐2 · 这是最系统完整的 Claude Code 中文学习路径，涵盖从上手到工程实践。\n\n**5.** [Community-Tech-UK/mcp-wordpress-elementor](https://github.com/Community-Tech-UK/mcp-wordpress-elementor)\n      ⭐1 · Unified MCP server for WordPress + Elementor — 71 tools for content management,\n"
           },
           {
             "tag": "hr"
@@ -50,10 +64,10 @@
       }
     }
   ],
-  "count": 40,
+  "count": 101,
   "selected_count": 20,
   "summary": {
-    "count": 40,
+    "count": 101,
     "editorial": 24,
     "api_usage": {
       "total_budget": 50,
@@ -64,12 +78,16 @@
     },
     "collector_stats": {
       "ossinsight": {
-        "count": 0,
-        "kinds": {}
+        "count": 8,
+        "kinds": {
+          "project": 8
+        }
       },
       "repos": {
-        "count": 0,
-        "kinds": {}
+        "count": 33,
+        "kinds": {
+          "project": 33
+        }
       },
       "discussions": {
         "count": 0,
@@ -80,19 +98,21 @@
         "kinds": {}
       },
       "skills": {
-        "count": 40,
+        "count": 60,
         "kinds": {
-          "skill": 40
+          "skill": 60
         }
       }
     },
     "a_count": 10,
     "b_count": 10,
     "filtered_kind_counts": {
-      "skill": 40
+      "project": 41,
+      "skill": 60
     },
     "published_kind_counts": {
-      "skill": 20
+      "project": 10,
+      "skill": 10
     }
   }
 }
