@@ -32,48 +32,32 @@ def score_candidate(candidate: Candidate) -> float:
 
 
 def _fallback_summary(candidate: Candidate) -> str:
-    if candidate.source_query.startswith("ossinsight:"):
-        return "这是 OSSInsight 监测到的近期热门仓库，适合先看趋势和增量。"
-    if candidate.kind == "skill":
-        return "这是一个可复用的技能 / 规则包，适合判断是否加入你的技能库。"
-    if candidate.kind == "discussion":
-        return "这是一个值得关注的提案 / 讨论，适合先看标题和上下文。"
-    if candidate.kind in {"issue", "pr"}:
-        return "这是一个和功能演进相关的 issue / PR，适合先看是否有新方案。"
-    return "这是一个近期活跃的项目，建议先看 README 和最近更新。"
+    """优先用仓库真实描述，不用模板废话。"""
+    desc = (candidate.body_excerpt or "").strip()
+    if desc and len(desc) > 10:
+        return desc[:120]
+    # 无描述时用指标拼一句
+    m = candidate.metrics
+    parts = []
+    if m.stars:
+        parts.append(f"⭐{m.stars}")
+    if m.forks:
+        parts.append(f"🍴{m.forks}")
+    if m.comments:
+        parts.append(f"💬{m.comments}")
+    return " ".join(parts) if parts else "暂无描述"
 
 
 def _fallback_why_now(candidate: Candidate) -> str:
-    metrics = candidate.metrics
-    if candidate.source_query.startswith("ossinsight:"):
-        if metrics.stars or metrics.reactions:
-            return f"OSSInsight 近期热度上升，最近增量约 {metrics.stars}。"
-        return "OSSInsight 监测到它进入近期热榜，适合先快速浏览。"
-    if candidate.kind == "skill":
-        if metrics.stars or metrics.forks:
-            return f"最近有 {metrics.stars} 星 / {metrics.forks} 个 fork，值得快速判断是否纳入技能库。"
-        return "这是一个有复用价值的能力包，适合先扫一眼内容结构。"
-    if candidate.kind == "discussion":
-        if metrics.comments:
-            return f"已经有 {metrics.comments} 条评论，说明讨论热度不低。"
-        return "属于高信号仓库里的提案 / 讨论，适合优先查看。"
-    if candidate.kind in {"issue", "pr"}:
-        if metrics.comments:
-            return f"已有 {metrics.comments} 条评论，说明这个方案已经有人在认真讨论。"
-        return "这是一个可能影响路线图的 issue / PR，适合优先检查。"
-    if metrics.stars or metrics.forks:
-        return f"最近有 {metrics.stars} 星 / {metrics.forks} 个 fork，说明项目正在被关注。"
-    return "这个项目值得先看最近更新和 README，判断是否继续跟踪。"
-
-
-def _fallback_follow_up(candidate: Candidate) -> str:
-    if candidate.kind == "skill":
-        return "建议先看示例和使用说明，再决定是否纳入技能库。"
-    if candidate.kind == "discussion":
-        return "建议先看原帖与评论，再决定是否继续跟进。"
-    if candidate.kind in {"issue", "pr"}:
-        return "建议先看上下文和关联链接，再判断是否值得跟进。"
-    return "建议先看 README、最近提交和 release，再判断是否继续跟踪。"
+    """简短信号，不超过 1 句。"""
+    m = candidate.metrics
+    if candidate.source_query.startswith("ossinsight:") and m.stars:
+        return f"近期 +{m.stars}⭐"
+    if m.comments >= 10:
+        return f"{m.comments} 条讨论"
+    if m.stars >= 100:
+        return f"⭐{m.stars}"
+    return ""
 
 
 def _bucket_for_kind(kind: str) -> str:
@@ -99,7 +83,6 @@ def build_display_items(candidates: list[Candidate], editorial: list[dict]) -> l
             "url": candidate.url,
             "summary": _fallback_summary(candidate),
             "why_now": _fallback_why_now(candidate),
-            "follow_up": _fallback_follow_up(candidate),
             "editorial_rank": None,
             "section": None,
             "repo_full_name": candidate.repo_full_name,
@@ -107,6 +90,14 @@ def build_display_items(candidates: list[Candidate], editorial: list[dict]) -> l
             "metrics": candidate.metrics.model_dump(),
             "rule_scores": dict(candidate.rule_scores),
             "score": score_candidate(candidate),
+            # star 相关字段供 feishu 卡片渲染 badge
+            "stars": candidate.metrics.stars,
+            "star_delta_1d": candidate.metrics.star_growth_7d,
+            "star_velocity": (
+                "surge" if candidate.metrics.star_growth_7d >= 200
+                else "rising" if candidate.metrics.star_growth_7d >= 50
+                else ""
+            ),
         }
         editorial_item = editorial_by_url.get(candidate.url) or editorial_by_title.get(candidate.title)
         if editorial_item:
@@ -115,7 +106,6 @@ def build_display_items(candidates: list[Candidate], editorial: list[dict]) -> l
             item["url"] = editorial_item.get("url", item["url"])
             item["summary"] = editorial_item.get("summary") or item["summary"]
             item["why_now"] = editorial_item.get("why_now") or item["why_now"]
-            item["follow_up"] = editorial_item.get("follow_up") or item["follow_up"]
             rank = editorial_item.get("rank", editorial_item.get("editorial_rank"))
             if rank is not None:
                 item["editorial_rank"] = rank

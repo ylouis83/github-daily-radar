@@ -209,11 +209,11 @@ def test_run_pipeline_uses_editorial_summaries_and_continues_on_collector_failur
 
     captured = {}
 
-    def fake_build_cards(*, title, sections, metadata=None, max_lines=20):
-        captured["title"] = title
-        captured["sections"] = sections
+    def fake_build_digest_card(*, items, metadata=None, today=None):
+        captured["items"] = items
         captured["metadata"] = metadata or {}
-        return [{"msg_type": "interactive", "card": {"header": {"title": {"content": title}}}}]
+        captured["today"] = today
+        return {"msg_type": "interactive", "card": {"header": {"title": {"content": "test"}}}}
 
     monkeypatch.setattr(main_module, "OSSInsightCollector", _GoodOSSInsightCollector)
     monkeypatch.setattr(main_module, "RepoCollector", _GoodCollector)
@@ -221,7 +221,7 @@ def test_run_pipeline_uses_editorial_summaries_and_continues_on_collector_failur
     monkeypatch.setattr(main_module, "DiscussionCollector", _GoodDiscussionCollector)
     monkeypatch.setattr(main_module, "IssuesPrsCollector", _GoodIssuesCollector)
     monkeypatch.setattr(main_module, "EditorialLLM", _FakeLLM)
-    monkeypatch.setattr(main_module, "build_cards", fake_build_cards)
+    monkeypatch.setattr(main_module, "build_digest_card", fake_build_digest_card)
     monkeypatch.setattr(main_module, "send_cards", lambda *args, **kwargs: None)
 
     settings = Settings.from_env()
@@ -232,14 +232,11 @@ def test_run_pipeline_uses_editorial_summaries_and_continues_on_collector_failur
     assert _FakeLLM.last_candidates[1]["title"] == "owner/name"
     assert _FakeLLM.last_candidates[2]["title"] == "Proposal"
     assert _FakeLLM.last_candidates[3]["title"] == "RFC"
-    assert captured["title"] == "GitHub 每日雷达"
-    assert captured["sections"][0]["title"] == "A 精编版 · 今日概览"
+    # 验证 editorial summary 被正确合并
     assert any(
         item["title"] == "owner/name" and item["summary"] == "中文摘要"
-        for section in captured["sections"]
-        for item in section.get("items", [])
+        for item in captured["items"]
     )
-    assert any(section["title"].startswith("B 保留版") for section in captured["sections"])
     assert captured["metadata"]["a_count"] == 4
     assert captured["metadata"]["b_count"] == 0
 
@@ -261,11 +258,10 @@ def test_run_pipeline_respects_report_limit(monkeypatch, tmp_path: Path):
 
     captured = {}
 
-    def fake_build_cards(*, title, sections, metadata=None, max_lines=20):
-        captured["title"] = title
-        captured["sections"] = sections
+    def fake_build_digest_card(*, items, metadata=None, today=None):
+        captured["items"] = items
         captured["metadata"] = metadata or {}
-        return [{"msg_type": "interactive", "card": {"header": {"title": {"content": title}}}}]
+        return {"msg_type": "interactive", "card": {"header": {"title": {"content": "test"}}}}
 
     monkeypatch.setattr(main_module, "OSSInsightCollector", _GoodOSSInsightCollector)
     monkeypatch.setattr(main_module, "RepoCollector", _GoodCollector)
@@ -273,7 +269,7 @@ def test_run_pipeline_respects_report_limit(monkeypatch, tmp_path: Path):
     monkeypatch.setattr(main_module, "DiscussionCollector", _GoodDiscussionCollector)
     monkeypatch.setattr(main_module, "IssuesPrsCollector", _GoodIssuesCollector)
     monkeypatch.setattr(main_module, "EditorialLLM", _FakeLLM)
-    monkeypatch.setattr(main_module, "build_cards", fake_build_cards)
+    monkeypatch.setattr(main_module, "build_digest_card", fake_build_digest_card)
     monkeypatch.setattr(main_module, "send_cards", lambda *args, **kwargs: None)
 
     settings = Settings.from_env()

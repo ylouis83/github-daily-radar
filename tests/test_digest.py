@@ -24,10 +24,9 @@ def test_build_display_items_uses_chinese_fallbacks():
 
     items = build_display_items([candidate], editorial=[])
 
-    assert items[0]["summary"].startswith("这是一个近期活跃的项目")
-    assert "原文" not in items[0]["summary"]
-    assert "最近有 12 星 / 3 个 fork" in items[0]["why_now"]
-    assert items[0]["follow_up"].startswith("建议先看 README")
+    # 新行为：fallback 使用真实 body_excerpt，不用模板废话
+    assert items[0]["summary"] == "an english excerpt that should not leak into the default card copy"
+    assert "follow_up" not in items[0]
 
 
 def test_split_a_b_keeps_kind_diversity():

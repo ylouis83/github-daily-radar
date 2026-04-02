@@ -28,10 +28,10 @@ from github_daily_radar.collectors.issues_prs import IssuesPrsCollector
 from github_daily_radar.collectors.repos import RepoCollector
 from github_daily_radar.collectors.skills import SkillCollector
 from github_daily_radar.config import Settings
-from github_daily_radar.publish.feishu import build_alert_cards, build_cards, send_cards
+from github_daily_radar.publish.feishu import build_alert_cards, build_digest_card, send_cards
 from github_daily_radar.scoring.dedupe import should_reenter
 from github_daily_radar.state.store import StateStore
-from github_daily_radar.summarize.digest import build_display_items, build_card_sections_with_label, score_candidate, split_a_b
+from github_daily_radar.summarize.digest import build_display_items, score_candidate, split_a_b
 from github_daily_radar.summarize.llm import EditorialLLM
 
 
@@ -195,9 +195,12 @@ def run_pipeline(settings: Settings, alert_only: bool = False) -> dict:
     metadata["b_count"] = len(b_items)
     metadata["filtered_kind_counts"] = dict(filtered_kind_counts)
     metadata["published_kind_counts"] = dict(published_kind_counts)
-    sections_a = build_card_sections_with_label(a_items, variant="A", metadata=metadata, bundle_label="A 精编版")
-    sections_b = build_card_sections_with_label(b_items, variant="B", metadata=metadata, bundle_label="B 保留版")
-    cards = build_cards(title="GitHub 每日雷达", sections=sections_a + sections_b, metadata=metadata, max_lines=50)
+    card = build_digest_card(
+        items=a_items,
+        metadata=metadata,
+        today=today,
+    )
+    cards = [card]
 
     if should_publish(dry_run=settings.dry_run, alert_only=alert_only):
         send_cards(webhook_url=settings.feishu_webhook_url, cards=cards)

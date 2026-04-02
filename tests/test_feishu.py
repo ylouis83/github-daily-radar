@@ -1,101 +1,132 @@
-from github_daily_radar.publish.feishu import build_cards, build_digest_cards
+from datetime import date
+
+from github_daily_radar.publish.feishu import build_digest_card, build_alert_cards
 
 
-def test_build_digest_cards_creates_two_bundles_with_chinese_headers():
-    sections_a = [
+def test_build_digest_card_single_card_with_sections():
+    items = [
         {
-            "title": "今日概览",
-            "lines": [
-                "本卡共 2 条，覆盖 1 个项目、1 个提案 / 讨论。",
-                "这一卡优先展示今天最值得点开的内容。",
-            ],
+            "kind": "project",
+            "title": "owner/repo",
+            "url": "https://github.com/owner/repo",
+            "summary": "一个很酷的项目",
+            "stars": 1200,
+            "star_delta_1d": 300,
+            "star_velocity": "surge",
         },
         {
-            "title": "必看项目",
-            "items": [
-                {
-                    "title": "owner/repo",
-                    "url": "https://github.com/owner/repo",
-                    "summary": "中文摘要",
-                    "why_now": "值得关注",
-                }
-            ],
-        }
-    ]
-    sections_b = [
+            "kind": "skill",
+            "title": "owner/skill",
+            "url": "https://github.com/owner/skill",
+            "summary": "Claude Code 的 skill 框架",
+            "stars": 5000,
+            "star_delta_1d": 0,
+            "star_velocity": "",
+        },
         {
-            "title": "项目补充",
-            "items": [
-                {
-                    "title": "owner/other",
-                    "url": "https://github.com/owner/other",
-                    "summary": "补充摘要",
-                }
-            ],
-        }
+            "kind": "discussion",
+            "title": "RFC: 新架构提案",
+            "url": "https://github.com/org/repo/discussions/123",
+            "summary": "讨论新的 Agent 运行时架构",
+            "stars": 0,
+            "star_delta_1d": 0,
+            "star_velocity": "",
+        },
     ]
 
-    cards = build_digest_cards(
-        title="GitHub 每日雷达",
-        bundles=[
-            {"label": "A 精编版", "sections": sections_a},
-            {"label": "B 保留版", "sections": sections_b},
-        ],
-        metadata={"count": 2},
-        max_lines=20,
-    )
+    card = build_digest_card(items=items, metadata={"count": 50, "a_count": 3}, today=date(2026, 4, 2))
 
-    assert len(cards) == 2
-    header_a = cards[0]["card"]["header"]["title"]["content"]
-    header_b = cards[1]["card"]["header"]["title"]["content"]
-    assert "A 精编版" in header_a
-    assert "B 保留版" in header_b
-    assert "每日雷达" in header_a
-    elements = [element["content"] for element in cards[0]["card"]["elements"]]
-    assert any("本卡共 2 条" in content for content in elements)
-    assert any("摘要：" in content for content in elements)
-    assert any("为什么现在：" in content for content in elements)
-
-
-def test_build_cards_keeps_chinese_labels():
-    sections = [
-        {
-            "title": "必看技能",
-            "items": [
-                {
-                    "title": "owner/skill",
-                    "url": "https://github.com/owner/skill",
-                    "summary": "中文摘要",
-                }
-            ],
-        }
-    ]
-
-    cards = build_cards(title="GitHub 每日雷达", sections=sections, metadata={"count": 1}, max_lines=20)
-
-    assert len(cards) == 1
-    header = cards[0]["card"]["header"]["title"]["content"]
+    assert card["msg_type"] == "interactive"
+    header = card["card"]["header"]["title"]["content"]
     assert "每日雷达" in header
-    elements = [element["content"] for element in cards[0]["card"]["elements"]]
-    assert any("摘要：" in content for content in elements)
+    assert "2026-04-02" in header
+    assert card["card"]["header"]["template"] == "blue"
+
+    contents = [el.get("content", "") for el in card["card"]["elements"] if el.get("tag") == "markdown"]
+    all_text = "\n".join(contents)
+
+    # 验证概览
+    assert "3 条" in all_text or "今日精选" in all_text
+    # 验证分区标题
+    assert "🚀 热门项目" in all_text
+    assert "🧩 发现技能" in all_text
+    assert "💬 提案与讨论" in all_text
+    # 验证链接可点击
+    assert "[owner/repo](https://github.com/owner/repo)" in all_text
+    # 验证 star badge
+    assert "🔥+300⭐" in all_text
+    # 验证真实摘要（不是模板）
+    assert "一个很酷的项目" in all_text
+    # 验证底部运维信息
+    assert "📊" in all_text
 
 
-def test_build_cards_does_not_render_runtime_metadata():
-    sections = [
+def test_build_digest_card_empty_discussion_shows_placeholder():
+    items = [
         {
-            "title": "必看项目",
-            "items": [
-                {
-                    "title": "owner/repo",
-                    "url": "https://github.com/owner/repo",
-                    "summary": "中文摘要",
-                }
-            ],
-        }
+            "kind": "project",
+            "title": "test/repo",
+            "url": "https://github.com/test/repo",
+            "summary": "desc",
+            "stars": 100,
+            "star_delta_1d": 0,
+            "star_velocity": "",
+        },
     ]
 
-    cards = build_cards(title="GitHub 每日雷达", sections=sections, metadata={"count": 1}, max_lines=20)
+    card = build_digest_card(items=items, today=date(2026, 4, 2))
+
+    contents = [el.get("content", "") for el in card["card"]["elements"] if el.get("tag") == "markdown"]
+    all_text = "\n".join(contents)
+    assert "今日暂无" in all_text
+
+
+def test_build_digest_card_is_single_card():
+    """确保不管多少条目都只生成 1 张卡片"""
+    items = [
+        {
+            "kind": "project",
+            "title": f"org/repo-{i}",
+            "url": f"https://github.com/org/repo-{i}",
+            "summary": f"Project {i}",
+            "stars": i * 100,
+            "star_delta_1d": 0,
+            "star_velocity": "",
+        }
+        for i in range(20)
+    ]
+
+    card = build_digest_card(items=items, today=date(2026, 4, 2))
+
+    # 返回的是单个 dict，不是 list
+    assert isinstance(card, dict)
+    assert card["msg_type"] == "interactive"
+
+
+def test_alert_card_has_red_theme():
+    cards = build_alert_cards(title="Alert", message="Something failed")
 
     assert len(cards) == 1
-    elements = [element["content"] for element in cards[0]["card"]["elements"]]
-    assert all("运行信息" not in content for content in elements)
+    assert cards[0]["card"]["header"]["template"] == "red"
+    contents = [el.get("content", "") for el in cards[0]["card"]["elements"]]
+    assert any("Something failed" in c for c in contents)
+
+
+def test_star_badge_renders_k_format():
+    """大 star 数应显示为 ⭐131K"""
+    items = [
+        {
+            "kind": "skill",
+            "title": "big/repo",
+            "url": "https://github.com/big/repo",
+            "summary": "大仓库",
+            "stars": 131000,
+            "star_delta_1d": 0,
+            "star_velocity": "",
+        },
+    ]
+
+    card = build_digest_card(items=items, today=date(2026, 4, 2))
+    contents = [el.get("content", "") for el in card["card"]["elements"] if el.get("tag") == "markdown"]
+    all_text = "\n".join(contents)
+    assert "⭐131K" in all_text
