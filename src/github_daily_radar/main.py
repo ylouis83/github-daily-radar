@@ -187,23 +187,43 @@ def run_pipeline(settings: Settings, alert_only: bool = False) -> dict:
 
     ranked_candidates = sorted(filtered, key=score_candidate, reverse=True)
     llm = EditorialLLM(api_key=settings.qwen_api_key, model=settings.default_model)
+    def _editorial_payload(item):
+        raw_signals = item.raw_signals or {}
+        hints = {
+            key: value
+            for key, value in {
+                "collection_name": raw_signals.get("collection_name"),
+                "matched_file": raw_signals.get("matched_file"),
+                "matched_path": raw_signals.get("matched_path"),
+                "ossinsight_source": item.source_query if item.source_query.startswith("ossinsight:") else "",
+            }.items()
+            if value
+        }
+        return {
+            "title": item.title,
+            "kind": item.kind,
+            "url": item.url,
+            "repo": item.repo_full_name,
+            "description": item.body_excerpt[:280],
+            "topics": item.topics,
+            "labels": item.labels,
+            "source_query": item.source_query,
+            "signals": {
+                "stars": item.metrics.stars,
+                "forks": item.metrics.forks,
+                "comments": item.metrics.comments,
+                "reactions": item.metrics.reactions,
+                "star_growth_7d": item.metrics.star_growth_7d,
+                "previous_star_growth_7d": item.metrics.previous_star_growth_7d,
+                "has_new_release": item.metrics.has_new_release,
+                "days_since_previous_release": item.metrics.days_since_previous_release,
+                "comment_growth_rate": item.metrics.comment_growth_rate,
+            },
+            "hints": hints,
+        }
+
     editorial = llm.rank_and_summarize(
-        [
-            {
-                "title": item.title,
-                "kind": item.kind,
-                "url": item.url,
-                "repo": item.repo_full_name,
-                "signals": {
-                    "stars": item.metrics.stars,
-                    "forks": item.metrics.forks,
-                    "comments": item.metrics.comments,
-                    "reactions": item.metrics.reactions,
-                },
-                "excerpt": item.body_excerpt[:200],
-            }
-            for item in ranked_candidates[: settings.llm_max_candidates]
-        ]
+        [_editorial_payload(item) for item in ranked_candidates[: settings.llm_max_candidates]]
     )
 
     metadata = {

@@ -22,10 +22,10 @@ SECTION_ICONS = {
 }
 
 ITEM_COPY_LABELS = {
-    "project": {"signal": "看点", "summary": "项目摘要"},
-    "skill": {"signal": "可复用", "summary": "技能摘要"},
-    "discussion": {"signal": "讨论焦点", "summary": "方案摘要"},
-    "other": {"signal": "信号", "summary": "摘要"},
+    "project": {"signal": "看点", "summary": "项目画像"},
+    "skill": {"signal": "可复用", "summary": "技能画像"},
+    "discussion": {"signal": "讨论焦点", "summary": "讨论画像"},
+    "other": {"signal": "信号", "summary": "画像"},
 }
 
 

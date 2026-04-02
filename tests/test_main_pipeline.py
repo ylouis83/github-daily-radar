@@ -187,7 +187,9 @@ class _FakeLLM:
                 "kind": "project",
                 "title": "owner/name",
                 "url": "https://github.com/owner/name",
-                "summary": "中文摘要",
+                "trait": "围绕终端式 AI 编程工作流",
+                "capability": "把复杂编码任务拆成可执行命令",
+                "necessity": "适合想把 AI 编程沉入日常开发的人",
                 "why_now": "今天有进展",
             }
         ]
@@ -271,13 +273,20 @@ def test_run_pipeline_uses_editorial_summaries_and_continues_on_collector_failur
     result = run_pipeline(settings=settings)
 
     assert result["count"] == 4
+    assert _FakeLLM.last_candidates[0]["description"] == "trend"
+    assert _FakeLLM.last_candidates[0]["topics"] == ["Artificial Intelligence"]
+    assert _FakeLLM.last_candidates[0]["labels"] == []
+    assert _FakeLLM.last_candidates[0]["signals"]["star_growth_7d"] == 120
     assert _FakeLLM.last_candidates[0]["title"] == "owner/trend"
     assert _FakeLLM.last_candidates[1]["title"] == "owner/name"
     assert _FakeLLM.last_candidates[2]["title"] == "Proposal"
     assert _FakeLLM.last_candidates[3]["title"] == "RFC"
-    # 验证 editorial summary 被正确合并
+    # 验证 editorial 画像被正确合并
     assert any(
-        item["title"] == "owner/name" and item["summary"] == "中文摘要"
+        item["title"] == "owner/name"
+        and "特点：" in item["summary"]
+        and "核心能力：" in item["summary"]
+        and "引入必要性：" in item["summary"]
         for item in captured["items"]
     )
     assert captured["metadata"]["a_count"] == 4

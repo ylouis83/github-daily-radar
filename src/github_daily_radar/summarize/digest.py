@@ -41,6 +41,33 @@ KIND_LABELS_B = {
     "discussion": "提案 / 讨论补充",
     "other": "其他",
 }
+PROFILE_LABELS = {
+    "project": {"trait": "特点", "capability": "核心能力", "necessity": "引入必要性"},
+    "skill": {"trait": "特点", "capability": "核心能力", "necessity": "纳入必要性"},
+    "discussion": {"trait": "焦点", "capability": "核心观点", "necessity": "跟进必要性"},
+    "issue": {"trait": "焦点", "capability": "核心观点", "necessity": "跟进必要性"},
+    "pr": {"trait": "焦点", "capability": "核心观点", "necessity": "跟进必要性"},
+    "other": {"trait": "特点", "capability": "核心能力", "necessity": "引入必要性"},
+}
+
+_FOCUS_PATTERNS: list[tuple[tuple[str, ...], str]] = [
+    (("claude-code", "claude code"), "围绕 Claude Code 的终端工作流"),
+    (("learn-claude-code", "claude-howto", "howto"), "面向 Claude Code 的上手与实践"),
+    (("oh-my-claudecode",), "围绕 Claude Code 的个性化工作台"),
+    (("oh-my-codex", "codex"), "围绕 Codex 的开发流程"),
+    (("mcp", "model context protocol"), "聚焦 MCP 工具接入与编排"),
+    (("browser-use", "browser use", "browser"), "面向浏览器自动化"),
+    (("prompt", "prompts"), "围绕 prompt 复用与组织"),
+    (("agent", "agents"), "偏 Agent 编排"),
+    (("workflow",), "强调工作流自动化"),
+    (("rag", "graphrag"), "聚焦 RAG 检索增强"),
+    (("vllm", "llama.cpp", "inference"), "聚焦模型推理与部署"),
+    (("dify",), "面向应用编排平台"),
+    (("open-webui",), "面向本地大模型 UI 与插件生态"),
+    (("copilot",), "面向 Copilot / IDE 工作流"),
+    (("skill", "skills"), "围绕可复用 skill 资产"),
+    (("rule", "rules"), "围绕规则驱动的工作流"),
+]
 
 
 def score_candidate(candidate: Candidate) -> float:
@@ -53,45 +80,8 @@ def score_candidate(candidate: Candidate) -> float:
 
 
 def _fallback_summary(candidate: Candidate) -> str:
-    """优先保留中文真实描述，英文兜底改成中文摘要模板。"""
-    if candidate.source_query.startswith("ossinsight:"):
-        growth = candidate.metrics.star_growth_7d or candidate.metrics.stars
-        if growth >= 1000:
-            return "OSSInsight 监测到热度爆发，建议先看趋势、README 和最近 release。"
-        if growth >= 300:
-            return "OSSInsight 监测到近期热度明显上升，适合先看变更和 release。"
-        return "OSSInsight 监测到近期热度上升，建议先看 README 和最近提交。"
-
-    desc = (candidate.body_excerpt or "").strip()
-    if desc and _has_cjk(desc):
-        return _truncate(desc, 100)
-
-    # 英文或无描述时，用中文模板避免把原文英文直接带进卡片。
-    if candidate.kind == "project":
-        if candidate.metrics.has_new_release:
-            return "这是近期值得关注的仓库，建议先看 README、最近提交和 release。"
-        if candidate.metrics.stars >= 100:
-            return "这是近期热度很高的仓库，建议先看趋势、README 和最近提交。"
-        return "这是一个值得快速浏览的仓库，先看 README 和最近提交。"
-    if candidate.kind == "skill":
-        if candidate.metrics.stars >= 100:
-            return "这是一个可复用度很高的技能资源，适合评估是否纳入技能库。"
-        return "这是一个可复用的 skill / prompt / rules 资源，适合评估是否纳入技能库。"
-    if candidate.kind in {"discussion", "issue", "pr"}:
-        if candidate.metrics.comments >= 20:
-            return "这是一个评论活跃的提案或讨论，重点看争议点和结论。"
-        return "这是一个值得跟进的提案或讨论，重点看方案、评论和结论。"
-
-    # 再退一步只给信号，不泄露英文原文。
-    m = candidate.metrics
-    parts = []
-    if m.stars:
-        parts.append(f"⭐{m.stars}")
-    if m.forks:
-        parts.append(f"🍴{m.forks}")
-    if m.comments:
-        parts.append(f"💬{m.comments}")
-    return " ".join(parts) if parts else "这是一个值得关注的条目，建议先看标题和原始链接。"
+    """优先保留中文真实描述，英文兜底改成结构化中文画像。"""
+    return _fallback_profile(candidate)
 
 
 def _fallback_why_now(candidate: Candidate) -> str:
@@ -128,6 +118,134 @@ def _prefer_chinese_text(fallback: str, text: str | None) -> str:
     return fallback
 
 
+def _candidate_text_blob(candidate: Candidate) -> str:
+    raw_signals = candidate.raw_signals or {}
+    code_item = raw_signals.get("code_search_item") or {}
+    repo_item = raw_signals.get("search_item") or {}
+    graphql_item = raw_signals.get("graphql_item") or {}
+    parts = [
+        candidate.title,
+        candidate.repo_full_name,
+        candidate.body_excerpt,
+        candidate.source_query,
+        " ".join(candidate.topics),
+        " ".join(candidate.labels),
+        code_item.get("name", ""),
+        code_item.get("path", ""),
+        repo_item.get("description", ""),
+        repo_item.get("name", ""),
+        graphql_item.get("description", ""),
+    ]
+    return " ".join(part for part in parts if isinstance(part, str) and part.strip()).lower()
+
+
+def _focus_phrase(candidate: Candidate) -> str:
+    blob = _candidate_text_blob(candidate)
+    for needles, phrase in _FOCUS_PATTERNS:
+        if any(needle in blob for needle in needles):
+            return phrase
+    if candidate.source_query.startswith("ossinsight:"):
+        if candidate.metrics.star_growth_7d >= 1000:
+            return "热度爆发的 AI 相关项目"
+        if candidate.metrics.star_growth_7d >= 300:
+            return "近期升温的 AI 相关项目"
+        return "近期值得关注的 AI 相关项目"
+    if candidate.kind == "skill":
+        return "围绕可复用能力包的技能资源"
+    if candidate.kind in {"discussion", "issue", "pr"}:
+        return "围绕方案取舍的讨论条目"
+    return "围绕 AI 工具链的项目"
+
+
+def _fallback_trait(candidate: Candidate) -> str:
+    focus = _focus_phrase(candidate)
+    m = candidate.metrics
+    if candidate.source_query.startswith("ossinsight:"):
+        if m.star_growth_7d >= 1000:
+            return f"{focus}，当前增量非常高"
+        if m.star_growth_7d >= 300:
+            return f"{focus}，热度正在持续上升"
+        return focus
+    if candidate.kind == "skill":
+        if m.stars >= 100:
+            return f"{focus}，社区验证较强"
+        return f"{focus}，更像早期可复用资产"
+    if candidate.kind in {"discussion", "issue", "pr"}:
+        if m.comments >= 20:
+            return f"{focus}，讨论已进入收敛阶段"
+        return f"{focus}，适合先看争议点"
+    if candidate.metrics.has_new_release:
+        return f"{focus}，近期刚有新 release"
+    if m.stars >= 100:
+        return f"{focus}，已形成一定社区热度"
+    return focus
+
+
+def _fallback_capability(candidate: Candidate) -> str:
+    blob = _candidate_text_blob(candidate)
+    if any(needle in blob for needle in ("mcp", "tool")):
+        return "把外部工具和能力封装成更容易接入的调用层。"
+    if "browser" in blob:
+        return "把浏览器操作自动化成可编排的动作流。"
+    if any(needle in blob for needle in ("prompt", "rules", "skill")):
+        return "把可复用的提示词和规则沉淀成可执行资产。"
+    if any(needle in blob for needle in ("agent", "workflow")):
+        return "把复杂任务拆成可调度、可复用的 Agent 流程。"
+    if any(needle in blob for needle in ("rag", "retrieval", "search")):
+        return "把检索与生成串成更容易落地的问答或分析流程。"
+    if any(needle in blob for needle in ("inference", "vllm", "llama.cpp")):
+        return "把模型推理和部署做成更容易落地的基础设施。"
+    if candidate.kind == "discussion":
+        return "把方案争议、取舍和结论整理成可跟进的判断依据。"
+    if candidate.kind == "skill":
+        return "把这类能力打包成可以直接复用的工作流。"
+    return "把相关 AI 能力包装成更容易试用和复用的工作流。"
+
+
+def _fallback_necessity(candidate: Candidate) -> str:
+    m = candidate.metrics
+    if candidate.source_query.startswith("ossinsight:"):
+        if m.star_growth_7d >= 1000:
+            return "已经出现明显爆发，适合优先判断是否值得跟进。"
+        if m.star_growth_7d >= 300:
+            return "热度正在上升，适合趁势先看是否值得收录。"
+        return "热度已在抬升，适合快速判断是否值得关注。"
+    if candidate.kind == "skill":
+        if m.stars >= 100:
+            return "如果你在整理可复用技能库，这类条目值得优先纳入。"
+        return "如果你在找可复用能力包，这类条目值得先收藏观察。"
+    if candidate.kind in {"discussion", "issue", "pr"}:
+        if m.comments >= 20:
+            return "如果你关注方案走向，这类讨论值得跟进结论。"
+        return "如果你想提前判断方案方向，这类讨论值得先浏览。"
+    if candidate.metrics.has_new_release:
+        return "已有新版本信号，适合判断是否需要接入或替换。"
+    if m.stars >= 100:
+        return "已经有一定社区验证，适合判断是否值得引入。"
+    return "虽然还偏早期，但形态清晰，适合先观察是否值得引入。"
+
+
+def _compose_profile(kind: str, trait: str, capability: str, necessity: str) -> str:
+    labels = PROFILE_LABELS.get(kind, PROFILE_LABELS["other"])
+    parts = []
+    if trait:
+        parts.append(f"{labels['trait']}：{_truncate(trait, 42)}")
+    if capability:
+        parts.append(f"{labels['capability']}：{_truncate(capability, 48)}")
+    if necessity:
+        parts.append(f"{labels['necessity']}：{_truncate(necessity, 48)}")
+    return " · ".join(parts)
+
+
+def _fallback_profile(candidate: Candidate) -> str:
+    return _compose_profile(
+        candidate.kind,
+        _fallback_trait(candidate),
+        _fallback_capability(candidate),
+        _fallback_necessity(candidate),
+    )
+
+
 def _bucket_for_kind(kind: str) -> str:
     if kind == "project":
         return "project"
@@ -144,13 +262,21 @@ def build_display_items(candidates: list[Candidate], editorial: list[dict]) -> l
 
     items: list[dict] = []
     for candidate in candidates:
+        fallback_trait = _fallback_trait(candidate)
+        fallback_capability = _fallback_capability(candidate)
+        fallback_necessity = _fallback_necessity(candidate)
+        fallback_summary = _compose_profile(candidate.kind, fallback_trait, fallback_capability, fallback_necessity)
+        fallback_why_now = _fallback_why_now(candidate)
         item = {
             "candidate_id": candidate.candidate_id,
             "kind": candidate.kind,
             "title": candidate.title,
             "url": candidate.url,
-            "summary": _fallback_summary(candidate),
-            "why_now": _fallback_why_now(candidate),
+            "trait": fallback_trait,
+            "capability": fallback_capability,
+            "necessity": fallback_necessity,
+            "summary": fallback_summary,
+            "why_now": fallback_why_now,
             "editorial_rank": None,
             "section": None,
             "repo_full_name": candidate.repo_full_name,
@@ -172,7 +298,31 @@ def build_display_items(candidates: list[Candidate], editorial: list[dict]) -> l
             item["kind"] = editorial_item.get("kind", item["kind"])
             item["title"] = editorial_item.get("title", item["title"])
             item["url"] = editorial_item.get("url", item["url"])
-            item["summary"] = _prefer_chinese_text(item["summary"], editorial_item.get("summary"))
+            has_profile_fields = any(
+                editorial_item.get(field)
+                for field in ("trait", "characteristic", "capability", "core_capability", "necessity", "necessity_assessment")
+            )
+            if has_profile_fields:
+                item["trait"] = _prefer_chinese_text(
+                    item["trait"],
+                    editorial_item.get("trait") or editorial_item.get("characteristic"),
+                )
+                item["capability"] = _prefer_chinese_text(
+                    item["capability"],
+                    editorial_item.get("capability") or editorial_item.get("core_capability"),
+                )
+                item["necessity"] = _prefer_chinese_text(
+                    item["necessity"],
+                    editorial_item.get("necessity") or editorial_item.get("necessity_assessment"),
+                )
+                item["summary"] = _compose_profile(
+                    item["kind"],
+                    item["trait"],
+                    item["capability"],
+                    item["necessity"],
+                )
+            else:
+                item["summary"] = _prefer_chinese_text(item["summary"], editorial_item.get("summary"))
             item["why_now"] = _prefer_chinese_text(item["why_now"], editorial_item.get("why_now"))
             rank = editorial_item.get("rank", editorial_item.get("editorial_rank"))
             if rank is not None:

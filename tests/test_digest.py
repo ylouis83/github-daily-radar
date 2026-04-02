@@ -63,9 +63,20 @@ def test_build_display_items_uses_kind_specific_chinese_fallbacks():
         editorial=[],
     )
 
-    assert items[0]["summary"] == "这是一个值得快速浏览的仓库，先看 README 和最近提交。"
-    assert "可复用的 skill / prompt / rules 资源" in items[1]["summary"]
-    assert "值得跟进的提案或讨论" in items[2]["summary"]
+    assert "特点：" in items[0]["summary"]
+    assert "核心能力：" in items[0]["summary"]
+    assert "引入必要性：" in items[0]["summary"]
+    assert "特点：" in items[1]["summary"]
+    assert "核心能力：" in items[1]["summary"]
+    assert "纳入必要性：" in items[1]["summary"]
+    assert "焦点：" in items[2]["summary"]
+    assert "核心观点：" in items[2]["summary"]
+    assert "跟进必要性：" in items[2]["summary"]
+    assert items[0]["summary"] != items[1]["summary"]
+    assert items[0]["summary"] != items[2]["summary"]
+    assert "english" not in items[0]["summary"].lower()
+    assert "english" not in items[1]["summary"].lower()
+    assert "english" not in items[2]["summary"].lower()
     assert "follow_up" not in items[0]
 
 
@@ -91,11 +102,15 @@ def test_build_display_items_prefers_ossinsight_trend_language():
 
     items = build_display_items([candidate], editorial=[])
 
-    assert "OSSInsight" in items[0]["summary"]
-    assert "热度" in items[0]["summary"]
+    assert "特点：" in items[0]["summary"]
+    assert "热度正在持续上升" in items[0]["summary"]
+    assert "核心能力：" in items[0]["summary"]
+    assert "引入必要性：" in items[0]["summary"]
+    assert "OSSInsight" in items[0]["why_now"]
+    assert "+600⭐" in items[0]["why_now"]
 
 
-def test_build_display_items_rejects_english_editorial_copy():
+def test_build_display_items_creates_distinct_project_profiles():
     candidate = Candidate(
         candidate_id="project:owner/en",
         kind="project",
@@ -114,21 +129,46 @@ def test_build_display_items_rejects_english_editorial_copy():
         rule_scores={},
         dedupe_key="owner/en",
     )
+    other_candidate = Candidate(
+        candidate_id="project:owner/mcp",
+        kind="project",
+        source_query="topic:mcp",
+        title="owner/mcp",
+        url="https://github.com/owner/mcp",
+        repo_full_name="owner/mcp",
+        author="owner",
+        created_at="2026-04-01T00:00:00Z",
+        updated_at="2026-04-02T00:00:00Z",
+        body_excerpt="A toolkit for MCP servers and tool use",
+        topics=["mcp"],
+        labels=[],
+        metrics=CandidateMetrics(stars=80, forks=12, star_growth_7d=250),
+        raw_signals={},
+        rule_scores={},
+        dedupe_key="owner/mcp",
+    )
 
     items = build_display_items(
-        [candidate],
+        [candidate, other_candidate],
         editorial=[
             {
                 "title": "owner/en",
                 "url": "https://github.com/owner/en",
                 "kind": "project",
-                "summary": "This repo introduces a brand-new workflow for agents.",
+                "trait": "围绕终端式 AI 编程工作流",
+                "capability": "把复杂编码任务拆成可执行命令",
+                "necessity": "适合想把 AI 编程沉入日常开发的人",
                 "why_now": "It is getting traction fast.",
             }
         ],
     )
 
-    assert items[0]["summary"] == "这是一个值得快速浏览的仓库，先看 README 和最近提交。"
+    assert "特点：" in items[0]["summary"]
+    assert "核心能力：" in items[0]["summary"]
+    assert "引入必要性：" in items[0]["summary"]
+    assert items[0]["summary"] != items[1]["summary"]
+    assert "MCP" in items[1]["summary"] or "mcp" in items[1]["summary"].lower()
+    assert "AI 编程" in items[0]["summary"]
     assert items[0]["why_now"] == "近 7 天 +250⭐"
 
 

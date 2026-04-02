@@ -70,7 +70,7 @@ def test_build_digest_card_uses_kind_specific_labels():
             "kind": "project",
             "title": "owner/repo",
             "url": "https://github.com/owner/repo",
-            "summary": "这是一个值得关注的仓库",
+            "summary": "特点：围绕终端式 AI 编程工作流 · 核心能力：把复杂编码任务拆成可执行命令 · 引入必要性：适合想把 AI 编程沉入日常开发的人",
             "why_now": "OSSInsight 近期热度上升",
             "stars": 1200,
             "star_delta_1d": 300,
@@ -102,9 +102,12 @@ def test_build_digest_card_uses_kind_specific_labels():
     contents = [el.get("content", "") for el in card["card"]["elements"] if el.get("tag") == "markdown"]
     all_text = "\n".join(contents)
 
-    assert "看点：" in all_text
-    assert "可复用：" in all_text
-    assert "讨论焦点：" in all_text
+    assert "项目画像：" in all_text
+    assert "技能画像：" in all_text
+    assert "讨论画像：" in all_text
+    assert "特点：" in all_text
+    assert "核心能力：" in all_text
+    assert "引入必要性：" in all_text
 
 
 def test_build_digest_card_fuses_primary_and_secondary_sections():

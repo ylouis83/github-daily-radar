@@ -33,11 +33,13 @@ class EditorialLLM:
                             "content": (
                                 "你是 GitHub 日报的中文主编。只根据给定字段输出中文 JSON。"
                                 "严格只输出一个 JSON 数组，不要 markdown，不要代码块，不要解释文字。"
-                                "每个元素必须包含: title, url, kind, summary, why_now。"
+                                "每个元素必须包含: title, url, kind, trait, capability, necessity, why_now。"
                                 "可选字段: follow_up, section, rank。"
-                                "summary 与 why_now 各 1 句话，尽量简短。"
-                                "除仓库名、组织名和必要技术名词外，summary、why_now、follow_up 必须使用简体中文，"
-                                "不要输出英文句子，也不要直接复述英文 body_excerpt。"
+                                "trait、capability、necessity、why_now 各 1 句话，尽量简短。"
+                                "trait 要写出该项目最独特的特点，capability 要总结核心能力，necessity 要说明引入或关注的必要性，"
+                                "why_now 要说明今天为什么值得看。"
+                                "除仓库名、组织名和必要技术名词外，上述文本必须使用简体中文，不要输出英文句子，"
+                                "也不要把不同项目写成同一句模板。"
                                 "不要虚构未提供的事实。"
                             ),
                         },
