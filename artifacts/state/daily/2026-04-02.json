@@ -16,35 +16,14 @@
         "elements": [
           {
             "tag": "markdown",
-            "content": "**A 精编版 · 今日概览**\n今日精选 10 条：7 项目  ·  3 技能"
+            "content": "**A 精编版 · 今日概览**\n今日精选 5 条：5 项目"
           },
           {
             "tag": "hr"
           },
           {
             "tag": "markdown",
-            "content": "**🚀 热门项目**\n\n**1.** [anthropics/claude-code](https://github.com/anthropics/claude-code)\n      🔥+1161⭐ · 看点：OSSInsight 热度爆发 · +1161⭐\n      项目画像：特点：围绕 Claude Code 的终端工作流，当前增量非常高 · 核心能力：把外部工具和能力封装成更容易接入的调用层。 · 引入必要性：已经出现明显爆发，适合优先判断是否值得跟进。\n\n**2.** [Yeachan-Heo/oh-my-codex](https://github.com/Yeachan-Heo/oh-my-codex)\n      🔥+410⭐ · 看点：OSSInsight 热度上升 · +410⭐\n      项目画像：特点：围绕 Codex 的开发流程，热度正在持续上升 · 核心能力：把复杂任务拆成可调度、可复用的 Agent 流程。 · 引入必要性：热度正在上升，适合趁势先看是否值得收录。\n\n**3.** [luongnv89/claude-howto](https://github.com/luongnv89/claude-howto)\n      🔥+270⭐ · 看点：OSSInsight 近期 +270⭐\n      项目画像：特点：围绕 Claude Code 的终端工作流 · 核心能力：把复杂任务拆成可调度、可复用的 Agent 流程。 · 引入必要性：热度已在抬升，适合快速判断是否值得关注。\n\n**4.** [googleapis/genai-toolbox](https://github.com/googleapis/genai-toolbox)\n      ⭐13K · 看点：⭐13611\n      项目画像：特点：聚焦 MCP 工具接入与编排，已形成一定社区热度 · 核心能力：把外部工具和能力封装成更容易接入的调用层。 · 引入必要性：已经有一定社区验证，适合判断是否值得引入。\n\n**5.** [Yeachan-Heo/oh-my-claudecode](https://github.com/Yeachan-Heo/oh-my-claudecode)\n      🔥+212⭐ · 看点：OSSInsight 近期 +212⭐\n      项目画像：特点：围绕 Claude Code 的终端工作流 · 核心能力：把复杂任务拆成可调度、可复用的 Agent 流程。 · 引入必要性：热度已在抬升，适合快速判断是否值得关注。\n\n**6.** [NousResearch/hermes-agent](https://github.com/NousResearch/hermes-agent)\n      📈+135⭐ · 看点：OSSInsight 近期 +135⭐\n      项目画像：特点：偏 Agent 编排 · 核心能力：把复杂任务拆成可调度、可复用的 Agent 流程。 · 引入必要性：热度已在抬升，适合快速判断是否值得关注。\n\n**7.** [shareAI-lab/learn-claude-code](https://github.com/shareAI-lab/learn-claude-code)\n      📈+120⭐ · 看点：OSSInsight 近期 +120⭐\n      项目画像：特点：围绕 Claude Code 的终端工作流 · 核心能力：把复杂任务拆成可调度、可复用的 Agent 流程。 · 引入必要性：热度已在抬升，适合快速判断是否值得关注。\n"
-          },
-          {
-            "tag": "hr"
-          },
-          {
-            "tag": "markdown",
-            "content": "**🧩 发现技能**\n\n**1.** [kinneyyan/prompts](https://github.com/kinneyyan/prompts)\n      ⭐2\n      技能画像：特点：围绕 Claude Code 的终端工作流，更像早期可复用资产 · 核心能力：把可复用的提示词和规则沉淀成可执行资产。 · 纳入必要性：如果你在找可复用能力包，这类条目值得先收藏观察。\n\n**2.** [luv-jeri/nonlu-skill](https://github.com/luv-jeri/nonlu-skill)\n      技能画像：特点：围绕 Claude Code 的终端工作流，更像早期可复用资产 · 核心能力：把外部工具和能力封装成更容易接入的调用层。 · 纳入必要性：如果你在找可复用能力包，这类条目值得先收藏观察。\n\n**3.** [naoko/omx-provider](https://github.com/naoko/omx-provider)\n      技能画像：特点：围绕 Claude Code 的终端工作流，更像早期可复用资产 · 核心能力：把外部工具和能力封装成更容易接入的调用层。 · 纳入必要性：如果你在找可复用能力包，这类条目值得先收藏观察。\n"
-          },
-          {
-            "tag": "hr"
-          },
-          {
-            "tag": "markdown",
-            "content": "**B 保留版 · 更多值得扫一眼**\n今日精选 10 条：10 项目"
-          },
-          {
-            "tag": "hr"
-          },
-          {
-            "tag": "markdown",
-            "content": "**🚀 热门项目**\n\n**1.** [code-yeongyu/oh-my-openagent](https://github.com/code-yeongyu/oh-my-openagent)\n      📈+140⭐ · 看点：OSSInsight 近期 +140⭐\n      项目画像：特点：偏 Agent 编排 · 核心能力：把复杂任务拆成可调度、可复用的 Agent 流程。 · 引入必要性：热度已在抬升，适合快速判断是否值得关注。\n\n**2.** [badlogic/pi-mono](https://github.com/badlogic/pi-mono)\n      📈+67⭐ · 看点：OSSInsight 近期 +67⭐\n      项目画像：特点：偏 Agent 编排 · 核心能力：把外部工具和能力封装成更容易接入的调用层。 · 引入必要性：热度已在抬升，适合快速判断是否值得关注。\n\n**3.** [Sompote/tiger_cowork](https://github.com/Sompote/tiger_cowork)\n      ⭐47\n      项目画像：特点：围绕 Claude Code 的终端工作流 · 核心能力：把外部工具和能力封装成更容易接入的调用层。 · 引入必要性：虽然还偏早期，但形态清晰，适合先观察\n\n**4.** [travisjneuman/.claude](https://github.com/travisjneuman/.claude)\n      ⭐32\n      项目画像：特点：围绕 Claude Code 的终端工作流 · 核心能力：把外部工具和能力封装成更容易接入的调用层。 · 引入必要性：虽然还偏早期，但形态清晰，适合先观察\n\n**5.** [initMAX/zabbix-mcp-server](https://github.com/initMAX/zabbix-mcp-server)\n      ⭐33\n      项目画像：特点：围绕 Claude Code 的终端工作流 · 核心能力：把外部工具和能力封装成更容易接入的调用层。 · 引入必要性：虽然还偏早期，但形态清晰，适合先观察\n\n**6.** [kochetkov-ma/claude-brewcode](https://github.com/kochetkov-ma/claude-brewcode)\n      ⭐16\n      项目画像：特点：围绕 Claude Code 的终端工作流 · 核心能力：把外部工具和能力封装成更容易接入的调用层。 · 引入必要性：虽然还偏早期，但形态清晰，适合先观察\n\n**7.** [AntifragileTech/antifragile-claude-code](https://github.com/AntifragileTech/antifragile-claude-code)\n      ⭐4\n      项目画像：特点：围绕 Claude Code 的终端工作流 · 核心能力：把可复用的提示词和规则沉淀成可执行资产。 · 引入必要性：虽然还偏早期，但形态清晰，适合先观察是\n\n**8.** [HIDORAKAI002/ai-workspace-archive](https://github.com/HIDORAKAI002/ai-workspace-archive)\n      ⭐3\n      项目画像：特点：聚焦 MCP 工具接入与编排 · 核心能力：把外部工具和能力封装成更容易接入的调用层。 · 引入必要性：虽然还偏早期，但形态清晰，适合先观察是否值得引入。\n\n**9.** [Bhaktiswarup/think_tank](https://github.com/Bhaktiswarup/think_tank)\n      ⭐2\n      项目画像：特点：偏 Agent 编排 · 核心能力：把复杂任务拆成可调度、可复用的 Agent 流程。 · 引入必要性：虽然还偏早期，但形态清晰，适合先观察是否值得引入。\n\n**10.** [SkintLabs/WonderwallAi](https://github.com/SkintLabs/WonderwallAi)\n      ⭐2\n      项目画像：特点：围绕 prompt 复用与组织 · 核心能力：把可复用的提示词和规则沉淀成可执行资产。 · 引入必要性：虽然还偏早期，但形态清晰，适合先观察是否值得引入。\n"
+            "content": "**🚀 热门项目**\n\n**1.** [anthropics/claude-code](https://github.com/anthropics/claude-code)\n      🔥+1161⭐ · 看点：OSSInsight 热度爆发 · +1161⭐\n      项目画像：特点：围绕 Claude Code 的终端工作流，当前增量非常高 · 核心能力：把外部工具和能力封装成更容易接入的调用层。 · 引入必要性：已经出现明显爆发，适合优先判断是否值得跟进。\n\n**2.** [Yeachan-Heo/oh-my-codex](https://github.com/Yeachan-Heo/oh-my-codex)\n      🔥+410⭐ · 看点：OSSInsight 热度上升 · +410⭐\n      项目画像：特点：围绕 Codex 的开发流程，热度正在持续上升 · 核心能力：把复杂任务拆成可调度、可复用的 Agent 流程。 · 引入必要性：热度正在上升，适合趁势先看是否值得收录。\n\n**3.** [luongnv89/claude-howto](https://github.com/luongnv89/claude-howto)\n      🔥+270⭐ · 看点：OSSInsight 近期 +270⭐\n      项目画像：特点：围绕 Claude Code 的终端工作流 · 核心能力：把复杂任务拆成可调度、可复用的 Agent 流程。 · 引入必要性：热度已在抬升，适合快速判断是否值得关注。\n\n**4.** [Yeachan-Heo/oh-my-claudecode](https://github.com/Yeachan-Heo/oh-my-claudecode)\n      🔥+212⭐ · 看点：OSSInsight 近期 +212⭐\n      项目画像：特点：围绕 Claude Code 的终端工作流 · 核心能力：把复杂任务拆成可调度、可复用的 Agent 流程。 · 引入必要性：热度已在抬升，适合快速判断是否值得关注。\n\n**5.** [code-yeongyu/oh-my-openagent](https://github.com/code-yeongyu/oh-my-openagent)\n      📈+140⭐ · 看点：OSSInsight 近期 +140⭐\n      项目画像：特点：偏 Agent 编排 · 核心能力：把复杂任务拆成可调度、可复用的 Agent 流程。 · 引入必要性：热度已在抬升，适合快速判断是否值得关注。\n"
           },
           {
             "tag": "hr"
@@ -58,7 +37,7 @@
     }
   ],
   "count": 51,
-  "selected_count": 20,
+  "selected_count": 5,
   "summary": {
     "count": 51,
     "editorial": 0,
@@ -98,15 +77,14 @@
         }
       }
     },
-    "a_count": 10,
-    "b_count": 10,
+    "a_count": 5,
+    "b_count": 0,
     "filtered_kind_counts": {
       "project": 48,
       "skill": 3
     },
     "published_kind_counts": {
-      "project": 17,
-      "skill": 3
+      "project": 5
     }
   }
 }
