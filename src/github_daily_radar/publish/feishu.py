@@ -114,6 +114,7 @@ def _render_footer(today: date | None = None) -> str:
 def build_digest_card(
     *,
     items: list[dict],
+    secondary_items: list[dict] | None = None,
     metadata: dict | None = None,
     today: date | None = None,
 ) -> dict:
@@ -132,14 +133,16 @@ def build_digest_card(
     # 构建 elements
     elements: list[dict] = []
 
-    # 概览
-    elements.append({
-        "tag": "markdown",
-        "content": _render_overview(items),
-    })
+    # A 概览
+    elements.append(
+        {
+            "tag": "markdown",
+            "content": "**A 精编版 · 今日概览**\n" + _render_overview(items),
+        }
+    )
     elements.append({"tag": "hr"})
 
-    # 各分区 — 空分区不渲染
+    # A 各分区 — 空分区不渲染
     for kind in ["project", "skill", "discussion"]:
         section_items = grouped.get(kind, [])
         title = SECTION_ICONS.get(kind, kind.title())
@@ -148,7 +151,32 @@ def build_digest_card(
             elements.append({"tag": "markdown", "content": content})
             elements.append({"tag": "hr"})
 
-    # 底部运维信息
+    # B 版作为同一卡片的补充区
+    if secondary_items:
+        secondary_grouped: dict[str, list[dict]] = defaultdict(list)
+        for item in secondary_items:
+            kind = item.get("kind", "other")
+            if kind in ("issue", "pr"):
+                kind = "discussion"
+            secondary_grouped[kind].append(item)
+
+        elements.append(
+            {
+                "tag": "markdown",
+                "content": "**B 保留版 · 更多值得扫一眼**\n" + _render_overview(secondary_items),
+            }
+        )
+        elements.append({"tag": "hr"})
+
+        for kind in ["project", "skill", "discussion"]:
+            section_items = secondary_grouped.get(kind, [])
+            title = SECTION_ICONS.get(kind, kind.title())
+            content = _render_section(f"**{title}**", section_items)
+            if content is not None:
+                elements.append({"tag": "markdown", "content": content})
+                elements.append({"tag": "hr"})
+
+    # 底部时间戳
     footer = _render_footer(today)
     if footer:
         elements.append({"tag": "markdown", "content": footer})

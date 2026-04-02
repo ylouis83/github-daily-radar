@@ -64,6 +64,46 @@ def test_build_digest_card_single_card_with_sections():
     assert "2026-04-02" in all_text
 
 
+def test_build_digest_card_fuses_primary_and_secondary_sections():
+    primary_items = [
+        {
+            "kind": "project",
+            "title": "owner/repo-a",
+            "url": "https://github.com/owner/repo-a",
+            "summary": "主卡项目",
+            "stars": 100,
+            "star_delta_1d": 0,
+            "star_velocity": "",
+        }
+    ]
+    secondary_items = [
+        {
+            "kind": "skill",
+            "title": "owner/skill-b",
+            "url": "https://github.com/owner/skill-b",
+            "summary": "补充技能",
+            "stars": 42,
+            "star_delta_1d": 0,
+            "star_velocity": "",
+        }
+    ]
+
+    card = build_digest_card(
+        items=primary_items,
+        secondary_items=secondary_items,
+        today=date(2026, 4, 2),
+    )
+
+    contents = [el.get("content", "") for el in card["card"]["elements"] if el.get("tag") == "markdown"]
+    all_text = "\n".join(contents)
+
+    assert "A 精编版" in all_text
+    assert "B 保留版" in all_text
+    assert "owner/repo-a" in all_text
+    assert "owner/skill-b" in all_text
+    assert isinstance(card, dict)
+
+
 def test_build_digest_card_empty_discussion_omits_section():
     items = [
         {

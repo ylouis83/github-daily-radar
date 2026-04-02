@@ -134,6 +134,48 @@ class _GoodOSSInsightCollector:
         ]
 
 
+class _ManyProjectCollector:
+    name = "repos"
+
+    def __init__(self, *args, **kwargs) -> None:
+        pass
+
+    def collect(self):
+        candidates = []
+        for index in range(12):
+            candidates.append(
+                Candidate(
+                    candidate_id=f"repo:owner/repo-{index}",
+                    kind="project",
+                    source_query="topic:agent",
+                    title=f"owner/repo-{index}",
+                    url=f"https://github.com/owner/repo-{index}",
+                    repo_full_name=f"owner/repo-{index}",
+                    author="owner",
+                    created_at="2026-04-01T00:00:00Z",
+                    updated_at="2026-04-02T00:00:00Z",
+                    body_excerpt=f"repo {index}",
+                    topics=["agent"],
+                    labels=[],
+                    metrics=CandidateMetrics(stars=100 - index),
+                    raw_signals={},
+                    rule_scores={},
+                    dedupe_key=f"owner/repo-{index}",
+                )
+            )
+        return candidates
+
+
+class _EmptyCollector:
+    name = "empty"
+
+    def __init__(self, *args, **kwargs) -> None:
+        pass
+
+    def collect(self):
+        return []
+
+
 class _FakeLLM:
     def __init__(self, *args, **kwargs) -> None:
         pass
@@ -209,8 +251,9 @@ def test_run_pipeline_uses_editorial_summaries_and_continues_on_collector_failur
 
     captured = {}
 
-    def fake_build_digest_card(*, items, metadata=None, today=None):
+    def fake_build_digest_card(*, items, secondary_items=None, metadata=None, today=None):
         captured["items"] = items
+        captured["secondary_items"] = secondary_items or []
         captured["metadata"] = metadata or {}
         captured["today"] = today
         return {"msg_type": "interactive", "card": {"header": {"title": {"content": "test"}}}}
@@ -258,8 +301,9 @@ def test_run_pipeline_respects_report_limit(monkeypatch, tmp_path: Path):
 
     captured = {}
 
-    def fake_build_digest_card(*, items, metadata=None, today=None):
+    def fake_build_digest_card(*, items, secondary_items=None, metadata=None, today=None):
         captured["items"] = items
+        captured["secondary_items"] = secondary_items or []
         captured["metadata"] = metadata or {}
         return {"msg_type": "interactive", "card": {"header": {"title": {"content": "test"}}}}
 
@@ -279,3 +323,33 @@ def test_run_pipeline_respects_report_limit(monkeypatch, tmp_path: Path):
     assert captured["metadata"]["a_count"] + captured["metadata"]["b_count"] == 2
     history = json.loads(Path("artifacts/state/history.json").read_text(encoding="utf-8"))
     assert history["run_summaries"][0]["selected_count"] == 2
+
+
+def test_run_pipeline_fuses_b_items_into_one_card(monkeypatch, tmp_path: Path):
+    monkeypatch.chdir(tmp_path)
+    monkeypatch.setenv("GITHUB_TOKEN", "ghs_test")
+    monkeypatch.setenv("QWEN_API_KEY", "qwen_test")
+    monkeypatch.setenv("FEISHU_WEBHOOK_URL", "https://example.com/hook")
+
+    captured = {}
+
+    def fake_build_digest_card(*, items, secondary_items=None, metadata=None, today=None):
+        captured["items"] = items
+        captured["secondary_items"] = secondary_items or []
+        return {"msg_type": "interactive", "card": {"header": {"title": {"content": "test"}}}}
+
+    monkeypatch.setattr(main_module, "OSSInsightCollector", _EmptyCollector)
+    monkeypatch.setattr(main_module, "RepoCollector", _ManyProjectCollector)
+    monkeypatch.setattr(main_module, "SkillCollector", _EmptyCollector)
+    monkeypatch.setattr(main_module, "DiscussionCollector", _EmptyCollector)
+    monkeypatch.setattr(main_module, "IssuesPrsCollector", _EmptyCollector)
+    monkeypatch.setattr(main_module, "EditorialLLM", _FakeLLM)
+    monkeypatch.setattr(main_module, "build_digest_card", fake_build_digest_card)
+    monkeypatch.setattr(main_module, "send_cards", lambda *args, **kwargs: None)
+
+    settings = Settings.from_env()
+    result = run_pipeline(settings=settings)
+
+    assert result["count"] == 12
+    assert len(captured["items"]) == 10
+    assert len(captured["secondary_items"]) == 2

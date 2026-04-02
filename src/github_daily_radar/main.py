@@ -217,6 +217,7 @@ def run_pipeline(settings: Settings, alert_only: bool = False) -> dict:
     metadata["published_kind_counts"] = dict(published_kind_counts)
     card = build_digest_card(
         items=a_items,
+        secondary_items=b_items,
         metadata=metadata,
         today=today,
     )

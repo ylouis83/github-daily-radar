@@ -7,8 +7,6 @@ import httpx
 logger = logging.getLogger(__name__)
 
 DEFAULT_BASE_URLS = [
-    "https://dashscope.aliyuncs.com/compatible-mode/v1",
-    "https://dashscope-intl.aliyuncs.com/compatible-mode/v1",
     "https://coding.dashscope.aliyuncs.com/v1",
 ]
 
