@@ -59,18 +59,42 @@ class GitHubClient:
             self._next_search_at = monotonic() + self._min_search_interval
 
     @retry(wait=wait_exponential(multiplier=1, min=1, max=8), stop=stop_after_attempt(3), retry=retry_if_exception_type(httpx.HTTPError))
-    def search_repositories(self, query: str, per_page: int = 20) -> dict:
+    def search_repositories(
+        self,
+        query: str,
+        per_page: int = 20,
+        *,
+        sort: str | None = None,
+        order: str | None = None,
+    ) -> dict:
         self._budget.consume_search()
         self._throttle_search()
-        response = self._http.get("/search/repositories", params={"q": query, "per_page": per_page})
+        params = {"q": query, "per_page": per_page}
+        if sort:
+            params["sort"] = sort
+        if order:
+            params["order"] = order
+        response = self._http.get("/search/repositories", params=params)
         response.raise_for_status()
         return response.json()
 
     @retry(wait=wait_exponential(multiplier=1, min=1, max=8), stop=stop_after_attempt(3), retry=retry_if_exception_type(httpx.HTTPError))
-    def search_issues(self, query: str, per_page: int = 20) -> dict:
+    def search_issues(
+        self,
+        query: str,
+        per_page: int = 20,
+        *,
+        sort: str | None = None,
+        order: str | None = None,
+    ) -> dict:
         self._budget.consume_search()
         self._throttle_search()
-        response = self._http.get("/search/issues", params={"q": query, "per_page": per_page})
+        params = {"q": query, "per_page": per_page}
+        if sort:
+            params["sort"] = sort
+        if order:
+            params["order"] = order
+        response = self._http.get("/search/issues", params=params)
         response.raise_for_status()
         return response.json()
 

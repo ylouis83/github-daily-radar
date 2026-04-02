@@ -13,7 +13,7 @@ class SkillCollector(Collector):
     def collect(self) -> list[Candidate]:
         candidates: list[Candidate] = []
         for query in self.queries:
-            payload = self.client.search_repositories(query)
+            payload = self.client.search_repositories(query, sort="stars", order="desc")
             for item in payload.get("items", []):
                 candidate = candidate_from_repo_search(item=item, source_query=query)
                 candidate.kind = "skill"

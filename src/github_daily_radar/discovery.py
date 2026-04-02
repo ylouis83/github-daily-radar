@@ -53,15 +53,15 @@ def _chunked(values: list[str], size: int) -> Iterable[list[str]]:
 def build_repo_queries(*, now: datetime | None = None) -> list[str]:
     cutoff = recent_date(days=7, now=now)
     return [
-        f"(topic:agent OR topic:workflow OR topic:automation) pushed:>{cutoff} sort:updated-desc",
-        f"(topic:llm OR topic:devtools OR topic:browser-use) pushed:>{cutoff} sort:updated-desc",
+        f"(topic:agent OR topic:workflow OR topic:automation) pushed:>{cutoff}",
+        f"(topic:llm OR topic:devtools OR topic:browser-use) pushed:>{cutoff}",
     ]
 
 
 def build_skill_queries(*, now: datetime | None = None) -> list[str]:
     cutoff = recent_date(days=14, now=now)
     return [
-        f"(topic:agent OR topic:prompt OR topic:workflow) in:name,description,readme workflow prompt skill pushed:>{cutoff} sort:stars-desc",
+        f"(topic:agent OR topic:prompt OR topic:workflow) in:name,description,readme workflow prompt skill pushed:>{cutoff}",
     ]
 
 
@@ -82,7 +82,7 @@ def build_discussion_queries(
     for chunk in _chunked(repos, chunk_size):
         queries.append(
             f"({_repo_clause(chunk)}) is:issue "
-            f"({keyword_clause}) in:title,body comments:>=8 updated:>{cutoff} sort:updated-desc"
+            f"({keyword_clause}) in:title,body comments:>=3 updated:>{cutoff}"
         )
     return queries
 
@@ -100,6 +100,6 @@ def build_issue_pr_queries(
     for chunk in _chunked(repos, chunk_size):
         queries.append(
             f"({_repo_clause(chunk)}) is:pr "
-            f"({keyword_clause}) in:title,body comments:>=5 updated:>{cutoff} sort:updated-desc"
+            f"({keyword_clause}) in:title,body comments:>=1 updated:>{cutoff}"
         )
     return queries
