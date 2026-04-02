@@ -1,4 +1,5 @@
 import argparse
+from collections import Counter
 from datetime import date, datetime, timezone
 from pathlib import Path
 from zoneinfo import ZoneInfo
@@ -143,8 +144,12 @@ def run_pipeline(settings: Settings, alert_only: bool = False) -> dict:
     display_items = build_display_items(filtered, editorial)
     a_items, b_items = split_a_b(display_items, a_max=10, b_max=10)
     published_items = a_items + b_items
+    filtered_kind_counts = Counter(item.kind for item in filtered)
+    published_kind_counts = Counter(item["kind"] for item in published_items)
     metadata["a_count"] = len(a_items)
     metadata["b_count"] = len(b_items)
+    metadata["filtered_kind_counts"] = dict(filtered_kind_counts)
+    metadata["published_kind_counts"] = dict(published_kind_counts)
     sections_a = build_card_sections(a_items, variant="A", metadata=metadata)
     sections_b = build_card_sections(b_items, variant="B", metadata=metadata)
     cards = build_digest_cards(
@@ -174,6 +179,8 @@ def run_pipeline(settings: Settings, alert_only: bool = False) -> dict:
             {
                 "candidate_count": len(candidates),
                 "selected_count": len(published_items),
+                "filtered_kind_counts": dict(filtered_kind_counts),
+                "published_kind_counts": dict(published_kind_counts),
                 "collector_errors": collector_errors,
                 "api_usage": api_usage,
                 "timezone": settings.timezone,
