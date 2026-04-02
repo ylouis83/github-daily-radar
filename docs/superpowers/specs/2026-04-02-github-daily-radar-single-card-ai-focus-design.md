@@ -268,6 +268,27 @@ State persistence remains unchanged in principle:
 
 The dedupe policy should still allow re-entry when something materially changes, but the visible output should not repeat the same repository just because it appeared in a broader search bucket.
 
+### Theme Cooldown
+
+In addition to repo-level dedupe, the daily radar should avoid repeating the same *theme* on consecutive days.
+
+Theme-level repetition means the user should not keep seeing the same editorial lane day after day, such as:
+
+- the same Claude Code ecosystem topic
+- the same MCP / skill-pack pattern
+- the same RAG or inference angle
+- the same proposal / roadmap lane
+
+Implementation should keep a lightweight theme tag or theme cluster for each selected item and suppress a theme when it dominated the previous daily output unless there is a clear new development signal.
+
+Recommended behavior:
+
+- prefer a different mix of themes from the previous day
+- if a theme is repeated, require stronger new evidence than the day before
+- allow a repeated theme only when it materially progressed, such as a major release, sudden growth spike, or a substantially new proposal
+
+This rule is about *editorial variety*, not absolute exclusion. The goal is to keep consecutive days from feeling too similar.
+
 ## Testing Strategy
 
 Add or update tests for:
@@ -296,4 +317,3 @@ Phase 1 is successful when all of the following are true:
 - generic low-signal AI/framework noise is filtered out
 - the digest remains Chinese-first and editorially specific
 - the visible card does not expose runtime diagnostics
-
