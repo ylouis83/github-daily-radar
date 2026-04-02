@@ -13,6 +13,7 @@ from github_daily_radar.discovery import (
     build_skill_repo_queries,
     cycle_queries,
     load_ossinsight_collection_name_keywords,
+    load_ossinsight_collection_name_excludes,
     load_ossinsight_collection_period,
     load_ossinsight_enabled,
     load_ossinsight_language,
@@ -126,6 +127,7 @@ def run_pipeline(settings: Settings, alert_only: bool = False) -> dict:
             language=load_ossinsight_language(),
             collection_period=load_ossinsight_collection_period(),
             collection_name_keywords=load_ossinsight_collection_name_keywords(),
+            collection_name_exclude_keywords=load_ossinsight_collection_name_excludes(),
             max_trending_items=load_ossinsight_max_trending_items(),
             max_collection_ids=load_ossinsight_max_collection_ids(),
         )
@@ -211,6 +213,25 @@ def run_pipeline(settings: Settings, alert_only: bool = False) -> dict:
             filtered.append(candidate)
 
     ranked_candidates = sorted(filtered, key=score_candidate, reverse=True)
+    previous_run_summary = state.read_last_run_summary() or {}
+    blocked_themes: set[str] = set()
+    prev_top_themes = previous_run_summary.get("top_themes")
+    if isinstance(prev_top_themes, list):
+        blocked_themes = {theme for theme in prev_top_themes if isinstance(theme, str) and theme.strip()}
+    else:
+        prev_theme_counts = previous_run_summary.get("theme_counts")
+        if isinstance(prev_theme_counts, dict):
+            top_prev: list[tuple[str, int]] = []
+            for theme, count in prev_theme_counts.items():
+                if not isinstance(theme, str) or not theme.strip():
+                    continue
+                try:
+                    count_value = int(count)
+                except (TypeError, ValueError):
+                    continue
+                top_prev.append((theme, count_value))
+            top_prev.sort(key=lambda item: item[1], reverse=True)
+            blocked_themes = {theme for theme, count in top_prev[:3] if count > 0}
     fallback_models = [settings.fallback_model] if settings.fallback_model else []
     llm = EditorialLLM(
         api_key=settings.qwen_api_key,
@@ -278,12 +299,17 @@ def run_pipeline(settings: Settings, alert_only: bool = False) -> dict:
         max_items=int(daily_item_count["max"]),
         per_repo_cap=skill_per_repo_cap,
         project_first=project_first,
+        blocked_themes=blocked_themes,
     )
     filtered_kind_counts = Counter(item.kind for item in filtered)
     published_kind_counts = Counter(item["kind"] for item in published_items)
+    theme_counts = Counter(item.get("theme", "other") for item in published_items if item.get("theme"))
+    top_themes = [theme for theme, count in theme_counts.most_common(3) if count > 0]
     metadata["item_count"] = len(published_items)
     metadata["filtered_kind_counts"] = dict(filtered_kind_counts)
     metadata["published_kind_counts"] = dict(published_kind_counts)
+    metadata["theme_counts"] = dict(theme_counts)
+    metadata["top_themes"] = top_themes
     card = build_digest_card(
         items=published_items,
         metadata=build_card_metadata(metadata),
@@ -313,6 +339,8 @@ def run_pipeline(settings: Settings, alert_only: bool = False) -> dict:
                 "selected_count": len(published_items),
                 "filtered_kind_counts": dict(filtered_kind_counts),
                 "published_kind_counts": dict(published_kind_counts),
+                "theme_counts": dict(theme_counts),
+                "top_themes": top_themes,
                 "collector_stats": collector_stats,
                 "collector_errors": collector_errors,
                 "api_usage": api_usage,

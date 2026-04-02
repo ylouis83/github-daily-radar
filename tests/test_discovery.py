@@ -8,6 +8,7 @@ from github_daily_radar.discovery import (
     build_skill_queries,
     cycle_queries,
     load_ossinsight_collection_name_keywords,
+    load_ossinsight_collection_name_excludes,
     load_ossinsight_collection_period,
     load_ossinsight_enabled,
     load_ossinsight_language,
@@ -110,6 +111,8 @@ ossinsight:
   collection_period: past_7_days
   collection_name_keywords:
     - ai
+  collection_name_exclude_keywords:
+    - tensorflow
   max_trending_items: 12
   max_collection_ids: 2
 """.strip(),
@@ -121,8 +124,19 @@ ossinsight:
     assert load_ossinsight_trending_periods(path) == ["past_24_hours"]
     assert load_ossinsight_collection_period(path) == "past_7_days"
     assert load_ossinsight_collection_name_keywords(path) == ["ai"]
+    assert load_ossinsight_collection_name_excludes(path) == ["tensorflow"]
     assert load_ossinsight_max_trending_items(path) == 12
     assert load_ossinsight_max_collection_ids(path) == 2
+
+
+def test_skill_defaults_are_ai_first(tmp_path: Path):
+    path = tmp_path / "seed_repos.yaml"
+    path.write_text("{}", encoding="utf-8")
+
+    assert load_skill_min_stars(path) == 80
+    assert load_project_min_stars(path) == 120
+    assert load_skill_shape_floor(path) == 3
+    assert load_skill_top_n(path) == 20
 
 
 def test_load_output_daily_item_count_reads_yaml(tmp_path: Path):

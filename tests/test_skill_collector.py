@@ -77,10 +77,10 @@ def test_skill_collector_keeps_low_star_skill_shape_and_big_project():
         code_queries=["filename:SKILL.md path:skills"],
         repo_queries=["cursor rules AI in:name,description"],
         seed_repos=[],
-        skill_min_stars=3,
-        project_min_stars=20,
-        skill_shape_floor=2,
-        top_n=10,
+        skill_min_stars=80,
+        project_min_stars=120,
+        skill_shape_floor=3,
+        top_n=20,
     )
 
     items = collector.collect()
@@ -128,10 +128,10 @@ def test_skill_collector_rejects_low_star_noise_without_skill_shape():
         code_queries=["filename:README.md"],
         repo_queries=["agent in:name,description"],
         seed_repos=[],
-        skill_min_stars=3,
-        project_min_stars=20,
-        skill_shape_floor=2,
-        top_n=10,
+        skill_min_stars=80,
+        project_min_stars=120,
+        skill_shape_floor=3,
+        top_n=20,
     )
 
     assert collector.collect() == []
@@ -183,10 +183,10 @@ def test_skill_collector_respects_top_n_and_dedupes_best_repo():
                 "owner": {"login": "owner"},
                 "created_at": "2026-04-01T00:00:00Z",
                 "updated_at": "2026-04-02T00:00:00Z",
-                "description": "agent infra",
-                "topics": ["agent"],
-                "stargazers_count": 90,
-                "forks_count": 10,
+                "description": "misc",
+                "topics": [],
+                "stargazers_count": 30,
+                "forks_count": 2,
             },
         ],
     )
@@ -196,9 +196,9 @@ def test_skill_collector_respects_top_n_and_dedupes_best_repo():
         code_queries=["filename:SKILL.md path:skills"],
         repo_queries=["agent in:name,description"],
         seed_repos=[],
-        skill_min_stars=3,
-        project_min_stars=20,
-        skill_shape_floor=2,
+        skill_min_stars=80,
+        project_min_stars=120,
+        skill_shape_floor=3,
         top_n=2,
     )
 

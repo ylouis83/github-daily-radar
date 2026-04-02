@@ -67,3 +67,49 @@ def test_ossinsight_collector_merges_trending_and_collection_rankings():
 
     assert {item.repo_full_name for item in items} == {"owner/trending-repo", "owner/collection-repo"}
     assert all(item.kind == "project" for item in items)
+
+
+@respx.mock
+def test_ossinsight_collector_skips_generic_ai_collections():
+    respx.get("https://api.ossinsight.io/v1/trends/repos/").mock(
+        return_value=Response(
+            200,
+            json={
+                "data": {
+                    "rows": [
+                        {
+                            "repo_name": "tensorflow/tensorflow",
+                            "repo_url": "https://github.com/tensorflow/tensorflow",
+                            "description": "A machine learning framework",
+                            "stars": 10,
+                            "forks": 1,
+                            "total_score": 20,
+                            "collection_names": ["Artificial Intelligence"],
+                        }
+                    ]
+                }
+            },
+        )
+    )
+    respx.get("https://api.ossinsight.io/v1/collections").mock(
+        return_value=Response(
+            200,
+            json={"data": {"rows": [{"id": 10010, "name": "Artificial Intelligence"}]}},
+        )
+    )
+    respx.get("https://api.ossinsight.io/v1/collections/10010/ranking_by_stars/").mock(
+        return_value=Response(200, json={"data": {"rows": []}})
+    )
+
+    collector = OSSInsightCollector(
+        client=OSSInsightClient(),
+        trending_periods=["past_24_hours"],
+        language="All",
+        collection_period="past_28_days",
+        collection_name_keywords=["agent", "mcp", "llm", "rag", "prompt"],
+        collection_name_exclude_keywords=["artificial intelligence", "machine learning", "tensorflow"],
+        max_trending_items=10,
+        max_collection_ids=1,
+    )
+
+    assert collector.collect() == []

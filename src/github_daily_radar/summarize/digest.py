@@ -4,6 +4,7 @@ from collections import defaultdict
 from math import log1p
 
 from github_daily_radar.models import Candidate
+from github_daily_radar.scoring.dedupe import classify_theme_key
 
 
 def _truncate(text: str, max_len: int = 100) -> str:
@@ -136,6 +137,60 @@ def _candidate_text_blob(candidate: Candidate) -> str:
         graphql_item.get("description", ""),
     ]
     return " ".join(part for part in parts if isinstance(part, str) and part.strip()).lower()
+
+
+def _theme_key_from_candidate(candidate: Candidate) -> str:
+    raw_signals = candidate.raw_signals or {}
+    code_item = raw_signals.get("code_search_item") or {}
+    repo_item = raw_signals.get("search_item") or {}
+    graphql_item = raw_signals.get("graphql_item") or {}
+    extra_text = " ".join(
+        part
+        for part in (
+            code_item.get("name", ""),
+            code_item.get("path", ""),
+            repo_item.get("description", ""),
+            repo_item.get("name", ""),
+            graphql_item.get("description", ""),
+        )
+        if isinstance(part, str) and part.strip()
+    )
+    return classify_theme_key(
+        title=candidate.title,
+        repo_full_name=candidate.repo_full_name,
+        body_excerpt=candidate.body_excerpt,
+        source_query=candidate.source_query,
+        topics=candidate.topics,
+        labels=candidate.labels,
+        kind=candidate.kind,
+        extra_text=extra_text,
+    )
+
+
+def _theme_key_from_item(item: dict) -> str:
+    extra_text = " ".join(
+        part
+        for part in (
+            item.get("trait", ""),
+            item.get("capability", ""),
+            item.get("necessity", ""),
+            item.get("summary", ""),
+            item.get("why_now", ""),
+        )
+        if isinstance(part, str) and part.strip()
+    )
+    topics = [str(topic) for topic in item.get("topics", []) if isinstance(topic, str) and topic.strip()]
+    labels = [str(label) for label in item.get("labels", []) if isinstance(label, str) and label.strip()]
+    return classify_theme_key(
+        title=str(item.get("title") or ""),
+        repo_full_name=str(item.get("repo_full_name") or ""),
+        body_excerpt=str(item.get("summary") or item.get("why_now") or ""),
+        source_query=str(item.get("source_query") or ""),
+        topics=topics,
+        labels=labels,
+        kind=str(item.get("kind") or "other"),
+        extra_text=extra_text,
+    )
 
 
 def _focus_phrase(candidate: Candidate) -> str:
@@ -280,6 +335,7 @@ def build_display_items(candidates: list[Candidate], editorial: list[dict]) -> l
             "section": None,
             "repo_full_name": candidate.repo_full_name,
             "source_query": candidate.source_query,
+            "theme": _theme_key_from_candidate(candidate),
             "metrics": candidate.metrics.model_dump(),
             "rule_scores": dict(candidate.rule_scores),
             "score": score_candidate(candidate),
@@ -364,6 +420,7 @@ def select_top_items(
     max_items: int = 20,
     per_repo_cap: int = 1,
     project_first: bool = True,
+    blocked_themes: set[str] | None = None,
 ) -> list[dict]:
     """从候选中选出项目优先的单卡列表，按编辑 rank → 分数排序，同仓库去重。"""
 
@@ -373,7 +430,10 @@ def select_top_items(
         grouped[_bucket_for_kind(item.get("kind", "other"))].append(item)
 
     for kind in grouped:
-        grouped[kind] = sorted(grouped[kind], key=_selection_sort_key)
+        grouped[kind] = sorted(
+            grouped[kind],
+            key=lambda item: _selection_sort_key(item, blocked_themes=blocked_themes),
+        )
 
     selected: list[dict] = []
     repo_counts: dict[str, int] = defaultdict(int)
@@ -395,11 +455,13 @@ def select_top_items(
     return selected
 
 
-def _selection_sort_key(item: dict) -> tuple[int, int, float, str]:
+def _selection_sort_key(item: dict, *, blocked_themes: set[str] | None = None) -> tuple[int, int, int, float, str]:
+    theme = item.get("theme") or _theme_key_from_item(item)
+    blocked_flag = 1 if blocked_themes and theme in blocked_themes else 0
     rank = item.get("editorial_rank")
     rank_key = int(rank) if rank is not None else 10_000
     score = float(item.get("score") or 0.0)
-    return (0 if rank is not None else 1, rank_key, -score, item.get("title", ""))
+    return (blocked_flag, 0 if rank is not None else 1, rank_key, -score, item.get("title", ""))
 
 
 def _quality_value(item: dict) -> float:
@@ -441,26 +503,6 @@ def _overview_lines(items: list[dict], *, variant: str, metadata: dict | None = 
         f"本卡共 {len(items)} 条，覆盖 {by_bucket['project']} 个项目、{by_bucket['skill']} 个技能、{by_bucket['discussion']} 个提案 / 讨论。",
         "已按编辑优先级排序，并做了同仓库去重，避免单一仓库刷屏。",
     ]
-    if metadata:
-        parts: list[str] = []
-        count = metadata.get("count")
-        editorial = metadata.get("editorial")
-        a_count = metadata.get("a_count")
-        b_count = metadata.get("b_count")
-        api_usage = metadata.get("api_usage") or {}
-        if count is not None:
-            parts.append(f"候选 {count} 条")
-        if editorial is not None:
-            parts.append(f"LLM 精编 {editorial} 条")
-        if a_count is not None and b_count is not None:
-            parts.append(f"A {a_count} / B {b_count}")
-        if api_usage:
-            search_used = api_usage.get("search_used")
-            graphql_used = api_usage.get("graphql_used")
-            if search_used is not None or graphql_used is not None:
-                parts.append(f"API 搜索 {search_used} 次 / GraphQL {graphql_used} 点")
-        if parts:
-            lines.append("，".join(parts) + "。")
     lines.append("这一卡优先展示今天最值得点开的内容。" if variant == "A" else "这部分是补充阅读，适合扫尾，不会把主卡撑乱。")
     return lines
 

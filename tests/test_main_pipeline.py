@@ -531,3 +531,55 @@ def test_run_pipeline_uses_configured_daily_item_count(monkeypatch, tmp_path: Pa
     assert result["count"] == 12
     assert len(captured["items"]) == 5
     assert captured["metadata"]["item_count"] == 5
+
+
+def test_run_pipeline_applies_theme_cooldown_from_previous_day(monkeypatch, tmp_path: Path):
+    monkeypatch.chdir(tmp_path)
+    monkeypatch.setenv("GITHUB_TOKEN", "ghs_test")
+    monkeypatch.setenv("QWEN_API_KEY", "qwen_test")
+    monkeypatch.setenv("FEISHU_WEBHOOK_URL", "https://example.com/hook")
+
+    history_dir = Path("artifacts/state")
+    history_dir.mkdir(parents=True, exist_ok=True)
+    (history_dir / "history.json").write_text(
+        json.dumps(
+            {
+                "published": [],
+                "candidate_index": {},
+                "run_summaries": [
+                    {
+                        "date": "2026-04-01",
+                        "top_themes": ["claude_code", "mcp"],
+                    }
+                ],
+            },
+            ensure_ascii=False,
+        ),
+        encoding="utf-8",
+    )
+
+    captured = {}
+
+    def fake_select_top_items(items, **kwargs):
+        captured["blocked_themes"] = kwargs.get("blocked_themes")
+        return items[:1]
+
+    def fake_build_digest_card(*, items, secondary_items=None, metadata=None, today=None, project_first=True):
+        captured["items"] = items
+        return {"msg_type": "interactive", "card": {"header": {"title": {"content": "test"}}}}
+
+    monkeypatch.setattr(main_module, "TrendingCollector", _EmptyCollector)
+    monkeypatch.setattr(main_module, "OSSInsightCollector", _EmptyCollector)
+    monkeypatch.setattr(main_module, "RepoCollector", _GoodCollector)
+    monkeypatch.setattr(main_module, "SkillCollector", _GoodSkillCollector)
+    monkeypatch.setattr(main_module, "DiscussionCollector", _EmptyCollector)
+    monkeypatch.setattr(main_module, "IssuesPrsCollector", _EmptyCollector)
+    monkeypatch.setattr(main_module, "EditorialLLM", _FakeLLM)
+    monkeypatch.setattr(main_module, "select_top_items", fake_select_top_items)
+    monkeypatch.setattr(main_module, "build_digest_card", fake_build_digest_card)
+    monkeypatch.setattr(main_module, "send_cards", lambda *args, **kwargs: None)
+
+    settings = Settings.from_env()
+    run_pipeline(settings=settings)
+
+    assert captured["blocked_themes"] == {"claude_code", "mcp"}

@@ -32,6 +32,7 @@ class OSSInsightCollector(Collector):
         language: str = "All",
         collection_period: str = "past_28_days",
         collection_name_keywords: list[str] | None = None,
+        collection_name_exclude_keywords: list[str] | None = None,
         max_trending_items: int = 20,
         max_collection_ids: int = 3,
     ) -> None:
@@ -40,13 +41,18 @@ class OSSInsightCollector(Collector):
         self.language = language
         self.collection_period = collection_period
         self.collection_name_keywords = [keyword.lower() for keyword in (collection_name_keywords or []) if keyword.strip()]
+        self.collection_name_exclude_keywords = [
+            keyword.lower() for keyword in (collection_name_exclude_keywords or []) if keyword.strip()
+        ]
         self.max_trending_items = max(1, max_trending_items)
         self.max_collection_ids = max(1, max_collection_ids)
 
     def _matches_focus(self, text: str) -> bool:
+        lowered = text.lower()
+        if any(keyword in lowered for keyword in self.collection_name_exclude_keywords):
+            return False
         if not self.collection_name_keywords:
             return True
-        lowered = text.lower()
         return any(keyword in lowered for keyword in self.collection_name_keywords)
 
     def _combined_text(self, row: dict, collection_name: str | None = None) -> str:

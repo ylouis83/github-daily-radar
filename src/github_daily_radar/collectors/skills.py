@@ -47,10 +47,10 @@ class SkillCollector(Collector):
         repo_queries: list[str],
         seed_repos: list[str] | None = None,
         *,
-        skill_min_stars: int = 3,
-        project_min_stars: int = 20,
-        skill_shape_floor: int = 2,
-        top_n: int = 10,
+        skill_min_stars: int = 80,
+        project_min_stars: int = 120,
+        skill_shape_floor: int = 3,
+        top_n: int = 20,
         per_repo_cap: int = 1,
     ) -> None:
         super().__init__(client)
@@ -60,7 +60,7 @@ class SkillCollector(Collector):
         self.skill_min_stars = max(1, skill_min_stars)
         self.project_min_stars = max(self.skill_min_stars, project_min_stars)
         self.skill_shape_floor = max(1, skill_shape_floor)
-        self.top_n = max(1, top_n)
+        self.top_n = max(1, min(20, top_n))
         self.per_repo_cap = max(1, per_repo_cap)
 
     def _text_blob(self, candidate: Candidate) -> str:

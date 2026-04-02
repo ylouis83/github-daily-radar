@@ -62,7 +62,7 @@ def test_build_digest_card_single_card_with_sections():
     assert "🅱️" not in all_text
     # 验证分区标题
     assert "🚀 核心 AI 项目" in all_text
-    assert "🧩 MCP & Skills Top 10" in all_text
+    assert "🧩 MCP & Skills" in all_text
     assert "💬 提案与讨论" in all_text
     # 验证链接可点击
     assert "[owner/repo](https://github.com/owner/repo)" in all_text
@@ -185,7 +185,7 @@ def test_build_digest_card_can_render_non_project_sections_first():
     contents = [el.get("content", "") for el in card["card"]["elements"] if el.get("tag") == "markdown"]
     all_text = "\n".join(contents)
 
-    assert all_text.index("🧩 MCP & Skills Top 10") < all_text.index("🚀 核心 AI 项目")
+    assert all_text.index("🧩 MCP & Skills") < all_text.index("🚀 核心 AI 项目")
     assert all_text.index("💬 提案与讨论") < all_text.index("🚀 核心 AI 项目")
 
 
@@ -237,8 +237,8 @@ def test_star_badge_renders_k_format():
     assert "⭐131.0K" in all_text
 
 
-def test_footer_includes_metrics():
-    """Footer 应包含运行时指标"""
+def test_footer_only_shows_date():
+    """Footer 只保留日期，不再展示运行时指标"""
     items = [
         {
             "kind": "project",
@@ -260,10 +260,11 @@ def test_footer_includes_metrics():
     contents = [el.get("content", "") for el in card["card"]["elements"] if el.get("tag") == "markdown"]
     all_text = "\n".join(contents)
 
-    assert "候选 78" in all_text
-    assert "LLM 精编 5" in all_text
-    assert "Search 18" in all_text
-    assert "GraphQL 11" in all_text
+    assert "📅 2026-04-02" in all_text
+    assert "候选 78" not in all_text
+    assert "LLM 精编 5" not in all_text
+    assert "Search 18" not in all_text
+    assert "GraphQL 11" not in all_text
 
 
 def test_build_digest_card_backward_compat_secondary_items():

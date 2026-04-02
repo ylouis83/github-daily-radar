@@ -124,10 +124,10 @@ skills:
 
   # --- 技能池门槛与 TopN ---
   ranking:
-    skill_min_stars: 3
-    project_min_stars: 20
-    skill_shape_floor: 2
-    top_n: 10
+    skill_min_stars: 80            # 过滤 ⭐<80 的噪音 skill/tool 仓库
+    project_min_stars: 120           # 聚焦有社区验证的 AI 项目
+    skill_shape_floor: 3
+    top_n: 20
     per_repo_cap: 1
 
   # --- Skill 质量信号权重 ---
@@ -185,14 +185,26 @@ ossinsight:
     - past_week
   collection_period: past_28_days
   collection_name_keywords:
-    - artificial intelligence
-    - chatgpt
-    - llm
-    - machine learning
     - agent
+    - ai-agents
+    - agentic
+    - browser-use
+    - computer-use
+    - llm
     - rag
     - prompt
     - mcp
+    - coding-assistant
+    - ai-coding
+    - inference
+  collection_name_exclude_keywords:
+    - artificial intelligence
+    - machine learning
+    - deep learning
+    - tensorflow
+    - pytorch
+    - scikit-learn
+    - keras
   max_trending_items: 20
   max_collection_ids: 3
 

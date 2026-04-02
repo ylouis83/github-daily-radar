@@ -132,6 +132,14 @@ class StateStore:
         self._append_history_line({"candidate_id": "__run_summary__", "date": day.isoformat(), "event": "run_summary", "summary": summary})
         self._write_history(history)
 
+    def read_last_run_summary(self) -> dict | None:
+        history = self.read_history()
+        summaries = history.get("run_summaries", [])
+        if not isinstance(summaries, list) or not summaries:
+            return None
+        last = summaries[-1]
+        return last if isinstance(last, dict) else None
+
     def record_seen(self, day: date, candidates: list[Candidate]) -> None:
         for candidate in candidates:
             self._append_history_entry(

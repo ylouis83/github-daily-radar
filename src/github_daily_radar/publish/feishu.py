@@ -2,9 +2,9 @@
 
 Design principles:
   • 单版输出 — 不再分 A/B，一张卡片展示所有精选
-  • 三大分区 — 🚀 核心 AI 项目 / 🧩 MCP & Skills Top 10 / 💬 提案与讨论
+  • 三大分区 — 🚀 核心 AI 项目 / 🧩 MCP & Skills / 💬 提案与讨论
   • 画像三行 — 特点 / 核心能力 / 必要性 各一行
-  • 空分区不渲染
+  • 空分区不渲染，概览不显示运行指标
 """
 from __future__ import annotations
 
@@ -23,7 +23,7 @@ _VELOCITY_EMOJI = {
 
 SECTION_ICONS = {
     "project": "🚀 核心 AI 项目",
-    "skill": "🧩 MCP & Skills Top 10",
+    "skill": "🧩 MCP & Skills",
     "discussion": "💬 提案与讨论",
 }
 
@@ -131,28 +131,8 @@ def _render_overview(items: list[dict]) -> str:
 
 
 def _render_footer(today: date | None = None, metadata: dict | None = None) -> str:
-    """渲染底部：时间戳 + 运行指标"""
-    parts = []
-    if today:
-        parts.append(f"📅 {today.isoformat()}")
-    if metadata:
-        api_usage = metadata.get("api_usage") or {}
-        search_used = api_usage.get("search_used")
-        graphql_used = api_usage.get("graphql_used")
-        count = metadata.get("count", 0)
-        editorial = metadata.get("editorial", 0)
-        metrics_parts = []
-        if count:
-            metrics_parts.append(f"候选 {count}")
-        if editorial:
-            metrics_parts.append(f"LLM 精编 {editorial}")
-        if search_used is not None:
-            metrics_parts.append(f"Search {search_used}")
-        if graphql_used is not None:
-            metrics_parts.append(f"GraphQL {graphql_used}")
-        if metrics_parts:
-            parts.append(" · ".join(metrics_parts))
-    return "  |  ".join(parts) if parts else ""
+    """渲染底部：只保留日期。"""
+    return f"📅 {today.isoformat()}" if today else ""
 
 
 def _section_order(*, project_first: bool) -> list[str]:

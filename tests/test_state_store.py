@@ -56,3 +56,15 @@ def test_cooldown_detection(tmp_path: Path):
 
     assert store.is_in_cooldown(candidate_id, cooldown_days=14, as_of=run_date) is True
     assert store.is_in_cooldown(candidate_id, cooldown_days=1, as_of=run_date) is False
+
+
+def test_read_last_run_summary(tmp_path: Path):
+    store = StateStore(tmp_path)
+    store.record_run_summary(date(2026, 4, 1), {"candidate_count": 1, "top_themes": ["claude_code"]})
+    store.record_run_summary(date(2026, 4, 2), {"candidate_count": 2, "top_themes": ["mcp"]})
+
+    summary = store.read_last_run_summary()
+
+    assert summary is not None
+    assert summary["candidate_count"] == 2
+    assert summary["top_themes"] == ["mcp"]

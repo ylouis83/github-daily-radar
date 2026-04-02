@@ -67,10 +67,10 @@ DEFAULT_SKILL_REPO_QUERIES = [
     "mcp server tool in:name,description",
     "agent workflow prompt in:name,description",
 ]
-DEFAULT_SKILL_MIN_STARS = 3
-DEFAULT_PROJECT_MIN_STARS = 20
-DEFAULT_SKILL_SHAPE_FLOOR = 2
-DEFAULT_SKILL_TOP_N = 10
+DEFAULT_SKILL_MIN_STARS = 80
+DEFAULT_PROJECT_MIN_STARS = 120
+DEFAULT_SKILL_SHAPE_FLOOR = 3
+DEFAULT_SKILL_TOP_N = 20
 DEFAULT_SKILL_PER_REPO_CAP = 1
 DEFAULT_DAILY_ITEM_COUNT_MIN = 10
 DEFAULT_DAILY_ITEM_COUNT_MAX = 20
@@ -81,16 +81,27 @@ DEFAULT_OSSINSIGHT_PERIODS = ["past_24_hours", "past_7_days"]
 DEFAULT_OSSINSIGHT_LANGUAGE = "All"
 DEFAULT_OSSINSIGHT_COLLECTION_PERIOD = "past_28_days"
 DEFAULT_OSSINSIGHT_COLLECTION_NAME_KEYWORDS = [
-    "artificial intelligence",
-    "chatgpt",
-    "llm",
-    "machine learning",
     "agent",
+    "ai-agents",
+    "agentic",
+    "browser-use",
+    "computer-use",
+    "llm",
     "rag",
     "prompt",
     "mcp",
-    "computer vision",
-    "nlp",
+    "coding-assistant",
+    "ai-coding",
+    "inference",
+]
+DEFAULT_OSSINSIGHT_COLLECTION_NAME_EXCLUDES = [
+    "artificial intelligence",
+    "machine learning",
+    "deep learning",
+    "tensorflow",
+    "pytorch",
+    "scikit-learn",
+    "keras",
 ]
 DEFAULT_OSSINSIGHT_MAX_TRENDING_ITEMS = 20
 DEFAULT_OSSINSIGHT_MAX_COLLECTION_IDS = 3
@@ -284,6 +295,12 @@ def load_ossinsight_collection_name_keywords(path: Path | None = None) -> list[s
     raw = load_ossinsight_config(path)
     keywords = raw.get("collection_name_keywords") or DEFAULT_OSSINSIGHT_COLLECTION_NAME_KEYWORDS
     return [keyword for keyword in keywords if isinstance(keyword, str) and keyword.strip()]
+
+
+def load_ossinsight_collection_name_excludes(path: Path | None = None) -> list[str]:
+    raw = load_ossinsight_config(path)
+    excludes = raw.get("collection_name_exclude_keywords") or DEFAULT_OSSINSIGHT_COLLECTION_NAME_EXCLUDES
+    return [keyword for keyword in excludes if isinstance(keyword, str) and keyword.strip()]
 
 
 def load_ossinsight_max_trending_items(path: Path | None = None) -> int:

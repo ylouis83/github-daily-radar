@@ -235,6 +235,22 @@ def test_select_top_items_project_heavy_day_keeps_high_quality_non_projects():
     assert "discussion-survives" in selected_titles
 
 
+def test_select_top_items_avoids_blocked_themes_when_possible():
+    items = [
+        _digest_item("project", "claude-project", score=100.0, repo="owner/claude-project", editorial_rank=1),
+        _digest_item("project", "mcp-project", score=90.0, repo="owner/mcp-project", editorial_rank=2),
+        _digest_item("skill", "skill-project", score=80.0, repo="owner/skill-project"),
+    ]
+    items[0]["theme"] = "claude_code"
+    items[1]["theme"] = "mcp"
+    items[2]["theme"] = "skill_assets"
+
+    selected = select_top_items(items, blocked_themes={"claude_code"})
+
+    assert selected[0]["theme"] != "claude_code"
+    assert any(item["theme"] == "claude_code" for item in selected)
+
+
 def test_select_top_items_can_disable_project_first_bias():
     items = [
         _digest_item("project", "project-a", score=5.0, repo="owner/project-a", editorial_rank=2),
