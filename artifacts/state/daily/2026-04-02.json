@@ -23,28 +23,21 @@
           },
           {
             "tag": "markdown",
-            "content": "**🚀 热门项目**\n\n**1.** [anthropics/claude-code](https://github.com/anthropics/claude-code)\n      🔥+1161⭐ · Claude Code is an agentic coding tool that lives in your terminal, understands your codebase, and he\n\n**2.** [Yeachan-Heo/oh-my-codex](https://github.com/Yeachan-Heo/oh-my-codex)\n      🔥+410⭐ · OmX - Oh My codeX: Your codex is not alone. Add hooks, agent teams, HUDs, and so much more.\n\n**3.** [luongnv89/claude-howto](https://github.com/luongnv89/claude-howto)\n      🔥+270⭐ · A visual, example-driven guide to Claude Code — from basic concepts to advanced agents, with copy-pa\n\n**4.** [Yeachan-Heo/oh-my-claudecode](https://github.com/Yeachan-Heo/oh-my-claudecode)\n      🔥+212⭐ · Teams-first Multi-agent orchestration for Claude Code\n\n**5.** [NousResearch/hermes-agent](https://github.com/NousResearch/hermes-agent)\n      📈+135⭐ · The agent that grows with you\n"
+            "content": "**🚀 热门项目**\n\n**1.** [anthropics/claude-code](https://github.com/anthropics/claude-code)\n      🔥+1161⭐ · Claude Code is an agentic coding tool that lives in your terminal, understands your codebase,…\n\n**2.** [Yeachan-Heo/oh-my-codex](https://github.com/Yeachan-Heo/oh-my-codex)\n      🔥+410⭐ · OmX - Oh My codeX: Your codex is not alone. Add hooks, agent teams, HUDs, and so much more.\n\n**3.** [luongnv89/claude-howto](https://github.com/luongnv89/claude-howto)\n      🔥+270⭐ · A visual, example-driven guide to Claude Code — from basic concepts to advanced agents,…\n\n**4.** [Yeachan-Heo/oh-my-claudecode](https://github.com/Yeachan-Heo/oh-my-claudecode)\n      🔥+212⭐ · Teams-first Multi-agent orchestration for Claude Code\n\n**5.** [NousResearch/hermes-agent](https://github.com/NousResearch/hermes-agent)\n      📈+135⭐ · The agent that grows with you\n"
           },
           {
             "tag": "hr"
           },
           {
             "tag": "markdown",
-            "content": "**🧩 发现技能**\n\n**1.** [f/prompts.chat](https://github.com/f/prompts.chat)\n      ⭐156K · f.k.a. Awesome ChatGPT Prompts. Share, discover, and collect prompts from the community. Free and op\n\n**2.** [obra/superpowers](https://github.com/obra/superpowers)\n      ⭐131K · An agentic skills framework & software development methodology that works.\n\n**3.** [openai/openai-cookbook](https://github.com/openai/openai-cookbook)\n      ⭐72K · Examples and guides for using the OpenAI API\n\n**4.** [punkpeye/awesome-mcp-servers](https://github.com/punkpeye/awesome-mcp-servers)\n      ⭐84K · A collection of MCP servers.\n\n**5.** [anthropics/claude-cookbooks](https://github.com/anthropics/claude-cookbooks)\n      ⭐37K · A collection of notebooks/recipes showcasing some fun and effective ways of using Claude.\n"
+            "content": "**🧩 发现技能**\n\n**1.** [f/prompts.chat](https://github.com/f/prompts.chat)\n      ⭐156K · f.k.a. Awesome ChatGPT Prompts. Share, discover, and collect prompts from the community.…\n\n**2.** [obra/superpowers](https://github.com/obra/superpowers)\n      ⭐131K · An agentic skills framework & software development methodology that works.\n\n**3.** [openai/openai-cookbook](https://github.com/openai/openai-cookbook)\n      ⭐72K · Examples and guides for using the OpenAI API\n\n**4.** [punkpeye/awesome-mcp-servers](https://github.com/punkpeye/awesome-mcp-servers)\n      ⭐84K · A collection of MCP servers.\n\n**5.** [anthropics/claude-cookbooks](https://github.com/anthropics/claude-cookbooks)\n      ⭐37K · A collection of notebooks/recipes showcasing some fun and effective ways of using Claude.\n"
           },
           {
             "tag": "hr"
           },
           {
             "tag": "markdown",
-            "content": "**💬 提案与讨论**\n\n*(今日暂无)*"
-          },
-          {
-            "tag": "hr"
-          },
-          {
-            "tag": "markdown",
-            "content": "📊 58候选→10精选 · 🔍18搜索 + 11GraphQL"
+            "content": "📊 58候选→10精选 · 🔍20搜索 + 11GraphQL · 🕐2026-04-02"
           }
         ]
       }
@@ -56,10 +49,10 @@
     "count": 58,
     "editorial": 0,
     "api_usage": {
-      "total_budget": 36,
-      "search_budget": 18,
+      "total_budget": 50,
+      "search_budget": 28,
       "graphql_budget": 600,
-      "search_used": 18,
+      "search_used": 20,
       "graphql_used": 11
     },
     "collector_stats": {
