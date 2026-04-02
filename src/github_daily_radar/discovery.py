@@ -295,17 +295,12 @@ def build_repo_queries(*, now: datetime | None = None, days_back: int | None = 7
     date_clause = _date_clause(field="pushed", days_back=days_back, now=now)
     topics = load_topics()
     seed_orgs = load_seed_orgs()
-    topic_groups = list(_chunked(topics, min(6, max(1, len(topics) // 3 or 1))))
-    org_groups = _balanced_groups(seed_orgs, 3)
     moment = now or datetime.now(timezone.utc)
-    org_group = org_groups[moment.astimezone(timezone.utc).date().toordinal() % len(org_groups)] if org_groups else []
-    queries = []
-    for group in topic_groups[:3]:
-        topic_clause = " OR ".join(f"topic:{topic}" for topic in group)
-        queries.append(f"({topic_clause}){date_clause}")
-    if org_group:
-        org_clause = " OR ".join(f"org:{org}" for org in org_group)
-        queries.append(f"({org_clause}){date_clause}")
+    seed = moment.astimezone(timezone.utc).date().toordinal()
+    topic_queries = [f"(topic:{topic}){date_clause}" for topic in topics]
+    org_queries = [f"(org:{org}){date_clause}" for org in seed_orgs]
+    queries = cycle_queries(topic_queries, limit=min(3, len(topic_queries)), seed=seed)
+    queries.extend(cycle_queries(org_queries, limit=min(1, len(org_queries)), seed=seed + 1))
     return queries
 
 

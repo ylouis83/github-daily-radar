@@ -149,6 +149,6 @@ def test_query_builders_stay_within_boolean_operator_limits():
     discussion_queries = build_discussion_queries(seed_repos=seed_repos, now=instant, days_back=14)
     issue_queries = build_issue_pr_queries(seed_repos=seed_repos, now=instant, days_back=14)
 
-    assert all(query.count(" OR ") <= 5 for query in repo_queries)
+    assert all(query.count(" OR ") == 0 for query in repo_queries)
     assert all(query.count(" OR ") <= 5 for query in discussion_queries)
     assert all(query.count(" OR ") <= 5 for query in issue_queries)
