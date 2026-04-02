@@ -15,7 +15,7 @@ Optional secrets:
 Optional envs:
 - `DRY_RUN` (true/false)
 - `TIMEZONE` (default `Asia/Shanghai`)
-- `LLM_MODEL` (default `qwen-plus`)
+- `LLM_MODEL` (default `qwen3.5-plus`)
 - `LLM_MAX_CANDIDATES` (default `24`)
 - `SEARCH_REQUESTS_PER_MINUTE` (default `25`)
 - `COOLDOWN_DAYS` (default `14`)

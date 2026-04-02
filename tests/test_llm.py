@@ -122,7 +122,7 @@ def test_editorial_llm_falls_back_to_intl_region():
         )
     )
 
-    client = EditorialLLM(api_key="qwen_test", model="qwen-plus")
+    client = EditorialLLM(api_key="qwen_test", model="qwen3.5-plus")
     result = client.rank_and_summarize([{"title": "Repo A", "kind": "project", "url": "https://github.com/a/b"}])
 
     assert intl_route.called is True
