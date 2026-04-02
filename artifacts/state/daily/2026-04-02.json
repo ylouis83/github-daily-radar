@@ -9,65 +9,76 @@
         "header": {
           "title": {
             "tag": "plain_text",
-            "content": "GitHub Daily Radar · A 精编版（1/1）"
+            "content": "GitHub 每日雷达（1/1）"
           }
         },
         "elements": [
           {
             "tag": "markdown",
-            "content": "**今日概览**\n本卡共 10 条，覆盖 0 个项目、10 个技能、0 个提案 / 讨论。\n已按编辑优先级排序，并做了同仓库去重，避免单一仓库刷屏。\n候选 88 条，LLM 精编 0 条，A 10 / B 10，API 搜索 18 次 / GraphQL 8 点。\n这一卡优先展示今天最值得点开的内容。"
+            "content": "**A 精编版 · 今日概览**\n本卡共 2 条，覆盖 2 个项目、0 个技能、0 个提案 / 讨论。\n已按编辑优先级排序，并做了同仓库去重，避免单一仓库刷屏。\n候选 58 条，LLM 精编 0 条，A 2 / B 0，API 搜索 18 次 / GraphQL 11 点。\n这一卡优先展示今天最值得点开的内容。"
           },
           {
             "tag": "markdown",
-            "content": "**必看技能**\n- [f/prompts.chat](https://github.com/f/prompts.chat)\n  - 摘要：这是一个可复用的技能 / 规则包，适合判断是否加入你的技能库。\n  - 为什么现在：最近有 156358 星 / 20527 个 fork，值得快速判断是否纳入技能库。\n  - 继续关注：建议先看示例和使用说明，再决定是否纳入技能库。\n- [obra/superpowers](https://github.com/obra/superpowers)\n  - 摘要：这是一个可复用的技能 / 规则包，适合判断是否加入你的技能库。\n  - 为什么现在：最近有 130985 星 / 10830 个 fork，值得快速判断是否纳入技能库。\n  - 继续关注：建议先看示例和使用说明，再决定是否纳入技能库。\n- [openai/openai-cookbook](https://github.com/openai/openai-cookbook)\n  - 摘要：这是一个可复用的技能 / 规则包，适合判断是否加入你的技能库。\n  - 为什么现在：最近有 72511 星 / 12236 个 fork，值得快速判断是否纳入技能库。\n  - 继续关注：建议先看示例和使用说明，再决定是否纳入技能库。\n- [punkpeye/awesome-mcp-servers](https://github.com/punkpeye/awesome-mcp-servers)\n  - 摘要：这是一个可复用的技能 / 规则包，适合判断是否加入你的技能库。\n  - 为什么现在：最近有 84067 星 / 8648 个 fork，值得快速判断是否纳入技能库。\n  - 继续关注：建议先看示例和使用说明，再决定是否纳入技能库。\n- [anthropics/claude-cookbooks](https://github.com/anthropics/claude-cookbooks)\n  - 摘要：这是一个可复用的技能 / 规则包，适合判断是否加入你的技能库。\n  - 为什么现在：最近有 37110 星 / 4072 个 fork，值得快速判断是否纳入技能库。\n  - 继续关注：建议先看示例和使用说明，再决定是否纳入技能库。\n- [PatrickJS/awesome-cursorrules](https://github.com/PatrickJS/awesome-cursorrules)\n  - 摘要：这是一个可复用的技能 / 规则包，适合判断是否加入你的技能库。\n  - 为什么现在：最近有 38837 星 / 3289 个 fork，值得快速判断是否纳入技能库。\n  - 继续关注：建议先看示例和使用说明，再决定是否纳入技能库。\n- [googleapis/genai-toolbox](https://github.com/googleapis/genai-toolbox)\n  - 摘要：这是一个可复用的技能 / 规则包，适合判断是否加入你的技能库。\n  - 为什么现在：最近有 13611 星 / 1298 个 fork，值得快速判断是否纳入技能库。\n  - 继续关注：建议先看示例和使用说明，再决定是否纳入技能库。\n- [leerob/directories](https://github.com/leerob/directories)\n  - 摘要：这是一个可复用的技能 / 规则包，适合判断是否加入你的技能库。\n  - 为什么现在：最近有 3916 星 / 666 个 fork，值得快速判断是否纳入技能库。\n  - 继续关注：建议先看示例和使用说明，再决定是否纳入技能库。\n- [lobehub/lobe-chat-agents](https://github.com/lobehub/lobe-chat-agents)\n  - 摘要：这是一个可复用的技能 / 规则包，适合判断是否加入你的技能库。\n  - 为什么现在：最近有 1018 星 / 284 个 fork，值得快速判断是否纳入技能库。\n  - 继续关注：建议先看示例和使用说明，再决定是否纳入技能库。\n- [fjb040911/ai-rules](https://github.com/fjb040911/ai-rules)\n  - 摘要：这是一个可复用的技能 / 规则包，适合判断是否加入你的技能库。\n  - 为什么现在：最近有 1141 星 / 16 个 fork，值得快速判断是否纳入技能库。\n  - 继续关注：建议先看示例和使用说明，再决定是否纳入技能库。"
-          }
-        ]
-      }
-    },
-    {
-      "msg_type": "interactive",
-      "card": {
-        "config": {
-          "wide_screen_mode": true
-        },
-        "header": {
-          "title": {
-            "tag": "plain_text",
-            "content": "GitHub Daily Radar · B 保留版（1/1）"
-          }
-        },
-        "elements": [
-          {
-            "tag": "markdown",
-            "content": "**更多值得扫一眼**\n本卡共 10 条，覆盖 0 个项目、10 个技能、0 个提案 / 讨论。\n已按编辑优先级排序，并做了同仓库去重，避免单一仓库刷屏。\n候选 88 条，LLM 精编 0 条，A 10 / B 10，API 搜索 18 次 / GraphQL 8 点。\n这部分是补充阅读，适合扫尾，不会把主卡撑乱。"
+            "content": "**必看项目**\n- [anthropics/claude-code](https://github.com/anthropics/claude-code)\n  - 摘要：这是 OSSInsight 监测到的近期热门仓库，适合先看趋势和增量。\n  - 为什么现在：OSSInsight 近期热度上升，最近增量约 1161。\n  - 继续关注：建议先看 README、最近提交和 release，再判断是否继续跟踪。\n- [Yeachan-Heo/oh-my-codex](https://github.com/Yeachan-Heo/oh-my-codex)\n  - 摘要：这是 OSSInsight 监测到的近期热门仓库，适合先看趋势和增量。\n  - 为什么现在：OSSInsight 近期热度上升，最近增量约 410。\n  - 继续关注：建议先看 README、最近提交和 release，再判断是否继续跟踪。"
           },
           {
             "tag": "markdown",
-            "content": "**技能补充**\n- [sbroenne/mcp-server-excel](https://github.com/sbroenne/mcp-server-excel)\n  - 摘要：这是一个可复用的技能 / 规则包，适合判断是否加入你的技能库。\n  - 为什么现在：最近有 101 星 / 18 个 fork，值得快速判断是否纳入技能库。\n  - 继续关注：建议先看示例和使用说明，再决定是否纳入技能库。\n- [travisjneuman/.claude](https://github.com/travisjneuman/.claude)\n  - 摘要：这是一个可复用的技能 / 规则包，适合判断是否加入你的技能库。\n  - 为什么现在：最近有 32 星 / 10 个 fork，值得快速判断是否纳入技能库。\n  - 继续关注：建议先看示例和使用说明，再决定是否纳入技能库。\n- [initMAX/zabbix-mcp-server](https://github.com/initMAX/zabbix-mcp-server)\n  - 摘要：这是一个可复用的技能 / 规则包，适合判断是否加入你的技能库。\n  - 为什么现在：最近有 33 星 / 8 个 fork，值得快速判断是否纳入技能库。\n  - 继续关注：建议先看示例和使用说明，再决定是否纳入技能库。\n- [PradeepaRW/project-nova](https://github.com/PradeepaRW/project-nova)\n  - 摘要：这是一个可复用的技能 / 规则包，适合判断是否加入你的技能库。\n  - 为什么现在：最近有 29 星 / 7 个 fork，值得快速判断是否纳入技能库。\n  - 继续关注：建议先看示例和使用说明，再决定是否纳入技能库。\n- [kochetkov-ma/claude-brewcode](https://github.com/kochetkov-ma/claude-brewcode)\n  - 摘要：这是一个可复用的技能 / 规则包，适合判断是否加入你的技能库。\n  - 为什么现在：最近有 16 星 / 2 个 fork，值得快速判断是否纳入技能库。\n  - 继续关注：建议先看示例和使用说明，再决定是否纳入技能库。\n- [ofershap/ai-context-kit](https://github.com/ofershap/ai-context-kit)\n  - 摘要：这是一个可复用的技能 / 规则包，适合判断是否加入你的技能库。\n  - 为什么现在：最近有 6 星 / 1 个 fork，值得快速判断是否纳入技能库。\n  - 继续关注：建议先看示例和使用说明，再决定是否纳入技能库。\n- [Nickha124/autumn-mcp](https://github.com/Nickha124/autumn-mcp)\n  - 摘要：这是一个可复用的技能 / 规则包，适合判断是否加入你的技能库。\n  - 为什么现在：最近有 5 星 / 1 个 fork，值得快速判断是否纳入技能库。\n  - 继续关注：建议先看示例和使用说明，再决定是否纳入技能库。\n- [PanseBossuSmecheru/notes-mcp](https://github.com/PanseBossuSmecheru/notes-mcp)\n  - 摘要：这是一个可复用的技能 / 规则包，适合判断是否加入你的技能库。\n  - 为什么现在：最近有 3 星 / 2 个 fork，值得快速判断是否纳入技能库。\n  - 继续关注：建议先看示例和使用说明，再决定是否纳入技能库。\n- [ericvoltolin/xc-mcp](https://github.com/ericvoltolin/xc-mcp)\n  - 摘要：这是一个可复用的技能 / 规则包，适合判断是否加入你的技能库。\n  - 为什么现在：最近有 5 星 / 0 个 fork，值得快速判断是否纳入技能库。\n  - 继续关注：建议先看示例和使用说明，再决定是否纳入技能库。\n- [vibestackdev/vibe-stack](https://github.com/vibestackdev/vibe-stack)\n  - 摘要：这是一个可复用的技能 / 规则包，适合判断是否加入你的技能库。\n  - 为什么现在：最近有 5 星 / 0 个 fork，值得快速判断是否纳入技能库。\n  - 继续关注：建议先看示例和使用说明，再决定是否纳入技能库。"
+            "content": "**B 保留版 · 更多值得扫一眼**\n本卡共 0 条，覆盖 0 个项目、0 个技能、0 个提案 / 讨论。\n已按编辑优先级排序，并做了同仓库去重，避免单一仓库刷屏。\n候选 58 条，LLM 精编 0 条，A 2 / B 0，API 搜索 18 次 / GraphQL 11 点。\n这部分是补充阅读，适合扫尾，不会把主卡撑乱。"
+          },
+          {
+            "tag": "markdown",
+            "content": "`运行信息`：{'count': 58, 'editorial': 0, 'api_usage': {'total_budget': 36, 'search_budget': 18, 'graphql_budget': 600, 'search_used': 18, 'graphql_used': 11}, 'collector_stats': {'ossinsight': {'count': 8, 'kinds': {'project': 8}}, 'repos': {'count': 0, 'kinds': {}}, 'skills': {'count': 50, 'kinds': {'skill': 50}}, 'discussions': {'count': 0, 'kinds': {}}, 'issues_prs': {'count': 0, 'kinds': {}}}, 'a_count': 2, 'b_count': 0, 'filtered_kind_counts': {'project': 8, 'skill': 50}, 'published_kind_counts': {'project': 2}}"
           }
         ]
       }
     }
   ],
-  "count": 88,
-  "selected_count": 20,
+  "count": 58,
+  "selected_count": 2,
   "summary": {
-    "count": 88,
+    "count": 58,
     "editorial": 0,
     "api_usage": {
       "total_budget": 36,
       "search_budget": 18,
       "graphql_budget": 600,
       "search_used": 18,
-      "graphql_used": 8
+      "graphql_used": 11
     },
-    "a_count": 10,
-    "b_count": 10,
+    "collector_stats": {
+      "ossinsight": {
+        "count": 8,
+        "kinds": {
+          "project": 8
+        }
+      },
+      "repos": {
+        "count": 0,
+        "kinds": {}
+      },
+      "skills": {
+        "count": 50,
+        "kinds": {
+          "skill": 50
+        }
+      },
+      "discussions": {
+        "count": 0,
+        "kinds": {}
+      },
+      "issues_prs": {
+        "count": 0,
+        "kinds": {}
+      }
+    },
+    "a_count": 2,
+    "b_count": 0,
     "filtered_kind_counts": {
-      "skill": 88
+      "project": 8,
+      "skill": 50
     },
     "published_kind_counts": {
-      "skill": 20
+      "project": 2
     }
   }
 }
