@@ -14,6 +14,7 @@ from github_daily_radar.discovery import (
     load_ossinsight_max_collection_ids,
     load_ossinsight_max_trending_items,
     load_ossinsight_trending_periods,
+    load_output_daily_item_count_config,
     load_issue_pr_keywords,
     load_radar_config,
     load_seed_orgs,
@@ -122,6 +123,22 @@ ossinsight:
     assert load_ossinsight_collection_name_keywords(path) == ["ai"]
     assert load_ossinsight_max_trending_items(path) == 12
     assert load_ossinsight_max_collection_ids(path) == 2
+
+
+def test_load_output_daily_item_count_reads_yaml(tmp_path: Path):
+    path = tmp_path / "seed_repos.yaml"
+    path.write_text(
+        """
+output:
+  daily_item_count:
+    min: 8
+    max: 16
+    project_first: false
+""".strip(),
+        encoding="utf-8",
+    )
+
+    assert load_output_daily_item_count_config(path) == {"min": 8, "max": 16, "project_first": False}
 
 
 def test_seed_repo_queries_are_chunked_and_scoped():

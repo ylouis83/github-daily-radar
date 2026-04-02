@@ -72,6 +72,9 @@ DEFAULT_PROJECT_MIN_STARS = 20
 DEFAULT_SKILL_SHAPE_FLOOR = 2
 DEFAULT_SKILL_TOP_N = 10
 DEFAULT_SKILL_PER_REPO_CAP = 1
+DEFAULT_DAILY_ITEM_COUNT_MIN = 10
+DEFAULT_DAILY_ITEM_COUNT_MAX = 20
+DEFAULT_DAILY_ITEM_PROJECT_FIRST = True
 DEFAULT_DISCUSSION_KEYWORDS = ["proposal", "rfc", "idea", "design"]
 DEFAULT_ISSUE_KEYWORDS = ["proposal", "roadmap", "design"]
 DEFAULT_OSSINSIGHT_PERIODS = ["past_24_hours", "past_7_days"]
@@ -210,6 +213,31 @@ def load_skill_top_n(path: Path | None = None) -> int:
 
 def load_skill_per_repo_cap(path: Path | None = None) -> int:
     return _load_skill_ranking_int(path, "per_repo_cap", DEFAULT_SKILL_PER_REPO_CAP)
+
+
+def load_output_daily_item_count_config(path: Path | None = None) -> dict[str, int | bool]:
+    raw = load_radar_config(path)
+    output = raw.get("output") if isinstance(raw.get("output"), dict) else {}
+    daily_item_count = output.get("daily_item_count") if isinstance(output.get("daily_item_count"), dict) else {}
+
+    min_items = daily_item_count.get("min", DEFAULT_DAILY_ITEM_COUNT_MIN)
+    max_items = daily_item_count.get("max", DEFAULT_DAILY_ITEM_COUNT_MAX)
+    project_first = daily_item_count.get("project_first", DEFAULT_DAILY_ITEM_PROJECT_FIRST)
+
+    try:
+        min_value = max(1, int(min_items))
+    except (TypeError, ValueError):
+        min_value = DEFAULT_DAILY_ITEM_COUNT_MIN
+    try:
+        max_value = max(min_value, int(max_items))
+    except (TypeError, ValueError):
+        max_value = max(DEFAULT_DAILY_ITEM_COUNT_MAX, min_value)
+
+    return {
+        "min": min_value,
+        "max": max_value,
+        "project_first": bool(project_first),
+    }
 
 
 def load_discussion_keywords(path: Path | None = None) -> list[str]:

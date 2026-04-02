@@ -348,7 +348,13 @@ def choose_daily_limit(
         return 0
     if total <= min_items:
         return total
-    return min(total, max_items)
+
+    ordered = sorted(items, key=_selection_sort_key)
+    quality_window = ordered[: min(total, max_items)]
+    quality_cutoff = _quality_value(quality_window[min(len(quality_window), min_items) - 1])
+    quality_floor = max(2.0, quality_cutoff * 0.8)
+    strong_count = sum(1 for item in quality_window if _quality_value(item) >= quality_floor)
+    return min(total, max_items, max(min_items, strong_count))
 
 
 def select_top_items(
@@ -357,34 +363,72 @@ def select_top_items(
     min_items: int = 10,
     max_items: int = 20,
     per_repo_cap: int = 1,
+    project_first: bool = True,
 ) -> list[dict]:
     """从候选中选出项目优先的单卡列表，按编辑 rank → 分数排序，同仓库去重。"""
-
-    def sort_key(item: dict) -> tuple[int, int, float, str]:
-        rank = item.get("editorial_rank")
-        rank_key = int(rank) if rank is not None else 10_000
-        score = float(item.get("score") or 0.0)
-        return (0 if rank is not None else 1, rank_key, -score, item.get("title", ""))
 
     target_limit = choose_daily_limit(items, min_items=min_items, max_items=max_items)
     grouped: dict[str, list[dict]] = defaultdict(list)
     for item in items:
         grouped[_bucket_for_kind(item.get("kind", "other"))].append(item)
 
+    for kind in grouped:
+        grouped[kind] = sorted(grouped[kind], key=_selection_sort_key)
+
     selected: list[dict] = []
     repo_counts: dict[str, int] = defaultdict(int)
+    cycle_order = _selection_cycle(project_first=project_first)
 
-    for kind in KIND_ORDER:
-        for item in sorted(grouped.get(kind, []), key=sort_key):
+    while len(selected) < target_limit:
+        progressed = False
+        for kind in cycle_order:
             if len(selected) >= target_limit:
-                return selected
-            repo_key = item.get("repo_full_name") or item.get("url") or item.get("title")
-            if repo_counts[repo_key] >= per_repo_cap:
+                break
+            item = _take_next_bucket_item(grouped.get(kind, []), repo_counts=repo_counts, per_repo_cap=per_repo_cap)
+            if item is None:
                 continue
             selected.append(item)
-            repo_counts[repo_key] += 1
+            progressed = True
+        if not progressed:
+            break
 
     return selected
+
+
+def _selection_sort_key(item: dict) -> tuple[int, int, float, str]:
+    rank = item.get("editorial_rank")
+    rank_key = int(rank) if rank is not None else 10_000
+    score = float(item.get("score") or 0.0)
+    return (0 if rank is not None else 1, rank_key, -score, item.get("title", ""))
+
+
+def _quality_value(item: dict) -> float:
+    score = float(item.get("score") or 0.0)
+    rank = item.get("editorial_rank")
+    if rank is None:
+        return score
+    try:
+        rank_value = int(rank)
+    except (TypeError, ValueError):
+        return score
+    return score + max(0.0, 2.0 - 0.2 * max(rank_value - 1, 0))
+
+
+def _selection_cycle(*, project_first: bool) -> list[str]:
+    if project_first:
+        return ["project", "project", "skill", "discussion", "other"]
+    return ["project", "skill", "discussion", "other"]
+
+
+def _take_next_bucket_item(items: list[dict], *, repo_counts: dict[str, int], per_repo_cap: int) -> dict | None:
+    while items:
+        item = items.pop(0)
+        repo_key = item.get("repo_full_name") or item.get("url") or item.get("title")
+        if repo_counts[repo_key] >= per_repo_cap:
+            continue
+        repo_counts[repo_key] += 1
+        return item
+    return None
 
 
 

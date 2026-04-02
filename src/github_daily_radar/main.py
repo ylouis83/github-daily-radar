@@ -19,6 +19,7 @@ from github_daily_radar.discovery import (
     load_ossinsight_max_collection_ids,
     load_ossinsight_max_trending_items,
     load_ossinsight_trending_periods,
+    load_output_daily_item_count_config,
     load_seed_repos,
     load_project_min_stars,
     load_skill_min_stars,
@@ -114,6 +115,7 @@ def run_pipeline(settings: Settings, alert_only: bool = False) -> dict:
     skill_shape_floor = load_skill_shape_floor()
     skill_top_n = load_skill_top_n()
     skill_per_repo_cap = load_skill_per_repo_cap()
+    daily_item_count = load_output_daily_item_count_config()
     ossinsight_enabled = load_ossinsight_enabled()
     ossinsight_collector = None
     if ossinsight_enabled:
@@ -269,7 +271,13 @@ def run_pipeline(settings: Settings, alert_only: bool = False) -> dict:
     display_items = build_display_items(filtered, editorial)
     if settings.report_limit > 0:
         display_items = display_items[: settings.report_limit]
-    published_items = select_top_items(display_items, min_items=10, max_items=20, per_repo_cap=1)
+    published_items = select_top_items(
+        display_items,
+        min_items=int(daily_item_count["min"]),
+        max_items=int(daily_item_count["max"]),
+        per_repo_cap=skill_per_repo_cap,
+        project_first=bool(daily_item_count["project_first"]),
+    )
     filtered_kind_counts = Counter(item.kind for item in filtered)
     published_kind_counts = Counter(item["kind"] for item in published_items)
     metadata["item_count"] = len(published_items)

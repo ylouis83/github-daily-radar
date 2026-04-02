@@ -2,6 +2,20 @@ from github_daily_radar.models import Candidate, CandidateMetrics
 from github_daily_radar.summarize.digest import build_display_items, choose_daily_limit, select_top_items
 
 
+def _digest_item(kind: str, title: str, *, score: float, repo: str | None = None, editorial_rank: int | None = None) -> dict:
+    item = {
+        "kind": kind,
+        "title": title,
+        "url": f"https://github.com/{repo or title}",
+        "summary": title,
+        "repo_full_name": repo or title,
+        "score": score,
+    }
+    if editorial_rank is not None:
+        item["editorial_rank"] = editorial_rank
+    return item
+
+
 def test_build_display_items_uses_kind_specific_chinese_fallbacks():
     items = build_display_items(
         [
@@ -173,63 +187,24 @@ def test_build_display_items_creates_distinct_project_profiles():
 
 
 def test_choose_daily_limit_is_dynamic_between_10_and_20():
-    assert choose_daily_limit(list(range(4))) == 4
-    assert choose_daily_limit(list(range(12))) == 12
-    assert choose_daily_limit(list(range(24))) == 20
+    low_quality = [_digest_item("project", f"project-{index}", score=1.0) for index in range(12)]
+    high_quality = [_digest_item("project", f"project-{index}", score=8.0) for index in range(12)]
+
+    assert choose_daily_limit([]) == 0
+    assert choose_daily_limit(high_quality[:4]) == 4
+    assert choose_daily_limit(low_quality) == 10
+    assert choose_daily_limit(high_quality) == 12
+    assert choose_daily_limit(high_quality * 2) == 20
 
 
 def test_select_top_items_is_project_first_with_repo_cap():
     items = [
-        {
-            "kind": "skill",
-            "title": "skill-a",
-            "url": "https://github.com/owner/skill-a",
-            "summary": "技能",
-            "repo_full_name": "owner/skill-a",
-            "score": 100.0,
-        },
-        {
-            "kind": "skill",
-            "title": "skill-b",
-            "url": "https://github.com/owner/skill-b",
-            "summary": "技能",
-            "repo_full_name": "owner/skill-b",
-            "score": 90.0,
-        },
-        {
-            "kind": "project",
-            "title": "project-a",
-            "url": "https://github.com/owner/project-a",
-            "summary": "项目",
-            "repo_full_name": "owner/project-a",
-            "score": 5.0,
-            "editorial_rank": 2,
-        },
-        {
-            "kind": "discussion",
-            "title": "discussion-a",
-            "url": "https://github.com/owner/discussion-a",
-            "summary": "讨论",
-            "repo_full_name": "owner/discussion-a",
-            "score": 4.0,
-        },
-        {
-            "kind": "project",
-            "title": "project-b",
-            "url": "https://github.com/owner/project-b",
-            "summary": "项目",
-            "repo_full_name": "owner/project-b",
-            "score": 3.0,
-            "editorial_rank": 1,
-        },
-        {
-            "kind": "project",
-            "title": "project-a-duplicate",
-            "url": "https://github.com/owner/project-a/pulls",
-            "summary": "项目重复",
-            "repo_full_name": "owner/project-a",
-            "score": 2.0,
-        },
+        _digest_item("skill", "skill-a", score=100.0, repo="owner/skill-a"),
+        _digest_item("skill", "skill-b", score=90.0, repo="owner/skill-b"),
+        _digest_item("project", "project-a", score=5.0, repo="owner/project-a", editorial_rank=2),
+        _digest_item("discussion", "discussion-a", score=4.0, repo="owner/discussion-a"),
+        _digest_item("project", "project-b", score=3.0, repo="owner/project-b", editorial_rank=1),
+        _digest_item("project", "project-a-duplicate", score=2.0, repo="owner/project-a"),
     ]
 
     selected = select_top_items(items)
@@ -238,7 +213,23 @@ def test_select_top_items_is_project_first_with_repo_cap():
         "project-b",
         "project-a",
         "skill-a",
-        "skill-b",
         "discussion-a",
+        "skill-b",
     ]
-    assert [item["kind"] for item in selected] == ["project", "project", "skill", "skill", "discussion"]
+    assert [item["kind"] for item in selected] == ["project", "project", "skill", "discussion", "skill"]
+
+
+def test_select_top_items_project_heavy_day_keeps_high_quality_non_projects():
+    items = [
+        *[_digest_item("project", f"project-{index}", score=1.0, repo=f"owner/project-{index}") for index in range(12)],
+        _digest_item("skill", "skill-survives", score=12.0, repo="owner/skill-survives"),
+        _digest_item("discussion", "discussion-survives", score=11.0, repo="owner/discussion-survives"),
+    ]
+
+    selected = select_top_items(items, min_items=10, max_items=10)
+    selected_titles = [item["title"] for item in selected]
+
+    assert len(selected) == 10
+    assert selected[0]["kind"] == "project"
+    assert "skill-survives" in selected_titles
+    assert "discussion-survives" in selected_titles

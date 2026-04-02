@@ -453,3 +453,40 @@ def test_run_pipeline_single_card_is_project_first(monkeypatch, tmp_path: Path):
 
     assert [item["kind"] for item in captured["items"]] == ["project", "skill", "discussion"]
     assert [item["title"] for item in captured["items"]] == ["owner/name", "owner/skill", "Other RFC"]
+
+
+def test_run_pipeline_uses_configured_daily_item_count(monkeypatch, tmp_path: Path):
+    monkeypatch.chdir(tmp_path)
+    monkeypatch.setenv("GITHUB_TOKEN", "ghs_test")
+    monkeypatch.setenv("QWEN_API_KEY", "qwen_test")
+    monkeypatch.setenv("FEISHU_WEBHOOK_URL", "https://example.com/hook")
+
+    captured = {}
+
+    def fake_build_digest_card(*, items, secondary_items=None, metadata=None, today=None):
+        captured["items"] = items
+        captured["metadata"] = metadata or {}
+        return {"msg_type": "interactive", "card": {"header": {"title": {"content": "test"}}}}
+
+    monkeypatch.setattr(main_module, "TrendingCollector", _EmptyCollector)
+    monkeypatch.setattr(main_module, "OSSInsightCollector", _EmptyCollector)
+    monkeypatch.setattr(main_module, "RepoCollector", _ManyProjectCollector)
+    monkeypatch.setattr(main_module, "SkillCollector", _EmptyCollector)
+    monkeypatch.setattr(main_module, "DiscussionCollector", _EmptyCollector)
+    monkeypatch.setattr(main_module, "IssuesPrsCollector", _EmptyCollector)
+    monkeypatch.setattr(main_module, "EditorialLLM", _FakeLLM)
+    monkeypatch.setattr(main_module, "build_digest_card", fake_build_digest_card)
+    monkeypatch.setattr(main_module, "send_cards", lambda *args, **kwargs: None)
+    monkeypatch.setattr(
+        main_module,
+        "load_output_daily_item_count_config",
+        lambda: {"min": 3, "max": 5, "project_first": True},
+    )
+    monkeypatch.setattr(main_module, "load_skill_per_repo_cap", lambda: 1)
+
+    settings = Settings.from_env()
+    result = run_pipeline(settings=settings)
+
+    assert result["count"] == 12
+    assert len(captured["items"]) == 5
+    assert captured["metadata"]["item_count"] == 5
