@@ -120,6 +120,14 @@ def _fallback_why_now(candidate: Candidate) -> str:
     return ""
 
 
+def _prefer_chinese_text(fallback: str, text: str | None) -> str:
+    """LLM 文本若不是中文句子，就回退到本地中文模板。"""
+    cleaned = (text or "").strip()
+    if cleaned and _has_cjk(cleaned):
+        return cleaned
+    return fallback
+
+
 def _bucket_for_kind(kind: str) -> str:
     if kind == "project":
         return "project"
@@ -164,8 +172,8 @@ def build_display_items(candidates: list[Candidate], editorial: list[dict]) -> l
             item["kind"] = editorial_item.get("kind", item["kind"])
             item["title"] = editorial_item.get("title", item["title"])
             item["url"] = editorial_item.get("url", item["url"])
-            item["summary"] = editorial_item.get("summary") or item["summary"]
-            item["why_now"] = editorial_item.get("why_now") or item["why_now"]
+            item["summary"] = _prefer_chinese_text(item["summary"], editorial_item.get("summary"))
+            item["why_now"] = _prefer_chinese_text(item["why_now"], editorial_item.get("why_now"))
             rank = editorial_item.get("rank", editorial_item.get("editorial_rank"))
             if rank is not None:
                 item["editorial_rank"] = rank

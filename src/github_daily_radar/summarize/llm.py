@@ -36,6 +36,8 @@ class EditorialLLM:
                                 "每个元素必须包含: title, url, kind, summary, why_now。"
                                 "可选字段: follow_up, section, rank。"
                                 "summary 与 why_now 各 1 句话，尽量简短。"
+                                "除仓库名、组织名和必要技术名词外，summary、why_now、follow_up 必须使用简体中文，"
+                                "不要输出英文句子，也不要直接复述英文 body_excerpt。"
                                 "不要虚构未提供的事实。"
                             ),
                         },

@@ -95,6 +95,43 @@ def test_build_display_items_prefers_ossinsight_trend_language():
     assert "热度" in items[0]["summary"]
 
 
+def test_build_display_items_rejects_english_editorial_copy():
+    candidate = Candidate(
+        candidate_id="project:owner/en",
+        kind="project",
+        source_query="topic:agent",
+        title="owner/en",
+        url="https://github.com/owner/en",
+        repo_full_name="owner/en",
+        author="owner",
+        created_at="2026-04-01T00:00:00Z",
+        updated_at="2026-04-02T00:00:00Z",
+        body_excerpt="english excerpt",
+        topics=["agent"],
+        labels=[],
+        metrics=CandidateMetrics(stars=30, forks=2, star_growth_7d=250),
+        raw_signals={},
+        rule_scores={},
+        dedupe_key="owner/en",
+    )
+
+    items = build_display_items(
+        [candidate],
+        editorial=[
+            {
+                "title": "owner/en",
+                "url": "https://github.com/owner/en",
+                "kind": "project",
+                "summary": "This repo introduces a brand-new workflow for agents.",
+                "why_now": "It is getting traction fast.",
+            }
+        ],
+    )
+
+    assert items[0]["summary"] == "这是一个值得快速浏览的仓库，先看 README 和最近提交。"
+    assert items[0]["why_now"] == "近 7 天 +250⭐"
+
+
 def test_split_a_b_keeps_kind_diversity():
     items = [
         {
