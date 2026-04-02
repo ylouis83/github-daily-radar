@@ -6,7 +6,7 @@
       "event": "published",
       "metrics": {
         "stars": 156353,
-        "forks": 20524,
+        "forks": 20526,
         "comments": 0,
         "reactions": 0,
         "star_growth_7d": 0,
@@ -26,7 +26,7 @@
       "date": "2026-04-02",
       "event": "published",
       "metrics": {
-        "stars": 130966,
+        "stars": 130972,
         "forks": 10829,
         "comments": 0,
         "reactions": 0,
@@ -337,27 +337,6 @@
       "source_query": "cursor rules AI in:name,description sort:stars-desc pushed:>2026-03-03"
     },
     {
-      "candidate_id": "repo:TheDecipherist/rulecatch-sdk",
-      "date": "2026-04-02",
-      "event": "published",
-      "metrics": {
-        "stars": 3,
-        "forks": 0,
-        "comments": 0,
-        "reactions": 0,
-        "star_growth_7d": 0,
-        "previous_star_growth_7d": 0,
-        "has_new_release": false,
-        "days_since_previous_release": null,
-        "comment_growth_rate": 0.0
-      },
-      "scores": {},
-      "kind": "skill",
-      "title": "TheDecipherist/rulecatch-sdk",
-      "url": "https://github.com/TheDecipherist/rulecatch-sdk",
-      "source_query": "cursor rules AI in:name,description sort:stars-desc pushed:>2026-03-03"
-    },
-    {
       "candidate_id": "repo:RajanChavada/Rosetta",
       "date": "2026-04-02",
       "event": "published",
@@ -379,11 +358,11 @@
       "source_query": "cursor rules AI in:name,description sort:stars-desc pushed:>2026-03-03"
     },
     {
-      "candidate_id": "repo:nbslabs/dotai-cli",
+      "candidate_id": "repo:TheDecipherist/rulecatch-sdk",
       "date": "2026-04-02",
       "event": "published",
       "metrics": {
-        "stars": 2,
+        "stars": 3,
         "forks": 0,
         "comments": 0,
         "reactions": 0,
@@ -395,8 +374,8 @@
       },
       "scores": {},
       "kind": "skill",
-      "title": "nbslabs/dotai-cli",
-      "url": "https://github.com/nbslabs/dotai-cli",
+      "title": "TheDecipherist/rulecatch-sdk",
+      "url": "https://github.com/TheDecipherist/rulecatch-sdk",
       "source_query": "cursor rules AI in:name,description sort:stars-desc pushed:>2026-03-03"
     },
     {
@@ -440,576 +419,329 @@
       "title": "mehd-io/agent-skills",
       "url": "https://github.com/mehd-io/agent-skills",
       "source_query": "claude skills agent prompt in:name,description sort:stars-desc pushed:>2026-03-03"
-    },
-    {
-      "candidate_id": "repo:Deadly244/cursor-security-rules",
-      "date": "2026-04-02",
-      "event": "published",
-      "metrics": {
-        "stars": 1,
-        "forks": 0,
-        "comments": 0,
-        "reactions": 0,
-        "star_growth_7d": 0,
-        "previous_star_growth_7d": 0,
-        "has_new_release": false,
-        "days_since_previous_release": null,
-        "comment_growth_rate": 0.0
-      },
-      "scores": {},
-      "kind": "skill",
-      "title": "Deadly244/cursor-security-rules",
-      "url": "https://github.com/Deadly244/cursor-security-rules",
-      "source_query": "cursor rules AI in:name,description sort:stars-desc pushed:>2026-03-03"
-    },
-    {
-      "candidate_id": "repo:noobgaminghard/cursor-rules",
-      "date": "2026-04-02",
-      "event": "published",
-      "metrics": {
-        "stars": 1,
-        "forks": 0,
-        "comments": 0,
-        "reactions": 0,
-        "star_growth_7d": 0,
-        "previous_star_growth_7d": 0,
-        "has_new_release": false,
-        "days_since_previous_release": null,
-        "comment_growth_rate": 0.0
-      },
-      "scores": {},
-      "kind": "skill",
-      "title": "noobgaminghard/cursor-rules",
-      "url": "https://github.com/noobgaminghard/cursor-rules",
-      "source_query": "cursor rules AI in:name,description sort:stars-desc pushed:>2026-03-03"
-    },
-    {
-      "candidate_id": "repo:Jeremy8776/context-engine",
-      "date": "2026-04-02",
-      "event": "published",
-      "metrics": {
-        "stars": 1,
-        "forks": 0,
-        "comments": 0,
-        "reactions": 0,
-        "star_growth_7d": 0,
-        "previous_star_growth_7d": 0,
-        "has_new_release": false,
-        "days_since_previous_release": null,
-        "comment_growth_rate": 0.0
-      },
-      "scores": {},
-      "kind": "skill",
-      "title": "Jeremy8776/context-engine",
-      "url": "https://github.com/Jeremy8776/context-engine",
-      "source_query": "cursor rules AI in:name,description sort:stars-desc pushed:>2026-03-03"
-    },
-    {
-      "candidate_id": "repo:alexyyyander/prompt-injection-defense",
-      "date": "2026-04-02",
-      "event": "published",
-      "metrics": {
-        "stars": 1,
-        "forks": 0,
-        "comments": 0,
-        "reactions": 0,
-        "star_growth_7d": 0,
-        "previous_star_growth_7d": 0,
-        "has_new_release": false,
-        "days_since_previous_release": null,
-        "comment_growth_rate": 0.0
-      },
-      "scores": {},
-      "kind": "skill",
-      "title": "alexyyyander/prompt-injection-defense",
-      "url": "https://github.com/alexyyyander/prompt-injection-defense",
-      "source_query": "claude skills agent prompt in:name,description sort:stars-desc pushed:>2026-03-03"
-    },
-    {
-      "candidate_id": "repo:viniciusparede/workflow",
-      "date": "2026-04-02",
-      "event": "published",
-      "metrics": {
-        "stars": 1,
-        "forks": 0,
-        "comments": 0,
-        "reactions": 0,
-        "star_growth_7d": 0,
-        "previous_star_growth_7d": 0,
-        "has_new_release": false,
-        "days_since_previous_release": null,
-        "comment_growth_rate": 0.0
-      },
-      "scores": {},
-      "kind": "skill",
-      "title": "viniciusparede/workflow",
-      "url": "https://github.com/viniciusparede/workflow",
-      "source_query": "claude skills agent prompt in:name,description sort:stars-desc pushed:>2026-03-03"
-    },
-    {
-      "candidate_id": "repo:adihebbalae/copilot-code",
-      "date": "2026-04-02",
-      "event": "published",
-      "metrics": {
-        "stars": 1,
-        "forks": 0,
-        "comments": 0,
-        "reactions": 0,
-        "star_growth_7d": 0,
-        "previous_star_growth_7d": 0,
-        "has_new_release": false,
-        "days_since_previous_release": null,
-        "comment_growth_rate": 0.0
-      },
-      "scores": {},
-      "kind": "skill",
-      "title": "adihebbalae/copilot-code",
-      "url": "https://github.com/adihebbalae/copilot-code",
-      "source_query": "claude skills agent prompt in:name,description sort:stars-desc pushed:>2026-03-03"
-    },
-    {
-      "candidate_id": "repo:timothywarner-org/agent-security-quorum",
-      "date": "2026-04-02",
-      "event": "published",
-      "metrics": {
-        "stars": 0,
-        "forks": 1,
-        "comments": 0,
-        "reactions": 0,
-        "star_growth_7d": 0,
-        "previous_star_growth_7d": 0,
-        "has_new_release": false,
-        "days_since_previous_release": null,
-        "comment_growth_rate": 0.0
-      },
-      "scores": {},
-      "kind": "skill",
-      "title": "timothywarner-org/agent-security-quorum",
-      "url": "https://github.com/timothywarner-org/agent-security-quorum",
-      "source_query": "claude skills agent prompt in:name,description sort:stars-desc pushed:>2026-03-03"
-    },
-    {
-      "candidate_id": "repo:h26liu/claude-code-unpacked",
-      "date": "2026-04-02",
-      "event": "published",
-      "metrics": {
-        "stars": 0,
-        "forks": 1,
-        "comments": 0,
-        "reactions": 0,
-        "star_growth_7d": 0,
-        "previous_star_growth_7d": 0,
-        "has_new_release": false,
-        "days_since_previous_release": null,
-        "comment_growth_rate": 0.0
-      },
-      "scores": {},
-      "kind": "skill",
-      "title": "h26liu/claude-code-unpacked",
-      "url": "https://github.com/h26liu/claude-code-unpacked",
-      "source_query": "claude skills agent prompt in:name,description sort:stars-desc pushed:>2026-03-03"
-    },
-    {
-      "candidate_id": "repo:itsmhmd/cursor-windsurf-convert",
-      "date": "2026-04-02",
-      "event": "published",
-      "metrics": {
-        "stars": 0,
-        "forks": 0,
-        "comments": 0,
-        "reactions": 0,
-        "star_growth_7d": 0,
-        "previous_star_growth_7d": 0,
-        "has_new_release": false,
-        "days_since_previous_release": null,
-        "comment_growth_rate": 0.0
-      },
-      "scores": {},
-      "kind": "skill",
-      "title": "itsmhmd/cursor-windsurf-convert",
-      "url": "https://github.com/itsmhmd/cursor-windsurf-convert",
-      "source_query": "cursor rules AI in:name,description sort:stars-desc pushed:>2026-03-03"
-    },
-    {
-      "candidate_id": "repo:votrungquan1999/AI-rules-setup",
-      "date": "2026-04-02",
-      "event": "published",
-      "metrics": {
-        "stars": 0,
-        "forks": 0,
-        "comments": 0,
-        "reactions": 0,
-        "star_growth_7d": 0,
-        "previous_star_growth_7d": 0,
-        "has_new_release": false,
-        "days_since_previous_release": null,
-        "comment_growth_rate": 0.0
-      },
-      "scores": {},
-      "kind": "skill",
-      "title": "votrungquan1999/AI-rules-setup",
-      "url": "https://github.com/votrungquan1999/AI-rules-setup",
-      "source_query": "cursor rules AI in:name,description sort:stars-desc pushed:>2026-03-03"
-    },
-    {
-      "candidate_id": "repo:learnaiforlife/cortex",
-      "date": "2026-04-02",
-      "event": "published",
-      "metrics": {
-        "stars": 0,
-        "forks": 0,
-        "comments": 0,
-        "reactions": 0,
-        "star_growth_7d": 0,
-        "previous_star_growth_7d": 0,
-        "has_new_release": false,
-        "days_since_previous_release": null,
-        "comment_growth_rate": 0.0
-      },
-      "scores": {},
-      "kind": "skill",
-      "title": "learnaiforlife/cortex",
-      "url": "https://github.com/learnaiforlife/cortex",
-      "source_query": "cursor rules AI in:name,description sort:stars-desc pushed:>2026-03-03"
-    },
-    {
-      "candidate_id": "repo:fredericomartini/ai-ide-skills",
-      "date": "2026-04-02",
-      "event": "published",
-      "metrics": {
-        "stars": 0,
-        "forks": 0,
-        "comments": 0,
-        "reactions": 0,
-        "star_growth_7d": 0,
-        "previous_star_growth_7d": 0,
-        "has_new_release": false,
-        "days_since_previous_release": null,
-        "comment_growth_rate": 0.0
-      },
-      "scores": {},
-      "kind": "skill",
-      "title": "fredericomartini/ai-ide-skills",
-      "url": "https://github.com/fredericomartini/ai-ide-skills",
-      "source_query": "cursor rules AI in:name,description sort:stars-desc pushed:>2026-03-03"
-    },
-    {
-      "candidate_id": "repo:joseverticurl/eds-xwalk-ai-agent",
-      "date": "2026-04-02",
-      "event": "published",
-      "metrics": {
-        "stars": 0,
-        "forks": 0,
-        "comments": 0,
-        "reactions": 0,
-        "star_growth_7d": 0,
-        "previous_star_growth_7d": 0,
-        "has_new_release": false,
-        "days_since_previous_release": null,
-        "comment_growth_rate": 0.0
-      },
-      "scores": {},
-      "kind": "skill",
-      "title": "joseverticurl/eds-xwalk-ai-agent",
-      "url": "https://github.com/joseverticurl/eds-xwalk-ai-agent",
-      "source_query": "cursor rules AI in:name,description sort:stars-desc pushed:>2026-03-03"
-    },
-    {
-      "candidate_id": "repo:TashanGKD/tashan-cursor-skills",
-      "date": "2026-04-02",
-      "event": "published",
-      "metrics": {
-        "stars": 0,
-        "forks": 0,
-        "comments": 0,
-        "reactions": 0,
-        "star_growth_7d": 0,
-        "previous_star_growth_7d": 0,
-        "has_new_release": false,
-        "days_since_previous_release": null,
-        "comment_growth_rate": 0.0
-      },
-      "scores": {},
-      "kind": "skill",
-      "title": "TashanGKD/tashan-cursor-skills",
-      "url": "https://github.com/TashanGKD/tashan-cursor-skills",
-      "source_query": "cursor rules AI in:name,description sort:stars-desc pushed:>2026-03-03"
-    },
-    {
-      "candidate_id": "repo:Archie0125/osop-agent-rules",
-      "date": "2026-04-02",
-      "event": "published",
-      "metrics": {
-        "stars": 0,
-        "forks": 0,
-        "comments": 0,
-        "reactions": 0,
-        "star_growth_7d": 0,
-        "previous_star_growth_7d": 0,
-        "has_new_release": false,
-        "days_since_previous_release": null,
-        "comment_growth_rate": 0.0
-      },
-      "scores": {},
-      "kind": "skill",
-      "title": "Archie0125/osop-agent-rules",
-      "url": "https://github.com/Archie0125/osop-agent-rules",
-      "source_query": "cursor rules AI in:name,description sort:stars-desc pushed:>2026-03-03"
-    },
-    {
-      "candidate_id": "repo:Rethunk-AI/clodbridge",
-      "date": "2026-04-02",
-      "event": "published",
-      "metrics": {
-        "stars": 0,
-        "forks": 0,
-        "comments": 0,
-        "reactions": 0,
-        "star_growth_7d": 0,
-        "previous_star_growth_7d": 0,
-        "has_new_release": false,
-        "days_since_previous_release": null,
-        "comment_growth_rate": 0.0
-      },
-      "scores": {},
-      "kind": "skill",
-      "title": "Rethunk-AI/clodbridge",
-      "url": "https://github.com/Rethunk-AI/clodbridge",
-      "source_query": "cursor rules AI in:name,description sort:stars-desc pushed:>2026-03-03"
-    },
-    {
-      "candidate_id": "repo:qoggy/ai-dev-toolkit",
-      "date": "2026-04-02",
-      "event": "published",
-      "metrics": {
-        "stars": 0,
-        "forks": 0,
-        "comments": 0,
-        "reactions": 0,
-        "star_growth_7d": 0,
-        "previous_star_growth_7d": 0,
-        "has_new_release": false,
-        "days_since_previous_release": null,
-        "comment_growth_rate": 0.0
-      },
-      "scores": {},
-      "kind": "skill",
-      "title": "qoggy/ai-dev-toolkit",
-      "url": "https://github.com/qoggy/ai-dev-toolkit",
-      "source_query": "cursor rules AI in:name,description sort:stars-desc pushed:>2026-03-03"
-    },
-    {
-      "candidate_id": "repo:naoko/omx-provider",
-      "date": "2026-04-02",
-      "event": "published",
-      "metrics": {
-        "stars": 0,
-        "forks": 0,
-        "comments": 0,
-        "reactions": 0,
-        "star_growth_7d": 0,
-        "previous_star_growth_7d": 0,
-        "has_new_release": false,
-        "days_since_previous_release": null,
-        "comment_growth_rate": 0.0
-      },
-      "scores": {},
-      "kind": "skill",
-      "title": "naoko/omx-provider",
-      "url": "https://github.com/naoko/omx-provider",
-      "source_query": "claude skills agent prompt in:name,description sort:stars-desc pushed:>2026-03-03"
-    },
-    {
-      "candidate_id": "repo:msmorodinov/claude-prompt-to-app",
-      "date": "2026-04-02",
-      "event": "published",
-      "metrics": {
-        "stars": 0,
-        "forks": 0,
-        "comments": 0,
-        "reactions": 0,
-        "star_growth_7d": 0,
-        "previous_star_growth_7d": 0,
-        "has_new_release": false,
-        "days_since_previous_release": null,
-        "comment_growth_rate": 0.0
-      },
-      "scores": {},
-      "kind": "skill",
-      "title": "msmorodinov/claude-prompt-to-app",
-      "url": "https://github.com/msmorodinov/claude-prompt-to-app",
-      "source_query": "claude skills agent prompt in:name,description sort:stars-desc pushed:>2026-03-03"
-    },
-    {
-      "candidate_id": "repo:e-stpierre/agent-skills",
-      "date": "2026-04-02",
-      "event": "published",
-      "metrics": {
-        "stars": 0,
-        "forks": 0,
-        "comments": 0,
-        "reactions": 0,
-        "star_growth_7d": 0,
-        "previous_star_growth_7d": 0,
-        "has_new_release": false,
-        "days_since_previous_release": null,
-        "comment_growth_rate": 0.0
-      },
-      "scores": {},
-      "kind": "skill",
-      "title": "e-stpierre/agent-skills",
-      "url": "https://github.com/e-stpierre/agent-skills",
-      "source_query": "claude skills agent prompt in:name,description sort:stars-desc pushed:>2026-03-03"
-    },
-    {
-      "candidate_id": "repo:akbarfarooq2006/Agent-Skills-Hub",
-      "date": "2026-04-02",
-      "event": "published",
-      "metrics": {
-        "stars": 0,
-        "forks": 0,
-        "comments": 0,
-        "reactions": 0,
-        "star_growth_7d": 0,
-        "previous_star_growth_7d": 0,
-        "has_new_release": false,
-        "days_since_previous_release": null,
-        "comment_growth_rate": 0.0
-      },
-      "scores": {},
-      "kind": "skill",
-      "title": "akbarfarooq2006/Agent-Skills-Hub",
-      "url": "https://github.com/akbarfarooq2006/Agent-Skills-Hub",
-      "source_query": "claude skills agent prompt in:name,description sort:stars-desc pushed:>2026-03-03"
-    },
-    {
-      "candidate_id": "repo:jihye-devlog/claude_kit",
-      "date": "2026-04-02",
-      "event": "published",
-      "metrics": {
-        "stars": 0,
-        "forks": 0,
-        "comments": 0,
-        "reactions": 0,
-        "star_growth_7d": 0,
-        "previous_star_growth_7d": 0,
-        "has_new_release": false,
-        "days_since_previous_release": null,
-        "comment_growth_rate": 0.0
-      },
-      "scores": {},
-      "kind": "skill",
-      "title": "jihye-devlog/claude_kit",
-      "url": "https://github.com/jihye-devlog/claude_kit",
-      "source_query": "claude skills agent prompt in:name,description sort:stars-desc pushed:>2026-03-03"
-    },
-    {
-      "candidate_id": "repo:hnts03/harness-collections",
-      "date": "2026-04-02",
-      "event": "published",
-      "metrics": {
-        "stars": 0,
-        "forks": 0,
-        "comments": 0,
-        "reactions": 0,
-        "star_growth_7d": 0,
-        "previous_star_growth_7d": 0,
-        "has_new_release": false,
-        "days_since_previous_release": null,
-        "comment_growth_rate": 0.0
-      },
-      "scores": {},
-      "kind": "skill",
-      "title": "hnts03/harness-collections",
-      "url": "https://github.com/hnts03/harness-collections",
-      "source_query": "claude skills agent prompt in:name,description sort:stars-desc pushed:>2026-03-03"
-    },
-    {
-      "candidate_id": "repo:vibe-coding-101/claude-code-config",
-      "date": "2026-04-02",
-      "event": "published",
-      "metrics": {
-        "stars": 0,
-        "forks": 0,
-        "comments": 0,
-        "reactions": 0,
-        "star_growth_7d": 0,
-        "previous_star_growth_7d": 0,
-        "has_new_release": false,
-        "days_since_previous_release": null,
-        "comment_growth_rate": 0.0
-      },
-      "scores": {},
-      "kind": "skill",
-      "title": "vibe-coding-101/claude-code-config",
-      "url": "https://github.com/vibe-coding-101/claude-code-config",
-      "source_query": "claude skills agent prompt in:name,description sort:stars-desc pushed:>2026-03-03"
-    },
-    {
-      "candidate_id": "repo:hnts03-moreh/harness-collections",
-      "date": "2026-04-02",
-      "event": "published",
-      "metrics": {
-        "stars": 0,
-        "forks": 0,
-        "comments": 0,
-        "reactions": 0,
-        "star_growth_7d": 0,
-        "previous_star_growth_7d": 0,
-        "has_new_release": false,
-        "days_since_previous_release": null,
-        "comment_growth_rate": 0.0
-      },
-      "scores": {},
-      "kind": "skill",
-      "title": "hnts03-moreh/harness-collections",
-      "url": "https://github.com/hnts03-moreh/harness-collections",
-      "source_query": "claude skills agent prompt in:name,description sort:stars-desc pushed:>2026-03-03"
-    },
-    {
-      "candidate_id": "repo:akshatdotcom/token-saver",
-      "date": "2026-04-02",
-      "event": "published",
-      "metrics": {
-        "stars": 0,
-        "forks": 0,
-        "comments": 0,
-        "reactions": 0,
-        "star_growth_7d": 0,
-        "previous_star_growth_7d": 0,
-        "has_new_release": false,
-        "days_since_previous_release": null,
-        "comment_growth_rate": 0.0
-      },
-      "scores": {},
-      "kind": "skill",
-      "title": "akshatdotcom/token-saver",
-      "url": "https://github.com/akshatdotcom/token-saver",
-      "source_query": "claude skills agent prompt in:name,description sort:stars-desc pushed:>2026-03-03"
-    },
-    {
-      "candidate_id": "repo:luv-jeri/nonlu-skill",
-      "date": "2026-04-02",
-      "event": "published",
-      "metrics": {
-        "stars": 0,
-        "forks": 0,
-        "comments": 0,
-        "reactions": 0,
-        "star_growth_7d": 0,
-        "previous_star_growth_7d": 0,
-        "has_new_release": false,
-        "days_since_previous_release": null,
-        "comment_growth_rate": 0.0
-      },
-      "scores": {},
-      "kind": "skill",
-      "title": "luv-jeri/nonlu-skill",
-      "url": "https://github.com/luv-jeri/nonlu-skill",
-      "source_query": "claude skills agent prompt in:name,description sort:stars-desc pushed:>2026-03-03"
     }
   ],
   "candidate_index": {
+    "repo:w3c/web-performance": {
+      "candidate_id": "repo:w3c/web-performance",
+      "last_seen_at": "2026-04-02",
+      "last_seen_metrics": {
+        "stars": 0,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_seen_scores": {}
+    },
+    "repo:majiayu000/claude-skill-registry": {
+      "candidate_id": "repo:majiayu000/claude-skill-registry",
+      "last_seen_at": "2026-04-02",
+      "last_seen_metrics": {
+        "stars": 0,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_seen_scores": {}
+    },
+    "repo:sani-iv/HyperBlue": {
+      "candidate_id": "repo:sani-iv/HyperBlue",
+      "last_seen_at": "2026-04-02",
+      "last_seen_metrics": {
+        "stars": 0,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_seen_scores": {}
+    },
+    "repo:digi604/swarmmarket": {
+      "candidate_id": "repo:digi604/swarmmarket",
+      "last_seen_at": "2026-04-02",
+      "last_seen_metrics": {
+        "stars": 0,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_seen_scores": {}
+    },
+    "repo:evolving-machines-lab/evolve": {
+      "candidate_id": "repo:evolving-machines-lab/evolve",
+      "last_seen_at": "2026-04-02",
+      "last_seen_metrics": {
+        "stars": 0,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_seen_scores": {}
+    },
+    "repo:szakzsolt/ai-learn": {
+      "candidate_id": "repo:szakzsolt/ai-learn",
+      "last_seen_at": "2026-04-02",
+      "last_seen_metrics": {
+        "stars": 0,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_seen_scores": {}
+    },
+    "repo:kridaydave/File-Organizer-MCP": {
+      "candidate_id": "repo:kridaydave/File-Organizer-MCP",
+      "last_seen_at": "2026-04-02",
+      "last_seen_metrics": {
+        "stars": 0,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_seen_scores": {}
+    },
+    "repo:arre-ankit/skills": {
+      "candidate_id": "repo:arre-ankit/skills",
+      "last_seen_at": "2026-04-02",
+      "last_seen_metrics": {
+        "stars": 0,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_seen_scores": {}
+    },
+    "repo:ten-builder/ten-builder": {
+      "candidate_id": "repo:ten-builder/ten-builder",
+      "last_seen_at": "2026-04-02",
+      "last_seen_metrics": {
+        "stars": 0,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_seen_scores": {}
+    },
+    "repo:normcrandall/claudeskills": {
+      "candidate_id": "repo:normcrandall/claudeskills",
+      "last_seen_at": "2026-04-02",
+      "last_seen_metrics": {
+        "stars": 0,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_seen_scores": {}
+    },
+    "repo:happycapy-ai/Happycapy-skills": {
+      "candidate_id": "repo:happycapy-ai/Happycapy-skills",
+      "last_seen_at": "2026-04-02",
+      "last_seen_metrics": {
+        "stars": 0,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_seen_scores": {}
+    },
+    "repo:aiskillstore/marketplace": {
+      "candidate_id": "repo:aiskillstore/marketplace",
+      "last_seen_at": "2026-04-02",
+      "last_seen_metrics": {
+        "stars": 0,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_seen_scores": {}
+    },
+    "repo:LJT-520/openClaw-backup": {
+      "candidate_id": "repo:LJT-520/openClaw-backup",
+      "last_seen_at": "2026-04-02",
+      "last_seen_metrics": {
+        "stars": 0,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_seen_scores": {}
+    },
+    "repo:0-CYBERDYNE-SYSTEMS-0/nano-core": {
+      "candidate_id": "repo:0-CYBERDYNE-SYSTEMS-0/nano-core",
+      "last_seen_at": "2026-04-02",
+      "last_seen_metrics": {
+        "stars": 0,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_seen_scores": {}
+    },
+    "repo:agenticnotetaking/eidos": {
+      "candidate_id": "repo:agenticnotetaking/eidos",
+      "last_seen_at": "2026-04-02",
+      "last_seen_metrics": {
+        "stars": 0,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_seen_scores": {}
+    },
+    "repo:aresbit/MateBot": {
+      "candidate_id": "repo:aresbit/MateBot",
+      "last_seen_at": "2026-04-02",
+      "last_seen_metrics": {
+        "stars": 0,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_seen_scores": {}
+    },
+    "repo:Asif2BD/WordPress-Publishing-Skill-For-Claude": {
+      "candidate_id": "repo:Asif2BD/WordPress-Publishing-Skill-For-Claude",
+      "last_seen_at": "2026-04-02",
+      "last_seen_metrics": {
+        "stars": 0,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_seen_scores": {}
+    },
+    "repo:webrenew/memories": {
+      "candidate_id": "repo:webrenew/memories",
+      "last_seen_at": "2026-04-02",
+      "last_seen_metrics": {
+        "stars": 0,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_seen_scores": {}
+    },
+    "repo:aAAaqwq/AGI-Super-Team": {
+      "candidate_id": "repo:aAAaqwq/AGI-Super-Team",
+      "last_seen_at": "2026-04-02",
+      "last_seen_metrics": {
+        "stars": 0,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_seen_scores": {}
+    },
+    "repo:diegosouzapw/awesome-omni-skill": {
+      "candidate_id": "repo:diegosouzapw/awesome-omni-skill",
+      "last_seen_at": "2026-04-02",
+      "last_seen_metrics": {
+        "stars": 0,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_seen_scores": {}
+    },
     "repo:Deadly244/cursor-security-rules": {
       "candidate_id": "repo:Deadly244/cursor-security-rules",
       "last_seen_at": "2026-04-02",
@@ -1024,20 +756,7 @@
         "days_since_previous_release": null,
         "comment_growth_rate": 0.0
       },
-      "last_seen_scores": {},
-      "last_published_at": "2026-04-02",
-      "last_published_metrics": {
-        "stars": 1,
-        "forks": 0,
-        "comments": 0,
-        "reactions": 0,
-        "star_growth_7d": 0,
-        "previous_star_growth_7d": 0,
-        "has_new_release": false,
-        "days_since_previous_release": null,
-        "comment_growth_rate": 0.0
-      },
-      "last_published_scores": {}
+      "last_seen_scores": {}
     },
     "repo:itsmhmd/cursor-windsurf-convert": {
       "candidate_id": "repo:itsmhmd/cursor-windsurf-convert",
@@ -1053,20 +772,7 @@
         "days_since_previous_release": null,
         "comment_growth_rate": 0.0
       },
-      "last_seen_scores": {},
-      "last_published_at": "2026-04-02",
-      "last_published_metrics": {
-        "stars": 0,
-        "forks": 0,
-        "comments": 0,
-        "reactions": 0,
-        "star_growth_7d": 0,
-        "previous_star_growth_7d": 0,
-        "has_new_release": false,
-        "days_since_previous_release": null,
-        "comment_growth_rate": 0.0
-      },
-      "last_published_scores": {}
+      "last_seen_scores": {}
     },
     "repo:philipbankier/awesome-agent-skills": {
       "candidate_id": "repo:philipbankier/awesome-agent-skills",
@@ -1111,20 +817,7 @@
         "days_since_previous_release": null,
         "comment_growth_rate": 0.0
       },
-      "last_seen_scores": {},
-      "last_published_at": "2026-04-02",
-      "last_published_metrics": {
-        "stars": 1,
-        "forks": 0,
-        "comments": 0,
-        "reactions": 0,
-        "star_growth_7d": 0,
-        "previous_star_growth_7d": 0,
-        "has_new_release": false,
-        "days_since_previous_release": null,
-        "comment_growth_rate": 0.0
-      },
-      "last_published_scores": {}
+      "last_seen_scores": {}
     },
     "repo:fjb040911/ai-rules": {
       "candidate_id": "repo:fjb040911/ai-rules",
@@ -1169,20 +862,7 @@
         "days_since_previous_release": null,
         "comment_growth_rate": 0.0
       },
-      "last_seen_scores": {},
-      "last_published_at": "2026-04-02",
-      "last_published_metrics": {
-        "stars": 0,
-        "forks": 0,
-        "comments": 0,
-        "reactions": 0,
-        "star_growth_7d": 0,
-        "previous_star_growth_7d": 0,
-        "has_new_release": false,
-        "days_since_previous_release": null,
-        "comment_growth_rate": 0.0
-      },
-      "last_published_scores": {}
+      "last_seen_scores": {}
     },
     "repo:HIDORAKAI002/ai-workspace-archive": {
       "candidate_id": "repo:HIDORAKAI002/ai-workspace-archive",
@@ -1227,20 +907,7 @@
         "days_since_previous_release": null,
         "comment_growth_rate": 0.0
       },
-      "last_seen_scores": {},
-      "last_published_at": "2026-04-02",
-      "last_published_metrics": {
-        "stars": 0,
-        "forks": 0,
-        "comments": 0,
-        "reactions": 0,
-        "star_growth_7d": 0,
-        "previous_star_growth_7d": 0,
-        "has_new_release": false,
-        "days_since_previous_release": null,
-        "comment_growth_rate": 0.0
-      },
-      "last_published_scores": {}
+      "last_seen_scores": {}
     },
     "repo:fredericomartini/ai-ide-skills": {
       "candidate_id": "repo:fredericomartini/ai-ide-skills",
@@ -1256,20 +923,7 @@
         "days_since_previous_release": null,
         "comment_growth_rate": 0.0
       },
-      "last_seen_scores": {},
-      "last_published_at": "2026-04-02",
-      "last_published_metrics": {
-        "stars": 0,
-        "forks": 0,
-        "comments": 0,
-        "reactions": 0,
-        "star_growth_7d": 0,
-        "previous_star_growth_7d": 0,
-        "has_new_release": false,
-        "days_since_previous_release": null,
-        "comment_growth_rate": 0.0
-      },
-      "last_published_scores": {}
+      "last_seen_scores": {}
     },
     "repo:vibestackdev/vibe-stack": {
       "candidate_id": "repo:vibestackdev/vibe-stack",
@@ -1343,20 +997,7 @@
         "days_since_previous_release": null,
         "comment_growth_rate": 0.0
       },
-      "last_seen_scores": {},
-      "last_published_at": "2026-04-02",
-      "last_published_metrics": {
-        "stars": 0,
-        "forks": 0,
-        "comments": 0,
-        "reactions": 0,
-        "star_growth_7d": 0,
-        "previous_star_growth_7d": 0,
-        "has_new_release": false,
-        "days_since_previous_release": null,
-        "comment_growth_rate": 0.0
-      },
-      "last_published_scores": {}
+      "last_seen_scores": {}
     },
     "repo:RajanChavada/Rosetta": {
       "candidate_id": "repo:RajanChavada/Rosetta",
@@ -1401,20 +1042,7 @@
         "days_since_previous_release": null,
         "comment_growth_rate": 0.0
       },
-      "last_seen_scores": {},
-      "last_published_at": "2026-04-02",
-      "last_published_metrics": {
-        "stars": 0,
-        "forks": 0,
-        "comments": 0,
-        "reactions": 0,
-        "star_growth_7d": 0,
-        "previous_star_growth_7d": 0,
-        "has_new_release": false,
-        "days_since_previous_release": null,
-        "comment_growth_rate": 0.0
-      },
-      "last_published_scores": {}
+      "last_seen_scores": {}
     },
     "repo:Archie0125/osop-agent-rules": {
       "candidate_id": "repo:Archie0125/osop-agent-rules",
@@ -1430,20 +1058,7 @@
         "days_since_previous_release": null,
         "comment_growth_rate": 0.0
       },
-      "last_seen_scores": {},
-      "last_published_at": "2026-04-02",
-      "last_published_metrics": {
-        "stars": 0,
-        "forks": 0,
-        "comments": 0,
-        "reactions": 0,
-        "star_growth_7d": 0,
-        "previous_star_growth_7d": 0,
-        "has_new_release": false,
-        "days_since_previous_release": null,
-        "comment_growth_rate": 0.0
-      },
-      "last_published_scores": {}
+      "last_seen_scores": {}
     },
     "repo:Jeremy8776/context-engine": {
       "candidate_id": "repo:Jeremy8776/context-engine",
@@ -1459,20 +1074,7 @@
         "days_since_previous_release": null,
         "comment_growth_rate": 0.0
       },
-      "last_seen_scores": {},
-      "last_published_at": "2026-04-02",
-      "last_published_metrics": {
-        "stars": 1,
-        "forks": 0,
-        "comments": 0,
-        "reactions": 0,
-        "star_growth_7d": 0,
-        "previous_star_growth_7d": 0,
-        "has_new_release": false,
-        "days_since_previous_release": null,
-        "comment_growth_rate": 0.0
-      },
-      "last_published_scores": {}
+      "last_seen_scores": {}
     },
     "repo:Rethunk-AI/clodbridge": {
       "candidate_id": "repo:Rethunk-AI/clodbridge",
@@ -1488,20 +1090,7 @@
         "days_since_previous_release": null,
         "comment_growth_rate": 0.0
       },
-      "last_seen_scores": {},
-      "last_published_at": "2026-04-02",
-      "last_published_metrics": {
-        "stars": 0,
-        "forks": 0,
-        "comments": 0,
-        "reactions": 0,
-        "star_growth_7d": 0,
-        "previous_star_growth_7d": 0,
-        "has_new_release": false,
-        "days_since_previous_release": null,
-        "comment_growth_rate": 0.0
-      },
-      "last_published_scores": {}
+      "last_seen_scores": {}
     },
     "repo:nbslabs/dotai-cli": {
       "candidate_id": "repo:nbslabs/dotai-cli",
@@ -1517,20 +1106,7 @@
         "days_since_previous_release": null,
         "comment_growth_rate": 0.0
       },
-      "last_seen_scores": {},
-      "last_published_at": "2026-04-02",
-      "last_published_metrics": {
-        "stars": 2,
-        "forks": 0,
-        "comments": 0,
-        "reactions": 0,
-        "star_growth_7d": 0,
-        "previous_star_growth_7d": 0,
-        "has_new_release": false,
-        "days_since_previous_release": null,
-        "comment_growth_rate": 0.0
-      },
-      "last_published_scores": {}
+      "last_seen_scores": {}
     },
     "repo:ofershap/ai-context-kit": {
       "candidate_id": "repo:ofershap/ai-context-kit",
@@ -1575,20 +1151,7 @@
         "days_since_previous_release": null,
         "comment_growth_rate": 0.0
       },
-      "last_seen_scores": {},
-      "last_published_at": "2026-04-02",
-      "last_published_metrics": {
-        "stars": 0,
-        "forks": 0,
-        "comments": 0,
-        "reactions": 0,
-        "star_growth_7d": 0,
-        "previous_star_growth_7d": 0,
-        "has_new_release": false,
-        "days_since_previous_release": null,
-        "comment_growth_rate": 0.0
-      },
-      "last_published_scores": {}
+      "last_seen_scores": {}
     },
     "repo:kochetkov-ma/claude-brewcode": {
       "candidate_id": "repo:kochetkov-ma/claude-brewcode",
@@ -1633,20 +1196,7 @@
         "days_since_previous_release": null,
         "comment_growth_rate": 0.0
       },
-      "last_seen_scores": {},
-      "last_published_at": "2026-04-02",
-      "last_published_metrics": {
-        "stars": 1,
-        "forks": 0,
-        "comments": 0,
-        "reactions": 0,
-        "star_growth_7d": 0,
-        "previous_star_growth_7d": 0,
-        "has_new_release": false,
-        "days_since_previous_release": null,
-        "comment_growth_rate": 0.0
-      },
-      "last_published_scores": {}
+      "last_seen_scores": {}
     },
     "repo:naoko/omx-provider": {
       "candidate_id": "repo:naoko/omx-provider",
@@ -1662,20 +1212,7 @@
         "days_since_previous_release": null,
         "comment_growth_rate": 0.0
       },
-      "last_seen_scores": {},
-      "last_published_at": "2026-04-02",
-      "last_published_metrics": {
-        "stars": 0,
-        "forks": 0,
-        "comments": 0,
-        "reactions": 0,
-        "star_growth_7d": 0,
-        "previous_star_growth_7d": 0,
-        "has_new_release": false,
-        "days_since_previous_release": null,
-        "comment_growth_rate": 0.0
-      },
-      "last_published_scores": {}
+      "last_seen_scores": {}
     },
     "repo:msmorodinov/claude-prompt-to-app": {
       "candidate_id": "repo:msmorodinov/claude-prompt-to-app",
@@ -1691,20 +1228,7 @@
         "days_since_previous_release": null,
         "comment_growth_rate": 0.0
       },
-      "last_seen_scores": {},
-      "last_published_at": "2026-04-02",
-      "last_published_metrics": {
-        "stars": 0,
-        "forks": 0,
-        "comments": 0,
-        "reactions": 0,
-        "star_growth_7d": 0,
-        "previous_star_growth_7d": 0,
-        "has_new_release": false,
-        "days_since_previous_release": null,
-        "comment_growth_rate": 0.0
-      },
-      "last_published_scores": {}
+      "last_seen_scores": {}
     },
     "repo:e-stpierre/agent-skills": {
       "candidate_id": "repo:e-stpierre/agent-skills",
@@ -1720,20 +1244,7 @@
         "days_since_previous_release": null,
         "comment_growth_rate": 0.0
       },
-      "last_seen_scores": {},
-      "last_published_at": "2026-04-02",
-      "last_published_metrics": {
-        "stars": 0,
-        "forks": 0,
-        "comments": 0,
-        "reactions": 0,
-        "star_growth_7d": 0,
-        "previous_star_growth_7d": 0,
-        "has_new_release": false,
-        "days_since_previous_release": null,
-        "comment_growth_rate": 0.0
-      },
-      "last_published_scores": {}
+      "last_seen_scores": {}
     },
     "repo:viniciusparede/workflow": {
       "candidate_id": "repo:viniciusparede/workflow",
@@ -1749,20 +1260,7 @@
         "days_since_previous_release": null,
         "comment_growth_rate": 0.0
       },
-      "last_seen_scores": {},
-      "last_published_at": "2026-04-02",
-      "last_published_metrics": {
-        "stars": 1,
-        "forks": 0,
-        "comments": 0,
-        "reactions": 0,
-        "star_growth_7d": 0,
-        "previous_star_growth_7d": 0,
-        "has_new_release": false,
-        "days_since_previous_release": null,
-        "comment_growth_rate": 0.0
-      },
-      "last_published_scores": {}
+      "last_seen_scores": {}
     },
     "repo:travisjneuman/.claude": {
       "candidate_id": "repo:travisjneuman/.claude",
@@ -1836,20 +1334,7 @@
         "days_since_previous_release": null,
         "comment_growth_rate": 0.0
       },
-      "last_seen_scores": {},
-      "last_published_at": "2026-04-02",
-      "last_published_metrics": {
-        "stars": 1,
-        "forks": 0,
-        "comments": 0,
-        "reactions": 0,
-        "star_growth_7d": 0,
-        "previous_star_growth_7d": 0,
-        "has_new_release": false,
-        "days_since_previous_release": null,
-        "comment_growth_rate": 0.0
-      },
-      "last_published_scores": {}
+      "last_seen_scores": {}
     },
     "repo:akbarfarooq2006/Agent-Skills-Hub": {
       "candidate_id": "repo:akbarfarooq2006/Agent-Skills-Hub",
@@ -1865,20 +1350,7 @@
         "days_since_previous_release": null,
         "comment_growth_rate": 0.0
       },
-      "last_seen_scores": {},
-      "last_published_at": "2026-04-02",
-      "last_published_metrics": {
-        "stars": 0,
-        "forks": 0,
-        "comments": 0,
-        "reactions": 0,
-        "star_growth_7d": 0,
-        "previous_star_growth_7d": 0,
-        "has_new_release": false,
-        "days_since_previous_release": null,
-        "comment_growth_rate": 0.0
-      },
-      "last_published_scores": {}
+      "last_seen_scores": {}
     },
     "repo:timothywarner-org/agent-security-quorum": {
       "candidate_id": "repo:timothywarner-org/agent-security-quorum",
@@ -1894,20 +1366,7 @@
         "days_since_previous_release": null,
         "comment_growth_rate": 0.0
       },
-      "last_seen_scores": {},
-      "last_published_at": "2026-04-02",
-      "last_published_metrics": {
-        "stars": 0,
-        "forks": 1,
-        "comments": 0,
-        "reactions": 0,
-        "star_growth_7d": 0,
-        "previous_star_growth_7d": 0,
-        "has_new_release": false,
-        "days_since_previous_release": null,
-        "comment_growth_rate": 0.0
-      },
-      "last_published_scores": {}
+      "last_seen_scores": {}
     },
     "repo:jihye-devlog/claude_kit": {
       "candidate_id": "repo:jihye-devlog/claude_kit",
@@ -1923,20 +1382,7 @@
         "days_since_previous_release": null,
         "comment_growth_rate": 0.0
       },
-      "last_seen_scores": {},
-      "last_published_at": "2026-04-02",
-      "last_published_metrics": {
-        "stars": 0,
-        "forks": 0,
-        "comments": 0,
-        "reactions": 0,
-        "star_growth_7d": 0,
-        "previous_star_growth_7d": 0,
-        "has_new_release": false,
-        "days_since_previous_release": null,
-        "comment_growth_rate": 0.0
-      },
-      "last_published_scores": {}
+      "last_seen_scores": {}
     },
     "repo:hnts03/harness-collections": {
       "candidate_id": "repo:hnts03/harness-collections",
@@ -1952,20 +1398,7 @@
         "days_since_previous_release": null,
         "comment_growth_rate": 0.0
       },
-      "last_seen_scores": {},
-      "last_published_at": "2026-04-02",
-      "last_published_metrics": {
-        "stars": 0,
-        "forks": 0,
-        "comments": 0,
-        "reactions": 0,
-        "star_growth_7d": 0,
-        "previous_star_growth_7d": 0,
-        "has_new_release": false,
-        "days_since_previous_release": null,
-        "comment_growth_rate": 0.0
-      },
-      "last_published_scores": {}
+      "last_seen_scores": {}
     },
     "repo:kinneyyan/prompts": {
       "candidate_id": "repo:kinneyyan/prompts",
@@ -2010,20 +1443,7 @@
         "days_since_previous_release": null,
         "comment_growth_rate": 0.0
       },
-      "last_seen_scores": {},
-      "last_published_at": "2026-04-02",
-      "last_published_metrics": {
-        "stars": 0,
-        "forks": 0,
-        "comments": 0,
-        "reactions": 0,
-        "star_growth_7d": 0,
-        "previous_star_growth_7d": 0,
-        "has_new_release": false,
-        "days_since_previous_release": null,
-        "comment_growth_rate": 0.0
-      },
-      "last_published_scores": {}
+      "last_seen_scores": {}
     },
     "repo:hnts03-moreh/harness-collections": {
       "candidate_id": "repo:hnts03-moreh/harness-collections",
@@ -2039,20 +1459,7 @@
         "days_since_previous_release": null,
         "comment_growth_rate": 0.0
       },
-      "last_seen_scores": {},
-      "last_published_at": "2026-04-02",
-      "last_published_metrics": {
-        "stars": 0,
-        "forks": 0,
-        "comments": 0,
-        "reactions": 0,
-        "star_growth_7d": 0,
-        "previous_star_growth_7d": 0,
-        "has_new_release": false,
-        "days_since_previous_release": null,
-        "comment_growth_rate": 0.0
-      },
-      "last_published_scores": {}
+      "last_seen_scores": {}
     },
     "repo:akshatdotcom/token-saver": {
       "candidate_id": "repo:akshatdotcom/token-saver",
@@ -2068,20 +1475,7 @@
         "days_since_previous_release": null,
         "comment_growth_rate": 0.0
       },
-      "last_seen_scores": {},
-      "last_published_at": "2026-04-02",
-      "last_published_metrics": {
-        "stars": 0,
-        "forks": 0,
-        "comments": 0,
-        "reactions": 0,
-        "star_growth_7d": 0,
-        "previous_star_growth_7d": 0,
-        "has_new_release": false,
-        "days_since_previous_release": null,
-        "comment_growth_rate": 0.0
-      },
-      "last_published_scores": {}
+      "last_seen_scores": {}
     },
     "repo:luv-jeri/nonlu-skill": {
       "candidate_id": "repo:luv-jeri/nonlu-skill",
@@ -2097,20 +1491,7 @@
         "days_since_previous_release": null,
         "comment_growth_rate": 0.0
       },
-      "last_seen_scores": {},
-      "last_published_at": "2026-04-02",
-      "last_published_metrics": {
-        "stars": 0,
-        "forks": 0,
-        "comments": 0,
-        "reactions": 0,
-        "star_growth_7d": 0,
-        "previous_star_growth_7d": 0,
-        "has_new_release": false,
-        "days_since_previous_release": null,
-        "comment_growth_rate": 0.0
-      },
-      "last_published_scores": {}
+      "last_seen_scores": {}
     },
     "repo:mehd-io/agent-skills": {
       "candidate_id": "repo:mehd-io/agent-skills",
@@ -2155,26 +1536,13 @@
         "days_since_previous_release": null,
         "comment_growth_rate": 0.0
       },
-      "last_seen_scores": {},
-      "last_published_at": "2026-04-02",
-      "last_published_metrics": {
-        "stars": 0,
-        "forks": 1,
-        "comments": 0,
-        "reactions": 0,
-        "star_growth_7d": 0,
-        "previous_star_growth_7d": 0,
-        "has_new_release": false,
-        "days_since_previous_release": null,
-        "comment_growth_rate": 0.0
-      },
-      "last_published_scores": {}
+      "last_seen_scores": {}
     },
     "repo:obra/superpowers": {
       "candidate_id": "repo:obra/superpowers",
       "last_seen_at": "2026-04-02",
       "last_seen_metrics": {
-        "stars": 130966,
+        "stars": 130972,
         "forks": 10829,
         "comments": 0,
         "reactions": 0,
@@ -2187,7 +1555,7 @@
       "last_seen_scores": {},
       "last_published_at": "2026-04-02",
       "last_published_metrics": {
-        "stars": 130966,
+        "stars": 130972,
         "forks": 10829,
         "comments": 0,
         "reactions": 0,
@@ -2349,7 +1717,7 @@
       "last_seen_at": "2026-04-02",
       "last_seen_metrics": {
         "stars": 156353,
-        "forks": 20524,
+        "forks": 20526,
         "comments": 0,
         "reactions": 0,
         "star_growth_7d": 0,
@@ -2362,7 +1730,7 @@
       "last_published_at": "2026-04-02",
       "last_published_metrics": {
         "stars": 156353,
-        "forks": 20524,
+        "forks": 20526,
         "comments": 0,
         "reactions": 0,
         "star_growth_7d": 0,
@@ -2406,8 +1774,8 @@
   "run_summaries": [
     {
       "date": "2026-04-02",
-      "candidate_count": 48,
-      "selected_count": 48,
+      "candidate_count": 68,
+      "selected_count": 20,
       "collector_errors": [],
       "api_usage": {
         "total_budget": 36,
