@@ -16,21 +16,28 @@
         "elements": [
           {
             "tag": "markdown",
-            "content": "今日精选 10 条：5 项目  ·  5 技能"
+            "content": "**A 精编版 · 今日概览**\n今日精选 10 条：10 技能"
           },
           {
             "tag": "hr"
           },
           {
             "tag": "markdown",
-            "content": "**🚀 热门项目**\n\n**1.** [anthropics/claude-code](https://github.com/anthropics/claude-code)\n      🔥+1161⭐ · Claude Code is an agentic coding tool that lives in your terminal, understands your codebase,…\n\n**2.** [Yeachan-Heo/oh-my-codex](https://github.com/Yeachan-Heo/oh-my-codex)\n      🔥+410⭐ · OmX - Oh My codeX: Your codex is not alone. Add hooks, agent teams, HUDs, and so much more.\n\n**3.** [luongnv89/claude-howto](https://github.com/luongnv89/claude-howto)\n      🔥+270⭐ · A visual, example-driven guide to Claude Code — from basic concepts to advanced agents,…\n\n**4.** [Yeachan-Heo/oh-my-claudecode](https://github.com/Yeachan-Heo/oh-my-claudecode)\n      🔥+212⭐ · Teams-first Multi-agent orchestration for Claude Code\n\n**5.** [NousResearch/hermes-agent](https://github.com/NousResearch/hermes-agent)\n      📈+135⭐ · The agent that grows with you\n"
+            "content": "**🧩 发现技能**\n\n**1.** [paiml/paiml-mcp-agent-toolkit](https://github.com/paiml/paiml-mcp-agent-toolkit)\n      ⭐144 · 这是一个旨在让代理代码更具确定性的 MCP 服务器工具包。\n\n**2.** [travisjneuman/.claude](https://github.com/travisjneuman/.claude)\n      ⭐32 · 提供包含 119 个技能和 67 个代理的终极 Claude Code 配置工具包。\n\n**3.** [kochetkov-ma/claude-brewcode](https://github.com/kochetkov-ma/claude-brewcode)\n      ⭐16 · 为 Claude Code 提供无限焦点任务和自动上下文移交的全功能开发平台。\n\n**4.** [AlleyBo55/gocode](https://github.com/AlleyBo55/gocode)\n      ⭐2 · 使用 Go 重写的高性能 AI 代理 harness 运行时，支持单二进制文件部署。\n\n**5.** [AntifragileTech/antifragile-claude-code](https://github.com/AntifragileTech/antifragile-claude-code)\n      ⭐4 · 包含 514 个技能和 68 个代理的大型 Claude Code 资源库，支持一键安装。\n\n**6.** [mehd-io/agent-skills](https://github.com/mehd-io/agent-skills)\n      ⭐3 · 提供适用于 Claude Code 和 ChatGPT 等工具的开源可复用 LLM 代理技能提示。\n\n**7.** [kinneyyan/prompts](https://github.com/kinneyyan/prompts)\n      ⭐2 · 收集了日常编码代理工作中使用的规则、工作流、技能和子代理配置。\n\n**8.** [tako068/awesome-agent-skills-mcp](https://github.com/tako068/awesome-agent-skills-mcp)\n      ⭐2 · 通过 MCP 服务器提供强大工具来管理和优化代理功能。\n\n**9.** [the911fund/skill-of-skills](https://github.com/the911fund/skill-of-skills)\n      ⭐2 · 跨多个 AI 编码工具自动发现和索引技能、插件及 MCP 服务器的引擎。\n\n**10.** [unbound9527/claude-code-study-zh_CN](https://github.com/unbound9527/claude-code-study-zh_CN)\n      ⭐2 · 专为中文开发者打造的系统化学习路径，涵盖从安装到工程实践的全栈内容。\n"
           },
           {
             "tag": "hr"
           },
           {
             "tag": "markdown",
-            "content": "**🧩 发现技能**\n\n**1.** [yfmeii/weapp-dev-mcp](https://github.com/yfmeii/weapp-dev-mcp)\n      ⭐91 · FastMCP server for automating WeChat Mini Program developer tooling\n\n**2.** [travisjneuman/.claude](https://github.com/travisjneuman/.claude)\n      ⭐32 · The Ultimate Claude Code Toolkit — 119 skills, 67 agents,…\n\n**3.** [initMAX/zabbix-mcp-server](https://github.com/initMAX/zabbix-mcp-server)\n      ⭐33 · MCP server for the complete Zabbix API — 220 tools, multi-server support, bearer auth,…\n\n**4.** [kochetkov-ma/claude-brewcode](https://github.com/kochetkov-ma/claude-brewcode)\n      ⭐16 · Brewcode - full-featured development platform for Claude Code: infinite focus tasks with automatic…\n\n**5.** [AlleyBo55/gocode](https://github.com/AlleyBo55/gocode)\n      ⭐2 · Claude Code rewritten in Go..             High-performance AI agent harness runtime in Go.…\n"
+            "content": "**B 保留版 · 更多值得扫一眼**\n今日精选 10 条：10 技能"
+          },
+          {
+            "tag": "hr"
+          },
+          {
+            "tag": "markdown",
+            "content": "**🧩 发现技能**\n\n**1.** [Daenerys888/noapi-google-search-mcp](https://github.com/Daenerys888/noapi-google-search-mcp)\n      ⭐1 · 无需 API 即可让本地大模型实现实时 Google 搜索和视频洞察的 MCP 工具。\n\n**2.** [adihebbalae/copilot-code](https://github.com/adihebbalae/copilot-code)\n      ⭐1 · 模仿 Claude Code 的多代理 GitHub Copilot 编排样板，包含状态管理。\n\n**3.** [alexyyyander/prompt-injection-defense](https://github.com/alexyyyander/prompt-injection-defense)\n      ⭐1 · 涵盖 12 类攻击的语言级攻击防御技能，适用于多种大模型。\n\n**4.** [ly1595/nmap-mcp](https://github.com/ly1595/nmap-mcp)\n      ⭐1 · 支持多种扫描类型和时序模板的生产就绪型 Nmap MCP 服务器。\n\n**5.** [shripadk1999/EVOKORE-MCP](https://github.com/shripadk1999/EVOKORE-MCP)\n      ⭐1 · 聚合多个服务器的专用代理技能，支持动态工具管理和人工安全控制。\n\n**6.** [viniciusparede/workflow](https://github.com/viniciusparede/workflow)\n      ⭐1 · 包含 Claude Code 和 Gemini 的 AI 辅助项目编排模板及单体仓库结构。\n\n**7.** [sproutn-iq123/noun-mcp](https://github.com/sproutn-iq123/noun-mcp)\n      允许在 Cursor 和 Claude Desktop 中搜索和使用 Noun Project 图标的 MCP 服务器。\n\n**8.** [timothywarner-org/agent-security-quorum](https://github.com/timothywarner-org/agent-security-quorum)\n      使用多模型共识自动扫描代理技能定义，阻止提示词注入和权限提升。\n\n**9.** [45d5r/databricks-mcp-server](https://github.com/45d5r/databricks-mcp-server)\n      🚀 Deliver model context services for Databricks with a protocol server using Pyt\n\n**10.** [Hovsteder/powersun-tron-mcp](https://github.com/Hovsteder/powersun-tron-mcp)\n      TRON Energy & Bandwidth MCP Server + DEX Swap Aggregator for AI agents.…\n"
           },
           {
             "tag": "hr"
@@ -43,11 +50,11 @@
       }
     }
   ],
-  "count": 48,
+  "count": 40,
   "selected_count": 20,
   "summary": {
-    "count": 48,
-    "editorial": 0,
+    "count": 40,
+    "editorial": 24,
     "api_usage": {
       "total_budget": 50,
       "search_budget": 28,
@@ -57,10 +64,8 @@
     },
     "collector_stats": {
       "ossinsight": {
-        "count": 8,
-        "kinds": {
-          "project": 8
-        }
+        "count": 0,
+        "kinds": {}
       },
       "repos": {
         "count": 0,
@@ -84,12 +89,10 @@
     "a_count": 10,
     "b_count": 10,
     "filtered_kind_counts": {
-      "project": 8,
       "skill": 40
     },
     "published_kind_counts": {
-      "project": 8,
-      "skill": 12
+      "skill": 20
     }
   }
 }
