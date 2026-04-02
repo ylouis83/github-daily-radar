@@ -33,6 +33,8 @@ class Candidate(BaseModel):
     rule_scores: dict = Field(default_factory=dict)
     dedupe_key: str
     llm_summary: str | None = None
+    llm_reason: str | None = None
+    final_score: float | None = None
     editorial_rank: int | None = None
 
 

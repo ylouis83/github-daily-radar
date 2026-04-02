@@ -25,10 +25,10 @@ def candidate_from_repo_search(*, item: dict, source_query: str) -> Candidate:
     )
 
 
-def candidate_from_issue_search(*, item: dict, source_query: str) -> Candidate:
+def candidate_from_issue_search(*, item: dict, source_query: str, kind: str = "issue") -> Candidate:
     return Candidate(
-        candidate_id=f"issue:{item['id']}",
-        kind="issue",
+        candidate_id=f"{kind}:{item['id']}",
+        kind=kind,
         source_query=source_query,
         title=item["title"],
         url=item["html_url"],
