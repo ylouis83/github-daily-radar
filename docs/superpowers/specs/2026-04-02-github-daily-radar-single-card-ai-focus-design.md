@@ -1,319 +1,322 @@
-# GitHub Daily Radar Single-Card AI Focus Design
+# GitHub Daily Radar 单卡 AI 重点版设计
 
-## Status
+## 状态
 
-This spec supersedes the earlier A/B card content supplement and the SkillCollector top-N supplement. It becomes the authoritative design for the final daily digest shape.
+本规范取代之前的 A/B 卡片内容补充和 SkillCollector TopN 补充，是最终权威设计。
 
-## Goal
+## 目标
 
-Ship a single Feishu daily card that feels editorially curated, strongly favors core AI technical content, and keeps the daily output focused on reusable skills, MCP/tooling, AI projects, and only a small amount of high-signal discussion.
+做出一张单独的 Feishu 每日卡片，读起来像编辑精选过的中文 AI 雷达，重点聚焦可复用的技能、MCP / 工具、AI 项目，以及少量高信号讨论。
 
-The daily report should:
+每日报告需要满足：
 
-- render as one card only
-- merge the old A/B views into one fused report
-- give `skills / MCP / tools` and `projects` the majority of space
-- keep `discussions / proposals` as a supplement
-- stay centered on AI, agentic workflows, frameworks, inference, tooling, and related core AI infrastructure
+- 只输出一张卡
+- 把原来的 A/B 视图合并成一份
+- 让 `skills / MCP / tools` 和 `projects` 占据主要篇幅
+- 让 `discussions / proposals` 只做补充
+- 始终围绕 AI、agentic workflow、框架、推理、工具链和相关核心 AI 基础设施
 
-## Product Outcome
+## 产品结果
 
-The system produces one Chinese digest per day with roughly 10-20 items total. The output should feel like an edited AI radar, not a noisy list dump.
+系统每天产出一份中文日报，总量大约 10-20 条。整体感觉应该像“编辑挑过的 AI 雷达”，而不是一份杂乱的列表。
 
-The fused card should show:
+最终卡片应该包含：
 
-- a compact overview
-- one primary section for `MCP / Skills`
-- one primary section for `Projects`
-- one smaller section for `Discussions / Proposals`
-- a concise footer with the date and high-level counts
+- 一个简洁的概览
+- 一个主分区：`MCP / Skills`
+- 一个主分区：`Projects`
+- 一个较小的分区：`Discussions / Proposals`
+- 一个简洁的页脚，只保留日期和高层统计
 
-The old A/B distinction is removed entirely. There is no secondary card and no "scan-only" fallback section.
+旧的 A/B 区分完全移除，不再存在第二张卡，也不再存在“扫一眼”的备用卡。
 
-## Non-Goals
+## 非目标
 
-Phase 1 does not include:
+Phase 1 不包括：
 
-- any A/B split or two-card output
-- a frontend or dashboard
-- personalized feeds
-- non-GitHub sources
-- broad general-tech coverage outside the AI/core-agent/tooling lane
-- runtime debugging metadata inside the user-facing card
+- A/B 拆分或双卡输出
+- 前端或看板
+- 个性化推荐
+- 非 GitHub 来源
+- 不带强 AI 相关性的泛技术内容
+- 把运行时调试信息放进用户可见卡片
 
-If the system cannot fit the daily selection into one card cleanly, it should reduce the item count rather than split into another card.
+如果一张卡装不下当天内容，就减少条目数量，而不是拆成第二张卡。
 
-## User Experience
+## 用户体验
 
-The card should read like a single editor-picked brief:
+这张卡应该像一份单独编辑过的简报：
 
-- Chinese summary lines, not raw English excerpts
-- each item should feel distinct and specific
-- skill and MCP items should dominate the main body
-- project items should still be substantial
-- discussion items should be short and clearly secondary
+- 用中文摘要，不直接泄露英文原文
+- 每条内容都要具体、可区分
+- 技能和 MCP 条目应该占据主体
+- 项目条目仍然要有分量
+- 讨论条目要短，而且明显是补充
 
-Each item should keep the same editorial shape:
+每条内容都应保持同样的编辑结构：
 
-- title line
-- signal line
+- 标题行
+- 信号行
 - `特点`
 - `核心能力`
-- `引入必要性` or `纳入必要性`
+- `引入必要性` 或 `纳入必要性`
 
-## Scope
+## 范围
 
-### In Scope
+### 包含内容
 
-- single-card Feishu rendering
-- unified ranking across all candidates
-- dynamic item count from 10 to 20
-- skills / MCP / tools weighted as the primary section
-- projects weighted as the second major section
-- discussions weighted as a smaller support section
-- stronger AI relevance gating
-- dynamic skill/MCP admission thresholds
-- cumulative star / scale weighting for skill-like items
-- Chinese fallback copy when LLM output is missing or weak
-- cross-section de-duplication by repository or thread
-- state persistence and deduplication across runs
+- 单卡 Feishu 渲染
+- 所有候选统一排序
+- 输出条目数动态在 10 到 20 之间变化
+- `skills / MCP / tools` 作为主分区
+- `projects` 作为第二主分区
+- `discussions` 作为较小的补充分区
+- 更严格的 AI 相关性门槛
+- 动态的技能 / MCP 入选阈值
+- 技能类条目的累计星标 / 规模加权
+- 当 LLM 输出缺失或不理想时，使用中文兜底文案
+- 按仓库或 thread 做跨分区去重
+- 跨天状态持久化和去重
 
-### Out of Scope
+### 不包含内容
 
-- multiple cards per day
-- A/B presentation variants
-- generic tech discovery without strong AI relevance
-- separate manual curation queues
-- non-Chinese final copy as a normal fallback path
+- 每天输出多张卡
+- A/B 展示变体
+- 不以 AI 为核心的泛技术发现
+- 单独的人肉筛选队列
+- 默认回退为非中文最终文案
 
-## Recommended Architecture
+## 推荐架构
 
-Use one pipeline with one unified candidate pool:
+使用一条统一流水线和一个统一候选池：
 
-1. discover candidates from GitHub and OSSInsight
-2. normalize them into one model
-3. apply an AI/core-tech relevance gate
-4. score them with shared editorial logic
-5. generate per-item structured Chinese editorial copy
-6. select a single bounded set of 10-20 items
-7. render one Feishu card with three sections
-8. persist state and run summaries
+1. 从 GitHub 和 OSSInsight 发现候选
+2. 归一化成同一个模型
+3. 先过 AI / 核心技术相关性门槛
+4. 用统一的编辑评分逻辑排序
+5. 为每条内容生成结构化中文编辑文案
+6. 选出 10-20 条的单卡内容
+7. 渲染成一张 Feishu 卡
+8. 持久化状态和运行摘要
 
-The key shift is that discovery and ranking are still multi-source, but delivery is now strictly single-card and sectioned by editorial importance.
+关键变化在于：发现和排序仍然是多来源的，但最终交付必须是单卡，而且分区逻辑要完全服从编辑优先级。
 
-## Content Focus
+## 内容聚焦
 
-The radar should stay centered on these lanes:
+日报应该重点覆盖以下方向：
 
-- agent frameworks and orchestration
-- MCP and tool-use ecosystems
-- coding assistants and agentic developer workflows
-- LLM inference / serving / runtime / deployment
-- RAG / retrieval / memory / evaluation / LLMOps
-- prompt / rules / skill / playbook ecosystems
-- infrastructure that materially supports AI agents or AI application development
+- agent 框架与编排
+- MCP 和工具调用生态
+- coding assistant 和 agentic developer workflow
+- LLM 推理 / 服务 / 运行时 / 部署
+- RAG / 检索 / memory / evaluation / LLMOps
+- prompt / rules / skill / playbook 生态
+- 能显著支持 AI agent 或 AI 应用开发的基础设施
 
-Generic ML or legacy AI libraries should not be allowed in just because they are popular. `tensorflow`, `pytorch`, or `scikit-learn` should only appear if the item has a strong current AI systems / agent / tooling angle and clears the relevance gate.
+泛 ML 或老牌 AI 库，不应仅仅因为“很热门”就进入日报。`tensorflow`、`pytorch`、`scikit-learn` 之类的项目，只有在它们和当前 AI 系统 / agent / tooling 方向有强关联并通过门槛时，才可以出现。
 
-## Discovery and Relevance Gate
+## 发现和相关性门槛
 
-Discovery can still use the existing topics, seed repositories, seed organizations, OSSInsight trends, and skill file searches. But the final selection must pass a stricter relevance gate.
+发现阶段仍然可以使用现有的 topics、seed repo、seed org、OSSInsight 趋势和 skill 文件搜索。但最终入选必须通过更严格的相关性门槛。
 
-### Projects
+### 项目
 
-Projects should qualify when they show both:
+项目入选时应同时满足：
 
-- strong AI/core-tech relevance
-- enough momentum to deserve a daily slot
+- 与 AI / 核心技术强相关
+- 具备足够动量，值得占据每日一个位置
 
-Accepted project signals include:
+可接受的项目信号包括：
 
-- agent / agentic / workflow / MCP / browser-use / computer-use / inference / llmops / rag / tooling / framework keywords
-- recent star growth or fresh release activity
-- OSSInsight growth or collection relevance
-- evidence that the repo is part of the current AI tooling conversation, not just a generic AI umbrella project
+- agent / agentic / workflow / MCP / browser-use / computer-use / inference / llmops / rag / tooling / framework 等关键词
+- 最近 star 增长或新 release
+- OSSInsight 增长或 collection 相关性
+- 能证明它属于当前 AI 工具链讨论的一部分，而不是一个泛化的 AI 大集合项目
 
-### Skills / MCP / Tools
+### 技能 / MCP / 工具
 
-The skill-like section should be broader than literal `SKILL.md` discovery, but it must stay high-signal.
+技能类分区应该比“只找 `SKILL.md`”更宽，但必须保持高信号。
 
-An item can qualify when it looks like a reusable capability package, such as:
+只要仓库看起来像一个可复用能力包，就可以进入候选，例如：
 
-- skill packs
-- prompt packs
-- rulesets
-- MCP tools or servers
-- agent workflows
-- reusable playbooks or recipes
+- skill pack
+- prompt pack
+- ruleset
+- MCP 工具或 server
+- agent workflow
+- 可复用的 playbook 或 recipe
 
-This section should use both:
+这个分区需要同时使用：
 
-- a minimum entry threshold
-- a shape score for reusable capability structure
+- 最低入场门槛
+- 描述“可复用能力结构”的形态分数
 
-It should also give extra weight to cumulative popularity signals such as stars, forks, recent commits, and ecosystem reuse. Low-star repos can still enter if they are clearly skill-shaped, but 2-star and 3-star noise should no longer dominate the section.
+同时，它还应该给累计的 popularity 信号更高权重，比如 stars、forks、近期提交和生态复用程度。低星仓库仍然可以进入，但像 2 星、3 星这种噪音，不应该再主导这个分区。
 
-### Discussions / Proposals
+### 讨论 / 提案
 
-Discussion items should be limited to high-signal threads:
+讨论类条目只应保留高信号线程：
 
-- proposals
-- RFCs
-- design docs
-- roadmap discussions
-- architecture debates
-- implementation-direction decisions
+- proposal
+- RFC
+- design doc
+- roadmap discussion
+- architecture debate
+- implementation-direction decision
 
-They should only be admitted when they are clearly related to the AI/core-tech lane or a seed repository in that lane.
+而且它们必须明确属于 AI / 核心技术方向，或者来自该方向的 seed repository。
 
-## Selection Strategy
+## 选择策略
 
-The final daily output should be dynamically sized between 10 and 20 items.
+最终日报应该是动态 10-20 条。
 
-Recommended distribution:
+建议配比：
 
-- `MCP / Skills`: about 40-50% of the total, and usually the largest section
-- `Projects`: about 35-45% of the total
-- `Discussions`: about 10-20% of the total
+- `MCP / Skills`：约占 40-50%，通常是最大分区
+- `Projects`：约占 35-45%
+- `Discussions`：约占 10-20%
 
-The exact number should be determined by quality:
+具体条数由质量决定：
 
-- start with a target of 10 items
-- expand toward 20 only when there are enough strong candidates to justify more slots
-- never pad with weak items just to hit the top of the range
+- 先以 10 条为目标
+- 只有在候选足够强时，才扩展到 20 条
+- 不能为了凑到上限而填入弱项
 
-The `MCP / Skills` section should be the main beneficiary of extra slots when the pool is strong. The user wants skill-heavy coverage, so this section should generally outrank projects when both are similarly relevant.
+当候选池足够强时，`MCP / Skills` 应该成为额外名额的主要受益者。用户明确希望技能更重，所以在质量相近时，这个分区应该通常优先于项目。
 
-### Skill / MCP Top-N Rules
+### Skill / MCP Top-N 规则
 
-The skill-like section should:
+技能类分区应该：
 
-- enforce a minimum gate before admission
-- use cumulative stars / forks / recency / shape signals
-- prefer skills over generic MCP tools when both are similar in quality
-- allow stronger MCP/tool repos to win slots when they are materially more important
-- keep the output within a dynamic top 10-20 range instead of always returning everything
+- 先过最低门槛，再允许入池
+- 综合使用 stars / forks / 近期活跃 / 形态分数
+- 技能与普通 MCP 工具相比时，优先保留更像“技能资产”的内容
+- 当 MCP / tool 仓库更重要、更成熟时，也允许它们拿到名额
+- 输出保持在动态 top 10-20，而不是无差别全收
 
-Recommended defaults for the ranking system:
+建议默认值：
 
-- `skill_min_stars`: high enough to remove obvious noise
-- `project_min_stars`: higher than the skill floor
-- `skill_shape_floor`: enough to preserve real skill-shaped assets
-- `top_n`: dynamic within 10-20, not fixed
-- `per_repo_cap`: 1
+- `skill_min_stars`：足以过滤明显噪音
+- `project_min_stars`：高于技能底线
+- `skill_shape_floor`：足以保留真正的技能型资产
+- `top_n`：动态 10-20，而不是固定值
+- `per_repo_cap`：1
 
-The precise numbers can be tuned in implementation, but the behavior must remain:
+这里的精确数值可以在实现阶段微调，但行为必须保持：
 
-- fewer tiny skill repos
-- more genuinely reusable skill assets
-- enough large AI-tooling repos to compete for the section
+- 更少的小型噪音技能仓库
+- 更多真正可复用的技能资产
+- 足够多的大型 AI 工具链仓库仍然有机会竞争名额
 
-## Editorial Copy Model
+## 编辑文案模型
 
-Each selected item should be rendered with a kind-aware Chinese profile instead of a generic repeated sentence.
+每个入选条目都应该使用“按类型区分”的中文画像，而不是同一套重复句子。
 
-The editorial profile should include:
+画像应包含：
 
 - `特点`
 - `核心能力`
 - `引入必要性`
 - `为什么现在`
 
-Kind-specific tone:
+不同类型的语气建议：
 
-- `project`: trend-aware, concrete, focus on what it is and why it matters now
-- `skill` / `MCP`: reuse-aware, capability-oriented, focus on what it can do and why it belongs in a toolchain
-- `discussion`: analytical, forward-looking, focus on the idea or decision being debated
+- `project`：偏趋势、具体，强调它是什么，以及为什么现在重要
+- `skill` / `MCP`：偏复用、偏能力，强调它能做什么，以及为什么适合纳入工具链
+- `discussion`：偏分析、偏前瞻，强调在讨论什么决策或思路
 
-If the LLM produces weak or invalid output, the fallback should still be structured Chinese copy derived from signals, not a repeated boilerplate line.
+如果 LLM 输出很弱或者无效，兜底也必须是结构化中文模板，而不是每条都用同一条重复句子。
 
-## Rendering Rules
+## 渲染规则
 
-The Feishu card should be a single interactive card with these ordered sections:
+Feishu 卡片必须是一个单独的交互卡，分区顺序如下：
 
-1. overview
+1. 概览
 2. `MCP / Skills`
 3. `Projects`
 4. `Discussions / Proposals`
-5. concise footer
+5. 简洁页脚
 
-Rendering requirements:
+渲染要求：
 
-- no A/B labels
-- no runtime diagnostics block in the card body
-- no empty section placeholder text
-- no repeated generic fallback sentence across every item
-- keep the Chinese profile lines visually separate
+- 不要 A/B 标签
+- 不要在卡片正文里放运行时诊断信息
+- 不要显示空分区占位文字
+- 不要给每条内容套同一句通用兜底文案
+- 中文画像行要视觉上彼此分开
 
-The footer may include only user-facing summary counts, such as the date and total item counts. Raw API usage and internal run metadata should stay in artifacts and state, not in the visible card.
+页脚里只允许放面向用户的汇总统计，比如日期和总条数。原始 API 使用量和内部运行元数据应该留在 artifact 和 state 中，而不是放到用户可见卡片里。
 
-## Failure Handling
+## 失败处理
 
-The pipeline should remain fail-soft:
+流水线应该尽量“失败可降级”：
 
-- if LLM editorial fails, fall back to structured Chinese templates
-- if the skill pool is weak, raise the threshold rather than filling it with noise
-- if discussions are weak, omit the section entirely
-- if a candidate is not clearly AI/core-tech relevant, drop it
-- if a run cannot fit into one card cleanly, shrink the selection instead of splitting cards
+- 如果 LLM 编辑失败，就回退到结构化中文模板
+- 如果技能池太弱，就提高门槛，而不是用噪音补满
+- 如果讨论太弱，就直接省略这个分区
+- 如果候选不够像 AI / 核心技术，就直接丢弃
+- 如果一张卡装不下，就缩减选择数量，而不是拆成另一张卡
 
-## State and Deduplication
+## 状态和去重
 
-State persistence remains unchanged in principle:
+状态持久化原则不变：
 
-- keep daily run summaries
-- keep published candidate history
-- keep last-seen and last-published metrics
-- keep light re-entry rules
+- 保留每日运行摘要
+- 保留已发布候选的历史
+- 保留 last-seen 和 last-published 指标
+- 保留轻量的 re-entry 规则
 
-The dedupe policy should still allow re-entry when something materially changes, but the visible output should not repeat the same repository just because it appeared in a broader search bucket.
+去重策略仍然允许在内容有实质变化时重新出现，但不应该因为一个仓库出现在更大的搜索桶里，就在可见卡片中重复刷屏。
 
-### Theme Cooldown
+### 主题冷却
 
-In addition to repo-level dedupe, the daily radar should avoid repeating the same *theme* on consecutive days.
+除了 repo 级去重，还要避免同一类主题连续几天重复出现。
 
-Theme-level repetition means the user should not keep seeing the same editorial lane day after day, such as:
+主题级重复的含义是：用户不应该连续多天都看到同样的编辑主题占主导，例如：
 
-- the same Claude Code ecosystem topic
-- the same MCP / skill-pack pattern
-- the same RAG or inference angle
-- the same proposal / roadmap lane
+- 同一个 Claude Code 生态主题
+- 同一种 MCP / skill pack 模式
+- 同一个 RAG 或推理角度
+- 同一个 proposal / roadmap 方向
 
-Implementation should keep a lightweight theme tag or theme cluster for each selected item and suppress a theme when it dominated the previous daily output unless there is a clear new development signal.
+实现上应该为每个入选条目保留一个轻量的主题标签或主题簇。当某个主题在前一天已经成为主导时，后一天应该抑制它，除非出现明显的新进展信号。
 
-Recommended behavior:
+建议行为：
 
-- prefer a different mix of themes from the previous day
-- if a theme is repeated, require stronger new evidence than the day before
-- allow a repeated theme only when it materially progressed, such as a major release, sudden growth spike, or a substantially new proposal
+- 优先和前一天不同的主题组合
+- 如果要重复同一主题，必须有更强的新证据
+- 只有在确实有重大 release、明显增长、或实质性新提案时，才允许重复主题继续出现
 
-This rule is about *editorial variety*, not absolute exclusion. The goal is to keep consecutive days from feeling too similar.
+这条规则强调的是**编辑多样性**，不是绝对排除。目标是避免连续几天看起来太像。
 
-## Testing Strategy
+## 测试策略
 
-Add or update tests for:
+需要补充或更新的测试包括：
 
-- one-card output with no A/B labels
-- `MCP / Skills` section being the dominant section
-- `Projects` being the second major section
-- `Discussions` being present only when high-signal items exist
-- dynamic top 10-20 selection behavior
-- stronger admission thresholds for skills/MCP
-- AI relevance filtering for generic frameworks
-- exclusion of generic OSSInsight collection noise
-- fallback Chinese copy without raw English leakage
-- no runtime diagnostics block in the card body
+- 单卡输出，不再出现 A/B 标签
+- `MCP / Skills` 分区成为主分区
+- `Projects` 成为第二主分区
+- 只有在存在高信号内容时，`Discussions` 才出现
+- 动态 top 10-20 的选择行为
+- 技能 / MCP 的更强入场门槛
+- 对泛化基础框架的 AI 相关性过滤
+- 排除泛化的 OSSInsight 集合噪音
+- 兜底中文文案不泄露英文原文
+- 卡片正文里不出现运行时诊断块
+- 主题冷却逻辑，避免连续几天重复同一类主题
 
-## Acceptance Criteria
+## 验收标准
 
-Phase 1 is successful when all of the following are true:
+Phase 1 成功的标志是：
 
-- the daily report is a single Feishu card
-- there is no A/B split anywhere in the visible output
-- `MCP / Skills` and `Projects` occupy most of the card
-- discussions remain a smaller supporting section
-- the final report usually lands between 10 and 20 items
-- the skill section is noticeably higher quality than before
-- generic low-signal AI/framework noise is filtered out
-- the digest remains Chinese-first and editorially specific
-- the visible card does not expose runtime diagnostics
+- 每日报告只输出一张 Feishu 卡
+- 可见输出中不再存在 A/B 拆分
+- `MCP / Skills` 和 `Projects` 占据卡片主体
+- `Discussions` 只作为较小补充
+- 最终日报通常落在 10-20 条之间
+- 技能分区的质量明显提升
+- 泛化、低信号的 AI / framework 噪音被过滤掉
+- 报告保持中文优先，并且足够有编辑感
+- 可见卡片不暴露运行时诊断信息
+- 连续几天不会反复看到同一类主题霸屏
+
