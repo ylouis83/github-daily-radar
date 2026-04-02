@@ -64,34 +64,22 @@ seed_orgs:
 #    这是消除噪音的终极武器 — 绝不会搜到游戏设计的提案
 # ------------------------------------------
 seed_repos:
-  # --- [1] 协议规范与工具链 (Protocols) ---
   - modelcontextprotocol/specification # AI 连接万物标准协议的演进
   - modelcontextprotocol/servers       # 官方 MCP Server 实现与新工具接入
-
-  # --- [2] AI 编程与软件工程智能体 (AI Coding) ---
   - anthropics/claude-code             # Claude 官方终端程序员
-  - cline/cline                        # 极火的 VSCode AI 编程插件 (原 Claude Dev)
+  - cline/cline                        # VS Code AI 编程插件
   - All-Hands-AI/OpenHands             # 顶级开源全栈 AI 工程师 (原 OpenDevin)
   - paul-gauthier/aider                # 终端 AI 结对编程标杆
-
-  # --- [3] 智能体框架与编排 (Agent Frameworks) ---
   - langchain-ai/langgraph             # 工业级复杂流式 Agent 编排设计
-  - pydantic/pydantic-ai               # 基于 Pydantic 的严谨/生产级 Agent 框架
-  - browser-use/browser-use            # 基于视觉的浏览器控制 Agent
+  - browser-use/browser-use            # 浏览器自动化控制 Agent
   - openai/openai-agents-python        # OpenAI 官方 Agent SDK
+  - pydantic/pydantic-ai               # 基于 Pydantic 的严谨/生产级 Agent 框架
   - huggingface/smolagents             # HF 极简优雅 Agent 框架
   - microsoft/autogen                  # 微软经典多智能体协作框架
-
-  # --- [4] 模型推理与底层基建 (Inference & Infra) ---
-  - vllm-project/vllm                  # 工业界标配 LLM 推理引擎 (含金量极高)
-  - sgl-project/sglang                 # 极致加速的结构化生成与推理框架
-  - ggerganov/llama.cpp                # 端侧/CPU 跑大模型的王者
-  - ollama/ollama                      # 本地运行大模型的首选基建
-
-  # --- [5] RAG 与平台架构 (RAG & Platforms) ---
   - run-llama/llama_index              # RAG 领域标杆
   - langgenius/dify                    # 最火的开源 LLMOps 与应用编排平台
   - open-webui/open-webui              # 最强本地大模型 UI，插件生态极度活跃
+  - vllm-project/vllm                  # 工业界标配 LLM 推理引擎 (含金量极高)
 
 # ------------------------------------------
 # 4. Skill 发现配置
@@ -110,6 +98,9 @@ skills:
     - openai/openai-cookbook            # OpenAI 官方 recipes & patterns
     - punkpeye/awesome-mcp-servers     # MCP Server 最大聚合仓库
     - f/awesome-chatgpt-prompts        # ChatGPT prompt 经典集合
+    - ai-boost/awesome-prompts         # prompt / workflow / recipe 聚合
+    - langchain-ai/langgraph/examples  # Agent workflow 示例
+    - crewAIInc/crewAI-examples        # CrewAI 生态示例
     - lobehub/lobe-chat-agents         # LobeChat 插件/Agent 生态
 
   # --- 层 2: Code Search 特征文件 ---
@@ -120,6 +111,8 @@ skills:
     - "filename:.cursorrules OR filename:cursorrules.md"            # Cursor rules 生态
     - "filename:CLAUDE.md NOT repo:anthropics/claude-code"         # Claude Code 指令
     - "filename:AGENTS.md NOT repo:openai/openai-agents-python"    # Codex 生态
+    - "filename:copilot-instructions.md"                           # Copilot 指令
+    - "filename:mcp.json"                                          # MCP 定义
 
   # --- 层 3: Repo Search 关键词 ---
   # 搜新建/近期更新的 skill/rule/prompt 集合类仓库
@@ -127,6 +120,7 @@ skills:
     - "cursor rules AI in:name,description sort:stars-desc"
     - "claude skills agent prompt in:name,description sort:stars-desc"
     - "mcp server tool in:name,description sort:stars-desc"
+    - "agent workflow prompt in:name,description sort:stars-desc"
 
   # --- Skill 质量信号权重 ---
   # 用于在候选 skill 之间排序
@@ -165,7 +159,7 @@ budget:
   total_search: 18
   allocation:
     repo_collector: 4          # 4 个 topic 复合 query
-    skill_collector: 6         # 2 code search + 2 repo search + 2 seed 动态
+    skill_collector: 6         # 每日轮转 2 code + 2 repo，seed GraphQL 单独跑
     discussion_collector: 4    # seed repos 分 4 组合并 query
     issues_prs_collector: 4    # seed repos 分 4 组合并 query
   graphql_budget: 600          # GraphQL: 1000 pts/hr，保守用 600

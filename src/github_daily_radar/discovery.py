@@ -48,6 +48,9 @@ DEFAULT_SKILL_SEED_REPOS = [
     "openai/openai-cookbook",
     "punkpeye/awesome-mcp-servers",
     "f/awesome-chatgpt-prompts",
+    "ai-boost/awesome-prompts",
+    "langchain-ai/langgraph/examples",
+    "crewAIInc/crewAI-examples",
     "lobehub/lobe-chat-agents",
 ]
 DEFAULT_SKILL_CODE_QUERIES = [
@@ -55,28 +58,35 @@ DEFAULT_SKILL_CODE_QUERIES = [
     "filename:.cursorrules OR filename:cursorrules.md",
     "filename:CLAUDE.md NOT repo:anthropics/claude-code",
     "filename:AGENTS.md NOT repo:openai/openai-agents-python",
+    "filename:copilot-instructions.md",
+    "filename:mcp.json",
 ]
 DEFAULT_SKILL_REPO_QUERIES = [
     "cursor rules AI in:name,description",
     "claude skills agent prompt in:name,description",
     "mcp server tool in:name,description",
+    "agent workflow prompt in:name,description",
 ]
 DEFAULT_DISCUSSION_KEYWORDS = ["proposal", "rfc", "idea", "design"]
 DEFAULT_ISSUE_KEYWORDS = ["proposal", "roadmap", "design"]
 
 _DEFAULT_SEED_REPOS = [
-    "langchain-ai/langchain",
-    "microsoft/autogen",
-    "openai/openai-agents-python",
-    "anthropics/claude-code",
-    "browser-use/browser-use",
     "modelcontextprotocol/specification",
-    "vllm-project/vllm",
-    "huggingface/transformers",
-    "crewAIInc/crewAI",
-    "lobehub/lobe-chat",
+    "modelcontextprotocol/servers",
+    "anthropics/claude-code",
+    "cline/cline",
+    "All-Hands-AI/OpenHands",
+    "paul-gauthier/aider",
+    "langchain-ai/langgraph",
+    "browser-use/browser-use",
+    "openai/openai-agents-python",
     "pydantic/pydantic-ai",
-    "obra/superpowers",
+    "huggingface/smolagents",
+    "microsoft/autogen",
+    "run-llama/llama_index",
+    "langgenius/dify",
+    "open-webui/open-webui",
+    "vllm-project/vllm",
 ]
 
 
@@ -201,7 +211,18 @@ def _date_clause(*, field: str, days_back: int | None, now: datetime | None = No
     return f" {field}:>{recent_date(days=days_back, now=now)}"
 
 
-def build_repo_queries(*, now: datetime | None = None, days_back: int | None = None) -> list[str]:
+def cycle_queries(queries: list[str], *, limit: int, seed: int = 0) -> list[str]:
+    cleaned = [query for query in queries if isinstance(query, str) and query.strip()]
+    if limit <= 0 or not cleaned:
+        return []
+    if limit >= len(cleaned):
+        return cleaned
+    offset = seed % len(cleaned)
+    rotated = cleaned[offset:] + cleaned[:offset]
+    return rotated[:limit]
+
+
+def build_repo_queries(*, now: datetime | None = None, days_back: int | None = 7) -> list[str]:
     date_clause = _date_clause(field="pushed", days_back=days_back, now=now)
     topics = load_topics()
     seed_orgs = load_seed_orgs()
@@ -243,22 +264,22 @@ def build_discussion_queries(
     *,
     seed_repos: list[str] | None = None,
     now: datetime | None = None,
-    chunk_size: int = 4,
-    days_back: int | None = None,
+    max_queries: int = 4,
+    days_back: int | None = 30,
 ) -> list[str]:
     repos = seed_repos or load_seed_repos()
-    chunk_size = min(max(1, chunk_size), 4)
     date_clause = _date_clause(field="updated", days_back=days_back, now=now)
-    keyword_groups = _balanced_groups(load_discussion_keywords(), max(1, len(list(_chunked(repos, chunk_size)))))
+    repo_groups = _balanced_groups(repos, min(max_queries, len(repos)))
+    keyword_groups = _balanced_groups(load_discussion_keywords(), max(1, len(repo_groups)))
     queries: list[str] = []
-    repo_groups = list(_chunked(repos, chunk_size))
     for index, chunk in enumerate(repo_groups):
         keyword_group = keyword_groups[index] if index < len(keyword_groups) else keyword_groups[-1] if keyword_groups else []
         keyword_clause = _keyword_clause(keyword_group)
         keyword_part = f" ({keyword_clause})" if keyword_clause else ""
+        comments_clause = " comments:>=5" if index < 2 else " comments:>=3"
         queries.append(
             f"({_repo_clause(chunk)}) is:issue{keyword_part} "
-            f"in:title comments:>=3{date_clause}"
+            f"in:title{comments_clause}{date_clause}"
         )
     return queries
 
@@ -267,21 +288,21 @@ def build_issue_pr_queries(
     *,
     seed_repos: list[str] | None = None,
     now: datetime | None = None,
-    chunk_size: int = 4,
-    days_back: int | None = None,
+    max_queries: int = 4,
+    days_back: int | None = 30,
 ) -> list[str]:
     repos = seed_repos or load_seed_repos()
-    chunk_size = min(max(1, chunk_size), 4)
     date_clause = _date_clause(field="updated", days_back=days_back, now=now)
-    keyword_groups = _balanced_groups(load_issue_pr_keywords(), max(1, len(list(_chunked(repos, chunk_size)))))
+    repo_groups = _balanced_groups(repos, min(max_queries, len(repos)))
+    keyword_groups = _balanced_groups(load_issue_pr_keywords(), max(1, len(repo_groups)))
     queries: list[str] = []
-    repo_groups = list(_chunked(repos, chunk_size))
     for index, chunk in enumerate(repo_groups):
         keyword_group = keyword_groups[index] if index < len(keyword_groups) else keyword_groups[-1] if keyword_groups else []
         keyword_clause = _keyword_clause(keyword_group)
         keyword_part = f" ({keyword_clause})" if keyword_clause else ""
+        comments_clause = " comments:>=3" if index < 2 else ""
         queries.append(
             f"({_repo_clause(chunk)}) is:open{keyword_part} "
-            f"in:title comments:>=1{date_clause}"
+            f"in:title{comments_clause}{date_clause}"
         )
     return queries

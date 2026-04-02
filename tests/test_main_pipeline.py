@@ -9,6 +9,8 @@ from github_daily_radar.main import product_today, run_pipeline, should_publish,
 
 
 class _GoodCollector:
+    name = "repos"
+
     def __init__(self, *args, **kwargs) -> None:
         pass
 
@@ -36,6 +38,8 @@ class _GoodCollector:
 
 
 class _GoodDiscussionCollector:
+    name = "discussions"
+
     def __init__(self, *args, **kwargs) -> None:
         pass
 
@@ -63,6 +67,8 @@ class _GoodDiscussionCollector:
 
 
 class _GoodIssuesCollector:
+    name = "issues_prs"
+
     def __init__(self, *args, **kwargs) -> None:
         pass
 
@@ -90,6 +96,8 @@ class _GoodIssuesCollector:
 
 
 class _BadCollector:
+    name = "skills"
+
     def __init__(self, *args, **kwargs) -> None:
         pass
 
@@ -210,3 +218,5 @@ def test_run_pipeline_uses_editorial_summaries_and_continues_on_collector_failur
     assert history["candidate_index"]["repo:owner/name"]["last_seen_metrics"]["stars"] == 10
     assert history["candidate_index"]["repo:owner/name"]["last_published_metrics"]["stars"] == 10
     assert history["run_summaries"][0]["candidate_count"] == 3
+    assert history["run_summaries"][0]["collector_stats"]["repos"]["count"] == 1
+    assert history["run_summaries"][0]["collector_stats"]["skills"]["error"] == "boom"

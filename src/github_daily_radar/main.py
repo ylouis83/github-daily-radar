@@ -11,6 +11,7 @@ from github_daily_radar.discovery import (
     build_repo_queries,
     build_skill_code_queries,
     build_skill_repo_queries,
+    cycle_queries,
     load_seed_repos,
     load_skill_seed_repos,
 )
@@ -75,12 +76,15 @@ def run_pipeline(settings: Settings, alert_only: bool = False) -> dict:
 
     seed_repos = load_seed_repos()
     skill_seed_repos = load_skill_seed_repos()
+    skill_query_seed = today.toordinal()
+    skill_code_queries = cycle_queries(build_skill_code_queries(), limit=2, seed=skill_query_seed)
+    skill_repo_queries = cycle_queries(build_skill_repo_queries(days_back=30), limit=2, seed=skill_query_seed + 1)
     collectors = [
-        RepoCollector(client=client, queries=build_repo_queries(now=run_started_at, days_back=30)),
+        RepoCollector(client=client, queries=build_repo_queries(now=run_started_at, days_back=7)),
         SkillCollector(
             client=client,
-            code_queries=build_skill_code_queries(),
-            repo_queries=build_skill_repo_queries(days_back=30),
+            code_queries=skill_code_queries,
+            repo_queries=skill_repo_queries,
             seed_repos=skill_seed_repos,
         ),
         DiscussionCollector(
@@ -95,11 +99,19 @@ def run_pipeline(settings: Settings, alert_only: bool = False) -> dict:
 
     candidates = []
     collector_errors: list[dict[str, str]] = []
+    collector_stats: dict[str, dict] = {}
     for collector in collectors:
         try:
-            candidates.extend(collector.collect())
+            collected = collector.collect()
+            candidates.extend(collected)
+            collector_stats[getattr(collector, "name", "collector")] = {
+                "count": len(collected),
+                "kinds": dict(Counter(item.kind for item in collected)),
+            }
         except Exception as exc:  # noqa: BLE001 - keep one collector failure from stopping the rest
-            collector_errors.append({"collector": getattr(collector, "name", "collector"), "error": str(exc)})
+            collector_name = getattr(collector, "name", "collector")
+            collector_errors.append({"collector": collector_name, "error": str(exc)})
+            collector_stats[collector_name] = {"count": 0, "kinds": {}, "error": str(exc)}
 
     state.record_seen(today, candidates)
 
@@ -141,6 +153,7 @@ def run_pipeline(settings: Settings, alert_only: bool = False) -> dict:
         metadata["coverage_note"] = "Reduced coverage due to collector failure(s)."
     api_usage = client._budget.snapshot()
     metadata["api_usage"] = api_usage
+    metadata["collector_stats"] = collector_stats
     display_items = build_display_items(filtered, editorial)
     a_items, b_items = split_a_b(display_items, a_max=10, b_max=10)
     published_items = a_items + b_items
@@ -181,6 +194,7 @@ def run_pipeline(settings: Settings, alert_only: bool = False) -> dict:
                 "selected_count": len(published_items),
                 "filtered_kind_counts": dict(filtered_kind_counts),
                 "published_kind_counts": dict(published_kind_counts),
+                "collector_stats": collector_stats,
                 "collector_errors": collector_errors,
                 "api_usage": api_usage,
                 "timezone": settings.timezone,

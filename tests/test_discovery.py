@@ -6,6 +6,7 @@ from github_daily_radar.discovery import (
     build_issue_pr_queries,
     build_repo_queries,
     build_skill_queries,
+    cycle_queries,
     load_issue_pr_keywords,
     load_radar_config,
     load_seed_orgs,
@@ -77,15 +78,25 @@ def test_seed_repo_queries_are_chunked_and_scoped():
     instant = datetime(2026, 4, 2, 12, 0, tzinfo=timezone.utc)
     seed_repos = ["a/b", "c/d", "e/f", "g/h", "i/j"]
 
-    discussion_queries = build_discussion_queries(seed_repos=seed_repos, now=instant, chunk_size=2, days_back=14)
-    issue_queries = build_issue_pr_queries(seed_repos=seed_repos, now=instant, chunk_size=2, days_back=14)
+    discussion_queries = build_discussion_queries(seed_repos=seed_repos, now=instant, days_back=14)
+    issue_queries = build_issue_pr_queries(seed_repos=seed_repos, now=instant, days_back=14)
 
-    assert len(discussion_queries) == 3
-    assert len(issue_queries) == 3
+    assert len(discussion_queries) == 4
+    assert len(issue_queries) == 4
     assert "repo:a/b OR repo:c/d" in discussion_queries[0]
     assert "is:issue" in discussion_queries[0]
+    assert "comments:>=5" in discussion_queries[0]
     assert "updated:>2026-03-19" in discussion_queries[0]
     assert "is:open" in issue_queries[0]
+    assert "comments:>=3" in issue_queries[0]
+
+
+def test_cycle_queries_rotates_a_daily_subset():
+    queries = ["q1", "q2", "q3", "q4", "q5"]
+
+    assert cycle_queries(queries, limit=2, seed=0) == ["q1", "q2"]
+    assert cycle_queries(queries, limit=2, seed=1) == ["q2", "q3"]
+    assert cycle_queries(queries, limit=2, seed=4) == ["q5", "q1"]
 
 
 def test_query_builders_stay_within_boolean_operator_limits():

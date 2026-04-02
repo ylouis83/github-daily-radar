@@ -33,18 +33,22 @@ seed_orgs:
   - All-Hands-AI
 
 seed_repos:
-  - langchain-ai/langchain
-  - microsoft/autogen
-  - openai/openai-agents-python
-  - anthropics/claude-code
-  - browser-use/browser-use
   - modelcontextprotocol/specification
-  - vllm-project/vllm
-  - huggingface/transformers
-  - crewAIInc/crewAI
-  - lobehub/lobe-chat
+  - modelcontextprotocol/servers
+  - anthropics/claude-code
+  - cline/cline
+  - All-Hands-AI/OpenHands
+  - paul-gauthier/aider
+  - langchain-ai/langgraph
+  - browser-use/browser-use
+  - openai/openai-agents-python
   - pydantic/pydantic-ai
-  - obra/superpowers
+  - huggingface/smolagents
+  - microsoft/autogen
+  - run-llama/llama_index
+  - langgenius/dify
+  - open-webui/open-webui
+  - vllm-project/vllm
 
 skills:
   seed_skill_repos:
@@ -53,7 +57,6 @@ skills:
     - pontusab/cursor.directory
     - anthropics/anthropic-cookbook
     - openai/openai-cookbook
-    - modelcontextprotocol/servers
     - punkpeye/awesome-mcp-servers
     - f/awesome-chatgpt-prompts
     - ai-boost/awesome-prompts
@@ -66,10 +69,12 @@ skills:
     - "filename:CLAUDE.md NOT repo:anthropics/claude-code"
     - "filename:AGENTS.md NOT repo:openai/openai-agents-python"
     - "filename:copilot-instructions.md"
+    - "filename:mcp.json"
   repo_search_queries:
     - "cursor rules AI in:name,description"
     - "claude skills agent prompt in:name,description"
     - "mcp server tool in:name,description"
+    - "agent workflow prompt in:name,description"
 
 discussion_keywords:
   - proposal
