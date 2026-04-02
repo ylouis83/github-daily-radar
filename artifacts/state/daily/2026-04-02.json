@@ -15,7 +15,11 @@
         "elements": [
           {
             "tag": "markdown",
-            "content": "**今日概览**\n本卡共 0 条，覆盖 0 个项目、0 个技能、0 个提案 / 讨论。\n已按编辑优先级排序，并做了同仓库去重，避免单一仓库刷屏。\n候选 0 条，LLM 精编 0 条，A 0 / B 0，API 搜索 9 次 / GraphQL 0 点。\n这一卡优先展示今天最值得点开的内容。"
+            "content": "**今日概览**\n本卡共 10 条，覆盖 0 个项目、10 个技能、0 个提案 / 讨论。\n已按编辑优先级排序，并做了同仓库去重，避免单一仓库刷屏。\n候选 60 条，LLM 精编 0 条，A 10 / B 10，API 搜索 9 次 / GraphQL 0 点。\n这一卡优先展示今天最值得点开的内容。"
+          },
+          {
+            "tag": "markdown",
+            "content": "**必看技能**\n- [jwasham/coding-interview-university](https://github.com/jwasham/coding-interview-university)\n  - 摘要：A complete computer science study plan to become a software engineer.\n- [freeCodeCamp/freeCodeCamp](https://github.com/freeCodeCamp/freeCodeCamp)\n  - 摘要：freeCodeCamp.org's open-source codebase and curriculum. Learn math, programming, and computer science for free.\n- [openclaw/openclaw](https://github.com/openclaw/openclaw)\n  - 摘要：Your own personal AI assistant. Any OS. Any Platform. The lobster way. 🦞\n- [public-apis/public-apis](https://github.com/public-apis/public-apis)\n  - 摘要：A collective list of free APIs\n- [sindresorhus/awesome](https://github.com/sindresorhus/awesome)\n  - 摘要：😎 Awesome lists about all kinds of interesting topics\n- [donnemartin/system-design-primer](https://github.com/donnemartin/system-design-primer)\n  - 摘要：Learn how to design large-scale systems. Prep for the system design interview.  Includes Anki flashcards.\n- [kamranahmedse/developer-roadmap](https://github.com/kamranahmedse/developer-roadmap)\n  - 摘要：Interactive roadmaps, guides and other educational content to help developers grow in their careers.\n- [github/gitignore](https://github.com/github/gitignore)\n  - 摘要：A collection of useful .gitignore templates\n- [practical-tutorials/project-based-learning](https://github.com/practical-tutorials/project-based-learning)\n  - 摘要：Curated list of project-based tutorials\n- [vinta/awesome-python](https://github.com/vinta/awesome-python)\n  - 摘要：An opinionated list of Python frameworks, libraries, tools, and resources"
           }
         ]
       }
@@ -35,16 +39,20 @@
         "elements": [
           {
             "tag": "markdown",
-            "content": "**更多值得扫一眼**\n本卡共 0 条，覆盖 0 个项目、0 个技能、0 个提案 / 讨论。\n已按编辑优先级排序，并做了同仓库去重，避免单一仓库刷屏。\n候选 0 条，LLM 精编 0 条，A 0 / B 0，API 搜索 9 次 / GraphQL 0 点。\n这部分是补充阅读，适合扫尾，不会把主卡撑乱。"
+            "content": "**更多值得扫一眼**\n本卡共 10 条，覆盖 0 个项目、10 个技能、0 个提案 / 讨论。\n已按编辑优先级排序，并做了同仓库去重，避免单一仓库刷屏。\n候选 60 条，LLM 精编 0 条，A 10 / B 10，API 搜索 9 次 / GraphQL 0 点。\n这部分是补充阅读，适合扫尾，不会把主卡撑乱。"
+          },
+          {
+            "tag": "markdown",
+            "content": "**技能补充**\n- [n8n-io/n8n](https://github.com/n8n-io/n8n)\n  - 摘要：Fair-code workflow automation platform with native AI capabilities. Combine visu\n- [Significant-Gravitas/AutoGPT](https://github.com/Significant-Gravitas/AutoGPT)\n  - 摘要：AutoGPT is the vision of accessible AI for everyone, to use and to build on. Our\n- [microsoft/vscode](https://github.com/microsoft/vscode)\n  - 摘要：Visual Studio Code\n- [awesome-selfhosted/awesome-selfhosted](https://github.com/awesome-selfhosted/awesome-selfhosted)\n  - 摘要：A list of Free Software network services and web applications which can be hoste\n- [ossu/computer-science](https://github.com/ossu/computer-science)\n  - 摘要：🎓 Path to a free self-taught education in Computer Science!\n- [ohmyzsh/ohmyzsh](https://github.com/ohmyzsh/ohmyzsh)\n  - 摘要：🙃   A delightful community-driven (with 2,400+ contributors) framework for manag\n- [AUTOMATIC1111/stable-diffusion-webui](https://github.com/AUTOMATIC1111/stable-diffusion-webui)\n  - 摘要：Stable Diffusion web UI\n- [trimstray/the-book-of-secret-knowledge](https://github.com/trimstray/the-book-of-secret-knowledge)\n  - 摘要：A collection of inspiring lists, manuals, cheatsheets, blogs, hacks, one-liners,\n- [ollama/ollama](https://github.com/ollama/ollama)\n  - 摘要：Get up and running with Kimi-K2.5, GLM-5, MiniMax, DeepSeek, gpt-oss, Qwen, Gemm\n- [avelino/awesome-go](https://github.com/avelino/awesome-go)\n  - 摘要：A curated list of awesome Go frameworks, libraries and software"
           }
         ]
       }
     }
   ],
-  "count": 0,
-  "selected_count": 0,
+  "count": 60,
+  "selected_count": 24,
   "summary": {
-    "count": 0,
+    "count": 60,
     "editorial": 0,
     "api_usage": {
       "total_budget": 36,
@@ -53,7 +61,7 @@
       "search_used": 9,
       "graphql_used": 0
     },
-    "a_count": 0,
-    "b_count": 0
+    "a_count": 10,
+    "b_count": 10
   }
 }

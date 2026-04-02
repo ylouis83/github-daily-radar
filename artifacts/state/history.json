@@ -1,11 +1,2607 @@
 {
-  "published": [],
-  "candidate_index": {},
+  "published": [
+    {
+      "candidate_id": "repo:jwasham/coding-interview-university",
+      "date": "2026-04-02",
+      "event": "published",
+      "metrics": {
+        "stars": 340101,
+        "forks": 81839,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "scores": {},
+      "kind": "skill",
+      "title": "jwasham/coding-interview-university",
+      "url": "https://github.com/jwasham/coding-interview-university",
+      "source_query": "(skill OR prompt OR workflow OR agent OR automation) in:name,description,readme"
+    },
+    {
+      "candidate_id": "repo:freeCodeCamp/freeCodeCamp",
+      "date": "2026-04-02",
+      "event": "published",
+      "metrics": {
+        "stars": 440461,
+        "forks": 43956,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "scores": {},
+      "kind": "skill",
+      "title": "freeCodeCamp/freeCodeCamp",
+      "url": "https://github.com/freeCodeCamp/freeCodeCamp",
+      "source_query": "(skill OR prompt OR workflow OR agent OR automation) in:name,description,readme"
+    },
+    {
+      "candidate_id": "repo:openclaw/openclaw",
+      "date": "2026-04-02",
+      "event": "published",
+      "metrics": {
+        "stars": 345097,
+        "forks": 68540,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "scores": {},
+      "kind": "skill",
+      "title": "openclaw/openclaw",
+      "url": "https://github.com/openclaw/openclaw",
+      "source_query": "(skill OR prompt OR workflow OR agent OR automation) in:name,description,readme"
+    },
+    {
+      "candidate_id": "repo:public-apis/public-apis",
+      "date": "2026-04-02",
+      "event": "published",
+      "metrics": {
+        "stars": 418258,
+        "forks": 45435,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "scores": {},
+      "kind": "skill",
+      "title": "public-apis/public-apis",
+      "url": "https://github.com/public-apis/public-apis",
+      "source_query": "(skill OR prompt OR workflow OR agent OR automation) in:name,description,readme"
+    },
+    {
+      "candidate_id": "repo:sindresorhus/awesome",
+      "date": "2026-04-02",
+      "event": "published",
+      "metrics": {
+        "stars": 450987,
+        "forks": 33890,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "scores": {},
+      "kind": "skill",
+      "title": "sindresorhus/awesome",
+      "url": "https://github.com/sindresorhus/awesome",
+      "source_query": "(skill OR prompt OR workflow OR agent OR automation) in:name,description,readme"
+    },
+    {
+      "candidate_id": "repo:donnemartin/system-design-primer",
+      "date": "2026-04-02",
+      "event": "published",
+      "metrics": {
+        "stars": 340968,
+        "forks": 55151,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "scores": {},
+      "kind": "skill",
+      "title": "donnemartin/system-design-primer",
+      "url": "https://github.com/donnemartin/system-design-primer",
+      "source_query": "(skill OR prompt OR workflow OR agent OR automation) in:name,description,readme"
+    },
+    {
+      "candidate_id": "repo:kamranahmedse/developer-roadmap",
+      "date": "2026-04-02",
+      "event": "published",
+      "metrics": {
+        "stars": 352029,
+        "forks": 43864,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "scores": {},
+      "kind": "skill",
+      "title": "kamranahmedse/developer-roadmap",
+      "url": "https://github.com/kamranahmedse/developer-roadmap",
+      "source_query": "(skill OR prompt OR workflow OR agent OR automation) in:name,description,readme"
+    },
+    {
+      "candidate_id": "repo:github/gitignore",
+      "date": "2026-04-02",
+      "event": "published",
+      "metrics": {
+        "stars": 173244,
+        "forks": 82713,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "scores": {},
+      "kind": "skill",
+      "title": "github/gitignore",
+      "url": "https://github.com/github/gitignore",
+      "source_query": "(skill OR prompt OR workflow OR agent OR automation) in:name,description,readme"
+    },
+    {
+      "candidate_id": "repo:practical-tutorials/project-based-learning",
+      "date": "2026-04-02",
+      "event": "published",
+      "metrics": {
+        "stars": 262171,
+        "forks": 34107,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "scores": {},
+      "kind": "skill",
+      "title": "practical-tutorials/project-based-learning",
+      "url": "https://github.com/practical-tutorials/project-based-learning",
+      "source_query": "(skill OR prompt OR workflow OR agent OR automation) in:name,description,readme"
+    },
+    {
+      "candidate_id": "repo:vinta/awesome-python",
+      "date": "2026-04-02",
+      "event": "published",
+      "metrics": {
+        "stars": 290189,
+        "forks": 27552,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "scores": {},
+      "kind": "skill",
+      "title": "vinta/awesome-python",
+      "url": "https://github.com/vinta/awesome-python",
+      "source_query": "(skill OR prompt OR workflow OR agent OR automation) in:name,description,readme"
+    },
+    {
+      "candidate_id": "repo:n8n-io/n8n",
+      "date": "2026-04-02",
+      "event": "published",
+      "metrics": {
+        "stars": 182085,
+        "forks": 56393,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "scores": {},
+      "kind": "skill",
+      "title": "n8n-io/n8n",
+      "url": "https://github.com/n8n-io/n8n",
+      "source_query": "(skill OR prompt OR workflow OR agent OR automation) in:name,description,readme"
+    },
+    {
+      "candidate_id": "repo:Significant-Gravitas/AutoGPT",
+      "date": "2026-04-02",
+      "event": "published",
+      "metrics": {
+        "stars": 183044,
+        "forks": 46221,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "scores": {},
+      "kind": "skill",
+      "title": "Significant-Gravitas/AutoGPT",
+      "url": "https://github.com/Significant-Gravitas/AutoGPT",
+      "source_query": "(skill OR prompt OR workflow OR agent OR automation) in:name,description,readme"
+    },
+    {
+      "candidate_id": "repo:microsoft/vscode",
+      "date": "2026-04-02",
+      "event": "published",
+      "metrics": {
+        "stars": 183295,
+        "forks": 38888,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "scores": {},
+      "kind": "skill",
+      "title": "microsoft/vscode",
+      "url": "https://github.com/microsoft/vscode",
+      "source_query": "(skill OR prompt OR workflow OR agent OR automation) in:name,description,readme"
+    },
+    {
+      "candidate_id": "repo:awesome-selfhosted/awesome-selfhosted",
+      "date": "2026-04-02",
+      "event": "published",
+      "metrics": {
+        "stars": 283438,
+        "forks": 13052,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "scores": {},
+      "kind": "skill",
+      "title": "awesome-selfhosted/awesome-selfhosted",
+      "url": "https://github.com/awesome-selfhosted/awesome-selfhosted",
+      "source_query": "(skill OR prompt OR workflow OR agent OR automation) in:name,description,readme"
+    },
+    {
+      "candidate_id": "repo:ossu/computer-science",
+      "date": "2026-04-02",
+      "event": "published",
+      "metrics": {
+        "stars": 202853,
+        "forks": 25210,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "scores": {},
+      "kind": "skill",
+      "title": "ossu/computer-science",
+      "url": "https://github.com/ossu/computer-science",
+      "source_query": "(skill OR prompt OR workflow OR agent OR automation) in:name,description,readme"
+    },
+    {
+      "candidate_id": "repo:ohmyzsh/ohmyzsh",
+      "date": "2026-04-02",
+      "event": "published",
+      "metrics": {
+        "stars": 185829,
+        "forks": 26314,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "scores": {},
+      "kind": "skill",
+      "title": "ohmyzsh/ohmyzsh",
+      "url": "https://github.com/ohmyzsh/ohmyzsh",
+      "source_query": "(skill OR prompt OR workflow OR agent OR automation) in:name,description,readme"
+    },
+    {
+      "candidate_id": "repo:AUTOMATIC1111/stable-diffusion-webui",
+      "date": "2026-04-02",
+      "event": "published",
+      "metrics": {
+        "stars": 162070,
+        "forks": 30203,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "scores": {},
+      "kind": "skill",
+      "title": "AUTOMATIC1111/stable-diffusion-webui",
+      "url": "https://github.com/AUTOMATIC1111/stable-diffusion-webui",
+      "source_query": "(skill OR prompt OR workflow OR agent OR automation) in:name,description,readme"
+    },
+    {
+      "candidate_id": "repo:trimstray/the-book-of-secret-knowledge",
+      "date": "2026-04-02",
+      "event": "published",
+      "metrics": {
+        "stars": 212874,
+        "forks": 12740,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "scores": {},
+      "kind": "skill",
+      "title": "trimstray/the-book-of-secret-knowledge",
+      "url": "https://github.com/trimstray/the-book-of-secret-knowledge",
+      "source_query": "(skill OR prompt OR workflow OR agent OR automation) in:name,description,readme"
+    },
+    {
+      "candidate_id": "repo:ollama/ollama",
+      "date": "2026-04-02",
+      "event": "published",
+      "metrics": {
+        "stars": 166735,
+        "forks": 15263,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "scores": {},
+      "kind": "skill",
+      "title": "ollama/ollama",
+      "url": "https://github.com/ollama/ollama",
+      "source_query": "(skill OR prompt OR workflow OR agent OR automation) in:name,description,readme"
+    },
+    {
+      "candidate_id": "repo:avelino/awesome-go",
+      "date": "2026-04-02",
+      "event": "published",
+      "metrics": {
+        "stars": 168856,
+        "forks": 13101,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "scores": {},
+      "kind": "skill",
+      "title": "avelino/awesome-go",
+      "url": "https://github.com/avelino/awesome-go",
+      "source_query": "(skill OR prompt OR workflow OR agent OR automation) in:name,description,readme"
+    },
+    {
+      "candidate_id": "repo:solomon2773/nora",
+      "date": "2026-04-02",
+      "event": "published",
+      "metrics": {
+        "stars": 4,
+        "forks": 3,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "scores": {},
+      "kind": "project",
+      "title": "solomon2773/nora",
+      "url": "https://github.com/solomon2773/nora",
+      "source_query": "(agent OR workflow OR automation OR mcp OR browser-use) in:name,description,readme"
+    },
+    {
+      "candidate_id": "repo:solomon2773/nora",
+      "date": "2026-04-02",
+      "event": "published",
+      "metrics": {
+        "stars": 4,
+        "forks": 3,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "scores": {},
+      "kind": "project",
+      "title": "solomon2773/nora",
+      "url": "https://github.com/solomon2773/nora",
+      "source_query": "(llm OR devtools OR browser-use OR agentic) in:name,description,readme"
+    },
+    {
+      "candidate_id": "repo:chensoul/chensoul.github.io",
+      "date": "2026-04-02",
+      "event": "published",
+      "metrics": {
+        "stars": 5,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "scores": {},
+      "kind": "project",
+      "title": "chensoul/chensoul.github.io",
+      "url": "https://github.com/chensoul/chensoul.github.io",
+      "source_query": "(agent OR workflow OR automation OR mcp OR browser-use) in:name,description,readme"
+    },
+    {
+      "candidate_id": "repo:grahamrowe82/pt-edge",
+      "date": "2026-04-02",
+      "event": "published",
+      "metrics": {
+        "stars": 3,
+        "forks": 1,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "scores": {},
+      "kind": "project",
+      "title": "grahamrowe82/pt-edge",
+      "url": "https://github.com/grahamrowe82/pt-edge",
+      "source_query": "(agent OR workflow OR automation OR mcp OR browser-use) in:name,description,readme"
+    },
+    {
+      "candidate_id": "repo:grahamrowe82/pt-edge",
+      "date": "2026-04-02",
+      "event": "published",
+      "metrics": {
+        "stars": 3,
+        "forks": 1,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "scores": {},
+      "kind": "project",
+      "title": "grahamrowe82/pt-edge",
+      "url": "https://github.com/grahamrowe82/pt-edge",
+      "source_query": "(llm OR devtools OR browser-use OR agentic) in:name,description,readme"
+    },
+    {
+      "candidate_id": "repo:mguozhen/solvea-agent-bus",
+      "date": "2026-04-02",
+      "event": "published",
+      "metrics": {
+        "stars": 1,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "scores": {},
+      "kind": "project",
+      "title": "mguozhen/solvea-agent-bus",
+      "url": "https://github.com/mguozhen/solvea-agent-bus",
+      "source_query": "(agent OR workflow OR automation OR mcp OR browser-use) in:name,description,readme"
+    },
+    {
+      "candidate_id": "repo:desy-design/AG3NT",
+      "date": "2026-04-02",
+      "event": "published",
+      "metrics": {
+        "stars": 1,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "scores": {},
+      "kind": "project",
+      "title": "desy-design/AG3NT",
+      "url": "https://github.com/desy-design/AG3NT",
+      "source_query": "(agent OR workflow OR automation OR mcp OR browser-use) in:name,description,readme"
+    },
+    {
+      "candidate_id": "repo:MendozaVolcanic/Mirova-v1",
+      "date": "2026-04-02",
+      "event": "published",
+      "metrics": {
+        "stars": 1,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "scores": {},
+      "kind": "project",
+      "title": "MendozaVolcanic/Mirova-v1",
+      "url": "https://github.com/MendozaVolcanic/Mirova-v1",
+      "source_query": "(agent OR workflow OR automation OR mcp OR browser-use) in:name,description,readme"
+    },
+    {
+      "candidate_id": "repo:lilinji/lilinji.github.io",
+      "date": "2026-04-02",
+      "event": "published",
+      "metrics": {
+        "stars": 1,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "scores": {},
+      "kind": "project",
+      "title": "lilinji/lilinji.github.io",
+      "url": "https://github.com/lilinji/lilinji.github.io",
+      "source_query": "(agent OR workflow OR automation OR mcp OR browser-use) in:name,description,readme"
+    },
+    {
+      "candidate_id": "repo:mguozhen/solvea-agent-bus",
+      "date": "2026-04-02",
+      "event": "published",
+      "metrics": {
+        "stars": 1,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "scores": {},
+      "kind": "project",
+      "title": "mguozhen/solvea-agent-bus",
+      "url": "https://github.com/mguozhen/solvea-agent-bus",
+      "source_query": "(llm OR devtools OR browser-use OR agentic) in:name,description,readme"
+    },
+    {
+      "candidate_id": "repo:desy-design/AG3NT",
+      "date": "2026-04-02",
+      "event": "published",
+      "metrics": {
+        "stars": 1,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "scores": {},
+      "kind": "project",
+      "title": "desy-design/AG3NT",
+      "url": "https://github.com/desy-design/AG3NT",
+      "source_query": "(llm OR devtools OR browser-use OR agentic) in:name,description,readme"
+    },
+    {
+      "candidate_id": "repo:lilinji/lilinji.github.io",
+      "date": "2026-04-02",
+      "event": "published",
+      "metrics": {
+        "stars": 1,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "scores": {},
+      "kind": "project",
+      "title": "lilinji/lilinji.github.io",
+      "url": "https://github.com/lilinji/lilinji.github.io",
+      "source_query": "(llm OR devtools OR browser-use OR agentic) in:name,description,readme"
+    },
+    {
+      "candidate_id": "repo:marketmailsun-creator/eduexplorer",
+      "date": "2026-04-02",
+      "event": "published",
+      "metrics": {
+        "stars": 1,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "scores": {},
+      "kind": "project",
+      "title": "marketmailsun-creator/eduexplorer",
+      "url": "https://github.com/marketmailsun-creator/eduexplorer",
+      "source_query": "(llm OR devtools OR browser-use OR agentic) in:name,description,readme"
+    },
+    {
+      "candidate_id": "repo:sharkX2/ACGN-Works-Tracker",
+      "date": "2026-04-02",
+      "event": "published",
+      "metrics": {
+        "stars": 0,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "scores": {},
+      "kind": "project",
+      "title": "sharkX2/ACGN-Works-Tracker",
+      "url": "https://github.com/sharkX2/ACGN-Works-Tracker",
+      "source_query": "(agent OR workflow OR automation OR mcp OR browser-use) in:name,description,readme"
+    },
+    {
+      "candidate_id": "repo:Sali459/dictionary-project",
+      "date": "2026-04-02",
+      "event": "published",
+      "metrics": {
+        "stars": 0,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "scores": {},
+      "kind": "project",
+      "title": "Sali459/dictionary-project",
+      "url": "https://github.com/Sali459/dictionary-project",
+      "source_query": "(agent OR workflow OR automation OR mcp OR browser-use) in:name,description,readme"
+    },
+    {
+      "candidate_id": "repo:tigerhaolu727/xtrader",
+      "date": "2026-04-02",
+      "event": "published",
+      "metrics": {
+        "stars": 0,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "scores": {},
+      "kind": "project",
+      "title": "tigerhaolu727/xtrader",
+      "url": "https://github.com/tigerhaolu727/xtrader",
+      "source_query": "(agent OR workflow OR automation OR mcp OR browser-use) in:name,description,readme"
+    },
+    {
+      "candidate_id": "repo:Hamna-CloudSec/Hamna-CloudDev",
+      "date": "2026-04-02",
+      "event": "published",
+      "metrics": {
+        "stars": 0,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "scores": {},
+      "kind": "project",
+      "title": "Hamna-CloudSec/Hamna-CloudDev",
+      "url": "https://github.com/Hamna-CloudSec/Hamna-CloudDev",
+      "source_query": "(agent OR workflow OR automation OR mcp OR browser-use) in:name,description,readme"
+    },
+    {
+      "candidate_id": "repo:coderun23-cloud/router-automation",
+      "date": "2026-04-02",
+      "event": "published",
+      "metrics": {
+        "stars": 0,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "scores": {},
+      "kind": "project",
+      "title": "coderun23-cloud/router-automation",
+      "url": "https://github.com/coderun23-cloud/router-automation",
+      "source_query": "(agent OR workflow OR automation OR mcp OR browser-use) in:name,description,readme"
+    },
+    {
+      "candidate_id": "repo:ChrisMerinoDev/study-notes-app",
+      "date": "2026-04-02",
+      "event": "published",
+      "metrics": {
+        "stars": 0,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "scores": {},
+      "kind": "project",
+      "title": "ChrisMerinoDev/study-notes-app",
+      "url": "https://github.com/ChrisMerinoDev/study-notes-app",
+      "source_query": "(agent OR workflow OR automation OR mcp OR browser-use) in:name,description,readme"
+    },
+    {
+      "candidate_id": "repo:youssefbassou/llm-mock",
+      "date": "2026-04-02",
+      "event": "published",
+      "metrics": {
+        "stars": 0,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "scores": {},
+      "kind": "project",
+      "title": "youssefbassou/llm-mock",
+      "url": "https://github.com/youssefbassou/llm-mock",
+      "source_query": "(agent OR workflow OR automation OR mcp OR browser-use) in:name,description,readme"
+    },
+    {
+      "candidate_id": "repo:mamoun78444/llm-json",
+      "date": "2026-04-02",
+      "event": "published",
+      "metrics": {
+        "stars": 0,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "scores": {},
+      "kind": "project",
+      "title": "mamoun78444/llm-json",
+      "url": "https://github.com/mamoun78444/llm-json",
+      "source_query": "(agent OR workflow OR automation OR mcp OR browser-use) in:name,description,readme"
+    },
+    {
+      "candidate_id": "repo:sadamhussain23-jpg/agentic-ai",
+      "date": "2026-04-02",
+      "event": "published",
+      "metrics": {
+        "stars": 0,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "scores": {},
+      "kind": "project",
+      "title": "sadamhussain23-jpg/agentic-ai",
+      "url": "https://github.com/sadamhussain23-jpg/agentic-ai",
+      "source_query": "(agent OR workflow OR automation OR mcp OR browser-use) in:name,description,readme"
+    },
+    {
+      "candidate_id": "repo:merge-demo/mergequeue-bazel",
+      "date": "2026-04-02",
+      "event": "published",
+      "metrics": {
+        "stars": 0,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "scores": {},
+      "kind": "project",
+      "title": "merge-demo/mergequeue-bazel",
+      "url": "https://github.com/merge-demo/mergequeue-bazel",
+      "source_query": "(agent OR workflow OR automation OR mcp OR browser-use) in:name,description,readme"
+    },
+    {
+      "candidate_id": "repo:AndyZhengyan/enterprise-agent-employee",
+      "date": "2026-04-02",
+      "event": "published",
+      "metrics": {
+        "stars": 0,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "scores": {},
+      "kind": "project",
+      "title": "AndyZhengyan/enterprise-agent-employee",
+      "url": "https://github.com/AndyZhengyan/enterprise-agent-employee",
+      "source_query": "(agent OR workflow OR automation OR mcp OR browser-use) in:name,description,readme"
+    },
+    {
+      "candidate_id": "repo:Alisha2420/browser-use-skill",
+      "date": "2026-04-02",
+      "event": "published",
+      "metrics": {
+        "stars": 0,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "scores": {},
+      "kind": "project",
+      "title": "Alisha2420/browser-use-skill",
+      "url": "https://github.com/Alisha2420/browser-use-skill",
+      "source_query": "(agent OR workflow OR automation OR mcp OR browser-use) in:name,description,readme"
+    },
+    {
+      "candidate_id": "repo:alona-zubenko/public-news",
+      "date": "2026-04-02",
+      "event": "published",
+      "metrics": {
+        "stars": 0,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "scores": {},
+      "kind": "project",
+      "title": "alona-zubenko/public-news",
+      "url": "https://github.com/alona-zubenko/public-news",
+      "source_query": "(agent OR workflow OR automation OR mcp OR browser-use) in:name,description,readme"
+    },
+    {
+      "candidate_id": "repo:klivvi/klivvi",
+      "date": "2026-04-02",
+      "event": "published",
+      "metrics": {
+        "stars": 0,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "scores": {},
+      "kind": "project",
+      "title": "klivvi/klivvi",
+      "url": "https://github.com/klivvi/klivvi",
+      "source_query": "(llm OR devtools OR browser-use OR agentic) in:name,description,readme"
+    },
+    {
+      "candidate_id": "repo:sharkX2/ACGN-Works-Tracker",
+      "date": "2026-04-02",
+      "event": "published",
+      "metrics": {
+        "stars": 0,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "scores": {},
+      "kind": "project",
+      "title": "sharkX2/ACGN-Works-Tracker",
+      "url": "https://github.com/sharkX2/ACGN-Works-Tracker",
+      "source_query": "(llm OR devtools OR browser-use OR agentic) in:name,description,readme"
+    },
+    {
+      "candidate_id": "repo:pro6692abou/llm-audio",
+      "date": "2026-04-02",
+      "event": "published",
+      "metrics": {
+        "stars": 0,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "scores": {},
+      "kind": "project",
+      "title": "pro6692abou/llm-audio",
+      "url": "https://github.com/pro6692abou/llm-audio",
+      "source_query": "(llm OR devtools OR browser-use OR agentic) in:name,description,readme"
+    },
+    {
+      "candidate_id": "repo:Sali459/dictionary-project",
+      "date": "2026-04-02",
+      "event": "published",
+      "metrics": {
+        "stars": 0,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "scores": {},
+      "kind": "project",
+      "title": "Sali459/dictionary-project",
+      "url": "https://github.com/Sali459/dictionary-project",
+      "source_query": "(llm OR devtools OR browser-use OR agentic) in:name,description,readme"
+    },
+    {
+      "candidate_id": "repo:tigerhaolu727/xtrader",
+      "date": "2026-04-02",
+      "event": "published",
+      "metrics": {
+        "stars": 0,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "scores": {},
+      "kind": "project",
+      "title": "tigerhaolu727/xtrader",
+      "url": "https://github.com/tigerhaolu727/xtrader",
+      "source_query": "(llm OR devtools OR browser-use OR agentic) in:name,description,readme"
+    },
+    {
+      "candidate_id": "repo:ChrisMerinoDev/study-notes-app",
+      "date": "2026-04-02",
+      "event": "published",
+      "metrics": {
+        "stars": 0,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "scores": {},
+      "kind": "project",
+      "title": "ChrisMerinoDev/study-notes-app",
+      "url": "https://github.com/ChrisMerinoDev/study-notes-app",
+      "source_query": "(llm OR devtools OR browser-use OR agentic) in:name,description,readme"
+    },
+    {
+      "candidate_id": "repo:youssefbassou/llm-mock",
+      "date": "2026-04-02",
+      "event": "published",
+      "metrics": {
+        "stars": 0,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "scores": {},
+      "kind": "project",
+      "title": "youssefbassou/llm-mock",
+      "url": "https://github.com/youssefbassou/llm-mock",
+      "source_query": "(llm OR devtools OR browser-use OR agentic) in:name,description,readme"
+    },
+    {
+      "candidate_id": "repo:mamoun78444/llm-json",
+      "date": "2026-04-02",
+      "event": "published",
+      "metrics": {
+        "stars": 0,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "scores": {},
+      "kind": "project",
+      "title": "mamoun78444/llm-json",
+      "url": "https://github.com/mamoun78444/llm-json",
+      "source_query": "(llm OR devtools OR browser-use OR agentic) in:name,description,readme"
+    },
+    {
+      "candidate_id": "repo:sadamhussain23-jpg/agentic-ai",
+      "date": "2026-04-02",
+      "event": "published",
+      "metrics": {
+        "stars": 0,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "scores": {},
+      "kind": "project",
+      "title": "sadamhussain23-jpg/agentic-ai",
+      "url": "https://github.com/sadamhussain23-jpg/agentic-ai",
+      "source_query": "(llm OR devtools OR browser-use OR agentic) in:name,description,readme"
+    },
+    {
+      "candidate_id": "repo:AndyZhengyan/enterprise-agent-employee",
+      "date": "2026-04-02",
+      "event": "published",
+      "metrics": {
+        "stars": 0,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "scores": {},
+      "kind": "project",
+      "title": "AndyZhengyan/enterprise-agent-employee",
+      "url": "https://github.com/AndyZhengyan/enterprise-agent-employee",
+      "source_query": "(llm OR devtools OR browser-use OR agentic) in:name,description,readme"
+    },
+    {
+      "candidate_id": "repo:Alisha2420/browser-use-skill",
+      "date": "2026-04-02",
+      "event": "published",
+      "metrics": {
+        "stars": 0,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "scores": {},
+      "kind": "project",
+      "title": "Alisha2420/browser-use-skill",
+      "url": "https://github.com/Alisha2420/browser-use-skill",
+      "source_query": "(llm OR devtools OR browser-use OR agentic) in:name,description,readme"
+    },
+    {
+      "candidate_id": "repo:asdxzc2/inner-field",
+      "date": "2026-04-02",
+      "event": "published",
+      "metrics": {
+        "stars": 0,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "scores": {},
+      "kind": "project",
+      "title": "asdxzc2/inner-field",
+      "url": "https://github.com/asdxzc2/inner-field",
+      "source_query": "(llm OR devtools OR browser-use OR agentic) in:name,description,readme"
+    },
+    {
+      "candidate_id": "repo:thanhdanh1803/agentic_bootcamp",
+      "date": "2026-04-02",
+      "event": "published",
+      "metrics": {
+        "stars": 0,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "scores": {},
+      "kind": "project",
+      "title": "thanhdanh1803/agentic_bootcamp",
+      "url": "https://github.com/thanhdanh1803/agentic_bootcamp",
+      "source_query": "(llm OR devtools OR browser-use OR agentic) in:name,description,readme"
+    },
+    {
+      "candidate_id": "repo:luftinur/expression-face-randomizer",
+      "date": "2026-04-02",
+      "event": "published",
+      "metrics": {
+        "stars": 0,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "scores": {},
+      "kind": "project",
+      "title": "luftinur/expression-face-randomizer",
+      "url": "https://github.com/luftinur/expression-face-randomizer",
+      "source_query": "(llm OR devtools OR browser-use OR agentic) in:name,description,readme"
+    }
+  ],
+  "candidate_index": {
+    "repo:mguozhen/solvea-agent-bus": {
+      "candidate_id": "repo:mguozhen/solvea-agent-bus",
+      "last_seen_at": "2026-04-02",
+      "last_seen_metrics": {
+        "stars": 1,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_seen_scores": {},
+      "last_published_at": "2026-04-02",
+      "last_published_metrics": {
+        "stars": 1,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_published_scores": {}
+    },
+    "repo:sharkX2/ACGN-Works-Tracker": {
+      "candidate_id": "repo:sharkX2/ACGN-Works-Tracker",
+      "last_seen_at": "2026-04-02",
+      "last_seen_metrics": {
+        "stars": 0,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_seen_scores": {},
+      "last_published_at": "2026-04-02",
+      "last_published_metrics": {
+        "stars": 0,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_published_scores": {}
+    },
+    "repo:chensoul/chensoul.github.io": {
+      "candidate_id": "repo:chensoul/chensoul.github.io",
+      "last_seen_at": "2026-04-02",
+      "last_seen_metrics": {
+        "stars": 5,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_seen_scores": {},
+      "last_published_at": "2026-04-02",
+      "last_published_metrics": {
+        "stars": 5,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_published_scores": {}
+    },
+    "repo:Sali459/dictionary-project": {
+      "candidate_id": "repo:Sali459/dictionary-project",
+      "last_seen_at": "2026-04-02",
+      "last_seen_metrics": {
+        "stars": 0,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_seen_scores": {},
+      "last_published_at": "2026-04-02",
+      "last_published_metrics": {
+        "stars": 0,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_published_scores": {}
+    },
+    "repo:tigerhaolu727/xtrader": {
+      "candidate_id": "repo:tigerhaolu727/xtrader",
+      "last_seen_at": "2026-04-02",
+      "last_seen_metrics": {
+        "stars": 0,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_seen_scores": {},
+      "last_published_at": "2026-04-02",
+      "last_published_metrics": {
+        "stars": 0,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_published_scores": {}
+    },
+    "repo:Hamna-CloudSec/Hamna-CloudDev": {
+      "candidate_id": "repo:Hamna-CloudSec/Hamna-CloudDev",
+      "last_seen_at": "2026-04-02",
+      "last_seen_metrics": {
+        "stars": 0,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_seen_scores": {},
+      "last_published_at": "2026-04-02",
+      "last_published_metrics": {
+        "stars": 0,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_published_scores": {}
+    },
+    "repo:coderun23-cloud/router-automation": {
+      "candidate_id": "repo:coderun23-cloud/router-automation",
+      "last_seen_at": "2026-04-02",
+      "last_seen_metrics": {
+        "stars": 0,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_seen_scores": {},
+      "last_published_at": "2026-04-02",
+      "last_published_metrics": {
+        "stars": 0,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_published_scores": {}
+    },
+    "repo:ChrisMerinoDev/study-notes-app": {
+      "candidate_id": "repo:ChrisMerinoDev/study-notes-app",
+      "last_seen_at": "2026-04-02",
+      "last_seen_metrics": {
+        "stars": 0,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_seen_scores": {},
+      "last_published_at": "2026-04-02",
+      "last_published_metrics": {
+        "stars": 0,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_published_scores": {}
+    },
+    "repo:youssefbassou/llm-mock": {
+      "candidate_id": "repo:youssefbassou/llm-mock",
+      "last_seen_at": "2026-04-02",
+      "last_seen_metrics": {
+        "stars": 0,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_seen_scores": {},
+      "last_published_at": "2026-04-02",
+      "last_published_metrics": {
+        "stars": 0,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_published_scores": {}
+    },
+    "repo:grahamrowe82/pt-edge": {
+      "candidate_id": "repo:grahamrowe82/pt-edge",
+      "last_seen_at": "2026-04-02",
+      "last_seen_metrics": {
+        "stars": 3,
+        "forks": 1,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_seen_scores": {},
+      "last_published_at": "2026-04-02",
+      "last_published_metrics": {
+        "stars": 3,
+        "forks": 1,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_published_scores": {}
+    },
+    "repo:mamoun78444/llm-json": {
+      "candidate_id": "repo:mamoun78444/llm-json",
+      "last_seen_at": "2026-04-02",
+      "last_seen_metrics": {
+        "stars": 0,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_seen_scores": {},
+      "last_published_at": "2026-04-02",
+      "last_published_metrics": {
+        "stars": 0,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_published_scores": {}
+    },
+    "repo:sadamhussain23-jpg/agentic-ai": {
+      "candidate_id": "repo:sadamhussain23-jpg/agentic-ai",
+      "last_seen_at": "2026-04-02",
+      "last_seen_metrics": {
+        "stars": 0,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_seen_scores": {},
+      "last_published_at": "2026-04-02",
+      "last_published_metrics": {
+        "stars": 0,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_published_scores": {}
+    },
+    "repo:desy-design/AG3NT": {
+      "candidate_id": "repo:desy-design/AG3NT",
+      "last_seen_at": "2026-04-02",
+      "last_seen_metrics": {
+        "stars": 1,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_seen_scores": {},
+      "last_published_at": "2026-04-02",
+      "last_published_metrics": {
+        "stars": 1,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_published_scores": {}
+    },
+    "repo:merge-demo/mergequeue-bazel": {
+      "candidate_id": "repo:merge-demo/mergequeue-bazel",
+      "last_seen_at": "2026-04-02",
+      "last_seen_metrics": {
+        "stars": 0,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_seen_scores": {},
+      "last_published_at": "2026-04-02",
+      "last_published_metrics": {
+        "stars": 0,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_published_scores": {}
+    },
+    "repo:solomon2773/nora": {
+      "candidate_id": "repo:solomon2773/nora",
+      "last_seen_at": "2026-04-02",
+      "last_seen_metrics": {
+        "stars": 4,
+        "forks": 3,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_seen_scores": {},
+      "last_published_at": "2026-04-02",
+      "last_published_metrics": {
+        "stars": 4,
+        "forks": 3,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_published_scores": {}
+    },
+    "repo:MendozaVolcanic/Mirova-v1": {
+      "candidate_id": "repo:MendozaVolcanic/Mirova-v1",
+      "last_seen_at": "2026-04-02",
+      "last_seen_metrics": {
+        "stars": 1,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_seen_scores": {},
+      "last_published_at": "2026-04-02",
+      "last_published_metrics": {
+        "stars": 1,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_published_scores": {}
+    },
+    "repo:AndyZhengyan/enterprise-agent-employee": {
+      "candidate_id": "repo:AndyZhengyan/enterprise-agent-employee",
+      "last_seen_at": "2026-04-02",
+      "last_seen_metrics": {
+        "stars": 0,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_seen_scores": {},
+      "last_published_at": "2026-04-02",
+      "last_published_metrics": {
+        "stars": 0,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_published_scores": {}
+    },
+    "repo:Alisha2420/browser-use-skill": {
+      "candidate_id": "repo:Alisha2420/browser-use-skill",
+      "last_seen_at": "2026-04-02",
+      "last_seen_metrics": {
+        "stars": 0,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_seen_scores": {},
+      "last_published_at": "2026-04-02",
+      "last_published_metrics": {
+        "stars": 0,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_published_scores": {}
+    },
+    "repo:lilinji/lilinji.github.io": {
+      "candidate_id": "repo:lilinji/lilinji.github.io",
+      "last_seen_at": "2026-04-02",
+      "last_seen_metrics": {
+        "stars": 1,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_seen_scores": {},
+      "last_published_at": "2026-04-02",
+      "last_published_metrics": {
+        "stars": 1,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_published_scores": {}
+    },
+    "repo:alona-zubenko/public-news": {
+      "candidate_id": "repo:alona-zubenko/public-news",
+      "last_seen_at": "2026-04-02",
+      "last_seen_metrics": {
+        "stars": 0,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_seen_scores": {},
+      "last_published_at": "2026-04-02",
+      "last_published_metrics": {
+        "stars": 0,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_published_scores": {}
+    },
+    "repo:klivvi/klivvi": {
+      "candidate_id": "repo:klivvi/klivvi",
+      "last_seen_at": "2026-04-02",
+      "last_seen_metrics": {
+        "stars": 0,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_seen_scores": {},
+      "last_published_at": "2026-04-02",
+      "last_published_metrics": {
+        "stars": 0,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_published_scores": {}
+    },
+    "repo:pro6692abou/llm-audio": {
+      "candidate_id": "repo:pro6692abou/llm-audio",
+      "last_seen_at": "2026-04-02",
+      "last_seen_metrics": {
+        "stars": 0,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_seen_scores": {},
+      "last_published_at": "2026-04-02",
+      "last_published_metrics": {
+        "stars": 0,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_published_scores": {}
+    },
+    "repo:asdxzc2/inner-field": {
+      "candidate_id": "repo:asdxzc2/inner-field",
+      "last_seen_at": "2026-04-02",
+      "last_seen_metrics": {
+        "stars": 0,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_seen_scores": {},
+      "last_published_at": "2026-04-02",
+      "last_published_metrics": {
+        "stars": 0,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_published_scores": {}
+    },
+    "repo:thanhdanh1803/agentic_bootcamp": {
+      "candidate_id": "repo:thanhdanh1803/agentic_bootcamp",
+      "last_seen_at": "2026-04-02",
+      "last_seen_metrics": {
+        "stars": 0,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_seen_scores": {},
+      "last_published_at": "2026-04-02",
+      "last_published_metrics": {
+        "stars": 0,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_published_scores": {}
+    },
+    "repo:marketmailsun-creator/eduexplorer": {
+      "candidate_id": "repo:marketmailsun-creator/eduexplorer",
+      "last_seen_at": "2026-04-02",
+      "last_seen_metrics": {
+        "stars": 1,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_seen_scores": {},
+      "last_published_at": "2026-04-02",
+      "last_published_metrics": {
+        "stars": 1,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_published_scores": {}
+    },
+    "repo:luftinur/expression-face-randomizer": {
+      "candidate_id": "repo:luftinur/expression-face-randomizer",
+      "last_seen_at": "2026-04-02",
+      "last_seen_metrics": {
+        "stars": 0,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_seen_scores": {},
+      "last_published_at": "2026-04-02",
+      "last_published_metrics": {
+        "stars": 0,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_published_scores": {}
+    },
+    "repo:sindresorhus/awesome": {
+      "candidate_id": "repo:sindresorhus/awesome",
+      "last_seen_at": "2026-04-02",
+      "last_seen_metrics": {
+        "stars": 450987,
+        "forks": 33890,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_seen_scores": {},
+      "last_published_at": "2026-04-02",
+      "last_published_metrics": {
+        "stars": 450987,
+        "forks": 33890,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_published_scores": {}
+    },
+    "repo:freeCodeCamp/freeCodeCamp": {
+      "candidate_id": "repo:freeCodeCamp/freeCodeCamp",
+      "last_seen_at": "2026-04-02",
+      "last_seen_metrics": {
+        "stars": 440461,
+        "forks": 43956,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_seen_scores": {},
+      "last_published_at": "2026-04-02",
+      "last_published_metrics": {
+        "stars": 440461,
+        "forks": 43956,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_published_scores": {}
+    },
+    "repo:public-apis/public-apis": {
+      "candidate_id": "repo:public-apis/public-apis",
+      "last_seen_at": "2026-04-02",
+      "last_seen_metrics": {
+        "stars": 418258,
+        "forks": 45435,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_seen_scores": {},
+      "last_published_at": "2026-04-02",
+      "last_published_metrics": {
+        "stars": 418258,
+        "forks": 45435,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_published_scores": {}
+    },
+    "repo:kamranahmedse/developer-roadmap": {
+      "candidate_id": "repo:kamranahmedse/developer-roadmap",
+      "last_seen_at": "2026-04-02",
+      "last_seen_metrics": {
+        "stars": 352029,
+        "forks": 43864,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_seen_scores": {},
+      "last_published_at": "2026-04-02",
+      "last_published_metrics": {
+        "stars": 352029,
+        "forks": 43864,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_published_scores": {}
+    },
+    "repo:openclaw/openclaw": {
+      "candidate_id": "repo:openclaw/openclaw",
+      "last_seen_at": "2026-04-02",
+      "last_seen_metrics": {
+        "stars": 345097,
+        "forks": 68540,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_seen_scores": {},
+      "last_published_at": "2026-04-02",
+      "last_published_metrics": {
+        "stars": 345097,
+        "forks": 68540,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_published_scores": {}
+    },
+    "repo:donnemartin/system-design-primer": {
+      "candidate_id": "repo:donnemartin/system-design-primer",
+      "last_seen_at": "2026-04-02",
+      "last_seen_metrics": {
+        "stars": 340968,
+        "forks": 55151,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_seen_scores": {},
+      "last_published_at": "2026-04-02",
+      "last_published_metrics": {
+        "stars": 340968,
+        "forks": 55151,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_published_scores": {}
+    },
+    "repo:jwasham/coding-interview-university": {
+      "candidate_id": "repo:jwasham/coding-interview-university",
+      "last_seen_at": "2026-04-02",
+      "last_seen_metrics": {
+        "stars": 340101,
+        "forks": 81839,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_seen_scores": {},
+      "last_published_at": "2026-04-02",
+      "last_published_metrics": {
+        "stars": 340101,
+        "forks": 81839,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_published_scores": {}
+    },
+    "repo:vinta/awesome-python": {
+      "candidate_id": "repo:vinta/awesome-python",
+      "last_seen_at": "2026-04-02",
+      "last_seen_metrics": {
+        "stars": 290189,
+        "forks": 27552,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_seen_scores": {},
+      "last_published_at": "2026-04-02",
+      "last_published_metrics": {
+        "stars": 290189,
+        "forks": 27552,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_published_scores": {}
+    },
+    "repo:awesome-selfhosted/awesome-selfhosted": {
+      "candidate_id": "repo:awesome-selfhosted/awesome-selfhosted",
+      "last_seen_at": "2026-04-02",
+      "last_seen_metrics": {
+        "stars": 283438,
+        "forks": 13052,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_seen_scores": {},
+      "last_published_at": "2026-04-02",
+      "last_published_metrics": {
+        "stars": 283438,
+        "forks": 13052,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_published_scores": {}
+    },
+    "repo:practical-tutorials/project-based-learning": {
+      "candidate_id": "repo:practical-tutorials/project-based-learning",
+      "last_seen_at": "2026-04-02",
+      "last_seen_metrics": {
+        "stars": 262171,
+        "forks": 34107,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_seen_scores": {},
+      "last_published_at": "2026-04-02",
+      "last_published_metrics": {
+        "stars": 262171,
+        "forks": 34107,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_published_scores": {}
+    },
+    "repo:trimstray/the-book-of-secret-knowledge": {
+      "candidate_id": "repo:trimstray/the-book-of-secret-knowledge",
+      "last_seen_at": "2026-04-02",
+      "last_seen_metrics": {
+        "stars": 212874,
+        "forks": 12740,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_seen_scores": {},
+      "last_published_at": "2026-04-02",
+      "last_published_metrics": {
+        "stars": 212874,
+        "forks": 12740,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_published_scores": {}
+    },
+    "repo:ossu/computer-science": {
+      "candidate_id": "repo:ossu/computer-science",
+      "last_seen_at": "2026-04-02",
+      "last_seen_metrics": {
+        "stars": 202853,
+        "forks": 25210,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_seen_scores": {},
+      "last_published_at": "2026-04-02",
+      "last_published_metrics": {
+        "stars": 202853,
+        "forks": 25210,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_published_scores": {}
+    },
+    "repo:ohmyzsh/ohmyzsh": {
+      "candidate_id": "repo:ohmyzsh/ohmyzsh",
+      "last_seen_at": "2026-04-02",
+      "last_seen_metrics": {
+        "stars": 185829,
+        "forks": 26314,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_seen_scores": {},
+      "last_published_at": "2026-04-02",
+      "last_published_metrics": {
+        "stars": 185829,
+        "forks": 26314,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_published_scores": {}
+    },
+    "repo:microsoft/vscode": {
+      "candidate_id": "repo:microsoft/vscode",
+      "last_seen_at": "2026-04-02",
+      "last_seen_metrics": {
+        "stars": 183295,
+        "forks": 38888,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_seen_scores": {},
+      "last_published_at": "2026-04-02",
+      "last_published_metrics": {
+        "stars": 183295,
+        "forks": 38888,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_published_scores": {}
+    },
+    "repo:Significant-Gravitas/AutoGPT": {
+      "candidate_id": "repo:Significant-Gravitas/AutoGPT",
+      "last_seen_at": "2026-04-02",
+      "last_seen_metrics": {
+        "stars": 183044,
+        "forks": 46221,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_seen_scores": {},
+      "last_published_at": "2026-04-02",
+      "last_published_metrics": {
+        "stars": 183044,
+        "forks": 46221,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_published_scores": {}
+    },
+    "repo:n8n-io/n8n": {
+      "candidate_id": "repo:n8n-io/n8n",
+      "last_seen_at": "2026-04-02",
+      "last_seen_metrics": {
+        "stars": 182085,
+        "forks": 56393,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_seen_scores": {},
+      "last_published_at": "2026-04-02",
+      "last_published_metrics": {
+        "stars": 182085,
+        "forks": 56393,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_published_scores": {}
+    },
+    "repo:github/gitignore": {
+      "candidate_id": "repo:github/gitignore",
+      "last_seen_at": "2026-04-02",
+      "last_seen_metrics": {
+        "stars": 173244,
+        "forks": 82713,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_seen_scores": {},
+      "last_published_at": "2026-04-02",
+      "last_published_metrics": {
+        "stars": 173244,
+        "forks": 82713,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_published_scores": {}
+    },
+    "repo:avelino/awesome-go": {
+      "candidate_id": "repo:avelino/awesome-go",
+      "last_seen_at": "2026-04-02",
+      "last_seen_metrics": {
+        "stars": 168856,
+        "forks": 13101,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_seen_scores": {},
+      "last_published_at": "2026-04-02",
+      "last_published_metrics": {
+        "stars": 168856,
+        "forks": 13101,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_published_scores": {}
+    },
+    "repo:ollama/ollama": {
+      "candidate_id": "repo:ollama/ollama",
+      "last_seen_at": "2026-04-02",
+      "last_seen_metrics": {
+        "stars": 166735,
+        "forks": 15263,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_seen_scores": {},
+      "last_published_at": "2026-04-02",
+      "last_published_metrics": {
+        "stars": 166735,
+        "forks": 15263,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_published_scores": {}
+    },
+    "repo:AUTOMATIC1111/stable-diffusion-webui": {
+      "candidate_id": "repo:AUTOMATIC1111/stable-diffusion-webui",
+      "last_seen_at": "2026-04-02",
+      "last_seen_metrics": {
+        "stars": 162070,
+        "forks": 30203,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_seen_scores": {},
+      "last_published_at": "2026-04-02",
+      "last_published_metrics": {
+        "stars": 162070,
+        "forks": 30203,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_published_scores": {}
+    }
+  },
   "run_summaries": [
     {
       "date": "2026-04-02",
-      "candidate_count": 0,
-      "selected_count": 0,
+      "candidate_count": 60,
+      "selected_count": 60,
       "collector_errors": [],
       "api_usage": {
         "total_budget": 36,
