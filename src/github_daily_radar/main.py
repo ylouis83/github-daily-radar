@@ -37,8 +37,20 @@ from github_daily_radar.config import Settings
 from github_daily_radar.publish.feishu import build_alert_cards, build_digest_card, send_cards
 from github_daily_radar.scoring.dedupe import should_reenter
 from github_daily_radar.state.store import StateStore
-from github_daily_radar.summarize.digest import build_display_items, score_candidate, split_a_b
+from github_daily_radar.summarize.digest import build_display_items, score_candidate, select_top_items
 from github_daily_radar.summarize.llm import EditorialLLM
+
+PUBLIC_CARD_METADATA_KEYS = frozenset(
+    {
+        "count",
+        "editorial",
+        "collector_errors",
+        "collector_skips",
+        "coverage_note",
+        "api_usage",
+        "item_count",
+    }
+)
 
 
 def should_publish(*, dry_run: bool, alert_only: bool = False) -> bool:
@@ -52,6 +64,14 @@ def should_update_state(*, dry_run: bool, alert_only: bool = False) -> bool:
 def product_today(*, timezone_name: str, now: datetime | None = None) -> date:
     moment = now or datetime.now(timezone.utc)
     return moment.astimezone(ZoneInfo(timezone_name)).date()
+
+
+def build_card_metadata(metadata: dict) -> dict:
+    return {
+        key: value
+        for key, value in metadata.items()
+        if key in PUBLIC_CARD_METADATA_KEYS
+    }
 
 
 def run_pipeline(settings: Settings, alert_only: bool = False) -> dict:
@@ -249,18 +269,15 @@ def run_pipeline(settings: Settings, alert_only: bool = False) -> dict:
     display_items = build_display_items(filtered, editorial)
     if settings.report_limit > 0:
         display_items = display_items[: settings.report_limit]
-    a_items, b_items = split_a_b(display_items, a_max=10, b_max=10)
-    published_items = a_items + b_items
+    published_items = select_top_items(display_items, min_items=10, max_items=20, per_repo_cap=1)
     filtered_kind_counts = Counter(item.kind for item in filtered)
     published_kind_counts = Counter(item["kind"] for item in published_items)
-    metadata["a_count"] = len(a_items)
-    metadata["b_count"] = len(b_items)
+    metadata["item_count"] = len(published_items)
     metadata["filtered_kind_counts"] = dict(filtered_kind_counts)
     metadata["published_kind_counts"] = dict(published_kind_counts)
     card = build_digest_card(
-        items=a_items,
-        secondary_items=b_items,
-        metadata=metadata,
+        items=published_items,
+        metadata=build_card_metadata(metadata),
         today=today,
     )
     cards = [card]

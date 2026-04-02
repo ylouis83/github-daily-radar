@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 from collections import defaultdict
-from collections import deque
 from math import log1p
 
 from github_daily_radar.models import Candidate
@@ -338,71 +337,55 @@ def build_display_items(candidates: list[Candidate], editorial: list[dict]) -> l
     return items
 
 
-def split_a_b(
+def choose_daily_limit(
     items: list[dict],
     *,
-    a_min: int = 8,
-    a_max: int = 12,
-    b_min: int = 8,
-    b_max: int = 12,
-    per_repo_cap_a: int = 1,
-) -> tuple[list[dict], list[dict]]:
+    min_items: int = 10,
+    max_items: int = 20,
+) -> int:
+    total = len(items)
+    if total <= 0:
+        return 0
+    if total <= min_items:
+        return total
+    return min(total, max_items)
+
+
+def select_top_items(
+    items: list[dict],
+    *,
+    min_items: int = 10,
+    max_items: int = 20,
+    per_repo_cap: int = 1,
+) -> list[dict]:
+    """从候选中选出项目优先的单卡列表，按编辑 rank → 分数排序，同仓库去重。"""
+
     def sort_key(item: dict) -> tuple[int, int, float, str]:
         rank = item.get("editorial_rank")
         rank_key = int(rank) if rank is not None else 10_000
         score = float(item.get("score") or 0.0)
         return (0 if rank is not None else 1, rank_key, -score, item.get("title", ""))
 
-    ordered = sorted(items, key=sort_key)
-    bucketed: dict[str, deque[dict]] = {
-        kind: deque(item for item in ordered if _bucket_for_kind(item.get("kind", "other")) == kind)
-        for kind in KIND_ORDER
-    }
+    target_limit = choose_daily_limit(items, min_items=min_items, max_items=max_items)
+    grouped: dict[str, list[dict]] = defaultdict(list)
+    for item in items:
+        grouped[_bucket_for_kind(item.get("kind", "other"))].append(item)
 
-    def take_diverse(limit: int, buckets: dict[str, deque[dict]]) -> list[dict]:
-        selected: list[dict] = []
-        repo_counts: dict[str, int] = defaultdict(int)
-        while len(selected) < limit:
-            progress = False
-            for kind in KIND_ORDER:
-                bucket = buckets[kind]
-                while bucket:
-                    candidate = bucket.popleft()
-                    repo_key = candidate.get("repo_full_name") or candidate.get("url") or candidate.get("title")
-                    if repo_counts[repo_key] >= per_repo_cap_a:
-                        continue
-                    selected.append(candidate)
-                    repo_counts[repo_key] += 1
-                    progress = True
-                    break
-                if len(selected) >= limit:
-                    break
-            if not progress:
-                break
-        return selected
+    selected: list[dict] = []
+    repo_counts: dict[str, int] = defaultdict(int)
 
-    a_items = take_diverse(a_max, bucketed)
-    if len(a_items) < a_min:
-        a_items = ordered[:a_min]
+    for kind in KIND_ORDER:
+        for item in sorted(grouped.get(kind, []), key=sort_key):
+            if len(selected) >= target_limit:
+                return selected
+            repo_key = item.get("repo_full_name") or item.get("url") or item.get("title")
+            if repo_counts[repo_key] >= per_repo_cap:
+                continue
+            selected.append(item)
+            repo_counts[repo_key] += 1
 
-    a_repos = {item.get("repo_full_name") or item.get("url") for item in a_items}
-    remaining = [
-        item for item in ordered
-        if item not in a_items
-        and (item.get("repo_full_name") or item.get("url")) not in a_repos
-    ]
-    remaining_buckets: dict[str, deque[dict]] = {
-        kind: deque(item for item in remaining if _bucket_for_kind(item.get("kind", "other")) == kind)
-        for kind in KIND_ORDER
-    }
-    b_items = take_diverse(b_max, remaining_buckets)
-    if len(b_items) < b_min:
-        b_items = remaining[:b_min]
+    return selected
 
-    for item in b_items:
-        if item.get("summary") and len(item["summary"]) > 80:
-            item["summary"] = item["summary"][:80]
-    return a_items, b_items
 
 
 def _overview_lines(items: list[dict], *, variant: str, metadata: dict | None = None) -> list[str]:

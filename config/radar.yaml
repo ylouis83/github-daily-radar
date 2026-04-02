@@ -200,11 +200,11 @@ ossinsight:
 # 8. 输出控制
 # ------------------------------------------
 output:
-  # 每日推送条数
+  # 每日推送条数：单卡、项目优先、动态 10-20 条
   daily_item_count:
-    projects: 4-7
-    skills: 3-5
-    ideas_discussions: 3-6
+    min: 10
+    max: 20
+    project_first: true
   
   # LLM 编辑
   llm_max_candidates: 24       # 最多送 24 个候选给 LLM 精排

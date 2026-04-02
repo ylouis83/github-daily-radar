@@ -1,5 +1,5 @@
 from github_daily_radar.models import Candidate, CandidateMetrics
-from github_daily_radar.summarize.digest import build_display_items, split_a_b
+from github_daily_radar.summarize.digest import build_display_items, choose_daily_limit, select_top_items
 
 
 def test_build_display_items_uses_kind_specific_chinese_fallbacks():
@@ -172,7 +172,13 @@ def test_build_display_items_creates_distinct_project_profiles():
     assert items[0]["why_now"] == "近 7 天 +250⭐"
 
 
-def test_split_a_b_keeps_kind_diversity():
+def test_choose_daily_limit_is_dynamic_between_10_and_20():
+    assert choose_daily_limit(list(range(4))) == 4
+    assert choose_daily_limit(list(range(12))) == 12
+    assert choose_daily_limit(list(range(24))) == 20
+
+
+def test_select_top_items_is_project_first_with_repo_cap():
     items = [
         {
             "kind": "skill",
@@ -197,6 +203,7 @@ def test_split_a_b_keeps_kind_diversity():
             "summary": "项目",
             "repo_full_name": "owner/project-a",
             "score": 5.0,
+            "editorial_rank": 2,
         },
         {
             "kind": "discussion",
@@ -206,9 +213,32 @@ def test_split_a_b_keeps_kind_diversity():
             "repo_full_name": "owner/discussion-a",
             "score": 4.0,
         },
+        {
+            "kind": "project",
+            "title": "project-b",
+            "url": "https://github.com/owner/project-b",
+            "summary": "项目",
+            "repo_full_name": "owner/project-b",
+            "score": 3.0,
+            "editorial_rank": 1,
+        },
+        {
+            "kind": "project",
+            "title": "project-a-duplicate",
+            "url": "https://github.com/owner/project-a/pulls",
+            "summary": "项目重复",
+            "repo_full_name": "owner/project-a",
+            "score": 2.0,
+        },
     ]
 
-    a_items, b_items = split_a_b(items, a_max=3, a_min=3, b_max=1, b_min=0)
+    selected = select_top_items(items)
 
-    assert {item["kind"] for item in a_items} >= {"project", "skill", "discussion"}
-    assert len(b_items) == 1
+    assert [item["title"] for item in selected] == [
+        "project-b",
+        "project-a",
+        "skill-a",
+        "skill-b",
+        "discussion-a",
+    ]
+    assert [item["kind"] for item in selected] == ["project", "project", "skill", "skill", "discussion"]

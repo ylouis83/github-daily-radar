@@ -95,6 +95,64 @@ class _GoodIssuesCollector:
         ]
 
 
+class _OtherRepoDiscussionCollector:
+    name = "discussions"
+
+    def __init__(self, *args, **kwargs) -> None:
+        pass
+
+    def collect(self):
+        return [
+            Candidate(
+                candidate_id="discussion:other",
+                kind="discussion",
+                source_query="proposal",
+                title="Other RFC",
+                url="https://github.com/other/repo/discussions/1",
+                repo_full_name="other/repo",
+                author="other",
+                created_at="2026-04-01T00:00:00Z",
+                updated_at="2026-04-02T00:00:00Z",
+                body_excerpt="discussion",
+                topics=[],
+                labels=[],
+                metrics=CandidateMetrics(comments=10),
+                raw_signals={},
+                rule_scores={},
+                dedupe_key="other-repo-discussion",
+            )
+        ]
+
+
+class _GoodSkillCollector:
+    name = "skills"
+
+    def __init__(self, *args, **kwargs) -> None:
+        pass
+
+    def collect(self):
+        return [
+            Candidate(
+                candidate_id="skill:owner/skill",
+                kind="skill",
+                source_query="filename:SKILL.md path:skills",
+                title="owner/skill",
+                url="https://github.com/owner/skill",
+                repo_full_name="owner/skill",
+                author="owner",
+                created_at="2026-04-01T00:00:00Z",
+                updated_at="2026-04-02T00:00:00Z",
+                body_excerpt="skill",
+                topics=["agent"],
+                labels=[],
+                metrics=CandidateMetrics(stars=500, forks=40),
+                raw_signals={},
+                rule_scores={},
+                dedupe_key="owner/skill",
+            )
+        ]
+
+
 class _BadCollector:
     name = "skills"
 
@@ -255,7 +313,6 @@ def test_run_pipeline_uses_editorial_summaries_and_continues_on_collector_failur
 
     def fake_build_digest_card(*, items, secondary_items=None, metadata=None, today=None):
         captured["items"] = items
-        captured["secondary_items"] = secondary_items or []
         captured["metadata"] = metadata or {}
         captured["today"] = today
         return {"msg_type": "interactive", "card": {"header": {"title": {"content": "test"}}}}
@@ -291,8 +348,10 @@ def test_run_pipeline_uses_editorial_summaries_and_continues_on_collector_failur
         and "引入必要性：" in item["summary"]
         for item in captured["items"]
     )
-    assert captured["metadata"]["a_count"] == 4
-    assert captured["metadata"]["b_count"] == 0
+    assert captured["metadata"]["item_count"] == 2
+    assert "collector_stats" not in captured["metadata"]
+    assert "filtered_kind_counts" not in captured["metadata"]
+    assert "published_kind_counts" not in captured["metadata"]
 
     history = json.loads(Path("artifacts/state/history.json").read_text(encoding="utf-8"))
     assert history["candidate_index"]["project:owner/trend"]["last_seen_metrics"]["stars"] == 120
@@ -314,7 +373,6 @@ def test_run_pipeline_respects_report_limit(monkeypatch, tmp_path: Path):
 
     def fake_build_digest_card(*, items, secondary_items=None, metadata=None, today=None):
         captured["items"] = items
-        captured["secondary_items"] = secondary_items or []
         captured["metadata"] = metadata or {}
         return {"msg_type": "interactive", "card": {"header": {"title": {"content": "test"}}}}
 
@@ -322,7 +380,7 @@ def test_run_pipeline_respects_report_limit(monkeypatch, tmp_path: Path):
     monkeypatch.setattr(main_module, "OSSInsightCollector", _GoodOSSInsightCollector)
     monkeypatch.setattr(main_module, "RepoCollector", _GoodCollector)
     monkeypatch.setattr(main_module, "SkillCollector", _BadCollector)
-    monkeypatch.setattr(main_module, "DiscussionCollector", _GoodDiscussionCollector)
+    monkeypatch.setattr(main_module, "DiscussionCollector", _OtherRepoDiscussionCollector)
     monkeypatch.setattr(main_module, "IssuesPrsCollector", _GoodIssuesCollector)
     monkeypatch.setattr(main_module, "EditorialLLM", _FakeLLM)
     monkeypatch.setattr(main_module, "build_digest_card", fake_build_digest_card)
@@ -332,12 +390,12 @@ def test_run_pipeline_respects_report_limit(monkeypatch, tmp_path: Path):
     result = run_pipeline(settings=settings)
 
     assert result["count"] == 4
-    assert captured["metadata"]["a_count"] + captured["metadata"]["b_count"] == 2
+    assert captured["metadata"]["item_count"] == 2
     history = json.loads(Path("artifacts/state/history.json").read_text(encoding="utf-8"))
     assert history["run_summaries"][0]["selected_count"] == 2
 
 
-def test_run_pipeline_fuses_b_items_into_one_card(monkeypatch, tmp_path: Path):
+def test_run_pipeline_single_version_selects_all(monkeypatch, tmp_path: Path):
     monkeypatch.chdir(tmp_path)
     monkeypatch.setenv("GITHUB_TOKEN", "ghs_test")
     monkeypatch.setenv("QWEN_API_KEY", "qwen_test")
@@ -347,7 +405,6 @@ def test_run_pipeline_fuses_b_items_into_one_card(monkeypatch, tmp_path: Path):
 
     def fake_build_digest_card(*, items, secondary_items=None, metadata=None, today=None):
         captured["items"] = items
-        captured["secondary_items"] = secondary_items or []
         return {"msg_type": "interactive", "card": {"header": {"title": {"content": "test"}}}}
 
     monkeypatch.setattr(main_module, "TrendingCollector", _EmptyCollector)
@@ -364,5 +421,35 @@ def test_run_pipeline_fuses_b_items_into_one_card(monkeypatch, tmp_path: Path):
     result = run_pipeline(settings=settings)
 
     assert result["count"] == 12
-    assert len(captured["items"]) == 10
-    assert len(captured["secondary_items"]) == 2
+    # 单版输出：所有 12 条进入一个列表（limit=20, 12<20）
+    assert len(captured["items"]) == 12
+
+
+def test_run_pipeline_single_card_is_project_first(monkeypatch, tmp_path: Path):
+    monkeypatch.chdir(tmp_path)
+    monkeypatch.setenv("GITHUB_TOKEN", "ghs_test")
+    monkeypatch.setenv("QWEN_API_KEY", "qwen_test")
+    monkeypatch.setenv("FEISHU_WEBHOOK_URL", "https://example.com/hook")
+
+    captured = {}
+
+    def fake_build_digest_card(*, items, secondary_items=None, metadata=None, today=None):
+        captured["items"] = items
+        captured["metadata"] = metadata or {}
+        return {"msg_type": "interactive", "card": {"header": {"title": {"content": "test"}}}}
+
+    monkeypatch.setattr(main_module, "TrendingCollector", _EmptyCollector)
+    monkeypatch.setattr(main_module, "OSSInsightCollector", _EmptyCollector)
+    monkeypatch.setattr(main_module, "RepoCollector", _GoodCollector)
+    monkeypatch.setattr(main_module, "SkillCollector", _GoodSkillCollector)
+    monkeypatch.setattr(main_module, "DiscussionCollector", _OtherRepoDiscussionCollector)
+    monkeypatch.setattr(main_module, "IssuesPrsCollector", _EmptyCollector)
+    monkeypatch.setattr(main_module, "EditorialLLM", _FakeLLM)
+    monkeypatch.setattr(main_module, "build_digest_card", fake_build_digest_card)
+    monkeypatch.setattr(main_module, "send_cards", lambda *args, **kwargs: None)
+
+    settings = Settings.from_env()
+    run_pipeline(settings=settings)
+
+    assert [item["kind"] for item in captured["items"]] == ["project", "skill", "discussion"]
+    assert [item["title"] for item in captured["items"]] == ["owner/name", "owner/skill", "Other RFC"]
