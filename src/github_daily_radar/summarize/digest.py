@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from collections import defaultdict
+from collections import deque
 from math import log1p
 
 from github_daily_radar.models import Candidate
@@ -130,27 +131,43 @@ def split_a_b(
         return (0 if rank is not None else 1, rank_key, -score, item.get("title", ""))
 
     ordered = sorted(items, key=sort_key)
-    a_items: list[dict] = []
-    repo_counts: dict[str, int] = defaultdict(int)
-    for item in ordered:
-        if len(a_items) >= a_max:
-            break
-        repo_key = item.get("repo_full_name") or item.get("url") or item.get("title")
-        if repo_counts[repo_key] >= per_repo_cap_a:
-            continue
-        a_items.append(item)
-        repo_counts[repo_key] += 1
+    bucketed: dict[str, deque[dict]] = {
+        kind: deque(item for item in ordered if _bucket_for_kind(item.get("kind", "other")) == kind)
+        for kind in KIND_ORDER
+    }
 
-    if len(a_items) < a_min:
-        for item in ordered:
-            if item in a_items:
-                continue
-            if len(a_items) >= a_min:
+    def take_diverse(limit: int, buckets: dict[str, deque[dict]]) -> list[dict]:
+        selected: list[dict] = []
+        repo_counts: dict[str, int] = defaultdict(int)
+        while len(selected) < limit:
+            progress = False
+            for kind in KIND_ORDER:
+                bucket = buckets[kind]
+                while bucket:
+                    candidate = bucket.popleft()
+                    repo_key = candidate.get("repo_full_name") or candidate.get("url") or candidate.get("title")
+                    if repo_counts[repo_key] >= per_repo_cap_a:
+                        continue
+                    selected.append(candidate)
+                    repo_counts[repo_key] += 1
+                    progress = True
+                    break
+                if len(selected) >= limit:
+                    break
+            if not progress:
                 break
-            a_items.append(item)
+        return selected
+
+    a_items = take_diverse(a_max, bucketed)
+    if len(a_items) < a_min:
+        a_items = ordered[:a_min]
 
     remaining = [item for item in ordered if item not in a_items]
-    b_items = remaining[:b_max]
+    remaining_buckets: dict[str, deque[dict]] = {
+        kind: deque(item for item in remaining if _bucket_for_kind(item.get("kind", "other")) == kind)
+        for kind in KIND_ORDER
+    }
+    b_items = take_diverse(b_max, remaining_buckets)
     if len(b_items) < b_min:
         b_items = remaining[:b_min]
 

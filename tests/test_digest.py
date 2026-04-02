@@ -1,5 +1,5 @@
 from github_daily_radar.models import Candidate, CandidateMetrics
-from github_daily_radar.summarize.digest import build_display_items
+from github_daily_radar.summarize.digest import build_display_items, split_a_b
 
 
 def test_build_display_items_uses_chinese_fallbacks():
@@ -28,3 +28,45 @@ def test_build_display_items_uses_chinese_fallbacks():
     assert "原文" not in items[0]["summary"]
     assert "最近有 12 星 / 3 个 fork" in items[0]["why_now"]
     assert items[0]["follow_up"].startswith("建议先看 README")
+
+
+def test_split_a_b_keeps_kind_diversity():
+    items = [
+        {
+            "kind": "skill",
+            "title": "skill-a",
+            "url": "https://github.com/owner/skill-a",
+            "summary": "技能",
+            "repo_full_name": "owner/skill-a",
+            "score": 100.0,
+        },
+        {
+            "kind": "skill",
+            "title": "skill-b",
+            "url": "https://github.com/owner/skill-b",
+            "summary": "技能",
+            "repo_full_name": "owner/skill-b",
+            "score": 90.0,
+        },
+        {
+            "kind": "project",
+            "title": "project-a",
+            "url": "https://github.com/owner/project-a",
+            "summary": "项目",
+            "repo_full_name": "owner/project-a",
+            "score": 5.0,
+        },
+        {
+            "kind": "discussion",
+            "title": "discussion-a",
+            "url": "https://github.com/owner/discussion-a",
+            "summary": "讨论",
+            "repo_full_name": "owner/discussion-a",
+            "score": 4.0,
+        },
+    ]
+
+    a_items, b_items = split_a_b(items, a_max=3, a_min=3, b_max=1, b_min=0)
+
+    assert {item["kind"] for item in a_items} >= {"project", "skill", "discussion"}
+    assert len(b_items) == 1
