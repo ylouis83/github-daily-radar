@@ -108,6 +108,7 @@ class _FakeLLM:
                 "title": "owner/name",
                 "url": "https://github.com/owner/name",
                 "summary": "中文摘要",
+                "why_now": "今天有进展",
             }
         ]
 
@@ -171,9 +172,9 @@ def test_run_pipeline_uses_editorial_summaries_and_continues_on_collector_failur
     captured = {}
 
     def fake_build_cards(*, title, sections, metadata=None, max_lines=20):
-        captured["title"] = title
-        captured["sections"] = sections
-        captured["metadata"] = metadata or {}
+        captured.setdefault("calls", []).append(
+            {"title": title, "sections": sections, "metadata": metadata or {}}
+        )
         return [{"msg_type": "interactive", "card": {"header": {"title": {"content": title}}}}]
 
     monkeypatch.setattr(main_module, "RepoCollector", _GoodCollector)
@@ -188,8 +189,11 @@ def test_run_pipeline_uses_editorial_summaries_and_continues_on_collector_failur
     result = run_pipeline(settings=settings)
 
     assert result["count"] == 3
-    assert captured["sections"][0]["items"][0]["summary"] == "中文摘要"
-    assert captured["metadata"]["collector_errors"] == 1
+    titles = [call["title"] for call in captured["calls"]]
+    assert any("A 精编版" in title for title in titles)
+    assert any("B 保留版" in title for title in titles)
+    assert captured["calls"][0]["sections"][0]["items"][0]["summary"] == "中文摘要"
+    assert captured["calls"][0]["metadata"]["collector_errors"] == 1
 
     history = json.loads(Path("artifacts/state/history.json").read_text(encoding="utf-8"))
     assert history["candidate_index"]["repo:owner/name"]["last_seen_metrics"]["stars"] == 10

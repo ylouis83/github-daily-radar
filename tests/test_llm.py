@@ -29,7 +29,7 @@ def test_editorial_llm_parses_json_payload():
                 "choices": [
                     {
                         "message": {
-                            "content": '[{"kind":"project","title":"Repo A","url":"https://github.com/a/b","summary":"中文摘要"}]'
+                            "content": '[{"kind":"project","title":"Repo A","url":"https://github.com/a/b","summary":"中文摘要","why_now":"今天活跃"}]'
                         }
                     }
                 ]
@@ -47,6 +47,38 @@ def test_editorial_llm_parses_json_payload():
             "title": "Repo A",
             "url": "https://github.com/a/b",
             "summary": "中文摘要",
+            "why_now": "今天活跃",
+        }
+    ]
+
+
+@respx.mock
+def test_editorial_llm_extracts_json_from_wrapped_text():
+    respx.post("https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions").mock(
+        return_value=Response(
+            200,
+            json={
+                "choices": [
+                    {
+                        "message": {
+                            "content": "Here is the JSON:\n[{\"kind\":\"project\",\"title\":\"Repo A\",\"url\":\"https://github.com/a/b\",\"summary\":\"中文摘要\",\"why_now\":\"热度上升\"}]"
+                        }
+                    }
+                ]
+            },
+        )
+    )
+
+    client = EditorialLLM(api_key="qwen_test", model="codingplan")
+    result = client.rank_and_summarize([{"title": "Repo A", "kind": "project", "url": "https://github.com/a/b"}])
+
+    assert result == [
+        {
+            "kind": "project",
+            "title": "Repo A",
+            "url": "https://github.com/a/b",
+            "summary": "中文摘要",
+            "why_now": "热度上升",
         }
     ]
 

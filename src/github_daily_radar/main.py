@@ -13,7 +13,13 @@ from github_daily_radar.models import Candidate
 from github_daily_radar.publish.feishu import build_alert_cards, build_cards, send_cards
 from github_daily_radar.scoring.dedupe import should_reenter
 from github_daily_radar.state.store import StateStore
-from github_daily_radar.summarize.digest import group_digest_items
+from github_daily_radar.summarize.digest import (
+    KIND_LABELS_A,
+    KIND_LABELS_B,
+    build_display_items,
+    group_digest_items,
+    split_a_b,
+)
 from github_daily_radar.summarize.llm import EditorialLLM
 
 
@@ -30,51 +36,6 @@ def product_today(*, timezone_name: str, now: datetime | None = None) -> date:
     return moment.astimezone(ZoneInfo(timezone_name)).date()
 
 
-def _fallback_display_item(candidate: Candidate) -> dict:
-    summary = candidate.body_excerpt.strip()
-    if not summary:
-        summary = (
-            f"Signals: stars {candidate.metrics.stars}, "
-            f"forks {candidate.metrics.forks}, comments {candidate.metrics.comments}"
-        )
-    return {
-        "kind": candidate.kind,
-        "title": candidate.title,
-        "url": candidate.url,
-        "summary": summary[:160],
-    }
-
-
-def _merge_editorial(candidates: list[Candidate], editorial: list[dict]) -> list[dict]:
-    display_items = [_fallback_display_item(candidate) for candidate in candidates]
-    if not editorial:
-        return display_items
-
-    editorial_by_url = {item.get("url"): item for item in editorial if item.get("url")}
-    editorial_by_title = {item.get("title"): item for item in editorial if item.get("title")}
-
-    merged: list[dict] = []
-    for candidate, fallback in zip(candidates, display_items):
-        merged_item = dict(fallback)
-        editorial_item = editorial_by_url.get(candidate.url) or editorial_by_title.get(candidate.title)
-        if editorial_item:
-            merged_item["kind"] = editorial_item.get("kind", merged_item["kind"])
-            merged_item["title"] = editorial_item.get("title", merged_item["title"])
-            merged_item["url"] = editorial_item.get("url", merged_item["url"])
-            merged_item["summary"] = (
-                editorial_item.get("summary")
-                or editorial_item.get("why_now")
-                or merged_item["summary"]
-            )
-            if editorial_item.get("why_now"):
-                merged_item["why_now"] = editorial_item["why_now"]
-            rank = editorial_item.get("rank", editorial_item.get("editorial_rank"))
-            if rank is not None:
-                merged_item["editorial_rank"] = rank
-            if editorial_item.get("section"):
-                merged_item["section"] = editorial_item["section"]
-        merged.append(merged_item)
-    return merged
 
 
 def run_pipeline(settings: Settings, alert_only: bool = False) -> dict:
@@ -144,26 +105,51 @@ def run_pipeline(settings: Settings, alert_only: bool = False) -> dict:
     llm = EditorialLLM(api_key=settings.qwen_api_key, model=settings.default_model)
     editorial = llm.rank_and_summarize(
         [
-            {"title": item.title, "kind": item.kind, "url": item.url}
+            {
+                "title": item.title,
+                "kind": item.kind,
+                "url": item.url,
+                "repo": item.repo_full_name,
+                "signals": {
+                    "stars": item.metrics.stars,
+                    "forks": item.metrics.forks,
+                    "comments": item.metrics.comments,
+                    "reactions": item.metrics.reactions,
+                },
+                "excerpt": item.body_excerpt[:200],
+            }
             for item in filtered[: settings.llm_max_candidates]
         ]
     )
 
-    digest_items = _merge_editorial(filtered, editorial)
-    sections = group_digest_items(digest_items)
+    display_items = build_display_items(filtered, editorial)
+    a_items, b_items = split_a_b(display_items)
+    sections_a = group_digest_items(a_items, kind_labels=KIND_LABELS_A)
+    sections_b = group_digest_items(b_items, kind_labels=KIND_LABELS_B)
     metadata = {
         "count": len(filtered),
         "editorial": len(editorial),
+        "a_count": len(a_items),
+        "b_count": len(b_items),
     }
     if collector_errors:
         metadata["collector_errors"] = len(collector_errors)
         metadata["coverage_note"] = "Reduced coverage due to collector failure(s)."
     api_usage = client._budget.snapshot()
     metadata["api_usage"] = api_usage
-    cards = build_cards(
-        title="GitHub Daily Radar",
-        sections=sections,
-        metadata=metadata,
+    cards = []
+    cards.extend(
+        build_cards(
+            title="GitHub Daily Radar · A 精编版",
+            sections=sections_a,
+            metadata=metadata,
+        )
+    )
+    cards.extend(
+        build_cards(
+            title="GitHub Daily Radar · B 保留版",
+            sections=sections_b,
+        )
     )
 
     if should_publish(dry_run=settings.dry_run, alert_only=alert_only):
