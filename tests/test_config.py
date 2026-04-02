@@ -10,6 +10,7 @@ def test_settings_defaults(monkeypatch):
 
     assert settings.timezone == "Asia/Shanghai"
     assert settings.default_model == "qwen3.5-plus"
+    assert settings.fallback_model == "kimi-k2.5"
     assert settings.dry_run is False
     assert settings.llm_max_candidates == 24
     assert settings.search_requests_per_minute == 25

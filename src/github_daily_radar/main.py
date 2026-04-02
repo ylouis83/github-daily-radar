@@ -186,7 +186,12 @@ def run_pipeline(settings: Settings, alert_only: bool = False) -> dict:
             filtered.append(candidate)
 
     ranked_candidates = sorted(filtered, key=score_candidate, reverse=True)
-    llm = EditorialLLM(api_key=settings.qwen_api_key, model=settings.default_model)
+    fallback_models = [settings.fallback_model] if settings.fallback_model else []
+    llm = EditorialLLM(
+        api_key=settings.qwen_api_key,
+        model=settings.default_model,
+        fallback_models=fallback_models,
+    )
     def _editorial_payload(item):
         raw_signals = item.raw_signals or {}
         hints = {

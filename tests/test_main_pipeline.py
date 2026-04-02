@@ -178,7 +178,7 @@ class _EmptyCollector:
 
 class _FakeLLM:
     def __init__(self, *args, **kwargs) -> None:
-        pass
+        _FakeLLM.init_kwargs = kwargs
 
     def rank_and_summarize(self, candidates):
         _FakeLLM.last_candidates = candidates
@@ -281,6 +281,7 @@ def test_run_pipeline_uses_editorial_summaries_and_continues_on_collector_failur
     assert _FakeLLM.last_candidates[1]["title"] == "owner/name"
     assert _FakeLLM.last_candidates[2]["title"] == "Proposal"
     assert _FakeLLM.last_candidates[3]["title"] == "RFC"
+    assert _FakeLLM.init_kwargs["fallback_models"] == ["kimi-k2.5"]
     # 验证 editorial 画像被正确合并
     assert any(
         item["title"] == "owner/name"

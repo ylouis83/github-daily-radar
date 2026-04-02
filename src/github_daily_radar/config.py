@@ -12,6 +12,7 @@ class Settings(BaseSettings):
     dry_run: bool = Field(default=False, alias="DRY_RUN")
     timezone: str = Field(default="Asia/Shanghai", alias="TIMEZONE")
     default_model: str = Field(default="qwen3.5-plus", alias="LLM_MODEL")
+    fallback_model: str | None = Field(default="kimi-k2.5", alias="LLM_FALLBACK_MODEL")
     llm_max_candidates: int = Field(default=24, alias="LLM_MAX_CANDIDATES")
     search_requests_per_minute: int = Field(default=25, alias="SEARCH_REQUESTS_PER_MINUTE")
     code_search_requests_per_minute: int = Field(default=10, alias="CODE_SEARCH_REQUESTS_PER_MINUTE")
