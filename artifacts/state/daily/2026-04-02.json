@@ -9,42 +9,51 @@
         "header": {
           "title": {
             "tag": "plain_text",
-            "content": "GitHub 每日雷达（1/1）"
-          }
+            "content": "🔭 GitHub 每日雷达 · 2026-04-02"
+          },
+          "template": "blue"
         },
         "elements": [
           {
             "tag": "markdown",
-            "content": "**A 精编版 · 今日概览**\n本卡共 10 条，覆盖 5 个项目、5 个技能、0 个提案 / 讨论。\n已按编辑优先级排序，并做了同仓库去重，避免单一仓库刷屏。\n候选 78 条，LLM 精编 0 条，A 10 / B 10，API 搜索 18 次 / GraphQL 11 点。\n这一卡优先展示今天最值得点开的内容。"
+            "content": "今日精选 10 条：5 项目  ·  5 技能"
+          },
+          {
+            "tag": "hr"
           },
           {
             "tag": "markdown",
-            "content": "**必看项目**\n- [anthropics/claude-code](https://github.com/anthropics/claude-code)\n  - 摘要：这是 OSSInsight 监测到的近期热门仓库，适合先看趋势和增量。\n  - 为什么现在：OSSInsight 近期热度上升，最近增量约 1161。\n  - 继续关注：建议先看 README、最近提交和 release，再判断是否继续跟踪。\n- [Yeachan-Heo/oh-my-codex](https://github.com/Yeachan-Heo/oh-my-codex)\n  - 摘要：这是 OSSInsight 监测到的近期热门仓库，适合先看趋势和增量。\n  - 为什么现在：OSSInsight 近期热度上升，最近增量约 410。\n  - 继续关注：建议先看 README、最近提交和 release，再判断是否继续跟踪。\n- [luongnv89/claude-howto](https://github.com/luongnv89/claude-howto)\n  - 摘要：这是 OSSInsight 监测到的近期热门仓库，适合先看趋势和增量。\n  - 为什么现在：OSSInsight 近期热度上升，最近增量约 270。\n  - 继续关注：建议先看 README、最近提交和 release，再判断是否继续跟踪。\n- [Yeachan-Heo/oh-my-claudecode](https://github.com/Yeachan-Heo/oh-my-claudecode)\n  - 摘要：这是 OSSInsight 监测到的近期热门仓库，适合先看趋势和增量。\n  - 为什么现在：OSSInsight 近期热度上升，最近增量约 212。\n  - 继续关注：建议先看 README、最近提交和 release，再判断是否继续跟踪。\n- [NousResearch/hermes-agent](https://github.com/NousResearch/hermes-agent)\n  - 摘要：这是 OSSInsight 监测到的近期热门仓库，适合先看趋势和增量。\n  - 为什么现在：OSSInsight 近期热度上升，最近增量约 135。\n  - 继续关注：建议先看 README、最近提交和 release，再判断是否继续跟踪。"
+            "content": "**🚀 热门项目**\n\n**1.** [anthropics/claude-code](https://github.com/anthropics/claude-code)\n      🔥+1161⭐ · Claude Code is an agentic coding tool that lives in your terminal, understands your codebase, and he\n\n**2.** [Yeachan-Heo/oh-my-codex](https://github.com/Yeachan-Heo/oh-my-codex)\n      🔥+410⭐ · OmX - Oh My codeX: Your codex is not alone. Add hooks, agent teams, HUDs, and so much more.\n\n**3.** [luongnv89/claude-howto](https://github.com/luongnv89/claude-howto)\n      🔥+270⭐ · A visual, example-driven guide to Claude Code — from basic concepts to advanced agents, with copy-pa\n\n**4.** [Yeachan-Heo/oh-my-claudecode](https://github.com/Yeachan-Heo/oh-my-claudecode)\n      🔥+212⭐ · Teams-first Multi-agent orchestration for Claude Code\n\n**5.** [NousResearch/hermes-agent](https://github.com/NousResearch/hermes-agent)\n      📈+135⭐ · The agent that grows with you\n"
+          },
+          {
+            "tag": "hr"
           },
           {
             "tag": "markdown",
-            "content": "**必看技能**\n- [f/prompts.chat](https://github.com/f/prompts.chat)\n  - 摘要：这是一个可复用的技能 / 规则包，适合判断是否加入你的技能库。\n  - 为什么现在：最近有 156381 星 / 20531 个 fork，值得快速判断是否纳入技能库。\n  - 继续关注：建议先看示例和使用说明，再决定是否纳入技能库。\n- [obra/superpowers](https://github.com/obra/superpowers)\n  - 摘要：这是一个可复用的技能 / 规则包，适合判断是否加入你的技能库。\n  - 为什么现在：最近有 131050 星 / 10836 个 fork，值得快速判断是否纳入技能库。\n  - 继续关注：建议先看示例和使用说明，再决定是否纳入技能库。\n- [openai/openai-cookbook](https://github.com/openai/openai-cookbook)\n  - 摘要：这是一个可复用的技能 / 规则包，适合判断是否加入你的技能库。\n  - 为什么现在：最近有 72512 星 / 12235 个 fork，值得快速判断是否纳入技能库。\n  - 继续关注：建议先看示例和使用说明，再决定是否纳入技能库。\n- [punkpeye/awesome-mcp-servers](https://github.com/punkpeye/awesome-mcp-servers)\n  - 摘要：这是一个可复用的技能 / 规则包，适合判断是否加入你的技能库。\n  - 为什么现在：最近有 84070 星 / 8647 个 fork，值得快速判断是否纳入技能库。\n  - 继续关注：建议先看示例和使用说明，再决定是否纳入技能库。\n- [anthropics/claude-cookbooks](https://github.com/anthropics/claude-cookbooks)\n  - 摘要：这是一个可复用的技能 / 规则包，适合判断是否加入你的技能库。\n  - 为什么现在：最近有 37115 星 / 4072 个 fork，值得快速判断是否纳入技能库。\n  - 继续关注：建议先看示例和使用说明，再决定是否纳入技能库。"
+            "content": "**🧩 发现技能**\n\n**1.** [f/prompts.chat](https://github.com/f/prompts.chat)\n      ⭐156K · f.k.a. Awesome ChatGPT Prompts. Share, discover, and collect prompts from the community. Free and op\n\n**2.** [obra/superpowers](https://github.com/obra/superpowers)\n      ⭐131K · An agentic skills framework & software development methodology that works.\n\n**3.** [openai/openai-cookbook](https://github.com/openai/openai-cookbook)\n      ⭐72K · Examples and guides for using the OpenAI API\n\n**4.** [punkpeye/awesome-mcp-servers](https://github.com/punkpeye/awesome-mcp-servers)\n      ⭐84K · A collection of MCP servers.\n\n**5.** [anthropics/claude-cookbooks](https://github.com/anthropics/claude-cookbooks)\n      ⭐37K · A collection of notebooks/recipes showcasing some fun and effective ways of using Claude.\n"
+          },
+          {
+            "tag": "hr"
           },
           {
             "tag": "markdown",
-            "content": "**B 保留版 · 更多值得扫一眼**\n本卡共 10 条，覆盖 3 个项目、7 个技能、0 个提案 / 讨论。\n已按编辑优先级排序，并做了同仓库去重，避免单一仓库刷屏。\n候选 78 条，LLM 精编 0 条，A 10 / B 10，API 搜索 18 次 / GraphQL 11 点。\n这部分是补充阅读，适合扫尾，不会把主卡撑乱。"
+            "content": "**💬 提案与讨论**\n\n*(今日暂无)*"
+          },
+          {
+            "tag": "hr"
           },
           {
             "tag": "markdown",
-            "content": "**项目补充**\n- [shareAI-lab/learn-claude-code](https://github.com/shareAI-lab/learn-claude-code)\n  - 摘要：这是 OSSInsight 监测到的近期热门仓库，适合先看趋势和增量。\n  - 为什么现在：OSSInsight 近期热度上升，最近增量约 120。\n  - 继续关注：建议先看 README、最近提交和 release，再判断是否继续跟踪。\n- [code-yeongyu/oh-my-openagent](https://github.com/code-yeongyu/oh-my-openagent)\n  - 摘要：这是 OSSInsight 监测到的近期热门仓库，适合先看趋势和增量。\n  - 为什么现在：OSSInsight 近期热度上升，最近增量约 140。\n  - 继续关注：建议先看 README、最近提交和 release，再判断是否继续跟踪。\n- [badlogic/pi-mono](https://github.com/badlogic/pi-mono)\n  - 摘要：这是 OSSInsight 监测到的近期热门仓库，适合先看趋势和增量。\n  - 为什么现在：OSSInsight 近期热度上升，最近增量约 67。\n  - 继续关注：建议先看 README、最近提交和 release，再判断是否继续跟踪。"
-          },
-          {
-            "tag": "markdown",
-            "content": "**技能补充**\n- [PatrickJS/awesome-cursorrules](https://github.com/PatrickJS/awesome-cursorrules)\n  - 摘要：这是一个可复用的技能 / 规则包，适合判断是否加入你的技能库。\n  - 为什么现在：最近有 38839 星 / 3289 个 fork，值得快速判断是否纳入技能库。\n  - 继续关注：建议先看示例和使用说明，再决定是否纳入技能库。\n- [crewAIInc/crewAI-examples](https://github.com/crewAIInc/crewAI-examples)\n  - 摘要：这是一个可复用的技能 / 规则包，适合判断是否加入你的技能库。\n  - 为什么现在：最近有 5803 星 / 2079 个 fork，值得快速判断是否纳入技能库。\n  - 继续关注：建议先看示例和使用说明，再决定是否纳入技能库。\n- [ai-boost/awesome-prompts](https://github.com/ai-boost/awesome-prompts)\n  - 摘要：这是一个可复用的技能 / 规则包，适合判断是否加入你的技能库。\n  - 为什么现在：最近有 7504 星 / 688 个 fork，值得快速判断是否纳入技能库。\n  - 继续关注：建议先看示例和使用说明，再决定是否纳入技能库。\n- [leerob/directories](https://github.com/leerob/directories)\n  - 摘要：这是一个可复用的技能 / 规则包，适合判断是否加入你的技能库。\n  - 为什么现在：最近有 3916 星 / 666 个 fork，值得快速判断是否纳入技能库。\n  - 继续关注：建议先看示例和使用说明，再决定是否纳入技能库。\n- [lobehub/lobe-chat-agents](https://github.com/lobehub/lobe-chat-agents)\n  - 摘要：这是一个可复用的技能 / 规则包，适合判断是否加入你的技能库。\n  - 为什么现在：最近有 1018 星 / 284 个 fork，值得快速判断是否纳入技能库。\n  - 继续关注：建议先看示例和使用说明，再决定是否纳入技能库。\n- [mcpware/claude-code-organizer](https://github.com/mcpware/claude-code-organizer)\n  - 摘要：这是一个可复用的技能 / 规则包，适合判断是否加入你的技能库。\n  - 为什么现在：最近有 209 星 / 19 个 fork，值得快速判断是否纳入技能库。\n  - 继续关注：建议先看示例和使用说明，再决定是否纳入技能库。\n- [stacklok/toolhive-studio](https://github.com/stacklok/toolhive-studio)\n  - 摘要：这是一个可复用的技能 / 规则包，适合判断是否加入你的技能库。\n  - 为什么现在：最近有 120 星 / 14 个 fork，值得快速判断是否纳入技能库。\n  - 继续关注：建议先看示例和使用说明，再决定是否纳入技能库。"
+            "content": "📊 58候选→10精选 · 🔍18搜索 + 11GraphQL"
           }
         ]
       }
     }
   ],
-  "count": 78,
+  "count": 58,
   "selected_count": 20,
   "summary": {
-    "count": 78,
+    "count": 58,
     "editorial": 0,
     "api_usage": {
       "total_budget": 36,
@@ -65,9 +74,9 @@
         "kinds": {}
       },
       "skills": {
-        "count": 70,
+        "count": 50,
         "kinds": {
-          "skill": 70
+          "skill": 50
         }
       },
       "discussions": {
@@ -83,7 +92,7 @@
     "b_count": 10,
     "filtered_kind_counts": {
       "project": 8,
-      "skill": 70
+      "skill": 50
     },
     "published_kind_counts": {
       "project": 8,
