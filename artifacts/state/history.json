@@ -946,6 +946,29 @@
         "skill_final_score": 73.78889830934487
       }
     },
+    "skill:ax128/AegisGate": {
+      "candidate_id": "skill:ax128/AegisGate",
+      "last_seen_at": "2026-04-02",
+      "last_seen_metrics": {
+        "stars": 35,
+        "forks": 2,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_seen_scores": {
+        "skill_shape_score": 7.5,
+        "project_scale_score": 31.414682229319155,
+        "skill_min_stars_hit": 1.0,
+        "project_min_stars_hit": 1.0,
+        "skill_bucket": "project",
+        "skill_final_score": 113.41468222931915
+      }
+    },
     "skill:Sompote/tiger_cowork": {
       "candidate_id": "skill:Sompote/tiger_cowork",
       "last_seen_at": "2026-04-02",
@@ -990,6 +1013,29 @@
         "project_min_stars_hit": 0.0,
         "skill_bucket": "project",
         "skill_final_score": 87.41223747412
+      }
+    },
+    "skill:shopwareLabs/ai-coding-tools": {
+      "candidate_id": "skill:shopwareLabs/ai-coding-tools",
+      "last_seen_at": "2026-04-02",
+      "last_seen_metrics": {
+        "stars": 18,
+        "forks": 1,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_seen_scores": {
+        "skill_shape_score": 5.5,
+        "project_scale_score": 25.288379784731386,
+        "skill_min_stars_hit": 1.0,
+        "project_min_stars_hit": 0.0,
+        "skill_bucket": "project",
+        "skill_final_score": 87.28837978473139
       }
     },
     "skill:travisjneuman/.claude": {
@@ -1083,54 +1129,6 @@
         "skill_bucket": "project",
         "skill_final_score": 76.19924722440042
       }
-    },
-    "skill:MuhammadHassan667410/Agentic-AI": {
-      "candidate_id": "skill:MuhammadHassan667410/Agentic-AI",
-      "last_seen_at": "2026-04-02",
-      "last_seen_metrics": {
-        "stars": 0,
-        "forks": 0,
-        "comments": 0,
-        "reactions": 0,
-        "star_growth_7d": 0,
-        "previous_star_growth_7d": 0,
-        "has_new_release": false,
-        "days_since_previous_release": null,
-        "comment_growth_rate": 0.0
-      },
-      "last_seen_scores": {
-        "code_search_hit": 1.0,
-        "skill_shape_score": 6.5,
-        "project_scale_score": 0.0,
-        "skill_min_stars_hit": 0.0,
-        "project_min_stars_hit": 0.0,
-        "skill_bucket": "skill",
-        "skill_final_score": 67.0
-      }
-    },
-    "skill:wyckit/mcp-engram-memory": {
-      "candidate_id": "skill:wyckit/mcp-engram-memory",
-      "last_seen_at": "2026-04-02",
-      "last_seen_metrics": {
-        "stars": 0,
-        "forks": 0,
-        "comments": 0,
-        "reactions": 0,
-        "star_growth_7d": 0,
-        "previous_star_growth_7d": 0,
-        "has_new_release": false,
-        "days_since_previous_release": null,
-        "comment_growth_rate": 0.0
-      },
-      "last_seen_scores": {
-        "code_search_hit": 1.0,
-        "skill_shape_score": 6.5,
-        "project_scale_score": 0.0,
-        "skill_min_stars_hit": 0.0,
-        "project_min_stars_hit": 0.0,
-        "skill_bucket": "skill",
-        "skill_final_score": 67.0
-      }
     }
   },
   "run_summaries": [
@@ -1140,8 +1138,8 @@
       "raw_candidate_count": 51,
       "selected_count": 5,
       "filtered_kind_counts": {
-        "project": 48,
-        "skill": 3
+        "project": 50,
+        "skill": 1
       },
       "published_kind_counts": {
         "project": 5
@@ -1170,8 +1168,8 @@
         "skills": {
           "count": 10,
           "kinds": {
-            "project": 7,
-            "skill": 3
+            "project": 9,
+            "skill": 1
           }
         }
       },

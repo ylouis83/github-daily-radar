@@ -23,7 +23,7 @@
           },
           {
             "tag": "markdown",
-            "content": "**🚀 热门项目**\n\n**1.** [anthropics/claude-code](https://github.com/anthropics/claude-code)\n      🔥+1161⭐ · 看点：OSSInsight 热度爆发 · +1161⭐\n      项目画像：特点：围绕 Claude Code 的终端工作流，当前增量非常高 · 核心能力：把外部工具和能力封装成更容易接入的调用层。 · 引入必要性：已经出现明显爆发，适合优先判断是否值得跟进。\n\n**2.** [Yeachan-Heo/oh-my-codex](https://github.com/Yeachan-Heo/oh-my-codex)\n      🔥+410⭐ · 看点：OSSInsight 热度上升 · +410⭐\n      项目画像：特点：围绕 Codex 的开发流程，热度正在持续上升 · 核心能力：把复杂任务拆成可调度、可复用的 Agent 流程。 · 引入必要性：热度正在上升，适合趁势先看是否值得收录。\n\n**3.** [luongnv89/claude-howto](https://github.com/luongnv89/claude-howto)\n      🔥+270⭐ · 看点：OSSInsight 近期 +270⭐\n      项目画像：特点：围绕 Claude Code 的终端工作流 · 核心能力：把复杂任务拆成可调度、可复用的 Agent 流程。 · 引入必要性：热度已在抬升，适合快速判断是否值得关注。\n\n**4.** [Yeachan-Heo/oh-my-claudecode](https://github.com/Yeachan-Heo/oh-my-claudecode)\n      🔥+212⭐ · 看点：OSSInsight 近期 +212⭐\n      项目画像：特点：围绕 Claude Code 的终端工作流 · 核心能力：把复杂任务拆成可调度、可复用的 Agent 流程。 · 引入必要性：热度已在抬升，适合快速判断是否值得关注。\n\n**5.** [code-yeongyu/oh-my-openagent](https://github.com/code-yeongyu/oh-my-openagent)\n      📈+140⭐ · 看点：OSSInsight 近期 +140⭐\n      项目画像：特点：偏 Agent 编排 · 核心能力：把复杂任务拆成可调度、可复用的 Agent 流程。 · 引入必要性：热度已在抬升，适合快速判断是否值得关注。\n"
+            "content": "**🚀 热门项目**\n\n**1.** [anthropics/claude-code](https://github.com/anthropics/claude-code)\n      🔥+1161⭐ · 看点：过去 24 小时趋势榜首且增长迅猛\n      项目画像：特点：官方终端代理编程工具 · 核心能力：理解代码库并通过自然语言执行任务 · 引入必要性：官方出品代表未来编程交互标准\n\n**2.** [Yeachan-Heo/oh-my-codex](https://github.com/Yeachan-Heo/oh-my-codex)\n      🔥+410⭐ · 看点：社区正在快速构建围绕 Codex 的生态插件\n      项目画像：特点：为 Codex 添加钩子与代理团队的扩展框架 · 核心能力：增强代码索引工具的可定制性与协作能力 · 引入必要性：解决单一代理工具功能局限性问题\n\n**3.** [luongnv89/claude-howto](https://github.com/luongnv89/claude-howto)\n      🔥+270⭐ · 看点：配合官方工具热度提供即时上手资源\n      项目画像：特点：视觉化且示例驱动的 Claude Code 指南 · 核心能力：提供从基础到高级代理的可复制模板 · 引入必要性：降低新手使用复杂代理工具的学习门槛\n\n**4.** [Yeachan-Heo/oh-my-claudecode](https://github.com/Yeachan-Heo/oh-my-claudecode)\n      🔥+212⭐ · 看点：多代理架构是当前 AI 编程演进热点\n      项目画像：特点：面向团队的多代理编排工具 · 核心能力：协调多个 Claude Code 实例协同工作 · 引入必要性：满足复杂项目对多代理协作的需求\n\n**5.** [code-yeongyu/oh-my-openagent](https://github.com/code-yeongyu/oh-my-openagent)\n      📈+140⭐ · 看点：代理工具碎片化需要统一管理层\n      项目画像：特点：最佳代理 harness 框架 · 核心能力：统一管理开放代理工具链 · 引入必要性：简化不同代理工具间的切换成本\n"
           },
           {
             "tag": "hr"
@@ -40,7 +40,7 @@
   "selected_count": 5,
   "summary": {
     "count": 51,
-    "editorial": 0,
+    "editorial": 24,
     "api_usage": {
       "total_budget": 50,
       "search_budget": 28,
@@ -72,16 +72,16 @@
       "skills": {
         "count": 10,
         "kinds": {
-          "project": 7,
-          "skill": 3
+          "project": 9,
+          "skill": 1
         }
       }
     },
     "a_count": 5,
     "b_count": 0,
     "filtered_kind_counts": {
-      "project": 48,
-      "skill": 3
+      "project": 50,
+      "skill": 1
     },
     "published_kind_counts": {
       "project": 5
