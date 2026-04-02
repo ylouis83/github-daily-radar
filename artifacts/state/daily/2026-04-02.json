@@ -16,21 +16,21 @@
         "elements": [
           {
             "tag": "markdown",
-            "content": "**A 精编版 · 今日概览**\n今日精选 10 条：9 项目  ·  1 技能"
+            "content": "**A 精编版 · 今日概览**\n今日精选 10 条：7 项目  ·  3 技能"
           },
           {
             "tag": "hr"
           },
           {
             "tag": "markdown",
-            "content": "**🚀 热门项目**\n\n**1.** [anthropics/claude-code](https://github.com/anthropics/claude-code)\n      🔥+1161⭐ · 看点：作为 Anthropic 官方新作，今日趋势热度极高。\n      项目画像：特点：终端原生的智能编码代理。 · 核心能力：通过自然语言命令执行任务、解释代码及管理 Git 工作流。 · 引入必要性：想要提升编码效率的开发者需要此类自动化工具。\n\n**2.** [Yeachan-Heo/oh-my-codex](https://github.com/Yeachan-Heo/oh-my-codex)\n      🔥+410⭐ · 看点：社区今日快速涌现的增强型工具，增长势头迅猛。\n      项目画像：特点：为 Codex 增添钩子与代理团队的扩展框架。 · 核心能力：支持自定义钩子、代理团队协作及 HUD 界面。 · 引入必要性：需要增强现有编码代理功能性的用户值得关注。\n\n**3.** [luongnv89/claude-howto](https://github.com/luongnv89/claude-howto)\n      🔥+270⭐ · 看点：配合官方工具热度，今日成为最佳入门参考资料。\n      项目画像：特点：专注于 Claude Code 的可视化实战指南。 · 核心能力：提供从基础概念到高级代理的可复制模板与示例。 · 引入必要性：新手上手 Claude Code 急需此类结构化学习资源。\n\n**4.** [googleapis/genai-toolbox](https://github.com/googleapis/genai-toolbox)\n      ⭐13K · 看点：作为高星开源项目，为当前火热的 MCP 协议提供关键数据库支持。\n      项目画像：特点：谷歌官方出品的数据库通用 MCP 服务器。 · 核心能力：连接多种主流数据库并为生成式 AI 提供标准工具接口。 · 引入必要性：构建 AI 应用时连接数据库基础设施不可或缺。\n\n**5.** [Yeachan-Heo/oh-my-claudecode](https://github.com/Yeachan-Heo/oh-my-claudecode)\n      🔥+212⭐ · 看点：紧随 Claude Code 发布，今日展示了多代理协作的新方向。\n      项目画像：特点：面向团队的多代理编排扩展。 · 核心能力：实现 Claude Code 的多代理协作与团队优先的工作流管理。 · 引入必要性：单一代理无法满足复杂团队协作需求时需要此方案。\n\n**6.** [NousResearch/hermes-agent](https://github.com/NousResearch/hermes-agent)\n      📈+135⭐ · 看点：作为今日趋势项目，展示了代理自我进化的新可能性。\n      项目画像：特点：具备自我成长能力的智能代理。 · 核心能力：旨在随用户交互过程持续演进能力。 · 引入必要性：寻求能够随时间推移变得更聪明的代理架构者需要参考。\n\n**7.** [shareAI-lab/learn-claude-code](https://github.com/shareAI-lab/learn-claude-code)\n      📈+120⭐ · 看点：过去 24 小时内趋势飙升，展示了极简主义 AI 代理的新方向。\n      项目画像：特点：仅需 Bash 即可构建类 Claude Code 代理的极简方案。 · 核心能力：提供从零构建纳米级代码代理的核心能力。 · 引入必要性：适合希望理解代理底层原理而不依赖复杂框架的开发者。\n\n**8.** [code-yeongyu/oh-my-openagent](https://github.com/code-yeongyu/oh-my-openagent)\n      📈+140⭐ · 看点：近期星数增长迅速，成为代理开发领域值得关注的新星。\n      项目画像：特点：前身是 oh-my-opencode 且定位为最佳代理 harness 的框架。 · 核心能力：提供统一管理和服务多种 AI 代理的核心基础设施。 · 引入必要性…\n\n**9.** [badlogic/pi-mono](https://github.com/badlogic/pi-mono)\n      📈+67⭐ · 看点：作为 trending 项目出现，满足了当前对灵活代理工具链的需求。\n      项目画像：特点：集编码代理 CLI、统一 API 及多端界面于一体的全能工具包。 · 核心能力：支持从命令行到 Slack 机器人及 vLLM pods 的全栈代理部署。 · 引入必要性…\n"
+            "content": "**🚀 热门项目**\n\n**1.** [affaan-m/everything-claude-code](https://github.com/affaan-m/everything-claude-code)\n      🔥+2746⭐ · 看点：本周星数增长迅猛，显示出社区对代理优化系统的强烈需求。\n      项目画像：特点：面向多种编码代理的性能优化 harness 系统。 · 核心能力：整合技能、本能、记忆与安全机制以提升开发效率。 · 引入必要性：解决多代理协作中的性能瓶颈与安全顾虑。\n\n**2.** [obra/superpowers](https://github.com/obra/superpowers)\n      🔥+2196⭐ · 看点：近期热度极高，标志着代理开发方法论正在走向成熟。\n      项目画像：特点：一套真正可行的代理技能框架与软件开发方法论。 · 核心能力：提供结构化的技能体系以规范代理开发流程。 · 引入必要性：为混乱的代理开发领域提供标准化的实践指南。\n\n**3.** [anthropics/claude-code](https://github.com/anthropics/claude-code)\n      🔥+1161⭐ · 看点：过去 24 小时趋势榜热门，官方工具更新值得立即关注。\n      项目画像：特点：Anthropic 官方推出的终端原生代理编码工具。 · 核心能力：通过自然语言命令执行任务、解释代码及管理 git 工作流。 · 引入必要性：官方原生支持意味着更好的代码库理解与集成体验。\n\n**4.** [bytedance/deer-flow](https://github.com/bytedance/deer-flow)\n      🔥+1197⭐ · 看点：大厂开源力作，本周增长显著，适合探索复杂任务自动化。\n      项目画像：特点：字节开源的长程任务超级代理 harness 系统。 · 核心能力：利用沙箱、记忆与子代理处理耗时数分钟至数小时的复杂任务。 · 引入必要性：填补了长周期自动化任务处理的开源方案空白。\n\n**5.** [karpathy/autoresearch](https://github.com/karpathy/autoresearch)\n      🔥+947⭐ · 看点：Karpathy 个人项目备受关注，展示了代理在科研自动化上的潜力。\n      项目画像：特点：由 AI 代理自动运行单 GPU nanochat 训练研究的项目。 · 核心能力：自动化执行深度学习训练实验与研究流程。 · 引入必要性：降低个人研究者进行自动化实验的门槛与成本。\n\n**6.** [JCodesMore/ai-website-cloner-template](https://github.com/JCodesMore/ai-website-cloner-template)\n      🔥+1002⭐ · 看点：本周新星项目，为快速搭建网站提供了极具吸引力的新工具。\n      项目画像：特点：支持一键克隆任意网站的 AI 编码代理模板。 · 核心能力：通过单一命令实现网站结构的快速复制与生成。 · 引入必要性：极大简化了前端原型开发与网站迁移的工作流。\n\n**7.** [mvanhorn/last30days-skill](https://github.com/mvanhorn/last30days-skill)\n      🔥+1127⭐ · 看点：过去一周趋势上升值得立即查看。\n      项目画像：特点：跨多个主流社交平台调研的特性独特。 · 核心能力：能检索多源信息并合成有依据的摘要。 · 引入必要性：需要自动化情报收集时很有必要引入。\n"
           },
           {
             "tag": "hr"
           },
           {
             "tag": "markdown",
-            "content": "**🧩 发现技能**\n\n**1.** [Arman-Kudaibergenov/1c-ai-development-kit](https://github.com/Arman-Kudaibergenov/1c-ai-development-kit)\n      技能画像：特点：聚焦 MCP 工具接入与编排，更像早期可复用资产 · 核心能力：把外部工具和能力封装成更容易接入的调用层。 · 纳入必要性：如果你在找可复用能力包，这类条目值得先收藏观察。\n"
+            "content": "**🧩 发现技能**\n\n**1.** [kinneyyan/prompts](https://github.com/kinneyyan/prompts)\n      ⭐2\n      技能画像：特点：围绕 Claude Code 的终端工作流，更像早期可复用资产 · 核心能力：把可复用的提示词和规则沉淀成可执行资产。 · 纳入必要性：如果你在找可复用能力包，这类条目值得先收藏观察。\n\n**2.** [MuhammadHassan667410/Agentic-AI](https://github.com/MuhammadHassan667410/Agentic-AI)\n      技能画像：特点：聚焦 MCP 工具接入与编排，更像早期可复用资产 · 核心能力：把外部工具和能力封装成更容易接入的调用层。 · 纳入必要性：如果你在找可复用能力包，这类条目值得先收藏观察。\n\n**3.** [wyckit/mcp-engram-memory](https://github.com/wyckit/mcp-engram-memory)\n      技能画像：特点：聚焦 MCP 工具接入与编排，更像早期可复用资产 · 核心能力：把外部工具和能力封装成更容易接入的调用层。 · 纳入必要性：如果你在找可复用能力包，这类条目值得先收藏观察。\n"
           },
           {
             "tag": "hr"
@@ -44,7 +44,7 @@
           },
           {
             "tag": "markdown",
-            "content": "**🚀 热门项目**\n\n**1.** [nuxt-modules/mcp-toolkit](https://github.com/nuxt-modules/mcp-toolkit)\n      ⭐130 · 看点：MCP 协议普及加速，该模块让前端框架无缝接入 AI 上下文能力。\n      项目画像：特点：允许在 Nuxt 应用内直接定义 MCP 服务器工具的独特模块。 · 核心能力：提供通过直观 API 创建工具、资源和提示词的核心功能。 · 引入必要性：\n\n**2.** [Sompote/tiger_cowork](https://github.com/Sompote/tiger_cowork)\n      ⭐47 · 看点：MCP 服务器搜索热度高，展示了本地化 AI 工作流的最新实践。\n      项目画像：特点：支持并行多代理编排且每个代理可运行在不同提供商的自托管空间。 · 核心能力：统一聊天、代码执行及项目管理并扩展 MCP 工具箱。 · 引入必要性：适合需要\n\n**3.** [initMAX/zabbix-mcp-server](https://github.com/initMAX/zabbix-mcp-server)\n      ⭐34 · 看点：运维自动化趋势下，让 AI 直接操作监控平台的需求日益增长。\n      项目画像：特点：覆盖完整 Zabbix API 且支持多服务器与系统级守护的专用 MCP 服务。 · 核心能力：提供 220 种工具供各类 MCP 客户端调用以监控基础设\n\n**4.** [travisjneuman/.claude](https://github.com/travisjneuman/.claude)\n      ⭐32 · 看点：今天值得看是因为它整合了超过 6900 个社区技能，开箱即用。\n      项目画像：特点：这是一个无需配置即可自动激活资源的终极 Claude 代码工具包。 · 核心能力：提供 119 个技能和 67 个代理，通过即插即用配置文件整合社区资源。\n\n**5.** [ax128/AegisGate](https://github.com/ax128/AegisGate)\n      ⭐35 · 看点：今天值得看是因为它兼容 OpenAI 和 Claude，可作为代理直接部署。\n      项目画像：特点：专为 LLM API 设计的开源安全网关，支持 MCP 和 Agent SKILL。 · 核心能力：具备提示注入检测、PII 脱敏和危险响应清理功能。 ·\n\n**6.** [kochetkov-ma/claude-brewcode](https://github.com/kochetkov-ma/claude-brewcode)\n      ⭐16 · 看点：今天值得看是因为它解决了长任务中的上下文丢失痛点。\n      项目画像：特点：为 Claude Code 打造的全功能开发平台，支持无限焦点任务。 · 核心能力：实现自动上下文移交、提示优化和法定人数代码审查。 · 引入必要性：关注\n\n**7.** [shopwareLabs/ai-coding-tools](https://github.com/shopwareLabs/ai-coding-tools)\n      ⭐18 · 看点：今天值得看是因为它垂直整合了特定框架的 AI 工具链。\n      项目画像：特点：专为 Shopware 开发定制的 Claude Code 插件市场。 · 核心能力：提供 MCP 服务器、技能、代理和钩子以集成开发工具。 · 引入必要\n\n**8.** [HIDORAKAI002/ai-workspace-archive](https://github.com/HIDORAKAI002/ai-workspace-archive)\n      ⭐3 · 看点：今天值得看是因为它声称一个仓库就能掌控所有资源。\n      项目画像：特点：一个自我更新的海量本地 AI 工具档案库。 · 核心能力：收录了 11000 多个代理技能和 240 多个 MCP 服务器。 · 引入必要性：需要一个统一\n\n**9.** [SkintLabs/WonderwallAi](https://github.com/SkintLabs/WonderwallAi)\n      ⭐2 · 看点：今天值得看是因为它提供了简单的 Python SDK 集成方式。\n      项目画像：特点：开源的 LLM 应用 AI 防火墙 SDK，支持 pip 安装。 · 核心能力：提供提示注入检测、语义主题强制和 PII 过滤功能。 · 引入必要性：开发\n\n**10.** [nicglazkov/Chalkboard](https://github.com/nicglazkov/Chalkboard)\n      ⭐2 · 看点：当前 AI 视频生成趋势下值得尝试的教育工具。\n      项目画像：特点：独有的多智能体叙事动画生成管线。 · 核心能力：把任意主题转为带解说的 Manim 视频。 · 引入必要性：降低了教育视频制作的技术门槛。\n"
+            "content": "**🚀 热门项目**\n\n**1.** [anthropics/claude-code](https://github.com/anthropics/claude-code)\n      🔥+10749⭐ · 看点：过去 24 小时趋势榜热门，官方工具更新值得立即关注。\n      项目画像：特点：Anthropic 官方推出的终端原生代理编码工具。 · 核心能力：通过自然语言命令执行任务、解释代码及管理 git 工作流。 · 引入必要性：官方原生支\n\n**2.** [ggml-org/llama.cpp](https://github.com/ggml-org/llama.cpp)\n      🔥+694⭐ · 看点：近期在替代方案收藏集中热度增长。\n      项目画像：特点：作为 ChatGPT 替代方案的本地化特性突出。 · 核心能力：提供高效的大语言模型推理能力。 · 引入必要性：关注私有化模型部署必须了解。\n\n**3.** [msitarzewski/agency-agents](https://github.com/msitarzewski/agency-agents)\n      🔥+688⭐ · 看点：本周趋势榜显示其受到开发者欢迎。\n      项目画像：特点：为每个智能体赋予个性与专业流程。 · 核心能力：模拟完整代理机构提供多角色专家服务。 · 引入必要性：构建复杂代理工作流很有必要关注。\n\n**4.** [huggingface/transformers](https://github.com/huggingface/transformers)\n      🔥+268⭐ · 看点：人工智能收藏集中保持稳定关注。\n      项目画像：特点：涵盖最广泛的状态先进模型库。 · 核心能力：提供自然语言处理任务的通用接口。 · 引入必要性：进行人工智能开发的基础设施。\n\n**5.** [tensorflow/tensorflow](https://github.com/tensorflow/tensorflow)\n      📈+171⭐ · 看点：经典项目在人工智能领域仍有参考价值。\n      项目画像：特点：工业级机器学习框架的稳定性高。 · 核心能力：支持端到端的深度学习模型训练与部署。 · 引入必要性：企业级生产环境落地的重要选择。\n\n**6.** [pytorch/pytorch](https://github.com/pytorch/pytorch)\n      🔥+211⭐ · 看点：本周在人工智能合集里活跃度较高。\n      项目画像：特点：动态神经网络构建的灵活性最强。 · 核心能力：提供张量计算与自动微分核心功能。 · 引入必要性：学术研究与原型开发的必要工具。\n\n**7.** [karpathy/nanoGPT](https://github.com/karpathy/nanoGPT)\n      🔥+323⭐ · 看点：近期星数增长明显，适合作为入门 ChatGPT 替代技术的起点。\n      项目画像：特点：由 Andrej Karpathy 打造的极简 GPT 训练实现。 · 核心能力：复现了生成式预训练变压器的核心训练流程。 · 引入必要性：是理解大语言模\n\n**8.** [Yeachan-Heo/oh-my-codex](https://github.com/Yeachan-Heo/oh-my-codex)\n      🔥+410⭐ · 看点：过去 24 小时趋势飙升，代表了智能编码助手的新方向。\n      项目画像：特点：支持钩子、代理团队和 HUD 的代码增强平台。 · 核心能力：为现有代码库添加智能化协作与可视化界面。 · 引入必要性：有助于提升开发团队在复杂项目中的协\n\n**9.** [opencv/opencv](https://github.com/opencv/opencv)\n      📈+106⭐ · 看点：作为人工智能集合成员，近期社区互动量依然巨大。\n      项目画像：特点：计算机视觉领域历史最悠久的开源算法库。 · 核心能力：提供跨平台的实时图像处理和机器学习功能。 · 引入必要性：几乎所有视觉应用开发都无法绕开的基础依赖。\n\n**10.** [scikit-learn/scikit-learn](https://github.com/scikit-learn/scikit-learn)\n      📈+85⭐ · 看点：在人工智能持续升温的背景下仍保持稳定的关注度。\n      项目画像：特点：Python 生态中经典的传统机器学习工具库。 · 核心能力：封装了分类、回归和聚类等常用算法的高效实现。 · 引入必要性：数据科学家进行快速原型验证的必\n"
           },
           {
             "tag": "hr"
@@ -57,10 +57,10 @@
       }
     }
   ],
-  "count": 51,
+  "count": 125,
   "selected_count": 20,
   "summary": {
-    "count": 51,
+    "count": 125,
     "editorial": 24,
     "api_usage": {
       "total_budget": 50,
@@ -70,10 +70,16 @@
       "graphql_used": 0
     },
     "collector_stats": {
-      "ossinsight": {
-        "count": 8,
+      "trending": {
+        "count": 15,
         "kinds": {
-          "project": 8
+          "project": 15
+        }
+      },
+      "ossinsight": {
+        "count": 67,
+        "kinds": {
+          "project": 67
         }
       },
       "repos": {
@@ -93,20 +99,20 @@
       "skills": {
         "count": 10,
         "kinds": {
-          "project": 9,
-          "skill": 1
+          "project": 7,
+          "skill": 3
         }
       }
     },
     "a_count": 10,
     "b_count": 10,
     "filtered_kind_counts": {
-      "project": 50,
-      "skill": 1
+      "project": 122,
+      "skill": 3
     },
     "published_kind_counts": {
-      "project": 19,
-      "skill": 1
+      "project": 17,
+      "skill": 3
     }
   }
 }
