@@ -132,8 +132,7 @@ class SkillCollector(Collector):
                 logger.warning("SkillCollector repo query failed for %s: %s", query, exc, exc_info=True)
                 continue
             for item in payload.get("items", []):
-                candidate = candidate_from_repo_search(item=item, source_query=query)
-                candidate.kind = "skill"
+                candidate = candidate_from_repo_search(item=item, source_query=query, kind="skill")
                 if candidate.repo_full_name in seen:
                     continue
                 seen.add(candidate.repo_full_name)

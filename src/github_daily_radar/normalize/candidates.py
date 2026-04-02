@@ -17,10 +17,10 @@ def _pick_first(item: dict, keys: tuple[str, ...], default: str) -> str:
 
 def candidate_from_code_search(*, item: dict, source_query: str) -> Candidate:
     repository = item.get("repository") or {}
-    return candidate_from_repo_search(item=repository, source_query=source_query)
+    return candidate_from_repo_search(item=repository, source_query=source_query, kind="skill")
 
 
-def candidate_from_repo_search(*, item: dict, source_query: str) -> Candidate:
+def candidate_from_repo_search(*, item: dict, source_query: str, kind: str = "project") -> Candidate:
     full_name = _pick_first(item, ("full_name", "nameWithOwner"), "unknown/unknown")
     created_at = _pick_first(
         item,
@@ -34,8 +34,8 @@ def candidate_from_repo_search(*, item: dict, source_query: str) -> Candidate:
     )
     url = _pick_first(item, ("html_url", "url"), f"https://github.com/{full_name}")
     return Candidate(
-        candidate_id=f"repo:{full_name}",
-        kind="project",
+        candidate_id=f"{kind}:{full_name}",
+        kind=kind,
         source_query=source_query,
         title=full_name,
         url=url,
@@ -52,7 +52,7 @@ def candidate_from_repo_search(*, item: dict, source_query: str) -> Candidate:
         ),
         raw_signals={"search_item": item},
         rule_scores={},
-        dedupe_key=full_name,
+        dedupe_key=f"{kind}:{full_name}",
     )
 
 
