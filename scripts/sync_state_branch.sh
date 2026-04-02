@@ -18,6 +18,8 @@ fi
 
 (
   cd "$STATE_DIR"
+  git config user.name "github-actions[bot]"
+  git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
   find . -mindepth 1 -maxdepth 1 ! -name .git -exec rm -rf {} +
   mkdir -p artifacts
   if [ -d "$SOURCE_DIR/artifacts" ]; then
