@@ -5,7 +5,7 @@
       "date": "2026-04-02",
       "event": "published",
       "metrics": {
-        "stars": 156350,
+        "stars": 156353,
         "forks": 20524,
         "comments": 0,
         "reactions": 0,
@@ -26,7 +26,7 @@
       "date": "2026-04-02",
       "event": "published",
       "metrics": {
-        "stars": 130958,
+        "stars": 130966,
         "forks": 10829,
         "comments": 0,
         "reactions": 0,
@@ -89,7 +89,7 @@
       "date": "2026-04-02",
       "event": "published",
       "metrics": {
-        "stars": 37108,
+        "stars": 37109,
         "forks": 4072,
         "comments": 0,
         "reactions": 0,
@@ -442,27 +442,6 @@
       "source_query": "claude skills agent prompt in:name,description sort:stars-desc pushed:>2026-03-03"
     },
     {
-      "candidate_id": "repo:noobgaminghard/cursor-rules",
-      "date": "2026-04-02",
-      "event": "published",
-      "metrics": {
-        "stars": 1,
-        "forks": 0,
-        "comments": 0,
-        "reactions": 0,
-        "star_growth_7d": 0,
-        "previous_star_growth_7d": 0,
-        "has_new_release": false,
-        "days_since_previous_release": null,
-        "comment_growth_rate": 0.0
-      },
-      "scores": {},
-      "kind": "skill",
-      "title": "noobgaminghard/cursor-rules",
-      "url": "https://github.com/noobgaminghard/cursor-rules",
-      "source_query": "cursor rules AI in:name,description sort:stars-desc pushed:>2026-03-03"
-    },
-    {
       "candidate_id": "repo:Deadly244/cursor-security-rules",
       "date": "2026-04-02",
       "event": "published",
@@ -481,6 +460,27 @@
       "kind": "skill",
       "title": "Deadly244/cursor-security-rules",
       "url": "https://github.com/Deadly244/cursor-security-rules",
+      "source_query": "cursor rules AI in:name,description sort:stars-desc pushed:>2026-03-03"
+    },
+    {
+      "candidate_id": "repo:noobgaminghard/cursor-rules",
+      "date": "2026-04-02",
+      "event": "published",
+      "metrics": {
+        "stars": 1,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "scores": {},
+      "kind": "skill",
+      "title": "noobgaminghard/cursor-rules",
+      "url": "https://github.com/noobgaminghard/cursor-rules",
       "source_query": "cursor rules AI in:name,description sort:stars-desc pushed:>2026-03-03"
     },
     {
@@ -1010,6 +1010,64 @@
     }
   ],
   "candidate_index": {
+    "repo:Deadly244/cursor-security-rules": {
+      "candidate_id": "repo:Deadly244/cursor-security-rules",
+      "last_seen_at": "2026-04-02",
+      "last_seen_metrics": {
+        "stars": 1,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_seen_scores": {},
+      "last_published_at": "2026-04-02",
+      "last_published_metrics": {
+        "stars": 1,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_published_scores": {}
+    },
+    "repo:itsmhmd/cursor-windsurf-convert": {
+      "candidate_id": "repo:itsmhmd/cursor-windsurf-convert",
+      "last_seen_at": "2026-04-02",
+      "last_seen_metrics": {
+        "stars": 0,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_seen_scores": {},
+      "last_published_at": "2026-04-02",
+      "last_published_metrics": {
+        "stars": 0,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_published_scores": {}
+    },
     "repo:philipbankier/awesome-agent-skills": {
       "candidate_id": "repo:philipbankier/awesome-agent-skills",
       "last_seen_at": "2026-04-02",
@@ -1087,64 +1145,6 @@
       "last_published_metrics": {
         "stars": 1141,
         "forks": 16,
-        "comments": 0,
-        "reactions": 0,
-        "star_growth_7d": 0,
-        "previous_star_growth_7d": 0,
-        "has_new_release": false,
-        "days_since_previous_release": null,
-        "comment_growth_rate": 0.0
-      },
-      "last_published_scores": {}
-    },
-    "repo:Deadly244/cursor-security-rules": {
-      "candidate_id": "repo:Deadly244/cursor-security-rules",
-      "last_seen_at": "2026-04-02",
-      "last_seen_metrics": {
-        "stars": 1,
-        "forks": 0,
-        "comments": 0,
-        "reactions": 0,
-        "star_growth_7d": 0,
-        "previous_star_growth_7d": 0,
-        "has_new_release": false,
-        "days_since_previous_release": null,
-        "comment_growth_rate": 0.0
-      },
-      "last_seen_scores": {},
-      "last_published_at": "2026-04-02",
-      "last_published_metrics": {
-        "stars": 1,
-        "forks": 0,
-        "comments": 0,
-        "reactions": 0,
-        "star_growth_7d": 0,
-        "previous_star_growth_7d": 0,
-        "has_new_release": false,
-        "days_since_previous_release": null,
-        "comment_growth_rate": 0.0
-      },
-      "last_published_scores": {}
-    },
-    "repo:itsmhmd/cursor-windsurf-convert": {
-      "candidate_id": "repo:itsmhmd/cursor-windsurf-convert",
-      "last_seen_at": "2026-04-02",
-      "last_seen_metrics": {
-        "stars": 0,
-        "forks": 0,
-        "comments": 0,
-        "reactions": 0,
-        "star_growth_7d": 0,
-        "previous_star_growth_7d": 0,
-        "has_new_release": false,
-        "days_since_previous_release": null,
-        "comment_growth_rate": 0.0
-      },
-      "last_seen_scores": {},
-      "last_published_at": "2026-04-02",
-      "last_published_metrics": {
-        "stars": 0,
-        "forks": 0,
         "comments": 0,
         "reactions": 0,
         "star_growth_7d": 0,
@@ -2174,7 +2174,7 @@
       "candidate_id": "repo:obra/superpowers",
       "last_seen_at": "2026-04-02",
       "last_seen_metrics": {
-        "stars": 130958,
+        "stars": 130966,
         "forks": 10829,
         "comments": 0,
         "reactions": 0,
@@ -2187,7 +2187,7 @@
       "last_seen_scores": {},
       "last_published_at": "2026-04-02",
       "last_published_metrics": {
-        "stars": 130958,
+        "stars": 130966,
         "forks": 10829,
         "comments": 0,
         "reactions": 0,
@@ -2261,7 +2261,7 @@
       "candidate_id": "repo:anthropics/claude-cookbooks",
       "last_seen_at": "2026-04-02",
       "last_seen_metrics": {
-        "stars": 37108,
+        "stars": 37109,
         "forks": 4072,
         "comments": 0,
         "reactions": 0,
@@ -2274,7 +2274,7 @@
       "last_seen_scores": {},
       "last_published_at": "2026-04-02",
       "last_published_metrics": {
-        "stars": 37108,
+        "stars": 37109,
         "forks": 4072,
         "comments": 0,
         "reactions": 0,
@@ -2348,7 +2348,7 @@
       "candidate_id": "repo:f/prompts.chat",
       "last_seen_at": "2026-04-02",
       "last_seen_metrics": {
-        "stars": 156350,
+        "stars": 156353,
         "forks": 20524,
         "comments": 0,
         "reactions": 0,
@@ -2361,7 +2361,7 @@
       "last_seen_scores": {},
       "last_published_at": "2026-04-02",
       "last_published_metrics": {
-        "stars": 156350,
+        "stars": 156353,
         "forks": 20524,
         "comments": 0,
         "reactions": 0,
