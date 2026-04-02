@@ -161,6 +161,14 @@ def _section_order(*, project_first: bool) -> list[str]:
     return ["skill", "discussion", "project"]
 
 
+def _item_identity(item: dict) -> str:
+    for key in ("candidate_id", "url", "repo_full_name", "title"):
+        value = item.get(key)
+        if isinstance(value, str) and value.strip():
+            return f"{key}:{value}"
+    return repr(sorted(item.items()))
+
+
 # ── Card Assembly ─────────────────────────────────────────────────
 
 def build_digest_card(
@@ -178,9 +186,9 @@ def build_digest_card(
     # 合并 items (兼容旧调用方传入 secondary_items 的情况)
     all_items = list(items)
     if secondary_items:
-        seen = {item.get("repo_full_name") or item.get("url") for item in all_items}
+        seen = {_item_identity(item) for item in all_items}
         for item in secondary_items:
-            key = item.get("repo_full_name") or item.get("url")
+            key = _item_identity(item)
             if key not in seen:
                 all_items.append(item)
                 seen.add(key)

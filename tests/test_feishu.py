@@ -270,6 +270,7 @@ def test_build_digest_card_backward_compat_secondary_items():
     """传入 secondary_items 时应自动合并去重"""
     primary = [
         {
+            "candidate_id": "project:owner/primary",
             "kind": "project",
             "title": "owner/primary",
             "url": "https://github.com/owner/primary",
@@ -283,6 +284,7 @@ def test_build_digest_card_backward_compat_secondary_items():
     secondary = [
         {
             "kind": "skill",
+            "candidate_id": "skill:owner/skill-b",
             "title": "owner/skill-b",
             "url": "https://github.com/owner/skill-b",
             "repo_full_name": "owner/skill-b",
@@ -292,12 +294,13 @@ def test_build_digest_card_backward_compat_secondary_items():
             "star_velocity": "",
         },
         {
-            "kind": "project",
-            "title": "owner/primary",
-            "url": "https://github.com/owner/primary",
+            "kind": "discussion",
+            "candidate_id": "discussion:owner/primary/1",
+            "title": "owner/primary discussion",
+            "url": "https://github.com/owner/primary/discussions/1",
             "repo_full_name": "owner/primary",
-            "summary": "重复",
-            "stars": 100,
+            "summary": "同仓库讨论",
+            "stars": 0,
             "star_delta_1d": 0,
             "star_velocity": "",
         },
@@ -309,5 +312,6 @@ def test_build_digest_card_backward_compat_secondary_items():
 
     assert "owner/primary" in all_text
     assert "owner/skill-b" in all_text
-    # primary 不应出现两次
+    assert "owner/primary/discussions/1" in all_text
+    # primary 不应出现两次，但同仓库的讨论条目仍应保留
     assert all_text.count("[owner/primary]") == 1
