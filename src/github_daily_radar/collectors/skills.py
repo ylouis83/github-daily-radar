@@ -125,11 +125,16 @@ class SkillCollector(Collector):
 
     def _classify_kind(self, *, candidate: Candidate, shape_score: float, scale_score: float) -> str:
         raw_signals = candidate.raw_signals or {}
+        # Code search hit (matched a skill fingerprint file) → always skill
         if raw_signals.get("code_search_item"):
             return "skill"
-        if candidate.metrics.stars >= self.project_min_stars and scale_score >= shape_score:
-            return "project"
-        if scale_score >= shape_score + 2.0 and candidate.metrics.stars >= self.skill_min_stars:
+        # Repos with meaningful skill/MCP shape signals stay as skill;
+        # shape_score >= floor means file hints or multiple text hints matched
+        if shape_score >= self.skill_shape_floor:
+            return "skill"
+        # Low skill signals + high stars → project (caught by SkillCollector
+        # repo-search but doesn't look like a reusable skill/tool)
+        if candidate.metrics.stars >= self.project_min_stars:
             return "project"
         return "skill"
 
