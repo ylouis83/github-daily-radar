@@ -1,0 +1,167 @@
+{
+  "cards": [
+    {
+      "msg_type": "interactive",
+      "card": {
+        "config": {
+          "wide_screen_mode": true
+        },
+        "header": {
+          "title": {
+            "tag": "plain_text",
+            "content": "🔭 GitHub 每日雷达 · 2026-04-04"
+          },
+          "template": "indigo"
+        },
+        "elements": [
+          {
+            "tag": "column_set",
+            "flex_mode": "bisect",
+            "background_style": "grey",
+            "horizontal_spacing": "default",
+            "columns": [
+              {
+                "tag": "column",
+                "width": "weighted",
+                "weight": 1,
+                "vertical_align": "center",
+                "elements": [
+                  {
+                    "tag": "markdown",
+                    "text_align": "center",
+                    "content": "**88**\n候选仓库"
+                  }
+                ]
+              },
+              {
+                "tag": "column",
+                "width": "weighted",
+                "weight": 1,
+                "vertical_align": "center",
+                "elements": [
+                  {
+                    "tag": "markdown",
+                    "text_align": "center",
+                    "content": "**19**\n今日精选"
+                  }
+                ]
+              },
+              {
+                "tag": "column",
+                "width": "weighted",
+                "weight": 1,
+                "vertical_align": "center",
+                "elements": [
+                  {
+                    "tag": "markdown",
+                    "text_align": "center",
+                    "content": "**0**\n覆盖主题"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "tag": "hr"
+          },
+          {
+            "tag": "markdown",
+            "content": "**💥 今日爆款**\n\n**1.** [onyx-dot-app/onyx](https://github.com/onyx-dot-app/onyx)  💥+1872⭐  23.2K⭐\n**2.** [sponsors/dmtrKovalenko](https://github.com/sponsors/dmtrKovalenko)  🔥+767⭐  3.2K⭐\n**3.** [hsliuping/TradingAgents-CN](https://github.com/hsliuping/TradingAgents-CN)  🔥+473⭐  23.3K⭐\n**4.** [sponsors/Blaizzy](https://github.com/sponsors/Blaizzy)  🔥+382⭐  3.2K⭐\n**5.** [sponsors/f](https://github.com/sponsors/f)  🔥+369⭐  157.1K⭐\n\n*数据源：GitHub Trending + OSSInsight*"
+          },
+          {
+            "tag": "hr"
+          },
+          {
+            "tag": "markdown",
+            "content": "**🚀 核心 AI 项目**\n\n**1.** [run-llama/llama_index](https://github.com/run-llama/llama_index)  📈+142⭐\n📌 近期社区互动活跃，适合关注 LLM 数据集成方案的开发者。\n▸ 特点：专为大型语言模型应用设计的数据框架。\n▸ 核心能力：支持连接私有数据源以增强模型检索能力。\n▸ 引入必要性：构建基于私有知识库的 AI 应用不可或缺的基础设施。\n\n**2.** [langfuse/langfuse](https://github.com/langfuse/langfuse)  🔥+279⭐\n📌 星数增长显著，表明开发者对 LLM 运维工具的需求正在上升。\n▸ 特点：专注于大模型应用的可观测性与调试平台。\n▸ 核心能力：提供追踪、评估和监控 LLM 调用链路的完整工具集。\n▸ 引入必要性：解决生产环境中 AI 应用性能监控与成本优化的痛点。\n\n**3.** [asgeirtj/system_prompts_leaks](https://github.com/asgeirtj/system_prompts_leaks)  🔥+251⭐\n📌 今日趋势项目，反映了社区对模型内部机制的好奇与安全关注。\n▸ 特点：汇集各大主流模型系统提示词的泄露仓库。\n▸ 核心能力：定期更新并提取 ChatGPT、Claude 等模型的内部指令。\n▸ 引入必要性：帮助研究人员理解模型行为边界及潜在的安全风险。\n\n**4.** [continuedev/continue](https://github.com/continuedev/continue)  📈+109⭐\n📌 社区反应热烈，适合寻求替代 Copilot 方案的开发者参考。\n▸ 特点：集成于开发环境的开源 AI 编程助手扩展。\n▸ 核心能力：允许开发者在 IDE 中直接使用任意大模型辅助编码。\n▸ 引入必要性：提升编码效率并支持自定义模型后端的必备开发工具。\n\n**5.** [keploy/keploy](https://github.com/keploy/keploy)  📈+155⭐\n📌 近期星标增长稳定，值得关注 AI 如何重塑软件测试领域。\n▸ 特点：采用 AI 原生技术的自动化测试平台。\n▸ 核心能力：利用大模型能力生成和执行后端服务测试用例。\n▸ 引入必要性：简化测试流程并提高覆盖率的现代化质量保证工具。\n\n**6.** [Yeachan-Heo/oh-my-claudecode](https://github.com/Yeachan-Heo/oh-my-claudecode)  🔥+220⭐\n📌 作为新兴趋势项目，今日星数增长显著。\n▸ 特点：主打团队优先的多智能体编排架构。\n▸ 核心能力：能够协调多个 Claude Code 实例进行协作开发。\n▸ 引入必要性：解决了单人 AI 助手难以应对复杂团队协同的痛点。\n\n**7.** [TabbyML/tabby](https://github.com/TabbyML/tabby)  📈+56⭐\n📌 过去四周内社区反应热烈，适合纳入技术选型。\n▸ 特点：属于 LLM 开发工具集合中备受关注的开源项目。\n▸ 核心能力：支持本地部署的 AI 代码自动补全功能。\n▸ 引入必要性：满足企业对代码数据隐私和安全的需求。\n\n**8.** [yasasbanukaofficial/claude-code](https://github.com/yasasbanukaofficial/claude-code)  📈+89⭐\n📌 今日分叉数超过星数，显示出较高的二次开发兴趣。\n▸ 特点：还原了 Claude Code CLI 的开源骨架结构。\n▸ 核心能力：展示了基于 TypeScript 的代理工作流和终端界面实现。\n▸ 引入必要性：为想要自定义 AI 编码代理的开发者提供参考范本。\n\n**9.** [deepset-ai/haystack](https://github.com/deepset-ai/haystack)  ⭐47\n📌 过去四周内持续获得社区认可，适合长期关注。\n▸ 特点：属于 LLM 工具分类中历史悠久的成熟框架。\n▸ 核心能力：能够构建基于检索增强生成的生产级应用。\n▸ 引入必要性：适合需要稳定架构支持复杂 RAG 场景的项目。\n\n**10.** [shareAI-lab/learn-claude-code](https://github.com/shareAI-lab/learn-claude-code)  📈+128⭐\n📌 作为今日趋势项目，其极简理念吸引了大量关注。\n▸ 特点：倡导仅使用 Bash 脚本构建纳米级代理。\n▸ 核心能力：实现了从零开始的类 Claude Code 轻量级 agent。\n▸ 引入必要性：降低了理解 AI 编码助手核心逻辑的门槛。\n\n**11.** [langchain-ai/langchainjs](https://github.com/langchain-ai/langchainjs)  📈+62⭐\n📌 过去四周内持续更新，适合需要 JS 生态支持的团队。\n▸ 特点：是 LLM 工具分类中主流的 JavaScript 开发库。\n▸ 核心能力：提供构建语言模型应用的标准化工具链。\n▸ 引入必要性：是前端开发者集成大模型能力的事实标准。\n\n**12.** [iflytek/astron-rpa](https://github.com/iflytek/astron-rpa)  🔥+215⭐\n📌 近期星数增长迅速，值得关注大厂动向。\n▸ 特点：科大讯飞推出的结合大模型的自动化流程工具。\n▸ 核心能力：利用 LLM 增强传统 RPA 的任务执行能力。\n▸ 引入必要性：企业自动化场景需要更智能的交互方式。\n\n**13.** [confident-ai/deepeval](https://github.com/confident-ai/deepeval)  📈+70⭐\n📌 反应数较高，显示社区对评估工具的迫切需求。\n▸ 特点：专注于大模型输出质量的评估框架。\n▸ 核心能力：提供标准化的指标来测试 LLM 应用性能。\n▸ 引入必要性：开发可靠 AI 应用必须解决效果评估难题。\n"
+          },
+          {
+            "tag": "hr"
+          },
+          {
+            "tag": "markdown",
+            "content": "**🧩 MCP & Skills**\n\n**1.** [fjb040911/ai-rules](https://github.com/fjb040911/ai-rules)  ⭐1.2K\n🏷️ 适配生态：Prompt / Rules\n▸ 特点：围绕 prompt 复用与组织，⭐1223 社区广泛验证\n\n**2.** [evanca/flutter-ai-rules](https://github.com/evanca/flutter-ai-rules)  ⭐514\n🏷️ 适配生态：Copilot / IDE\n▸ 特点：面向 Copilot / IDE 工作流，⭐514 社区广泛验证\n\n**3.** [thehimel/cursor-rules-and-prompts](https://github.com/thehimel/cursor-rules-and-prompts)  ⭐220\n🏷️ 适配生态：Agent\n▸ 特点：围绕 prompt 复用与组织，社区验证较强\n\n**4.** [CreatorEdition/system-prompts-and-models-of-ai-tools-chinese](https://github.com/CreatorEdition/system-prompts-and-models-of-ai-tools-chinese)  ⭐187\n🏷️ 适配生态：Claude Code\n▸ 特点：AI编程工具中文提示词合集，包含Cursor、Antigravity、…\n\n**5.** [lifedever/claude-rules](https://github.com/lifedever/claude-rules)  ⭐149\n🏷️ 适配生态：Claude Code\n▸ 特点：围绕 Claude Code 的终端工作流，社区验证较强\n\n**6.** [Arman-Kudaibergenov/1c-ai-development-kit](https://github.com/Arman-Kudaibergenov/1c-ai-development-kit)  ⭐107\n🏷️ 适配生态：MCP\n▸ 特点：聚焦 MCP 工具接入与编排，社区验证较强\n"
+          },
+          {
+            "tag": "hr"
+          },
+          {
+            "tag": "markdown",
+            "content": "📅 2026-04-04  ·  88 候选 → 19 精选",
+            "text_size": "notation"
+          }
+        ]
+      }
+    }
+  ],
+  "count": 88,
+  "selected_count": 19,
+  "summary": {
+    "count": 88,
+    "editorial": 24,
+    "api_usage": {
+      "total_budget": 50,
+      "search_budget": 28,
+      "graphql_budget": 600,
+      "search_used": 16,
+      "graphql_used": 0
+    },
+    "collector_stats": {
+      "trending": {
+        "count": 15,
+        "kinds": {
+          "project": 15
+        }
+      },
+      "ossinsight": {
+        "count": 60,
+        "kinds": {
+          "project": 60
+        }
+      },
+      "repos": {
+        "count": 51,
+        "kinds": {
+          "project": 51
+        }
+      },
+      "discussions": {
+        "count": 0,
+        "kinds": {}
+      },
+      "issues_prs": {
+        "count": 0,
+        "kinds": {}
+      },
+      "skills": {
+        "count": 7,
+        "kinds": {
+          "skill": 6,
+          "project": 1
+        }
+      }
+    },
+    "item_count": 19,
+    "surge_count": 5,
+    "filtered_kind_counts": {
+      "project": 82,
+      "skill": 6
+    },
+    "published_kind_counts": {
+      "project": 13,
+      "skill": 6
+    },
+    "theme_counts": {
+      "ai_project": 9,
+      "prompt_assets": 2,
+      "claude_code": 6,
+      "skill_assets": 1,
+      "mcp": 1
+    },
+    "top_themes": [
+      "ai_project",
+      "claude_code",
+      "prompt_assets"
+    ]
+  }
+}
