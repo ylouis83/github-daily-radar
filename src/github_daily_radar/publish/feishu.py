@@ -1,8 +1,9 @@
 """Feishu interactive card rendering and delivery.
 
-Design principles (v2):
+Design principles (v3):
   • 单版输出 — 不再分 A/B，一张卡片展示所有精选
-  • 三大分区 — 🚀 核心 AI 项目 / 🧩 MCP & Skills / 💬 提案与讨论
+  • 四大分区 — 💥 今日爆款 / 🚀 核心 AI 项目 / 🧩 MCP & Skills / 💬 提案与讨论
+  • 爆款区 — 仅含 TrendingCollector + OSSInsight 日增 ≥200⭐ 的项目，与核心项目互斥
   • 分层密度 — 精编条目 (前 N 条) 带完整画像；其余紧凑速览
   • column_set 概览面板 — 三列数字冲击
   • 空分区不渲染
@@ -97,6 +98,77 @@ def _format_star_tag(item: dict) -> str:
     return ""
 
 
+# ── Ecosystem Label ───────────────────────────────────────────────
+
+_ECOSYSTEM_PATTERNS: list[tuple[tuple[str, ...], str]] = [
+    (("claude-code", "claude code", "claudecode"), "Claude Code"),
+    (("codex", "oh-my-codex"), "Codex"),
+    (("mcp", "model context protocol", "mcp-server"), "MCP"),
+    (("browser-use", "browser use", "browser", "playwright", "puppeteer"), "浏览器自动化"),
+    (("rag", "graphrag", "retrieval"), "RAG"),
+    (("agent", "agents", "agentic", "multi-agent"), "Agent"),
+    (("workflow", "automation"), "工作流自动化"),
+    (("prompt", "prompts", "cursor", "cursorrules"), "Prompt / Rules"),
+    (("vllm", "llama.cpp", "inference", "ollama"), "模型推理"),
+    (("dify",), "Dify 平台"),
+    (("open-webui",), "Open WebUI"),
+    (("copilot",), "Copilot / IDE"),
+    (("skill", "skills", "superpowers"), "Skill 生态"),
+    (("docker", "k8s", "kubernetes", "aks"), "云原生 / DevOps"),
+    (("security", "auth", "compliance"), "安全"),
+]
+
+
+def _detect_ecosystem(item: dict) -> str:
+    """从 item 的标题、描述、topics 中推断适配生态标签。"""
+    parts = [
+        item.get("title", ""),
+        item.get("repo_full_name", ""),
+        item.get("trait", ""),
+        item.get("capability", ""),
+        " ".join(item.get("topics", [])) if isinstance(item.get("topics"), list) else "",
+        item.get("summary", ""),
+    ]
+    blob = " ".join(str(p) for p in parts if p).lower()
+    for needles, label in _ECOSYSTEM_PATTERNS:
+        if any(needle in blob for needle in needles):
+            return label
+    return "通用 AI 工具"
+
+
+# ── Surge Section ────────────────────────────────────────────────
+
+def _format_total_stars(stars: int) -> str:
+    if stars >= 1000:
+        return f"{stars / 1000:.1f}K⭐"
+    if stars > 0:
+        return f"{stars}⭐"
+    return ""
+
+
+def _render_surge_section(surge_items: list[dict]) -> str | None:
+    """渲染爆款监测分区：紧凑单行，纯数字冲击。"""
+    if not surge_items:
+        return None
+
+    lines = ["**💥 今日爆款**", ""]
+    for i, item in enumerate(surge_items, 1):
+        title = item.get("title", "")
+        url = item.get("url", "")
+        daily_delta = item.get("surge_daily_delta", 0)
+        total_stars = item.get("stars", 0)
+        emoji = "💥" if daily_delta >= 1000 else "🔥"
+        total_str = _format_total_stars(total_stars)
+
+        link = f"[{title}]({url})" if url else title
+        line = f"**{i}.** {link}  {emoji}+{daily_delta}⭐  {total_str}"
+        lines.append(line)
+
+    lines.append("")
+    lines.append("*数据源：GitHub Trending + OSSInsight*")
+    return "\n".join(lines)
+
+
 # ── Item Rendering ────────────────────────────────────────────────
 
 def _render_featured_item(item: dict, index: int) -> str:
@@ -145,7 +217,7 @@ def _render_compact_item(item: dict, index: int) -> str:
 
 
 def _render_skill_item(item: dict, index: int) -> str:
-    """渲染技能条目：标题 + 仅保留 trait 一行"""
+    """渲染技能条目：标题 + 生态标签 + trait"""
     title = item.get("title", "")
     url = item.get("url", "")
     badge = _format_star_badge(item)
@@ -153,6 +225,9 @@ def _render_skill_item(item: dict, index: int) -> str:
     line1 = f"**{index}.** [{title}]({url}){badge_suffix}" if url else f"**{index}.** {title}{badge_suffix}"
 
     lines = [line1]
+    # 生态适配标签
+    ecosystem = _detect_ecosystem(item)
+    lines.append(f"🏷️ 适配生态：{ecosystem}")
     trait = item.get("trait", "")
     if trait:
         labels = PROFILE_LABELS.get(item.get("kind", "other"), PROFILE_LABELS["other"])
@@ -337,13 +412,15 @@ def build_digest_card(
     *,
     items: list[dict],
     secondary_items: list[dict] | None = None,
+    surge_items: list[dict] | None = None,
     metadata: dict | None = None,
     today: date | None = None,
     project_first: bool = True,
 ) -> dict:
-    """构建飞书交互卡片 — 单版、三分区、分层密度"""
+    """构建飞书交互卡片 — 单版、四分区、分层密度"""
     metadata = metadata or {}
     date_str = today.isoformat() if today else ""
+    surge_items = surge_items or []
 
     # 合并 items (兼容旧调用方传入 secondary_items 的情况)
     all_items = list(items)
@@ -355,12 +432,18 @@ def build_digest_card(
                 all_items.append(item)
                 seen.add(key)
 
+    # 爆款区的 repo 从核心项目区排除
+    surge_repos = {item.get("repo_full_name") for item in surge_items if item.get("repo_full_name")}
+
     # 按 kind 分组
     grouped: dict[str, list[dict]] = defaultdict(list)
     for item in all_items:
         kind = item.get("kind", "other")
         if kind in ("issue", "pr"):
             kind = "discussion"
+        # 已在爆款区展示的 repo 不再出现在核心项目区
+        if kind == "project" and item.get("repo_full_name") in surge_repos:
+            continue
         grouped[kind].append(item)
 
     elements: list[dict] = []
@@ -375,6 +458,12 @@ def build_digest_card(
             "content": _render_overview(all_items),
         })
     elements.append({"tag": "hr"})
+
+    # ── 爆款监测（置顶） ──
+    surge_content = _render_surge_section(surge_items)
+    if surge_content is not None:
+        elements.append({"tag": "markdown", "content": surge_content})
+        elements.append({"tag": "hr"})
 
     # ── 三大分区 ──
     for kind in _section_order(project_first=project_first):
