@@ -3,6 +3,7 @@ name: daily-radar
 on:
   schedule:
     - cron: "15 1 * * *"
+    - cron: "0 5 3 4 *"    # one-shot: 2026-04-03 13:00 Shanghai, remove after run
   workflow_dispatch:
     inputs:
       dry_run:
