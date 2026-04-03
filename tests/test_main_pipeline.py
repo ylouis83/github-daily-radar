@@ -311,7 +311,7 @@ def test_run_pipeline_uses_editorial_summaries_and_continues_on_collector_failur
 
     captured = {}
 
-    def fake_build_digest_card(*, items, secondary_items=None, metadata=None, today=None, project_first=True):
+    def fake_build_digest_card(*, items, secondary_items=None, surge_items=None, metadata=None, today=None, project_first=True):
         captured["items"] = items
         captured["metadata"] = metadata or {}
         captured["today"] = today
@@ -372,7 +372,7 @@ def test_run_pipeline_respects_report_limit(monkeypatch, tmp_path: Path):
 
     captured = {}
 
-    def fake_build_digest_card(*, items, secondary_items=None, metadata=None, today=None, project_first=True):
+    def fake_build_digest_card(*, items, secondary_items=None, surge_items=None, metadata=None, today=None, project_first=True):
         captured["items"] = items
         captured["metadata"] = metadata or {}
         captured["project_first"] = project_first
@@ -405,7 +405,7 @@ def test_run_pipeline_single_version_selects_all(monkeypatch, tmp_path: Path):
 
     captured = {}
 
-    def fake_build_digest_card(*, items, secondary_items=None, metadata=None, today=None, project_first=True):
+    def fake_build_digest_card(*, items, secondary_items=None, surge_items=None, metadata=None, today=None, project_first=True):
         captured["items"] = items
         captured["project_first"] = project_first
         return {"msg_type": "interactive", "card": {"header": {"title": {"content": "test"}}}}
@@ -436,7 +436,7 @@ def test_run_pipeline_single_card_is_project_first(monkeypatch, tmp_path: Path):
 
     captured = {}
 
-    def fake_build_digest_card(*, items, secondary_items=None, metadata=None, today=None, project_first=True):
+    def fake_build_digest_card(*, items, secondary_items=None, surge_items=None, metadata=None, today=None, project_first=True):
         captured["items"] = items
         captured["metadata"] = metadata or {}
         captured["project_first"] = project_first
@@ -468,7 +468,7 @@ def test_run_pipeline_can_disable_project_first(monkeypatch, tmp_path: Path):
 
     captured = {}
 
-    def fake_build_digest_card(*, items, secondary_items=None, metadata=None, today=None, project_first=True):
+    def fake_build_digest_card(*, items, secondary_items=None, surge_items=None, metadata=None, today=None, project_first=True):
         captured["items"] = items
         captured["project_first"] = project_first
         return {"msg_type": "interactive", "card": {"header": {"title": {"content": "test"}}}}
@@ -503,7 +503,7 @@ def test_run_pipeline_uses_configured_daily_item_count(monkeypatch, tmp_path: Pa
 
     captured = {}
 
-    def fake_build_digest_card(*, items, secondary_items=None, metadata=None, today=None, project_first=True):
+    def fake_build_digest_card(*, items, secondary_items=None, surge_items=None, metadata=None, today=None, project_first=True):
         captured["items"] = items
         captured["metadata"] = metadata or {}
         captured["project_first"] = project_first
@@ -564,7 +564,7 @@ def test_run_pipeline_applies_theme_cooldown_from_previous_day(monkeypatch, tmp_
         captured["blocked_themes"] = kwargs.get("blocked_themes")
         return items[:1]
 
-    def fake_build_digest_card(*, items, secondary_items=None, metadata=None, today=None, project_first=True):
+    def fake_build_digest_card(*, items, secondary_items=None, surge_items=None, metadata=None, today=None, project_first=True):
         captured["items"] = items
         return {"msg_type": "interactive", "card": {"header": {"title": {"content": "test"}}}}
 

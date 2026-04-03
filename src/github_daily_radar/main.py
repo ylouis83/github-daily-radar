@@ -76,6 +76,54 @@ def build_card_metadata(metadata: dict) -> dict:
     }
 
 
+SURGE_MIN_DAILY_STARS = 200
+SURGE_MAX_ITEMS = 5
+
+
+def _extract_daily_delta(candidate) -> int:
+    """从候选中提取真实日增量；仅 Trending 和 OSSInsight 源可靠。"""
+    raw = candidate.raw_signals or {}
+    # TrendingCollector: stars_today 是真实日增
+    trending_item = raw.get("trending_item")
+    if isinstance(trending_item, dict):
+        return int(trending_item.get("stars_today", 0))
+    # OSSInsight: past_24_hours → 日增; past_week → 周增除以 7
+    if candidate.source_query.startswith("ossinsight:trending:past_24_hours"):
+        return candidate.metrics.star_growth_7d
+    if candidate.source_query.startswith("ossinsight:trending:past_week"):
+        return candidate.metrics.star_growth_7d // 7
+    if candidate.source_query.startswith("ossinsight:collection:"):
+        return candidate.metrics.star_growth_7d // 7
+    return 0
+
+
+def _build_surge_items(candidates: list, *, min_daily_stars: int = SURGE_MIN_DAILY_STARS, max_items: int = SURGE_MAX_ITEMS) -> list[dict]:
+    """从全部候选中提取爆款项目，按日增降序，去重同 repo 取最高。"""
+    best_by_repo: dict[str, tuple[int, object]] = {}
+    for candidate in candidates:
+        delta = _extract_daily_delta(candidate)
+        if delta < min_daily_stars:
+            continue
+        existing = best_by_repo.get(candidate.repo_full_name)
+        if existing is None or delta > existing[0]:
+            best_by_repo[candidate.repo_full_name] = (delta, candidate)
+
+    sorted_items = sorted(best_by_repo.values(), key=lambda x: -x[0])
+    surge_items = []
+    for delta, candidate in sorted_items[:max_items]:
+        surge_items.append({
+            "title": candidate.title,
+            "url": candidate.url,
+            "repo_full_name": candidate.repo_full_name,
+            "surge_daily_delta": delta,
+            "stars": candidate.metrics.stars,
+            "kind": candidate.kind,
+            "candidate_id": candidate.candidate_id,
+            "source_query": candidate.source_query,
+        })
+    return surge_items
+
+
 def run_pipeline(settings: Settings, alert_only: bool = False) -> dict:
     if alert_only:
         send_cards(
@@ -309,11 +357,43 @@ def run_pipeline(settings: Settings, alert_only: bool = False) -> dict:
     api_usage = client._budget.snapshot()
     metadata["api_usage"] = api_usage
     metadata["collector_stats"] = collector_stats
+
+    # ── 爆款提取（从全部 filtered 候选，不是 display_items）──
+    surge_items = _build_surge_items(filtered)
+    surge_repos = {item["repo_full_name"] for item in surge_items}
+
     display_items = build_display_items(filtered, editorial)
     if settings.report_limit > 0:
         display_items = display_items[: settings.report_limit]
+
+    # ── 核心项目 7 天冷却：近 7 天已推送的 project 不再出现 ──
+    project_cooldown_ids: set[str] = set()
+    for entry in history.get("published", []):
+        if entry.get("kind") == "project":
+            pub_date_str = entry.get("date", "")
+            try:
+                pub_date = datetime.fromisoformat(pub_date_str).date()
+            except (ValueError, TypeError):
+                continue
+            if (today - pub_date).days < 7:
+                repo = entry.get("title") or ""
+                if repo:
+                    project_cooldown_ids.add(repo)
+
+    # 从 display_items 中排除：已在爆款区的 repo + 7 天内已推送的 project
+    display_items_filtered = []
+    for item in display_items:
+        repo = item.get("repo_full_name", "")
+        # 已在爆款区的不进核心项目
+        if item.get("kind") == "project" and repo in surge_repos:
+            continue
+        # 核心项目 7 天冷却（skill / discussion 不受影响）
+        if item.get("kind") == "project" and repo in project_cooldown_ids:
+            continue
+        display_items_filtered.append(item)
+
     published_items = select_top_items(
-        display_items,
+        display_items_filtered,
         min_items=int(daily_item_count["min"]),
         max_items=int(daily_item_count["max"]),
         per_repo_cap=skill_per_repo_cap,
@@ -325,12 +405,14 @@ def run_pipeline(settings: Settings, alert_only: bool = False) -> dict:
     theme_counts = Counter(item.get("theme", "other") for item in published_items if item.get("theme"))
     top_themes = [theme for theme, count in theme_counts.most_common(3) if count > 0]
     metadata["item_count"] = len(published_items)
+    metadata["surge_count"] = len(surge_items)
     metadata["filtered_kind_counts"] = dict(filtered_kind_counts)
     metadata["published_kind_counts"] = dict(published_kind_counts)
     metadata["theme_counts"] = dict(theme_counts)
     metadata["top_themes"] = top_themes
     card = build_digest_card(
         items=published_items,
+        surge_items=surge_items,
         metadata=build_card_metadata(metadata),
         today=today,
         project_first=project_first,
@@ -367,6 +449,7 @@ def run_pipeline(settings: Settings, alert_only: bool = False) -> dict:
             },
         )
         state.record_published(today, published_items)
+        state.record_published(today, surge_items)
 
     return {"cards": cards, "count": len(filtered), "summary": metadata}
 
