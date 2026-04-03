@@ -219,6 +219,33 @@ def test_build_digest_card_is_single_card():
     assert card["msg_type"] == "interactive"
 
 
+def test_build_digest_card_keeps_full_project_profiles_for_larger_lists():
+    items = [
+        {
+            "kind": "project",
+            "title": f"org/repo-{i}",
+            "url": f"https://github.com/org/repo-{i}",
+            "trait": f"项目 {i} 的独特特点",
+            "capability": f"项目 {i} 的核心能力",
+            "necessity": f"项目 {i} 的引入必要性",
+            "summary": f"Project {i}",
+            "why_now": f"Why now {i}",
+            "stars": 100 + i,
+            "star_delta_1d": 0,
+            "star_velocity": "",
+        }
+        for i in range(6)
+    ]
+
+    card = build_digest_card(items=items, today=date(2026, 4, 2))
+    contents = [el.get("content", "") for el in card["card"]["elements"] if el.get("tag") == "markdown"]
+    all_text = "\n".join(contents)
+
+    assert all_text.count("▸ 特点：") == 6
+    assert all_text.count("▸ 核心能力：") == 6
+    assert all_text.count("▸ 引入必要性：") == 6
+
+
 def test_alert_card_has_red_theme():
     cards = build_alert_cards(title="Alert", message="Something failed")
     assert len(cards) == 1

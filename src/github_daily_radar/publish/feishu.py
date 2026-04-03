@@ -15,8 +15,8 @@ from collections import Counter, defaultdict
 import httpx
 
 # ── Constants ──────────────────────────────────────────────────────
-# 前 FEATURED_LIMIT 条项目展示完整画像，之后压缩为单行
-FEATURED_LIMIT = 5
+# 项目区默认全部展示完整画像，避免第 6 条开始被压成单行
+FEATURED_LIMIT = 20
 
 _VELOCITY_EMOJI = {
     "explosion": "💥",

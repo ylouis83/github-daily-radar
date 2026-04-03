@@ -39,7 +39,7 @@ jobs:
           TIMEZONE: Asia/Shanghai
           LLM_MODEL: qwen3.5-plus
           LLM_FALLBACK_MODEL: kimi-k2.5
-          CODE_SEARCH_REQUESTS_PER_MINUTE: 10
+          CODE_SEARCH_REQUESTS_PER_MINUTE: 4
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_PAT: ${{ secrets.GITHUB_PAT }}
           QWEN_API_KEY: ${{ secrets.QWEN_API_KEY }}

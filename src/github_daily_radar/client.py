@@ -48,7 +48,7 @@ class GitHubClient:
         token: str,
         budget: BudgetTracker,
         search_requests_per_minute: int = 25,
-        code_search_requests_per_minute: int = 10,
+        code_search_requests_per_minute: int = 4,
     ) -> None:
         self._budget = budget
         self._search_lock = Lock()
