@@ -1,6 +1,6 @@
 import argparse
 from collections import Counter
-from datetime import date, datetime, timezone
+from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
@@ -134,6 +134,24 @@ def run_pipeline(settings: Settings, alert_only: bool = False) -> dict:
     repo_queries = build_repo_queries(now=run_started_at, days_back=7)
     discussion_queries = build_discussion_queries(seed_repos=seed_repos, now=run_started_at, days_back=30)
     issue_pr_queries = build_issue_pr_queries(seed_repos=seed_repos, now=run_started_at, days_back=30)
+    # 构建 skill 7 天 cooldown 集：最近 7 天已发布的 skill repos 不再重复出现
+    skill_cooldown_ids: set[str] = set()
+    history = state.read_history()
+    cooldown_cutoff = today - timedelta(days=7)
+    for entry in history.get("published", []):
+        if entry.get("kind") in ("skill", "project"):
+            pub_date_str = entry.get("date", "")
+            try:
+                pub_date = datetime.fromisoformat(pub_date_str).date()
+            except (ValueError, TypeError):
+                continue
+            if pub_date >= cooldown_cutoff:
+                cid = entry.get("candidate_id", "")
+                if cid:
+                    skill_cooldown_ids.add(cid)
+                    # 也加 repo_full_name 兜底（candidate_id 格式可能不同）
+                    if ":" in cid:
+                        skill_cooldown_ids.add(cid.split(":", 1)[1])
     skill_search_cost = len(skill_code_queries) + len(skill_repo_queries)
     collector_specs: list[tuple[str, object, int]] = []
     collector_specs.append(("trending", TrendingCollector(), 0))
@@ -156,6 +174,7 @@ def run_pipeline(settings: Settings, alert_only: bool = False) -> dict:
                     skill_shape_floor=skill_shape_floor,
                     top_n=skill_top_n,
                     per_repo_cap=skill_per_repo_cap,
+                    cooldown_repo_ids=skill_cooldown_ids,
                 ),
                 skill_search_cost,
             ),

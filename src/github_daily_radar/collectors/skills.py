@@ -52,6 +52,7 @@ class SkillCollector(Collector):
         skill_shape_floor: int = 3,
         top_n: int = 20,
         per_repo_cap: int = 1,
+        cooldown_repo_ids: set[str] | None = None,
     ) -> None:
         super().__init__(client)
         self.code_queries = code_queries
@@ -62,6 +63,7 @@ class SkillCollector(Collector):
         self.skill_shape_floor = max(1, skill_shape_floor)
         self.top_n = max(1, min(20, top_n))
         self.per_repo_cap = max(1, per_repo_cap)
+        self.cooldown_repo_ids = cooldown_repo_ids or set()
 
     def _text_blob(self, candidate: Candidate) -> str:
         raw_signals = candidate.raw_signals or {}
@@ -113,7 +115,10 @@ class SkillCollector(Collector):
 
     def _admit_candidate(self, *, shape_score: float, candidate: Candidate) -> bool:
         stars = candidate.metrics.stars
-        shape_hit = shape_score >= self.skill_shape_floor
+        # 绝对底线：无论 shape 多高，10 星以下一律不要
+        if stars < 10:
+            return False
+        shape_hit = shape_score >= self.skill_shape_floor and stars >= self.skill_min_stars
         project_hit = stars >= self.project_min_stars
         skill_floor_hit = stars >= self.skill_min_stars and shape_score >= 1.0
         return shape_hit or project_hit or skill_floor_hit
@@ -187,7 +192,7 @@ class SkillCollector(Collector):
 
     def collect(self) -> list[Candidate]:
         candidates: list[Candidate] = []
-        seen: set[str] = set(self.seed_repos)
+        seen: set[str] = set()  # seed_repos 不再永久排除，改用 cooldown
 
         for query in self.code_queries:
             try:
@@ -217,6 +222,11 @@ class SkillCollector(Collector):
 
         qualified: list[Candidate] = []
         for candidate in candidates:
+            # 7 天 cooldown：最近已发布的不再出现
+            if candidate.candidate_id in self.cooldown_repo_ids:
+                continue
+            if candidate.repo_full_name in self.cooldown_repo_ids:
+                continue
             shape_score = self._skill_shape_score(candidate)
             scale_score = self._project_scale_score(candidate)
             if not self._admit_candidate(shape_score=shape_score, candidate=candidate):

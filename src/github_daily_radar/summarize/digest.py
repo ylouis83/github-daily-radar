@@ -220,10 +220,17 @@ def _fallback_trait(candidate: Candidate) -> str:
         if m.star_growth_7d >= 300:
             return f"{focus}，热度正在持续上升"
         return focus
+    # 优先用仓库真实 description，但只接受中文/中英混合中有明显中文的文本
+    desc = (candidate.body_excerpt or "").strip()
+    if desc and len(desc) >= 8 and not desc.startswith("http") and _has_cjk(desc):
+        # 截断到合理长度，避免英文原文直接泄露
+        return _truncate(desc, 42)
     if candidate.kind == "skill":
+        if m.stars >= 500:
+            return f"{focus}，⭐{m.stars} 社区广泛验证"
         if m.stars >= 100:
             return f"{focus}，社区验证较强"
-        return f"{focus}，更像早期可复用资产"
+        return focus
     if candidate.kind in {"discussion", "issue", "pr"}:
         if m.comments >= 20:
             return f"{focus}，讨论已进入收敛阶段"
@@ -236,6 +243,10 @@ def _fallback_trait(candidate: Candidate) -> str:
 
 
 def _fallback_capability(candidate: Candidate) -> str:
+    # 优先用 topics 差异化
+    topics = [t for t in candidate.topics[:4] if t and len(t) > 1]
+    if topics:
+        return f"涉及 {' / '.join(topics)}，封装为可接入的能力层。"
     blob = _candidate_text_blob(candidate)
     if any(needle in blob for needle in ("mcp", "tool")):
         return "把外部工具和能力封装成更容易接入的调用层。"
@@ -264,10 +275,17 @@ def _fallback_necessity(candidate: Candidate) -> str:
         if m.star_growth_7d >= 300:
             return "热度正在上升，适合趁势先看是否值得收录。"
         return "热度已在抬升，适合快速判断是否值得关注。"
-    if candidate.kind == "skill":
-        if m.stars >= 100:
-            return "如果你在整理可复用技能库，这类条目值得优先纳入。"
-        return "如果你在找可复用能力包，这类条目值得先收藏观察。"
+    # 数据驱动差异化
+    if m.star_growth_7d >= 500:
+        return f"近期暴涨 +{m.star_growth_7d}⭐，建议立即关注。"
+    if m.star_growth_7d >= 100:
+        return f"增长 +{m.star_growth_7d}⭐，值得优先跟进。"
+    if m.forks >= 50:
+        return f"已被 {m.forks} 人 fork，复用价值明确。"
+    if m.stars >= 1000:
+        return f"⭐{m.stars} 广泛验证，可作为参考标杆。"
+    if m.stars >= 500:
+        return f"⭐{m.stars} 社区验证充分，值得深入评估。"
     if candidate.kind in {"discussion", "issue", "pr"}:
         if m.comments >= 20:
             return "如果你关注方案走向，这类讨论值得跟进结论。"
@@ -275,8 +293,8 @@ def _fallback_necessity(candidate: Candidate) -> str:
     if candidate.metrics.has_new_release:
         return "已有新版本信号，适合判断是否需要接入或替换。"
     if m.stars >= 100:
-        return "已经有一定社区验证，适合判断是否值得引入。"
-    return "虽然还偏早期，但形态清晰，适合先观察是否值得引入。"
+        return f"⭐{m.stars} 已有社区验证，适合判断是否值得引入。"
+    return "形态清晰，适合先观察后续发展。"
 
 
 def _compose_profile(kind: str, trait: str, capability: str, necessity: str) -> str:

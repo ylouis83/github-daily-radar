@@ -62,10 +62,10 @@ DEFAULT_SKILL_CODE_QUERIES = [
     "filename:mcp.json",
 ]
 DEFAULT_SKILL_REPO_QUERIES = [
-    "cursor rules AI in:name,description",
-    "claude skills agent prompt in:name,description",
-    "mcp server tool in:name,description",
-    "agent workflow prompt in:name,description",
+    "cursor rules AI in:name,description stars:>50 sort:stars-desc",
+    "claude skills agent prompt in:name,description stars:>50 sort:stars-desc",
+    "mcp server tool in:name,description stars:>50 sort:stars-desc",
+    "agent workflow prompt in:name,description stars:>50 sort:stars-desc",
 ]
 DEFAULT_SKILL_MIN_STARS = 80
 DEFAULT_PROJECT_MIN_STARS = 120

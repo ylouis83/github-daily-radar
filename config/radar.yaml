@@ -117,10 +117,10 @@ skills:
   # --- 层 3: Repo Search 关键词 ---
   # 搜新建/近期更新的 skill/rule/prompt 集合类仓库
   repo_search_queries:
-    - "cursor rules AI in:name,description sort:stars-desc"
-    - "claude skills agent prompt in:name,description sort:stars-desc"
-    - "mcp server tool in:name,description sort:stars-desc"
-    - "agent workflow prompt in:name,description sort:stars-desc"
+    - "cursor rules AI in:name,description stars:>50 sort:stars-desc"
+    - "claude skills agent prompt in:name,description stars:>50 sort:stars-desc"
+    - "mcp server tool in:name,description stars:>50 sort:stars-desc"
+    - "agent workflow prompt in:name,description stars:>50 sort:stars-desc"
 
   # --- 技能池门槛与 TopN ---
   ranking:

@@ -59,7 +59,7 @@ def test_skill_collector_collects_candidates():
                             "owner": {"login": "owner"},
                             "description": "agent workflow prompts",
                             "topics": ["agent"],
-                            "stargazers_count": 50,
+                            "stargazers_count": 100,
                             "forks_count": 2,
                         },
                     }
@@ -78,7 +78,7 @@ def test_skill_collector_collects_candidates():
                         "updated_at": "2026-04-02T00:00:00Z",
                         "description": "agent workflow prompts",
                         "topics": ["agent"],
-                        "stargazers_count": 50,
+                        "stargazers_count": 100,
                         "forks_count": 2,
                     }
                 ]

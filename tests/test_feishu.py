@@ -50,13 +50,21 @@ def test_build_digest_card_single_card_with_sections():
     header = card["card"]["header"]["title"]["content"]
     assert "每日雷达" in header
     assert "2026-04-02" in header
-    assert card["card"]["header"]["template"] == "blue"
+    assert card["card"]["header"]["template"] == "indigo"
 
     contents = [el.get("content", "") for el in card["card"]["elements"] if el.get("tag") == "markdown"]
+    # 也提取 column_set 内嵌的 markdown 文本
+    for el in card["card"]["elements"]:
+        if el.get("tag") == "column_set":
+            for col in el.get("columns", []):
+                for sub_el in col.get("elements", []):
+                    if sub_el.get("tag") == "markdown":
+                        contents.append(sub_el.get("content", ""))
     all_text = "\n".join(contents)
 
-    # 验证单版概览
-    assert "3" in all_text and "精选" in all_text
+    # 验证概览面板（column_set 或文字版）
+    assert "50" in all_text  # 候选总数
+    assert "3" in all_text  # 精选数（3 条）
     # 不再有 A/B 标签
     assert "🅰️" not in all_text
     assert "🅱️" not in all_text
@@ -119,11 +127,13 @@ def test_build_digest_card_uses_structured_profile():
     contents = [el.get("content", "") for el in card["card"]["elements"] if el.get("tag") == "markdown"]
     all_text = "\n".join(contents)
 
-    # 验证画像三段分行
+    # 验证 project 精编画像三段分行
     assert "▸ 特点：" in all_text
     assert "▸ 核心能力：" in all_text
     assert "▸ 引入必要性：" in all_text
-    assert "▸ 纳入必要性：" in all_text
+    # skill 区精简模式：仅保留 trait 一行
+    assert "▸ 特点：可复用的技能资源" in all_text
+    # discussion 精编模式：焦点 + 核心观点 + 跟进必要性
     assert "▸ 焦点：" in all_text
     assert "▸ 核心观点：" in all_text
     assert "▸ 跟进必要性：" in all_text
