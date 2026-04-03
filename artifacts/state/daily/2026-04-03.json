@@ -11,42 +11,79 @@
             "tag": "plain_text",
             "content": "🔭 GitHub 每日雷达 · 2026-04-03"
           },
-          "template": "blue"
+          "template": "indigo"
         },
         "elements": [
           {
-            "tag": "markdown",
-            "content": "今日精选 **20** 条：**14** 项目  ·  **6** 技能"
+            "tag": "column_set",
+            "flex_mode": "bisect",
+            "background_style": "grey",
+            "horizontal_spacing": "default",
+            "columns": [
+              {
+                "tag": "column",
+                "width": "weighted",
+                "weight": 1,
+                "vertical_align": "center",
+                "elements": [
+                  {
+                    "tag": "markdown",
+                    "text_align": "center",
+                    "content": "**125**\n候选仓库"
+                  }
+                ]
+              },
+              {
+                "tag": "column",
+                "width": "weighted",
+                "weight": 1,
+                "vertical_align": "center",
+                "elements": [
+                  {
+                    "tag": "markdown",
+                    "text_align": "center",
+                    "content": "**20**\n今日精选"
+                  }
+                ]
+              },
+              {
+                "tag": "column",
+                "width": "weighted",
+                "weight": 1,
+                "vertical_align": "center",
+                "elements": [
+                  {
+                    "tag": "markdown",
+                    "text_align": "center",
+                    "content": "**0**\n覆盖主题"
+                  }
+                ]
+              }
+            ]
           },
           {
             "tag": "hr"
           },
           {
             "tag": "markdown",
-            "content": "**🚀 核心 AI 项目**\n\n**1.** [affaan-m/everything-claude-code](https://github.com/affaan-m/everything-claude-code)  🔥+392⭐\n📌 本周星数激增，反映社区对代理优化的高度关注\n▸ 特点：专为多种编码代理设计的性能优化系统\n▸ 核心能力：整合技能、记忆与安全机制以提升开发效率\n▸ 引入必要性：解决多代理协作中的性能瓶颈问题\n\n**2.** [obra/superpowers](https://github.com/obra/superpowers)  🔥+313⭐\n📌 近日关注度飙升，适合寻求代理架构规范的团队\n▸ 特点：一套切实可行的代理技能框架与方法论\n▸ 核心能力：提供标准化的代理技能开发与软件实施流程\n▸ 引入必要性：为混乱的代理开发领域提供结构化指导\n\n**3.** [anthropics/claude-code](https://github.com/anthropics/claude-code)  🔥+1161⭐\n📌 登上当日趋势榜，代表官方代理工具的最新进展\n▸ 特点：官方推出的终端原生代理编码工具\n▸ 核心能力：通过自然语言命令执行任务、解释代码及管理 Git 工作流\n▸ 引入必要性：官方工具通常代表最佳实践与深度集成能力\n\n**4.** [bytedance/deer-flow](https://github.com/bytedance/deer-flow)  🔥+171⭐\n📌 本周星级增长明显，体现工业界长程代理技术的开源落地\n▸ 特点：字节开源的长程超级代理编排框架\n▸ 核心能力：利用沙盒与子代理处理耗时数分钟至数小时的复杂任务\n▸ 引入必要性：填补了长周期自动化任务处理的开源方案空白\n\n**5.** [langgenius/dify](https://github.com/langgenius/dify)  🔥+762⭐\n📌 稳居 LLM 工具集合热度前列，显示其持久的平台价值\n▸ 特点：社区反应数极高的大模型工具集合成员\n▸ 核心能力：提供大模型应用开发所需的工具链支持\n▸ 引入必要性：降低企业及个人开发者使用大模型的门槛\n\n**6.** [langchain-ai/langchain](https://github.com/langchain-ai/langchain)  🔥+693⭐\n📌 社区反应总数居首，证明其作为基础设施的广泛采用率\n▸ 特点：构建大模型应用的标准框架库\n▸ 核心能力：提供链式调用与代理构建的核心组件支持\n▸ 引入必要性：生态丰富，是开发复杂 LLM 应用的基础设施\n\n**7.** [karpathy/autoresearch](https://github.com/karpathy/autoresearch)  🔥+135⭐\n📌 本周突然爆火且由行业大佬背书，值得密切关注其进展。\n▸ 特点：由知名 AI 研究者 Karpathy 发起的单 GPU 自动化研究项目。\n▸ 核心能力：利用 AI 代理自动执行纳米聊天训练的研究流程。\n▸ 引入必要性：为资源有限的开发者提供了自动化的研究实验方案。\n\n**8.** [JCodesMore/ai-website-cloner-template](https://github.com/JCodesMore/ai-website-cloner-template)  🔥+143⭐\n📌 近期星数增长迅猛，展示了 AI 在前端工程化落地的新潜力。\n▸ 特点：主打一键命令即可复制任意网站的前端模板。\n▸ 核心能力：结合 AI 编码代理实现网站的快速克隆与重建。\n▸ 引入必要性：极大降低了前端页面复刻和原型开发的时间成本。\n\n**9.** [mvanhorn/last30days-skill](https://github.com/mvanhorn/last30days-skill)  🔥+161⭐\n📌 本周增长最快，适合需要快速获取多平台舆情汇总的用户。\n▸ 特点：专注于跨多个主流社交平台进行深度信息检索的 AI 技能。\n▸ 核心能力：聚合 Reddit、X 等多源数据并生成有依据的综合摘要。\n▸ 引入必要性：解决了单一来源信息片面且难以手动整合的痛点。\n\n**10.** [msitarzewski/agency-agents](https://github.com/msitarzewski/agency-agents)  🔥+98⭐\n📌 展示了 AI 代理从单一任务向多角色协作演进的趋势。\n▸ 特点：构建了拥有不同人格和流程的垂直领域专家代理矩阵。\n▸ 核心能力：模拟完整代理机构，提供从前端到社区运营的多样化服务。\n▸ 引入必要性：为复杂任务提供了多角色协作的 AI 解决方案框架。\n\n**11.** [mem0ai/mem0](https://github.com/mem0ai/mem0)  🔥+523⭐\n📌 过去 28 天内社区反应热烈，值得纳入工具选型参考。\n▸ 特点：位列 LLM 工具集合中社区反应数极高的热门项目。\n▸ 核心能力：为大语言模型应用提供基础工具支持能力。\n▸ 引入必要性：完善工具链是构建稳定 LLM 应用的必要环节。\n\n**12.** [cline/cline](https://github.com/cline/cline)  🔥+238⭐\n📌 社区反应数远超星数，显示出强烈的用户期待。\n▸ 特点：隶属于 LLM 开发工具类别的高星潜力项目。\n▸ 核心能力：致力于优化开发者与大模型交互的工作流。\n▸ 引入必要性：高效的开发工具能显著降低大模型应用构建门槛。\n\n**13.** [Yeachan-Heo/oh-my-codex](https://github.com/Yeachan-Heo/oh-my-codex)  🔥+410⭐\n📌 过去 24 小时趋势榜新星，社区互动反应热烈。\n▸ 特点：支持为代码索引工具添加钩子、代理团队及 HUD 界面。\n▸ 核心能力：增强现有代码辅助工具的交互性与自动化扩展能力。\n▸ 引入必要性：适合需要深度定制代码工作流的进阶开发者。\n\n**14.** [FlowiseAI/Flowise](https://github.com/FlowiseAI/Flowise)  🔥+201⭐\n📌 位列 LLM 工具集收藏榜，持续获得开发者青睐。\n▸ 特点：面向 LLM 工具集的可视化开发平台。\n▸ 核心能力：支持通过图形界面构建大型语言模型应用。\n▸ 引入必要性：简化 AI 应用原型的搭建与测试流程。\n"
+            "content": "**🚀 核心 AI 项目**\n\n**1.** [affaan-m/everything-claude-code](https://github.com/affaan-m/everything-claude-code)  🔥+392⭐\n📌 本周星数激增显示社区对代理性能优化的高度关注。\n▸ 特点：专为 Claude Code 等代理设计的性能优化 harness 系统。\n▸ 核心能力：它整合技能、本能、记忆与安全机制以提升代理开发效率。\n▸ 引入必要性：引入它是为了解决现有代理框架在复杂任务中性能不足的问题。\n\n**2.** [obra/superpowers](https://github.com/obra/superpowers)  🔥+313⭐\n📌 近期快速增长表明市场渴望更落地的代理开发标准。\n▸ 特点：一套真正可行的代理技能框架与软件开发方法论。\n▸ 核心能力：它提供结构化技能定义以增强代理在实际开发中的执行力。\n▸ 引入必要性：开发者需要可靠的方法论来规范代理行为而非仅靠提示词。\n\n**3.** [anthropics/claude-code](https://github.com/anthropics/claude-code)  🔥+1161⭐\n📌 过去 24 小时 trending 显示其刚刚开放或引起巨大轰动。\n▸ 特点：这是 Anthropic 官方推出的终端内代理编码工具。\n▸ 核心能力：它能理解代码库并通过自然语言命令执行任务及处理 git 工作流。\n▸ 引入必要性：官方原生支持意味着更好的兼容性与长期维护保障。\n\n**4.** [bytedance/deer-flow](https://github.com/bytedance/deer-flow)  🔥+171⭐\n📌 本周新星增长证明大厂开源方案正成为社区焦点。\n▸ 特点：这是字节开源的长周期 SuperAgent harness 系统。\n▸ 核心能力：它利用沙盒、记忆与子代理处理耗时数分钟至数小时的复杂任务。\n▸ 引入必要性：它填补了开源界在长周期自主任务处理领域的空白。\n\n**5.** [langgenius/dify](https://github.com/langgenius/dify)  🔥+764⭐\n📌 长期稳定的反应数增长证明其用户粘性极高。\n▸ 特点：这是一个在 LLM 工具集合中备受关注的开发平台。\n▸ 核心能力：它支持大模型应用的快速构建与管理和部署。\n▸ 引入必要性：关注它是为了获取社区验证过的可靠大模型开发方案。\n\n**6.** [langchain-ai/langchain](https://github.com/langchain-ai/langchain)  🔥+693⭐\n**7.** [karpathy/autoresearch](https://github.com/karpathy/autoresearch)  🔥+135⭐\n**8.** [JCodesMore/ai-website-cloner-template](https://github.com/JCodesMore/ai-website-cloner-template)  🔥+143⭐\n**9.** [mvanhorn/last30days-skill](https://github.com/mvanhorn/last30days-skill)  🔥+161⭐\n**10.** [msitarzewski/agency-agents](https://github.com/msitarzewski/agency-agents)  🔥+98⭐\n**11.** [mem0ai/mem0](https://github.com/mem0ai/mem0)  🔥+524⭐\n**12.** [cline/cline](https://github.com/cline/cline)  🔥+238⭐\n**13.** [Yeachan-Heo/oh-my-codex](https://github.com/Yeachan-Heo/oh-my-codex)  🔥+410⭐\n**14.** [FlowiseAI/Flowise](https://github.com/FlowiseAI/Flowise)  🔥+201⭐\n**15.** [Aider-AI/aider](https://github.com/Aider-AI/aider)  📈+191⭐\n**16.** [run-llama/llama_index](https://github.com/run-llama/llama_index)  📈+138⭐\n**17.** [langfuse/langfuse](https://github.com/langfuse/langfuse)  🔥+269⭐\n**18.** [luongnv89/claude-howto](https://github.com/luongnv89/claude-howto)  🔥+270⭐\n**19.** [continuedev/continue](https://github.com/continuedev/continue)  📈+104⭐\n**20.** [googleapis/genai-toolbox](https://github.com/googleapis/genai-toolbox)  ⭐13.6K"
           },
           {
             "tag": "hr"
           },
           {
             "tag": "markdown",
-            "content": "**🧩 MCP & Skills**\n\n**1.** [Azure/mcp-kubernetes](https://github.com/Azure/mcp-kubernetes)  ⭐51\n📌 适合复用 · 🍴16\n▸ 特点：聚焦 MCP 工具接入与编排，更像早期可复用资产\n▸ 核心能力：把外部工具和能力封装成更容易接入的调用层。\n▸ 纳入必要性：如果你在找可复用能力包，这类条目值得先收藏观察。\n\n**2.** [PradeepaRW/project-nova](https://github.com/PradeepaRW/project-nova)  ⭐29\n▸ 特点：聚焦 MCP 工具接入与编排，更像早期可复用资产\n▸ 核心能力：把外部工具和能力封装成更容易接入的调用层。\n▸ 纳入必要性：如果你在找可复用能力包，这类条目值得先收藏观察。\n\n**3.** [badhope/skill](https://github.com/badhope/skill)  ⭐24\n▸ 特点：围绕 prompt 复用与组织，更像早期可复用资产\n▸ 核心能力：把外部工具和能力封装成更容易接入的调用层。\n▸ 纳入必要性：如果你在找可复用能力包，这类条目值得先收藏观察。\n\n**4.** [onamfc/agent-prompt-library](https://github.com/onamfc/agent-prompt-library)  ⭐13\n▸ 特点：围绕 prompt 复用与组织，更像早期可复用资产\n▸ 核心能力：把外部工具和能力封装成更容易接入的调用层。\n▸ 纳入必要性：如果你在找可复用能力包，这类条目值得先收藏观察。\n\n**5.** [acelest/claude-code-playbook](https://github.com/acelest/claude-code-playbook)  ⭐1\n▸ 特点：围绕 Claude Code 的终端工作流，更像早期可复用资产\n▸ 核心能力：把可复用的提示词和规则沉淀成可执行资产。\n▸ 纳入必要性：如果你在找可复用能力包，这类条目值得先收藏观察。\n\n**6.** [Dissectionfactorxii669/prompts](https://github.com/Dissectionfactorxii669/prompts)  ⭐1\n▸ 特点：围绕 prompt 复用与组织，更像早期可复用资产\n▸ 核心能力：把可复用的提示词和规则沉淀成可执行资产。\n▸ 纳入必要性：如果你在找可复用能力包，这类条目值得先收藏观察。\n"
-          },
-          {
-            "tag": "hr"
-          },
-          {
-            "tag": "markdown",
-            "content": "📅 2026-04-03"
+            "content": "📅 2026-04-03  ·  125 候选 → 20 精选",
+            "text_size": "notation"
           }
         ]
       }
     }
   ],
-  "count": 124,
+  "count": 125,
   "selected_count": 20,
   "summary": {
-    "count": 124,
+    "count": 125,
     "editorial": 24,
     "api_usage": {
       "total_budget": 50,
@@ -85,34 +122,30 @@
       "skills": {
         "count": 20,
         "kinds": {
-          "project": 1,
-          "skill": 19
+          "project": 20
         }
       }
     },
     "item_count": 20,
     "filtered_kind_counts": {
-      "project": 105,
-      "skill": 19
+      "project": 125
     },
     "published_kind_counts": {
-      "project": 14,
-      "skill": 6
+      "project": 20
     },
     "theme_counts": {
-      "claude_code": 4,
-      "skill_assets": 5,
-      "mcp": 1,
+      "claude_code": 3,
+      "skill_assets": 3,
       "platform": 1,
-      "ai_project": 4,
+      "ai_project": 8,
       "agent_framework": 3,
-      "prompt_assets": 1,
-      "codex": 1
+      "codex": 1,
+      "mcp": 1
     },
     "top_themes": [
-      "skill_assets",
+      "ai_project",
       "claude_code",
-      "ai_project"
+      "skill_assets"
     ]
   }
 }
