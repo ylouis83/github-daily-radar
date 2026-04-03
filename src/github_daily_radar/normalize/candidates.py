@@ -133,7 +133,16 @@ def candidate_from_ossinsight_repo(*, item: dict, source_query: str, collection_
     description = item.get("description") or item.get("repo_description") or item.get("repo_about") or ""
     created_at = _utc_now_iso()
     updated_at = _utc_now_iso()
-    stars = item.get("current_period_growth", item.get("stars", item.get("star_growth", 0)))
+    # OSSInsight trending `stars` field is the *period growth*, NOT total stars.
+    # The API does not return total stargazer count.
+    # `current_period_growth` is an alias some endpoints use.
+    period_growth = _coerce_int(
+        item.get("current_period_growth", item.get("stars", item.get("star_growth", 0)))
+    )
+    # `stargazers_count` / `total_stars` may exist in collection ranking endpoints
+    total_stars = _coerce_int(
+        item.get("stargazers_count", item.get("total_stars", 0))
+    )
     forks = item.get("forks", item.get("fork_count", 0))
     total_score = item.get("total_score", item.get("total", 0))
     collection_names = item.get("collection_names")
@@ -162,12 +171,18 @@ def candidate_from_ossinsight_repo(*, item: dict, source_query: str, collection_
         topics=topics,
         labels=[],
         metrics=CandidateMetrics(
-            stars=_coerce_int(stars),
+            # Use total_stars if available, otherwise fall back to period_growth
+            # (better to show growth than 0, downstream can correct via dedup)
+            stars=total_stars if total_stars > 0 else period_growth,
             forks=_coerce_int(forks),
             reactions=_coerce_int(total_score),
-            star_growth_7d=_coerce_int(stars),
+            star_growth_7d=period_growth,
         ),
-        raw_signals={"ossinsight_item": item, "collection_name": collection_name},
+        raw_signals={
+            "ossinsight_item": item,
+            "collection_name": collection_name,
+            "ossinsight_stars_is_growth": total_stars == 0,
+        },
         rule_scores={
             "ossinsight_total_score": float(total_score or 0),
             "ossinsight_source": source_query,
