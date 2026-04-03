@@ -1,0 +1,63 @@
+name: daily-radar
+
+on:
+  schedule:
+    - cron: "15 1 * * *"
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Run without publishing or updating state"
+        required: false
+        default: false
+        type: boolean
+      report_limit:
+        description: "Limit the number of report items for a manual run"
+        required: false
+        default: "0"
+        type: string
+
+permissions:
+  contents: write
+
+concurrency:
+  group: github-daily-radar
+  cancel-in-progress: false
+
+jobs:
+  radar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: astral-sh/setup-uv@v6
+      - run: uv sync --extra dev
+      - run: uv run python -m github_daily_radar.main
+        env:
+          DRY_RUN: ${{ inputs.dry_run || false }}
+          REPORT_LIMIT: ${{ inputs.report_limit || 0 }}
+          TIMEZONE: Asia/Shanghai
+          LLM_MODEL: qwen3.5-plus
+          LLM_FALLBACK_MODEL: kimi-k2.5
+          CODE_SEARCH_REQUESTS_PER_MINUTE: 4
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_PAT: ${{ secrets.GITHUB_PAT }}
+          QWEN_API_KEY: ${{ secrets.QWEN_API_KEY }}
+          FEISHU_WEBHOOK_URL: ${{ secrets.FEISHU_WEBHOOK_URL }}
+      - run: bash scripts/sync_state_branch.sh
+        if: ${{ !inputs.dry_run }}
+      - name: Send failure alert
+        if: failure()
+        run: uv run python -m github_daily_radar.main --alert-only
+        env:
+          LLM_MODEL: qwen3.5-plus
+          LLM_FALLBACK_MODEL: kimi-k2.5
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_PAT: ${{ secrets.GITHUB_PAT }}
+          QWEN_API_KEY: ${{ secrets.QWEN_API_KEY }}
+          FEISHU_WEBHOOK_URL: ${{ secrets.FEISHU_WEBHOOK_URL }}
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: daily-radar-artifacts
+          path: artifacts/
