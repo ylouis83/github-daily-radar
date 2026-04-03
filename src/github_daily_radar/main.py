@@ -98,28 +98,54 @@ def _extract_daily_delta(candidate) -> int:
 
 
 def _build_surge_items(candidates: list, *, min_daily_stars: int = SURGE_MIN_DAILY_STARS, max_items: int = SURGE_MAX_ITEMS) -> list[dict]:
-    """从全部候选中提取爆款项目，按日增降序，去重同 repo 取最高。"""
-    best_by_repo: dict[str, tuple[int, object]] = {}
+    """从全部候选中提取爆款项目，按日增降序，去重同 repo 取最高。
+
+    同 repo 出现在多个 collector 时：
+    - 日增量取最大值
+    - 总星数优先取 TrendingCollector（有真实总星数），OSSInsight 的 stars 实为增量
+    """
+    # 第一遍：收集每个 repo 的最佳 delta 和所有候选
+    repo_data: dict[str, dict] = {}
     for candidate in candidates:
         delta = _extract_daily_delta(candidate)
         if delta < min_daily_stars:
             continue
-        existing = best_by_repo.get(candidate.repo_full_name)
-        if existing is None or delta > existing[0]:
-            best_by_repo[candidate.repo_full_name] = (delta, candidate)
+        repo = candidate.repo_full_name
+        entry = repo_data.get(repo)
+        if entry is None:
+            repo_data[repo] = {"delta": delta, "candidates": [candidate]}
+        else:
+            entry["delta"] = max(entry["delta"], delta)
+            entry["candidates"].append(candidate)
 
-    sorted_items = sorted(best_by_repo.values(), key=lambda x: -x[0])
+    sorted_repos = sorted(repo_data.items(), key=lambda x: -x[1]["delta"])
     surge_items = []
-    for delta, candidate in sorted_items[:max_items]:
+    for repo, data in sorted_repos[:max_items]:
+        delta = data["delta"]
+        # 优先选 TrendingCollector 候选（总星数准确）
+        best = data["candidates"][0]
+        stars_is_growth = True
+        for candidate in data["candidates"]:
+            raw = candidate.raw_signals or {}
+            if raw.get("trending_item"):
+                best = candidate
+                stars_is_growth = False
+                break
+            if not raw.get("ossinsight_stars_is_growth"):
+                best = candidate
+                stars_is_growth = False
+
+        total_stars = best.metrics.stars
         surge_items.append({
-            "title": candidate.title,
-            "url": candidate.url,
-            "repo_full_name": candidate.repo_full_name,
+            "title": best.title,
+            "url": best.url,
+            "repo_full_name": best.repo_full_name,
             "surge_daily_delta": delta,
-            "stars": candidate.metrics.stars,
-            "kind": candidate.kind,
-            "candidate_id": candidate.candidate_id,
-            "source_query": candidate.source_query,
+            "stars": total_stars,
+            "stars_is_growth": stars_is_growth,
+            "kind": best.kind,
+            "candidate_id": best.candidate_id,
+            "source_query": best.source_query,
         })
     return surge_items
 

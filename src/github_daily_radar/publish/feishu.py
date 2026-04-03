@@ -157,11 +157,16 @@ def _render_surge_section(surge_items: list[dict]) -> str | None:
         url = item.get("url", "")
         daily_delta = item.get("surge_daily_delta", 0)
         total_stars = item.get("stars", 0)
+        stars_is_growth = item.get("stars_is_growth", False)
         emoji = "💥" if daily_delta >= 1000 else "🔥"
-        total_str = _format_total_stars(total_stars)
 
         link = f"[{title}]({url})" if url else title
-        line = f"**{i}.** {link}  {emoji}+{daily_delta}⭐  {total_str}"
+        if stars_is_growth:
+            # OSSInsight only: total stars unknown, only show delta
+            line = f"**{i}.** {link}  {emoji}+{daily_delta}⭐"
+        else:
+            total_str = _format_total_stars(total_stars)
+            line = f"**{i}.** {link}  {emoji}+{daily_delta}⭐  {total_str}"
         lines.append(line)
 
     lines.append("")
