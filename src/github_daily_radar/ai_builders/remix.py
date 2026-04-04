@@ -118,7 +118,7 @@ def remix_with_llm(
     *,
     api_key: str,
     model: str = "qwen3.5-plus",
-    base_url: str = "https://dashscope.aliyuncs.com/compatible-mode/v1",
+    base_url: str = "https://coding.dashscope.aliyuncs.com/v1",
 ) -> str:
     """Call the LLM to remix feed data into a Chinese digest.
 
@@ -139,13 +139,13 @@ def remix_with_llm(
     )
 
     try:
-        with httpx.Client(timeout=120.0) as client:
+        with httpx.Client(
+            base_url=base_url,
+            headers={"Authorization": f"Bearer {api_key}"},
+            timeout=120.0,
+        ) as client:
             resp = client.post(
-                f"{base_url}/chat/completions",
-                headers={
-                    "Authorization": f"Bearer {api_key}",
-                    "Content-Type": "application/json",
-                },
+                "/chat/completions",
                 json={
                     "model": model,
                     "messages": [
