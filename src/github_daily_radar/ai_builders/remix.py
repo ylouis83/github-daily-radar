@@ -10,9 +10,10 @@ import httpx
 SYSTEM_PROMPT = """你是一位专业的 AI 行业内容策展人。你的任务是将原始推文和播客数据整理成一份简洁、有洞察力的中文日报摘要。
 
 规则:
-- 对每位 Builder，用 2-4 句话总结其关键观点、产品发布或行业洞察
+- 每位 Builder 都必须出现在输出中，不要跳过任何人
+- 对有深度内容的 Builder，用 2-4 句话总结其关键观点、产品发布或行业洞察
+- 对内容较轻的 Builder（纯链接、转推等），用 1 句话简要提及即可
 - 使用 Builder 的全名和职位（如 "Box CEO Aaron Levie"），不要用 @handle
-- 跳过无实质内容的推文（纯链接、个人生活、转推无评论等）
 - 每条内容必须附上原始链接
 - 播客部分：200-400 字的精华摘要，包含至少一句直接引语
 - 技术术语保留英文（AI, LLM, GPU, API, agent, token 等）
@@ -36,11 +37,11 @@ USER_PROMPT_TEMPLATE = """请将以下 AI Builder 的最新动态整理成中文
 {blog_section}
 
 请按以下格式输出：
-1. 先输出 X/Twitter 部分，每位 Builder 一个段落
+1. 先输出 X/Twitter 部分，每位 Builder 一个段落，所有 Builder 都必须包含
 2. 再输出播客部分（如果有）
 3. 最后输出博客部分（如果有）
 
-每个内容项必须附上原始 URL。无实质内容的 Builder 请跳过。"""
+每个内容项必须附上原始 URL。不要跳过任何 Builder。"""
 
 
 def _format_twitter_for_llm(x_items: list[dict]) -> str:
