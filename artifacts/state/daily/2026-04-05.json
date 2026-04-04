@@ -1,0 +1,167 @@
+{
+  "cards": [
+    {
+      "msg_type": "interactive",
+      "card": {
+        "config": {
+          "wide_screen_mode": true
+        },
+        "header": {
+          "title": {
+            "tag": "plain_text",
+            "content": "🔭 GitHub 每日雷达 · 2026-04-05"
+          },
+          "template": "indigo"
+        },
+        "elements": [
+          {
+            "tag": "column_set",
+            "flex_mode": "bisect",
+            "background_style": "grey",
+            "horizontal_spacing": "default",
+            "columns": [
+              {
+                "tag": "column",
+                "width": "weighted",
+                "weight": 1,
+                "vertical_align": "center",
+                "elements": [
+                  {
+                    "tag": "markdown",
+                    "text_align": "center",
+                    "content": "**66**\n候选仓库"
+                  }
+                ]
+              },
+              {
+                "tag": "column",
+                "width": "weighted",
+                "weight": 1,
+                "vertical_align": "center",
+                "elements": [
+                  {
+                    "tag": "markdown",
+                    "text_align": "center",
+                    "content": "**20**\n今日精选"
+                  }
+                ]
+              },
+              {
+                "tag": "column",
+                "width": "weighted",
+                "weight": 1,
+                "vertical_align": "center",
+                "elements": [
+                  {
+                    "tag": "markdown",
+                    "text_align": "center",
+                    "content": "**0**\n覆盖主题"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "tag": "hr"
+          },
+          {
+            "tag": "markdown",
+            "content": "**💥 今日爆款**\n\n**1.** [block/goose](https://github.com/block/goose)  🔥+947⭐  35.6K⭐\n**2.** [onyx-dot-app/onyx](https://github.com/onyx-dot-app/onyx)  🔥+318⭐\n**3.** [telegramdesktop/tdesktop](https://github.com/telegramdesktop/tdesktop)  🔥+282⭐  30.8K⭐\n**4.** [HKUDS/LightRAG](https://github.com/HKUDS/LightRAG)  🔥+272⭐  32.1K⭐\n\n*数据源：GitHub Trending + OSSInsight*"
+          },
+          {
+            "tag": "hr"
+          },
+          {
+            "tag": "markdown",
+            "content": "**🚀 核心 AI 项目**\n\n**1.** [anthropics/skills](https://github.com/anthropics/skills)  🔥+123⭐\n📌 上周趋势飙升且为零起点增长，显示社区对官方技能标准的高度关注。\n▸ 特点：Anthropic 官方公开的 Agent 技能库。\n▸ 核心能力：提供标准化的智能体技能定义与实现参考。\n▸ 引入必要性：了解头部 AI 实验室如何构建 Agent 能力的关键窗口。\n\n**2.** [dmtrKovalenko/fff.nvim](https://github.com/dmtrKovalenko/fff.nvim)  📈+100⭐\n📌 过去 24 小时趋势上榜，反映了开发者对优化 AI 编码工作流细节的关注。\n▸ 特点：专为 AI 代理和 Neovim 设计的极速文件搜索工具包。\n▸ 核心能力：提供高精度文件搜索能力并支持多种主流开发环境。\n▸ 引入必要性：提升 AI 编码代理在复杂项目中定位文件的效率与准确性。\n\n**3.** [QwenLM/qwen-code](https://github.com/QwenLM/qwen-code)  📈+91⭐\n📌 近期星标增长显著，显示出社区对终端 AI 助手的强烈兴趣。\n▸ 特点：这是一个直接驻留在终端中的开源 AI 智能体。\n▸ 核心能力：它能在命令行环境中提供智能化的代码辅助与交互能力。\n▸ 引入必要性：开发者需要无需离开终端即可高效完成编程任务的工具。\n\n**4.** [openai/chatgpt-retrieval-plugin](https://github.com/openai/chatgpt-retrieval-plugin)  ⭐4\n📌 过去二十八天内该集合中的互动反应表明其仍是关注焦点。\n▸ 特点：这是官方推出的用于增强 ChatGPT 知识检索能力的插件。\n▸ 核心能力：它允许大语言模型访问外部数据源以提供更准确的回答。\n▸ 引入必要性：构建基于私有数据的大模型应用需要可靠的检索增强生成方案。\n\n**5.** [littlefs-project/littlefs](https://github.com/littlefs-project/littlefs)  ⭐11\n📌 近期在分布式存储集合中的反应数据体现了其持续的技术影响力。\n▸ 特点：这是一个专为嵌入式系统设计的故障安全文件系统。\n▸ 核心能力：它能在掉电等异常情况下保证数据存储的完整性与一致性。\n▸ 引入必要性：物联网设备开发必须依赖高可靠性的轻量级存储解决方案。\n\n**6.** [microsoft/agent-framework](https://github.com/microsoft/agent-framework)  📈+66⭐\n📌 作为热榜项目且星数增长，今日值得重点关注\n▸ 特点：微软官方推出的智能体构建框架\n▸ 核心能力：支持使用 Python 和.NET 编排多智能体工作流\n▸ 引入必要性：开发复杂 AI 应用时需要可靠的编排支持\n\n**7.** [kahing/goofys](https://github.com/kahing/goofys)  ⭐3\n📌 出现在分布式存储集合中，适合有云存储挂载需求的用户\n▸ 特点：实现对象存储文件系统挂载的专用工具\n▸ 核心能力：允许将对象存储桶作为本地文件系统访问\n▸ 引入必要性：云原生应用中兼容传统文件接口的必要桥梁\n\n**8.** [Alluxio/alluxio](https://github.com/Alluxio/alluxio)  ⭐2\n📌 近期被纳入分布式存储关注列表，适合架构师参考选型\n▸ 特点：云原生架构下的数据编排平台\n▸ 核心能力：加速分布式计算框架与底层存储之间的数据访问\n▸ 引入必要性：大数据处理链路中优化 I/O 效率的关键组件\n\n**9.** [cubefs/cubefs](https://github.com/cubefs/cubefs)  ⭐3\n📌 作为分布式存储集合成员，今日值得了解其特性\n▸ 特点：专为云原生环境设计的分布式文件系统\n▸ 核心能力：提供高可靠且可弹性伸缩的文件存储服务\n▸ 引入必要性：容器化部署场景需要适配的现代存储后端\n\n**10.** [gluster/glusterfs](https://github.com/gluster/glusterfs)  ⭐3\n📌 在分布式存储集合中被推荐，适合需要自建存储的团队\n▸ 特点：经典的可扩展网络附加存储开源方案\n▸ 核心能力：通过聚合多台服务器存储资源提供统一命名空间\n▸ 引入必要性：构建私有云存储基础设施的成熟选择\n\n**11.** [storj/storj](https://github.com/storj/storj)  ⭐3\n📌 OSSInsight 近期 +3⭐\n▸ 特点：聚焦 RAG 检索增强\n▸ 核心能力：涉及 Distributed File Storage，封装为可接入的能力层。\n▸ 引入必要性：热度已在抬升，适合快速判断是否值得关注。\n\n**12.** [vercel-labs/just-bash](https://github.com/vercel-labs/just-bash)  📈+118⭐\n📌 ⭐2572\n▸ 特点：偏 Agent 编排，已形成一定社区热度\n▸ 核心能力：涉及 TypeScript，封装为可接入的能力层。\n▸ 引入必要性：增长 +118⭐，值得优先跟进。\n\n**13.** [sjqzhang/go-fastdfs](https://github.com/sjqzhang/go-fastdfs)  ⭐1\n📌 OSSInsight 近期 +1⭐\n▸ 特点：聚焦 RAG 检索增强\n▸ 核心能力：涉及 Distributed File Storage，封装为可接入的能力层。\n▸ 引入必要性：热度已在抬升，适合快速判断是否值得关注。\n\n**14.** [moosefs/moosefs](https://github.com/moosefs/moosefs)  ⭐2\n📌 OSSInsight 近期 +2⭐\n▸ 特点：聚焦 RAG 检索增强\n▸ 核心能力：涉及 Distributed File Storage，封装为可接入的能力层。\n▸ 引入必要性：热度已在抬升，适合快速判断是否值得关注。\n\n**15.** [apache/ozone](https://github.com/apache/ozone)  ⭐1\n📌 OSSInsight 近期 +1⭐\n▸ 特点：聚焦 RAG 检索增强\n▸ 核心能力：涉及 Distributed File Storage，封装为可接入的能力层。\n▸ 引入必要性：热度已在抬升，适合快速判断是否值得关注。\n\n**16.** [imbue-ai/mngr](https://github.com/imbue-ai/mngr)  ⭐169\n📌 ⭐169\n▸ 特点：偏 Agent 编排，已形成一定社区热度\n▸ 核心能力：涉及 Python，封装为可接入的能力层。\n▸ 引入必要性：⭐169 已有社区验证，适合判断是否值得引入。\n\n**17.** [Bhaktiswarup/think_tank](https://github.com/Bhaktiswarup/think_tank)  ⭐2\n▸ 特点：偏 Agent 编排\n▸ 核心能力：涉及 analysis / assistant-chat-bots / business…\n▸ 引入必要性：形态清晰，适合先观察后续发展。\n\n**18.** [aadarshsharma7/news-aggregator-ai-agent](https://github.com/aadarshsharma7/news-aggregator-ai-agent)  ⭐2\n▸ 特点：偏 Agent 编排\n▸ 核心能力：涉及 agent / aggregator / ai / ai-news-summarizer…\n▸ 引入必要性：形态清晰，适合先观察后续发展。\n"
+          },
+          {
+            "tag": "hr"
+          },
+          {
+            "tag": "markdown",
+            "content": "**🧩 MCP & Skills**\n\n**1.** [liyupi/ai-guide](https://github.com/liyupi/ai-guide)  ⭐11.2K\n🏷️ 适配生态：通用 AI 工具\n▸ 特点：程序员鱼皮整理的中文 AI 资源与实战教程大全。\n\n**2.** [Dicklesworthstone/jeffreysprompts.com](https://github.com/Dicklesworthstone/jeffreysprompts.com)  ⭐95\n🏷️ 适配生态：Claude Code\n▸ 特点：围绕 Claude Code 的终端工作流\n"
+          },
+          {
+            "tag": "hr"
+          },
+          {
+            "tag": "markdown",
+            "content": "📅 2026-04-05  ·  66 候选 → 20 精选",
+            "text_size": "notation"
+          }
+        ]
+      }
+    }
+  ],
+  "count": 66,
+  "selected_count": 20,
+  "summary": {
+    "count": 66,
+    "editorial": 24,
+    "api_usage": {
+      "total_budget": 50,
+      "search_budget": 28,
+      "graphql_budget": 600,
+      "search_used": 16,
+      "graphql_used": 0
+    },
+    "collector_stats": {
+      "trending": {
+        "count": 15,
+        "kinds": {
+          "project": 15
+        }
+      },
+      "ossinsight": {
+        "count": 61,
+        "kinds": {
+          "project": 61
+        }
+      },
+      "repos": {
+        "count": 43,
+        "kinds": {
+          "project": 43
+        }
+      },
+      "discussions": {
+        "count": 0,
+        "kinds": {}
+      },
+      "issues_prs": {
+        "count": 0,
+        "kinds": {}
+      },
+      "skills": {
+        "count": 3,
+        "kinds": {
+          "skill": 2,
+          "project": 1
+        }
+      }
+    },
+    "item_count": 20,
+    "surge_count": 4,
+    "filtered_kind_counts": {
+      "project": 64,
+      "skill": 2
+    },
+    "published_kind_counts": {
+      "project": 18,
+      "skill": 2
+    },
+    "theme_counts": {
+      "skill_assets": 1,
+      "agent_framework": 6,
+      "claude_code": 2,
+      "rag": 10,
+      "agent_workflow": 1
+    },
+    "top_themes": [
+      "rag",
+      "agent_framework",
+      "claude_code"
+    ]
+  }
+}
