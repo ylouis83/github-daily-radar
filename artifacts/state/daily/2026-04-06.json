@@ -1,0 +1,166 @@
+{
+  "cards": [
+    {
+      "msg_type": "interactive",
+      "card": {
+        "config": {
+          "wide_screen_mode": true
+        },
+        "header": {
+          "title": {
+            "tag": "plain_text",
+            "content": "🔭 GitHub 每日雷达 · 2026-04-06"
+          },
+          "template": "indigo"
+        },
+        "elements": [
+          {
+            "tag": "column_set",
+            "flex_mode": "bisect",
+            "background_style": "grey",
+            "horizontal_spacing": "default",
+            "columns": [
+              {
+                "tag": "column",
+                "width": "weighted",
+                "weight": 1,
+                "vertical_align": "center",
+                "elements": [
+                  {
+                    "tag": "markdown",
+                    "text_align": "center",
+                    "content": "**56**\n候选仓库"
+                  }
+                ]
+              },
+              {
+                "tag": "column",
+                "width": "weighted",
+                "weight": 1,
+                "vertical_align": "center",
+                "elements": [
+                  {
+                    "tag": "markdown",
+                    "text_align": "center",
+                    "content": "**17**\n今日精选"
+                  }
+                ]
+              },
+              {
+                "tag": "column",
+                "width": "weighted",
+                "weight": 1,
+                "vertical_align": "center",
+                "elements": [
+                  {
+                    "tag": "markdown",
+                    "text_align": "center",
+                    "content": "**0**\n覆盖主题"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "tag": "hr"
+          },
+          {
+            "tag": "markdown",
+            "content": "**💥 今日爆款**\n\n**1.** [VoltAgent/awesome-design-md](https://github.com/VoltAgent/awesome-design-md)  💥+1274⭐\n**2.** [NousResearch/hermes-agent](https://github.com/NousResearch/hermes-agent)  💥+1237⭐  26.2K⭐\n**3.** [addyosmani/agent-skills](https://github.com/addyosmani/agent-skills)  🔥+605⭐\n**4.** [google-ai-edge/gallery](https://github.com/google-ai-edge/gallery)  🔥+495⭐  16.9K⭐\n**5.** [sponsors/badlogic](https://github.com/sponsors/badlogic)  🔥+340⭐  31.9K⭐\n\n*数据源：GitHub Trending + OSSInsight*"
+          },
+          {
+            "tag": "hr"
+          },
+          {
+            "tag": "markdown",
+            "content": "**🚀 核心 AI 项目**\n\n**1.** [sponsors/freeCodeCamp](https://github.com/sponsors/freeCodeCamp)  🔥+292⭐\n📌 长期稳居趋势榜，持续更新的教育内容值得再次关注\n▸ 特点：全球知名的免费编程学习开源课程与代码库\n▸ 核心能力：提供数学、编程和计算机科学的系统化学习路径\n▸ 引入必要性：是初学者入门和技术人员巩固基础的首选资源\n\n**2.** [rtk-ai/rtk](https://github.com/rtk-ai/rtk)  🔥+200⭐\n📌 新晋热门工具，为高频调用 LLM 的场景提供即时省钱方案\n▸ 特点：基于 Rust 编写的轻量级 LLM 令牌消耗优化 CLI 工具\n▸ 核心能力：通过 CLI 代理大幅降低常见开发命令的令牌成本\n▸ 引入必要性：有效解决开发者使用大模型时成本过高的痛点\n\n**3.** [abhigyanpatwari/GitNexus](https://github.com/abhigyanpatwari/GitNexus)  📈+158⭐\n📌 该项目在过去 24 小时内趋势上升，适合快速体验客户端代码智能分析。\n▸ 特点：这是一个完全在浏览器端运行的零服务器代码知识图谱引擎。\n▸ 核心能力：支持导入 GitHub 仓库或 ZIP 文件生成交互式知识图谱及 Graph RAG Agent。\n▸ 引入必要性：它为本地代码探索提供了无需后端部署的轻量级智能方案。\n\n**4.** [Chainlit/chainlit](https://github.com/Chainlit/chainlit)  ⭐37\n📌 过去 28 天内持续获得上万社区反应，值得纳入技术选型视野。\n▸ 特点：这是 LLM Tools 集合中具有高社区反应度的热门项目。\n▸ 核心能力：它属于服务于大语言模型应用开发的核心工具链组件。\n▸ 引入必要性：关注该集合有助于开发者掌握当前 LLM 开发生态的重要工具。\n\n**5.** [CodeGraphContext/CodeGraphContext](https://github.com/CodeGraphContext/CodeGraphContext)  ⭐2.8K\n📌 项目拥有超过两千星标且参与黑客松活动，社区活跃度较高。\n▸ 特点：这是一个结合 MCP server 与 CLI 工具的本地代码索引方案。\n▸ 核心能力：它能将本地代码索引至图数据库以为 AI 助手提供上下文。\n▸ 引入必要性：该工具解决了 AI 编程助手缺乏本地完整代码上下文的关键痛点。\n\n**6.** [ShishirPatil/gorilla](https://github.com/ShishirPatil/gorilla)  ⭐19\n📌 过去 28 天入选集合且获得近万社区反应，显示持续关注度。\n▸ 特点：这是 LLM Tools 集合中另一款具有高关注度的开源项目。\n▸ 核心能力：它提供与大语言模型集成相关的特定工具能力。\n▸ 引入必要性：作为集合推荐项目，它反映了当前 LLM 工具链的重要发展方向。\n\n**7.** [fauxpilot/fauxpilot](https://github.com/fauxpilot/fauxpilot)  ⭐3\n📌 近期被收录进热门开发工具集，值得重新审视其功能特性。\n▸ 特点：入选近期 LLM 开发工具集合的高热度开源项目。\n▸ 核心能力：提供服务于大语言模型开发流程的特定工具支持。\n▸ 引入必要性：社区高频互动反映了该工具在开发工作流中的实际价值。\n\n**8.** [BloopAI/bloop](https://github.com/BloopAI/bloop)  ⭐4\n📌 大量用户反应表明其在当前 AI 开发浪潮中具有广泛适用性。\n▸ 特点：同属 LLM 开发工具集合且拥有高用户互动量的项目。\n▸ 核心能力：致力于增强开发者与大语言模型协作的效率。\n▸ 引入必要性：高效工具链是提升 AI 辅助编程效率的必要基础设施。\n\n**9.** [agentic-community/mcp-gateway-registry](https://github.com/agentic-community/mcp-gateway-registry)  ⭐553\n📌 解决了 MCP 服务器分散混乱的问题，契合当前代理智能发展的治理需求。\n▸ 特点：面向企业级的 MCP 网关与注册中心解决方案。\n▸ 核心能力：集中管理 AI 开发工具并提供安全认证与动态发现功能。\n▸ 引入必要性：规模化 AI 应用部署需要治理化且可审计的工具访问控制。\n\n**10.** [rustformers/llm](https://github.com/rustformers/llm)  ⭐3\n📌 社区反应数据突出，显示特定群体关注度上升。\n▸ 特点：基于 Rust 生态构建的大模型工具集。\n▸ 核心能力：提供 Rust 语言环境下的大模型支持能力。\n▸ 引入必要性：为 Rust 开发者进入大模型领域提供基础选项。\n\n**11.** [zilliztech/GPTCache](https://github.com/zilliztech/GPTCache)  ⭐2\n📌 高反应量提示该方向存在未被满足的开发需求。\n▸ 特点：面向大模型交互的缓存解决方案。\n▸ 核心能力：致力于优化大模型调用过程中的响应效率。\n▸ 引入必要性：解决高频调用场景下的性能瓶颈问题。\n\n**12.** [google-deepmind/gemma](https://github.com/google-deepmind/gemma)  ⭐4.4K\n📌 星数持续增长，是当下研究与应用谷歌模型的标准入口。\n▸ 特点：Google DeepMind 官方发布的开放权重模型库。\n▸ 核心能力：支持快速集成与部署谷歌最新开源模型。\n▸ 引入必要性：获取官方支持与大模型生态兼容性的首选路径。\n"
+          },
+          {
+            "tag": "hr"
+          },
+          {
+            "tag": "markdown",
+            "content": "**🧩 MCP & Skills**\n\n**1.** [Hmbown/aleph](https://github.com/Hmbown/aleph)  ⭐181\n🏷️ 适配生态：MCP\n▸ 特点：聚焦 MCP 工具接入与编排，社区验证较强\n\n**2.** [Power-Agent/PowerMCP](https://github.com/Power-Agent/PowerMCP)  ⭐98\n🏷️ 适配生态：MCP\n▸ 特点：聚焦 MCP 工具接入与编排\n\n**3.** [borski/travel-hacking-toolkit](https://github.com/borski/travel-hacking-toolkit)  ⭐330\n🏷️ 适配生态：Claude Code\n▸ 特点：围绕 Claude Code 的终端工作流，社区验证较强\n\n**4.** [Shelpuk-AI-Technology-Consulting/kindly-web-search-mcp-server](https://github.com/Shelpuk-AI-Technology-Consulting/kindly-web-search-mcp-server)  ⭐262\n🏷️ 适配生态：Claude Code\n▸ 特点：围绕 Claude Code 的终端工作流，社区验证较强\n\n**5.** [stacklok/toolhive-studio](https://github.com/stacklok/toolhive-studio)  ⭐119\n🏷️ 适配生态：MCP\n▸ 特点：聚焦 MCP 工具接入与编排，社区验证较强\n"
+          },
+          {
+            "tag": "hr"
+          },
+          {
+            "tag": "markdown",
+            "content": "📅 2026-04-06  ·  56 候选 → 17 精选",
+            "text_size": "notation"
+          }
+        ]
+      }
+    }
+  ],
+  "count": 56,
+  "selected_count": 17,
+  "summary": {
+    "count": 56,
+    "editorial": 24,
+    "api_usage": {
+      "total_budget": 50,
+      "search_budget": 28,
+      "graphql_budget": 600,
+      "search_used": 16,
+      "graphql_used": 0
+    },
+    "collector_stats": {
+      "trending": {
+        "count": 15,
+        "kinds": {
+          "project": 15
+        }
+      },
+      "ossinsight": {
+        "count": 60,
+        "kinds": {
+          "project": 60
+        }
+      },
+      "repos": {
+        "count": 23,
+        "kinds": {
+          "project": 23
+        }
+      },
+      "discussions": {
+        "count": 0,
+        "kinds": {}
+      },
+      "issues_prs": {
+        "count": 0,
+        "kinds": {}
+      },
+      "skills": {
+        "count": 12,
+        "kinds": {
+          "skill": 5,
+          "project": 7
+        }
+      }
+    },
+    "item_count": 17,
+    "surge_count": 5,
+    "filtered_kind_counts": {
+      "project": 51,
+      "skill": 5
+    },
+    "published_kind_counts": {
+      "project": 12,
+      "skill": 5
+    },
+    "theme_counts": {
+      "ai_project": 9,
+      "mcp": 4,
+      "browser_automation": 1,
+      "claude_code": 3
+    },
+    "top_themes": [
+      "ai_project",
+      "mcp",
+      "claude_code"
+    ]
+  }
+}
