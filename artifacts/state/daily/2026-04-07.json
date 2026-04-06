@@ -1,0 +1,170 @@
+{
+  "cards": [
+    {
+      "msg_type": "interactive",
+      "card": {
+        "config": {
+          "wide_screen_mode": true
+        },
+        "header": {
+          "title": {
+            "tag": "plain_text",
+            "content": "🔭 GitHub 每日雷达 · 2026-04-07"
+          },
+          "template": "indigo"
+        },
+        "elements": [
+          {
+            "tag": "column_set",
+            "flex_mode": "bisect",
+            "background_style": "grey",
+            "horizontal_spacing": "default",
+            "columns": [
+              {
+                "tag": "column",
+                "width": "weighted",
+                "weight": 1,
+                "vertical_align": "center",
+                "elements": [
+                  {
+                    "tag": "markdown",
+                    "text_align": "center",
+                    "content": "**36**\n候选仓库"
+                  }
+                ]
+              },
+              {
+                "tag": "column",
+                "width": "weighted",
+                "weight": 1,
+                "vertical_align": "center",
+                "elements": [
+                  {
+                    "tag": "markdown",
+                    "text_align": "center",
+                    "content": "**16**\n今日精选"
+                  }
+                ]
+              },
+              {
+                "tag": "column",
+                "width": "weighted",
+                "weight": 1,
+                "vertical_align": "center",
+                "elements": [
+                  {
+                    "tag": "markdown",
+                    "text_align": "center",
+                    "content": "**0**\n覆盖主题"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "tag": "hr"
+          },
+          {
+            "tag": "markdown",
+            "content": "**💥 今日爆款**\n\n**1.** [sponsors/abhigyanpatwari](https://github.com/sponsors/abhigyanpatwari)  🔥+837⭐  23.4K⭐\n**2.** [KeygraphHQ/shannon](https://github.com/KeygraphHQ/shannon)  🔥+703⭐  36.4K⭐\n**3.** [sponsors/kepano](https://github.com/sponsors/kepano)  🔥+534⭐  20.4K⭐\n**4.** [tobi/qmd](https://github.com/tobi/qmd)  🔥+526⭐  18.7K⭐\n**5.** [google-ai-edge/LiteRT-LM](https://github.com/google-ai-edge/LiteRT-LM)  🔥+487⭐  2.0K⭐\n\n*数据源：GitHub Trending + OSSInsight*"
+          },
+          {
+            "tag": "hr"
+          },
+          {
+            "tag": "markdown",
+            "content": "**🚀 核心 AI 项目**\n\n**1.** [sanbuphy/learn-coding-agent](https://github.com/sanbuphy/learn-coding-agent)  🔥+192⭐\n📌 近期星数增长迅猛，社区关注度极高\n▸ 特点：专注于编码智能体研究的学习型项目\n▸ 核心能力：提供编码代理机制的研究与实现参考\n▸ 引入必要性：适合希望深入理解 AI 编程代理原理的开发者\n\n**2.** [JackChen-me/open-multi-agent](https://github.com/JackChen-me/open-multi-agent)  📈+182⭐\n📌 新晋趋势项目，展示 TypeScript 生态的高效代理方案\n▸ 特点：仅需一次 runTeam 调用即可从目标到结果的轻量框架\n▸ 核心能力：自动任务分解与并行执行的多智能体协作\n▸ 引入必要性：简化多智能体系统部署，依赖极少且通用\n\n**3.** [ggml-org/llama.cpp](https://github.com/ggml-org/llama.cpp)  🔥+318⭐\n📌 长期趋势常青树，今日依然保持高增长热度\n▸ 特点：使用 C/C++ 实现的高效大语言模型推理库\n▸ 核心能力：在资源受限环境下进行高性能模型推理\n▸ 引入必要性：底层推理优化的核心参考，性能至关重要\n\n**4.** [HKUDS/DeepTutor](https://github.com/HKUDS/DeepTutor)  🔥+214⭐\n📌 近期星数增长迅猛，显示出社区对 AI 教育应用的高度关注。\n▸ 特点：专为个性化学习设计的原生智能体助手。\n▸ 核心能力：利用代理技术为用户提供定制化的学习路径和辅导支持。\n▸ 引入必要性：教育科技领域急需能够适应个体差异的智能化解决方案。\n\n**5.** [promptslab/Promptify](https://github.com/promptslab/Promptify)  ⭐2\n📌 作为 LLM 工具集的新成员值得早期观察者留意。\n▸ 特点：专注于大语言模型提示词工程化的轻量级工具库。\n▸ 核心能力：提供简化的提示词管理与优化支持能力。\n▸ 引入必要性：适合需要快速集成提示词功能的开发者参考。\n\n**6.** [elinaRosato/ppo-cnn-drone-navigation](https://github.com/elinaRosato/ppo-cnn-drone-navigation)  ⭐1\n▸ 特点：偏 Agent 编排\n▸ 核心能力：把复杂任务拆成可调度、可复用的 Agent 流程。\n▸ 引入必要性：形态清晰，适合先观察后续发展。\n\n**7.** [farazmalik180/Ghostwriter-Swarm](https://github.com/farazmalik180/Ghostwriter-Swarm)  ⭐1\n▸ 特点：偏 Agent 编排\n▸ 核心能力：把复杂任务拆成可调度、可复用的 Agent 流程。\n▸ 引入必要性：形态清晰，适合先观察后续发展。\n\n**8.** [mazharotagou/crewai-research-report-tool](https://github.com/mazharotagou/crewai-research-report-tool)\n▸ 特点：偏 Agent 编排\n▸ 核心能力：把外部工具和能力封装成更容易接入的调用层。\n▸ 引入必要性：形态清晰，适合先观察后续发展。\n\n**9.** [seji210/entity-topic-cluster](https://github.com/seji210/entity-topic-cluster)\n▸ 特点：面向浏览器自动化\n▸ 核心能力：涉及 clustering / crf / deeplearning-ai / deeplearning…\n▸ 引入必要性：形态清晰，适合先观察后续发展。\n\n**10.** [ollama/ollama](https://github.com/ollama/ollama)  🔥+263⭐\n📌 持续位居趋势榜，支持模型列表不断更新扩展\n▸ 特点：本地运行多种大模型的一站式工具\n▸ 核心能力：快速部署并运行 Kimi、DeepSeek 等主流开源模型\n▸ 引入必要性：本地大模型推理的事实标准，开发者必备工具\n\n**11.** [immich-app/immich](https://github.com/immich-app/immich)  🔥+220⭐\n📌 趋势榜常驻项目，自托管领域持续受到欢迎\n▸ 特点：高性能自托管照片和视频管理解决方案\n▸ 核心能力：提供类似谷歌照片的私有化媒体管理服务\n▸ 引入必要性：数据隐私敏感用户的本地媒体库最佳替代\n\n**12.** [getsentry/XcodeBuildMCP](https://github.com/getsentry/XcodeBuildMCP)  ⭐5.0K\n📌 近期 MCP 协议在开发工具链中的集成热度上升。\n▸ 特点：专为 iOS 和 macOS 项目设计的模型上下文协议服务器。\n▸ 核心能力：提供命令行工具和代理工具以辅助构建流程。\n▸ 引入必要性：苹果生态开发者需要自动化构建辅助工具。\n\n**13.** [moltis-org/moltis](https://github.com/moltis-org/moltis)  ⭐2.5K\n📌 自托管 AI 代理方案正在成为注重隐私用户的首选。\n▸ 特点：基于 Rust 构建的单二进制安全持久化个人代理服务器。\n▸ 核心能力：支持沙箱执行、多模型接入及多种通讯平台集成。\n▸ 引入必要性：本地化部署 AI 代理能更好地保护隐私和数据安全。\n\n**14.** [TelegramMessenger/Telegram-iOS](https://github.com/TelegramMessenger/Telegram-iOS)  📈+54⭐\n📌 作为趋势榜常客，其代码更新往往预示着即时通讯技术的新动向。\n▸ 特点：即时通讯巨头 Telegram 的官方 iOS 客户端源码。\n▸ 核心能力：展示了高性能 Swift 应用在消息加密与同步方面的架构实现。\n▸ 引入必要性：是研究移动端即时通讯安全与性能优化的最佳实践参考。\n"
+          },
+          {
+            "tag": "hr"
+          },
+          {
+            "tag": "markdown",
+            "content": "**🧩 MCP & Skills**\n\n**1.** [apify/apify-mcp-server](https://github.com/apify/apify-mcp-server)  ⭐1.0K\n🏷️ 适配生态：MCP\n▸ 特点：连接 AI 代理与数千个现成网络抓取器的桥梁。\n\n**2.** [vishalsachdev/canvas-mcp](https://github.com/vishalsachdev/canvas-mcp)  ⭐93\n🏷️ 适配生态：Codex\n▸ 特点：围绕 Codex 的开发流程\n"
+          },
+          {
+            "tag": "hr"
+          },
+          {
+            "tag": "markdown",
+            "content": "📅 2026-04-07  ·  36 候选 → 16 精选",
+            "text_size": "notation"
+          }
+        ]
+      }
+    }
+  ],
+  "count": 36,
+  "selected_count": 16,
+  "summary": {
+    "count": 36,
+    "editorial": 24,
+    "api_usage": {
+      "total_budget": 50,
+      "search_budget": 28,
+      "graphql_budget": 600,
+      "search_used": 16,
+      "graphql_used": 0
+    },
+    "collector_stats": {
+      "trending": {
+        "count": 15,
+        "kinds": {
+          "project": 15
+        }
+      },
+      "ossinsight": {
+        "count": 59,
+        "kinds": {
+          "project": 59
+        }
+      },
+      "repos": {
+        "count": 8,
+        "kinds": {
+          "project": 8
+        }
+      },
+      "discussions": {
+        "count": 0,
+        "kinds": {}
+      },
+      "issues_prs": {
+        "count": 0,
+        "kinds": {}
+      },
+      "skills": {
+        "count": 10,
+        "kinds": {
+          "project": 7,
+          "skill": 3
+        }
+      }
+    },
+    "item_count": 16,
+    "surge_count": 5,
+    "filtered_kind_counts": {
+      "project": 33,
+      "skill": 3
+    },
+    "published_kind_counts": {
+      "project": 14,
+      "skill": 2
+    },
+    "theme_counts": {
+      "agent_framework": 4,
+      "mcp": 3,
+      "inference": 1,
+      "claude_code": 1,
+      "prompt_assets": 1,
+      "agent_workflow": 2,
+      "browser_automation": 1,
+      "ai_project": 3
+    },
+    "top_themes": [
+      "agent_framework",
+      "mcp",
+      "ai_project"
+    ]
+  }
+}
