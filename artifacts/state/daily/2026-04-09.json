@@ -1,0 +1,164 @@
+{
+  "cards": [
+    {
+      "msg_type": "interactive",
+      "card": {
+        "config": {
+          "wide_screen_mode": true
+        },
+        "header": {
+          "title": {
+            "tag": "plain_text",
+            "content": "🔭 GitHub 每日雷达 · 2026-04-09"
+          },
+          "template": "indigo"
+        },
+        "elements": [
+          {
+            "tag": "column_set",
+            "flex_mode": "bisect",
+            "background_style": "grey",
+            "horizontal_spacing": "default",
+            "columns": [
+              {
+                "tag": "column",
+                "width": "weighted",
+                "weight": 1,
+                "vertical_align": "center",
+                "elements": [
+                  {
+                    "tag": "markdown",
+                    "text_align": "center",
+                    "content": "**22**\n候选仓库"
+                  }
+                ]
+              },
+              {
+                "tag": "column",
+                "width": "weighted",
+                "weight": 1,
+                "vertical_align": "center",
+                "elements": [
+                  {
+                    "tag": "markdown",
+                    "text_align": "center",
+                    "content": "**10**\n今日精选"
+                  }
+                ]
+              },
+              {
+                "tag": "column",
+                "width": "weighted",
+                "weight": 1,
+                "vertical_align": "center",
+                "elements": [
+                  {
+                    "tag": "markdown",
+                    "text_align": "center",
+                    "content": "**0**\n覆盖主题"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "tag": "hr"
+          },
+          {
+            "tag": "markdown",
+            "content": "**💥 今日爆款**\n\n**1.** [sponsors/obra](https://github.com/sponsors/obra)  💥+2170⭐  141.4K⭐\n**2.** [microsoft/BitNet](https://github.com/microsoft/BitNet)  🔥+435⭐  37.9K⭐\n\n*数据源：GitHub Trending + OSSInsight*"
+          },
+          {
+            "tag": "hr"
+          },
+          {
+            "tag": "markdown",
+            "content": "**🚀 核心 AI 项目**\n\n**1.** [anmuk/AI_Engineering](https://github.com/anmuk/AI_Engineering)\n📌 今天值得查看以获取最新的 AI 工程实践资源汇总。\n▸ 特点：这是一个持续更新的 AI 工程学习笔记与资源合集。\n▸ 核心能力：涵盖 LLM、RAG、AI 代理及 LLMOps 等广泛技术领域。\n▸ 引入必要性：为从事 AI 工程化的开发者提供系统的知识索引。\n\n**2.** [virattt/ai-hedge-fund](https://github.com/virattt/ai-hedge-fund)  📈+123⭐\n📌 金融垂直领域的 AI 应用案例总是能引发广泛讨论。\n▸ 特点：模拟对冲基金团队协作模式的多智能体系统。\n▸ 核心能力：实现多个 AI 角色协同进行金融分析与决策。\n▸ 引入必要性：验证了多智能体协作在复杂专业场景的可行性。\n\n**3.** [goharbor/harbor](https://github.com/goharbor/harbor)  ⭐28.1K\n📌 经典项目回归趋势榜表明安全合规仍是当前重点。\n▸ 特点：云原生领域可信的容器镜像注册表项目。\n▸ 核心能力：提供容器内容的存储签名及安全扫描服务。\n▸ 引入必要性：确保容器供应链安全是企业级应用的基础要求。\n\n**4.** [smallcloudai/refact](https://github.com/smallcloudai/refact)  ⭐5\n📌 近期在 LLM 开发工具收藏集中获得了较高的社区反应。\n▸ 特点：这是一个由 SmallCloud AI 推出的代码重构辅助项目。\n▸ 核心能力：旨在为大模型开发流程提供特定的工具支持。\n▸ 引入必要性：适合关注大模型开发工具生态的开发者查阅。\n\n**5.** [newton-physics/newton](https://github.com/newton-physics/newton)  📈+67⭐\n📌 今日登上 GitHub 趋势榜且星数增长迅速。\n▸ 特点：基于 NVIDIA Warp 构建的开源 GPU 加速物理模拟引擎。\n▸ 核心能力：专为机器人学家和仿真研究人员提供高性能物理计算。\n▸ 引入必要性：填补了开源领域高性能物理仿真引擎的空白。\n\n**6.** [codefuse-ai/codefuse-chatbot](https://github.com/codefuse-ai/codefuse-chatbot)  ⭐1\n📌 作为 LLM 开发工具集合的一员近期受到关注。\n▸ 特点：这是一个面向代码融合平台的大模型聊天机器人项目。\n▸ 核心能力：旨在通过对话形式提供大模型开发相关的辅助功能。\n▸ 引入必要性：适合探索企业级 AI 开发助手形态的团队参考。\n\n**7.** [Fast-Editor/Lynkr](https://github.com/Fast-Editor/Lynkr)  ⭐6\n📌 近期被收录进 LLM 工具观察集合值得留意。\n▸ 特点：这是一个专注于大模型工具链内容的快速编辑组件。\n▸ 核心能力：旨在优化用户在与 LLM 交互时的文本编辑体验。\n▸ 引入必要性：有助于改善 AI 工作流中的人机交互细节。\n\n**8.** [deepcoldy/botmux](https://github.com/deepcoldy/botmux)  ⭐23\n📌 针对 AI 编码工作流的最新集成方案刚刚更新。\n▸ 特点：连接即时通讯平台与 AI 编码命令行界面的桥梁工具。\n▸ 核心能力：实现即时通讯话题与命令行会话的一对一流式传输。\n▸ 引入必要性：让开发者能在聊天软件中直接操控 AI 编码助手。\n\n**9.** [Studioscale/Silo](https://github.com/Studioscale/Silo)  ⭐1\n📌 AI 编码助手普及背景下，本地记忆方案崭露头角。\n▸ 特点：专为 AI 助手设计的结构化记忆架构。\n▸ 核心能力：支持主题文件、事件日志及自动策展功能。\n▸ 引入必要性：解决 AI 助手长期记忆管理的结构化难题。\n"
+          },
+          {
+            "tag": "hr"
+          },
+          {
+            "tag": "markdown",
+            "content": "**🧩 MCP & Skills**\n\n**1.** [ersinkoc/project-architect](https://github.com/ersinkoc/project-architect)  ⭐92\n🏷️ 适配生态：通用 AI 工具\n▸ 特点：采用文档优先策略的项目规划代理技能。\n"
+          },
+          {
+            "tag": "hr"
+          },
+          {
+            "tag": "markdown",
+            "content": "📅 2026-04-09  ·  22 候选 → 10 精选",
+            "text_size": "notation"
+          }
+        ]
+      }
+    }
+  ],
+  "count": 22,
+  "selected_count": 10,
+  "summary": {
+    "count": 22,
+    "editorial": 22,
+    "api_usage": {
+      "total_budget": 50,
+      "search_budget": 28,
+      "graphql_budget": 600,
+      "search_used": 16,
+      "graphql_used": 0
+    },
+    "collector_stats": {
+      "trending": {
+        "count": 15,
+        "kinds": {
+          "project": 15
+        }
+      },
+      "ossinsight": {
+        "count": 58,
+        "kinds": {
+          "project": 58
+        }
+      },
+      "repos": {
+        "count": 20,
+        "kinds": {
+          "project": 20
+        }
+      },
+      "discussions": {
+        "count": 0,
+        "kinds": {}
+      },
+      "issues_prs": {
+        "count": 0,
+        "kinds": {}
+      },
+      "skills": {
+        "count": 1,
+        "kinds": {
+          "skill": 1
+        }
+      }
+    },
+    "item_count": 10,
+    "surge_count": 2,
+    "filtered_kind_counts": {
+      "project": 21,
+      "skill": 1
+    },
+    "published_kind_counts": {
+      "project": 9,
+      "skill": 1
+    },
+    "theme_counts": {
+      "mcp": 1,
+      "ai_project": 7,
+      "claude_code": 2
+    },
+    "top_themes": [
+      "ai_project",
+      "claude_code",
+      "mcp"
+    ]
+  }
+}
