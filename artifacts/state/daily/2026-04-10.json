@@ -29,7 +29,7 @@
                   {
                     "tag": "markdown",
                     "text_align": "center",
-                    "content": "**31**\n候选仓库"
+                    "content": "**27**\n候选仓库"
                   }
                 ]
               },
@@ -66,38 +66,31 @@
           },
           {
             "tag": "markdown",
-            "content": "**💥 今日爆款**\n\n**1.** [HKUDS/DeepTutor](https://github.com/HKUDS/DeepTutor)  🔥+220⭐\n\n*数据源：GitHub Trending + OSSInsight*"
+            "content": "**🚀 核心 AI 项目**\n\n**1.** [Dataojitori/nocturne_memory](https://github.com/Dataojitori/nocturne_memory)  ⭐926\n📌 作为 OpenClaw 的替代品，它为构建持久化 AI 身份提供了新方案\n▸ 特点：采用图结构存储而非向量检索的轻量级记忆服务器\n▸ 核心能力：为 MCP Agent 提供可回滚且可视化的长期记忆支持\n▸ 引入必要性：解决 AI 代理在长会话中遗忘上下文的关键痛点\n\n**2.** [affaan-m/agentshield](https://github.com/affaan-m/agentshield)  ⭐347\n📌 在 MCP 生态快速扩张之际，提前部署安全防护显得尤为迫切\n▸ 特点：专为 AI 代理配置和 MCP 服务器设计的漏洞扫描工具\n▸ 核心能力：检测代理权限设置及工具调用中的安全风险\n▸ 引入必要性：随着 AI 代理自主性增强，其权限安全审查变得至关重要\n\n**3.** [VanModers/oostfraeisk_ooversetter](https://github.com/VanModers/oostfraeisk_ooversetter)  ⭐1\n📌 体现了 AI 技术赋能濒危或小众语言文化的最新进展\n▸ 特点：首个针对东弗里西亚低地萨克森语的 AI 翻译工具\n▸ 核心能力：基于现有 NLP 模型实现小众语言的自动化翻译\n▸ 引入必要性：展示了开源模型在保护和小众语言数字化方面的潜力\n\n**4.** [KontolKambings/ai-inference-resources](https://github.com/KontolKambings/ai-inference-resources)\n📌 针对今日关注的 LLM 推理话题提供了集中式学习入口。\n▸ 特点：汇集 AI 推理系统工程核心资源的清单。\n▸ 核心能力：覆盖 LLM 服务至 GPU 编程的全链路部署知识。\n▸ 引入必要性：填补工程师在构建生产级推理系统时的知识缺口。\n\n**5.** [wayes-btye/meeting-intelligence](https://github.com/wayes-btye/meeting-intelligence)\n📌 远程协作常态化，自动化会议摘要工具价值凸显\n▸ 特点：集成多种大模型与音频转录的会议智能系统\n▸ 核心能力：从会议录音中提取结构化洞察并支持自然语言查询\n▸ 引入必要性：解决会议记录整理繁琐且难以检索的核心痛点\n\n**6.** [amandapada/AI-Augmented-LMS](https://github.com/amandapada/AI-Augmented-LMS)\n📌 教育科技融合加速，智能教具生成需求日益旺盛\n▸ 特点：支持讲师上传资料并自动生成互动学习材料的增强型 LMS\n▸ 核心能力：基于 PDF 或笔记提取文本生成闪卡、测验及 RAG 聊天\n▸ 引入必要性：将传统学习管理系统升级为个性化 AI 辅助学习平台\n\n**7.** [KiavashBahreini7/rag-tutor](https://github.com/KiavashBahreini7/rag-tutor)\n▸ 特点：面向浏览器自动化\n▸ 核心能力：把浏览器操作自动化成可编排的动作流。\n▸ 引入必要性：形态清晰，适合先观察后续发展。\n\n**8.** [Mitalimehta02/healthcare-ai-analyzer](https://github.com/Mitalimehta02/healthcare-ai-analyzer)\n▸ 特点：聚焦 MCP 工具接入与编排\n▸ 核心能力：把外部工具和能力封装成更容易接入的调用层。\n▸ 引入必要性：形态清晰，适合先观察后续发展。\n\n**9.** [yguo91/ZImageTurbo_ComfyUI_cover](https://github.com/yguo91/ZImageTurbo_ComfyUI_cover)\n▸ 特点：面向浏览器自动化\n▸ 核心能力：把浏览器操作自动化成可编排的动作流。\n▸ 引入必要性：形态清晰，适合先观察后续发展。\n"
           },
           {
             "tag": "hr"
           },
           {
             "tag": "markdown",
-            "content": "**🚀 核心 AI 项目**\n\n**1.** [jparkerweb/fast-topic-analysis](https://github.com/jparkerweb/fast-topic-analysis)  ⭐9\n📌 本地化自然语言处理工具需求持续上升。\n▸ 特点：基于平均权重嵌入和余弦相似度的轻量分析方案。\n▸ 核心能力：快速将文本对照预定义主题进行分类检测。\n▸ 引入必要性：提供低资源消耗的高效文本语义分析手段。\n\n**2.** [Kacper-Lechicki/linkedin_brain](https://github.com/Kacper-Lechicki/linkedin_brain)  ⭐1\n📌 隐私友好的本地化处理方式符合当前数据主权关注的趋势。\n▸ 特点：利用浏览器会话 cookie 抓取个人 LinkedIn 数据的自托管 CLI 工具。\n▸ 核心能力：通过 AI 将职业档案与帖子内容转化为 Obsidian 知识库笔记。\n▸ 引入必要性：为个人知识管理提供了自动化沉淀职业社交数据的方案。\n\n**3.** [Mamoutou7/MedLearn-Agent](https://github.com/Mamoutou7/MedLearn-Agent)\n📌 人工智能在医疗教育领域的应用正在兴起，值得关注其交互模式\n▸ 特点：基于 LangGraph 构建的模块化 AI 健康教育助手\n▸ 核心能力：利用网络搜索和开放模型解释医学主题并通过互动测验测试理解\n▸ 引入必要性：公众需要可靠且互动的途径来获取和理解复杂的医学知识\n\n**4.** [MOTKAR/Personal-News-Curator-using-CrewAI](https://github.com/MOTKAR/Personal-News-Curator-using-CrewAI)\n📌 利用智能代理自动化新闻阅读是当前的热门实践方向\n▸ 特点：基于 CrewAI 代理架构的个人新闻摘要生成器\n▸ 核心能力：自动搜索最近二十四小时的文章并生成带来源链接的简洁总结\n▸ 引入必要性：信息过载时代需要高效工具来筛选和汇总特定主题的每日资讯\n\n**5.** [St1p42/agentic_search](https://github.com/St1p42/agentic_search)\n▸ 特点：偏 Agent 编排\n▸ 核心能力：把外部工具和能力封装成更容易接入的调用层。\n▸ 引入必要性：形态清晰，适合先观察后续发展。\n\n**6.** [liyedanpdx/reddit-ai-trends](https://github.com/liyedanpdx/reddit-ai-trends)  ⭐819\n📌 人工智能趋势追踪需求日益增长。\n▸ 特点：结合 DeepSeek R1 模型的双语社区洞察工具。\n▸ 核心能力：自动扫描并总结 Reddit 人工智能热点讨论。\n▸ 引入必要性：帮助开发者快速捕捉跨语言前沿技术动态。\n\n**7.** [sobelio/llm-chain](https://github.com/sobelio/llm-chain)  ⭐1\n📌 近期入选大模型工具集合且社区反应活跃。\n▸ 特点：面向大语言模型工具链的开源实现项目。\n▸ 核心能力：支持开发者构建和编排模型调用链路。\n▸ 引入必要性：填补大模型应用流程化管理的工具空白。\n\n**8.** [sammcj/mcp-devtools](https://github.com/sammcj/mcp-devtools)  ⭐132\n📌 模型上下文协议生态正在快速扩展中。\n▸ 特点：为人工智能编码智能体设计的模块化 MCP 服务器。\n▸ 核心能力：集成常用开发工具供智能体直接调用。\n▸ 引入必要性：增强人工智能代理在实际开发环境中的操作能力。\n\n**9.** [gauravfs-14/CognitiveSky](https://github.com/gauravfs-14/CognitiveSky)  ⭐7\n📌 社交数据分析需求增加使得该开源工具具有时效性。\n▸ 特点：专为 Bluesky 社交平台设计的心理健康叙事分析仪表板。\n▸ 核心能力：利用自然语言处理和情感分析技术挖掘公共数据中的心理洞察。\n▸ 引入必要性：为研究人员提供了无需昂贵成本即可分析社交媒体心理话语的工具。\n"
+            "content": "**🧩 MCP & Skills**\n\n**1.** [taskade/mcp](https://github.com/taskade/mcp)  ⭐120\n🏷️ 适配生态：MCP\n▸ 特点：支持将任意 OpenAPI 接口自动转换为 MCP 工具的代码生成器\n"
           },
           {
             "tag": "hr"
           },
           {
             "tag": "markdown",
-            "content": "**🧩 MCP & Skills**\n\n**1.** [portel-dev/photon](https://github.com/portel-dev/photon)  ⭐84\n🏷️ 适配生态：通用 AI 工具\n▸ 特点：单文件 TypeScript 定义即可生成多形态应用。\n"
-          },
-          {
-            "tag": "hr"
-          },
-          {
-            "tag": "markdown",
-            "content": "📅 2026-04-10  ·  31 候选 → 10 精选",
+            "content": "📅 2026-04-10  ·  27 候选 → 10 精选",
             "text_size": "notation"
           }
         ]
       }
     }
   ],
-  "count": 31,
+  "count": 27,
   "selected_count": 10,
   "summary": {
-    "count": 31,
+    "count": 27,
     "editorial": 24,
     "api_usage": {
       "total_budget": 50,
@@ -120,9 +113,9 @@
         }
       },
       "repos": {
-        "count": 29,
+        "count": 24,
         "kinds": {
-          "project": 29
+          "project": 24
         }
       },
       "discussions": {
@@ -134,17 +127,17 @@
         "kinds": {}
       },
       "skills": {
-        "count": 2,
+        "count": 3,
         "kinds": {
-          "project": 1,
+          "project": 2,
           "skill": 1
         }
       }
     },
     "item_count": 10,
-    "surge_count": 1,
+    "surge_count": 0,
     "filtered_kind_counts": {
-      "project": 30,
+      "project": 26,
       "skill": 1
     },
     "published_kind_counts": {
@@ -152,17 +145,17 @@
       "skill": 1
     },
     "theme_counts": {
-      "rag": 1,
-      "browser_automation": 1,
-      "claude_code": 1,
-      "agent_framework": 3,
-      "ai_project": 3,
+      "claude_code": 4,
+      "ml_framework": 1,
+      "inference": 1,
+      "agent_workflow": 1,
+      "browser_automation": 2,
       "mcp": 1
     },
     "top_themes": [
-      "agent_framework",
-      "ai_project",
-      "rag"
+      "claude_code",
+      "browser_automation",
+      "ml_framework"
     ]
   }
 }
