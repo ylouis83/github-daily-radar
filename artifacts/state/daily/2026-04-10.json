@@ -29,7 +29,7 @@
                   {
                     "tag": "markdown",
                     "text_align": "center",
-                    "content": "**27**\n候选仓库"
+                    "content": "**21**\n候选仓库"
                   }
                 ]
               },
@@ -66,37 +66,30 @@
           },
           {
             "tag": "markdown",
-            "content": "**🚀 核心 AI 项目**\n\n**1.** [Dataojitori/nocturne_memory](https://github.com/Dataojitori/nocturne_memory)  ⭐926\n📌 作为 OpenClaw 的替代品，它为构建持久化 AI 身份提供了新方案\n▸ 特点：采用图结构存储而非向量检索的轻量级记忆服务器\n▸ 核心能力：为 MCP Agent 提供可回滚且可视化的长期记忆支持\n▸ 引入必要性：解决 AI 代理在长会话中遗忘上下文的关键痛点\n\n**2.** [affaan-m/agentshield](https://github.com/affaan-m/agentshield)  ⭐347\n📌 在 MCP 生态快速扩张之际，提前部署安全防护显得尤为迫切\n▸ 特点：专为 AI 代理配置和 MCP 服务器设计的漏洞扫描工具\n▸ 核心能力：检测代理权限设置及工具调用中的安全风险\n▸ 引入必要性：随着 AI 代理自主性增强，其权限安全审查变得至关重要\n\n**3.** [VanModers/oostfraeisk_ooversetter](https://github.com/VanModers/oostfraeisk_ooversetter)  ⭐1\n📌 体现了 AI 技术赋能濒危或小众语言文化的最新进展\n▸ 特点：首个针对东弗里西亚低地萨克森语的 AI 翻译工具\n▸ 核心能力：基于现有 NLP 模型实现小众语言的自动化翻译\n▸ 引入必要性：展示了开源模型在保护和小众语言数字化方面的潜力\n\n**4.** [KontolKambings/ai-inference-resources](https://github.com/KontolKambings/ai-inference-resources)\n📌 针对今日关注的 LLM 推理话题提供了集中式学习入口。\n▸ 特点：汇集 AI 推理系统工程核心资源的清单。\n▸ 核心能力：覆盖 LLM 服务至 GPU 编程的全链路部署知识。\n▸ 引入必要性：填补工程师在构建生产级推理系统时的知识缺口。\n\n**5.** [wayes-btye/meeting-intelligence](https://github.com/wayes-btye/meeting-intelligence)\n📌 远程协作常态化，自动化会议摘要工具价值凸显\n▸ 特点：集成多种大模型与音频转录的会议智能系统\n▸ 核心能力：从会议录音中提取结构化洞察并支持自然语言查询\n▸ 引入必要性：解决会议记录整理繁琐且难以检索的核心痛点\n\n**6.** [amandapada/AI-Augmented-LMS](https://github.com/amandapada/AI-Augmented-LMS)\n📌 教育科技融合加速，智能教具生成需求日益旺盛\n▸ 特点：支持讲师上传资料并自动生成互动学习材料的增强型 LMS\n▸ 核心能力：基于 PDF 或笔记提取文本生成闪卡、测验及 RAG 聊天\n▸ 引入必要性：将传统学习管理系统升级为个性化 AI 辅助学习平台\n\n**7.** [KiavashBahreini7/rag-tutor](https://github.com/KiavashBahreini7/rag-tutor)\n▸ 特点：面向浏览器自动化\n▸ 核心能力：把浏览器操作自动化成可编排的动作流。\n▸ 引入必要性：形态清晰，适合先观察后续发展。\n\n**8.** [Mitalimehta02/healthcare-ai-analyzer](https://github.com/Mitalimehta02/healthcare-ai-analyzer)\n▸ 特点：聚焦 MCP 工具接入与编排\n▸ 核心能力：把外部工具和能力封装成更容易接入的调用层。\n▸ 引入必要性：形态清晰，适合先观察后续发展。\n\n**9.** [yguo91/ZImageTurbo_ComfyUI_cover](https://github.com/yguo91/ZImageTurbo_ComfyUI_cover)\n▸ 特点：面向浏览器自动化\n▸ 核心能力：把浏览器操作自动化成可编排的动作流。\n▸ 引入必要性：形态清晰，适合先观察后续发展。\n"
+            "content": "**🚀 核心 AI 项目**\n\n**1.** [opensumi/core](https://github.com/opensumi/core)  ⭐3.6K\n📌 智能编程助手正在重塑集成开发环境的标准形态。\n▸ 特点：专为快速构建 AI 原生 IDE 产品设计的框架。\n▸ 核心能力：支持通过 MCP 服务器集成模型上下文协议工具。\n▸ 引入必要性：适合需要开发定制化 AI 编程环境的团队引入。\n\n**2.** [toolsdk-ai/toolsdk-mcp-registry](https://github.com/toolsdk-ai/toolsdk-mcp-registry)  ⭐169\n📌 生态扩张使得集中式工具注册与配置管理成为刚需。\n▸ 特点：结构化存储 MCP 服务器和包的注册表数据库。\n▸ 核心能力：支持 OAuth2.1 和 DCR 等认证配置的管理。\n▸ 引入必要性：解决了 MCP 生态中工具发现与配置的混乱问题。\n\n**3.** [OpenAxo-ai/openaxo](https://github.com/OpenAxo-ai/openaxo)  ⭐5\n📌 本土化实时语料对于优化中文大模型效果至关重要。\n▸ 特点：面向 LLM 训练和 RAG 的结构化中文新闻语料库。\n▸ 核心能力：提供涵盖时政科技等多领域的实时中文文章数据。\n▸ 引入必要性：为需要中文新闻数据的开发者提供了可用的开源选项。\n\n**4.** [vishvajit2504-png/RAG-Complete-Study-Guide-](https://github.com/vishvajit2504-png/RAG-Complete-Study-Guide-)  ⭐1\n📌 掌握检索增强生成技术是当前开发者提升模型能力的必经之路。\n▸ 特点：分主题逐步讲解 RAG 技术的完整学习指南仓库。\n▸ 核心能力：系统化梳理检索增强生成知识体系供开发者查阅。\n▸ 引入必要性：帮助初学者快速建立对 RAG 架构的整体认知。\n\n**5.** [SweetKenneth/cmpsbl-modeling-utils-apex](https://github.com/SweetKenneth/cmpsbl-modeling-utils-apex)  ⭐1\n📌 展示了在不依赖大模型情况下的高效工程化实践。\n▸ 特点：纯确定性算法而非 AI 模型。\n▸ 核心能力：快速封装 HuggingFace 建模工具并生成测试报告。\n▸ 引入必要性：为需要非 AI 确定性解决方案的场景提供替代思路。\n\n**6.** [Zenoguy/VMARO](https://github.com/Zenoguy/VMARO)\n📌 提供了替代传统 RAG 架构的研究自动化新方案。\n▸ 特点：摒弃传统向量检索的无向量多智能体流程。\n▸ 核心能力：将原始主题转化为结构化的研究提案和差距分析。\n▸ 引入必要性：适合需要可解释推理和高质量研究输出的团队。\n\n**7.** [anushakoti/agentic-research-system](https://github.com/anushakoti/agentic-research-system)\n📌 展示了 LangGraph 在多智能体协作中的落地应用。\n▸ 特点：基于 LangGraph 构建的标准规划执行审查流水线。\n▸ 核心能力：实现带有 FAISS 记忆功能的自主多智能体研究任务。\n▸ 引入必要性：为构建复杂代理系统提供了清晰的架构参考。\n\n**8.** [bhamniyaravi/rag-pdf-bot](https://github.com/bhamniyaravi/rag-pdf-bot)\n📌 适合需要快速验证 PDF 检索增强生成效果的开发者参考。\n▸ 特点：基于 Streamlit 快速构建的 PDF 问答交互界面。\n▸ 核心能力：上传 PDF 文档并通过自然语言获取带上下文的准确答案。\n▸ 引入必要性：降低了个人用户构建文档问答工具的技术门槛。\n\n**9.** [GavinColeman12/hr-policy-bot](https://github.com/GavinColeman12/hr-policy-bot)\n📌 体现了 RAG 技术在垂直企业场景中的精细化应用。\n▸ 特点：专为人力资源政策设计的白标聊天机器人。\n▸ 核心能力：处理敏感话题并提供带有分析仪表板的员工手册查询。\n▸ 引入必要性：解决了企业内部政策查询中的隐私与合规需求。\n\n**10.** [muneeb-amir/financial-sentiment-rag-pipeline](https://github.com/muneeb-amir/financial-sentiment-rag-pipeline)\n📌 融合了多种 NLP 技术来解决垂直领域的分析难题。\n▸ 特点：结合 FinBERT 与主题建模的金融情感分析流程。\n▸ 核心能力：端到端实现基于检索增强生成的金融情绪评估。\n▸ 引入必要性：为金融领域自然语言处理任务提供了完整管线示例。\n"
           },
           {
             "tag": "hr"
           },
           {
             "tag": "markdown",
-            "content": "**🧩 MCP & Skills**\n\n**1.** [taskade/mcp](https://github.com/taskade/mcp)  ⭐120\n🏷️ 适配生态：MCP\n▸ 特点：支持将任意 OpenAPI 接口自动转换为 MCP 工具的代码生成器\n"
-          },
-          {
-            "tag": "hr"
-          },
-          {
-            "tag": "markdown",
-            "content": "📅 2026-04-10  ·  27 候选 → 10 精选",
+            "content": "📅 2026-04-10  ·  21 候选 → 10 精选",
             "text_size": "notation"
           }
         ]
       }
     }
   ],
-  "count": 27,
+  "count": 21,
   "selected_count": 10,
   "summary": {
-    "count": 27,
-    "editorial": 24,
+    "count": 21,
+    "editorial": 21,
     "api_usage": {
       "total_budget": 50,
       "search_budget": 28,
       "graphql_budget": 600,
-      "search_used": 18,
+      "search_used": 19,
       "graphql_used": 0
     },
     "collector_stats": {
@@ -127,35 +120,30 @@
         "kinds": {}
       },
       "skills": {
-        "count": 3,
+        "count": 4,
         "kinds": {
-          "project": 2,
-          "skill": 1
+          "project": 4
         }
       }
     },
     "item_count": 10,
     "surge_count": 0,
     "filtered_kind_counts": {
-      "project": 26,
-      "skill": 1
+      "project": 21
     },
     "published_kind_counts": {
-      "project": 9,
-      "skill": 1
+      "project": 10
     },
     "theme_counts": {
-      "claude_code": 4,
-      "ml_framework": 1,
-      "inference": 1,
-      "agent_workflow": 1,
-      "browser_automation": 2,
-      "mcp": 1
+      "mcp": 2,
+      "rag": 5,
+      "ai_project": 1,
+      "agent_framework": 2
     },
     "top_themes": [
-      "claude_code",
-      "browser_automation",
-      "ml_framework"
+      "rag",
+      "mcp",
+      "agent_framework"
     ]
   }
 }
