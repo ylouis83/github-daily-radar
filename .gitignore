@@ -2,3 +2,8 @@
 .worktrees/
 __pycache__/
 artifacts/
+
+# Secrets — NEVER commit
+.env
+.env.*
+*.pem

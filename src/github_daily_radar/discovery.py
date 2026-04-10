@@ -60,6 +60,7 @@ DEFAULT_SKILL_CODE_QUERIES = [
     "filename:AGENTS.md NOT repo:openai/openai-agents-python",
     "filename:copilot-instructions.md",
     "filename:mcp.json",
+    "filename:DESIGN.md path:skills OR path:design",
 ]
 DEFAULT_SKILL_REPO_QUERIES = [
     "cursor rules AI in:name,description stars:>50 sort:stars-desc",
@@ -385,7 +386,7 @@ def build_repo_queries(*, now: datetime | None = None, days_back: int | None = 7
     seed = moment.astimezone(timezone.utc).date().toordinal()
     topic_queries = [f"(topic:{topic}){date_clause}" for topic in topics]
     org_queries = [f"(org:{org}){date_clause}" for org in seed_orgs]
-    queries = cycle_queries(topic_queries, limit=min(3, len(topic_queries)), seed=seed)
+    queries = cycle_queries(topic_queries, limit=min(5, len(topic_queries)), seed=seed)
     queries.extend(cycle_queries(org_queries, limit=min(1, len(org_queries)), seed=seed + 1))
     return queries
 

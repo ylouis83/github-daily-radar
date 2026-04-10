@@ -72,8 +72,11 @@ class TrendingCollector(Collector):
 
     DEFAULT_URLS = [
         "https://github.com/trending?since=daily",
+        "https://github.com/trending?since=weekly",
         "https://github.com/trending/python?since=daily",
         "https://github.com/trending/typescript?since=daily",
+        "https://github.com/trending/go?since=daily",
+        "https://github.com/trending/rust?since=daily",
     ]
 
     def __init__(self, client=None, urls: list[str] | None = None, *, max_items: int = 15) -> None:

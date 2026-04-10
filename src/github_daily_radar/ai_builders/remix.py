@@ -120,10 +120,12 @@ def remix_with_llm(
     api_key: str,
     model: str = "qwen3.5-plus",
     base_url: str = "https://coding.dashscope.aliyuncs.com/v1",
+    max_retries: int = 2,
 ) -> str:
     """Call the LLM to remix feed data into a Chinese digest.
 
-    Returns the remixed text. Falls back to a raw summary on failure.
+    Retries up to *max_retries* times. Falls back to a structured Chinese
+    summary on failure.
     """
     x_items = feed_data.get("x", [])
     podcast_items = feed_data.get("podcasts", [])
@@ -139,30 +141,43 @@ def remix_with_llm(
         blog_section=_format_blog_for_llm(blog_items),
     )
 
-    try:
-        with httpx.Client(
-            base_url=base_url,
-            headers={"Authorization": f"Bearer {api_key}"},
-            timeout=120.0,
-        ) as client:
-            resp = client.post(
-                "/chat/completions",
-                json={
-                    "model": model,
-                    "messages": [
-                        {"role": "system", "content": SYSTEM_PROMPT},
-                        {"role": "user", "content": user_prompt},
-                    ],
-                    "temperature": 0.7,
-                    "max_tokens": 4096,
-                },
+    last_exc: Exception | None = None
+    for attempt in range(1, max_retries + 1):
+        try:
+            with httpx.Client(
+                base_url=base_url,
+                headers={"Authorization": f"Bearer {api_key}"},
+                timeout=120.0,
+            ) as client:
+                resp = client.post(
+                    "/chat/completions",
+                    json={
+                        "model": model,
+                        "messages": [
+                            {"role": "system", "content": SYSTEM_PROMPT},
+                            {"role": "user", "content": user_prompt},
+                        ],
+                        "temperature": 0.7,
+                        "max_tokens": 4096,
+                    },
+                )
+                resp.raise_for_status()
+                data = resp.json()
+                return data["choices"][0]["message"]["content"]
+        except Exception as exc:
+            last_exc = exc
+            print(
+                f"[ai_builders] LLM remix attempt {attempt}/{max_retries} failed: "
+                f"{type(exc).__name__}: {exc}"
             )
-            resp.raise_for_status()
-            data = resp.json()
-            return data["choices"][0]["message"]["content"]
-    except Exception as exc:
-        print(f"[ai_builders] LLM remix failed: {exc}, using fallback")
-        return _fallback_summary(x_items, podcast_items, blog_items)
+            if hasattr(exc, "response"):
+                try:
+                    print(f"[ai_builders]   HTTP {exc.response.status_code}: {exc.response.text[:500]}")
+                except Exception:
+                    pass
+
+    print(f"[ai_builders] All {max_retries} LLM attempts failed, using fallback summary")
+    return _fallback_summary(x_items, podcast_items, blog_items)
 
 
 def _fallback_summary(
@@ -170,12 +185,19 @@ def _fallback_summary(
     podcast_items: list[dict],
     blog_items: list[dict],
 ) -> str:
-    """Generate a basic structured summary without LLM."""
+    """Generate a structured Chinese summary without LLM.
+
+    This runs when the LLM is unreachable.  Output is in Chinese with
+    section headers so readers can still get value from the digest.
+    """
     lines: list[str] = []
 
     if x_items:
+        lines.append("## 📱 X / Twitter 动态")
+        lines.append("")
         for builder in x_items:
             name = builder.get("name", "")
+            handle = builder.get("handle", "")
             bio = builder.get("bio", "")
             tweets = builder.get("tweets", [])
             if not tweets:
@@ -184,31 +206,41 @@ def _fallback_summary(
             header = f"**{name}**" + (f" ({role})" if role else "")
             lines.append(header)
             for tweet in tweets[:2]:
-                text = tweet.get("text", "")[:200]
+                text = tweet.get("text", "")[:280]
                 url = tweet.get("url", "")
-                lines.append(f"  {text}")
+                likes = tweet.get("likes", 0)
+                prefix = f"❤️{likes} " if likes else ""
+                lines.append(f"- {prefix}{text}")
                 if url:
-                    lines.append(f"  {url}")
+                    lines.append(f"  [原文链接]({url})")
             lines.append("")
 
     if podcast_items:
+        lines.append("## 🎙️ 播客")
+        lines.append("")
         for ep in podcast_items:
             name = ep.get("name", "")
             title = ep.get("title", "")
             url = ep.get("url", "")
-            lines.append(f"🎙️ {name}: {title}")
+            lines.append(f"**{name}**: {title}")
             if url:
-                lines.append(f"  {url}")
+                lines.append(f"[收听链接]({url})")
             lines.append("")
 
     if blog_items:
+        lines.append("## 📝 博客")
+        lines.append("")
         for post in blog_items:
             name = post.get("name", "")
             title = post.get("title", "")
             url = post.get("url", "")
-            lines.append(f"📝 {name}: {title}")
+            lines.append(f"**{name}**: {title}")
             if url:
-                lines.append(f"  {url}")
+                lines.append(f"[阅读全文]({url})")
             lines.append("")
 
-    return "\n".join(lines) if lines else "今日无更新"
+    if not lines:
+        return "今日 AI Builder 们没有新动态，明天再来看看！"
+
+    lines.insert(0, "⚠️ *LLM 翻译不可用，以下为原始内容摘要*\n")
+    return "\n".join(lines)
