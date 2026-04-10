@@ -1,0 +1,167 @@
+{
+  "cards": [
+    {
+      "msg_type": "interactive",
+      "card": {
+        "config": {
+          "wide_screen_mode": true
+        },
+        "header": {
+          "title": {
+            "tag": "plain_text",
+            "content": "🔭 GitHub 每日雷达 · 2026-04-11"
+          },
+          "template": "indigo"
+        },
+        "elements": [
+          {
+            "tag": "column_set",
+            "flex_mode": "bisect",
+            "background_style": "grey",
+            "horizontal_spacing": "default",
+            "columns": [
+              {
+                "tag": "column",
+                "width": "weighted",
+                "weight": 1,
+                "vertical_align": "center",
+                "elements": [
+                  {
+                    "tag": "markdown",
+                    "text_align": "center",
+                    "content": "**16**\n候选仓库"
+                  }
+                ]
+              },
+              {
+                "tag": "column",
+                "width": "weighted",
+                "weight": 1,
+                "vertical_align": "center",
+                "elements": [
+                  {
+                    "tag": "markdown",
+                    "text_align": "center",
+                    "content": "**10**\n今日精选"
+                  }
+                ]
+              },
+              {
+                "tag": "column",
+                "width": "weighted",
+                "weight": 1,
+                "vertical_align": "center",
+                "elements": [
+                  {
+                    "tag": "markdown",
+                    "text_align": "center",
+                    "content": "**0**\n覆盖主题"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "tag": "hr"
+          },
+          {
+            "tag": "markdown",
+            "content": "**💥 今日爆款**\n\n**1.** [microsoft/markitdown](https://github.com/microsoft/markitdown)  💥+2353⭐  99.5K⭐\n**2.** [multica-ai/multica](https://github.com/multica-ai/multica)  💥+1544⭐  6.0K⭐\n**3.** [shanraisshan/claude-code-best-practice](https://github.com/shanraisshan/claude-code-best-practice)  💥+1248⭐  35.7K⭐\n**4.** [rowboatlabs/rowboat](https://github.com/rowboatlabs/rowboat)  🔥+498⭐  11.7K⭐\n\n*数据源：GitHub Trending + OSSInsight*"
+          },
+          {
+            "tag": "hr"
+          },
+          {
+            "tag": "markdown",
+            "content": "**🚀 核心 AI 项目**\n\n**1.** [jqlang/jq](https://github.com/jqlang/jq)  📈+141⭐\n📌 作为长期维护的经典项目，今日重回趋势榜值得重温其稳定性\n▸ 特点：命令行下处理 JSON 数据的经典利器\n▸ 核心能力：提供强大的 JSON 切片、过滤和转换功能\n▸ 引入必要性：是后端开发和数据处理流程中不可或缺的基础工具\n\n**2.** [pipedude/ros2-ai-robot-guide](https://github.com/pipedude/ros2-ai-robot-guide)  ⭐1\n📌 具身智能热度上升，本地模拟环境是学习 ROS 2 的最佳起点。\n▸ 特点：无需真实硬件即可实践 LLM 与 VLM 驱动的 ROS 2 指南。\n▸ 核心能力：涵盖节点架构与传感器模拟的纯软件开发流程。\n▸ 引入必要性：为资源有限的开发者提供低成本的具身智能入门方案。\n\n**3.** [waybarrios/vllm-mlx](https://github.com/waybarrios/vllm-mlx)  ⭐790\n📌 针对 Mac 用户的本地大模型推理方案稀缺，此项目填补了生态空白\n▸ 特点：专为 Apple Silicon 优化的原生 MLX 后端推理服务\n▸ 核心能力：支持在 Mac 上运行多模态模型并提供兼容 OpenAI 的接口\n▸ 引入必要性：让 Mac 用户能够本地高效部署和调用主流大模型\n\n**4.** [mcpware/claude-code-organizer](https://github.com/mcpware/claude-code-organizer)  ⭐245\n📌 MCP 工具链日益复杂，安全管理工具今日显得尤为迫切。\n▸ 特点：具备安全扫描与上下文预算追踪功能的 Claude 管理面板。\n▸ 核心能力：集中管理记忆配置并检测 MCP 工具投毒风险。\n▸ 引入必要性：防止恶意工具注入并控制长期运行的上下文成本。\n\n**5.** [arturitu/the-delegation](https://github.com/arturitu/the-delegation)  ⭐146\n📌 可视化交互设计是降低代理系统认知门槛的最新趋势。\n▸ 特点：无需编写代码即可设计交互的 3D 代理 AI 游乐场。\n▸ 核心能力：基于 WebGPU 可视化模拟多智能体系统的协作行为。\n▸ 引入必要性：让非技术人员也能直观理解并调试复杂的代理逻辑。\n\n**6.** [jarek108/gemini-cli-headless](https://github.com/jarek108/gemini-cli-headless)\n📌 今日值得留意因其提供了直接恢复上下文会话的便捷方式。\n▸ 特点：这是一个无依赖的 Python 封装，支持在无头模式下运行 Gemini 命令行工具。\n▸ 核心能力：能够绕过云 SDK 安全限制并管理本地 RAG 会话历史上下文。\n▸ 引入必要性：适合需要在本地敏感教育主题上执行查询的开发者引入。\n\n**7.** [ai-with-etqad/RAG-foundations](https://github.com/ai-with-etqad/RAG-foundations)\n📌 此刻值得查阅因为它是提升相关技术面试竞争力的好资源。\n▸ 特点：该仓库专注于提供从入门到精通的检索增强生成技术详细文档。\n▸ 核心能力：涵盖生动的细节内容并特别针对面试准备进行优化。\n▸ 引入必要性：对于希望系统掌握 RAG 知识体系的初学者来说必不可少。\n"
+          },
+          {
+            "tag": "hr"
+          },
+          {
+            "tag": "markdown",
+            "content": "**🧩 MCP & Skills**\n\n**1.** [portofcontext/pctx](https://github.com/portofcontext/pctx)  ⭐245\n🏷️ 适配生态：MCP\n▸ 特点：自动将代理工具转换为安全沙箱代码的执行层。\n\n**2.** [cporter202/agentic-ai-starters](https://github.com/cporter202/agentic-ai-starters)  ⭐83\n🏷️ 适配生态：Agent\n▸ 特点：包含真实 API 集成方案的即插即用代理启动蓝图。\n\n**3.** [mcpc-tech/mcpc](https://github.com/mcpc-tech/mcpc)  ⭐88\n🏷️ 适配生态：MCP\n▸ 特点：通过组合现有工具来构建聚合型 MCP 服务器的方案。\n"
+          },
+          {
+            "tag": "hr"
+          },
+          {
+            "tag": "markdown",
+            "content": "📅 2026-04-11  ·  16 候选 → 10 精选",
+            "text_size": "notation"
+          }
+        ]
+      }
+    }
+  ],
+  "count": 16,
+  "selected_count": 10,
+  "summary": {
+    "count": 16,
+    "editorial": 16,
+    "api_usage": {
+      "total_budget": 50,
+      "search_budget": 28,
+      "graphql_budget": 600,
+      "search_used": 19,
+      "graphql_used": 0
+    },
+    "collector_stats": {
+      "trending": {
+        "count": 15,
+        "kinds": {
+          "project": 15
+        }
+      },
+      "ossinsight": {
+        "count": 58,
+        "kinds": {
+          "project": 58
+        }
+      },
+      "repos": {
+        "count": 25,
+        "kinds": {
+          "project": 25
+        }
+      },
+      "discussions": {
+        "count": 0,
+        "kinds": {}
+      },
+      "issues_prs": {
+        "count": 0,
+        "kinds": {}
+      },
+      "skills": {
+        "count": 13,
+        "kinds": {
+          "skill": 8,
+          "project": 5
+        }
+      }
+    },
+    "item_count": 10,
+    "surge_count": 4,
+    "filtered_kind_counts": {
+      "project": 13,
+      "skill": 3
+    },
+    "published_kind_counts": {
+      "project": 7,
+      "skill": 3
+    },
+    "theme_counts": {
+      "ai_project": 2,
+      "mcp": 3,
+      "claude_code": 2,
+      "agent_framework": 1,
+      "rag": 2
+    },
+    "top_themes": [
+      "mcp",
+      "ai_project",
+      "claude_code"
+    ]
+  }
+}
