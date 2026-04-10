@@ -25,6 +25,9 @@ DEFAULT_TOPICS = [
     "graphrag",
     "cursor-rules",
     "ai-prompts",
+    "design-system",
+    "design-md",
+    "awesome-list",
 ]
 DEFAULT_SEED_ORGS = [
     "openai",
@@ -39,6 +42,7 @@ DEFAULT_SEED_ORGS = [
     "QwenLM",
     "crewAIInc",
     "All-Hands-AI",
+    "VoltAgent",
 ]
 DEFAULT_SKILL_SEED_REPOS = [
     "obra/superpowers",
@@ -60,13 +64,15 @@ DEFAULT_SKILL_CODE_QUERIES = [
     "filename:AGENTS.md NOT repo:openai/openai-agents-python",
     "filename:copilot-instructions.md",
     "filename:mcp.json",
-    "filename:DESIGN.md path:skills OR path:design",
+    "filename:DESIGN.md",
 ]
 DEFAULT_SKILL_REPO_QUERIES = [
     "cursor rules AI in:name,description stars:>50 sort:stars-desc",
     "claude skills agent prompt in:name,description stars:>50 sort:stars-desc",
     "mcp server tool in:name,description stars:>50 sort:stars-desc",
     "agent workflow prompt in:name,description stars:>50 sort:stars-desc",
+    "design system agent coding in:name,description stars:>50 sort:stars-desc",
+    "awesome design AI in:name,description stars:>50 sort:stars-desc",
 ]
 DEFAULT_SKILL_MIN_STARS = 80
 DEFAULT_PROJECT_MIN_STARS = 120

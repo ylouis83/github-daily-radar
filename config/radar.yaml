@@ -40,6 +40,11 @@ topics:
   - cursor-rules            # Cursor rules 生态
   - ai-prompts              # 高质量 prompt 集散
 
+  # -- Design System & Awesome Lists --
+  - design-system           # 设计系统文档 (DESIGN.md 生态)
+  - design-md               # DESIGN.md 衍生项目
+  - awesome-list            # 高质量 awesome 聚合列表
+
 # ------------------------------------------
 # 2. Seed Orgs (用于 RepoCollector)
 #    作用: 全局扫描顶级 AI 机构的新仓库和架构级动作
@@ -57,6 +62,7 @@ seed_orgs:
   - QwenLM                  # 阿里通义千问团队
   - crewAIInc               # CrewAI 多智能体框架
   - All-Hands-AI            # OpenHands (OpenDevin)
+  - VoltAgent               # awesome-design-md 生态
 
 # ------------------------------------------
 # 3. Seed Repos (用于 DiscussionCollector / IssuesPrsCollector)
@@ -113,6 +119,7 @@ skills:
     - "filename:AGENTS.md NOT repo:openai/openai-agents-python"    # Codex 生态
     - "filename:copilot-instructions.md"                           # Copilot 指令
     - "filename:mcp.json"                                          # MCP 定义
+    - "filename:DESIGN.md"                                         # 设计系统文档
 
   # --- 层 3: Repo Search 关键词 ---
   # 搜新建/近期更新的 skill/rule/prompt 集合类仓库
@@ -121,6 +128,8 @@ skills:
     - "claude skills agent prompt in:name,description stars:>50 sort:stars-desc"
     - "mcp server tool in:name,description stars:>50 sort:stars-desc"
     - "agent workflow prompt in:name,description stars:>50 sort:stars-desc"
+    - "design system agent coding in:name,description stars:>50 sort:stars-desc"
+    - "awesome design AI in:name,description stars:>50 sort:stars-desc"
 
   # --- 技能池门槛与 TopN ---
   ranking:
