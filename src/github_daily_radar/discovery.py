@@ -56,6 +56,7 @@ DEFAULT_SKILL_SEED_REPOS = [
     "langchain-ai/langgraph/examples",
     "crewAIInc/crewAI-examples",
     "lobehub/lobe-chat-agents",
+    "VoltAgent/awesome-design-md",
 ]
 DEFAULT_SKILL_CODE_QUERIES = [
     "filename:SKILL.md path:skills",

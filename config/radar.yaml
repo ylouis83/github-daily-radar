@@ -108,6 +108,7 @@ skills:
     - langchain-ai/langgraph/examples  # Agent workflow 示例
     - crewAIInc/crewAI-examples        # CrewAI 生态示例
     - lobehub/lobe-chat-agents         # LobeChat 插件/Agent 生态
+    - VoltAgent/awesome-design-md      # DESIGN.md 设计系统聚合
 
   # --- 层 2: Code Search 特征文件 ---
   # 直接搜 skill 的"指纹文件"，发现不在任何列表里的新仓库

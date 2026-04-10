@@ -1,7 +1,8 @@
 """Remix AI builder feed into Chinese digest text.
 
 Uses the same LLM (Qwen) as the GitHub Daily Radar.
-If the LLM call fails, falls back to a structured but un-remixed summary.
+If the LLM call fails, falls back to doubao-seed-2.0-pro, then to a
+structured but un-remixed summary.
 """
 from __future__ import annotations
 
@@ -61,7 +62,7 @@ def _format_twitter_for_llm(x_items: list[dict]) -> str:
         lines = [f"### {name} (handle: {handle})"]
         if bio:
             lines.append(f"Bio: {bio}")
-        for tweet in tweets:
+        for tweet in tweets[:3]:  # Cap at 3 tweets per builder to reduce prompt size
             text = tweet.get("text", "")
             url = tweet.get("url", "")
             likes = tweet.get("likes", 0)
@@ -85,8 +86,8 @@ def _format_podcast_for_llm(podcast_items: list[dict]) -> str:
         url = ep.get("url", "")
         transcript = ep.get("transcript", "")
         # Truncate transcript to avoid blowing up context
-        if len(transcript) > 8000:
-            transcript = transcript[:8000] + "\n...[transcript truncated]"
+        if len(transcript) > 4000:
+            transcript = transcript[:4000] + "\n...[transcript truncated]"
         sections.append(
             f"### {name}: {title}\nURL: {url}\n\nTranscript:\n{transcript}"
         )
@@ -114,18 +115,62 @@ def _format_blog_for_llm(blog_items: list[dict]) -> str:
     return "\n\n".join(sections)
 
 
+def _call_llm(
+    *,
+    messages: list[dict],
+    api_key: str,
+    model: str,
+    base_url: str,
+    timeout: float = 240.0,
+) -> str | None:
+    """Make a single LLM API call. Returns content string or None on failure."""
+    try:
+        with httpx.Client(
+            base_url=base_url,
+            headers={"Authorization": f"Bearer {api_key}"},
+            timeout=timeout,
+        ) as client:
+            resp = client.post(
+                "/chat/completions",
+                json={
+                    "model": model,
+                    "messages": messages,
+                    "temperature": 0.7,
+                    "max_tokens": 4096,
+                },
+            )
+            resp.raise_for_status()
+            data = resp.json()
+            return data["choices"][0]["message"]["content"]
+    except Exception as exc:
+        print(
+            f"[ai_builders] LLM call failed ({model} @ {base_url}): "
+            f"{type(exc).__name__}: {exc}"
+        )
+        if hasattr(exc, "response"):
+            try:
+                print(f"[ai_builders]   HTTP {exc.response.status_code}: {exc.response.text[:500]}")
+            except Exception:
+                pass
+        return None
+
+
 def remix_with_llm(
     feed_data: dict,
     *,
     api_key: str,
     model: str = "qwen3.5-plus",
     base_url: str = "https://coding.dashscope.aliyuncs.com/v1",
-    max_retries: int = 2,
+    fallback_model: str | None = None,
+    fallback_base_url: str | None = None,
+    fallback_api_key: str | None = None,
+    max_retries: int = 3,
 ) -> str:
     """Call the LLM to remix feed data into a Chinese digest.
 
-    Retries up to *max_retries* times. Falls back to a structured Chinese
-    summary on failure.
+    Tries the primary model up to *max_retries* times, then falls back to
+    the fallback model (if configured), and finally to a structured Chinese
+    summary on total failure.
     """
     x_items = feed_data.get("x", [])
     podcast_items = feed_data.get("podcasts", [])
@@ -141,42 +186,41 @@ def remix_with_llm(
         blog_section=_format_blog_for_llm(blog_items),
     )
 
-    last_exc: Exception | None = None
-    for attempt in range(1, max_retries + 1):
-        try:
-            with httpx.Client(
-                base_url=base_url,
-                headers={"Authorization": f"Bearer {api_key}"},
-                timeout=120.0,
-            ) as client:
-                resp = client.post(
-                    "/chat/completions",
-                    json={
-                        "model": model,
-                        "messages": [
-                            {"role": "system", "content": SYSTEM_PROMPT},
-                            {"role": "user", "content": user_prompt},
-                        ],
-                        "temperature": 0.7,
-                        "max_tokens": 4096,
-                    },
-                )
-                resp.raise_for_status()
-                data = resp.json()
-                return data["choices"][0]["message"]["content"]
-        except Exception as exc:
-            last_exc = exc
-            print(
-                f"[ai_builders] LLM remix attempt {attempt}/{max_retries} failed: "
-                f"{type(exc).__name__}: {exc}"
-            )
-            if hasattr(exc, "response"):
-                try:
-                    print(f"[ai_builders]   HTTP {exc.response.status_code}: {exc.response.text[:500]}")
-                except Exception:
-                    pass
+    messages = [
+        {"role": "system", "content": SYSTEM_PROMPT},
+        {"role": "user", "content": user_prompt},
+    ]
 
-    print(f"[ai_builders] All {max_retries} LLM attempts failed, using fallback summary")
+    # ── Primary model: try max_retries times ──
+    for attempt in range(1, max_retries + 1):
+        print(f"[ai_builders] LLM attempt {attempt}/{max_retries} with {model}...")
+        result = _call_llm(
+            messages=messages,
+            api_key=api_key,
+            model=model,
+            base_url=base_url,
+        )
+        if result:
+            return result
+        print(f"[ai_builders] Primary model attempt {attempt}/{max_retries} failed")
+
+    # ── Fallback model: try once ──
+    if fallback_model and fallback_api_key:
+        fb_url = fallback_base_url or base_url
+        print(f"[ai_builders] Trying fallback model: {fallback_model} @ {fb_url}")
+        result = _call_llm(
+            messages=messages,
+            api_key=fallback_api_key,
+            model=fallback_model,
+            base_url=fb_url,
+            timeout=300.0,  # Extra generous timeout for fallback
+        )
+        if result:
+            print(f"[ai_builders] Fallback model {fallback_model} succeeded!")
+            return result
+        print(f"[ai_builders] Fallback model {fallback_model} also failed")
+
+    print(f"[ai_builders] All LLM attempts failed, using fallback summary")
     return _fallback_summary(x_items, podcast_items, blog_items)
 
 

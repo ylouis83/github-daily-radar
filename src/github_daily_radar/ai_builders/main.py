@@ -60,6 +60,9 @@ def run_ai_builders_pipeline(settings: Settings, *, dry_run: bool = False) -> di
         feed_data,
         api_key=settings.qwen_api_key,
         model=settings.default_model,
+        fallback_model="doubao-seed-2.0-pro",
+        fallback_base_url="https://ark.cn-beijing.volces.com/api/coding/v3",
+        fallback_api_key=settings.volc_api_key,
     )
     print(f"[ai_builders] Digest generated: {len(digest_text)} chars")
 

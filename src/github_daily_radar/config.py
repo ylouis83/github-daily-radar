@@ -8,6 +8,7 @@ class Settings(BaseSettings):
     github_token: str = Field(alias="GITHUB_TOKEN")
     github_pat: str | None = Field(default=None, alias="GITHUB_PAT")
     qwen_api_key: str = Field(alias="QWEN_API_KEY")
+    volc_api_key: str | None = Field(default=None, alias="VOLC_API_KEY")
     feishu_webhook_url: str = Field(alias="FEISHU_WEBHOOK_URL")
     dry_run: bool = Field(default=False, alias="DRY_RUN")
     timezone: str = Field(default="Asia/Shanghai", alias="TIMEZONE")

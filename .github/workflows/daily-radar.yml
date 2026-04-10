@@ -101,4 +101,5 @@ jobs:
           LLM_MODEL: qwen3.5-plus
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           QWEN_API_KEY: ${{ secrets.QWEN_API_KEY }}
+          VOLC_API_KEY: ${{ secrets.VOLC_API_KEY }}
           FEISHU_WEBHOOK_URL: ${{ secrets.FEISHU_WEBHOOK_URL }}

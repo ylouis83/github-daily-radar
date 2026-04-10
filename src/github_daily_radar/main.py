@@ -184,7 +184,7 @@ def run_pipeline(settings: Settings, alert_only: bool = False) -> dict:
     skill_seed_repos = load_skill_seed_repos()
     skill_query_seed = today.toordinal()
     skill_code_queries = cycle_queries(build_skill_code_queries(), limit=2, seed=skill_query_seed)
-    skill_repo_queries = cycle_queries(build_skill_repo_queries(days_back=30), limit=2, seed=skill_query_seed + 1)
+    skill_repo_queries = cycle_queries(build_skill_repo_queries(days_back=30), limit=3, seed=skill_query_seed + 1)
     skill_min_stars = load_skill_min_stars()
     project_min_stars = load_project_min_stars()
     skill_shape_floor = load_skill_shape_floor()
