@@ -1,0 +1,173 @@
+{
+  "cards": [
+    {
+      "msg_type": "interactive",
+      "card": {
+        "config": {
+          "wide_screen_mode": true
+        },
+        "header": {
+          "title": {
+            "tag": "plain_text",
+            "content": "🔭 GitHub 每日雷达 · 2026-04-12"
+          },
+          "template": "indigo"
+        },
+        "elements": [
+          {
+            "tag": "column_set",
+            "flex_mode": "bisect",
+            "background_style": "grey",
+            "horizontal_spacing": "default",
+            "columns": [
+              {
+                "tag": "column",
+                "width": "weighted",
+                "weight": 1,
+                "vertical_align": "center",
+                "elements": [
+                  {
+                    "tag": "markdown",
+                    "text_align": "center",
+                    "content": "**81**\n候选仓库"
+                  }
+                ]
+              },
+              {
+                "tag": "column",
+                "width": "weighted",
+                "weight": 1,
+                "vertical_align": "center",
+                "elements": [
+                  {
+                    "tag": "markdown",
+                    "text_align": "center",
+                    "content": "**20**\n今日精选"
+                  }
+                ]
+              },
+              {
+                "tag": "column",
+                "width": "weighted",
+                "weight": 1,
+                "vertical_align": "center",
+                "elements": [
+                  {
+                    "tag": "markdown",
+                    "text_align": "center",
+                    "content": "**0**\n覆盖主题"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "tag": "hr"
+          },
+          {
+            "tag": "markdown",
+            "content": "**💥 今日爆款**\n\n**1.** [NousResearch/hermes-agent](https://github.com/NousResearch/hermes-agent)  💥+6437⭐  58.5K⭐\n**2.** [google-ai-edge/gallery](https://github.com/google-ai-edge/gallery)  💥+4409⭐  20.4K⭐\n**3.** [microsoft/markitdown](https://github.com/microsoft/markitdown)  💥+3069⭐  102.0K⭐\n**4.** [google-ai-edge/LiteRT-LM](https://github.com/google-ai-edge/LiteRT-LM)  💥+2210⭐  3.4K⭐\n**5.** [alexpate/awesome-design-systems](https://github.com/alexpate/awesome-design-systems)  💥+1978⭐  22.2K⭐\n\n*数据源：GitHub Trending + OSSInsight*"
+          },
+          {
+            "tag": "hr"
+          },
+          {
+            "tag": "markdown",
+            "content": "**🚀 核心 AI 项目**\n\n**1.** [MemPalace/mempalace](https://github.com/MemPalace/mempalace)  ⭐41.7K\n📌 AI 应用落地加速，记忆模块成为新的关注焦点。\n▸ 特点：主打免费且基准测试得分领先的 AI 记忆系统。\n▸ 核心能力：增强大模型长期上下文记忆与信息检索能力。\n▸ 引入必要性：突破模型上下文窗口限制的有效尝试。\n\n**2.** [lance-format/lance](https://github.com/lance-format/lance)  ⭐6.3K\n📌 多模态 AI 数据存储方案值得当前评估。\n▸ 特点：专为多模态 AI 设计的开放湖仓格式。\n▸ 核心能力：提供比 Parquet 更快的随机访问与向量索引。\n▸ 引入必要性：解决大模型时代数据存储与检索的性能瓶颈。\n\n**3.** [openclaw/skills](https://github.com/openclaw/skills)  ⭐4.0K\n📌 数据归档价值在平台变动时尤为凸显。\n▸ 特点：ClawHub 平台所有技能版本的完整归档。\n▸ 核心能力：提供历史技能数据的备份与查询服务。\n▸ 引入必要性：防止特定平台数据丢失的重要开源备份。\n\n**4.** [kayba-ai/agentic-context-engine](https://github.com/kayba-ai/agentic-context-engine)  ⭐2.1K\n📌 智能体记忆机制是当前 AI 工程化的热点方向。\n▸ 特点：专注于让 AI 代理从经验中学习的上下文引擎。\n▸ 核心能力：为智能体提供记忆积累与上下文工程能力。\n▸ 引入必要性：提升 AI 代理长期任务处理能力的关键组件。\n\n**5.** [openclaw/lobster](https://github.com/openclaw/lobster)  ⭐1.1K\n📌 ⭐1108\n▸ 特点：强调工作流自动化，已形成一定社区热度\n▸ 核心能力：把外部工具和能力封装成更容易接入的调用层。\n▸ 引入必要性：已被 251 人 fork，复用价值明确。\n\n**6.** [tphakala/birdnet-go](https://github.com/tphakala/birdnet-go)  ⭐1.0K\n📌 ⭐1007\n▸ 特点：围绕 AI 工具链的项目，已形成一定社区热度\n▸ 核心能力：涉及 artificial-intelligence / audio / bioacoustics…\n▸ 引入必要性：已被 87 人 fork，复用价值明确。\n\n**7.** [phuryn/claude-usage](https://github.com/phuryn/claude-usage)  ⭐842\n📌 ⭐842\n▸ 特点：围绕 Claude Code 的终端工作流，已形成一定社区热度\n▸ 核心能力：涉及 claude-code，封装为可接入的能力层。\n▸ 引入必要性：已被 119 人 fork，复用价值明确。\n\n**8.** [yizhiyanhua-ai/fireworks-tech-graph](https://github.com/yizhiyanhua-ai/fireworks-tech-graph)  ⭐900\n📌 ⭐900\n▸ 特点：围绕 Claude Code 的终端工作流，已形成一定社区热度\n▸ 核心能力：把可复用的提示词和规则沉淀成可执行资产。\n▸ 引入必要性：已被 70 人 fork，复用价值明确。\n\n**9.** [adamlyttleapps/claude-skill-app-onboarding-questionnaire](https://github.com/adamlyttleapps/claude-skill-app-onboarding-questionnaire)  ⭐734\n📌 ⭐734\n▸ 特点：围绕 Claude Code 的终端工作流，已形成一定社区热度\n▸ 核心能力：把可复用的提示词和规则沉淀成可执行资产。\n▸ 引入必要性：已被 90 人 fork，复用价值明确。\n\n**10.** [coleam00/claude-memory-compiler](https://github.com/coleam00/claude-memory-compiler)  ⭐558\n📌 ⭐558\n▸ 特点：围绕 Claude Code 的终端工作流，已形成一定社区热度\n▸ 核心能力：把复杂任务拆成可调度、可复用的 Agent 流程。\n▸ 引入必要性：已被 145 人 fork，复用价值明确。\n\n**11.** [IAAR-Shanghai/Awesome-AI-Memory](https://github.com/IAAR-Shanghai/Awesome-AI-Memory)  ⭐710\n📌 ⭐710\n▸ 特点：Awesome AI Memory | LLM Memory | A…\n▸ 核心能力：涉及 agent-memory / ai-memory / ai-memory-system…\n▸ 引入必要性：已被 57 人 fork，复用价值明确。\n\n**12.** [stablyai/orca](https://github.com/stablyai/orca)  ⭐711\n📌 ⭐711\n▸ 特点：围绕 Claude Code 的终端工作流，已形成一定社区热度\n▸ 核心能力：涉及 claude-code / cli / codex / cursor-agent，封装为可接入的能力层。\n▸ 引入必要性：⭐711 社区验证充分，值得深入评估。\n\n**13.** [zacdcook/openclaw-billing-proxy](https://github.com/zacdcook/openclaw-billing-proxy)  ⭐314\n📌 ⭐314\n▸ 特点：围绕 Claude Code 的终端工作流，已形成一定社区热度\n▸ 核心能力：把复杂任务拆成可调度、可复用的 Agent 流程。\n▸ 引入必要性：已被 103 人 fork，复用价值明确。\n\n**14.** [orneryd/NornicDB](https://github.com/orneryd/NornicDB)  ⭐521\n📌 ⭐521\n▸ 特点：聚焦 MCP 工具接入与编排，已形成一定社区热度\n▸ 核心能力：涉及 bolt / cypher / database / enterprise-solutions…\n▸ 引入必要性：⭐521 社区验证充分，值得深入评估。\n\n**15.** [cporter202/agentic-ai-apis](https://github.com/cporter202/agentic-ai-apis)  ⭐260\n📌 ⭐260\n▸ 特点：聚焦 MCP 工具接入与编排，已形成一定社区热度\n▸ 核心能力：涉及 agentic-ai / ai-agents / ai-tools / api-collection…\n▸ 引入必要性：已被 88 人 fork，复用价值明确。\n\n**16.** [joyehuang/Learn-Open-Harness](https://github.com/joyehuang/Learn-Open-Harness)  ⭐205\n📌 ⭐205\n▸ 特点：🤖 Official Interactive Tutorial for…\n▸ 核心能力：涉及 agent-harness / agent-loop / ai-agent / ai-agent…\n▸ 引入必要性：⭐205 已有社区验证，适合判断是否值得引入。\n\n**17.** [Xiangyue-Zhang/auto-deep-researcher-24x7](https://github.com/Xiangyue-Zhang/auto-deep-researcher-24x7)  ⭐265\n📌 ⭐265\n▸ 特点：围绕 Claude Code 的终端工作流，已形成一定社区热度\n▸ 核心能力：涉及 ai-agent / autonomous-agent / claude-code / deep…\n▸ 引入必要性：⭐265 已有社区验证，适合判断是否值得引入。\n\n**18.** [863401402/she-love-me](https://github.com/863401402/she-love-me)  ⭐204\n📌 ⭐204\n▸ 特点：她爱我吗？恋情分析室 — 微信聊天记录恋爱分析 Agent Skill\n▸ 核心能力：涉及 agent / she-love-me / skill / wechat，封装为可接入的能力层。\n▸ 引入必要性：⭐204 已有社区验证，适合判断是否值得引入。\n\n**19.** [irahardianto/awesome-agv](https://github.com/irahardianto/awesome-agv)  ⭐129\n📌 ⭐129\n▸ 特点：围绕 Claude Code 的终端工作流，已形成一定社区热度\n▸ 核心能力：涉及 agent-rules / ai-agent / ai-coding / antigravity…\n▸ 引入必要性：⭐129 已有社区验证，适合判断是否值得引入。\n"
+          },
+          {
+            "tag": "hr"
+          },
+          {
+            "tag": "markdown",
+            "content": "**🧩 MCP & Skills**\n\n**1.** [NeuZhou/awesome-ai-anatomy](https://github.com/NeuZhou/awesome-ai-anatomy)  ⭐113\n🏷️ 适配生态：Claude Code\n▸ 特点：围绕 Claude Code 的终端工作流，社区验证较强\n"
+          },
+          {
+            "tag": "hr"
+          },
+          {
+            "tag": "markdown",
+            "content": "📅 2026-04-12  ·  81 候选 → 20 精选",
+            "text_size": "notation"
+          }
+        ]
+      }
+    }
+  ],
+  "count": 81,
+  "selected_count": 20,
+  "summary": {
+    "count": 81,
+    "editorial": 24,
+    "api_usage": {
+      "total_budget": 60,
+      "search_budget": 38,
+      "graphql_budget": 600,
+      "search_used": 26,
+      "graphql_used": 0
+    },
+    "collector_stats": {
+      "trending": {
+        "count": 15,
+        "kinds": {
+          "project": 15
+        }
+      },
+      "ossinsight": {
+        "count": 57,
+        "kinds": {
+          "project": 57
+        }
+      },
+      "repos": {
+        "count": 50,
+        "kinds": {
+          "project": 50
+        }
+      },
+      "star_growth": {
+        "count": 69,
+        "kinds": {
+          "project": 69
+        }
+      },
+      "discussions": {
+        "count": 0,
+        "kinds": {}
+      },
+      "issues_prs": {
+        "count": 0,
+        "kinds": {}
+      },
+      "skills": {
+        "count": 9,
+        "kinds": {
+          "skill": 5,
+          "project": 4
+        }
+      }
+    },
+    "item_count": 20,
+    "surge_count": 5,
+    "filtered_kind_counts": {
+      "project": 80,
+      "skill": 1
+    },
+    "published_kind_counts": {
+      "project": 19,
+      "skill": 1
+    },
+    "theme_counts": {
+      "mcp": 3,
+      "ml_framework": 2,
+      "claude_code": 10,
+      "skill_assets": 3,
+      "agent_framework": 2
+    },
+    "top_themes": [
+      "claude_code",
+      "mcp",
+      "skill_assets"
+    ]
+  }
+}
