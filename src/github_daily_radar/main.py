@@ -92,7 +92,7 @@ def _extract_daily_delta(candidate) -> int:
     # OSSInsight: past_24_hours → 日增; past_week → 周增除以 7
     if candidate.source_query.startswith("ossinsight:trending:past_24_hours"):
         return candidate.metrics.star_growth_7d
-    if candidate.source_query.startswith("ossinsight:trending:past_week"):
+    if candidate.source_query.startswith("ossinsight:trending:past_week") or candidate.source_query.startswith("ossinsight:trending:past_7_days"):
         return candidate.metrics.star_growth_7d // 7
     if candidate.source_query.startswith("ossinsight:collection:"):
         return candidate.metrics.star_growth_7d // 7
@@ -389,8 +389,9 @@ def run_pipeline(settings: Settings, alert_only: bool = False) -> dict:
     metadata["api_usage"] = api_usage
     metadata["collector_stats"] = collector_stats
 
-    # ── 爆款提取（从全部 filtered 候选，不是 display_items）──
-    surge_items = _build_surge_items(filtered)
+    # ── 爆款提取（从全部去重候选，不受 cooldown 影响）──
+    # 爆款 = 日增 ≥200⭐ 的爆发项目，即使近期已推送也应展示
+    surge_items = _build_surge_items(candidates)
     surge_repos = {item["repo_full_name"] for item in surge_items}
 
     display_items = build_display_items(filtered, editorial)
