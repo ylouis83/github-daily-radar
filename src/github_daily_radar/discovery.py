@@ -8,12 +8,14 @@ import yaml
 
 DEFAULT_TOPICS = [
     "agent",
+    "ai-agent",
     "ai-agents",
     "agentic-workflow",
     "browser-use",
     "computer-use",
     "ai-coding",
     "coding-assistant",
+    "claude-code",
     "swe-agent",
     "mcp",
     "model-context-protocol",
@@ -43,6 +45,11 @@ DEFAULT_SEED_ORGS = [
     "crewAIInc",
     "All-Hands-AI",
     "VoltAgent",
+    "NousResearch",
+    "paperclipai",
+    "aaif-goose",
+    "ultraworkers",
+    "anomalyco",
 ]
 DEFAULT_SKILL_SEED_REPOS = [
     "obra/superpowers",
@@ -85,6 +92,12 @@ DEFAULT_DAILY_ITEM_COUNT_MAX = 20
 DEFAULT_DAILY_ITEM_PROJECT_FIRST = True
 DEFAULT_DISCUSSION_KEYWORDS = ["proposal", "rfc", "idea", "design"]
 DEFAULT_ISSUE_KEYWORDS = ["proposal", "roadmap", "design"]
+DEFAULT_STAR_GROWTH_QUERIES = [
+    "stars:>5000 pushed:>{recent_7d} sort:stars-desc",
+    "stars:>1000 created:>{recent_7d} sort:stars-desc",
+    "stars:>500 pushed:>{recent_3d} sort:updated-desc",
+    "(agent OR coding OR cli) stars:>200 created:>{recent_7d} sort:stars-desc",
+]
 DEFAULT_OSSINSIGHT_PERIODS = ["past_24_hours", "past_7_days"]
 DEFAULT_OSSINSIGHT_LANGUAGE = "All"
 DEFAULT_OSSINSIGHT_COLLECTION_PERIOD = "past_28_days"
@@ -329,6 +342,22 @@ def load_ossinsight_max_collection_ids(path: Path | None = None) -> int:
         return DEFAULT_OSSINSIGHT_MAX_COLLECTION_IDS
 
 
+def load_star_growth_queries(path: Path | None = None) -> list[str]:
+    raw = load_radar_config(path)
+    queries = raw.get("star_growth_queries") or DEFAULT_STAR_GROWTH_QUERIES
+    return [query for query in queries if isinstance(query, str) and query.strip()]
+
+
+def load_trending_urls(path: Path | None = None) -> list[str] | None:
+    """Return configured trending URLs, or None to use collector defaults."""
+    raw = load_radar_config(path)
+    trending = raw.get("trending") if isinstance(raw.get("trending"), dict) else {}
+    urls = trending.get("urls")
+    if not urls or not isinstance(urls, list):
+        return None
+    return [url for url in urls if isinstance(url, str) and url.strip()]
+
+
 def recent_date(*, days: int, now: datetime | None = None) -> str:
     moment = now or datetime.now(timezone.utc)
     cutoff = moment.astimezone(timezone.utc) - timedelta(days=days)
@@ -393,9 +422,27 @@ def build_repo_queries(*, now: datetime | None = None, days_back: int | None = 7
     seed = moment.astimezone(timezone.utc).date().toordinal()
     topic_queries = [f"(topic:{topic}){date_clause}" for topic in topics]
     org_queries = [f"(org:{org}){date_clause}" for org in seed_orgs]
-    queries = cycle_queries(topic_queries, limit=min(5, len(topic_queries)), seed=seed)
-    queries.extend(cycle_queries(org_queries, limit=min(1, len(org_queries)), seed=seed + 1))
+    queries = cycle_queries(topic_queries, limit=min(7, len(topic_queries)), seed=seed)
+    queries.extend(cycle_queries(org_queries, limit=min(2, len(org_queries)), seed=seed + 1))
     return queries
+
+
+def build_star_growth_queries(*, now: datetime | None = None) -> list[str]:
+    """Build topic-independent queries that discover repos by star growth.
+
+    Template placeholders ``{recent_7d}`` and ``{recent_3d}`` are resolved to
+    actual ISO dates so that the queries are ready for the GitHub Search API.
+    """
+    moment = now or datetime.now(timezone.utc)
+    date_7d = recent_date(days=7, now=moment)
+    date_3d = recent_date(days=3, now=moment)
+    raw_queries = load_star_growth_queries()
+    resolved: list[str] = []
+    for query in raw_queries:
+        resolved.append(
+            query.replace("{recent_7d}", date_7d).replace("{recent_3d}", date_3d)
+        )
+    return resolved
 
 
 def build_skill_queries(*, now: datetime | None = None, days_back: int | None = None) -> list[str]:

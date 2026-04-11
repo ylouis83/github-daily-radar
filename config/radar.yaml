@@ -12,6 +12,7 @@
 topics:
   # -- Agent 与自动化 (当前最火赛道) --
   - agent
+  - ai-agent              # 单数形式 (career-ops 等)
   - ai-agents
   - agentic-workflow
   - browser-use             # 浏览器自动化控制
@@ -20,6 +21,7 @@ topics:
   # -- AI 辅助编程 --
   - ai-coding
   - coding-assistant
+  - claude-code             # Claude Code 生态项目
   - swe-agent
 
   # -- 互操作协议与工具 --
@@ -63,6 +65,11 @@ seed_orgs:
   - crewAIInc               # CrewAI 多智能体框架
   - All-Hands-AI            # OpenHands (OpenDevin)
   - VoltAgent               # awesome-design-md 生态
+  - NousResearch            # Hermes Agent 生态
+  - paperclipai             # Paperclip 零人公司编排
+  - aaif-goose              # Goose AI 编程 Agent (原 block/goose)
+  - ultraworkers            # Claw-Code 生态
+  - anomalyco               # OpenCode 开源编程 Agent
 
 # ------------------------------------------
 # 3. Seed Repos (用于 DiscussionCollector / IssuesPrsCollector)
@@ -174,12 +181,13 @@ issue_pr_keywords:
 #    保守预算 18 次/run，留 12 次余量给 retry
 # ------------------------------------------
 budget:
-  total_search: 18
+  total_search: 28             # 18→28: 留 10 次给 star-growth 和更多 topic 轮转
   allocation:
-    repo_collector: 4          # 4 个 topic 复合 query
+    repo_collector: 10         # 7 topic + 2 org + 1 star-growth
     skill_collector: 6         # 每日轮转 2 code + 2 repo，seed GraphQL 单独跑
     discussion_collector: 4    # seed repos 分 4 组合并 query
     issues_prs_collector: 4    # seed repos 分 4 组合并 query
+    star_growth: 4             # 无 topic 依赖的星增查询
   graphql_budget: 600          # GraphQL: 1000 pts/hr，保守用 600
   search_throttle_rpm: 25      # 每分钟最多 25 次搜索请求
 
@@ -187,6 +195,33 @@ budget:
 # 7. OSSInsight 趋势源
 #    作用: 借用 OSSInsight 的全网趋势和 collection 排名作为项目发现参考
 # ------------------------------------------
+# ------------------------------------------
+# 7.1. Trending Scraper 配置
+#      作用: 爬 github.com/trending 页面，零 API 成本
+# ------------------------------------------
+trending:
+  urls:
+    - "https://github.com/trending?since=daily"
+    - "https://github.com/trending?since=weekly"
+    - "https://github.com/trending/python?since=daily"
+    - "https://github.com/trending/typescript?since=daily"
+    - "https://github.com/trending/javascript?since=daily"
+    - "https://github.com/trending/go?since=daily"
+    - "https://github.com/trending/rust?since=daily"
+    - "https://github.com/trending/java?since=daily"
+    - "https://github.com/trending/c++?since=daily"
+    - "https://github.com/trending/shell?since=daily"
+
+# ------------------------------------------
+# 7.2. Star-Growth 查询 (不依赖 topic 的兜底发现)
+#      作用: 按星数增长发现没有打 topic 但爆火的未知项目
+# ------------------------------------------
+star_growth_queries:
+  - "stars:>5000 pushed:>{recent_7d} sort:stars-desc"              # 全局巨星级增长
+  - "stars:>1000 created:>{recent_7d} sort:stars-desc"             # 新创高速起飞项目
+  - "stars:>500 pushed:>{recent_3d} sort:updated-desc"             # 近 3 天活跃中型项目
+  - "(agent OR coding OR cli) stars:>200 created:>{recent_7d} sort:stars-desc"  # AI 领域新项目
+
 ossinsight:
   enabled: true
   language: All

@@ -1,11 +1,13 @@
 topics:
   - agent
+  - ai-agent
   - ai-agents
   - agentic-workflow
   - browser-use
   - computer-use
   - ai-coding
   - coding-assistant
+  - claude-code
   - swe-agent
   - mcp
   - model-context-protocol
@@ -31,6 +33,11 @@ seed_orgs:
   - QwenLM
   - crewAIInc
   - All-Hands-AI
+  - NousResearch
+  - paperclipai
+  - aaif-goose
+  - ultraworkers
+  - anomalyco
 
 seed_repos:
   - modelcontextprotocol/specification

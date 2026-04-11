@@ -11,6 +11,7 @@ from github_daily_radar.discovery import (
     build_repo_queries,
     build_skill_code_queries,
     build_skill_repo_queries,
+    build_star_growth_queries,
     cycle_queries,
     load_ossinsight_collection_name_keywords,
     load_ossinsight_collection_name_excludes,
@@ -28,6 +29,7 @@ from github_daily_radar.discovery import (
     load_skill_shape_floor,
     load_skill_top_n,
     load_skill_per_repo_cap,
+    load_trending_urls,
 )
 from github_daily_radar.collectors.ossinsight import OSSInsightCollector
 from github_daily_radar.collectors.discussions import DiscussionCollector
@@ -206,6 +208,7 @@ def run_pipeline(settings: Settings, alert_only: bool = False) -> dict:
             max_collection_ids=load_ossinsight_max_collection_ids(),
         )
     repo_queries = build_repo_queries(now=run_started_at, days_back=7)
+    star_growth_queries = build_star_growth_queries(now=run_started_at)
     discussion_queries = build_discussion_queries(seed_repos=seed_repos, now=run_started_at, days_back=30)
     issue_pr_queries = build_issue_pr_queries(seed_repos=seed_repos, now=run_started_at, days_back=30)
     # 构建 skill 7 天 cooldown 集：最近 7 天已发布的 skill repos 不再重复出现
@@ -227,13 +230,15 @@ def run_pipeline(settings: Settings, alert_only: bool = False) -> dict:
                     if ":" in cid:
                         skill_cooldown_ids.add(cid.split(":", 1)[1])
     skill_search_cost = len(skill_code_queries) + len(skill_repo_queries)
+    trending_urls = load_trending_urls()
     collector_specs: list[tuple[str, object, int]] = []
-    collector_specs.append(("trending", TrendingCollector(), 0))
+    collector_specs.append(("trending", TrendingCollector(urls=trending_urls), 0))
     if ossinsight_collector:
         collector_specs.append(("ossinsight", ossinsight_collector, 0))
     collector_specs.extend(
         [
             ("repos", RepoCollector(client=client, queries=repo_queries), len(repo_queries)),
+            ("star_growth", RepoCollector(client=client, queries=star_growth_queries), len(star_growth_queries)),
             ("discussions", DiscussionCollector(client=client, queries=discussion_queries), len(discussion_queries)),
             ("issues_prs", IssuesPrsCollector(client=client, queries=issue_pr_queries), len(issue_pr_queries)),
             (
