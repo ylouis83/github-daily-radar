@@ -1,0 +1,173 @@
+{
+  "cards": [
+    {
+      "msg_type": "interactive",
+      "card": {
+        "config": {
+          "wide_screen_mode": true
+        },
+        "header": {
+          "title": {
+            "tag": "plain_text",
+            "content": "🔭 GitHub 每日雷达 · 2026-04-13"
+          },
+          "template": "indigo"
+        },
+        "elements": [
+          {
+            "tag": "column_set",
+            "flex_mode": "bisect",
+            "background_style": "grey",
+            "horizontal_spacing": "default",
+            "columns": [
+              {
+                "tag": "column",
+                "width": "weighted",
+                "weight": 1,
+                "vertical_align": "center",
+                "elements": [
+                  {
+                    "tag": "markdown",
+                    "text_align": "center",
+                    "content": "**79**\n候选仓库"
+                  }
+                ]
+              },
+              {
+                "tag": "column",
+                "width": "weighted",
+                "weight": 1,
+                "vertical_align": "center",
+                "elements": [
+                  {
+                    "tag": "markdown",
+                    "text_align": "center",
+                    "content": "**20**\n今日精选"
+                  }
+                ]
+              },
+              {
+                "tag": "column",
+                "width": "weighted",
+                "weight": 1,
+                "vertical_align": "center",
+                "elements": [
+                  {
+                    "tag": "markdown",
+                    "text_align": "center",
+                    "content": "**0**\n覆盖主题"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "tag": "hr"
+          },
+          {
+            "tag": "markdown",
+            "content": "**💥 今日爆款**\n\n**1.** [NousResearch/hermes-agent](https://github.com/NousResearch/hermes-agent)  💥+7450⭐  65.9K⭐\n**2.** [HKUDS/DeepTutor](https://github.com/HKUDS/DeepTutor)  💥+5560⭐  17.2K⭐\n**3.** [microsoft/markitdown](https://github.com/microsoft/markitdown)  💥+2513⭐  104.5K⭐\n**4.** [forrestchang/andrej-karpathy-skills](https://github.com/forrestchang/andrej-karpathy-skills)  💥+2351⭐  16.4K⭐\n**5.** [shiyu-coder/Kronos](https://github.com/shiyu-coder/Kronos)  💥+1998⭐  15.7K⭐\n\n*数据源：GitHub Trending + OSSInsight*"
+          },
+          {
+            "tag": "hr"
+          },
+          {
+            "tag": "markdown",
+            "content": "**🚀 核心 AI 项目**\n\n**1.** [pytorch/pytorch](https://github.com/pytorch/pytorch)  ⭐99.1K\n📌 作为行业基石，持续关注其演进有助于把握 AI 底层技术风向。\n▸ 特点：Python 生态中动态神经网络的事实标准。\n▸ 核心能力：提供强大的 GPU 加速张量计算与自动微分功能。\n▸ 引入必要性：深度学习开发者不可或缺的基础设施。\n\n**2.** [openai/codex](https://github.com/openai/codex)  ⭐74.8K\n📌 终端集成 AI 代理是提升开发效率的新趋势，值得体验。\n▸ 特点：直接在终端运行的轻量级编码代理。\n▸ 核心能力：支持在命令行环境中进行代码生成与交互。\n▸ 引入必要性：为习惯终端操作的开发者提供了新的 AI 辅助编程范式。\n\n**3.** [bevyengine/bevy](https://github.com/bevyengine/bevy)  ⭐45.5K\n📌 Rust 游戏生态日益成熟，该引擎是观察系统架构设计的绝佳案例。\n▸ 特点：基于 Rust 构建的清新简约数据驱动游戏引擎。\n▸ 核心能力：利用 Rust 语言特性实现高性能且易用的游戏开发流程。\n▸ 引入必要性：为寻求内存安全与高性能的游戏开发者提供了优质替代方案。\n\n**4.** [SimplifyJobs/Summer2026-Internships](https://github.com/SimplifyJobs/Summer2026-Internships)  ⭐44.2K\n📌 招聘周期临近，提前关注有助于抢占先机准备面试。\n▸ 特点：专注于 2026 年夏季科技实习岗位的集合库。\n▸ 核心能力：汇总并提供最新的实习生招聘信息与申请准备资源。\n▸ 引入必要性：帮助求职学生高效获取经过筛选的高质量实习机会。\n\n**5.** [cilium/cilium](https://github.com/cilium/cilium)  ⭐24.1K\n📌 随着 eBPF 技术普及，深入理解其架构对运维架构师至关重要。\n▸ 特点：基于 eBPF 技术的网络、安全与可观测性解决方案。\n▸ 核心能力：在内核层面实现高效的容器网络连接与安全策略控制。\n▸ 引入必要性：云原生环境下优化 Kubernetes 网络性能的关键组件。\n\n**6.** [SimplifyJobs/New-Grad-Positions](https://github.com/SimplifyJobs/New-Grad-Positions)  ⭐16.7K\n📌 招聘季节变动频繁，及时更新的位置信息有助于把握求职窗口。\n▸ 特点：面向应届毕业生的全球科技岗位聚合清单。\n▸ 核心能力：汇总软件工程师、量化及产品经理的全职招聘信息。\n▸ 引入必要性：为求职新人提供集中且经过筛选的就业机会参考。\n\n**7.** [libretro/RetroArch](https://github.com/libretro/RetroArch)  ⭐12.9K\n📌 怀旧游戏社区持续活跃，该工具仍是跨平台模拟的首选。\n▸ 特点：跨平台的经典游戏模拟器前端解决方案。\n▸ 核心能力：基于 libretro API 统一管理多种核心模拟器。\n▸ 引入必要性：想要在单一界面体验复古游戏离不开此成熟框架。\n\n**8.** [sindresorhus/ky](https://github.com/sindresorhus/ky)  ⭐16.7K\n📌 前端开发追求极致轻量，此库仍是现代 JS 项目的可靠选择。\n▸ 特点：基于 Fetch API 构建的轻量优雅 HTTP 客户端。\n▸ 核心能力：为 JavaScript 环境提供简洁的请求发送与处理能力。\n▸ 引入必要性：替代繁琐的原生 Fetch 用法可显著提升代码可读性。\n\n**9.** [meshtastic/firmware](https://github.com/meshtastic/firmware)  ⭐7.2K\n📌 去中心化通信需求增长，硬件爱好者正在积极部署此类网络。\n▸ 特点：支持离线网格通信的开源固件系统。\n▸ 核心能力：利用 LoRa 技术在无网络环境下实现设备间消息传递。\n▸ 引入必要性：户外探险或应急场景需要不依赖基站的通信手段。\n\n**10.** [stdlib-js/stdlib](https://github.com/stdlib-js/stdlib)  ⭐5.8K\n📌 数据科学向 Web 端延伸，高性能数值库的需求日益凸显。\n▸ 特点：面向 JavaScript 生态的基础数值计算标准库。\n▸ 核心能力：提供丰富的数学、统计及科学计算函数供 Node 或浏览器使用。\n▸ 引入必要性：填补 JS 在复杂科学计算领域原生能力的不足。\n\n**11.** [RediSearch/RediSearch](https://github.com/RediSearch/RediSearch)  ⭐6.1K\n📌 作为成熟的高星项目，是构建搜索服务的稳定选型参考。\n▸ 特点：为 Redis 赋予强大二级索引与向量搜索能力的查询引擎。\n▸ 核心能力：支持全文检索、向量相似度搜索及数据聚合操作。\n▸ 引入必要性：需要在 Redis 基础上实现复杂搜索功能时的必要组件。\n\n**12.** [sparckles/Robyn](https://github.com/sparckles/Robyn)  ⭐7.2K\n📌 长期保持高关注度，是验证 Python 与 Rust 混合架构的典型案例。\n▸ 特点：采用 Rust 运行时赋能的超高速异步 Python Web 框架。\n▸ 核心能力：结合 Python 开发效率与 Rust 执行性能处理 HTTP 请求。\n▸ 引入必要性：适用于追求极致性能但仍需 Python 生态的后端场景。\n\n**13.** [ineo6/hosts](https://github.com/ineo6/hosts)  ⭐5.3K\n📌 网络环境波动时常需更新配置，保持最新列表确保持续可用。\n▸ 特点：专门用于优化 GitHub 访问速度与图片加载的 hosts 文件集合。\n▸ 核心能力：通过更新 hosts 映射解决网络连接与资源显示问题。\n▸ 引入必要性：国内开发者解决 GitHub 访问障碍的必备工具资源。\n\n**14.** [gentoo/gentoo](https://github.com/gentoo/gentoo)  ⭐2.4K\n📌 近期有更新活动，适合关注 Linux 发行版底层维护动态。\n▸ 特点：Gentoo Linux 官方的 ebuild 软件包仓库镜像。\n▸ 核心能力：提供高度可定制的 Linux 软件编译与管理系统源。\n▸ 引入必要性：Gentoo 用户维护系统包依赖与更新的核心基础设施。\n\n**15.** [farzaa/clicky](https://github.com/farzaa/clicky)  ⭐3.9K\n📌 创建不久即获近四千星，显示出异常强劲的增长势头。\n▸ 特点：近期创建即获得大量关注的新兴开源项目。\n▸ 核心能力：具体功能需参考仓库代码，目前展现出极高的社区吸引力。\n▸ 引入必要性：适合寻找潜在热门新星项目的早期观察者关注。\n\n**16.** [lingdojo/kana-dojo](https://github.com/lingdojo/kana-dojo)  ⭐2.2K\n📌 社区欢迎新手贡献且项目界面美观适合立即体验。\n▸ 特点：极简美学设计的日语假名学习平台。\n▸ 核心能力：基于 Next.js 提供类似 Duolingo 的互动练习体验。\n▸ 引入必要性：适合初学者参与开源贡献且能有效掌握日语基础。\n\n**17.** [LearningCircuit/local-deep-research](https://github.com/LearningCircuit/local-deep-research)  ⭐4.3K\n📌 在 SimpleQA 基准测试中表现优异且支持多种模型后端。\n▸ 特点：支持本地加密运行的高精度深度研究工具。\n▸ 核心能力：整合多源搜索并调用本地或云端大模型生成报告。\n▸ 引入必要性：为隐私敏感型学术研究提供可靠的本地化解决方案。\n\n**18.** [garethgeorge/backrest](https://github.com/garethgeorge/backrest)  ⭐6.0K\n📌 作为高星项目持续维护且适合构建私有备份系统。\n▸ 特点：专为 restic 备份工具设计的现代化 Web 管理界面。\n▸ 核心能力：提供可视化操作界面以简化备份策略编排与管理。\n▸ 引入必要性：降低命令行备份工具的使用门槛并提升运维效率。\n\n**19.** [TapXWorld/ChinaTextbook](https://github.com/TapXWorld/ChinaTextbook)  🔥+450⭐\n📌 近期星数增长显著且是获取国内教材资源的热门项目。\n▸ 特点：涵盖全学段中文教材 PDF 的超大规模开源仓库。\n▸ 核心能力：集中存储从小初高到大学阶段的各类电子课本资源。\n▸ 引入必要性：为教育研究或个人学习提供稀缺的集中式教材获取渠道。\n"
+          },
+          {
+            "tag": "hr"
+          },
+          {
+            "tag": "markdown",
+            "content": "**🧩 MCP & Skills**\n\n**1.** [jabrena/cursor-rules-java](https://github.com/jabrena/cursor-rules-java)  ⭐350\n🏷️ 适配生态：Claude Code\n▸ 特点：围绕 Claude Code 的终端工作流，社区验证较强\n"
+          },
+          {
+            "tag": "hr"
+          },
+          {
+            "tag": "markdown",
+            "content": "📅 2026-04-13  ·  79 候选 → 20 精选",
+            "text_size": "notation"
+          }
+        ]
+      }
+    }
+  ],
+  "count": 79,
+  "selected_count": 20,
+  "summary": {
+    "count": 79,
+    "editorial": 24,
+    "api_usage": {
+      "total_budget": 60,
+      "search_budget": 38,
+      "graphql_budget": 600,
+      "search_used": 26,
+      "graphql_used": 0
+    },
+    "collector_stats": {
+      "trending": {
+        "count": 15,
+        "kinds": {
+          "project": 15
+        }
+      },
+      "ossinsight": {
+        "count": 56,
+        "kinds": {
+          "project": 56
+        }
+      },
+      "repos": {
+        "count": 49,
+        "kinds": {
+          "project": 49
+        }
+      },
+      "star_growth": {
+        "count": 64,
+        "kinds": {
+          "project": 64
+        }
+      },
+      "discussions": {
+        "count": 0,
+        "kinds": {}
+      },
+      "issues_prs": {
+        "count": 0,
+        "kinds": {}
+      },
+      "skills": {
+        "count": 8,
+        "kinds": {
+          "skill": 6,
+          "project": 2
+        }
+      }
+    },
+    "item_count": 20,
+    "surge_count": 5,
+    "filtered_kind_counts": {
+      "project": 78,
+      "skill": 1
+    },
+    "published_kind_counts": {
+      "project": 19,
+      "skill": 1
+    },
+    "theme_counts": {
+      "ml_framework": 1,
+      "codex": 1,
+      "claude_code": 1,
+      "ai_project": 16,
+      "rag": 1
+    },
+    "top_themes": [
+      "ai_project",
+      "ml_framework",
+      "codex"
+    ]
+  }
+}
