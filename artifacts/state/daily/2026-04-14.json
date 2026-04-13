@@ -1,0 +1,175 @@
+{
+  "cards": [
+    {
+      "msg_type": "interactive",
+      "card": {
+        "config": {
+          "wide_screen_mode": true
+        },
+        "header": {
+          "title": {
+            "tag": "plain_text",
+            "content": "🔭 GitHub 每日雷达 · 2026-04-14"
+          },
+          "template": "indigo"
+        },
+        "elements": [
+          {
+            "tag": "column_set",
+            "flex_mode": "bisect",
+            "background_style": "grey",
+            "horizontal_spacing": "default",
+            "columns": [
+              {
+                "tag": "column",
+                "width": "weighted",
+                "weight": 1,
+                "vertical_align": "center",
+                "elements": [
+                  {
+                    "tag": "markdown",
+                    "text_align": "center",
+                    "content": "**97**\n候选仓库"
+                  }
+                ]
+              },
+              {
+                "tag": "column",
+                "width": "weighted",
+                "weight": 1,
+                "vertical_align": "center",
+                "elements": [
+                  {
+                    "tag": "markdown",
+                    "text_align": "center",
+                    "content": "**19**\n今日精选"
+                  }
+                ]
+              },
+              {
+                "tag": "column",
+                "width": "weighted",
+                "weight": 1,
+                "vertical_align": "center",
+                "elements": [
+                  {
+                    "tag": "markdown",
+                    "text_align": "center",
+                    "content": "**0**\n覆盖主题"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "tag": "hr"
+          },
+          {
+            "tag": "markdown",
+            "content": "**💥 今日爆款**\n\n**1.** [NousResearch/hermes-agent](https://github.com/NousResearch/hermes-agent)  💥+11297⭐  76.6K⭐\n**2.** [forrestchang/andrej-karpathy-skills](https://github.com/forrestchang/andrej-karpathy-skills)  💥+5828⭐  24.6K⭐\n**3.** [sponsors/thedotmack](https://github.com/sponsors/thedotmack)  💥+3185⭐  53.1K⭐\n**4.** [microsoft/markitdown](https://github.com/microsoft/markitdown)  💥+2811⭐  106.8K⭐\n**5.** [shanraisshan/claude-code-best-practice](https://github.com/shanraisshan/claude-code-best-practice)  💥+2477⭐  41.5K⭐\n\n*数据源：GitHub Trending + OSSInsight*"
+          },
+          {
+            "tag": "hr"
+          },
+          {
+            "tag": "markdown",
+            "content": "**🚀 核心 AI 项目**\n\n**1.** [mastra-ai/mastra](https://github.com/mastra-ai/mastra)  ⭐23.0K\n📌 适合希望用 TypeScript 栈快速落地 AI 智能体应用的开发者参考。\n▸ 特点：源自 Gatsby 团队的现代 TypeScript AI 应用框架。\n▸ 核心能力：支持构建智能体、工作流及评估工具的全栈开发能力。\n▸ 引入必要性：为 TypeScript 开发者提供了原生且统一的 AI 应用构建方案。\n\n**2.** [windmill-labs/windmill](https://github.com/windmill-labs/windmill)  ⭐16.2K\n📌 适合寻求高性能开源工作流引擎以替代商业方案的团队今日评估。\n▸ 特点：能将脚本快速转化为工作流和用户界面的开源开发者平台。\n▸ 核心能力：提供比 Airflow 更快的引擎以编排基础设施自动化任务。\n▸ 引入必要性：是替代 Retool 和 Temporal 进行内部工具开发的高效选择。\n\n**3.** [microsoft/agent-framework](https://github.com/microsoft/agent-framework)  ⭐9.4K\n📌 值得 .NET 与 Python 混合技术栈团队关注微软官方智能体标准。\n▸ 特点：微软官方推出的支持 Python 和.NET 的双语言智能体框架。\n▸ 核心能力：具备构建、编排及部署多智能体工作流的核心功能。\n▸ 引入必要性：为企业级.NET 生态融入 AI 智能体架构提供了官方支持。\n\n**4.** [gsd-build/gsd-2](https://github.com/gsd-build/gsd-2)  ⭐5.7K\n📌 随着 AI 代理复杂度增加，今天值得关注其上下文工程的新方案。\n▸ 特点：这是一个专注于元提示工程和规范驱动开发的智能体系统。\n▸ 核心能力：使智能体能够长时间自主工作而不丢失宏观目标上下文。\n▸ 引入必要性：引入该系统可解决复杂任务中 AI 上下文丢失的痛点。\n\n**5.** [snarktank/ralph](https://github.com/snarktank/ralph)  📈+155⭐\n📌 作为过去 24 小时的新兴趋势，今天值得了解其自主循环机制。\n▸ 特点：这是一个能循环运行直至完成所有产品需求文档项目的自主 AI 代理。\n▸ 核心能力：自动化执行开发任务直到 PRD 中的所有条目被标记为完成。\n▸ 引入必要性：想要探索 AI 自动化闭环开发流程的团队需要关注此类工具。\n\n**6.** [gsd-build/get-shit-done](https://github.com/gsd-build/get-shit-done)  🔥+630⭐\n📌 适合希望最大化利用 Claude Code 能力的团队今日关注。\n▸ 特点：专为 Claude Code 设计的元提示与规范驱动开发系统。\n▸ 核心能力：通过上下文工程强化代码生成的准确性与执行力。\n▸ 引入必要性：能够显著优化 AI 辅助开发的工作流效率。\n\n**7.** [anthropics/claude-cookbooks](https://github.com/anthropics/claude-cookbooks)  🔥+1127⭐\n📌 适合想要进阶掌握 Claude 能力的用户今日查阅。\n▸ 特点：官方出品的 Claude 使用技巧与食谱集合。\n▸ 核心能力：通过 Notebook 展示多种有趣且高效的 Claude 用法。\n▸ 引入必要性：帮助开发者挖掘模型潜力，避免常见使用误区。\n\n**8.** [nesquena/hermes-webui](https://github.com/nesquena/hermes-webui)  ⭐1.7K\n📌 ⭐1749\n▸ 特点：偏 Agent 编排，已形成一定社区热度\n▸ 核心能力：涉及 agent / ai-agents / hermes / hermes-agent…\n▸ 引入必要性：已被 180 人 fork，复用价值明确。\n\n**9.** [nashsu/llm_wiki](https://github.com/nashsu/llm_wiki)  ⭐1.1K\n📌 ⭐1120\n▸ 特点：聚焦 RAG 检索增强，已形成一定社区热度\n▸ 核心能力：把检索与生成串成更容易落地的问答或分析流程。\n▸ 引入必要性：已被 123 人 fork，复用价值明确。\n\n**10.** [ceedaragents/cyrus](https://github.com/ceedaragents/cyrus)  ⭐515\n📌 ⭐515\n▸ 特点：围绕 Claude Code 的终端工作流，已形成一定社区热度\n▸ 核心能力：涉及 agent / ai / claude / claudecode，封装为可接入的能力层。\n▸ 引入必要性：已被 103 人 fork，复用价值明确。\n\n**11.** [alchaincyf/obsidian-ai-orange-book](https://github.com/alchaincyf/obsidian-ai-orange-book)  ⭐540\n📌 ⭐540\n▸ 特点：Obsidian + Claude Code: Rebuild Your…\n▸ 核心能力：把复杂任务拆成可调度、可复用的 Agent 流程。\n▸ 引入必要性：已被 54 人 fork，复用价值明确。\n\n**12.** [hamen/material-3-skill](https://github.com/hamen/material-3-skill)  ⭐466\n📌 ⭐466\n▸ 特点：围绕 Claude Code 的终端工作流，已形成一定社区热度\n▸ 核心能力：把可复用的提示词和规则沉淀成可执行资产。\n▸ 引入必要性：⭐466 已有社区验证，适合判断是否值得引入。\n\n**13.** [EvolutionAPI/evo-nexus](https://github.com/EvolutionAPI/evo-nexus)  ⭐261\n📌 ⭐261\n▸ 特点：围绕 Claude Code 的终端工作流，已形成一定社区热度\n▸ 核心能力：涉及 ai-agents / ai-workspace / anthropic / automation…\n▸ 引入必要性：已被 56 人 fork，复用价值明确。\n\n**14.** [xaspx/hermes-control-interface](https://github.com/xaspx/hermes-control-interface)  ⭐225\n📌 ⭐225\n▸ 特点：面向浏览器自动化，已形成一定社区热度\n▸ 核心能力：涉及 ai-agents / hermes-agent，封装为可接入的能力层。\n▸ 引入必要性：⭐225 已有社区验证，适合判断是否值得引入。\n\n**15.** [millionco/cli-to-js](https://github.com/millionco/cli-to-js)  ⭐305\n📌 ⭐305\n▸ 特点：偏 Agent 编排，已形成一定社区热度\n▸ 核心能力：涉及 agent / api / cli / node，封装为可接入的能力层。\n▸ 引入必要性：⭐305 已有社区验证，适合判断是否值得引入。\n\n**16.** [ConardLi/easy-agent](https://github.com/ConardLi/easy-agent)  ⭐204\n📌 ⭐204\n▸ 特点：围绕 Claude Code 的终端工作流，已形成一定社区热度\n▸ 核心能力：把复杂任务拆成可调度、可复用的 Agent 流程。\n▸ 引入必要性：⭐204 已有社区验证，适合判断是否值得引入。\n\n**17.** [haoruilee/awesome-agent-native-services](https://github.com/haoruilee/awesome-agent-native-services)  ⭐268\n📌 ⭐268\n▸ 特点：偏 Agent 编排，已形成一定社区热度\n▸ 核心能力：把复杂任务拆成可调度、可复用的 Agent 流程。\n▸ 引入必要性：⭐268 已有社区验证，适合判断是否值得引入。\n"
+          },
+          {
+            "tag": "hr"
+          },
+          {
+            "tag": "markdown",
+            "content": "**🧩 MCP & Skills**\n\n**1.** [sceneview/sceneview](https://github.com/sceneview/sceneview)  ⭐1.2K\n🏷️ 适配生态：MCP\n▸ 特点：聚焦 MCP 工具接入与编排，⭐1158 社区广泛验证\n\n**2.** [bitjaru/styleseed](https://github.com/bitjaru/styleseed)  ⭐219\n🏷️ 适配生态：Claude Code\n▸ 特点：围绕 Claude Code 的终端工作流，社区验证较强\n"
+          },
+          {
+            "tag": "hr"
+          },
+          {
+            "tag": "markdown",
+            "content": "📅 2026-04-14  ·  97 候选 → 19 精选",
+            "text_size": "notation"
+          }
+        ]
+      }
+    }
+  ],
+  "count": 97,
+  "selected_count": 19,
+  "summary": {
+    "count": 97,
+    "editorial": 24,
+    "api_usage": {
+      "total_budget": 60,
+      "search_budget": 38,
+      "graphql_budget": 600,
+      "search_used": 26,
+      "graphql_used": 0
+    },
+    "collector_stats": {
+      "trending": {
+        "count": 15,
+        "kinds": {
+          "project": 15
+        }
+      },
+      "ossinsight": {
+        "count": 54,
+        "kinds": {
+          "project": 54
+        }
+      },
+      "repos": {
+        "count": 56,
+        "kinds": {
+          "project": 56
+        }
+      },
+      "star_growth": {
+        "count": 64,
+        "kinds": {
+          "project": 64
+        }
+      },
+      "discussions": {
+        "count": 0,
+        "kinds": {}
+      },
+      "issues_prs": {
+        "count": 0,
+        "kinds": {}
+      },
+      "skills": {
+        "count": 12,
+        "kinds": {
+          "skill": 10,
+          "project": 2
+        }
+      }
+    },
+    "item_count": 19,
+    "surge_count": 5,
+    "filtered_kind_counts": {
+      "project": 95,
+      "skill": 2
+    },
+    "published_kind_counts": {
+      "project": 17,
+      "skill": 2
+    },
+    "theme_counts": {
+      "mcp": 2,
+      "agent_workflow": 2,
+      "prompt_assets": 1,
+      "claude_code": 8,
+      "agent_framework": 4,
+      "rag": 1,
+      "browser_automation": 1
+    },
+    "top_themes": [
+      "claude_code",
+      "agent_framework",
+      "mcp"
+    ]
+  }
+}
