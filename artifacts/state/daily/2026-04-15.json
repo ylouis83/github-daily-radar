@@ -1,0 +1,160 @@
+{
+  "cards": [
+    {
+      "msg_type": "interactive",
+      "card": {
+        "config": {
+          "wide_screen_mode": true
+        },
+        "header": {
+          "title": {
+            "tag": "plain_text",
+            "content": "🔭 GitHub 每日雷达 · 2026-04-15"
+          },
+          "template": "indigo"
+        },
+        "elements": [
+          {
+            "tag": "column_set",
+            "flex_mode": "bisect",
+            "background_style": "grey",
+            "horizontal_spacing": "default",
+            "columns": [
+              {
+                "tag": "column",
+                "width": "weighted",
+                "weight": 1,
+                "vertical_align": "center",
+                "elements": [
+                  {
+                    "tag": "markdown",
+                    "text_align": "center",
+                    "content": "**93**\n候选仓库"
+                  }
+                ]
+              },
+              {
+                "tag": "column",
+                "width": "weighted",
+                "weight": 1,
+                "vertical_align": "center",
+                "elements": [
+                  {
+                    "tag": "markdown",
+                    "text_align": "center",
+                    "content": "**17**\n今日精选"
+                  }
+                ]
+              },
+              {
+                "tag": "column",
+                "width": "weighted",
+                "weight": 1,
+                "vertical_align": "center",
+                "elements": [
+                  {
+                    "tag": "markdown",
+                    "text_align": "center",
+                    "content": "**0**\n覆盖主题"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "tag": "hr"
+          },
+          {
+            "tag": "markdown",
+            "content": "**💥 今日爆款**\n\n**1.** [forrestchang/andrej-karpathy-skills](https://github.com/forrestchang/andrej-karpathy-skills)  💥+9230⭐  33.1K⭐\n**2.** [multica-ai/multica](https://github.com/multica-ai/multica)  💥+8580⭐  12.4K⭐\n**3.** [NousResearch/hermes-agent](https://github.com/NousResearch/hermes-agent)  💥+8282⭐  84.0K⭐\n**4.** [coleam00/Archon](https://github.com/coleam00/Archon)  💥+3647⭐  17.9K⭐\n**5.** [sponsors/thedotmack](https://github.com/sponsors/thedotmack)  💥+2979⭐  55.6K⭐\n\n*数据源：GitHub Trending + OSSInsight*"
+          },
+          {
+            "tag": "hr"
+          },
+          {
+            "tag": "markdown",
+            "content": "**🚀 核心 AI 项目**\n\n**1.** [square/okhttp](https://github.com/square/okhttp)  ⭐46.9K\n📌 作为经典基础设施库，持续维护值得开发者关注其演进。\n▸ 特点：针对 JVM 和 Android 平台精心设计的 HTTP 客户端。\n▸ 核心能力：提供高效可靠的网络请求处理能力。\n▸ 引入必要性：它是 Android 开发中网络通信的事实标准依赖。\n\n**2.** [NixOS/nixpkgs](https://github.com/NixOS/nixpkgs)  ⭐24.3K\n📌 随着基础设施即代码理念普及，其生态价值日益凸显。\n▸ 特点：拥有全球最大声明式包管理系统的软件集合。\n▸ 核心能力：支持可复现的系统环境构建与软件部署。\n▸ 引入必要性：对于追求环境一致性和 DevOps 自动化的团队至关重要。\n\n**3.** [zulip/zulip](https://github.com/zulip/zulip)  ⭐25.0K\n📌 远程办公常态化使得高效沟通工具的关注度持续升温。\n▸ 特点：采用独特线程化消息模型的开源团队聊天工具。\n▸ 核心能力：帮助团队在保持专注的同时进行高效协作沟通。\n▸ 引入必要性：为寻求 Slack 替代方案的组织提供私有化部署选择。\n\n**4.** [files-community/Files](https://github.com/files-community/Files)  ⭐43.0K\n📌 Windows 11 用户正在寻找更契合新设计语言的管理工具。\n▸ 特点：基于 WinUI 3 构建的现代化 Windows 文件管理器。\n▸ 核心能力：提供流畅的文件组织体验与高度自定义界面。\n▸ 引入必要性：弥补了系统自带资源管理器在美观与功能上的不足。\n\n**5.** [outline/outline](https://github.com/outline/outline)  ⭐38.1K\n📌 知识管理需求增长使其成为替代专有 SaaS 的热门选择。\n▸ 特点：兼具美观界面与实时协作能力的快速知识库系统。\n▸ 核心能力：支持 Markdown 编辑并帮助成长型团队沉淀知识。\n▸ 引入必要性：是构建团队内部文档中心的高效开源解决方案。\n\n**6.** [CocoaPods/Specs](https://github.com/CocoaPods/Specs)  ⭐6.8K\n📌 作为核心依赖源，其状态始终是 iOS 开发者日常构建的关键。\n▸ 特点：iOS 生态中存储所有依赖库规格说明的中心仓库。\n▸ 核心能力：支撑全球 iOS 开发者进行第三方库的检索与版本管理。\n▸ 引入必要性：任何 iOS 项目配置环境时都无法绕开的底层依赖基础设施。\n\n**7.** [nearai/ironclaw](https://github.com/nearai/ironclaw)  ⭐11.8K\n📌 超一万星标证明了 Rust 重写安全工具在当前社区的高关注度。\n▸ 特点：基于 Rust 语言重构且聚焦隐私安全的 OpenClaw 实现。\n▸ 核心能力：提供高性能且安全的底层系统交互与数据处理能力。\n▸ 引入必要性：在安全敏感场景下提供了比原始实现更可靠的替代方案。\n\n**8.** [ublue-os/bazzite](https://github.com/ublue-os/bazzite)  ⭐8.2K\n📌 八千多星标显示出该发行版在 Linux 游戏玩家中的稳固地位。\n▸ 特点：基于 Fedora 不可变架构打造的开箱即用游戏系统。\n▸ 核心能力：兼容多种硬件设备并提供流畅的 Steam 游戏运行环境。\n▸ 引入必要性：为 Linux 桌面用户提供了无需复杂配置的游戏环境解决方案。\n\n**9.** [rundeck/rundeck](https://github.com/rundeck/rundeck)  ⭐6.1K\n📌 成熟的自动化编排能力使其仍是当前 DevOps 流程中的可靠选择。\n▸ 特点：允许特定用户安全访问现有工具脚本的自助运维平台。\n▸ 核心能力：实现运维任务的自动化调度审计与权限精细化控制。\n▸ 引入必要性：帮助团队安全地将运维能力开放给特定用户而不暴露底层细节。\n\n**10.** [shader-slang/slang](https://github.com/shader-slang/slang)  ⭐5.2K\n📌 高性能图形编程需求增长使其成为关注焦点。\n▸ 特点：专注于简化着色器开发的编程语言扩展。\n▸ 核心能力：支持多种图形 API 并提升着色器代码的可维护性。\n▸ 引入必要性：图形开发者需要高效工具来应对复杂的渲染管线。\n\n**11.** [msys2/MINGW-packages](https://github.com/msys2/MINGW-packages)  ⭐2.7K\n📌 持续更新的包脚本保障了 Windows 开发环境的稳定性。\n▸ 特点：MSYS2 环境下构建 MinGW-w64 目标的核心包脚本集合。\n▸ 核心能力：提供 Windows 平台开源软件编译所需的依赖包管理。\n▸ 引入必要性：Windows 开发者构建本地化工具链离不开此基础库。\n\n**12.** [sponsors/chrislgarry](https://github.com/sponsors/chrislgarry)  🔥+559⭐\n📌 近期星标增长显著，反映公众对航天历史代码的兴趣回升。\n▸ 特点：阿波罗 11 号导航计算机原始源代码的历史存档。\n▸ 核心能力：展示了登月任务中指令舱与登月舱的核心控制逻辑。\n▸ 引入必要性：软件工程历史爱好者必读的经典代码遗产。\n\n**13.** [cypress-io/cypress-example-kitchensink](https://github.com/cypress-io/cypress-example-kitchensink)  ⭐1.2K\n📌 作为经典测试案例库，持续为前端质量保障提供参考。\n▸ 特点：Cypress.io 官方用于展示端到端测试功能的示例应用。\n▸ 核心能力：提供全面的测试场景供开发者学习自动化测试实践。\n▸ 引入必要性：前端团队引入 Cypress 测试框架时的标准学习资源。\n\n**14.** [sponsors/tw93](https://github.com/sponsors/tw93)  🔥+269⭐\n📌 本周星标持续增长，证明其在用户群体中的口碑稳定。\n▸ 特点：基于 Shell 脚本的 macOS 深度清理与优化工具。\n▸ 核心能力：一键执行系统垃圾清理及性能优化操作。\n▸ 引入必要性：Mac 用户维持系统长期流畅运行的实用助手。\n\n**15.** [QLHazyCoder/codex-oauth-automation-extension](https://github.com/QLHazyCoder/codex-oauth-automation-extension)  ⭐1.4K\n📌 适合需要批量管理 OpenAI 账户的研究人员今日尝试。\n▸ 特点：专注于 OpenAI 账户注册流程自动化的浏览器插件。\n▸ 核心能力：实现 OAuth 注册、验证码获取及回调验证的全链路自动处理。\n▸ 引入必要性：简化开发者获取 API 访问权限的繁琐手动步骤。\n\n**16.** [pierrecomputer/pierre](https://github.com/pierrecomputer/pierre)  ⭐2.4K\n📌 近期更新活跃，适合喜欢挖掘冷门高星项目的开发者今日查看。\n▸ 特点：带有 diffs 和 memescale 标签的个人开源代码集合。\n▸ 核心能力：提供未明确具体功能的开源代码库供开发者探索。\n▸ 引入必要性：高星仓库可能蕴含独特的编程思路或实验性项目。\n\n**17.** [jamiepine/voicebox](https://github.com/jamiepine/voicebox)  🔥+1165⭐\n📌 本周星数增长迅猛且入选趋势榜，是今日必看的热门项目。\n▸ 特点：定位为开源语音合成工作室的高星项目。\n▸ 核心能力：提供完整的语音合成流程工具链供用户创作音频。\n▸ 引入必要性：为需要本地化语音生成方案的团队提供替代选择。\n"
+          },
+          {
+            "tag": "hr"
+          },
+          {
+            "tag": "markdown",
+            "content": "📅 2026-04-15  ·  93 候选 → 17 精选",
+            "text_size": "notation"
+          }
+        ]
+      }
+    }
+  ],
+  "count": 93,
+  "selected_count": 17,
+  "summary": {
+    "count": 93,
+    "editorial": 24,
+    "api_usage": {
+      "total_budget": 60,
+      "search_budget": 38,
+      "graphql_budget": 600,
+      "search_used": 26,
+      "graphql_used": 0
+    },
+    "collector_stats": {
+      "trending": {
+        "count": 15,
+        "kinds": {
+          "project": 15
+        }
+      },
+      "ossinsight": {
+        "count": 56,
+        "kinds": {
+          "project": 56
+        }
+      },
+      "repos": {
+        "count": 56,
+        "kinds": {
+          "project": 56
+        }
+      },
+      "star_growth": {
+        "count": 64,
+        "kinds": {
+          "project": 64
+        }
+      },
+      "discussions": {
+        "count": 0,
+        "kinds": {}
+      },
+      "issues_prs": {
+        "count": 0,
+        "kinds": {}
+      },
+      "skills": {
+        "count": 19,
+        "kinds": {
+          "skill": 9,
+          "project": 10
+        }
+      }
+    },
+    "item_count": 17,
+    "surge_count": 5,
+    "filtered_kind_counts": {
+      "project": 93
+    },
+    "published_kind_counts": {
+      "project": 17
+    },
+    "theme_counts": {
+      "ai_project": 16,
+      "codex": 1
+    },
+    "top_themes": [
+      "ai_project",
+      "codex"
+    ]
+  }
+}
