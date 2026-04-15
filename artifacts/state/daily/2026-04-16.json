@@ -1,0 +1,175 @@
+{
+  "cards": [
+    {
+      "msg_type": "interactive",
+      "card": {
+        "config": {
+          "wide_screen_mode": true
+        },
+        "header": {
+          "title": {
+            "tag": "plain_text",
+            "content": "🔭 GitHub 每日雷达 · 2026-04-16"
+          },
+          "template": "indigo"
+        },
+        "elements": [
+          {
+            "tag": "column_set",
+            "flex_mode": "bisect",
+            "background_style": "grey",
+            "horizontal_spacing": "default",
+            "columns": [
+              {
+                "tag": "column",
+                "width": "weighted",
+                "weight": 1,
+                "vertical_align": "center",
+                "elements": [
+                  {
+                    "tag": "markdown",
+                    "text_align": "center",
+                    "content": "**113**\n候选仓库"
+                  }
+                ]
+              },
+              {
+                "tag": "column",
+                "width": "weighted",
+                "weight": 1,
+                "vertical_align": "center",
+                "elements": [
+                  {
+                    "tag": "markdown",
+                    "text_align": "center",
+                    "content": "**20**\n今日精选"
+                  }
+                ]
+              },
+              {
+                "tag": "column",
+                "width": "weighted",
+                "weight": 1,
+                "vertical_align": "center",
+                "elements": [
+                  {
+                    "tag": "markdown",
+                    "text_align": "center",
+                    "content": "**0**\n覆盖主题"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "tag": "hr"
+          },
+          {
+            "tag": "markdown",
+            "content": "**💥 今日爆款**\n\n**1.** [NousResearch/hermes-agent](https://github.com/NousResearch/hermes-agent)  💥+52996⭐  89.3K⭐\n**2.** [multica-ai/multica](https://github.com/multica-ai/multica)  💥+9823⭐  13.5K⭐\n**3.** [forrestchang/andrej-karpathy-skills](https://github.com/forrestchang/andrej-karpathy-skills)  💥+9622⭐  42.6K⭐\n**4.** [sponsors/thedotmack](https://github.com/sponsors/thedotmack)  💥+2330⭐  57.7K⭐\n**5.** [sponsors/obra](https://github.com/sponsors/obra)  💥+2079⭐  154.2K⭐\n\n*数据源：GitHub Trending + OSSInsight*"
+          },
+          {
+            "tag": "hr"
+          },
+          {
+            "tag": "markdown",
+            "content": "**🚀 核心 AI 项目**\n\n**1.** [browser-use/browser-use](https://github.com/browser-use/browser-use)  ⭐88.0K\n📌 近九万星标社区验证了其作为自动化基石的地位。\n▸ 特点：专为 AI 代理设计的网站无障碍访问层。\n▸ 核心能力：利用 Playwright 轻松实现复杂的在线任务自动化。\n▸ 引入必要性：解决 AI 代理与真实网页交互的关键痛点。\n\n**2.** [supermemoryai/supermemory](https://github.com/supermemoryai/supermemory)  ⭐21.8K\n📌 记忆模块是当前 AI 应用架构演进的核心热点。\n▸ 特点：专为 AI 时代设计的极速可扩展记忆引擎。\n▸ 核心能力：基于 Cloudflare Workers 提供高性能的记忆存储 API。\n▸ 引入必要性：赋予 AI 智能体长期记忆能力的关键基础设施。\n\n**3.** [NVIDIA/NemoClaw](https://github.com/NVIDIA/NemoClaw)  ⭐19.3K\n📌 硬件厂商原生安全方案是今日构建可信 AI 系统的重点。\n▸ 特点：NVIDIA 生态内用于安全运行 OpenClaw 的管理工具。\n▸ 核心能力：在 OpenShell 环境中提供受管制的推理服务支持。\n▸ 引入必要性：确保大模型推理过程符合企业安全合规要求。\n\n**4.** [arc53/DocsGPT](https://github.com/arc53/DocsGPT)  ⭐17.8K\n📌 内置代理构建器功能契合当前企业级 AI 落地趋势。\n▸ 特点：支持私有化部署的 AI 代理与企业搜索平台。\n▸ 核心能力：集成文档分析与多模型支持以实现深度研究功能。\n▸ 引入必要性：满足企业对数据隐私与智能搜索双重需求的方案。\n\n**5.** [Netflix/metaflow](https://github.com/Netflix/metaflow)  ⭐10.0K\n📌 生成式 AI 热潮下 MLOps 工具链关注度持续高涨。\n▸ 特点：Netflix 开源的人类友好型机器学习工作流库。\n▸ 核心能力：简化从原型设计到生产部署的 AI 系统构建过程。\n▸ 引入必要性：数据科学团队需要高效管理复杂模型训练任务。\n\n**6.** [datawhalechina/hello-agents](https://github.com/datawhalechina/hello-agents)  📈+88⭐\n📌 智能体开发热潮下，这份新教程今日跻身趋势榜单。\n▸ 特点：Datawhale 社区出品的智能体入门教程。\n▸ 核心能力：提供从零构建智能体的原理讲解与实践代码。\n▸ 引入必要性：适合想要系统学习智能体开发的初学者参考。\n\n**7.** [NVIDIA/physicsnemo](https://github.com/NVIDIA/physicsnemo)  ⭐2.7K\n📌 英伟达在物理 AI 领域的最新开源动作值得今日重点关注。\n▸ 特点：英伟达开源的物理机器学习深度学习框架。\n▸ 核心能力：支持利用前沿物理机器学习方法构建和微调模型。\n▸ 引入必要性：为科学计算与深度学习结合提供了官方标准工具。\n\n**8.** [AgentSeal/codeburn](https://github.com/AgentSeal/codeburn)  ⭐1.7K\n📌 ⭐1718\n▸ 特点：围绕 Claude Code 的终端工作流，已形成一定社区热度\n▸ 核心能力：涉及 ai-coding / claude-code / cli / codex，封装为可接入的能力层。\n▸ 引入必要性：已被 128 人 fork，复用价值明确。\n\n**9.** [chrysb/alphaclaw](https://github.com/chrysb/alphaclaw)  ⭐1.1K\n📌 ⭐1142\n▸ 特点：偏 Agent 编排，已形成一定社区热度\n▸ 核心能力：涉及 ai-agent / gateway / nodejs / openclaw，封装为可接入的能力层。\n▸ 引入必要性：已被 138 人 fork，复用价值明确。\n\n**10.** [sponsors/Donchitos](https://github.com/sponsors/Donchitos)  🔥+737⭐\n📌 近 7 天 +737⭐\n▸ 特点：围绕 Claude Code 的终端工作流，已形成一定社区热度\n▸ 核心能力：涉及 Shell，封装为可接入的能力层。\n▸ 引入必要性：近期暴涨 +737⭐，建议立即关注。\n\n**11.** [alchaincyf/darwin-skill](https://github.com/alchaincyf/darwin-skill)  ⭐800\n📌 ⭐800\n▸ 特点：达尔文.skill ——…\n▸ 核心能力：把可复用的提示词和规则沉淀成可执行资产。\n▸ 引入必要性：已被 96 人 fork，复用价值明确。\n\n**12.** [vercel-labs/open-agents](https://github.com/vercel-labs/open-agents)  🔥+1020⭐\n📌 近 7 天 +1020⭐\n▸ 特点：偏 Agent 编排，已形成一定社区热度\n▸ 核心能力：涉及 TypeScript，封装为可接入的能力层。\n▸ 引入必要性：近期暴涨 +1020⭐，建议立即关注。\n\n**13.** [lsdefine/GenericAgent](https://github.com/lsdefine/GenericAgent)  🔥+413⭐\n📌 近 7 天 +413⭐\n▸ 特点：偏 Agent 编排，已形成一定社区热度\n▸ 核心能力：涉及 Python，封装为可接入的能力层。\n▸ 引入必要性：增长 +413⭐，值得优先跟进。\n\n**14.** [spences10/mcp-omnisearch](https://github.com/spences10/mcp-omnisearch)  ⭐292\n📌 ⭐292\n▸ 特点：聚焦 MCP 工具接入与编排，已形成一定社区热度\n▸ 核心能力：涉及 brave / exa / firecrawl / github-search，封装为可接入的能力层。\n▸ 引入必要性：⭐292 已有社区验证，适合判断是否值得引入。\n\n**15.** [mohi-devhub/antivibe](https://github.com/mohi-devhub/antivibe)  ⭐357\n📌 ⭐357\n▸ 特点：围绕 Claude Code 的终端工作流，已形成一定社区热度\n▸ 核心能力：涉及 ai / claude-code / claude-code-skill / code…\n▸ 引入必要性：⭐357 已有社区验证，适合判断是否值得引入。\n\n**16.** [skyllwt/OmegaWiki](https://github.com/skyllwt/OmegaWiki)  ⭐244\n📌 ⭐244\n▸ 特点：围绕 Claude Code 的终端工作流，已形成一定社区热度\n▸ 核心能力：把复杂任务拆成可调度、可复用的 Agent 流程。\n▸ 引入必要性：⭐244 已有社区验证，适合判断是否值得引入。\n"
+          },
+          {
+            "tag": "hr"
+          },
+          {
+            "tag": "markdown",
+            "content": "**🧩 MCP & Skills**\n\n**1.** [jonigl/mcp-client-for-ollama](https://github.com/jonigl/mcp-client-for-ollama)  ⭐636\n🏷️ 适配生态：MCP\n▸ 特点：聚焦 MCP 工具接入与编排，⭐636 社区广泛验证\n\n**2.** [igrigorik/AgentBoard](https://github.com/igrigorik/AgentBoard)  ⭐113\n🏷️ 适配生态：MCP\n▸ 特点：聚焦 MCP 工具接入与编排，社区验证较强\n\n**3.** [feenlace/mcp-1c](https://github.com/feenlace/mcp-1c)  ⭐80\n🏷️ 适配生态：MCP\n▸ 特点：聚焦 MCP 工具接入与编排\n\n**4.** [DasDigitaleMomentum/searxNcrawl](https://github.com/DasDigitaleMomentum/searxNcrawl)  ⭐81\n🏷️ 适配生态：MCP\n▸ 特点：聚焦 MCP 工具接入与编排\n"
+          },
+          {
+            "tag": "hr"
+          },
+          {
+            "tag": "markdown",
+            "content": "📅 2026-04-16  ·  113 候选 → 20 精选",
+            "text_size": "notation"
+          }
+        ]
+      }
+    }
+  ],
+  "count": 113,
+  "selected_count": 20,
+  "summary": {
+    "count": 113,
+    "editorial": 24,
+    "api_usage": {
+      "total_budget": 60,
+      "search_budget": 38,
+      "graphql_budget": 600,
+      "search_used": 26,
+      "graphql_used": 0
+    },
+    "collector_stats": {
+      "trending": {
+        "count": 15,
+        "kinds": {
+          "project": 15
+        }
+      },
+      "ossinsight": {
+        "count": 58,
+        "kinds": {
+          "project": 58
+        }
+      },
+      "repos": {
+        "count": 78,
+        "kinds": {
+          "project": 78
+        }
+      },
+      "star_growth": {
+        "count": 61,
+        "kinds": {
+          "project": 61
+        }
+      },
+      "discussions": {
+        "count": 0,
+        "kinds": {}
+      },
+      "issues_prs": {
+        "count": 0,
+        "kinds": {}
+      },
+      "skills": {
+        "count": 16,
+        "kinds": {
+          "skill": 10,
+          "project": 6
+        }
+      }
+    },
+    "item_count": 20,
+    "surge_count": 5,
+    "filtered_kind_counts": {
+      "project": 109,
+      "skill": 4
+    },
+    "published_kind_counts": {
+      "project": 16,
+      "skill": 4
+    },
+    "theme_counts": {
+      "browser_automation": 1,
+      "agent_framework": 6,
+      "mcp": 5,
+      "inference": 1,
+      "ml_framework": 1,
+      "claude_code": 5,
+      "skill_assets": 1
+    },
+    "top_themes": [
+      "agent_framework",
+      "mcp",
+      "claude_code"
+    ]
+  }
+}
