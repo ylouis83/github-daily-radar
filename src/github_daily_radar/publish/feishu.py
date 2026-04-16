@@ -573,7 +573,7 @@ def _render_builder_watch_section(sections: dict[str, list[dict]]) -> str | None
         lines.append(
             _format_section_heading(
                 BUILDER_SECTION_LABELS.get(key, key.title()),
-                count=len(items),
+                count=len(items) if key == "x" else None,
                 source_key=_shared_source_key(items),
             )
         )

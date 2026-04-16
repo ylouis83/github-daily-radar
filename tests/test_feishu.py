@@ -397,8 +397,10 @@ def test_surge_and_builder_subsections_surface_counts():
 
     assert "**热度跃升 · 2**" in all_text
     assert "**X · 2**" in all_text
-    assert "**播客 · 1**" in all_text
-    assert "**长文 · 1**" in all_text
+    assert "**播客**" in all_text
+    assert "**播客 · 1**" not in all_text
+    assert "**长文**" in all_text
+    assert "**长文 · 1**" not in all_text
 
 
 def test_build_digest_card_uses_group_level_source_links_for_single_source_sections():

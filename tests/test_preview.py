@@ -37,8 +37,10 @@ def test_build_preview_cards_contains_all_three_tracks():
     assert "Video / Podcast" not in all_text
     assert "**热度跃升 · 2**" in all_text
     assert "**X · 2**" in all_text
-    assert "**播客 · 1**" in all_text
-    assert "**长文 · 1**" in all_text
+    assert "**播客**" in all_text
+    assert "**播客 · 1**" not in all_text
+    assert "**长文**" in all_text
+    assert "**长文 · 1**" not in all_text
     assert "<link icon='platform_outlined' url='https://github.com'>GitHub</link>" in all_text
     assert "<link icon='file-link-video_outlined' url='https://www.youtube.com'>YouTube</link>" in all_text
     assert "2026-04-16" in all_text
