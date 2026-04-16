@@ -32,4 +32,6 @@ def test_preview_workflow_dispatch_exists():
 def test_daily_radar_workflow_supports_preview_card_mode():
     workflow = Path(".github/workflows/daily-radar.yml").read_text(encoding="utf-8")
     assert "preview_card:" in workflow
+    assert "style_only:" in workflow
     assert "uv run python -m github_daily_radar.preview" in workflow
+    assert "PREVIEW_STYLE_ONLY" in workflow

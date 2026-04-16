@@ -20,6 +20,11 @@ on:
         required: false
         default: false
         type: boolean
+      style_only:
+        description: "When preview_card is enabled, send a style-only review card"
+        required: false
+        default: false
+        type: boolean
       skip_radar:
         description: "Skip Daily Brief run"
         required: false
@@ -70,6 +75,7 @@ jobs:
         if: ${{ inputs.preview_card }}
         env:
           PREVIEW_DRY_RUN: ${{ inputs.dry_run || false }}
+          PREVIEW_STYLE_ONLY: ${{ inputs.style_only || false }}
           TIMEZONE: Asia/Shanghai
           FEISHU_WEBHOOK_URL: ${{ secrets.FEISHU_WEBHOOK_URL }}
       - run: bash scripts/sync_state_branch.sh
