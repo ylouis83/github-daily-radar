@@ -34,7 +34,7 @@
                   {
                     "tag": "markdown",
                     "text_align": "center",
-                    "content": "**17**\nGitHub Selected"
+                    "content": "**20**\n主榜"
                   }
                 ]
               },
@@ -47,7 +47,7 @@
                   {
                     "tag": "markdown",
                     "text_align": "center",
-                    "content": "**5**\nTech Pulse"
+                    "content": "**5**\n热讯"
                   }
                 ]
               },
@@ -60,7 +60,7 @@
                   {
                     "tag": "markdown",
                     "text_align": "center",
-                    "content": "**5**\nBuilders"
+                    "content": "**5**\n观察"
                   }
                 ]
               },
@@ -73,7 +73,7 @@
                   {
                     "tag": "markdown",
                     "text_align": "center",
-                    "content": "**0**\nTheme Coverage"
+                    "content": "**0**\n主题"
                   }
                 ]
               }
@@ -84,38 +84,24 @@
           },
           {
             "tag": "markdown",
-            "content": "**Momentum Leaders · 5**\n\n**1.** [NousResearch/hermes-agent](https://github.com/NousResearch/hermes-agent)  +53110★  90.9K★\n**2.** [multica-ai/multica](https://github.com/multica-ai/multica)  +10864★  13.9K★\n**3.** [forrestchang/andrej-karpathy-skills](https://github.com/forrestchang/andrej-karpathy-skills)  +9646★  44.8K★\n**4.** [sponsors/thedotmack](https://github.com/sponsors/thedotmack)  +2305★  58.2K★\n**5.** [sponsors/obra](https://github.com/sponsors/obra)  +2055★  154.8K★\n\n*来源：GitHub Trending / OSSInsight*"
+            "content": "**热度跃升**\n\n**1.** [NousResearch/hermes-agent](https://github.com/NousResearch/hermes-agent)  +53110⭐  91.1K⭐\n**2.** [multica-ai/multica](https://github.com/multica-ai/multica)  +10864⭐  13.9K⭐\n**3.** [forrestchang/andrej-karpathy-skills](https://github.com/forrestchang/andrej-karpathy-skills)  +9646⭐  45.1K⭐\n**4.** [sponsors/thedotmack](https://github.com/sponsors/thedotmack)  +2305⭐  58.3K⭐\n**5.** [sponsors/obra](https://github.com/sponsors/obra)  +2055⭐  154.9K⭐\n\n*来源：GitHub Trending / OSSInsight*"
           },
           {
             "tag": "hr"
           },
           {
             "tag": "column_set",
-            "flex_mode": "bisect",
+            "flex_mode": "none",
             "horizontal_spacing": "default",
             "columns": [
               {
                 "tag": "column",
-                "width": "weighted",
-                "weight": 3,
+                "width": "auto",
                 "vertical_align": "center",
                 "elements": [
                   {
                     "tag": "markdown",
-                    "content": "**GitHub Radar**  <text_tag color='blue'>Primary Track</text_tag>\n开源仓库、技能资产与讨论议题"
-                  }
-                ]
-              },
-              {
-                "tag": "column",
-                "width": "weighted",
-                "weight": 1,
-                "vertical_align": "center",
-                "elements": [
-                  {
-                    "tag": "markdown",
-                    "text_align": "right",
-                    "content": "**17**\nSelected"
+                    "content": "**GitHub 主榜**  <text_tag color='blue'>主线</text_tag>\n开源仓库、技能资产与讨论线索"
                   }
                 ]
               }
@@ -123,38 +109,24 @@
           },
           {
             "tag": "markdown",
-            "content": "**Core Projects · 17**\n\n**1.** [home-assistant/core](https://github.com/home-assistant/core)  86.0K★\n<link icon='platform_outlined' url='https://github.com/home-assistant/core'>GitHub</link>\n信号：智能家居隐私保护需求日益增长值得回顾。\n▸ 定位：强调本地控制与隐私优先的开源智能家居平台。\n▸ 能力：整合多种物联网协议实现统一的家庭自动化管理。\n▸ 价值：想要搭建私有化智能家居系统的首选方案。\n\n**2.** [rails/rails](https://github.com/rails/rails)  58.3K★\n<link icon='platform_outlined' url='https://github.com/rails/rails'>GitHub</link>\n信号：经典框架持续维护展示其长久的生命力。\n▸ 定位：Ruby 语言生态中最经典的 Web 开发框架。\n▸ 能力：提供约定优于配置的全栈 MVC 开发体验。\n▸ 价值：理解快速原型开发和传统 Web 架构的必读代码。\n\n**3.** [ChromeDevTools/chrome-devtools-mcp](https://github.com/ChromeDevTools/chrome-devtools-mcp)  35.3K★\n<link icon='platform_outlined' url='https://github.com/ChromeDevTools/chrome-devtools-mcp'>GitHub</link>\n信号：模型上下文协议热门背景下调试工具的新演进。\n▸ 定位：专为编码智能体设计的 Chrome 开发者工具接口。\n▸ 能力：允许 AI 代理通过 MCP 协议直接调试浏览器环境。\n▸ 价值：探索 AI 编程助手与浏览器调试集成的前沿实践。\n\n**4.** [MicrosoftDocs/azure-docs](https://github.com/MicrosoftDocs/azure-docs)  10.8K★\n<link icon='platform_outlined' url='https://github.com/MicrosoftDocs/azure-docs'>GitHub</link>\n信号：开源文档协作模式体现云厂商的技术透明度。\n▸ 定位：微软 Azure 云服务的官方开源文档仓库。\n▸ 能力：提供全面的云平台技能学习与技术参考资源。\n▸ 价值：开发者获取权威云技术信息的主要渠道。\n\n**Quick Scan · 13**\n\n**5.** [verl-project/verl](https://github.com/verl-project/verl)  20.7K★  ·  <link icon='platform_outlined' url='https://github.com/verl-project/verl'>GitHub</link>\n**6.** [CocoaLumberjack/CocoaLumberjack](https://github.com/CocoaLumberjack/CocoaLumberjack)  13.3K★  ·  <link icon='platform_outlined' url='https://github.com/CocoaLumberjack/CocoaLumberjack'>GitHub</link>\n**7.** [dart-lang/sdk](https://github.com/dart-lang/sdk)  11.1K★  ·  <link icon='platform_outlined' url='https://github.com/dart-lang/sdk'>GitHub</link>\n**8.** [apache/iotdb](https://github.com/apache/iotdb)  6.3K★  ·  <link icon='platform_outlined' url='https://github.com/apache/iotdb'>GitHub</link>\n**9.** [uBlockOrigin/uAssets](https://github.com/uBlockOrigin/uAssets)  5.6K★  ·  <link icon='platform_outlined' url='https://github.com/uBlockOrigin/uAssets'>GitHub</link>\n**10.** [hugohe3/ppt-master](https://github.com/hugohe3/ppt-master)  5.5K★  ·  <link icon='platform_outlined' url='https://github.com/hugohe3/ppt-master'>GitHub</link>\n**11.** [getcompanion-ai/feynman](https://github.com/getcompanion-ai/feynman)  5.1K★  ·  <link icon='platform_outlined' url='https://github.com/getcompanion-ai/feynman'>GitHub</link>\n**12.** [deezertidal/QuantumultX-Rewrite](https://github.com/deezertidal/QuantumultX-Rewrite)  3.2K★  ·  <link icon='platform_outlined' url='https://github.com/deezertidal/QuantumultX-Rewrite'>GitHub</link>\n**13.** [MetaMask/eth-phishing-detect](https://github.com/MetaMask/eth-phishing-detect)  1.3K★  ·  <link icon='platform_outlined' url='https://github.com/MetaMask/eth-phishing-detect'>GitHub</link>\n**14.** [CodeWithCJ/SparkyFitness](https://github.com/CodeWithCJ/SparkyFitness)  3.2K★  ·  <link icon='platform_outlined' url='https://github.com/CodeWithCJ/SparkyFitness'>GitHub</link>\n**15.** [bnb-chain/BEPs](https://github.com/bnb-chain/BEPs)  950★  ·  <link icon='platform_outlined' url='https://github.com/bnb-chain/BEPs'>GitHub</link>\n**16.** [MicrosoftDocs/mcp](https://github.com/MicrosoftDocs/mcp)  1.6K★  ·  <link icon='platform_outlined' url='https://github.com/MicrosoftDocs/mcp'>GitHub</link>\n**17.** [google/magika](https://github.com/google/magika)  +768★  ·  <link icon='platform_outlined' url='https://github.com/google/magika'>GitHub</link>"
+            "content": "**核心项目**  ·  <link icon='platform_outlined' url='https://github.com'>GitHub</link>\n\n**1.** [iOfficeAI/AionUi](https://github.com/iOfficeAI/AionUi)  22.0K⭐\n信号：各类 AI 编码工具涌现，统一管理平台需求迫切。\n▸ 定位：集成多种 AI 编码工具的本地协作应用界面。\n▸ 能力：兼容 Claude Code 及 Gemini CLI 等主流工具。\n▸ 价值：统一管理本地 AI 开发助手的必要工具。\n\n**2.** [SukkaW/Surge](https://github.com/SukkaW/Surge)  3.9K⭐\n信号：日常网络配置维护需要参考此类高星规则仓库。\n▸ 定位：覆盖主流代理客户端的多平台规则片段与规则集。\n▸ 能力：为 Surge、Clash、sing-box 等工具提供分流规则支持。\n▸ 价值：网络优化需求下需要高质量且兼容性强的规则配置。\n\n**3.** [dler-io/Rules](https://github.com/dler-io/Rules)  1.4K⭐\n信号：高星仓库持续维护，适合今日检查规则更新状态。\n▸ 定位：专注于通用规则列表维护的高星开源仓库。\n▸ 能力：提供用于软件配置或流量管理的规则数据支持。\n▸ 价值：依赖规则配置的工具需要稳定且更新及时的数据源。\n\n**4.** [zts212653/clowder-ai](https://github.com/zts212653/clowder-ai)  522⭐\n信号：⭐522\n▸ 定位：偏 Agent 编排，已形成一定社区热度\n▸ 能力：把复杂任务拆成可调度、可复用的 Agent 流程。\n▸ 价值：已被 208 人 fork，复用价值明确。\n\n**延伸速览**\n\n**5.** [Manavarya09/design-extract](https://github.com/Manavarya09/design-extract)  422⭐\n**6.** [Mibayy/token-savior](https://github.com/Mibayy/token-savior)  308⭐\n**7.** [stanford-iris-lab/meta-harness](https://github.com/stanford-iris-lab/meta-harness)  260⭐\n**8.** [halfwhey/claudraband](https://github.com/halfwhey/claudraband)  250⭐  ·  Hacker News · 100 热度\n**9.** [millionco/claude-doctor](https://github.com/millionco/claude-doctor)  223⭐\n**10.** [h4ckf0r0day/obscura](https://github.com/h4ckf0r0day/obscura)  202⭐\n**11.** [nesaminua/claude-code-lsp-enforcement-kit](https://github.com/nesaminua/claude-code-lsp-enforcement-kit)  201⭐\n**12.** [vasylenko/bear-notes-mcp](https://github.com/vasylenko/bear-notes-mcp)  172⭐\n**13.** [lucasrosati/claude-code-memory-setup](https://github.com/lucasrosati/claude-code-memory-setup)  201⭐\n**14.** [studio90scoolkid/claude-talk](https://github.com/studio90scoolkid/claude-talk)  11⭐\n**15.** [AI4Scientist/nano-scientist](https://github.com/AI4Scientist/nano-scientist)  2⭐\n**16.** [TABARC-Code/claude-skill-forge](https://github.com/TABARC-Code/claude-skill-forge)  1⭐\n**17.** [googlarz/stapler](https://github.com/googlarz/stapler)  1⭐\n**18.** [obaidaaman/AgenticBlogger](https://github.com/obaidaaman/AgenticBlogger)  1⭐\n**19.** [simranjeet97/Sams_Personal_OS_Agent_AutoReseach](https://github.com/simranjeet97/Sams_Personal_OS_Agent_AutoReseach)  1⭐\n**20.** [a-kantur/mini-dev-org-ai-agent](https://github.com/a-kantur/mini-dev-org-ai-agent)"
           },
           {
             "tag": "hr"
           },
           {
             "tag": "column_set",
-            "flex_mode": "bisect",
+            "flex_mode": "none",
             "horizontal_spacing": "default",
             "columns": [
               {
                 "tag": "column",
-                "width": "weighted",
-                "weight": 3,
+                "width": "auto",
                 "vertical_align": "center",
                 "elements": [
                   {
                     "tag": "markdown",
-                    "content": "**Tech Pulse**  <text_tag color='orange'>External Signals</text_tag>\n产品发布、工程信号与外部科技动态"
-                  }
-                ]
-              },
-              {
-                "tag": "column",
-                "width": "weighted",
-                "weight": 1,
-                "vertical_align": "center",
-                "elements": [
-                  {
-                    "tag": "markdown",
-                    "text_align": "right",
-                    "content": "**5**\nSignals"
+                    "content": "**科技热讯**  <text_tag color='orange'>外部</text_tag>\n发布动态、工程信号与外部热点"
                   }
                 ]
               }
@@ -169,31 +141,17 @@
           },
           {
             "tag": "column_set",
-            "flex_mode": "bisect",
+            "flex_mode": "none",
             "horizontal_spacing": "default",
             "columns": [
               {
                 "tag": "column",
-                "width": "weighted",
-                "weight": 3,
+                "width": "auto",
                 "vertical_align": "center",
                 "elements": [
                   {
                     "tag": "markdown",
-                    "content": "**Builder Watch**  <text_tag color='green'>People & Media</text_tag>\n创作者观点、视频与长文线索"
-                  }
-                ]
-              },
-              {
-                "tag": "column",
-                "width": "weighted",
-                "weight": 1,
-                "vertical_align": "center",
-                "elements": [
-                  {
-                    "tag": "markdown",
-                    "text_align": "right",
-                    "content": "**5**\nPicks"
+                    "content": "**Builder Watch**  <text_tag color='green'>人物</text_tag>\n创作者观点、播客与长文解读"
                   }
                 ]
               }
@@ -201,21 +159,21 @@
           },
           {
             "tag": "markdown",
-            "content": "**X · 3**\n**1.** [Claude](https://x.com/claudeai/status/2044131493966909862)\n<link icon='internet_outlined' url='https://x.com/claudeai/status/2044131493966909862'>X</link>  ·  作者：Claude  ·  信号：We've redesigned Claude Code on desktop.\n\nYou can now run multiple…\n**2.** [Peter Steinberger](https://x.com/steipete/status/2044047222481019300)\n<link icon='internet_outlined' url='https://x.com/steipete/status/2044047222481019300'>X</link>  ·  作者：Peter Steinberger  ·  信号：This release makes me unreasonably happy since I wasn't involved at…\n**3.** [Josh Woodward](https://x.com/joshwoodward/status/2044149482548580689)\n<link icon='internet_outlined' url='https://x.com/joshwoodward/status/2044149482548580689'>X</link>  ·  作者：Josh Woodward  ·  信号：New in Gemini: NEET practice tests! 🇮🇳🩺\n\nSending good luck to everyone…\n\n**Podcast · 1**\n**1.** [From SEO to Agent-Led Growth: Profound’s James Cadwallader](https://www.youtube.com/playlist?list=PLOhHNjZItNnMm5tdW61JpnyxeYH5NDDx8)\n<link icon='file-link-video_outlined' url='https://www.youtube.com/playlist?list=PLOhHNjZItNnMm5tdW61JpnyxeYH5NDDx8'>YouTube</link>  ·  作者：Training Data  ·  信号：Speaker 1 | 00:00 - 00:23\nWe've now reached a point in marketing where…\n\n**Blog · 1**\n**1.** [Redesigning Claude Code on desktop for parallel agents](https://claude.com/blog/claude-code-desktop-redesign)\n<link icon='internet_outlined' url='https://claude.com/blog/claude-code-desktop-redesign'>Claude Blog</link>  ·  作者：Claude Blog  ·  信号：It includes a new sidebar for managing multiple sessions, a drag-and…\n"
+            "content": "**X**  ·  <link icon='internet_outlined' url='https://x.com'>X</link>\n**1.** [Claude：围绕「We've redesigned Claude Code on desktop.」](https://x.com/claudeai/status/2044131493966909862)\n信号：围绕「We've redesigned Claude Code on desktop.」，给出一线观察。\n**2.** [Peter Steinberger：围绕「This release makes me unreasonably…」](https://x.com/steipete/status/2044047222481019300)\n信号：围绕「This release makes me unreasonably…」，给出一线观察。\n**3.** [Josh Woodward：围绕「New in Gemini: NEET practice tests!」](https://x.com/joshwoodward/status/2044149482548580689)\n信号：围绕「New in Gemini: NEET practice tests!」，给出一线观察。\n\n**播客**  ·  <link icon='file-link-video_outlined' url='https://www.youtube.com'>YouTube</link>\n**1.** [Training Data：聊「Speaker 1 | 00:00 - 00:23 We've now…」](https://www.youtube.com/playlist?list=PLOhHNjZItNnMm5tdW61JpnyxeYH5NDDx8)\n信号：围绕「Speaker 1 | 00:00 - 00:23 We've now…」，展开完整对谈。\n\n**长文**\n**1.** [Claude Blog：拆解「It includes a new sidebar for managing…」](https://claude.com/blog/claude-code-desktop-redesign)\n信号：围绕「It includes a new sidebar for managing…」，做了长文拆解。\n"
           },
           {
             "tag": "markdown",
-            "content": "Date  ·  2026-04-16  ·  Sources  ·  GitHub / OSSInsight / Buzzing / Follow Builders  ·  88 候选 → 27 精选",
+            "content": "日期  ·  2026-04-16  ·  来源  ·  GitHub / OSSInsight / Buzzing / Follow Builders  ·  92 候选 → 30 精选",
             "text_size": "notation"
           }
         ]
       }
     }
   ],
-  "count": 88,
-  "selected_count": 27,
+  "count": 92,
+  "selected_count": 30,
   "summary": {
-    "count": 88,
+    "count": 92,
     "editorial": 24,
     "api_usage": {
       "total_budget": 60,
@@ -244,9 +202,9 @@
         }
       },
       "star_growth": {
-        "count": 57,
+        "count": 59,
         "kinds": {
-          "project": 57
+          "project": 59
         }
       },
       "discussions": {
@@ -258,16 +216,16 @@
         "kinds": {}
       },
       "skills": {
-        "count": 15,
+        "count": 14,
         "kinds": {
           "skill": 6,
-          "project": 9
+          "project": 8
         }
       },
       "buzzing": {
-        "count": 927,
+        "count": 923,
         "kinds": {
-          "tech": 927
+          "tech": 923
         }
       },
       "builders": {
@@ -279,26 +237,27 @@
     },
     "surge_count": 5,
     "filtered_kind_counts": {
-      "project": 88
+      "project": 92
     },
     "published_kind_counts": {
-      "project": 17
+      "project": 20
     },
     "theme_counts": {
-      "ai_project": 13,
-      "mcp": 2,
-      "skill_assets": 2
+      "claude_code": 11,
+      "prompt_assets": 3,
+      "agent_framework": 5,
+      "browser_automation": 1
     },
     "top_themes": [
-      "ai_project",
-      "mcp",
-      "skill_assets"
+      "claude_code",
+      "agent_framework",
+      "prompt_assets"
     ],
-    "github_count": 17,
-    "tech_pulse_candidate_count": 927,
+    "github_count": 20,
+    "tech_pulse_candidate_count": 922,
     "tech_pulse_count": 5,
     "builder_signal_count": 19,
     "builder_count": 5,
-    "item_count": 27
+    "item_count": 30
   }
 }
