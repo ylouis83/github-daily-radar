@@ -350,6 +350,33 @@ def test_compact_items_inline_source_link_without_prefix():
     assert "来源：" not in all_text
 
 
+def test_compact_scan_is_trimmed_and_uses_bullets():
+    items = [
+        {
+            "kind": "project",
+            "title": f"org/repo-{i}",
+            "url": f"https://github.com/org/repo-{i}",
+            "summary": f"Project {i}",
+            "stars": 100 + i,
+            "star_delta_1d": 0,
+            "star_velocity": "",
+        }
+        for i in range(9)
+    ]
+
+    card = build_digest_card(items=items, today=date(2026, 4, 2))
+    all_text = _collect_card_text(card)
+
+    assert "**延伸速览**" in all_text
+    assert "- [org/repo-4](https://github.com/org/repo-4)  104⭐" in all_text
+    assert "- [org/repo-5](https://github.com/org/repo-5)  105⭐" in all_text
+    assert "- [org/repo-6](https://github.com/org/repo-6)  106⭐" in all_text
+    assert "[org/repo-7](https://github.com/org/repo-7)" not in all_text
+    assert "[org/repo-8](https://github.com/org/repo-8)" not in all_text
+    assert "另有 2 个项目未展开" in all_text
+    assert "**5.** [org/repo-4](https://github.com/org/repo-4)" not in all_text
+
+
 def test_surge_and_builder_subsections_surface_counts():
     card = build_digest_card(
         items=[

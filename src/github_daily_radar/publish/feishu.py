@@ -19,6 +19,7 @@ import httpx
 # ── Constants ──────────────────────────────────────────────────────
 # GitHub 主榜保留少量完整画像，其余进入速览
 FEATURED_LIMIT = 4
+COMPACT_SCAN_LIMIT = 3
 
 SECTION_ICONS = {
     "project": "核心项目",
@@ -439,8 +440,8 @@ def _render_featured_item(item: dict, index: int, *, include_source_link: bool =
     return "\n".join(lines)
 
 
-def _render_compact_item(item: dict, index: int, *, include_source_link: bool = True) -> str:
-    """渲染速览条目：单行 = 标题 + badge"""
+def _render_compact_item(item: dict, *, include_source_link: bool = True) -> str:
+    """渲染速览条目：无编号 bullet，避免和主榜精编抢层级。"""
     title = item.get("title", "")
     url = item.get("url", "")
     badge = _format_star_badge(item)
@@ -453,8 +454,8 @@ def _render_compact_item(item: dict, index: int, *, include_source_link: bool = 
         detail_parts.append(external_heat)
     detail_suffix = f"  ·  {'  ·  '.join(detail_parts)}" if detail_parts else ""
     if url:
-        return f"**{index}.** [{title}]({url}){badge_suffix}{detail_suffix}"
-    return f"**{index}.** {title}{badge_suffix}{detail_suffix}"
+        return f"- [{title}]({url}){badge_suffix}{detail_suffix}"
+    return f"- {title}{badge_suffix}{detail_suffix}"
 
 
 def _render_skill_item(item: dict, index: int, *, include_source_link: bool = True) -> str:
@@ -503,8 +504,12 @@ def _render_project_section(items: list[dict], *, featured_limit: int = FEATURED
     if compact:
         lines.append("**延伸速览**")
         lines.append("")
-        for i, item in enumerate(compact, featured_limit + 1):
-            lines.append(_render_compact_item(item, i, include_source_link=False))
+        visible_compact = compact[:COMPACT_SCAN_LIMIT]
+        for item in visible_compact:
+            lines.append(_render_compact_item(item, include_source_link=False))
+        hidden_count = len(compact) - len(visible_compact)
+        if hidden_count > 0:
+            lines.append(f"另有 {hidden_count} 个项目未展开")
 
     return "\n".join(lines)
 
