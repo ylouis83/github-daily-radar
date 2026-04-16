@@ -5,13 +5,13 @@ Design principles (v3):
   • 四大分区 — 💥 今日爆款 / 🚀 核心 AI 项目 / 🧩 MCP & Skills / 💬 提案与讨论
   • 爆款区 — 仅含 TrendingCollector + OSSInsight 日增 ≥200⭐ 的项目，与核心项目互斥
   • 分层密度 — 精编条目 (前 N 条) 带完整画像；其余紧凑速览
-  • column_set 概览面板 — 稳定四列统计
+  • 顶部轻量化 — 副标题后直接进入正文，不再保留概览统计条
   • 空分区不渲染
 """
 from __future__ import annotations
 
 from datetime import date
-from collections import Counter, defaultdict
+from collections import defaultdict
 from urllib.parse import urlparse
 
 import httpx
@@ -40,17 +40,14 @@ TRACK_COPY = {
     "github": {
         "title": "GitHub 主榜",
         "subtitle": "开源仓库、技能资产与讨论线索",
-        "metric_label": "主榜",
     },
     "tech": {
         "title": "科技热讯",
         "subtitle": "发布动态、工程信号与外部热点",
-        "metric_label": "热讯",
     },
     "builder": {
         "title": "Builder Watch",
         "subtitle": "创作者观点、播客与长文解读",
-        "metric_label": "观察",
     },
 }
 
@@ -241,7 +238,7 @@ def _title_mentions_creator(title: str, creator: str) -> bool:
     return bool(title_norm and creator_norm and creator_norm in title_norm)
 
 
-def _build_track_header(*, track_key: str, title: str, subtitle: str, count: int, metric_label: str) -> dict:
+def _build_track_header(*, track_key: str, title: str, subtitle: str) -> dict:
     badge = TRACK_BADGES.get(track_key, {"label": "Track", "color": "grey"})
     return {
         "tag": "column_set",
@@ -267,22 +264,6 @@ def _build_track_header(*, track_key: str, title: str, subtitle: str, count: int
     }
 
 
-def _build_metric_column(value: str | int, label: str) -> dict:
-    return {
-        "tag": "column",
-        "width": "weighted",
-        "weight": 1,
-        "vertical_align": "center",
-        "elements": [
-            {
-                "tag": "markdown",
-                "text_align": "center",
-                "content": f"**{value}**\n{label}",
-            }
-        ],
-    }
-
-
 def _build_card_payload(*, title: str, elements: list[dict], template: str = "indigo") -> dict:
     return {
         "msg_type": "interactive",
@@ -298,29 +279,6 @@ def _build_card_payload(*, title: str, elements: list[dict], template: str = "in
             "elements": elements,
         },
     }
-
-
-def _humanize_theme_name(theme: str) -> str:
-    parts = []
-    for chunk in str(theme).split("_"):
-        upper_chunk = chunk.upper()
-        if upper_chunk in {"AI", "RAG", "MCP", "LLM", "PR"}:
-            parts.append(upper_chunk)
-        elif chunk:
-            parts.append(chunk.capitalize())
-    return " ".join(parts)
-
-
-def _render_focus_strip(metadata: dict | None = None) -> str | None:
-    meta = metadata or {}
-    themes = meta.get("top_themes") or []
-    if not themes:
-        return None
-    readable = [_humanize_theme_name(str(theme)) for theme in themes if str(theme).strip()]
-    if not readable:
-        return None
-    return f"**关注主题**  ·  {'  ·  '.join(readable[:3])}"
-
 
 # ── Ecosystem Label ───────────────────────────────────────────────
 
@@ -617,52 +575,6 @@ def _render_section(section_title: str, items: list[dict]) -> str | None:
         lines.append("")
     return "\n".join(lines)
 
-
-# ── Overview Panel ────────────────────────────────────────────────
-
-def _build_stats_panel(
-    all_items: list[dict],
-    metadata: dict,
-    tech_items: list[dict] | None = None,
-    builder_sections: dict[str, list[dict]] | None = None,
-) -> dict:
-    """构建 column_set 四列概览面板"""
-    selected = len(all_items)
-    tech_count = len(tech_items or [])
-    builder_count = sum(len(items) for items in (builder_sections or {}).values())
-
-    # 主题数
-    theme_counts = metadata.get("theme_counts", {})
-    top_themes = metadata.get("top_themes", [])
-    theme_n = len(theme_counts) if theme_counts else len(top_themes)
-
-    return {
-        "tag": "column_set",
-        "flex_mode": "bisect",
-        "background_style": "grey",
-        "horizontal_spacing": "default",
-        "columns": [
-            _build_metric_column(selected, "主榜"),
-            _build_metric_column(tech_count, "热讯"),
-            _build_metric_column(builder_count, "观察"),
-            _build_metric_column(theme_n, "主题"),
-        ],
-    }
-
-
-def _render_overview(items: list[dict]) -> str:
-    """渲染概览统计（文字版 fallback）"""
-    counts = Counter(
-        "discussion" if item.get("kind", "other") in ("discussion", "issue", "pr") else item.get("kind", "other")
-        for item in items
-    )
-    parts = []
-    for kind, label in [("project", "项目"), ("skill", "技能"), ("discussion", "讨论")]:
-        if counts.get(kind, 0):
-            parts.append(f"**{counts[kind]}** {label}")
-    return f"今日精选 **{len(items)}** 条：{'  ·  '.join(parts)}"
-
-
 def _render_footer(today: date | None = None, metadata: dict | None = None) -> str:
     """渲染底部：日期 + 漏斗转化"""
     if not today:
@@ -734,26 +646,7 @@ def build_digest_card(
     elements: list[dict] = []
 
     elements.append({"tag": "markdown", "content": CARD_SUBTITLE, "text_size": "notation"})
-
-    # ── 概览面板 ──
-    if metadata.get("count"):
-        elements.append(_build_stats_panel(all_items, metadata, tech_items=tech_items, builder_sections=builder_sections))
-    else:
-        # 无 metadata 时用文字概览
-        elements.append({
-            "tag": "markdown",
-            "content": _render_overview(all_items),
-        })
-    focus_strip = _render_focus_strip(metadata)
-    if focus_strip:
-        elements.append({"tag": "markdown", "content": focus_strip})
     elements.append({"tag": "hr"})
-
-    # ── 爆款监测（置顶） ──
-    surge_content = _render_surge_section(surge_items)
-    if surge_content is not None:
-        elements.append({"tag": "markdown", "content": surge_content})
-        elements.append({"tag": "hr"})
 
     # ── GitHub Radar ──
     github_copy = TRACK_COPY["github"]
@@ -762,10 +655,11 @@ def build_digest_card(
             track_key="github",
             title=github_copy["title"],
             subtitle=github_copy["subtitle"],
-            count=len(all_items),
-            metric_label=github_copy["metric_label"],
         )
     )
+    surge_content = _render_surge_section(surge_items)
+    if surge_content is not None:
+        elements.append({"tag": "markdown", "content": surge_content})
 
     # ── GitHub 内部分区 ──
     for kind in _section_order(project_first=project_first):
@@ -789,8 +683,6 @@ def build_digest_card(
                 track_key="tech",
                 title=tech_copy["title"],
                 subtitle=tech_copy["subtitle"],
-                count=len(tech_items or []),
-                metric_label=tech_copy["metric_label"],
             )
         )
         elements.append({"tag": "markdown", "content": tech_content})
@@ -806,8 +698,6 @@ def build_digest_card(
                 track_key="builder",
                 title=builder_copy["title"],
                 subtitle=builder_copy["subtitle"],
-                count=sum(len(items) for items in (builder_sections or {}).values()),
-                metric_label=builder_copy["metric_label"],
             )
         )
         elements.append({"tag": "markdown", "content": builder_content})
@@ -829,18 +719,6 @@ def build_style_review_card(*, today: date | None = None) -> dict:
     elements: list[dict] = [
         {"tag": "markdown", "content": CARD_SUBTITLE, "text_size": "notation"},
         {
-            "tag": "column_set",
-            "flex_mode": "bisect",
-            "background_style": "grey",
-            "horizontal_spacing": "default",
-            "columns": [
-                _build_metric_column("—", "主榜"),
-                _build_metric_column("—", "热讯"),
-                _build_metric_column("—", "观察"),
-                _build_metric_column("—", "主题"),
-            ],
-        },
-        {
             "tag": "markdown",
             "content": f"**样式预览**  ·  {STYLE_REVIEW_NOTE}",
         },
@@ -853,16 +731,16 @@ def build_style_review_card(*, today: date | None = None) -> dict:
             track_key="github",
             title=github_copy["title"],
             subtitle=github_copy["subtitle"],
-            count=0,
-            metric_label=github_copy["metric_label"],
         )
     )
     elements.append(
         {
             "tag": "markdown",
             "content": (
+                "**热度跃升**\n"
+                "样式占位：检查导读区是否已经并入 GitHub 主区，而不是单独悬在顶部。\n\n"
                 "**核心项目**  ·  <link icon='platform_outlined' url='https://github.com'>GitHub</link>\n"
-                "样式占位：检查标题、数字面板与主区留白。\n\n"
+                "样式占位：检查标题、导读区与主区留白。\n\n"
                 "**技能与 MCP**  ·  <link icon='platform_outlined' url='https://github.com'>GitHub</link>\n"
                 "样式占位：检查次级栏目密度与信息层级。\n\n"
                 "**讨论与提案**  ·  <link icon='platform_outlined' url='https://github.com'>GitHub</link>\n"
@@ -878,8 +756,6 @@ def build_style_review_card(*, today: date | None = None) -> dict:
             track_key="tech",
             title=tech_copy["title"],
             subtitle=tech_copy["subtitle"],
-            count=0,
-            metric_label=tech_copy["metric_label"],
         )
     )
     elements.append(
@@ -896,8 +772,6 @@ def build_style_review_card(*, today: date | None = None) -> dict:
             track_key="builder",
             title=builder_copy["title"],
             subtitle=builder_copy["subtitle"],
-            count=0,
-            metric_label=builder_copy["metric_label"],
         )
     )
     elements.append(

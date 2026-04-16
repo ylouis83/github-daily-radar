@@ -8,8 +8,10 @@ from github_daily_radar.publish.feishu import build_digest_card, build_alert_car
 
 
 def _collect_card_text(card: dict) -> str:
-    contents = [el.get("content", "") for el in card["card"]["elements"] if el.get("tag") == "markdown"]
+    contents = []
     for el in card["card"]["elements"]:
+        if el.get("tag") == "markdown":
+            contents.append(el.get("content", ""))
         if el.get("tag") == "column_set":
             for col in el.get("columns", []):
                 for sub_el in col.get("elements", []):
@@ -67,23 +69,12 @@ def test_build_digest_card_single_card_with_sections():
     assert "2026-04-02" in header
     assert card["card"]["header"]["template"] == "indigo"
 
-    contents = [el.get("content", "") for el in card["card"]["elements"] if el.get("tag") == "markdown"]
-    # 也提取 column_set 内嵌的 markdown 文本
-    for el in card["card"]["elements"]:
-        if el.get("tag") == "column_set":
-            for col in el.get("columns", []):
-                for sub_el in col.get("elements", []):
-                    if sub_el.get("tag") == "markdown":
-                        contents.append(sub_el.get("content", ""))
-    all_text = "\n".join(contents)
+    all_text = _collect_card_text(card)
 
-    # 验证概览面板（column_set 或文字版）
-    assert "3" in all_text  # 精选数（3 条）
-    assert "主榜" in all_text
-    assert "热讯" in all_text
-    assert "观察" in all_text
-    assert "主题" in all_text
-    assert "Candidate Pool" not in all_text
+    # 顶部只保留副标题，不再展示四格概览和关注主题
+    assert card["card"]["elements"][0]["content"] == "GitHub 主榜 · 科技热讯 · Builder Watch"
+    assert card["card"]["elements"][1]["tag"] == "hr"
+    assert "关注主题" not in all_text
     assert "<text_tag color='blue'>主线</text_tag>" in all_text
     assert "GitHub 主榜 · 科技热讯 · Builder Watch" in all_text
     # 不再有 A/B 标签
@@ -143,11 +134,7 @@ def test_build_digest_card_renders_github_tech_and_builder_tracks():
     assert "GitHub 主榜" in all_text
     assert "科技热讯" in all_text
     assert "Builder Watch" in all_text
-    assert "主榜" in all_text
-    assert "热讯" in all_text
-    assert "观察" in all_text
-    assert "主题" in all_text
-    assert "Candidate Pool" not in all_text
+    assert "关注主题" not in all_text
     assert "开源仓库、技能资产与讨论线索" in all_text
     assert "发布动态、工程信号与外部热点" in all_text
     assert "创作者观点、播客与长文解读" in all_text
@@ -425,6 +412,7 @@ def test_surge_and_builder_subsections_surface_counts():
 
     assert "**热度跃升**" in all_text
     assert "**热度跃升 · 2**" not in all_text
+    assert all_text.index("**GitHub 主榜**") < all_text.index("**热度跃升**") < all_text.index("**核心项目**")
     assert "**X**" in all_text
     assert "**X · 2**" not in all_text
     assert "**播客**" in all_text

@@ -25,18 +25,15 @@ def test_build_preview_cards_contains_all_three_tracks():
     assert "GitHub 主榜" in all_text
     assert "科技热讯" in all_text
     assert "Builder Watch" in all_text
-    assert "主榜" in all_text
-    assert "热讯" in all_text
-    assert "观察" in all_text
-    assert "主题" in all_text
     assert "GitHub 主榜 · 科技热讯 · Builder Watch" in all_text
     assert "<text_tag color='blue'>主线</text_tag>" in all_text
-    assert "关注主题" in all_text
+    assert "关注主题" not in all_text
     assert "延伸速览" in all_text
     assert "播客" in all_text
     assert "Video / Podcast" not in all_text
     assert "**热度跃升**" in all_text
     assert "**热度跃升 · 2**" not in all_text
+    assert all_text.index("**GitHub 主榜**") < all_text.index("**热度跃升**") < all_text.index("**核心项目**")
     assert "**X**" in all_text
     assert "**X · 2**" not in all_text
     assert "**播客**" in all_text
@@ -72,8 +69,7 @@ def test_build_preview_cards_can_render_style_only_review_mode():
     assert "Builder Watch" in all_text
     assert "样式预览" in all_text
     assert "仅预览卡片样式，不加载实时内容" in all_text
-    assert "主榜" in all_text
-    assert "主题" in all_text
+    assert "关注主题" not in all_text
     assert "anthropics/claude-code-desktop" not in all_text
     assert "Claude Code Routines" not in all_text
     assert "Swyx" not in all_text
