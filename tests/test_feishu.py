@@ -97,7 +97,7 @@ def test_build_digest_card_single_card_with_sections():
     assert "[owner/repo](https://github.com/owner/repo)" in all_text
     # 验证来源与更克制的 badge
     assert "<link icon='platform_outlined' url='https://github.com'>GitHub</link>" in all_text
-    assert "+300★" in all_text
+    assert "+300⭐" in all_text
     # 验证画像字段分行显示
     assert "▸ 定位：" in all_text
     assert "▸ 能力：" in all_text
@@ -159,7 +159,8 @@ def test_build_digest_card_renders_github_tech_and_builder_tracks():
     assert "Swyx" in all_text
     assert "<link icon='internet_outlined' url='https://www.producthunt.com/r/1'>Product Hunt</link>" in all_text
     assert "信号：" in all_text
-    assert "**X · 1**  ·  <link icon='internet_outlined' url='https://x.com'>X</link>" in all_text
+    assert "**X**  ·  <link icon='internet_outlined' url='https://x.com'>X</link>" in all_text
+    assert "**X · 1**" not in all_text
 
 
 def test_build_digest_card_uses_structured_profile():
@@ -395,8 +396,10 @@ def test_surge_and_builder_subsections_surface_counts():
 
     all_text = _collect_card_text(card)
 
-    assert "**热度跃升 · 2**" in all_text
-    assert "**X · 2**" in all_text
+    assert "**热度跃升**" in all_text
+    assert "**热度跃升 · 2**" not in all_text
+    assert "**X**" in all_text
+    assert "**X · 2**" not in all_text
     assert "**播客**" in all_text
     assert "**播客 · 1**" not in all_text
     assert "**长文**" in all_text
@@ -460,7 +463,7 @@ def test_alert_card_has_red_theme():
 
 
 def test_star_badge_renders_k_format():
-    """大 star 数应显示为 131.0K★"""
+    """大 star 数应显示为 131.0K⭐"""
     items = [
         {
             "kind": "skill",
@@ -476,7 +479,7 @@ def test_star_badge_renders_k_format():
     card = build_digest_card(items=items, today=date(2026, 4, 2))
     contents = [el.get("content", "") for el in card["card"]["elements"] if el.get("tag") == "markdown"]
     all_text = "\n".join(contents)
-    assert "131.0K★" in all_text
+    assert "131.0K⭐" in all_text
 
 
 def test_footer_only_shows_date():

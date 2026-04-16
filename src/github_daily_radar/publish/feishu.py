@@ -104,17 +104,17 @@ def _truncate_text(text: str, max_len: int = 100) -> str:
 
 
 def _format_star_badge(item: dict) -> str:
-    """格式化 star 徽标：+1161★ 或 12.3K★"""
+    """格式化 star 徽标：+1161⭐ 或 12.3K⭐"""
     delta = item.get("star_delta_1d", 0)
 
     if delta and delta > 50:
-        return f"+{delta}★"
+        return f"+{delta}⭐"
 
     stars = item.get("stars", 0)
     if stars >= 1000:
-        return f"{stars / 1000:.1f}K★"
+        return f"{stars / 1000:.1f}K⭐"
     elif stars > 0:
-        return f"{stars}★"
+        return f"{stars}⭐"
     return ""
 
 
@@ -125,13 +125,13 @@ def _format_star_tag(item: dict) -> str:
     color = _VELOCITY_TAG_COLOR.get(velocity, "neutral")
 
     if delta and delta > 50:
-        return f"<text_tag color='{color}'>+{delta}★</text_tag>"
+        return f"<text_tag color='{color}'>+{delta}⭐</text_tag>"
 
     stars = item.get("stars", 0)
     if stars >= 1000:
-        return f"<text_tag color='neutral'>{stars / 1000:.1f}K★</text_tag>"
+        return f"<text_tag color='neutral'>{stars / 1000:.1f}K⭐</text_tag>"
     elif stars > 0:
-        return f"<text_tag color='neutral'>{stars}★</text_tag>"
+        return f"<text_tag color='neutral'>{stars}⭐</text_tag>"
     return ""
 
 
@@ -363,9 +363,9 @@ def _detect_ecosystem(item: dict) -> str:
 
 def _format_total_stars(stars: int) -> str:
     if stars >= 1000:
-        return f"{stars / 1000:.1f}K★"
+        return f"{stars / 1000:.1f}K⭐"
     if stars > 0:
-        return f"{stars}★"
+        return f"{stars}⭐"
     return ""
 
 
@@ -374,7 +374,7 @@ def _render_surge_section(surge_items: list[dict]) -> str | None:
     if not surge_items:
         return None
 
-    lines = [f"**热度跃升 · {len(surge_items)}**", ""]
+    lines = ["**热度跃升**", ""]
     for i, item in enumerate(surge_items, 1):
         title = item.get("title", "")
         url = item.get("url", "")
@@ -385,10 +385,10 @@ def _render_surge_section(surge_items: list[dict]) -> str | None:
         link = f"[{title}]({url})" if url else title
         if stars_is_growth:
             # OSSInsight only: total stars unknown, only show delta
-            line = f"**{i}.** {link}  +{daily_delta}★"
+            line = f"**{i}.** {link}  +{daily_delta}⭐"
         else:
             total_str = _format_total_stars(total_stars)
-            line = f"**{i}.** {link}  +{daily_delta}★  {total_str}"
+            line = f"**{i}.** {link}  +{daily_delta}⭐  {total_str}"
         lines.append(line)
 
     lines.append("")
@@ -573,7 +573,7 @@ def _render_builder_watch_section(sections: dict[str, list[dict]]) -> str | None
         lines.append(
             _format_section_heading(
                 BUILDER_SECTION_LABELS.get(key, key.title()),
-                count=len(items) if key == "x" else None,
+                count=None,
                 source_key=_shared_source_key(items),
             )
         )

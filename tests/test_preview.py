@@ -35,8 +35,10 @@ def test_build_preview_cards_contains_all_three_tracks():
     assert "延伸速览" in all_text
     assert "播客" in all_text
     assert "Video / Podcast" not in all_text
-    assert "**热度跃升 · 2**" in all_text
-    assert "**X · 2**" in all_text
+    assert "**热度跃升**" in all_text
+    assert "**热度跃升 · 2**" not in all_text
+    assert "**X**" in all_text
+    assert "**X · 2**" not in all_text
     assert "**播客**" in all_text
     assert "**播客 · 1**" not in all_text
     assert "**长文**" in all_text
