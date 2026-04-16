@@ -4,7 +4,9 @@ from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
+from github_daily_radar.ai_builders.feed import fetch_feeds
 from github_daily_radar.client import BudgetTracker, GitHubClient, OSSInsightClient
+from github_daily_radar.collectors.buzzing import BuzzingCollector
 from github_daily_radar.discovery import (
     build_discussion_queries,
     build_issue_pr_queries,
@@ -38,6 +40,7 @@ from github_daily_radar.collectors.repos import RepoCollector
 from github_daily_radar.collectors.skills import SkillCollector
 from github_daily_radar.collectors.trending import TrendingCollector
 from github_daily_radar.config import Settings
+from github_daily_radar.daily_brief import assemble_daily_brief, extract_builder_signals
 from github_daily_radar.publish.feishu import build_alert_cards, build_digest_card, send_cards
 from github_daily_radar.scoring.dedupe import should_reenter
 from github_daily_radar.state.store import StateStore
@@ -436,16 +439,56 @@ def run_pipeline(settings: Settings, alert_only: bool = False) -> dict:
     published_kind_counts = Counter(item["kind"] for item in published_items)
     theme_counts = Counter(item.get("theme", "other") for item in published_items if item.get("theme"))
     top_themes = [theme for theme, count in theme_counts.most_common(3) if count > 0]
-    metadata["item_count"] = len(published_items)
     metadata["surge_count"] = len(surge_items)
     metadata["filtered_kind_counts"] = dict(filtered_kind_counts)
     metadata["published_kind_counts"] = dict(published_kind_counts)
     metadata["theme_counts"] = dict(theme_counts)
     metadata["top_themes"] = top_themes
+    tech_candidates = []
+    builder_signals = []
+    external_notes: list[str] = []
+    try:
+        tech_candidates = BuzzingCollector().collect()
+        collector_stats["buzzing"] = {
+            "count": len(tech_candidates),
+            "kinds": {"tech": len(tech_candidates)},
+        }
+    except Exception as exc:  # noqa: BLE001 - external source should not block main brief
+        collector_stats["buzzing"] = {"count": 0, "kinds": {}, "error": str(exc)}
+        external_notes.append("Tech Pulse unavailable due to Buzzing feed failure.")
+
+    try:
+        builder_feed = fetch_feeds()
+        builder_signals = extract_builder_signals(builder_feed)
+        collector_stats["builders"] = {
+            "count": len(builder_signals),
+            "kinds": {"builder": len(builder_signals)},
+        }
+        if builder_feed.get("errors"):
+            external_notes.append("Builder Watch is partially degraded due to feed fetch errors.")
+    except Exception as exc:  # noqa: BLE001 - external source should not block main brief
+        collector_stats["builders"] = {"count": 0, "kinds": {}, "error": str(exc)}
+        external_notes.append("Builder Watch unavailable due to follow-builders fetch failure.")
+
+    brief = assemble_daily_brief(
+        github_items=published_items,
+        tech_candidates=tech_candidates,
+        builder_signals=builder_signals,
+        metadata=metadata,
+    )
+    if external_notes:
+        brief.coverage_notes.extend(external_notes)
+        brief.stats["coverage_note"] = "；".join(brief.coverage_notes)
+
+    brief_item_count = len(brief.github_radar) + len(brief.tech_pulse) + sum(len(items) for items in brief.builder_watch.values())
+    brief.stats["item_count"] = brief_item_count
+
     card = build_digest_card(
-        items=published_items,
+        items=brief.github_radar,
+        tech_items=brief.tech_pulse,
+        builder_sections=brief.builder_watch,
         surge_items=surge_items,
-        metadata=build_card_metadata(metadata),
+        metadata=build_card_metadata(brief.stats),
         today=today,
         project_first=project_first,
     )
@@ -460,8 +503,8 @@ def run_pipeline(settings: Settings, alert_only: bool = False) -> dict:
             {
                 "cards": cards,
                 "count": len(filtered),
-                "selected_count": len(published_items),
-                "summary": metadata,
+                "selected_count": brief_item_count,
+                "summary": brief.stats,
             },
         )
         state.record_run_summary(
@@ -469,7 +512,7 @@ def run_pipeline(settings: Settings, alert_only: bool = False) -> dict:
             {
                 "candidate_count": len(candidates),
                 "raw_candidate_count": raw_candidate_count,
-                "selected_count": len(published_items),
+                "selected_count": brief_item_count,
                 "filtered_kind_counts": dict(filtered_kind_counts),
                 "published_kind_counts": dict(published_kind_counts),
                 "theme_counts": dict(theme_counts),
@@ -483,7 +526,7 @@ def run_pipeline(settings: Settings, alert_only: bool = False) -> dict:
         state.record_published(today, published_items)
         state.record_published(today, surge_items)
 
-    return {"cards": cards, "count": len(filtered), "summary": metadata}
+    return {"cards": cards, "count": len(filtered), "summary": brief.stats}
 
 
 def main() -> None:

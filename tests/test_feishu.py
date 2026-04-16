@@ -3,6 +3,17 @@ from datetime import date
 from github_daily_radar.publish.feishu import build_digest_card, build_alert_cards
 
 
+def _collect_card_text(card: dict) -> str:
+    contents = [el.get("content", "") for el in card["card"]["elements"] if el.get("tag") == "markdown"]
+    for el in card["card"]["elements"]:
+        if el.get("tag") == "column_set":
+            for col in el.get("columns", []):
+                for sub_el in col.get("elements", []):
+                    if sub_el.get("tag") == "markdown":
+                        contents.append(sub_el.get("content", ""))
+    return "\n".join(contents)
+
+
 def test_build_digest_card_single_card_with_sections():
     items = [
         {
@@ -80,6 +91,47 @@ def test_build_digest_card_single_card_with_sections():
     assert "▸ 特点：" in all_text
     assert "▸ 核心能力：" in all_text
     assert "2026-04-02" in all_text
+
+
+def test_build_digest_card_renders_github_tech_and_builder_tracks():
+    card = build_digest_card(
+        items=[
+            {
+                "kind": "project",
+                "title": "owner/repo",
+                "url": "https://github.com/owner/repo",
+                "summary": "repo",
+                "stars": 120,
+                "star_delta_1d": 0,
+                "star_velocity": "",
+            }
+        ],
+        tech_items=[
+            {
+                "title": "Claude Code pager",
+                "url": "https://www.producthunt.com/r/1",
+                "source_label": "Product Hunt",
+                "why_now": "开发者工具热度很高",
+            }
+        ],
+        builder_sections={
+            "x": [
+                {
+                    "title": "Swyx",
+                    "url": "https://x.com/swyx/status/1",
+                    "why_now": "Builder 线程值得看",
+                }
+            ]
+        },
+        today=date(2026, 4, 16),
+    )
+
+    all_text = _collect_card_text(card)
+    assert "GitHub Radar" in all_text
+    assert "Tech Pulse" in all_text
+    assert "Builder Watch" in all_text
+    assert "Product Hunt" in all_text
+    assert "Swyx" in all_text
 
 
 def test_build_digest_card_uses_structured_profile():

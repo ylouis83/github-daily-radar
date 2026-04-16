@@ -13,3 +13,8 @@ def test_workflow_contains_dry_run_and_concurrency():
 def test_state_sync_script_uses_worktree():
     script = Path("scripts/sync_state_branch.sh").read_text(encoding="utf-8")
     assert "git worktree add" in script
+
+
+def test_workflow_no_longer_runs_ai_builders_as_separate_job():
+    workflow = Path(".github/workflows/daily-radar.yml").read_text(encoding="utf-8")
+    assert "ai-builders:" not in workflow

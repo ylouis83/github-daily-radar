@@ -42,3 +42,33 @@ class DailyDigest(BaseModel):
     date: str
     items: list[Candidate]
     metadata: dict = Field(default_factory=dict)
+
+
+class ExternalTechCandidate(BaseModel):
+    source: str
+    title: str
+    url: str
+    summary: str = ""
+    score: int = 0
+    comments: int = 0
+    tags: list[str] = Field(default_factory=list)
+    published_at: str
+
+
+class BuilderSignal(BaseModel):
+    source: str
+    section: Literal["x", "podcast", "blog"]
+    title: str
+    url: str
+    creator: str
+    summary: str = ""
+    score: int = 0
+    published_at: str
+
+
+class DailyBrief(BaseModel):
+    github_radar: list[dict] = Field(default_factory=list)
+    tech_pulse: list[dict] = Field(default_factory=list)
+    builder_watch: dict[str, list[dict]] = Field(default_factory=dict)
+    stats: dict = Field(default_factory=dict)
+    coverage_notes: list[str] = Field(default_factory=list)

@@ -2,6 +2,8 @@ from datetime import datetime, timezone
 import json
 from pathlib import Path
 
+import pytest
+
 from github_daily_radar import main as main_module
 from github_daily_radar.config import Settings
 from github_daily_radar.models import Candidate, CandidateMetrics
@@ -253,6 +255,26 @@ class _FakeLLM:
         ]
 
 
+@pytest.fixture(autouse=True)
+def _stub_external_brief_sources(monkeypatch):
+    monkeypatch.setattr(
+        main_module,
+        "BuzzingCollector",
+        lambda *args, **kwargs: type("Buzzing", (), {"collect": lambda self: []})(),
+    )
+    monkeypatch.setattr(
+        main_module,
+        "fetch_feeds",
+        lambda: {
+            "x": [],
+            "podcasts": [],
+            "blogs": [],
+            "stats": {"xBuilders": 0, "totalTweets": 0, "podcastEpisodes": 0, "blogPosts": 0},
+            "errors": None,
+        },
+    )
+
+
 def test_product_today_uses_product_timezone():
     instant = datetime(2026, 4, 2, 16, 30, tzinfo=timezone.utc)
 
@@ -311,7 +333,7 @@ def test_run_pipeline_uses_editorial_summaries_and_continues_on_collector_failur
 
     captured = {}
 
-    def fake_build_digest_card(*, items, secondary_items=None, surge_items=None, metadata=None, today=None, project_first=True):
+    def fake_build_digest_card(*, items, secondary_items=None, tech_items=None, builder_sections=None, surge_items=None, metadata=None, today=None, project_first=True):
         captured["items"] = items
         captured["metadata"] = metadata or {}
         captured["today"] = today
@@ -372,7 +394,7 @@ def test_run_pipeline_respects_report_limit(monkeypatch, tmp_path: Path):
 
     captured = {}
 
-    def fake_build_digest_card(*, items, secondary_items=None, surge_items=None, metadata=None, today=None, project_first=True):
+    def fake_build_digest_card(*, items, secondary_items=None, tech_items=None, builder_sections=None, surge_items=None, metadata=None, today=None, project_first=True):
         captured["items"] = items
         captured["metadata"] = metadata or {}
         captured["project_first"] = project_first
@@ -405,7 +427,7 @@ def test_run_pipeline_single_version_selects_all(monkeypatch, tmp_path: Path):
 
     captured = {}
 
-    def fake_build_digest_card(*, items, secondary_items=None, surge_items=None, metadata=None, today=None, project_first=True):
+    def fake_build_digest_card(*, items, secondary_items=None, tech_items=None, builder_sections=None, surge_items=None, metadata=None, today=None, project_first=True):
         captured["items"] = items
         captured["project_first"] = project_first
         return {"msg_type": "interactive", "card": {"header": {"title": {"content": "test"}}}}
@@ -436,7 +458,7 @@ def test_run_pipeline_single_card_is_project_first(monkeypatch, tmp_path: Path):
 
     captured = {}
 
-    def fake_build_digest_card(*, items, secondary_items=None, surge_items=None, metadata=None, today=None, project_first=True):
+    def fake_build_digest_card(*, items, secondary_items=None, tech_items=None, builder_sections=None, surge_items=None, metadata=None, today=None, project_first=True):
         captured["items"] = items
         captured["metadata"] = metadata or {}
         captured["project_first"] = project_first
@@ -468,7 +490,7 @@ def test_run_pipeline_can_disable_project_first(monkeypatch, tmp_path: Path):
 
     captured = {}
 
-    def fake_build_digest_card(*, items, secondary_items=None, surge_items=None, metadata=None, today=None, project_first=True):
+    def fake_build_digest_card(*, items, secondary_items=None, tech_items=None, builder_sections=None, surge_items=None, metadata=None, today=None, project_first=True):
         captured["items"] = items
         captured["project_first"] = project_first
         return {"msg_type": "interactive", "card": {"header": {"title": {"content": "test"}}}}
@@ -503,7 +525,7 @@ def test_run_pipeline_uses_configured_daily_item_count(monkeypatch, tmp_path: Pa
 
     captured = {}
 
-    def fake_build_digest_card(*, items, secondary_items=None, surge_items=None, metadata=None, today=None, project_first=True):
+    def fake_build_digest_card(*, items, secondary_items=None, tech_items=None, builder_sections=None, surge_items=None, metadata=None, today=None, project_first=True):
         captured["items"] = items
         captured["metadata"] = metadata or {}
         captured["project_first"] = project_first
@@ -564,7 +586,7 @@ def test_run_pipeline_applies_theme_cooldown_from_previous_day(monkeypatch, tmp_
         captured["blocked_themes"] = kwargs.get("blocked_themes")
         return items[:1]
 
-    def fake_build_digest_card(*, items, secondary_items=None, surge_items=None, metadata=None, today=None, project_first=True):
+    def fake_build_digest_card(*, items, secondary_items=None, tech_items=None, builder_sections=None, surge_items=None, metadata=None, today=None, project_first=True):
         captured["items"] = items
         return {"msg_type": "interactive", "card": {"header": {"title": {"content": "test"}}}}
 
@@ -583,3 +605,54 @@ def test_run_pipeline_applies_theme_cooldown_from_previous_day(monkeypatch, tmp_
     run_pipeline(settings=settings)
 
     assert captured["blocked_themes"] == {"claude_code", "mcp"}
+
+
+def test_run_pipeline_builds_single_daily_brief_with_tech_and_builder_tracks(monkeypatch, tmp_path: Path):
+    monkeypatch.chdir(tmp_path)
+    monkeypatch.setenv("GITHUB_TOKEN", "ghs_test")
+    monkeypatch.setenv("QWEN_API_KEY", "qwen_test")
+    monkeypatch.setenv("FEISHU_WEBHOOK_URL", "https://example.com/hook")
+
+    captured = {}
+
+    def fake_build_digest_card(*, items, tech_items=None, builder_sections=None, surge_items=None, metadata=None, today=None, project_first=True):
+        captured["items"] = items
+        captured["tech_items"] = tech_items
+        captured["builder_sections"] = builder_sections
+        return {"msg_type": "interactive", "card": {"header": {"title": {"content": "test"}}}}
+
+    monkeypatch.setattr(main_module, "TrendingCollector", _EmptyCollector)
+    monkeypatch.setattr(main_module, "OSSInsightCollector", _EmptyCollector)
+    monkeypatch.setattr(main_module, "RepoCollector", _GoodCollector)
+    monkeypatch.setattr(main_module, "SkillCollector", _EmptyCollector)
+    monkeypatch.setattr(main_module, "DiscussionCollector", _EmptyCollector)
+    monkeypatch.setattr(main_module, "IssuesPrsCollector", _EmptyCollector)
+    monkeypatch.setattr(main_module, "BuzzingCollector", lambda *args, **kwargs: type("Buzzing", (), {"collect": lambda self: []})())
+    monkeypatch.setattr(
+        main_module,
+        "fetch_feeds",
+        lambda: {
+            "x": [
+                {
+                    "source": "x",
+                    "name": "Swyx",
+                    "handle": "swyx",
+                    "tweets": [{"url": "https://x.com/swyx/status/1", "text": "Builder thread", "likes": 42, "createdAt": "2026-04-16T00:00:00Z"}],
+                }
+            ],
+            "podcasts": [],
+            "blogs": [],
+            "stats": {"xBuilders": 1, "totalTweets": 1, "podcastEpisodes": 0, "blogPosts": 0},
+            "errors": None,
+        },
+    )
+    monkeypatch.setattr(main_module, "EditorialLLM", _FakeLLM)
+    monkeypatch.setattr(main_module, "build_digest_card", fake_build_digest_card)
+    monkeypatch.setattr(main_module, "send_cards", lambda *args, **kwargs: None)
+
+    settings = Settings.from_env()
+    run_pipeline(settings=settings)
+
+    assert captured["items"]
+    assert captured["tech_items"] == []
+    assert captured["builder_sections"]["x"][0]["title"] == "Swyx"

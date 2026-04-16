@@ -32,6 +32,12 @@ SECTION_ICONS = {
     "discussion": "💬 提案与讨论",
 }
 
+BUILDER_SECTION_LABELS = {
+    "x": "📱 X / Twitter",
+    "podcast": "🎙️ Podcast",
+    "blog": "📝 Blog",
+}
+
 # kind → 画像结构化字段标签
 PROFILE_LABELS = {
     "project":    {"trait": "特点", "capability": "核心能力", "necessity": "引入必要性"},
@@ -95,6 +101,19 @@ def _format_star_tag(item: dict) -> str:
         return f"<text_tag color='neutral'>⭐{stars / 1000:.1f}K</text_tag>"
     elif stars > 0:
         return f"<text_tag color='neutral'>⭐{stars}</text_tag>"
+    return ""
+
+
+def _format_external_heat(item: dict) -> str:
+    external_heat = item.get("external_heat")
+    if not isinstance(external_heat, dict):
+        return ""
+    source_label = str(external_heat.get("source_label") or external_heat.get("source") or "").strip()
+    score = int(external_heat.get("score") or 0)
+    if source_label and score > 0:
+        return f"🌐 {source_label} · {score} 热度"
+    if source_label:
+        return f"🌐 {source_label}"
     return ""
 
 
@@ -192,7 +211,12 @@ def _render_featured_item(item: dict, index: int) -> str:
     lines = [line1]
 
     # 行 2: 看点（一句话）
-    if why_now:
+    external_heat = _format_external_heat(item)
+    if external_heat and why_now:
+        lines.append(f"📌 {_truncate_text(f'{external_heat} · {why_now}', 80)}")
+    elif external_heat:
+        lines.append(f"📌 {_truncate_text(external_heat, 80)}")
+    elif why_now:
         lines.append(f"📌 {_truncate_text(why_now, 80)}")
 
     # 行 3-5: 画像三段分行（有内容才输出）
@@ -216,9 +240,11 @@ def _render_compact_item(item: dict, index: int) -> str:
     url = item.get("url", "")
     badge = _format_star_badge(item)
     badge_suffix = f"  {badge}" if badge else ""
+    external_heat = _format_external_heat(item)
+    heat_suffix = f"  {external_heat}" if external_heat else ""
     if url:
-        return f"**{index}.** [{title}]({url}){badge_suffix}"
-    return f"**{index}.** {title}{badge_suffix}"
+        return f"**{index}.** [{title}]({url}){badge_suffix}{heat_suffix}"
+    return f"**{index}.** {title}{badge_suffix}{heat_suffix}"
 
 
 def _render_skill_item(item: dict, index: int) -> str:
@@ -291,6 +317,50 @@ def _render_discussion_section(items: list[dict]) -> str | None:
     return "\n".join(lines)
 
 
+def _render_tech_pulse_section(items: list[dict]) -> str | None:
+    if not items:
+        return None
+
+    lines = ["**Tech Pulse**", ""]
+    for index, item in enumerate(items, 1):
+        title = item.get("title", "")
+        url = item.get("url", "")
+        source_label = item.get("source_label", item.get("source", "外部来源"))
+        why_now = item.get("why_now", "") or item.get("summary", "")
+        line = f"**{index}.** [{title}]({url})" if url else f"**{index}.** {title}"
+        lines.append(line)
+        lines.append(f"🏷️ {source_label}")
+        if why_now:
+            lines.append(f"▸ {_truncate_text(why_now, 80)}")
+        lines.append("")
+    return "\n".join(lines)
+
+
+def _render_builder_watch_section(sections: dict[str, list[dict]]) -> str | None:
+    if not sections:
+        return None
+
+    lines = ["**Builder Watch**", ""]
+    for key in ("x", "podcast", "blog"):
+        items = sections.get(key) or []
+        if not items:
+            continue
+        lines.append(f"**{BUILDER_SECTION_LABELS.get(key, key.title())}**")
+        for index, item in enumerate(items, 1):
+            title = item.get("title", "")
+            url = item.get("url", "")
+            creator = item.get("creator", "")
+            why_now = item.get("why_now", "") or item.get("summary", "")
+            line = f"**{index}.** [{title}]({url})" if url else f"**{index}.** {title}"
+            lines.append(line)
+            if creator:
+                lines.append(f"🏷️ {creator}")
+            if why_now:
+                lines.append(f"▸ {_truncate_text(why_now, 80)}")
+        lines.append("")
+    return "\n".join(lines)
+
+
 SECTION_RENDERERS = {
     "project": _render_project_section,
     "skill": _render_skill_section,
@@ -314,14 +384,67 @@ def _render_section(section_title: str, items: list[dict]) -> str | None:
 def _build_stats_panel(
     all_items: list[dict],
     metadata: dict,
+    tech_items: list[dict] | None = None,
+    builder_sections: dict[str, list[dict]] | None = None,
 ) -> dict:
     """构建 column_set 三列概览面板"""
     total_count = metadata.get("count", len(all_items))
     selected = len(all_items)
+    tech_count = len(tech_items or [])
+    builder_count = sum(len(items) for items in (builder_sections or {}).values())
 
     # 主题数
     theme_counts = metadata.get("theme_counts", {})
     theme_n = len(theme_counts) if theme_counts else 0
+
+    if not tech_count and not builder_count:
+        return {
+            "tag": "column_set",
+            "flex_mode": "bisect",
+            "background_style": "grey",
+            "horizontal_spacing": "default",
+            "columns": [
+                {
+                    "tag": "column",
+                    "width": "weighted",
+                    "weight": 1,
+                    "vertical_align": "center",
+                    "elements": [
+                        {
+                            "tag": "markdown",
+                            "text_align": "center",
+                            "content": f"**{total_count}**\n候选仓库",
+                        }
+                    ],
+                },
+                {
+                    "tag": "column",
+                    "width": "weighted",
+                    "weight": 1,
+                    "vertical_align": "center",
+                    "elements": [
+                        {
+                            "tag": "markdown",
+                            "text_align": "center",
+                            "content": f"**{selected}**\n今日精选",
+                        }
+                    ],
+                },
+                {
+                    "tag": "column",
+                    "width": "weighted",
+                    "weight": 1,
+                    "vertical_align": "center",
+                    "elements": [
+                        {
+                            "tag": "markdown",
+                            "text_align": "center",
+                            "content": f"**{theme_n}**\n覆盖主题",
+                        }
+                    ],
+                },
+            ],
+        }
 
     return {
         "tag": "column_set",
@@ -338,7 +461,7 @@ def _build_stats_panel(
                     {
                         "tag": "markdown",
                         "text_align": "center",
-                        "content": f"**{total_count}**\n候选仓库",
+                        "content": f"**{selected}**\nGitHub",
                     }
                 ],
             },
@@ -351,7 +474,7 @@ def _build_stats_panel(
                     {
                         "tag": "markdown",
                         "text_align": "center",
-                        "content": f"**{selected}**\n今日精选",
+                        "content": f"**{tech_count}**\nTech Pulse",
                     }
                 ],
             },
@@ -364,7 +487,20 @@ def _build_stats_panel(
                     {
                         "tag": "markdown",
                         "text_align": "center",
-                        "content": f"**{theme_n}**\n覆盖主题",
+                        "content": f"**{builder_count}**\nBuilders",
+                    }
+                ],
+            },
+            {
+                "tag": "column",
+                "width": "weighted",
+                "weight": 1,
+                "vertical_align": "center",
+                "elements": [
+                    {
+                        "tag": "markdown",
+                        "text_align": "center",
+                        "content": f"**{total_count}**\n候选池",
                     }
                 ],
             },
@@ -393,8 +529,8 @@ def _render_footer(today: date | None = None, metadata: dict | None = None) -> s
     total = meta.get("count", 0)
     selected = meta.get("item_count", 0)
     if total and selected:
-        return f"📅 {today.isoformat()}  ·  {total} 候选 → {selected} 精选"
-    return f"📅 {today.isoformat()}"
+        return f"📅 {today.isoformat()}  ·  数据源：GitHub / OSSInsight / Buzzing / Follow Builders  ·  {total} 候选 → {selected} 精选"
+    return f"📅 {today.isoformat()}  ·  数据源：GitHub / OSSInsight / Buzzing / Follow Builders"
 
 
 def _section_order(*, project_first: bool) -> list[str]:
@@ -417,6 +553,8 @@ def build_digest_card(
     *,
     items: list[dict],
     secondary_items: list[dict] | None = None,
+    tech_items: list[dict] | None = None,
+    builder_sections: dict[str, list[dict]] | None = None,
     surge_items: list[dict] | None = None,
     metadata: dict | None = None,
     today: date | None = None,
@@ -455,7 +593,7 @@ def build_digest_card(
 
     # ── 概览面板 ──
     if metadata.get("count"):
-        elements.append(_build_stats_panel(all_items, metadata))
+        elements.append(_build_stats_panel(all_items, metadata, tech_items=tech_items, builder_sections=builder_sections))
     else:
         # 无 metadata 时用文字概览
         elements.append({
@@ -470,7 +608,11 @@ def build_digest_card(
         elements.append({"tag": "markdown", "content": surge_content})
         elements.append({"tag": "hr"})
 
-    # ── 三大分区 ──
+    # ── GitHub Radar ──
+    elements.append({"tag": "markdown", "content": "**GitHub Radar**"})
+    elements.append({"tag": "hr"})
+
+    # ── GitHub 内部分区 ──
     for kind in _section_order(project_first=project_first):
         section_items = grouped.get(kind, [])
         renderer = SECTION_RENDERERS.get(kind)
@@ -482,6 +624,16 @@ def build_digest_card(
         if content is not None:
             elements.append({"tag": "markdown", "content": content})
             elements.append({"tag": "hr"})
+
+    tech_content = _render_tech_pulse_section(tech_items or [])
+    if tech_content is not None:
+        elements.append({"tag": "markdown", "content": tech_content})
+        elements.append({"tag": "hr"})
+
+    builder_content = _render_builder_watch_section(builder_sections or {})
+    if builder_content is not None:
+        elements.append({"tag": "markdown", "content": builder_content})
+        elements.append({"tag": "hr"})
 
     # ── Footer ──
     footer = _render_footer(today, metadata)
@@ -495,7 +647,7 @@ def build_digest_card(
             "header": {
                 "title": {
                     "tag": "plain_text",
-                    "content": f"🔭 GitHub 每日雷达 · {date_str}",
+                    "content": f"🔭 AI Daily Brief · GitHub 每日雷达 · {date_str}",
                 },
                 "template": "indigo",
             },

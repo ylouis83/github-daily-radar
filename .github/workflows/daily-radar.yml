@@ -16,12 +16,7 @@ on:
         default: "0"
         type: string
       skip_radar:
-        description: "Skip GitHub Radar (only run AI Builders)"
-        required: false
-        default: false
-        type: boolean
-      skip_ai_builders:
-        description: "Skip AI Builders digest"
+        description: "Skip Daily Brief run"
         required: false
         default: false
         type: boolean
@@ -82,24 +77,3 @@ jobs:
         with:
           name: daily-radar-artifacts
           path: artifacts/
-
-  ai-builders:
-    if: ${{ always() && !inputs.skip_ai_builders }}
-    runs-on: ubuntu-latest
-    needs: [radar]
-    # Run even if radar was skipped (skip_radar=true) or failed
-    # But don't run if skip_ai_builders=true
-    steps:
-      - uses: actions/checkout@v4
-      - uses: astral-sh/setup-uv@v6
-      - run: uv sync --extra dev
-      - name: Run AI Builders Digest
-        run: uv run python -m github_daily_radar.ai_builders.main
-        env:
-          DRY_RUN: ${{ inputs.dry_run || false }}
-          TIMEZONE: Asia/Shanghai
-          LLM_MODEL: qwen3.5-plus
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          QWEN_API_KEY: ${{ secrets.QWEN_API_KEY }}
-          VOLC_API_KEY: ${{ secrets.VOLC_API_KEY }}
-          FEISHU_WEBHOOK_URL: ${{ secrets.FEISHU_WEBHOOK_URL }}
