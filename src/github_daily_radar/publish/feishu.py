@@ -28,8 +28,8 @@ SECTION_ICONS = {
 
 BUILDER_SECTION_LABELS = {
     "x": "X",
-    "podcast": "Podcast",
-    "blog": "Blog",
+    "podcast": "播客",
+    "blog": "长文",
 }
 
 CARD_SUBTITLE = "GitHub 主榜 · 科技热讯 · Builder Watch"
@@ -374,7 +374,7 @@ def _render_surge_section(surge_items: list[dict]) -> str | None:
     if not surge_items:
         return None
 
-    lines = [f"**Momentum Leaders · {len(surge_items)}**", ""]
+    lines = [f"**热度跃升 · {len(surge_items)}**", ""]
     for i, item in enumerate(surge_items, 1):
         title = item.get("title", "")
         url = item.get("url", "")
@@ -901,9 +901,9 @@ def build_style_review_card(*, today: date | None = None) -> dict:
             "content": (
                 "**X**  ·  <link icon='internet_outlined' url='https://x.com'>X</link>\n"
                 "样式占位：检查人物流的标题节奏。\n\n"
-                "**Podcast**  ·  <link icon='file-link-video_outlined' url='https://www.youtube.com'>YouTube</link>\n"
+                "**播客**  ·  <link icon='file-link-video_outlined' url='https://www.youtube.com'>YouTube</link>\n"
                 "样式占位：检查媒体型条目的密度。\n\n"
-                "**Blog**\n样式占位：检查收尾区的视觉重量。"
+                "**长文**\n样式占位：检查收尾区的视觉重量。"
             ),
         }
     )

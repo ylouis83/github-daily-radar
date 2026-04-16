@@ -153,9 +153,9 @@ def extract_builder_signals(feed_data: dict) -> list[BuilderSignal]:
             BuilderSignal(
                 source="podcast",
                 section="podcast",
-                title=str(podcast.get("title") or podcast.get("name") or "Podcast").strip(),
+                title=str(podcast.get("title") or podcast.get("name") or "播客").strip(),
                 url=url,
-                creator=str(podcast.get("name") or "Podcast").strip(),
+                creator=str(podcast.get("name") or "播客").strip(),
                 summary=str(podcast.get("transcript") or "").strip()[:220],
                 score=0,
                 published_at=str(podcast.get("publishedAt") or "").strip(),
@@ -170,9 +170,9 @@ def extract_builder_signals(feed_data: dict) -> list[BuilderSignal]:
             BuilderSignal(
                 source="blog",
                 section="blog",
-                title=str(blog.get("title") or blog.get("name") or "Blog").strip(),
+                title=str(blog.get("title") or blog.get("name") or "长文").strip(),
                 url=url,
-                creator=str(blog.get("name") or blog.get("author") or "Blog").strip(),
+                creator=str(blog.get("name") or blog.get("author") or "作者").strip(),
                 summary=str(blog.get("description") or blog.get("content") or "").strip()[:220],
                 score=0,
                 published_at=str(blog.get("publishedAt") or "").strip(),

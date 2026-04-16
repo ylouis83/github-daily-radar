@@ -395,10 +395,10 @@ def test_surge_and_builder_subsections_surface_counts():
 
     all_text = _collect_card_text(card)
 
-    assert "**Momentum Leaders · 2**" in all_text
+    assert "**热度跃升 · 2**" in all_text
     assert "**X · 2**" in all_text
-    assert "**Podcast · 1**" in all_text
-    assert "**Blog · 1**" in all_text
+    assert "**播客 · 1**" in all_text
+    assert "**长文 · 1**" in all_text
 
 
 def test_build_digest_card_uses_group_level_source_links_for_single_source_sections():

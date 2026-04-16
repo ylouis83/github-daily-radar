@@ -33,12 +33,12 @@ def test_build_preview_cards_contains_all_three_tracks():
     assert "<text_tag color='blue'>主线</text_tag>" in all_text
     assert "关注主题" in all_text
     assert "延伸速览" in all_text
-    assert "Podcast" in all_text
+    assert "播客" in all_text
     assert "Video / Podcast" not in all_text
-    assert "**Momentum Leaders · 2**" in all_text
+    assert "**热度跃升 · 2**" in all_text
     assert "**X · 2**" in all_text
-    assert "**Podcast · 1**" in all_text
-    assert "**Blog · 1**" in all_text
+    assert "**播客 · 1**" in all_text
+    assert "**长文 · 1**" in all_text
     assert "<link icon='platform_outlined' url='https://github.com'>GitHub</link>" in all_text
     assert "<link icon='file-link-video_outlined' url='https://www.youtube.com'>YouTube</link>" in all_text
     assert "2026-04-16" in all_text
