@@ -1,0 +1,33 @@
+name: preview-card
+
+on:
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Build preview card without sending to Feishu"
+        required: false
+        default: false
+        type: boolean
+
+permissions:
+  contents: read
+
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+      - run: uv sync --extra dev
+      - run: uv run python -m github_daily_radar.preview
+        env:
+          PREVIEW_DRY_RUN: ${{ inputs.dry_run || false }}
+          TIMEZONE: Asia/Shanghai
+          FEISHU_WEBHOOK_URL: ${{ secrets.FEISHU_WEBHOOK_URL }}
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: preview-card-artifacts
+          path: artifacts/preview-card.json

@@ -18,3 +18,10 @@ def test_state_sync_script_uses_worktree():
 def test_workflow_no_longer_runs_ai_builders_as_separate_job():
     workflow = Path(".github/workflows/daily-radar.yml").read_text(encoding="utf-8")
     assert "ai-builders:" not in workflow
+
+
+def test_preview_workflow_dispatch_exists():
+    workflow = Path(".github/workflows/preview-card.yml").read_text(encoding="utf-8")
+    assert "workflow_dispatch:" in workflow
+    assert "uv run python -m github_daily_radar.preview" in workflow
+    assert "FEISHU_WEBHOOK_URL" in workflow
