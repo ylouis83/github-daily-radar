@@ -82,6 +82,17 @@ DEFAULT_SKILL_REPO_QUERIES = [
     "design system agent coding in:name,description stars:>50 sort:stars-desc",
     "awesome design AI in:name,description stars:>50 sort:stars-desc",
 ]
+DEFAULT_CORE_SKILL_CODE_QUERIES = [
+    "filename:SKILL.md path:skills",
+    "filename:CLAUDE.md NOT repo:anthropics/claude-code",
+    "filename:AGENTS.md NOT repo:openai/openai-agents-python",
+    "filename:mcp.json",
+]
+DEFAULT_CORE_SKILL_REPO_QUERIES = [
+    "claude skills agent prompt in:name,description stars:>50 sort:stars-desc",
+    "mcp server tool in:name,description stars:>50 sort:stars-desc",
+    "agent workflow prompt in:name,description stars:>50 sort:stars-desc",
+]
 DEFAULT_SKILL_MIN_STARS = 80
 DEFAULT_PROJECT_MIN_STARS = 120
 DEFAULT_SKILL_SHAPE_FLOOR = 3
@@ -414,6 +425,33 @@ def cycle_queries(queries: list[str], *, limit: int, seed: int = 0) -> list[str]
     return rotated[:limit]
 
 
+def _dedupe_queries(queries: list[str]) -> list[str]:
+    seen: set[str] = set()
+    ordered: list[str] = []
+    for query in queries:
+        if not isinstance(query, str) or not query.strip():
+            continue
+        if query in seen:
+            continue
+        seen.add(query)
+        ordered.append(query)
+    return ordered
+
+
+def _build_query_plan(
+    queries: list[str],
+    *,
+    core_queries: list[str],
+    rotating_limit: int,
+    seed: int = 0,
+) -> list[str]:
+    cleaned = _dedupe_queries(queries)
+    pinned = [query for query in core_queries if query in cleaned]
+    tail_pool = [query for query in cleaned if query not in pinned]
+    rotated_tail = cycle_queries(tail_pool, limit=rotating_limit, seed=seed)
+    return _dedupe_queries([*pinned, *rotated_tail])
+
+
 def build_repo_queries(*, now: datetime | None = None, days_back: int | None = 7) -> list[str]:
     date_clause = _date_clause(field="pushed", days_back=days_back, now=now)
     topics = load_topics()
@@ -459,6 +497,33 @@ def build_skill_code_queries() -> list[str]:
 def build_skill_repo_queries(*, now: datetime | None = None, days_back: int | None = None) -> list[str]:
     date_clause = _date_clause(field="pushed", days_back=days_back, now=now)
     return [f"{query}{date_clause}".strip() for query in load_skill_repo_queries()]
+
+
+def build_skill_code_query_plan(*, seed: int = 0, rotating_limit: int = 1) -> list[str]:
+    return _build_query_plan(
+        build_skill_code_queries(),
+        core_queries=DEFAULT_CORE_SKILL_CODE_QUERIES,
+        rotating_limit=rotating_limit,
+        seed=seed,
+    )
+
+
+def build_skill_repo_query_plan(
+    *,
+    now: datetime | None = None,
+    days_back: int | None = None,
+    seed: int = 0,
+    rotating_limit: int = 1,
+) -> list[str]:
+    return _build_query_plan(
+        build_skill_repo_queries(now=now, days_back=days_back),
+        core_queries=[
+            f"{query}{_date_clause(field='pushed', days_back=days_back, now=now)}".strip()
+            for query in DEFAULT_CORE_SKILL_REPO_QUERIES
+        ],
+        rotating_limit=rotating_limit,
+        seed=seed,
+    )
 
 
 def _repo_clause(repos: list[str]) -> str:

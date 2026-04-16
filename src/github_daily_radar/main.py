@@ -1,6 +1,7 @@
 import argparse
 from collections import Counter
 from datetime import date, datetime, timedelta, timezone
+import json
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
@@ -11,10 +12,9 @@ from github_daily_radar.discovery import (
     build_discussion_queries,
     build_issue_pr_queries,
     build_repo_queries,
-    build_skill_code_queries,
-    build_skill_repo_queries,
+    build_skill_code_query_plan,
+    build_skill_repo_query_plan,
     build_star_growth_queries,
-    cycle_queries,
     load_ossinsight_collection_name_keywords,
     load_ossinsight_collection_name_excludes,
     load_ossinsight_collection_period,
@@ -71,6 +71,89 @@ def should_update_state(*, dry_run: bool, alert_only: bool = False) -> bool:
 def product_today(*, timezone_name: str, now: datetime | None = None) -> date:
     moment = now or datetime.now(timezone.utc)
     return moment.astimezone(ZoneInfo(timezone_name)).date()
+
+
+def _is_reliable_star_baseline_source(source_query: str | None) -> bool:
+    if not isinstance(source_query, str) or not source_query:
+        return False
+    return not source_query.startswith("ossinsight:")
+
+
+def _build_recent_skill_star_baselines(state: StateStore, *, today: date, window_days: int = 7) -> dict[str, int]:
+    baselines: dict[str, tuple[date, int]] = {}
+    jsonl_path = state.base_dir / "history.jsonl"
+    if jsonl_path.exists():
+        for raw_line in jsonl_path.read_text(encoding="utf-8").splitlines():
+            raw_line = raw_line.strip()
+            if not raw_line:
+                continue
+            try:
+                record = json.loads(raw_line)
+            except json.JSONDecodeError:
+                continue
+            if record.get("event") not in {"seen", "published"}:
+                continue
+            source_query = record.get("source_query")
+            if not _is_reliable_star_baseline_source(source_query):
+                continue
+            candidate_id = record.get("candidate_id")
+            if not isinstance(candidate_id, str) or ":" not in candidate_id:
+                continue
+            repo_full_name = candidate_id.split(":", 1)[1]
+            if "/" not in repo_full_name:
+                continue
+            try:
+                seen_date = datetime.fromisoformat(record.get("date", "")).date()
+            except ValueError:
+                continue
+            if (today - seen_date).days > window_days:
+                continue
+            metrics = record.get("metrics") or {}
+            if not isinstance(metrics, dict):
+                continue
+            try:
+                stars = max(0, int(metrics.get("stars", 0)))
+            except (TypeError, ValueError):
+                continue
+            previous = baselines.get(repo_full_name)
+            if previous is None or seen_date > previous[0]:
+                baselines[repo_full_name] = (seen_date, stars)
+        if baselines:
+            return {repo_full_name: stars for repo_full_name, (_, stars) in baselines.items()}
+
+    history = state.read_history()
+    for entry in history.get("published", []):
+        source_query = entry.get("source_query")
+        if not _is_reliable_star_baseline_source(source_query):
+            continue
+        candidate_id = entry.get("candidate_id")
+        if not isinstance(candidate_id, str) or ":" not in candidate_id:
+            continue
+        repo_full_name = candidate_id.split(":", 1)[1]
+        if "/" not in repo_full_name:
+            continue
+        try:
+            seen_date = datetime.fromisoformat(entry.get("date", "")).date()
+        except ValueError:
+            continue
+        if (today - seen_date).days > window_days:
+            continue
+        metrics = entry.get("metrics") or {}
+        if not isinstance(metrics, dict):
+            continue
+        try:
+            stars = max(0, int(metrics.get("stars", 0)))
+        except (TypeError, ValueError):
+            continue
+        previous = baselines.get(repo_full_name)
+        if previous is None or seen_date > previous[0]:
+            baselines[repo_full_name] = (seen_date, stars)
+
+    return {repo_full_name: stars for repo_full_name, (_, stars) in baselines.items()}
+
+
+def _should_bypass_skill_cooldown(candidate) -> bool:
+    return candidate.kind == "skill" and candidate.metrics.star_growth_7d > 1000
 
 
 def build_card_metadata(metadata: dict) -> dict:
@@ -188,8 +271,8 @@ def run_pipeline(settings: Settings, alert_only: bool = False) -> dict:
     seed_repos = load_seed_repos()
     skill_seed_repos = load_skill_seed_repos()
     skill_query_seed = today.toordinal()
-    skill_code_queries = cycle_queries(build_skill_code_queries(), limit=2, seed=skill_query_seed)
-    skill_repo_queries = cycle_queries(build_skill_repo_queries(days_back=30), limit=3, seed=skill_query_seed + 1)
+    skill_code_queries = build_skill_code_query_plan(seed=skill_query_seed, rotating_limit=1)
+    skill_repo_queries = build_skill_repo_query_plan(days_back=30, seed=skill_query_seed + 1, rotating_limit=1)
     skill_min_stars = load_skill_min_stars()
     project_min_stars = load_project_min_stars()
     skill_shape_floor = load_skill_shape_floor()
@@ -217,6 +300,7 @@ def run_pipeline(settings: Settings, alert_only: bool = False) -> dict:
     # 构建 skill 7 天 cooldown 集：最近 7 天已发布的 skill repos 不再重复出现
     skill_cooldown_ids: set[str] = set()
     history = state.read_history()
+    previous_skill_stars_by_repo = _build_recent_skill_star_baselines(state, today=today)
     cooldown_cutoff = today - timedelta(days=7)
     for entry in history.get("published", []):
         if entry.get("kind") in ("skill", "project"):
@@ -257,6 +341,7 @@ def run_pipeline(settings: Settings, alert_only: bool = False) -> dict:
                     top_n=skill_top_n,
                     per_repo_cap=skill_per_repo_cap,
                     cooldown_repo_ids=skill_cooldown_ids,
+                    previous_stars_by_repo=previous_skill_stars_by_repo,
                 ),
                 skill_search_cost,
             ),
@@ -308,7 +393,7 @@ def run_pipeline(settings: Settings, alert_only: bool = False) -> dict:
     filtered = []
     for candidate in candidates:
         if state.is_in_cooldown(candidate.candidate_id, settings.cooldown_days, today):
-            if should_reenter(candidate):
+            if _should_bypass_skill_cooldown(candidate) or should_reenter(candidate):
                 filtered.append(candidate)
         else:
             filtered.append(candidate)

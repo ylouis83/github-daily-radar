@@ -92,11 +92,11 @@ def test_skill_collector_collects_candidates():
                     "seed_skill_0": {
                         "nameWithOwner": "owner/seed-skill",
                         "url": "https://github.com/owner/seed-skill",
-                        "description": "seed skill repo",
+                        "description": "seed skill repo with prompt workflow patterns",
                         "createdAt": "2026-03-20T00:00:00Z",
                         "updatedAt": "2026-04-02T00:00:00Z",
                         "pushedAt": "2026-04-02T00:00:00Z",
-                        "stargazerCount": 20,
+                        "stargazerCount": 120,
                         "forkCount": 3,
                         "repositoryTopics": {"nodes": [{"topic": {"name": "agent"}}]},
                         "releases": {"nodes": [{"publishedAt": "2026-04-01T00:00:00Z", "name": "v1.0"}]},
@@ -117,7 +117,8 @@ def test_skill_collector_collects_candidates():
 
     assert client.calls[0][0] == "code"
     assert client.calls[1][0] == "repo"
-    assert len(client.calls) == 2
-    assert len(items) == 1
-    assert {item.repo_full_name for item in items} == {"owner/shared-skill"}
+    assert client.calls[2][0] == "graphql"
+    assert len(client.calls) == 3
+    assert len(items) == 2
+    assert {item.repo_full_name for item in items} == {"owner/shared-skill", "owner/seed-skill"}
     assert all(item.kind == "skill" for item in items)

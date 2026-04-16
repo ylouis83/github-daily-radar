@@ -72,6 +72,13 @@ _FOCUS_PATTERNS: list[tuple[tuple[str, ...], str]] = [
 
 def score_candidate(candidate: Candidate) -> float:
     metrics = candidate.metrics
+    if candidate.kind == "skill":
+        return (
+            log1p(metrics.star_growth_7d) * 6.0
+            + log1p(metrics.stars) * 1.2
+            + log1p(metrics.forks) * 0.3
+            + log1p(metrics.comments + metrics.reactions) * 0.2
+        )
     return (
         log1p(metrics.stars) * 0.6
         + log1p(metrics.forks) * 0.3

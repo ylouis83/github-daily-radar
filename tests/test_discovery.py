@@ -4,7 +4,9 @@ from pathlib import Path
 from github_daily_radar.discovery import (
     build_discussion_queries,
     build_issue_pr_queries,
+    build_skill_code_query_plan,
     build_repo_queries,
+    build_skill_repo_query_plan,
     build_skill_queries,
     cycle_queries,
     load_ossinsight_collection_name_keywords,
@@ -178,6 +180,32 @@ def test_cycle_queries_rotates_a_daily_subset():
     assert cycle_queries(queries, limit=2, seed=0) == ["q1", "q2"]
     assert cycle_queries(queries, limit=2, seed=1) == ["q2", "q3"]
     assert cycle_queries(queries, limit=2, seed=4) == ["q5", "q1"]
+
+
+def test_skill_query_plans_keep_core_queries_pinned():
+    instant = datetime(2026, 4, 2, 12, 0, tzinfo=timezone.utc)
+    code_queries = build_skill_code_query_plan(seed=3, rotating_limit=1)
+    repo_queries = build_skill_repo_query_plan(now=instant, days_back=30, seed=4, rotating_limit=1)
+
+    assert "filename:SKILL.md path:skills" in code_queries
+    assert "filename:CLAUDE.md NOT repo:anthropics/claude-code" in code_queries
+    assert "filename:AGENTS.md NOT repo:openai/openai-agents-python" in code_queries
+    assert "filename:mcp.json" in code_queries
+    assert len(code_queries) == 5
+
+    assert (
+        "claude skills agent prompt in:name,description stars:>50 sort:stars-desc pushed:>2026-03-03"
+        in repo_queries
+    )
+    assert (
+        "mcp server tool in:name,description stars:>50 sort:stars-desc pushed:>2026-03-03"
+        in repo_queries
+    )
+    assert (
+        "agent workflow prompt in:name,description stars:>50 sort:stars-desc pushed:>2026-03-03"
+        in repo_queries
+    )
+    assert len(repo_queries) == 4
 
 
 def test_query_builders_stay_within_boolean_operator_limits():

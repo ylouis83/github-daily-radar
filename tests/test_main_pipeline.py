@@ -155,6 +155,35 @@ class _GoodSkillCollector:
         ]
 
 
+class _HotCooldownSkillCollector:
+    name = "skills"
+
+    def __init__(self, *args, **kwargs) -> None:
+        pass
+
+    def collect(self):
+        return [
+            Candidate(
+                candidate_id="skill:owner/skill",
+                kind="skill",
+                source_query="filename:SKILL.md path:skills",
+                title="owner/skill",
+                url="https://github.com/owner/skill",
+                repo_full_name="owner/skill",
+                author="owner",
+                created_at="2026-04-01T00:00:00Z",
+                updated_at="2026-04-16T00:00:00Z",
+                body_excerpt="skill",
+                topics=["agent"],
+                labels=[],
+                metrics=CandidateMetrics(stars=2600, forks=40, star_growth_7d=1400),
+                raw_signals={},
+                rule_scores={},
+                dedupe_key="owner/skill",
+            )
+        ]
+
+
 class _BadCollector:
     name = "skills"
 
@@ -605,6 +634,108 @@ def test_run_pipeline_applies_theme_cooldown_from_previous_day(monkeypatch, tmp_
     run_pipeline(settings=settings)
 
     assert captured["blocked_themes"] == {"claude_code", "mcp"}
+
+
+def test_build_recent_skill_star_baselines_ignores_unreliable_ossinsight_records(tmp_path: Path):
+    state_dir = tmp_path / "artifacts" / "state"
+    state_dir.mkdir(parents=True, exist_ok=True)
+    (state_dir / "history.json").write_text(
+        json.dumps({"published": [], "candidate_index": {}, "run_summaries": []}, ensure_ascii=False),
+        encoding="utf-8",
+    )
+    (state_dir / "history.jsonl").write_text(
+        "\n".join(
+            [
+                json.dumps(
+                    {
+                        "candidate_id": "project:obra/superpowers",
+                        "date": "2026-04-15",
+                        "event": "seen",
+                        "source_query": "ossinsight:collection:foo",
+                        "metrics": {"stars": 2260},
+                    },
+                    ensure_ascii=False,
+                ),
+                json.dumps(
+                    {
+                        "candidate_id": "skill:refly-ai/refly",
+                        "date": "2026-04-15",
+                        "event": "seen",
+                        "source_query": "claude skills agent prompt in:name,description",
+                        "metrics": {"stars": 7216},
+                    },
+                    ensure_ascii=False,
+                ),
+            ]
+        )
+        + "\n",
+        encoding="utf-8",
+    )
+
+    baselines = main_module._build_recent_skill_star_baselines(
+        main_module.StateStore(base_dir=state_dir),
+        today=datetime(2026, 4, 16, tzinfo=timezone.utc).date(),
+    )
+
+    assert baselines == {"refly-ai/refly": 7216}
+
+
+def test_run_pipeline_allows_super_growth_skill_to_bypass_global_cooldown(monkeypatch, tmp_path: Path):
+    monkeypatch.chdir(tmp_path)
+    monkeypatch.setenv("GITHUB_TOKEN", "ghs_test")
+    monkeypatch.setenv("QWEN_API_KEY", "qwen_test")
+    monkeypatch.setenv("FEISHU_WEBHOOK_URL", "https://example.com/hook")
+
+    history_dir = Path("artifacts/state")
+    history_dir.mkdir(parents=True, exist_ok=True)
+    (history_dir / "history.json").write_text(
+        json.dumps(
+            {
+                "published": [
+                    {
+                        "candidate_id": "skill:owner/skill",
+                        "date": "2026-04-15",
+                        "kind": "skill",
+                        "title": "owner/skill",
+                        "metrics": {"stars": 1200},
+                    }
+                ],
+                "candidate_index": {
+                    "skill:owner/skill": {
+                        "candidate_id": "skill:owner/skill",
+                        "last_published_at": "2026-04-15",
+                        "last_seen_at": "2026-04-15",
+                        "last_seen_metrics": {"stars": 1200},
+                    }
+                },
+                "run_summaries": [],
+            },
+            ensure_ascii=False,
+        ),
+        encoding="utf-8",
+    )
+
+    captured = {}
+
+    def fake_build_digest_card(*, items, secondary_items=None, tech_items=None, builder_sections=None, surge_items=None, metadata=None, today=None, project_first=True):
+        captured["items"] = items
+        return {"msg_type": "interactive", "card": {"header": {"title": {"content": "test"}}}}
+
+    monkeypatch.setattr(main_module, "TrendingCollector", _EmptyCollector)
+    monkeypatch.setattr(main_module, "OSSInsightCollector", _EmptyCollector)
+    monkeypatch.setattr(main_module, "RepoCollector", _EmptyCollector)
+    monkeypatch.setattr(main_module, "SkillCollector", _HotCooldownSkillCollector)
+    monkeypatch.setattr(main_module, "DiscussionCollector", _EmptyCollector)
+    monkeypatch.setattr(main_module, "IssuesPrsCollector", _EmptyCollector)
+    monkeypatch.setattr(main_module, "EditorialLLM", _FakeLLM)
+    monkeypatch.setattr(main_module, "build_digest_card", fake_build_digest_card)
+    monkeypatch.setattr(main_module, "send_cards", lambda *args, **kwargs: None)
+
+    settings = Settings.from_env()
+    result = run_pipeline(settings=settings)
+
+    assert result["count"] == 1
+    assert [item["title"] for item in captured["items"]] == ["owner/skill"]
 
 
 def test_run_pipeline_builds_single_daily_brief_with_tech_and_builder_tracks(monkeypatch, tmp_path: Path):

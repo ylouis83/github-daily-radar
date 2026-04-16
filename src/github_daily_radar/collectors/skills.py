@@ -5,7 +5,11 @@ from math import log1p
 
 from github_daily_radar.collectors.base import Collector
 from github_daily_radar.models import Candidate
-from github_daily_radar.normalize.candidates import candidate_from_code_search, candidate_from_repo_search
+from github_daily_radar.normalize.candidates import (
+    candidate_from_code_search,
+    candidate_from_graphql_repo,
+    candidate_from_repo_search,
+)
 
 
 logger = logging.getLogger(__name__)
@@ -37,6 +41,52 @@ _SKILL_TEXT_HINTS = (
     "codex",
     "automation",
 )
+_SEED_REPO_ALIAS_PREFIX = "seed_skill_"
+_SUPER_GROWTH_COOLDOWN_BYPASS = 1000
+_EXCLUDED_SKILL_REPOS = {
+    "liyupi/ai-guide",
+    "AgnosticUI/agnosticui",
+}
+
+
+def _seed_repo_query(seed_repos: list[str]) -> str:
+    repo_blocks: list[str] = []
+    for index, full_name in enumerate(seed_repos):
+        if "/" not in full_name:
+            continue
+        owner, name = full_name.split("/", 1)
+        repo_blocks.append(
+            f'''
+  {_SEED_REPO_ALIAS_PREFIX}{index}: repository(owner: "{owner}", name: "{name}") {{
+    nameWithOwner
+    url
+    description
+    createdAt
+    updatedAt
+    pushedAt
+    stargazerCount
+    forkCount
+    owner {{
+      login
+    }}
+    repositoryTopics(first: 20) {{
+      nodes {{
+        topic {{
+          name
+        }}
+      }}
+    }}
+    releases(first: 1, orderBy: {{field: CREATED_AT, direction: DESC}}) {{
+      nodes {{
+        publishedAt
+        name
+      }}
+    }}
+  }}'''
+        )
+    return "query SeedSkillRepos {\n" + "\n".join(repo_blocks) + "\n}"
+
+
 class SkillCollector(Collector):
     name = "skills"
 
@@ -53,6 +103,7 @@ class SkillCollector(Collector):
         top_n: int = 20,
         per_repo_cap: int = 1,
         cooldown_repo_ids: set[str] | None = None,
+        previous_stars_by_repo: dict[str, int] | None = None,
     ) -> None:
         super().__init__(client)
         self.code_queries = code_queries
@@ -64,6 +115,11 @@ class SkillCollector(Collector):
         self.top_n = max(1, min(20, top_n))
         self.per_repo_cap = max(1, per_repo_cap)
         self.cooldown_repo_ids = cooldown_repo_ids or set()
+        self.previous_stars_by_repo = {
+            repo: max(0, int(stars))
+            for repo, stars in (previous_stars_by_repo or {}).items()
+            if isinstance(repo, str) and repo.strip()
+        }
 
     def _text_blob(self, candidate: Candidate) -> str:
         raw_signals = candidate.raw_signals or {}
@@ -104,13 +160,21 @@ class SkillCollector(Collector):
 
         return score
 
-    def _project_scale_score(self, candidate: Candidate) -> float:
+    def _is_seed_candidate(self, candidate: Candidate) -> bool:
+        return bool((candidate.raw_signals or {}).get("seed_repo"))
+
+    def _is_noise_candidate(self, candidate: Candidate) -> bool:
+        if self._is_seed_candidate(candidate):
+            return False
+        return candidate.repo_full_name in _EXCLUDED_SKILL_REPOS
+
+    def _hotness_score(self, candidate: Candidate) -> float:
         metrics = candidate.metrics
         return (
-            log1p(max(metrics.stars, 0)) * 8.0
-            + log1p(max(metrics.forks, 0)) * 2.5
-            + log1p(max(metrics.star_growth_7d, 0)) * 6.0
-            + log1p(max(metrics.reactions + metrics.comments, 0)) * 1.5
+            log1p(max(metrics.star_growth_7d, 0)) * 24.0
+            + log1p(max(metrics.stars, 0)) * 6.0
+            + log1p(max(metrics.forks, 0)) * 1.5
+            + log1p(max(metrics.reactions + metrics.comments, 0)) * 0.8
         )
 
     def _admit_candidate(self, *, shape_score: float, candidate: Candidate) -> bool:
@@ -128,6 +192,9 @@ class SkillCollector(Collector):
         # Code search hit (matched a skill fingerprint file) → always skill
         if raw_signals.get("code_search_item"):
             return "skill"
+        # Curated seed repos are part of the skill ecosystem by definition.
+        if raw_signals.get("seed_repo"):
+            return "skill"
         # Repos with meaningful skill/MCP shape signals stay as skill;
         # shape_score >= floor means file hints or multiple text hints matched
         if shape_score >= self.skill_shape_floor:
@@ -139,11 +206,65 @@ class SkillCollector(Collector):
         return "skill"
 
     def _rank_score(self, *, candidate: Candidate, shape_score: float, scale_score: float, kind: str) -> float:
-        star_bonus = 2.0 if candidate.metrics.stars >= self.skill_min_stars else 0.0
-        project_bonus = 5.0 if kind == "project" else 0.0
+        star_bonus = 1.5 if candidate.metrics.stars >= self.skill_min_stars else 0.0
+        project_bonus = 1.0 if kind == "project" else 0.0
         code_bonus = 2.0 if (candidate.raw_signals or {}).get("code_search_item") else 0.0
-        recency_bonus = log1p(max(candidate.metrics.star_growth_7d, 0)) * 2.0
-        return shape_score * 10.0 + scale_score + star_bonus + project_bonus + code_bonus + recency_bonus
+        seed_bonus = 1.5 if (candidate.raw_signals or {}).get("seed_repo") else 0.0
+        return scale_score + shape_score * 2.0 + star_bonus + project_bonus + code_bonus + seed_bonus
+
+    def _apply_observed_star_growth(self, candidate: Candidate) -> None:
+        if candidate.metrics.star_growth_7d > 0:
+            return
+        previous_stars = self.previous_stars_by_repo.get(candidate.repo_full_name)
+        if previous_stars is None:
+            return
+        candidate.metrics.star_growth_7d = max(0, candidate.metrics.stars - previous_stars)
+        candidate.rule_scores = {
+            **candidate.rule_scores,
+            "observed_star_growth_7d": float(candidate.metrics.star_growth_7d),
+        }
+
+    def _cooldown_applies(self, candidate: Candidate) -> bool:
+        if candidate.metrics.star_growth_7d > _SUPER_GROWTH_COOLDOWN_BYPASS:
+            return False
+        if candidate.candidate_id in self.cooldown_repo_ids:
+            return True
+        if candidate.repo_full_name in self.cooldown_repo_ids:
+            return True
+        return False
+
+    def _collect_seed_repo_candidates(self, seen: set[str]) -> list[Candidate]:
+        if not self.seed_repos:
+            return []
+        query = _seed_repo_query(self.seed_repos)
+        if query.count("repository(") == 0:
+            return []
+        try:
+            payload = self.client.graphql(query)
+        except Exception as exc:  # noqa: BLE001 - seed repo enrichment should not block skill discovery
+            logger.warning("SkillCollector seed repo graphql failed: %s", exc, exc_info=True)
+            return []
+
+        data = payload.get("data") or {}
+        candidates: list[Candidate] = []
+        for index, seed_repo in enumerate(self.seed_repos):
+            item = data.get(f"{_SEED_REPO_ALIAS_PREFIX}{index}")
+            if not isinstance(item, dict):
+                continue
+            candidate = candidate_from_graphql_repo(item=item, source_query=f"seed_repo:{seed_repo}")
+            candidate.raw_signals = {
+                **candidate.raw_signals,
+                "seed_repo": seed_repo,
+            }
+            candidate.rule_scores = {
+                **candidate.rule_scores,
+                "seed_repo_hit": 1.0,
+            }
+            if candidate.repo_full_name in seen:
+                continue
+            seen.add(candidate.repo_full_name)
+            candidates.append(candidate)
+        return candidates
 
     def _dedupe_best_repo(self, candidates: list[Candidate]) -> list[Candidate]:
         best_by_repo: dict[str, Candidate] = {}
@@ -207,6 +328,11 @@ class SkillCollector(Collector):
                 continue
             for item in payload.get("items", []):
                 candidate = candidate_from_code_search(item=item, source_query=query)
+                if candidate.repo_full_name in self.seed_repos:
+                    candidate.raw_signals = {
+                        **candidate.raw_signals,
+                        "seed_repo": candidate.repo_full_name,
+                    }
                 if candidate.repo_full_name in seen:
                     continue
                 seen.add(candidate.repo_full_name)
@@ -220,25 +346,32 @@ class SkillCollector(Collector):
                 continue
             for item in payload.get("items", []):
                 candidate = candidate_from_repo_search(item=item, source_query=query, kind="skill")
+                if candidate.repo_full_name in self.seed_repos:
+                    candidate.raw_signals = {
+                        **candidate.raw_signals,
+                        "seed_repo": candidate.repo_full_name,
+                    }
                 if candidate.repo_full_name in seen:
                     continue
                 seen.add(candidate.repo_full_name)
                 candidates.append(candidate)
 
+        candidates.extend(self._collect_seed_repo_candidates(seen))
+
         qualified: list[Candidate] = []
         for candidate in candidates:
-            # 7 天 cooldown：最近已发布的不再出现
-            if candidate.candidate_id in self.cooldown_repo_ids:
-                continue
-            if candidate.repo_full_name in self.cooldown_repo_ids:
+            self._apply_observed_star_growth(candidate)
+            if self._is_noise_candidate(candidate):
                 continue
             shape_score = self._skill_shape_score(candidate)
-            scale_score = self._project_scale_score(candidate)
+            scale_score = self._hotness_score(candidate)
             if not self._admit_candidate(shape_score=shape_score, candidate=candidate):
                 continue
 
             kind = self._classify_kind(candidate=candidate, shape_score=shape_score, scale_score=scale_score)
             candidate.kind = kind
+            if self._cooldown_applies(candidate):
+                continue
             candidate.final_score = self._rank_score(
                 candidate=candidate,
                 shape_score=shape_score,

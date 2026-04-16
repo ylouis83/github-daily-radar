@@ -1,5 +1,5 @@
 from github_daily_radar.models import Candidate, CandidateMetrics
-from github_daily_radar.summarize.digest import build_display_items, choose_daily_limit, select_top_items
+from github_daily_radar.summarize.digest import build_display_items, choose_daily_limit, score_candidate, select_top_items
 
 
 def _digest_item(kind: str, title: str, *, score: float, repo: str | None = None, editorial_rank: int | None = None) -> dict:
@@ -184,6 +184,47 @@ def test_build_display_items_creates_distinct_project_profiles():
     assert "MCP" in items[1]["summary"] or "mcp" in items[1]["summary"].lower()
     assert "AI 编程" in items[0]["summary"]
     assert items[0]["why_now"] == "近 7 天 +250⭐"
+
+
+def test_score_candidate_prioritizes_skill_growth_before_total_stars():
+    hot_skill = Candidate(
+        candidate_id="skill:owner/hot-skill",
+        kind="skill",
+        source_query="agent workflow prompt",
+        title="owner/hot-skill",
+        url="https://github.com/owner/hot-skill",
+        repo_full_name="owner/hot-skill",
+        author="owner",
+        created_at="2026-04-01T00:00:00Z",
+        updated_at="2026-04-02T00:00:00Z",
+        body_excerpt="skill",
+        topics=["agent"],
+        labels=[],
+        metrics=CandidateMetrics(stars=2600, forks=40, star_growth_7d=1700),
+        raw_signals={},
+        rule_scores={},
+        dedupe_key="owner/hot-skill",
+    )
+    stable_skill = Candidate(
+        candidate_id="skill:owner/stable-skill",
+        kind="skill",
+        source_query="agent workflow prompt",
+        title="owner/stable-skill",
+        url="https://github.com/owner/stable-skill",
+        repo_full_name="owner/stable-skill",
+        author="owner",
+        created_at="2026-04-01T00:00:00Z",
+        updated_at="2026-04-02T00:00:00Z",
+        body_excerpt="skill",
+        topics=["agent"],
+        labels=[],
+        metrics=CandidateMetrics(stars=4000, forks=50, star_growth_7d=50),
+        raw_signals={},
+        rule_scores={},
+        dedupe_key="owner/stable-skill",
+    )
+
+    assert score_candidate(hot_skill) > score_candidate(stable_skill)
 
 
 def test_choose_daily_limit_is_dynamic_between_10_and_20():
