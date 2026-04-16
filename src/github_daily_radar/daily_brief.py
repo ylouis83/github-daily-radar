@@ -14,6 +14,7 @@ _BUILDER_SECTION_LIMITS = {
     "podcast": 2,
     "blog": 2,
 }
+_TECH_PULSE_LIMIT = 5
 
 
 def _extract_repo_full_name(*, title: str, url: str) -> str | None:
@@ -109,7 +110,7 @@ def assemble_daily_brief(
         for item in github_radar
         if isinstance(item.get("repo_full_name"), str) and item.get("repo_full_name")
     }
-    tech_pulse: list[dict] = []
+    tech_pulse_candidates: list[dict] = []
     coverage_notes: list[str] = []
 
     for candidate in sorted(tech_candidates, key=lambda item: (item.score, item.comments), reverse=True):
@@ -127,7 +128,7 @@ def assemble_daily_brief(
                 }
             continue
 
-        tech_pulse.append(
+        tech_pulse_candidates.append(
             {
                 "title": candidate.title,
                 "url": candidate.url,
@@ -141,6 +142,8 @@ def assemble_daily_brief(
                 "published_at": candidate.published_at,
             }
         )
+
+    tech_pulse = tech_pulse_candidates[:_TECH_PULSE_LIMIT]
 
     builder_grouped: dict[str, list[dict]] = defaultdict(list)
     for signal in sorted(builder_signals, key=lambda item: item.score, reverse=True):
@@ -170,7 +173,9 @@ def assemble_daily_brief(
     stats = {
         **meta,
         "github_count": len(github_radar),
+        "tech_pulse_candidate_count": len(tech_pulse_candidates),
         "tech_pulse_count": len(tech_pulse),
+        "builder_signal_count": len(builder_signals),
         "builder_count": sum(len(items) for items in builder_watch.values()),
     }
 

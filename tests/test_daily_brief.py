@@ -66,3 +66,35 @@ def test_assemble_daily_brief_groups_builder_signals_by_section():
 
     assert [item["title"] for item in brief.builder_watch["x"]] == ["Swyx"]
     assert [item["title"] for item in brief.builder_watch["blog"]] == ["Builder essay"]
+
+
+def test_assemble_daily_brief_limits_tech_pulse_to_top_five_items():
+    tech_candidates = [
+        ExternalTechCandidate(
+            source="ph",
+            title=f"Tool {index}",
+            url=f"https://example.com/{index}",
+            summary=f"Summary {index}",
+            score=index,
+            comments=index * 2,
+            tags=["AI"],
+            published_at="2026-04-16T00:00:00Z",
+        )
+        for index in range(1, 8)
+    ]
+
+    brief = assemble_daily_brief(
+        github_items=[],
+        tech_candidates=tech_candidates,
+        builder_signals=[],
+    )
+
+    assert [item["title"] for item in brief.tech_pulse] == [
+        "Tool 7",
+        "Tool 6",
+        "Tool 5",
+        "Tool 4",
+        "Tool 3",
+    ]
+    assert brief.stats["tech_pulse_count"] == 5
+    assert brief.stats["tech_pulse_candidate_count"] == 7

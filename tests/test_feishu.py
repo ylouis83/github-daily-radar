@@ -1,6 +1,10 @@
 from datetime import date
 
-from github_daily_radar.publish.feishu import build_digest_card, build_alert_cards
+import httpx
+import pytest
+
+import github_daily_radar.publish.feishu as feishu_module
+from github_daily_radar.publish.feishu import build_digest_card, build_alert_cards, send_cards
 
 
 def _collect_card_text(card: dict) -> str:
@@ -415,3 +419,58 @@ def test_build_digest_card_backward_compat_secondary_items():
     assert "owner/primary/discussions/1" in all_text
     # primary 不应出现两次，但同仓库的讨论条目仍应保留
     assert all_text.count("[owner/primary]") == 1
+
+
+class _StubClient:
+    def __init__(self, responses: list[httpx.Response]) -> None:
+        self._responses = list(responses)
+        self.posts: list[tuple[str, dict]] = []
+
+    def __enter__(self) -> "_StubClient":
+        return self
+
+    def __exit__(self, exc_type, exc, tb) -> bool:
+        return False
+
+    def post(self, url: str, json: dict) -> httpx.Response:
+        self.posts.append((url, json))
+        return self._responses.pop(0)
+
+
+def test_send_cards_raises_when_feishu_returns_business_error(monkeypatch):
+    client = _StubClient(
+        [
+            httpx.Response(
+                200,
+                json={"code": 19024, "msg": "message too large"},
+                request=httpx.Request("POST", "https://example.com/hook"),
+            )
+        ]
+    )
+    monkeypatch.setattr(feishu_module.httpx, "Client", lambda *args, **kwargs: client)
+
+    with pytest.raises(RuntimeError, match="message too large"):
+        send_cards(
+            webhook_url="https://example.com/hook",
+            cards=[{"msg_type": "interactive", "card": {"elements": []}}],
+        )
+
+
+def test_send_cards_accepts_successful_feishu_response(monkeypatch):
+    client = _StubClient(
+        [
+            httpx.Response(
+                200,
+                json={"code": 0, "msg": "ok"},
+                request=httpx.Request("POST", "https://example.com/hook"),
+            )
+        ]
+    )
+    monkeypatch.setattr(feishu_module.httpx, "Client", lambda *args, **kwargs: client)
+
+    send_cards(
+        webhook_url="https://example.com/hook",
+        cards=[{"msg_type": "interactive", "card": {"elements": []}}],
+    )
+
+    assert client.posts[0][0] == "https://example.com/hook"

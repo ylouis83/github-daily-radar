@@ -680,3 +680,22 @@ def send_cards(*, webhook_url: str, cards: list[dict]) -> None:
         for payload in cards:
             response = client.post(webhook_url, json=payload)
             response.raise_for_status()
+            response_data = response.json()
+            if not isinstance(response_data, dict):
+                continue
+
+            code = response_data.get("code")
+            status_code = response_data.get("StatusCode")
+            is_success = (code in (None, 0)) and (status_code in (None, 0))
+            if is_success:
+                continue
+
+            message = (
+                response_data.get("msg")
+                or response_data.get("StatusMessage")
+                or response_data.get("message")
+                or "unknown error"
+            )
+            raise RuntimeError(
+                f"Feishu webhook rejected message: code={code!r} status_code={status_code!r} msg={message}"
+            )
