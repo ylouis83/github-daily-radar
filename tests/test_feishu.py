@@ -63,7 +63,7 @@ def test_build_digest_card_single_card_with_sections():
 
     assert card["msg_type"] == "interactive"
     header = card["card"]["header"]["title"]["content"]
-    assert "每日雷达" in header
+    assert "AI Builder Radar" in header
     assert "2026-04-02" in header
     assert card["card"]["header"]["template"] == "indigo"
 
@@ -134,6 +134,9 @@ def test_build_digest_card_renders_github_tech_and_builder_tracks():
     assert "GitHub Radar" in all_text
     assert "Tech Pulse" in all_text
     assert "Builder Watch" in all_text
+    assert "今天最值得打开的项目、技能与讨论" in all_text
+    assert "今天值得知道的外部科技信号" in all_text
+    assert "今天谁值得跟进，哪些内容值得点开" in all_text
     assert "Product Hunt" in all_text
     assert "Swyx" in all_text
 
@@ -297,9 +300,10 @@ def test_build_digest_card_keeps_full_project_profiles_for_larger_lists():
     contents = [el.get("content", "") for el in card["card"]["elements"] if el.get("tag") == "markdown"]
     all_text = "\n".join(contents)
 
-    assert all_text.count("▸ 特点：") == 6
-    assert all_text.count("▸ 核心能力：") == 6
-    assert all_text.count("▸ 引入必要性：") == 6
+    assert "Quick Scan" in all_text
+    assert all_text.count("▸ 特点：") == 4
+    assert all_text.count("▸ 核心能力：") == 4
+    assert all_text.count("▸ 引入必要性：") == 4
 
 
 def test_alert_card_has_red_theme():

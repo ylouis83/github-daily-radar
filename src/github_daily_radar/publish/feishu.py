@@ -16,8 +16,8 @@ from collections import Counter, defaultdict
 import httpx
 
 # ── Constants ──────────────────────────────────────────────────────
-# 项目区默认全部展示完整画像，避免第 6 条开始被压成单行
-FEATURED_LIMIT = 20
+# GitHub 主榜保留少量完整画像，其余进入速览
+FEATURED_LIMIT = 4
 
 _VELOCITY_EMOJI = {
     "explosion": "💥",
@@ -36,6 +36,24 @@ BUILDER_SECTION_LABELS = {
     "x": "📱 X / Twitter",
     "podcast": "🎙️ Podcast",
     "blog": "📝 Blog",
+}
+
+TRACK_COPY = {
+    "github": {
+        "title": "GitHub Radar",
+        "subtitle": "今天最值得打开的项目、技能与讨论",
+        "metric_label": "主榜条目",
+    },
+    "tech": {
+        "title": "Tech Pulse",
+        "subtitle": "今天值得知道的外部科技信号",
+        "metric_label": "外部热讯",
+    },
+    "builder": {
+        "title": "Builder Watch",
+        "subtitle": "今天谁值得跟进，哪些内容值得点开",
+        "metric_label": "Builder Picks",
+    },
 }
 
 # kind → 画像结构化字段标签
@@ -115,6 +133,63 @@ def _format_external_heat(item: dict) -> str:
     if source_label:
         return f"🌐 {source_label}"
     return ""
+
+
+def _build_track_header(*, title: str, subtitle: str, count: int, metric_label: str) -> dict:
+    return {
+        "tag": "column_set",
+        "flex_mode": "bisect",
+        "horizontal_spacing": "default",
+        "columns": [
+            {
+                "tag": "column",
+                "width": "weighted",
+                "weight": 3,
+                "vertical_align": "center",
+                "elements": [
+                    {
+                        "tag": "markdown",
+                        "content": f"**{title}**\n{subtitle}",
+                    }
+                ],
+            },
+            {
+                "tag": "column",
+                "width": "weighted",
+                "weight": 1,
+                "vertical_align": "center",
+                "elements": [
+                    {
+                        "tag": "markdown",
+                        "text_align": "right",
+                        "content": f"**{count}**\n{metric_label}",
+                    }
+                ],
+            },
+        ],
+    }
+
+
+def _humanize_theme_name(theme: str) -> str:
+    parts = []
+    for chunk in str(theme).split("_"):
+        upper_chunk = chunk.upper()
+        if upper_chunk in {"AI", "RAG", "MCP", "LLM", "PR"}:
+            parts.append(upper_chunk)
+        elif chunk:
+            parts.append(chunk.capitalize())
+    return " ".join(parts)
+
+
+def _render_focus_strip(metadata: dict | None = None) -> str | None:
+    meta = metadata or {}
+    themes = meta.get("top_themes") or []
+    if not themes:
+        return None
+    readable = [_humanize_theme_name(str(theme)) for theme in themes if str(theme).strip()]
+    if not readable:
+        return None
+    return f"**Today's Focus**  ·  {'  ·  '.join(readable[:3])}"
 
 
 # ── Ecosystem Label ───────────────────────────────────────────────
@@ -273,7 +348,7 @@ def _render_project_section(items: list[dict], *, featured_limit: int = FEATURED
     if not items:
         return None
 
-    section_title = f"**{SECTION_ICONS['project']}**"
+    section_title = f"**{SECTION_ICONS['project']} · {len(items)}**"
     lines = [section_title, ""]
 
     # 精编区
@@ -285,6 +360,8 @@ def _render_project_section(items: list[dict], *, featured_limit: int = FEATURED
     # 速览区
     compact = items[featured_limit:]
     if compact:
+        lines.append("**Quick Scan**")
+        lines.append("")
         for i, item in enumerate(compact, featured_limit + 1):
             lines.append(_render_compact_item(item, i))
 
@@ -296,7 +373,7 @@ def _render_skill_section(items: list[dict]) -> str | None:
     if not items:
         return None
 
-    section_title = f"**{SECTION_ICONS['skill']}**"
+    section_title = f"**{SECTION_ICONS['skill']} · {len(items)}**"
     lines = [section_title, ""]
     for i, item in enumerate(items, 1):
         lines.append(_render_skill_item(item, i))
@@ -309,7 +386,7 @@ def _render_discussion_section(items: list[dict]) -> str | None:
     if not items:
         return None
 
-    section_title = f"**{SECTION_ICONS['discussion']}**"
+    section_title = f"**{SECTION_ICONS['discussion']} · {len(items)}**"
     lines = [section_title, ""]
     for i, item in enumerate(items, 1):
         lines.append(_render_featured_item(item, i))
@@ -321,7 +398,7 @@ def _render_tech_pulse_section(items: list[dict]) -> str | None:
     if not items:
         return None
 
-    lines = ["**Tech Pulse**", ""]
+    lines = []
     for index, item in enumerate(items, 1):
         title = item.get("title", "")
         url = item.get("url", "")
@@ -329,9 +406,10 @@ def _render_tech_pulse_section(items: list[dict]) -> str | None:
         why_now = item.get("why_now", "") or item.get("summary", "")
         line = f"**{index}.** [{title}]({url})" if url else f"**{index}.** {title}"
         lines.append(line)
-        lines.append(f"🏷️ {source_label}")
+        detail_parts = [f"🏷️ {source_label}"]
         if why_now:
-            lines.append(f"▸ {_truncate_text(why_now, 80)}")
+            detail_parts.append(_truncate_text(why_now, 72))
+        lines.append("  ·  ".join(detail_parts))
         lines.append("")
     return "\n".join(lines)
 
@@ -340,7 +418,7 @@ def _render_builder_watch_section(sections: dict[str, list[dict]]) -> str | None
     if not sections:
         return None
 
-    lines = ["**Builder Watch**", ""]
+    lines = []
     for key in ("x", "podcast", "blog"):
         items = sections.get(key) or []
         if not items:
@@ -353,10 +431,13 @@ def _render_builder_watch_section(sections: dict[str, list[dict]]) -> str | None
             why_now = item.get("why_now", "") or item.get("summary", "")
             line = f"**{index}.** [{title}]({url})" if url else f"**{index}.** {title}"
             lines.append(line)
+            detail_parts = []
             if creator:
-                lines.append(f"🏷️ {creator}")
+                detail_parts.append(f"🏷️ {creator}")
             if why_now:
-                lines.append(f"▸ {_truncate_text(why_now, 80)}")
+                detail_parts.append(_truncate_text(why_now, 72))
+            if detail_parts:
+                lines.append("  ·  ".join(detail_parts))
         lines.append("")
     return "\n".join(lines)
 
@@ -600,6 +681,9 @@ def build_digest_card(
             "tag": "markdown",
             "content": _render_overview(all_items),
         })
+    focus_strip = _render_focus_strip(metadata)
+    if focus_strip:
+        elements.append({"tag": "markdown", "content": focus_strip})
     elements.append({"tag": "hr"})
 
     # ── 爆款监测（置顶） ──
@@ -609,8 +693,15 @@ def build_digest_card(
         elements.append({"tag": "hr"})
 
     # ── GitHub Radar ──
-    elements.append({"tag": "markdown", "content": "**GitHub Radar**"})
-    elements.append({"tag": "hr"})
+    github_copy = TRACK_COPY["github"]
+    elements.append(
+        _build_track_header(
+            title=github_copy["title"],
+            subtitle=github_copy["subtitle"],
+            count=len(all_items),
+            metric_label=github_copy["metric_label"],
+        )
+    )
 
     # ── GitHub 内部分区 ──
     for kind in _section_order(project_first=project_first):
@@ -627,11 +718,29 @@ def build_digest_card(
 
     tech_content = _render_tech_pulse_section(tech_items or [])
     if tech_content is not None:
+        tech_copy = TRACK_COPY["tech"]
+        elements.append(
+            _build_track_header(
+                title=tech_copy["title"],
+                subtitle=tech_copy["subtitle"],
+                count=len(tech_items or []),
+                metric_label=tech_copy["metric_label"],
+            )
+        )
         elements.append({"tag": "markdown", "content": tech_content})
         elements.append({"tag": "hr"})
 
     builder_content = _render_builder_watch_section(builder_sections or {})
     if builder_content is not None:
+        builder_copy = TRACK_COPY["builder"]
+        elements.append(
+            _build_track_header(
+                title=builder_copy["title"],
+                subtitle=builder_copy["subtitle"],
+                count=sum(len(items) for items in (builder_sections or {}).values()),
+                metric_label=builder_copy["metric_label"],
+            )
+        )
         elements.append({"tag": "markdown", "content": builder_content})
         elements.append({"tag": "hr"})
 
@@ -647,7 +756,7 @@ def build_digest_card(
             "header": {
                 "title": {
                     "tag": "plain_text",
-                    "content": f"🔭 AI Daily Brief · GitHub 每日雷达 · {date_str}",
+                    "content": f"AI Builder Radar · {date_str}",
                 },
                 "template": "indigo",
             },
