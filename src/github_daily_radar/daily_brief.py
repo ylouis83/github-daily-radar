@@ -14,7 +14,7 @@ _BUILDER_SECTION_LIMITS = {
     "podcast": 2,
     "blog": 2,
 }
-_TECH_PULSE_LIMIT = 5
+_TECH_PULSE_LIMIT = 6
 _WHITESPACE_RE = re.compile(r"\s+")
 _URL_RE = re.compile(r"https?://\S+")
 _TOPIC_SPLIT_RE = re.compile(r"(?:\r?\n|(?<=[。！？.!?])\s+)")

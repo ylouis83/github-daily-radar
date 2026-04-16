@@ -42,6 +42,8 @@ def test_build_preview_cards_contains_all_three_tracks():
     assert "**长文 · 1**" not in all_text
     assert "<link icon='platform_outlined' url='https://github.com'>GitHub</link>" in all_text
     assert "<link icon='file-link-video_outlined' url='https://www.youtube.com'>YouTube</link>" in all_text
+    assert "OpenAI Responses API background mode" in all_text
+    assert "MCP servers in production: the missing ops layer" in all_text
     assert "2026-04-16" in all_text
 
 

@@ -111,7 +111,7 @@ def test_assemble_daily_brief_editorializes_builder_watch_copy():
     assert podcast_item["why_now"].endswith("。")
 
 
-def test_assemble_daily_brief_limits_tech_pulse_to_top_five_items():
+def test_assemble_daily_brief_limits_tech_pulse_to_top_six_items():
     tech_candidates = [
         ExternalTechCandidate(
             source="ph",
@@ -123,7 +123,7 @@ def test_assemble_daily_brief_limits_tech_pulse_to_top_five_items():
             tags=["AI"],
             published_at="2026-04-16T00:00:00Z",
         )
-        for index in range(1, 8)
+        for index in range(1, 9)
     ]
 
     brief = assemble_daily_brief(
@@ -133,11 +133,12 @@ def test_assemble_daily_brief_limits_tech_pulse_to_top_five_items():
     )
 
     assert [item["title"] for item in brief.tech_pulse] == [
+        "Tool 8",
         "Tool 7",
         "Tool 6",
         "Tool 5",
         "Tool 4",
         "Tool 3",
     ]
-    assert brief.stats["tech_pulse_count"] == 5
-    assert brief.stats["tech_pulse_candidate_count"] == 7
+    assert brief.stats["tech_pulse_count"] == 6
+    assert brief.stats["tech_pulse_candidate_count"] == 8

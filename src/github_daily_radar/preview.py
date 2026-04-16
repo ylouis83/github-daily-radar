@@ -148,6 +148,18 @@ def build_preview_cards(*, today: date | None = None, style_only: bool = False) 
                 "source_label": "Hacker News",
                 "why_now": "非常强的黑客气质内容，适合做卡片里的外部亮点样本",
             },
+            {
+                "title": "OpenAI Responses API background mode",
+                "url": "https://platform.openai.com/docs/guides/background",
+                "source_label": "OpenAI Docs",
+                "why_now": "异步长任务的产品形态更清晰，值得做成 Builder 侧参考样本。",
+            },
+            {
+                "title": "MCP servers in production: the missing ops layer",
+                "url": "https://www.builder.io/blog/mcp-servers-production-ops-layer",
+                "source_label": "Builder.io",
+                "why_now": "把 MCP 从 demo 拉到生产环境时，运维层问题开始被系统性讨论。",
+            },
         ],
         builder_sections={
             "x": [
@@ -199,7 +211,7 @@ def build_preview_cards(*, today: date | None = None, style_only: bool = False) 
         ],
         metadata={
             "count": 42,
-            "item_count": 10,
+            "item_count": 16,
             "top_themes": ["ai_project", "claude_code", "agent_workflow"],
         },
         today=current_day,
