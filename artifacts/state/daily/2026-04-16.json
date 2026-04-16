@@ -9,11 +9,16 @@
         "header": {
           "title": {
             "tag": "plain_text",
-            "content": "🔭 AI Daily Brief · GitHub 每日雷达 · 2026-04-16"
+            "content": "AI Builder Radar · 2026-04-16"
           },
           "template": "indigo"
         },
         "elements": [
+          {
+            "tag": "markdown",
+            "content": "GitHub 主榜 · 科技热讯 · Builder Watch",
+            "text_size": "notation"
+          },
           {
             "tag": "column_set",
             "flex_mode": "bisect",
@@ -29,7 +34,7 @@
                   {
                     "tag": "markdown",
                     "text_align": "center",
-                    "content": "**20**\nGitHub"
+                    "content": "**17**\nGitHub Selected"
                   }
                 ]
               },
@@ -68,7 +73,7 @@
                   {
                     "tag": "markdown",
                     "text_align": "center",
-                    "content": "**95**\n候选池"
+                    "content": "**0**\nTheme Coverage"
                   }
                 ]
               }
@@ -79,52 +84,138 @@
           },
           {
             "tag": "markdown",
-            "content": "**💥 今日爆款**\n\n**1.** [NousResearch/hermes-agent](https://github.com/NousResearch/hermes-agent)  💥+53110⭐  89.6K⭐\n**2.** [multica-ai/multica](https://github.com/multica-ai/multica)  💥+10864⭐  13.6K⭐\n**3.** [forrestchang/andrej-karpathy-skills](https://github.com/forrestchang/andrej-karpathy-skills)  💥+9646⭐  43.1K⭐\n**4.** [sponsors/thedotmack](https://github.com/sponsors/thedotmack)  💥+2305⭐  57.9K⭐\n**5.** [sponsors/obra](https://github.com/sponsors/obra)  💥+2055⭐  154.3K⭐\n\n*数据源：GitHub Trending + OSSInsight*"
+            "content": "**Momentum Leaders · 5**\n\n**1.** [NousResearch/hermes-agent](https://github.com/NousResearch/hermes-agent)  +53110★  90.9K★\n**2.** [multica-ai/multica](https://github.com/multica-ai/multica)  +10864★  13.9K★\n**3.** [forrestchang/andrej-karpathy-skills](https://github.com/forrestchang/andrej-karpathy-skills)  +9646★  44.8K★\n**4.** [sponsors/thedotmack](https://github.com/sponsors/thedotmack)  +2305★  58.2K★\n**5.** [sponsors/obra](https://github.com/sponsors/obra)  +2055★  154.8K★\n\n*来源：GitHub Trending / OSSInsight*"
           },
           {
             "tag": "hr"
           },
           {
+            "tag": "column_set",
+            "flex_mode": "bisect",
+            "horizontal_spacing": "default",
+            "columns": [
+              {
+                "tag": "column",
+                "width": "weighted",
+                "weight": 3,
+                "vertical_align": "center",
+                "elements": [
+                  {
+                    "tag": "markdown",
+                    "content": "**GitHub Radar**  <text_tag color='blue'>Primary Track</text_tag>\n开源仓库、技能资产与讨论议题"
+                  }
+                ]
+              },
+              {
+                "tag": "column",
+                "width": "weighted",
+                "weight": 1,
+                "vertical_align": "center",
+                "elements": [
+                  {
+                    "tag": "markdown",
+                    "text_align": "right",
+                    "content": "**17**\nSelected"
+                  }
+                ]
+              }
+            ]
+          },
+          {
             "tag": "markdown",
-            "content": "**GitHub Radar**"
+            "content": "**Core Projects · 17**\n\n**1.** [home-assistant/core](https://github.com/home-assistant/core)  86.0K★\n<link icon='platform_outlined' url='https://github.com/home-assistant/core'>GitHub</link>\n信号：智能家居隐私保护需求日益增长值得回顾。\n▸ 定位：强调本地控制与隐私优先的开源智能家居平台。\n▸ 能力：整合多种物联网协议实现统一的家庭自动化管理。\n▸ 价值：想要搭建私有化智能家居系统的首选方案。\n\n**2.** [rails/rails](https://github.com/rails/rails)  58.3K★\n<link icon='platform_outlined' url='https://github.com/rails/rails'>GitHub</link>\n信号：经典框架持续维护展示其长久的生命力。\n▸ 定位：Ruby 语言生态中最经典的 Web 开发框架。\n▸ 能力：提供约定优于配置的全栈 MVC 开发体验。\n▸ 价值：理解快速原型开发和传统 Web 架构的必读代码。\n\n**3.** [ChromeDevTools/chrome-devtools-mcp](https://github.com/ChromeDevTools/chrome-devtools-mcp)  35.3K★\n<link icon='platform_outlined' url='https://github.com/ChromeDevTools/chrome-devtools-mcp'>GitHub</link>\n信号：模型上下文协议热门背景下调试工具的新演进。\n▸ 定位：专为编码智能体设计的 Chrome 开发者工具接口。\n▸ 能力：允许 AI 代理通过 MCP 协议直接调试浏览器环境。\n▸ 价值：探索 AI 编程助手与浏览器调试集成的前沿实践。\n\n**4.** [MicrosoftDocs/azure-docs](https://github.com/MicrosoftDocs/azure-docs)  10.8K★\n<link icon='platform_outlined' url='https://github.com/MicrosoftDocs/azure-docs'>GitHub</link>\n信号：开源文档协作模式体现云厂商的技术透明度。\n▸ 定位：微软 Azure 云服务的官方开源文档仓库。\n▸ 能力：提供全面的云平台技能学习与技术参考资源。\n▸ 价值：开发者获取权威云技术信息的主要渠道。\n\n**Quick Scan · 13**\n\n**5.** [verl-project/verl](https://github.com/verl-project/verl)  20.7K★  ·  <link icon='platform_outlined' url='https://github.com/verl-project/verl'>GitHub</link>\n**6.** [CocoaLumberjack/CocoaLumberjack](https://github.com/CocoaLumberjack/CocoaLumberjack)  13.3K★  ·  <link icon='platform_outlined' url='https://github.com/CocoaLumberjack/CocoaLumberjack'>GitHub</link>\n**7.** [dart-lang/sdk](https://github.com/dart-lang/sdk)  11.1K★  ·  <link icon='platform_outlined' url='https://github.com/dart-lang/sdk'>GitHub</link>\n**8.** [apache/iotdb](https://github.com/apache/iotdb)  6.3K★  ·  <link icon='platform_outlined' url='https://github.com/apache/iotdb'>GitHub</link>\n**9.** [uBlockOrigin/uAssets](https://github.com/uBlockOrigin/uAssets)  5.6K★  ·  <link icon='platform_outlined' url='https://github.com/uBlockOrigin/uAssets'>GitHub</link>\n**10.** [hugohe3/ppt-master](https://github.com/hugohe3/ppt-master)  5.5K★  ·  <link icon='platform_outlined' url='https://github.com/hugohe3/ppt-master'>GitHub</link>\n**11.** [getcompanion-ai/feynman](https://github.com/getcompanion-ai/feynman)  5.1K★  ·  <link icon='platform_outlined' url='https://github.com/getcompanion-ai/feynman'>GitHub</link>\n**12.** [deezertidal/QuantumultX-Rewrite](https://github.com/deezertidal/QuantumultX-Rewrite)  3.2K★  ·  <link icon='platform_outlined' url='https://github.com/deezertidal/QuantumultX-Rewrite'>GitHub</link>\n**13.** [MetaMask/eth-phishing-detect](https://github.com/MetaMask/eth-phishing-detect)  1.3K★  ·  <link icon='platform_outlined' url='https://github.com/MetaMask/eth-phishing-detect'>GitHub</link>\n**14.** [CodeWithCJ/SparkyFitness](https://github.com/CodeWithCJ/SparkyFitness)  3.2K★  ·  <link icon='platform_outlined' url='https://github.com/CodeWithCJ/SparkyFitness'>GitHub</link>\n**15.** [bnb-chain/BEPs](https://github.com/bnb-chain/BEPs)  950★  ·  <link icon='platform_outlined' url='https://github.com/bnb-chain/BEPs'>GitHub</link>\n**16.** [MicrosoftDocs/mcp](https://github.com/MicrosoftDocs/mcp)  1.6K★  ·  <link icon='platform_outlined' url='https://github.com/MicrosoftDocs/mcp'>GitHub</link>\n**17.** [google/magika](https://github.com/google/magika)  +768★  ·  <link icon='platform_outlined' url='https://github.com/google/magika'>GitHub</link>"
           },
           {
             "tag": "hr"
           },
           {
+            "tag": "column_set",
+            "flex_mode": "bisect",
+            "horizontal_spacing": "default",
+            "columns": [
+              {
+                "tag": "column",
+                "width": "weighted",
+                "weight": 3,
+                "vertical_align": "center",
+                "elements": [
+                  {
+                    "tag": "markdown",
+                    "content": "**Tech Pulse**  <text_tag color='orange'>External Signals</text_tag>\n产品发布、工程信号与外部科技动态"
+                  }
+                ]
+              },
+              {
+                "tag": "column",
+                "width": "weighted",
+                "weight": 1,
+                "vertical_align": "center",
+                "elements": [
+                  {
+                    "tag": "markdown",
+                    "text_align": "right",
+                    "content": "**5**\nSignals"
+                  }
+                ]
+              }
+            ]
+          },
+          {
             "tag": "markdown",
-            "content": "**🚀 核心 AI 项目**\n\n**1.** [langflow-ai/langflow](https://github.com/langflow-ai/langflow)  ⭐147.0K\n📌 作为可视化 AI 开发的高星标杆值得参考。\n▸ 特点：基于 React Flow 的可视化工作流设计。\n▸ 核心能力：支持构建和部署多智能体及生成式 AI 应用。\n▸ 引入必要性：降低大语言模型应用开发门槛的必备工具。\n\n**2.** [aaif-goose/goose](https://github.com/aaif-goose/goose)  ⭐42.2K\n📌 展现 AI 代理自主执行能力的开源范例。\n▸ 特点：超越代码建议的可扩展开源 AI 代理。\n▸ 核心能力：能够安装、执行、编辑和测试任何大语言模型任务。\n▸ 引入必要性：为需要自主执行复杂任务的开发者提供新选择。\n\n**3.** [chroma-core/chroma](https://github.com/chroma-core/chroma)  ⭐27.5K\n📌 向量数据库领域结合 Rust 性能优化的代表。\n▸ 特点：专为 AI 设计的数据基础设施。\n▸ 核心能力：提供高效的向量存储与检索能力。\n▸ 引入必要性：构建检索增强生成应用的核心依赖组件。\n\n**4.** [browseros-ai/BrowserOS](https://github.com/browseros-ai/BrowserOS)  ⭐10.5K\n📌 作为热门闭源产品的开源替代方案正在崛起。\n▸ 特点：开源代理浏览器架构。\n▸ 核心能力：提供类似 ChatGPT Atlas 的自主浏览体验。\n▸ 引入必要性：想要本地化运行 AI 浏览器代理的开发者值得关注。\n\n**5.** [adamlui/ai-web-extensions](https://github.com/adamlui/ai-web-extensions)  ⭐538\n📌 ⭐538\n▸ 特点：面向浏览器自动化，已形成一定社区热度\n▸ 核心能力：涉及 ai / amazon / artificialintelligence / brave…\n▸ 引入必要性：已被 57 人 fork，复用价值明确。\n\n**6.** [EKKOLearnAI/hermes-web-ui](https://github.com/EKKOLearnAI/hermes-web-ui)  ⭐218\n📌 ⭐218\n▸ 特点：偏 Agent 编排，已形成一定社区热度\n▸ 核心能力：涉及 ai-agent / chat-ui / chatbot / cron-jobs，封装为可接入的能力层。\n▸ 引入必要性：⭐218 已有社区验证，适合判断是否值得引入。\n\n**7.** [AI4Scientist/nanoscientist](https://github.com/AI4Scientist/nanoscientist)  ⭐2\n▸ 特点：偏 Agent 编排\n▸ 核心能力：涉及 ai-scientist / auto-research / autonomous-research…\n▸ 引入必要性：形态清晰，适合先观察后续发展。\n\n**8.** [MaStanford/AndroidCourse](https://github.com/MaStanford/AndroidCourse)  ⭐1\n▸ 特点：偏 Agent 编排\n▸ 核心能力：把复杂任务拆成可调度、可复用的 Agent 流程。\n▸ 引入必要性：形态清晰，适合先观察后续发展。\n\n**9.** [Yxt2222/Car-Sales-Agent](https://github.com/Yxt2222/Car-Sales-Agent)  ⭐1\n▸ 特点：围绕 prompt 复用与组织\n▸ 核心能力：把可复用的提示词和规则沉淀成可执行资产。\n▸ 引入必要性：形态清晰，适合先观察后续发展。\n\n**10.** [aaronrene/knowtation](https://github.com/aaronrene/knowtation)  ⭐1\n▸ 特点：聚焦 MCP 工具接入与编排\n▸ 核心能力：涉及 agents / ai / ai-agents / internet-computer…\n▸ 引入必要性：形态清晰，适合先观察后续发展。\n\n**11.** [anish-prajapati03/ResearchMind-AI-Agent](https://github.com/anish-prajapati03/ResearchMind-AI-Agent)  ⭐1\n▸ 特点：偏 Agent 编排\n▸ 核心能力：把复杂任务拆成可调度、可复用的 Agent 流程。\n▸ 引入必要性：形态清晰，适合先观察后续发展。\n\n**12.** [dieoymarion/HMLR-Agentic-AI-Memory-System](https://github.com/dieoymarion/HMLR-Agentic-AI-Memory-System)\n▸ 特点：偏 Agent 编排\n▸ 核心能力：涉及 agent-based-systems / ai-research / artificial…\n▸ 引入必要性：形态清晰，适合先观察后续发展。\n\n**13.** [AviroopPaul/daily-learning](https://github.com/AviroopPaul/daily-learning)\n▸ 特点：面向浏览器自动化\n▸ 核心能力：把浏览器操作自动化成可编排的动作流。\n▸ 引入必要性：形态清晰，适合先观察后续发展。\n\n**14.** [Balauruu/Channel-Automation](https://github.com/Balauruu/Channel-Automation)\n▸ 特点：偏 Agent 编排\n▸ 核心能力：把复杂任务拆成可调度、可复用的 Agent 流程。\n▸ 引入必要性：形态清晰，适合先观察后续发展。\n\n**15.** [CRN4X/Agents-for-Chip-Design-Automation](https://github.com/CRN4X/Agents-for-Chip-Design-Automation)\n▸ 特点：偏 Agent 编排\n▸ 核心能力：把复杂任务拆成可调度、可复用的 Agent 流程。\n▸ 引入必要性：形态清晰，适合先观察后续发展。\n\n**16.** [DonUserOn/ai-study-assistant](https://github.com/DonUserOn/ai-study-assistant)\n▸ 特点：围绕 prompt 复用与组织\n▸ 核心能力：把外部工具和能力封装成更容易接入的调用层。\n▸ 引入必要性：形态清晰，适合先观察后续发展。\n\n**17.** [JerryZhaoYJ/essay-AI-authorship-detection](https://github.com/JerryZhaoYJ/essay-AI-authorship-detection)\n▸ 特点：围绕 prompt 复用与组织\n▸ 核心能力：涉及 ai-generated-text / authorship-detection / lda…\n▸ 引入必要性：形态清晰，适合先观察后续发展。\n\n**18.** [OkanNaci/your-ai](https://github.com/OkanNaci/your-ai)\n▸ 特点：围绕 prompt 复用与组织\n▸ 核心能力：把外部工具和能力封装成更容易接入的调用层。\n▸ 引入必要性：形态清晰，适合先观察后续发展。\n\n**19.** [OvoPraise/OUI-AI-Tutor](https://github.com/OvoPraise/OUI-AI-Tutor)\n▸ 特点：围绕 prompt 复用与组织\n▸ 核心能力：把可复用的提示词和规则沉淀成可执行资产。\n▸ 引入必要性：形态清晰，适合先观察后续发展。\n\n**20.** [SahebST/StoryBoard-Gamaxa](https://github.com/SahebST/StoryBoard-Gamaxa)\n▸ 特点：围绕 prompt 复用与组织\n▸ 核心能力：把外部工具和能力封装成更容易接入的调用层。\n▸ 引入必要性：形态清晰，适合先观察后续发展。\n"
+            "content": "**1.** [我将 Mac OS X 移植到了任天堂 Wii 上](https://bryankeller.github.io/2026/04/08/porting-mac-os-x-nintendo-wii.html)\n<link icon='internet_outlined' url='https://bryankeller.github.io/2026/04/08/porting-mac-os-x-nintendo-wii.html'>Hacker News</link>  ·  信号：Hacker News 热度高 · 863 热度 / 174 评论\n\n**2.** [Cockpit AI - 在所有渠道部署收入专员](https://www.producthunt.com/r/ZSATDD5TGHHICH)\n<link icon='internet_outlined' url='https://www.producthunt.com/r/ZSATDD5TGHHICH'>Product Hunt</link>  ·  信号：Product Hunt 热度高 · 304 热度 / 29 评论\n\n**3.** [Zoer.ai - 从数据库开始构建全栈网络应用程序](https://www.producthunt.com/r/DGY2WXDYLQPHS5)\n<link icon='internet_outlined' url='https://www.producthunt.com/r/DGY2WXDYLQPHS5'>Product Hunt</link>  ·  信号：Product Hunt 热度高 · 256 热度 / 34 评论\n\n**4.** [Tobira.ai - 人工智能代理为人类寻找交易的网络](https://www.producthunt.com/r/G5JOBDQ3XBHBER)\n<link icon='internet_outlined' url='https://www.producthunt.com/r/G5JOBDQ3XBHBER'>Product Hunt</link>  ·  信号：Product Hunt 热度高 · 238 热度 / 47 评论\n\n**5.** [MegaTrain：在单张 GPU 上对拥有 1000 亿以上参数的 LLM 进行全精度训练](https://arxiv.org/abs/2604.05091)\n<link icon='internet_outlined' url='https://arxiv.org/abs/2604.05091'>Hacker News</link>  ·  信号：Hacker News 热度高 · 225 热度 / 43 评论\n"
           },
           {
             "tag": "hr"
           },
           {
+            "tag": "column_set",
+            "flex_mode": "bisect",
+            "horizontal_spacing": "default",
+            "columns": [
+              {
+                "tag": "column",
+                "width": "weighted",
+                "weight": 3,
+                "vertical_align": "center",
+                "elements": [
+                  {
+                    "tag": "markdown",
+                    "content": "**Builder Watch**  <text_tag color='green'>People & Media</text_tag>\n创作者观点、视频与长文线索"
+                  }
+                ]
+              },
+              {
+                "tag": "column",
+                "width": "weighted",
+                "weight": 1,
+                "vertical_align": "center",
+                "elements": [
+                  {
+                    "tag": "markdown",
+                    "text_align": "right",
+                    "content": "**5**\nPicks"
+                  }
+                ]
+              }
+            ]
+          },
+          {
             "tag": "markdown",
-            "content": "**Tech Pulse**\n\n**1.** [我将 Mac OS X 移植到了任天堂 Wii 上](https://bryankeller.github.io/2026/04/08/porting-mac-os-x-nintendo-wii.html)\n🏷️ Hacker News\n▸ Hacker News 热度高 · 863 热度 / 174 评论\n\n**2.** [Cockpit AI - 在所有渠道部署收入专员](https://www.producthunt.com/r/ZSATDD5TGHHICH)\n🏷️ Product Hunt\n▸ Product Hunt 热度高 · 304 热度 / 29 评论\n\n**3.** [Zoer.ai - 从数据库开始构建全栈网络应用程序](https://www.producthunt.com/r/DGY2WXDYLQPHS5)\n🏷️ Product Hunt\n▸ Product Hunt 热度高 · 256 热度 / 34 评论\n\n**4.** [Tobira.ai - 人工智能代理为人类寻找交易的网络](https://www.producthunt.com/r/G5JOBDQ3XBHBER)\n🏷️ Product Hunt\n▸ Product Hunt 热度高 · 238 热度 / 47 评论\n\n**5.** [MegaTrain：在单张 GPU 上对拥有 1000 亿以上参数的 LLM 进行全精度训练](https://arxiv.org/abs/2604.05091)\n🏷️ Hacker News\n▸ Hacker News 热度高 · 225 热度 / 43 评论\n"
-          },
-          {
-            "tag": "hr"
+            "content": "**X · 3**\n**1.** [Claude](https://x.com/claudeai/status/2044131493966909862)\n<link icon='internet_outlined' url='https://x.com/claudeai/status/2044131493966909862'>X</link>  ·  作者：Claude  ·  信号：We've redesigned Claude Code on desktop.\n\nYou can now run multiple…\n**2.** [Peter Steinberger](https://x.com/steipete/status/2044047222481019300)\n<link icon='internet_outlined' url='https://x.com/steipete/status/2044047222481019300'>X</link>  ·  作者：Peter Steinberger  ·  信号：This release makes me unreasonably happy since I wasn't involved at…\n**3.** [Josh Woodward](https://x.com/joshwoodward/status/2044149482548580689)\n<link icon='internet_outlined' url='https://x.com/joshwoodward/status/2044149482548580689'>X</link>  ·  作者：Josh Woodward  ·  信号：New in Gemini: NEET practice tests! 🇮🇳🩺\n\nSending good luck to everyone…\n\n**Podcast · 1**\n**1.** [From SEO to Agent-Led Growth: Profound’s James Cadwallader](https://www.youtube.com/playlist?list=PLOhHNjZItNnMm5tdW61JpnyxeYH5NDDx8)\n<link icon='file-link-video_outlined' url='https://www.youtube.com/playlist?list=PLOhHNjZItNnMm5tdW61JpnyxeYH5NDDx8'>YouTube</link>  ·  作者：Training Data  ·  信号：Speaker 1 | 00:00 - 00:23\nWe've now reached a point in marketing where…\n\n**Blog · 1**\n**1.** [Redesigning Claude Code on desktop for parallel agents](https://claude.com/blog/claude-code-desktop-redesign)\n<link icon='internet_outlined' url='https://claude.com/blog/claude-code-desktop-redesign'>Claude Blog</link>  ·  作者：Claude Blog  ·  信号：It includes a new sidebar for managing multiple sessions, a drag-and…\n"
           },
           {
             "tag": "markdown",
-            "content": "**Builder Watch**\n\n**📱 X / Twitter**\n**1.** [Claude](https://x.com/claudeai/status/2044131493966909862)\n🏷️ Claude\n▸ We've redesigned Claude Code on desktop.\n\nYou can now run multiple Claude…\n**2.** [Peter Steinberger](https://x.com/steipete/status/2044047222481019300)\n🏷️ Peter Steinberger\n▸ This release makes me unreasonably happy since I wasn't involved at all…\n**3.** [Josh Woodward](https://x.com/joshwoodward/status/2044149482548580689)\n🏷️ Josh Woodward\n▸ New in Gemini: NEET practice tests! 🇮🇳🩺\n\nSending good luck to everyone taking…\n\n**🎙️ Podcast**\n**1.** [From SEO to Agent-Led Growth: Profound’s James Cadwallader](https://www.youtube.com/playlist?list=PLOhHNjZItNnMm5tdW61JpnyxeYH5NDDx8)\n🏷️ Training Data\n▸ Speaker 1 | 00:00 - 00:23\nWe've now reached a point in marketing where if your…\n\n**📝 Blog**\n**1.** [Redesigning Claude Code on desktop for parallel agents](https://claude.com/blog/claude-code-desktop-redesign)\n🏷️ Claude Blog\n▸ It includes a new sidebar for managing multiple sessions, a drag-and-drop…\n"
-          },
-          {
-            "tag": "hr"
-          },
-          {
-            "tag": "markdown",
-            "content": "📅 2026-04-16  ·  数据源：GitHub / OSSInsight / Buzzing / Follow Builders  ·  95 候选 → 30 精选",
+            "content": "Date  ·  2026-04-16  ·  Sources  ·  GitHub / OSSInsight / Buzzing / Follow Builders  ·  88 候选 → 27 精选",
             "text_size": "notation"
           }
         ]
       }
     }
   ],
-  "count": 95,
-  "selected_count": 30,
+  "count": 88,
+  "selected_count": 27,
   "summary": {
-    "count": 95,
+    "count": 88,
     "editorial": 24,
     "api_usage": {
       "total_budget": 60,
@@ -147,15 +238,15 @@
         }
       },
       "repos": {
-        "count": 97,
+        "count": 98,
         "kinds": {
-          "project": 97
+          "project": 98
         }
       },
       "star_growth": {
-        "count": 54,
+        "count": 57,
         "kinds": {
-          "project": 54
+          "project": 57
         }
       },
       "discussions": {
@@ -167,16 +258,16 @@
         "kinds": {}
       },
       "skills": {
-        "count": 12,
+        "count": 15,
         "kinds": {
           "skill": 6,
-          "project": 6
+          "project": 9
         }
       },
       "buzzing": {
-        "count": 926,
+        "count": 927,
         "kinds": {
-          "tech": 926
+          "tech": 927
         }
       },
       "builders": {
@@ -188,28 +279,26 @@
     },
     "surge_count": 5,
     "filtered_kind_counts": {
-      "project": 95
+      "project": 88
     },
     "published_kind_counts": {
-      "project": 20
+      "project": 17
     },
     "theme_counts": {
-      "agent_workflow": 2,
+      "ai_project": 13,
       "mcp": 2,
-      "agent_framework": 7,
-      "browser_automation": 3,
-      "prompt_assets": 6
+      "skill_assets": 2
     },
     "top_themes": [
-      "agent_framework",
-      "prompt_assets",
-      "browser_automation"
+      "ai_project",
+      "mcp",
+      "skill_assets"
     ],
-    "github_count": 20,
-    "tech_pulse_candidate_count": 926,
+    "github_count": 17,
+    "tech_pulse_candidate_count": 927,
     "tech_pulse_count": 5,
     "builder_signal_count": 19,
     "builder_count": 5,
-    "item_count": 30
+    "item_count": 27
   }
 }
