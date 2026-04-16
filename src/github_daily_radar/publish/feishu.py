@@ -12,6 +12,7 @@ from __future__ import annotations
 
 from datetime import date
 from collections import Counter, defaultdict
+from urllib.parse import urlparse
 
 import httpx
 
@@ -19,49 +20,49 @@ import httpx
 # GitHub 主榜保留少量完整画像，其余进入速览
 FEATURED_LIMIT = 4
 
-_VELOCITY_EMOJI = {
-    "explosion": "💥",
-    "surge": "🔥",
-    "rising": "📈",
-    "new": "🆕",
-}
-
 SECTION_ICONS = {
-    "project": "🚀 核心 AI 项目",
-    "skill": "🧩 MCP & Skills",
-    "discussion": "💬 提案与讨论",
+    "project": "Core Projects",
+    "skill": "Skills & MCP",
+    "discussion": "Discussion Signals",
 }
 
 BUILDER_SECTION_LABELS = {
-    "x": "📱 X / Twitter",
-    "podcast": "🎙️ Podcast",
-    "blog": "📝 Blog",
+    "x": "X",
+    "podcast": "Video / Podcast",
+    "blog": "Blog",
 }
 
 TRACK_COPY = {
     "github": {
         "title": "GitHub Radar",
-        "subtitle": "今天最值得打开的项目、技能与讨论",
+        "subtitle": "开源仓库、技能资产与讨论议题",
         "metric_label": "主榜条目",
     },
     "tech": {
         "title": "Tech Pulse",
-        "subtitle": "今天值得知道的外部科技信号",
+        "subtitle": "产品发布、工程信号与外部科技动态",
         "metric_label": "外部热讯",
     },
     "builder": {
-        "title": "Builder Watch",
-        "subtitle": "今天谁值得跟进，哪些内容值得点开",
+        "title": "Builder Signals",
+        "subtitle": "创作者观点、视频与长文线索",
         "metric_label": "Builder Picks",
     },
 }
 
 # kind → 画像结构化字段标签
 PROFILE_LABELS = {
-    "project":    {"trait": "特点", "capability": "核心能力", "necessity": "引入必要性"},
-    "skill":      {"trait": "特点", "capability": "核心能力", "necessity": "纳入必要性"},
-    "discussion": {"trait": "焦点", "capability": "核心观点", "necessity": "跟进必要性"},
-    "other":      {"trait": "特点", "capability": "核心能力", "necessity": "引入必要性"},
+    "project":    {"trait": "定位", "capability": "能力", "necessity": "价值"},
+    "skill":      {"trait": "定位", "capability": "能力", "necessity": "价值"},
+    "discussion": {"trait": "议题", "capability": "结论", "necessity": "影响"},
+    "other":      {"trait": "定位", "capability": "能力", "necessity": "价值"},
+}
+
+SOURCE_ICON_TOKENS = {
+    "github": "platform_outlined",
+    "youtube": "file-link-video_outlined",
+    "x": "internet_outlined",
+    "web": "internet_outlined",
 }
 
 # star 速度 → text_tag 颜色
@@ -88,19 +89,17 @@ def _truncate_text(text: str, max_len: int = 100) -> str:
 
 
 def _format_star_badge(item: dict) -> str:
-    """格式化 star 徽标：🔥+1161⭐ 或 ⭐12.3K"""
+    """格式化 star 徽标：+1161★ 或 12.3K★"""
     delta = item.get("star_delta_1d", 0)
-    velocity = item.get("star_velocity", "")
-    emoji = _VELOCITY_EMOJI.get(velocity, "")
 
     if delta and delta > 50:
-        return f"{emoji}+{delta}⭐"
+        return f"+{delta}★"
 
     stars = item.get("stars", 0)
     if stars >= 1000:
-        return f"⭐{stars / 1000:.1f}K"
+        return f"{stars / 1000:.1f}K★"
     elif stars > 0:
-        return f"⭐{stars}"
+        return f"{stars}★"
     return ""
 
 
@@ -111,14 +110,13 @@ def _format_star_tag(item: dict) -> str:
     color = _VELOCITY_TAG_COLOR.get(velocity, "neutral")
 
     if delta and delta > 50:
-        emoji = _VELOCITY_EMOJI.get(velocity, "")
-        return f"<text_tag color='{color}'>{emoji}+{delta}⭐</text_tag>"
+        return f"<text_tag color='{color}'>+{delta}★</text_tag>"
 
     stars = item.get("stars", 0)
     if stars >= 1000:
-        return f"<text_tag color='neutral'>⭐{stars / 1000:.1f}K</text_tag>"
+        return f"<text_tag color='neutral'>{stars / 1000:.1f}K★</text_tag>"
     elif stars > 0:
-        return f"<text_tag color='neutral'>⭐{stars}</text_tag>"
+        return f"<text_tag color='neutral'>{stars}★</text_tag>"
     return ""
 
 
@@ -129,10 +127,61 @@ def _format_external_heat(item: dict) -> str:
     source_label = str(external_heat.get("source_label") or external_heat.get("source") or "").strip()
     score = int(external_heat.get("score") or 0)
     if source_label and score > 0:
-        return f"🌐 {source_label} · {score} 热度"
+        return f"{source_label} · {score} 热度"
     if source_label:
-        return f"🌐 {source_label}"
+        return source_label
     return ""
+
+
+def _source_key_from_url(url: str) -> str:
+    host = urlparse(url).netloc.lower()
+    if "github.com" in host:
+        return "github"
+    if "youtube.com" in host or "youtu.be" in host:
+        return "youtube"
+    if "x.com" in host or "twitter.com" in host:
+        return "x"
+    return "web"
+
+
+def _escape_link_attr(value: str) -> str:
+    return value.replace("'", "%27")
+
+
+def _format_source_link(*, label: str, url: str, icon_token: str) -> str:
+    safe_url = _escape_link_attr(url)
+    return f"<link icon='{icon_token}' url='{safe_url}'>{label}</link>"
+
+
+def _resolve_source_meta(item: dict, *, fallback_label: str | None = None) -> tuple[str, str, str]:
+    url = str(item.get("url") or "").strip()
+    source_label = str(item.get("source_label") or fallback_label or "").strip()
+    source_key = _source_key_from_url(url)
+
+    if source_key == "github":
+        return "GitHub", SOURCE_ICON_TOKENS["github"], url
+    if source_key == "youtube":
+        return "YouTube", SOURCE_ICON_TOKENS["youtube"], url
+    if source_key == "x":
+        return "X", SOURCE_ICON_TOKENS["x"], url
+
+    lowered_label = source_label.lower()
+    if "github" in lowered_label:
+        return "GitHub", SOURCE_ICON_TOKENS["github"], url
+    if "youtube" in lowered_label:
+        return "YouTube", SOURCE_ICON_TOKENS["youtube"], url
+    if lowered_label in {"x", "twitter"}:
+        return "X", SOURCE_ICON_TOKENS["x"], url
+    if source_label:
+        return source_label, SOURCE_ICON_TOKENS["web"], url
+    return (fallback_label or "Web"), SOURCE_ICON_TOKENS["web"], url
+
+
+def _render_source_line(item: dict, *, fallback_label: str | None = None) -> str:
+    label, icon_token, url = _resolve_source_meta(item, fallback_label=fallback_label)
+    if url:
+        return f"来源：{_format_source_link(label=label, url=url, icon_token=icon_token)}"
+    return f"来源：{label}"
 
 
 def _build_track_header(*, title: str, subtitle: str, count: int, metric_label: str) -> dict:
@@ -189,7 +238,7 @@ def _render_focus_strip(metadata: dict | None = None) -> str | None:
     readable = [_humanize_theme_name(str(theme)) for theme in themes if str(theme).strip()]
     if not readable:
         return None
-    return f"**Today's Focus**  ·  {'  ·  '.join(readable[:3])}"
+    return f"**Focus Areas**  ·  {'  ·  '.join(readable[:3])}"
 
 
 # ── Ecosystem Label ───────────────────────────────────────────────
@@ -234,37 +283,36 @@ def _detect_ecosystem(item: dict) -> str:
 
 def _format_total_stars(stars: int) -> str:
     if stars >= 1000:
-        return f"{stars / 1000:.1f}K⭐"
+        return f"{stars / 1000:.1f}K★"
     if stars > 0:
-        return f"{stars}⭐"
+        return f"{stars}★"
     return ""
 
 
 def _render_surge_section(surge_items: list[dict]) -> str | None:
-    """渲染爆款监测分区：紧凑单行，纯数字冲击。"""
+    """渲染高增速分区：紧凑单行，强调增长。"""
     if not surge_items:
         return None
 
-    lines = ["**💥 今日爆款**", ""]
+    lines = ["**Momentum Leaders**", ""]
     for i, item in enumerate(surge_items, 1):
         title = item.get("title", "")
         url = item.get("url", "")
         daily_delta = item.get("surge_daily_delta", 0)
         total_stars = item.get("stars", 0)
         stars_is_growth = item.get("stars_is_growth", False)
-        emoji = "💥" if daily_delta >= 1000 else "🔥"
 
         link = f"[{title}]({url})" if url else title
         if stars_is_growth:
             # OSSInsight only: total stars unknown, only show delta
-            line = f"**{i}.** {link}  {emoji}+{daily_delta}⭐"
+            line = f"**{i}.** {link}  +{daily_delta}★"
         else:
             total_str = _format_total_stars(total_stars)
-            line = f"**{i}.** {link}  {emoji}+{daily_delta}⭐  {total_str}"
+            line = f"**{i}.** {link}  +{daily_delta}★  {total_str}"
         lines.append(line)
 
     lines.append("")
-    lines.append("*数据源：GitHub Trending + OSSInsight*")
+    lines.append("*来源：GitHub Trending / OSSInsight*")
     return "\n".join(lines)
 
 
@@ -284,15 +332,16 @@ def _render_featured_item(item: dict, index: int) -> str:
     line1 = f"**{index}.** [{title}]({url}){badge_suffix}" if url else f"**{index}.** {title}{badge_suffix}"
 
     lines = [line1]
+    lines.append(_render_source_line(item, fallback_label="GitHub"))
 
-    # 行 2: 看点（一句话）
+    # 行 3: 看点（一句话）
     external_heat = _format_external_heat(item)
     if external_heat and why_now:
-        lines.append(f"📌 {_truncate_text(f'{external_heat} · {why_now}', 80)}")
+        lines.append(f"观察：{_truncate_text(f'{external_heat} · {why_now}', 80)}")
     elif external_heat:
-        lines.append(f"📌 {_truncate_text(external_heat, 80)}")
+        lines.append(f"观察：{_truncate_text(external_heat, 80)}")
     elif why_now:
-        lines.append(f"📌 {_truncate_text(why_now, 80)}")
+        lines.append(f"观察：{_truncate_text(why_now, 80)}")
 
     # 行 3-5: 画像三段分行（有内容才输出）
     trait = item.get("trait", "")
@@ -315,11 +364,12 @@ def _render_compact_item(item: dict, index: int) -> str:
     url = item.get("url", "")
     badge = _format_star_badge(item)
     badge_suffix = f"  {badge}" if badge else ""
+    source_line = _render_source_line(item, fallback_label="GitHub")
     external_heat = _format_external_heat(item)
-    heat_suffix = f"  {external_heat}" if external_heat else ""
+    heat_suffix = f"  ·  {external_heat}" if external_heat else ""
     if url:
-        return f"**{index}.** [{title}]({url}){badge_suffix}{heat_suffix}"
-    return f"**{index}.** {title}{badge_suffix}{heat_suffix}"
+        return f"**{index}.** [{title}]({url}){badge_suffix}  ·  {source_line}{heat_suffix}"
+    return f"**{index}.** {title}{badge_suffix}  ·  {source_line}{heat_suffix}"
 
 
 def _render_skill_item(item: dict, index: int) -> str:
@@ -331,9 +381,10 @@ def _render_skill_item(item: dict, index: int) -> str:
     line1 = f"**{index}.** [{title}]({url}){badge_suffix}" if url else f"**{index}.** {title}{badge_suffix}"
 
     lines = [line1]
+    lines.append(_render_source_line(item, fallback_label="GitHub"))
     # 生态适配标签
     ecosystem = _detect_ecosystem(item)
-    lines.append(f"🏷️ 适配生态：{ecosystem}")
+    lines.append(f"适配：{ecosystem}")
     trait = item.get("trait", "")
     if trait:
         labels = PROFILE_LABELS.get(item.get("kind", "other"), PROFILE_LABELS["other"])
@@ -406,9 +457,9 @@ def _render_tech_pulse_section(items: list[dict]) -> str | None:
         why_now = item.get("why_now", "") or item.get("summary", "")
         line = f"**{index}.** [{title}]({url})" if url else f"**{index}.** {title}"
         lines.append(line)
-        detail_parts = [f"🏷️ {source_label}"]
+        detail_parts = [_render_source_line(item, fallback_label=source_label)]
         if why_now:
-            detail_parts.append(_truncate_text(why_now, 72))
+            detail_parts.append(f"观察：{_truncate_text(why_now, 72)}")
         lines.append("  ·  ".join(detail_parts))
         lines.append("")
     return "\n".join(lines)
@@ -432,10 +483,11 @@ def _render_builder_watch_section(sections: dict[str, list[dict]]) -> str | None
             line = f"**{index}.** [{title}]({url})" if url else f"**{index}.** {title}"
             lines.append(line)
             detail_parts = []
+            detail_parts.append(_render_source_line(item, fallback_label=creator or key.title()))
             if creator:
-                detail_parts.append(f"🏷️ {creator}")
+                detail_parts.append(f"作者：{creator}")
             if why_now:
-                detail_parts.append(_truncate_text(why_now, 72))
+                detail_parts.append(f"观察：{_truncate_text(why_now, 72)}")
             if detail_parts:
                 lines.append("  ·  ".join(detail_parts))
         lines.append("")
@@ -610,8 +662,8 @@ def _render_footer(today: date | None = None, metadata: dict | None = None) -> s
     total = meta.get("count", 0)
     selected = meta.get("item_count", 0)
     if total and selected:
-        return f"📅 {today.isoformat()}  ·  数据源：GitHub / OSSInsight / Buzzing / Follow Builders  ·  {total} 候选 → {selected} 精选"
-    return f"📅 {today.isoformat()}  ·  数据源：GitHub / OSSInsight / Buzzing / Follow Builders"
+        return f"Date  ·  {today.isoformat()}  ·  Sources  ·  GitHub / OSSInsight / Buzzing / Follow Builders  ·  {total} 候选 → {selected} 精选"
+    return f"Date  ·  {today.isoformat()}  ·  Sources  ·  GitHub / OSSInsight / Buzzing / Follow Builders"
 
 
 def _section_order(*, project_first: bool) -> list[str]:

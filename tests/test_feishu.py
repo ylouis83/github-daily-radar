@@ -84,16 +84,17 @@ def test_build_digest_card_single_card_with_sections():
     assert "🅰️" not in all_text
     assert "🅱️" not in all_text
     # 验证分区标题
-    assert "🚀 核心 AI 项目" in all_text
-    assert "🧩 MCP & Skills" in all_text
-    assert "💬 提案与讨论" in all_text
+    assert "Core Projects" in all_text
+    assert "Skills & MCP" in all_text
+    assert "Discussion Signals" in all_text
     # 验证链接可点击
     assert "[owner/repo](https://github.com/owner/repo)" in all_text
-    # 验证 star badge
-    assert "🔥+300⭐" in all_text
+    # 验证来源与更克制的 badge
+    assert "<link icon='platform_outlined' url='https://github.com/owner/repo'>GitHub</link>" in all_text
+    assert "+300★" in all_text
     # 验证画像字段分行显示
-    assert "▸ 特点：" in all_text
-    assert "▸ 核心能力：" in all_text
+    assert "▸ 定位：" in all_text
+    assert "▸ 能力：" in all_text
     assert "2026-04-02" in all_text
 
 
@@ -133,12 +134,14 @@ def test_build_digest_card_renders_github_tech_and_builder_tracks():
     all_text = _collect_card_text(card)
     assert "GitHub Radar" in all_text
     assert "Tech Pulse" in all_text
-    assert "Builder Watch" in all_text
-    assert "今天最值得打开的项目、技能与讨论" in all_text
-    assert "今天值得知道的外部科技信号" in all_text
-    assert "今天谁值得跟进，哪些内容值得点开" in all_text
+    assert "Builder Signals" in all_text
+    assert "开源仓库、技能资产与讨论议题" in all_text
+    assert "产品发布、工程信号与外部科技动态" in all_text
+    assert "创作者观点、视频与长文线索" in all_text
     assert "Product Hunt" in all_text
     assert "Swyx" in all_text
+    assert "来源：" in all_text
+    assert "<link icon='internet_outlined' url='https://www.producthunt.com/r/1'>Product Hunt</link>" in all_text
 
 
 def test_build_digest_card_uses_structured_profile():
@@ -187,15 +190,15 @@ def test_build_digest_card_uses_structured_profile():
     all_text = "\n".join(contents)
 
     # 验证 project 精编画像三段分行
-    assert "▸ 特点：" in all_text
-    assert "▸ 核心能力：" in all_text
-    assert "▸ 引入必要性：" in all_text
+    assert "▸ 定位：" in all_text
+    assert "▸ 能力：" in all_text
+    assert "▸ 价值：" in all_text
     # skill 区精简模式：仅保留 trait 一行
-    assert "▸ 特点：可复用的技能资源" in all_text
+    assert "▸ 定位：可复用的技能资源" in all_text
     # discussion 精编模式：焦点 + 核心观点 + 跟进必要性
-    assert "▸ 焦点：" in all_text
-    assert "▸ 核心观点：" in all_text
-    assert "▸ 跟进必要性：" in all_text
+    assert "▸ 议题：" in all_text
+    assert "▸ 结论：" in all_text
+    assert "▸ 影响：" in all_text
 
 
 def test_build_digest_card_empty_discussion_omits_section():
@@ -215,8 +218,8 @@ def test_build_digest_card_empty_discussion_omits_section():
 
     contents = [el.get("content", "") for el in card["card"]["elements"] if el.get("tag") == "markdown"]
     all_text = "\n".join(contents)
-    assert "提案与讨论" not in all_text
-    assert "MCP & Skills" not in all_text  # 没有 skill 条目也不渲染
+    assert "Discussion Signals" not in all_text
+    assert "Skills & MCP" not in all_text  # 没有 skill 条目也不渲染
 
 
 def test_build_digest_card_can_render_non_project_sections_first():
@@ -254,8 +257,8 @@ def test_build_digest_card_can_render_non_project_sections_first():
     contents = [el.get("content", "") for el in card["card"]["elements"] if el.get("tag") == "markdown"]
     all_text = "\n".join(contents)
 
-    assert all_text.index("🧩 MCP & Skills") < all_text.index("🚀 核心 AI 项目")
-    assert all_text.index("💬 提案与讨论") < all_text.index("🚀 核心 AI 项目")
+    assert all_text.index("Skills & MCP") < all_text.index("Core Projects")
+    assert all_text.index("Discussion Signals") < all_text.index("Core Projects")
 
 
 def test_build_digest_card_is_single_card():
@@ -301,9 +304,9 @@ def test_build_digest_card_keeps_full_project_profiles_for_larger_lists():
     all_text = "\n".join(contents)
 
     assert "Quick Scan" in all_text
-    assert all_text.count("▸ 特点：") == 4
-    assert all_text.count("▸ 核心能力：") == 4
-    assert all_text.count("▸ 引入必要性：") == 4
+    assert all_text.count("▸ 定位：") == 4
+    assert all_text.count("▸ 能力：") == 4
+    assert all_text.count("▸ 价值：") == 4
 
 
 def test_alert_card_has_red_theme():
@@ -315,7 +318,7 @@ def test_alert_card_has_red_theme():
 
 
 def test_star_badge_renders_k_format():
-    """大 star 数应显示为 ⭐131.0K"""
+    """大 star 数应显示为 131.0K★"""
     items = [
         {
             "kind": "skill",
@@ -331,7 +334,7 @@ def test_star_badge_renders_k_format():
     card = build_digest_card(items=items, today=date(2026, 4, 2))
     contents = [el.get("content", "") for el in card["card"]["elements"] if el.get("tag") == "markdown"]
     all_text = "\n".join(contents)
-    assert "⭐131.0K" in all_text
+    assert "131.0K★" in all_text
 
 
 def test_footer_only_shows_date():
@@ -357,7 +360,7 @@ def test_footer_only_shows_date():
     contents = [el.get("content", "") for el in card["card"]["elements"] if el.get("tag") == "markdown"]
     all_text = "\n".join(contents)
 
-    assert "📅 2026-04-02" in all_text
+    assert "Date  ·  2026-04-02" in all_text
     assert "候选 78" not in all_text
     assert "LLM 精编 5" not in all_text
     assert "Search 18" not in all_text

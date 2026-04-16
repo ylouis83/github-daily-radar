@@ -24,7 +24,9 @@ def test_build_preview_cards_contains_all_three_tracks():
     all_text = "\n".join(text_parts)
     assert "GitHub Radar" in all_text
     assert "Tech Pulse" in all_text
-    assert "Builder Watch" in all_text
-    assert "Today's Focus" in all_text
+    assert "Builder Signals" in all_text
+    assert "Focus Areas" in all_text
     assert "Quick Scan" in all_text
+    assert "<link icon='platform_outlined'" in all_text
+    assert "<link icon='file-link-video_outlined'" in all_text
     assert "2026-04-16" in all_text
