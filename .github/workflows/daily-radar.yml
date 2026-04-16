@@ -15,6 +15,11 @@ on:
         required: false
         default: "0"
         type: string
+      preview_card:
+        description: "Send a mock preview card instead of the actual daily brief"
+        required: false
+        default: false
+        type: boolean
       skip_radar:
         description: "Skip Daily Brief run"
         required: false
@@ -30,7 +35,7 @@ concurrency:
 
 jobs:
   radar:
-    if: ${{ !inputs.skip_radar }}
+    if: ${{ inputs.preview_card || !inputs.skip_radar }}
     runs-on: ubuntu-latest
     env:
       FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
@@ -49,6 +54,7 @@ jobs:
       - uses: astral-sh/setup-uv@v6
       - run: uv sync --extra dev
       - run: uv run python -m github_daily_radar.main
+        if: ${{ !inputs.preview_card }}
         env:
           DRY_RUN: ${{ inputs.dry_run || false }}
           REPORT_LIMIT: ${{ inputs.report_limit || 0 }}
@@ -60,10 +66,16 @@ jobs:
           GITHUB_PAT: ${{ secrets.GITHUB_PAT }}
           QWEN_API_KEY: ${{ secrets.QWEN_API_KEY }}
           FEISHU_WEBHOOK_URL: ${{ secrets.FEISHU_WEBHOOK_URL }}
+      - run: uv run python -m github_daily_radar.preview
+        if: ${{ inputs.preview_card }}
+        env:
+          PREVIEW_DRY_RUN: ${{ inputs.dry_run || false }}
+          TIMEZONE: Asia/Shanghai
+          FEISHU_WEBHOOK_URL: ${{ secrets.FEISHU_WEBHOOK_URL }}
       - run: bash scripts/sync_state_branch.sh
-        if: ${{ !inputs.dry_run }}
+        if: ${{ !inputs.dry_run && !inputs.preview_card }}
       - name: Send failure alert
-        if: failure()
+        if: ${{ failure() && !inputs.preview_card }}
         run: uv run python -m github_daily_radar.main --alert-only
         env:
           LLM_MODEL: qwen3.5-plus

@@ -6,7 +6,7 @@ def test_workflow_contains_dry_run_and_concurrency():
     assert "dry_run:" in workflow
     assert "concurrency:" in workflow
     assert "workflow_dispatch:" in workflow
-    assert "if: failure()" in workflow
+    assert "failure()" in workflow
     assert "bash scripts/sync_state_branch.sh" in workflow
 
 
@@ -25,3 +25,9 @@ def test_preview_workflow_dispatch_exists():
     assert "workflow_dispatch:" in workflow
     assert "uv run python -m github_daily_radar.preview" in workflow
     assert "FEISHU_WEBHOOK_URL" in workflow
+
+
+def test_daily_radar_workflow_supports_preview_card_mode():
+    workflow = Path(".github/workflows/daily-radar.yml").read_text(encoding="utf-8")
+    assert "preview_card:" in workflow
+    assert "uv run python -m github_daily_radar.preview" in workflow
