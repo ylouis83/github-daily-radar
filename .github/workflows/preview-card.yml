@@ -8,6 +8,11 @@ on:
         required: false
         default: false
         type: boolean
+      style_only:
+        description: "Send a style-only review card without sample content"
+        required: false
+        default: false
+        type: boolean
 
 permissions:
   contents: read
@@ -24,6 +29,7 @@ jobs:
       - run: uv run python -m github_daily_radar.preview
         env:
           PREVIEW_DRY_RUN: ${{ inputs.dry_run || false }}
+          PREVIEW_STYLE_ONLY: ${{ inputs.style_only || false }}
           TIMEZONE: Asia/Shanghai
           FEISHU_WEBHOOK_URL: ${{ secrets.FEISHU_WEBHOOK_URL }}
       - uses: actions/upload-artifact@v4

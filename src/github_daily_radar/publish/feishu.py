@@ -5,7 +5,7 @@ Design principles (v3):
   • 四大分区 — 💥 今日爆款 / 🚀 核心 AI 项目 / 🧩 MCP & Skills / 💬 提案与讨论
   • 爆款区 — 仅含 TrendingCollector + OSSInsight 日增 ≥200⭐ 的项目，与核心项目互斥
   • 分层密度 — 精编条目 (前 N 条) 带完整画像；其余紧凑速览
-  • column_set 概览面板 — 三列数字冲击
+  • column_set 概览面板 — 稳定四列统计
   • 空分区不渲染
 """
 from __future__ import annotations
@@ -28,9 +28,12 @@ SECTION_ICONS = {
 
 BUILDER_SECTION_LABELS = {
     "x": "X",
-    "podcast": "Video / Podcast",
+    "podcast": "Podcast",
     "blog": "Blog",
 }
+
+CARD_SUBTITLE = "GitHub 主榜 · 科技热讯 · Builder Watch"
+STYLE_REVIEW_NOTE = "仅预览卡片样式，不加载实时内容"
 
 TRACK_COPY = {
     "github": {
@@ -44,7 +47,7 @@ TRACK_COPY = {
         "metric_label": "Signals",
     },
     "builder": {
-        "title": "Builder Signals",
+        "title": "Builder Watch",
         "subtitle": "创作者观点、视频与长文线索",
         "metric_label": "Picks",
     },
@@ -230,6 +233,39 @@ def _build_track_header(*, track_key: str, title: str, subtitle: str, count: int
     }
 
 
+def _build_metric_column(value: str | int, label: str) -> dict:
+    return {
+        "tag": "column",
+        "width": "weighted",
+        "weight": 1,
+        "vertical_align": "center",
+        "elements": [
+            {
+                "tag": "markdown",
+                "text_align": "center",
+                "content": f"**{value}**\n{label}",
+            }
+        ],
+    }
+
+
+def _build_card_payload(*, title: str, elements: list[dict], template: str = "indigo") -> dict:
+    return {
+        "msg_type": "interactive",
+        "card": {
+            "config": {"wide_screen_mode": True},
+            "header": {
+                "title": {
+                    "tag": "plain_text",
+                    "content": title,
+                },
+                "template": template,
+            },
+            "elements": elements,
+        },
+    }
+
+
 def _humanize_theme_name(theme: str) -> str:
     parts = []
     for chunk in str(theme).split("_"):
@@ -305,7 +341,7 @@ def _render_surge_section(surge_items: list[dict]) -> str | None:
     if not surge_items:
         return None
 
-    lines = ["**Momentum Leaders**", ""]
+    lines = [f"**Momentum Leaders · {len(surge_items)}**", ""]
     for i, item in enumerate(surge_items, 1):
         title = item.get("title", "")
         url = item.get("url", "")
@@ -420,7 +456,7 @@ def _render_project_section(items: list[dict], *, featured_limit: int = FEATURED
     # 速览区
     compact = items[featured_limit:]
     if compact:
-        lines.append("**Quick Scan**")
+        lines.append(f"**Quick Scan · {len(compact)}**")
         lines.append("")
         for i, item in enumerate(compact, featured_limit + 1):
             lines.append(_render_compact_item(item, i))
@@ -483,7 +519,7 @@ def _render_builder_watch_section(sections: dict[str, list[dict]]) -> str | None
         items = sections.get(key) or []
         if not items:
             continue
-        lines.append(f"**{BUILDER_SECTION_LABELS.get(key, key.title())}**")
+        lines.append(f"**{BUILDER_SECTION_LABELS.get(key, key.title())} · {len(items)}**")
         for index, item in enumerate(items, 1):
             title = item.get("title", "")
             url = item.get("url", "")
@@ -529,43 +565,15 @@ def _build_stats_panel(
     tech_items: list[dict] | None = None,
     builder_sections: dict[str, list[dict]] | None = None,
 ) -> dict:
-    """构建 column_set 三列概览面板"""
-    total_count = metadata.get("count", len(all_items))
+    """构建 column_set 四列概览面板"""
     selected = len(all_items)
     tech_count = len(tech_items or [])
     builder_count = sum(len(items) for items in (builder_sections or {}).values())
 
     # 主题数
     theme_counts = metadata.get("theme_counts", {})
-    theme_n = len(theme_counts) if theme_counts else 0
-
-    def _metric_column(value: int, label: str) -> dict:
-        return {
-            "tag": "column",
-            "width": "weighted",
-            "weight": 1,
-            "vertical_align": "center",
-            "elements": [
-                {
-                    "tag": "markdown",
-                    "text_align": "center",
-                    "content": f"**{value}**\n{label}",
-                }
-            ],
-        }
-
-    if not tech_count and not builder_count:
-        return {
-            "tag": "column_set",
-            "flex_mode": "bisect",
-            "background_style": "grey",
-            "horizontal_spacing": "default",
-            "columns": [
-                _metric_column(total_count, "Candidate Pool"),
-                _metric_column(selected, "Selected"),
-                _metric_column(theme_n, "Theme Coverage"),
-            ],
-        }
+    top_themes = metadata.get("top_themes", [])
+    theme_n = len(theme_counts) if theme_counts else len(top_themes)
 
     return {
         "tag": "column_set",
@@ -573,10 +581,10 @@ def _build_stats_panel(
         "background_style": "grey",
         "horizontal_spacing": "default",
         "columns": [
-            _metric_column(selected, "GitHub Core"),
-            _metric_column(tech_count, "Tech Signals"),
-            _metric_column(builder_count, "Builder Picks"),
-            _metric_column(total_count, "Candidate Pool"),
+            _build_metric_column(selected, "GitHub Selected"),
+            _build_metric_column(tech_count, "Tech Pulse"),
+            _build_metric_column(builder_count, "Builders"),
+            _build_metric_column(theme_n, "Theme Coverage"),
         ],
     }
 
@@ -664,6 +672,8 @@ def build_digest_card(
 
     elements: list[dict] = []
 
+    elements.append({"tag": "markdown", "content": CARD_SUBTITLE, "text_size": "notation"})
+
     # ── 概览面板 ──
     if metadata.get("count"):
         elements.append(_build_stats_panel(all_items, metadata, tech_items=tech_items, builder_sections=builder_sections))
@@ -746,37 +756,115 @@ def build_digest_card(
     if footer:
         elements.append({"tag": "markdown", "content": footer, "text_size": "notation"})
 
-    return {
-        "msg_type": "interactive",
-        "card": {
-            "config": {"wide_screen_mode": True},
-            "header": {
-                "title": {
-                    "tag": "plain_text",
-                    "content": f"AI Builder Radar · {date_str}",
-                },
-                "template": "indigo",
-            },
-            "elements": elements,
+    return _build_card_payload(
+        title=f"AI Builder Radar · {date_str}",
+        elements=elements,
+    )
+
+
+def build_style_review_card(*, today: date | None = None) -> dict:
+    """构建仅用于 review 的样式预览卡，不包含真实内容。"""
+    date_str = today.isoformat() if today else ""
+    elements: list[dict] = [
+        {"tag": "markdown", "content": CARD_SUBTITLE, "text_size": "notation"},
+        {
+            "tag": "column_set",
+            "flex_mode": "bisect",
+            "background_style": "grey",
+            "horizontal_spacing": "default",
+            "columns": [
+                _build_metric_column("—", "GitHub Selected"),
+                _build_metric_column("—", "Tech Pulse"),
+                _build_metric_column("—", "Builders"),
+                _build_metric_column("—", "Theme Coverage"),
+            ],
         },
-    }
+        {
+            "tag": "markdown",
+            "content": f"**Style Review**  ·  {STYLE_REVIEW_NOTE}",
+        },
+        {"tag": "hr"},
+    ]
+
+    github_copy = TRACK_COPY["github"]
+    elements.append(
+        _build_track_header(
+            track_key="github",
+            title=github_copy["title"],
+            subtitle=github_copy["subtitle"],
+            count=0,
+            metric_label=github_copy["metric_label"],
+        )
+    )
+    elements.append(
+        {
+            "tag": "markdown",
+            "content": (
+                "**Core Projects · —**\n样式占位：检查标题、数字面板与主区留白。\n\n"
+                "**Skills & MCP · —**\n样式占位：检查次级栏目密度与信息层级。\n\n"
+                "**Discussion Signals · —**\n样式占位：检查正文节奏与分区间距。"
+            ),
+        }
+    )
+    elements.append({"tag": "hr"})
+
+    tech_copy = TRACK_COPY["tech"]
+    elements.append(
+        _build_track_header(
+            track_key="tech",
+            title=tech_copy["title"],
+            subtitle=tech_copy["subtitle"],
+            count=0,
+            metric_label=tech_copy["metric_label"],
+        )
+    )
+    elements.append(
+        {
+            "tag": "markdown",
+            "content": "**Style Review · Tech Pulse**\n样式占位：检查副栏目是否足够轻，不抢 GitHub 主区。",
+        }
+    )
+    elements.append({"tag": "hr"})
+
+    builder_copy = TRACK_COPY["builder"]
+    elements.append(
+        _build_track_header(
+            track_key="builder",
+            title=builder_copy["title"],
+            subtitle=builder_copy["subtitle"],
+            count=0,
+            metric_label=builder_copy["metric_label"],
+        )
+    )
+    elements.append(
+        {
+            "tag": "markdown",
+            "content": (
+                "**X · —**\n样式占位：检查人物流的标题节奏。\n\n"
+                "**Podcast · —**\n样式占位：检查媒体型条目的密度。\n\n"
+                "**Blog · —**\n样式占位：检查收尾区的视觉重量。"
+            ),
+        }
+    )
+    elements.append(
+        {
+            "tag": "markdown",
+            "content": f"Date  ·  {date_str}  ·  Review Mode  ·  Style-only preview",
+            "text_size": "notation",
+        }
+    )
+
+    return _build_card_payload(
+        title=f"AI Builder Radar · {date_str}",
+        elements=elements,
+    )
 
 
 def build_alert_cards(*, title: str, message: str, metadata: dict | None = None) -> list[dict]:
     """构建告警卡片"""
     elements = [{"tag": "markdown", "content": f"⚠️ {message}"}]
     return [
-        {
-            "msg_type": "interactive",
-            "card": {
-                "config": {"wide_screen_mode": True},
-                "header": {
-                    "title": {"tag": "plain_text", "content": title},
-                    "template": "red",
-                },
-                "elements": elements,
-            },
-        }
+        _build_card_payload(title=title, elements=elements, template="red")
     ]
 
 

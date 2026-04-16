@@ -23,7 +23,9 @@ def test_workflow_no_longer_runs_ai_builders_as_separate_job():
 def test_preview_workflow_dispatch_exists():
     workflow = Path(".github/workflows/preview-card.yml").read_text(encoding="utf-8")
     assert "workflow_dispatch:" in workflow
+    assert "style_only:" in workflow
     assert "uv run python -m github_daily_radar.preview" in workflow
+    assert "PREVIEW_STYLE_ONLY" in workflow
     assert "FEISHU_WEBHOOK_URL" in workflow
 
 

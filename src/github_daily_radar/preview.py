@@ -6,7 +6,7 @@ from datetime import date, datetime
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
-from github_daily_radar.publish.feishu import build_digest_card, send_cards
+from github_daily_radar.publish.feishu import build_digest_card, build_style_review_card, send_cards
 
 
 def _preview_today() -> date:
@@ -14,8 +14,11 @@ def _preview_today() -> date:
     return datetime.now(ZoneInfo(timezone_name)).date()
 
 
-def build_preview_cards(*, today: date | None = None) -> list[dict]:
+def build_preview_cards(*, today: date | None = None, style_only: bool = False) -> list[dict]:
     current_day = today or _preview_today()
+    if style_only:
+        return [build_style_review_card(today=current_day)]
+
     card = build_digest_card(
         items=[
             {
@@ -215,7 +218,8 @@ def write_preview_artifact(*, cards: list[dict]) -> None:
 
 
 def main() -> None:
-    cards = build_preview_cards()
+    style_only = os.getenv("PREVIEW_STYLE_ONLY", "false").lower() == "true"
+    cards = build_preview_cards(style_only=style_only)
     write_preview_artifact(cards=cards)
 
     dry_run = os.getenv("PREVIEW_DRY_RUN", "false").lower() == "true"

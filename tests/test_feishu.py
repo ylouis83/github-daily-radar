@@ -78,12 +78,14 @@ def test_build_digest_card_single_card_with_sections():
     all_text = "\n".join(contents)
 
     # 验证概览面板（column_set 或文字版）
-    assert "50" in all_text  # 候选总数
     assert "3" in all_text  # 精选数（3 条）
-    assert "Candidate Pool" in all_text
-    assert "Selected" in all_text
+    assert "GitHub Selected" in all_text
+    assert "Tech Pulse" in all_text
+    assert "Builders" in all_text
     assert "Theme Coverage" in all_text
+    assert "Candidate Pool" not in all_text
     assert "<text_tag color='blue'>Primary Track</text_tag>" in all_text
+    assert "GitHub 主榜 · 科技热讯 · Builder Watch" in all_text
     # 不再有 A/B 标签
     assert "🅰️" not in all_text
     assert "🅱️" not in all_text
@@ -139,14 +141,16 @@ def test_build_digest_card_renders_github_tech_and_builder_tracks():
     all_text = _collect_card_text(card)
     assert "GitHub Radar" in all_text
     assert "Tech Pulse" in all_text
-    assert "Builder Signals" in all_text
-    assert "GitHub Core" in all_text
-    assert "Tech Signals" in all_text
-    assert "Builder Picks" in all_text
-    assert "Candidate Pool" in all_text
+    assert "Builder Watch" in all_text
+    assert "GitHub Selected" in all_text
+    assert "Tech Pulse" in all_text
+    assert "Builders" in all_text
+    assert "Theme Coverage" in all_text
+    assert "Candidate Pool" not in all_text
     assert "开源仓库、技能资产与讨论议题" in all_text
     assert "产品发布、工程信号与外部科技动态" in all_text
     assert "创作者观点、视频与长文线索" in all_text
+    assert "GitHub 主榜 · 科技热讯 · Builder Watch" in all_text
     assert "<text_tag color='blue'>Primary Track</text_tag>" in all_text
     assert "<text_tag color='orange'>External Signals</text_tag>" in all_text
     assert "<text_tag color='green'>People & Media</text_tag>" in all_text
@@ -154,6 +158,7 @@ def test_build_digest_card_renders_github_tech_and_builder_tracks():
     assert "Swyx" in all_text
     assert "<link icon='internet_outlined' url='https://www.producthunt.com/r/1'>Product Hunt</link>" in all_text
     assert "信号：" in all_text
+    assert "**X · 1**" in all_text
 
 
 def test_build_digest_card_uses_structured_profile():
@@ -315,7 +320,7 @@ def test_build_digest_card_keeps_full_project_profiles_for_larger_lists():
     contents = [el.get("content", "") for el in card["card"]["elements"] if el.get("tag") == "markdown"]
     all_text = "\n".join(contents)
 
-    assert "Quick Scan" in all_text
+    assert "Quick Scan · 2" in all_text
     assert all_text.count("▸ 定位：") == 4
     assert all_text.count("▸ 能力：") == 4
     assert all_text.count("▸ 价值：") == 4
@@ -338,9 +343,61 @@ def test_compact_items_inline_source_link_without_prefix():
     card = build_digest_card(items=items, today=date(2026, 4, 2))
     all_text = _collect_card_text(card)
 
-    assert "**Quick Scan**" in all_text
+    assert "**Quick Scan · 1**" in all_text
     assert "·  <link icon='platform_outlined' url='https://github.com/org/repo-4'>GitHub</link>" in all_text
     assert "来源：" not in all_text
+
+
+def test_surge_and_builder_subsections_surface_counts():
+    card = build_digest_card(
+        items=[
+            {
+                "kind": "project",
+                "title": "owner/repo",
+                "url": "https://github.com/owner/repo",
+                "summary": "repo",
+                "stars": 120,
+                "star_delta_1d": 0,
+                "star_velocity": "",
+            }
+        ],
+        surge_items=[
+            {
+                "title": "owner/repo",
+                "url": "https://github.com/owner/repo",
+                "repo_full_name": "owner/repo",
+                "surge_daily_delta": 300,
+                "stars": 1200,
+            },
+            {
+                "title": "owner/repo-2",
+                "url": "https://github.com/owner/repo-2",
+                "repo_full_name": "owner/repo-2",
+                "surge_daily_delta": 180,
+                "stars": 2400,
+            },
+        ],
+        builder_sections={
+            "x": [
+                {"title": "Swyx", "url": "https://x.com/swyx/status/1", "why_now": "thread"},
+                {"title": "Latent", "url": "https://x.com/latent/status/1", "why_now": "thread"},
+            ],
+            "podcast": [
+                {"title": "Training Data", "url": "https://youtube.com/watch?v=1", "why_now": "podcast"}
+            ],
+            "blog": [
+                {"title": "Claude Blog", "url": "https://claude.com/blog/1", "why_now": "blog"}
+            ],
+        },
+        today=date(2026, 4, 2),
+    )
+
+    all_text = _collect_card_text(card)
+
+    assert "**Momentum Leaders · 2**" in all_text
+    assert "**X · 2**" in all_text
+    assert "**Podcast · 1**" in all_text
+    assert "**Blog · 1**" in all_text
 
 
 def test_alert_card_has_red_theme():
