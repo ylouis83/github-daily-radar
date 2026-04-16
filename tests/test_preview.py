@@ -25,6 +25,10 @@ def test_build_preview_cards_contains_all_three_tracks():
     assert "GitHub Radar" in all_text
     assert "Tech Pulse" in all_text
     assert "Builder Signals" in all_text
+    assert "GitHub Core" in all_text
+    assert "Tech Signals" in all_text
+    assert "Builder Picks" in all_text
+    assert "<text_tag color='blue'>Primary Track</text_tag>" in all_text
     assert "Focus Areas" in all_text
     assert "Quick Scan" in all_text
     assert "<link icon='platform_outlined'" in all_text

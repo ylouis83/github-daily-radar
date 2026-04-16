@@ -80,6 +80,10 @@ def test_build_digest_card_single_card_with_sections():
     # 验证概览面板（column_set 或文字版）
     assert "50" in all_text  # 候选总数
     assert "3" in all_text  # 精选数（3 条）
+    assert "Candidate Pool" in all_text
+    assert "Selected" in all_text
+    assert "Theme Coverage" in all_text
+    assert "<text_tag color='blue'>Primary Track</text_tag>" in all_text
     # 不再有 A/B 标签
     assert "🅰️" not in all_text
     assert "🅱️" not in all_text
@@ -128,6 +132,7 @@ def test_build_digest_card_renders_github_tech_and_builder_tracks():
                 }
             ]
         },
+        metadata={"count": 42},
         today=date(2026, 4, 16),
     )
 
@@ -135,13 +140,20 @@ def test_build_digest_card_renders_github_tech_and_builder_tracks():
     assert "GitHub Radar" in all_text
     assert "Tech Pulse" in all_text
     assert "Builder Signals" in all_text
+    assert "GitHub Core" in all_text
+    assert "Tech Signals" in all_text
+    assert "Builder Picks" in all_text
+    assert "Candidate Pool" in all_text
     assert "开源仓库、技能资产与讨论议题" in all_text
     assert "产品发布、工程信号与外部科技动态" in all_text
     assert "创作者观点、视频与长文线索" in all_text
+    assert "<text_tag color='blue'>Primary Track</text_tag>" in all_text
+    assert "<text_tag color='orange'>External Signals</text_tag>" in all_text
+    assert "<text_tag color='green'>People & Media</text_tag>" in all_text
     assert "Product Hunt" in all_text
     assert "Swyx" in all_text
-    assert "来源：" in all_text
     assert "<link icon='internet_outlined' url='https://www.producthunt.com/r/1'>Product Hunt</link>" in all_text
+    assert "信号：" in all_text
 
 
 def test_build_digest_card_uses_structured_profile():
@@ -307,6 +319,28 @@ def test_build_digest_card_keeps_full_project_profiles_for_larger_lists():
     assert all_text.count("▸ 定位：") == 4
     assert all_text.count("▸ 能力：") == 4
     assert all_text.count("▸ 价值：") == 4
+
+
+def test_compact_items_inline_source_link_without_prefix():
+    items = [
+        {
+            "kind": "project",
+            "title": f"org/repo-{i}",
+            "url": f"https://github.com/org/repo-{i}",
+            "summary": f"Project {i}",
+            "stars": 100 + i,
+            "star_delta_1d": 0,
+            "star_velocity": "",
+        }
+        for i in range(5)
+    ]
+
+    card = build_digest_card(items=items, today=date(2026, 4, 2))
+    all_text = _collect_card_text(card)
+
+    assert "**Quick Scan**" in all_text
+    assert "·  <link icon='platform_outlined' url='https://github.com/org/repo-4'>GitHub</link>" in all_text
+    assert "来源：" not in all_text
 
 
 def test_alert_card_has_red_theme():

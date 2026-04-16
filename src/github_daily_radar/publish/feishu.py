@@ -36,18 +36,24 @@ TRACK_COPY = {
     "github": {
         "title": "GitHub Radar",
         "subtitle": "开源仓库、技能资产与讨论议题",
-        "metric_label": "主榜条目",
+        "metric_label": "Selected",
     },
     "tech": {
         "title": "Tech Pulse",
         "subtitle": "产品发布、工程信号与外部科技动态",
-        "metric_label": "外部热讯",
+        "metric_label": "Signals",
     },
     "builder": {
         "title": "Builder Signals",
         "subtitle": "创作者观点、视频与长文线索",
-        "metric_label": "Builder Picks",
+        "metric_label": "Picks",
     },
+}
+
+TRACK_BADGES = {
+    "github": {"label": "Primary Track", "color": "blue"},
+    "tech": {"label": "External Signals", "color": "orange"},
+    "builder": {"label": "People & Media", "color": "green"},
 }
 
 # kind → 画像结构化字段标签
@@ -177,14 +183,15 @@ def _resolve_source_meta(item: dict, *, fallback_label: str | None = None) -> tu
     return (fallback_label or "Web"), SOURCE_ICON_TOKENS["web"], url
 
 
-def _render_source_line(item: dict, *, fallback_label: str | None = None) -> str:
+def _render_source_link(item: dict, *, fallback_label: str | None = None) -> str:
     label, icon_token, url = _resolve_source_meta(item, fallback_label=fallback_label)
     if url:
-        return f"来源：{_format_source_link(label=label, url=url, icon_token=icon_token)}"
-    return f"来源：{label}"
+        return _format_source_link(label=label, url=url, icon_token=icon_token)
+    return label
 
 
-def _build_track_header(*, title: str, subtitle: str, count: int, metric_label: str) -> dict:
+def _build_track_header(*, track_key: str, title: str, subtitle: str, count: int, metric_label: str) -> dict:
+    badge = TRACK_BADGES.get(track_key, {"label": "Track", "color": "grey"})
     return {
         "tag": "column_set",
         "flex_mode": "bisect",
@@ -198,7 +205,11 @@ def _build_track_header(*, title: str, subtitle: str, count: int, metric_label: 
                 "elements": [
                     {
                         "tag": "markdown",
-                        "content": f"**{title}**\n{subtitle}",
+                        "content": (
+                            f"**{title}**  "
+                            f"<text_tag color='{badge['color']}'>{badge['label']}</text_tag>\n"
+                            f"{subtitle}"
+                        ),
                     }
                 ],
             },
@@ -332,16 +343,16 @@ def _render_featured_item(item: dict, index: int) -> str:
     line1 = f"**{index}.** [{title}]({url}){badge_suffix}" if url else f"**{index}.** {title}{badge_suffix}"
 
     lines = [line1]
-    lines.append(_render_source_line(item, fallback_label="GitHub"))
+    lines.append(_render_source_link(item, fallback_label="GitHub"))
 
     # 行 3: 看点（一句话）
     external_heat = _format_external_heat(item)
     if external_heat and why_now:
-        lines.append(f"观察：{_truncate_text(f'{external_heat} · {why_now}', 80)}")
+        lines.append(f"信号：{_truncate_text(f'{external_heat} · {why_now}', 80)}")
     elif external_heat:
-        lines.append(f"观察：{_truncate_text(external_heat, 80)}")
+        lines.append(f"信号：{_truncate_text(external_heat, 80)}")
     elif why_now:
-        lines.append(f"观察：{_truncate_text(why_now, 80)}")
+        lines.append(f"信号：{_truncate_text(why_now, 80)}")
 
     # 行 3-5: 画像三段分行（有内容才输出）
     trait = item.get("trait", "")
@@ -364,7 +375,7 @@ def _render_compact_item(item: dict, index: int) -> str:
     url = item.get("url", "")
     badge = _format_star_badge(item)
     badge_suffix = f"  {badge}" if badge else ""
-    source_line = _render_source_line(item, fallback_label="GitHub")
+    source_line = _render_source_link(item, fallback_label="GitHub")
     external_heat = _format_external_heat(item)
     heat_suffix = f"  ·  {external_heat}" if external_heat else ""
     if url:
@@ -381,10 +392,8 @@ def _render_skill_item(item: dict, index: int) -> str:
     line1 = f"**{index}.** [{title}]({url}){badge_suffix}" if url else f"**{index}.** {title}{badge_suffix}"
 
     lines = [line1]
-    lines.append(_render_source_line(item, fallback_label="GitHub"))
+    lines.append(f"{_render_source_link(item, fallback_label='GitHub')}  ·  适配栈：{_detect_ecosystem(item)}")
     # 生态适配标签
-    ecosystem = _detect_ecosystem(item)
-    lines.append(f"适配：{ecosystem}")
     trait = item.get("trait", "")
     if trait:
         labels = PROFILE_LABELS.get(item.get("kind", "other"), PROFILE_LABELS["other"])
@@ -457,9 +466,9 @@ def _render_tech_pulse_section(items: list[dict]) -> str | None:
         why_now = item.get("why_now", "") or item.get("summary", "")
         line = f"**{index}.** [{title}]({url})" if url else f"**{index}.** {title}"
         lines.append(line)
-        detail_parts = [_render_source_line(item, fallback_label=source_label)]
+        detail_parts = [_render_source_link(item, fallback_label=source_label)]
         if why_now:
-            detail_parts.append(f"观察：{_truncate_text(why_now, 72)}")
+            detail_parts.append(f"信号：{_truncate_text(why_now, 72)}")
         lines.append("  ·  ".join(detail_parts))
         lines.append("")
     return "\n".join(lines)
@@ -483,11 +492,11 @@ def _render_builder_watch_section(sections: dict[str, list[dict]]) -> str | None
             line = f"**{index}.** [{title}]({url})" if url else f"**{index}.** {title}"
             lines.append(line)
             detail_parts = []
-            detail_parts.append(_render_source_line(item, fallback_label=creator or key.title()))
+            detail_parts.append(_render_source_link(item, fallback_label=creator or key.title()))
             if creator:
                 detail_parts.append(f"作者：{creator}")
             if why_now:
-                detail_parts.append(f"观察：{_truncate_text(why_now, 72)}")
+                detail_parts.append(f"信号：{_truncate_text(why_now, 72)}")
             if detail_parts:
                 lines.append("  ·  ".join(detail_parts))
         lines.append("")
@@ -530,6 +539,21 @@ def _build_stats_panel(
     theme_counts = metadata.get("theme_counts", {})
     theme_n = len(theme_counts) if theme_counts else 0
 
+    def _metric_column(value: int, label: str) -> dict:
+        return {
+            "tag": "column",
+            "width": "weighted",
+            "weight": 1,
+            "vertical_align": "center",
+            "elements": [
+                {
+                    "tag": "markdown",
+                    "text_align": "center",
+                    "content": f"**{value}**\n{label}",
+                }
+            ],
+        }
+
     if not tech_count and not builder_count:
         return {
             "tag": "column_set",
@@ -537,45 +561,9 @@ def _build_stats_panel(
             "background_style": "grey",
             "horizontal_spacing": "default",
             "columns": [
-                {
-                    "tag": "column",
-                    "width": "weighted",
-                    "weight": 1,
-                    "vertical_align": "center",
-                    "elements": [
-                        {
-                            "tag": "markdown",
-                            "text_align": "center",
-                            "content": f"**{total_count}**\n候选仓库",
-                        }
-                    ],
-                },
-                {
-                    "tag": "column",
-                    "width": "weighted",
-                    "weight": 1,
-                    "vertical_align": "center",
-                    "elements": [
-                        {
-                            "tag": "markdown",
-                            "text_align": "center",
-                            "content": f"**{selected}**\n今日精选",
-                        }
-                    ],
-                },
-                {
-                    "tag": "column",
-                    "width": "weighted",
-                    "weight": 1,
-                    "vertical_align": "center",
-                    "elements": [
-                        {
-                            "tag": "markdown",
-                            "text_align": "center",
-                            "content": f"**{theme_n}**\n覆盖主题",
-                        }
-                    ],
-                },
+                _metric_column(total_count, "Candidate Pool"),
+                _metric_column(selected, "Selected"),
+                _metric_column(theme_n, "Theme Coverage"),
             ],
         }
 
@@ -585,58 +573,10 @@ def _build_stats_panel(
         "background_style": "grey",
         "horizontal_spacing": "default",
         "columns": [
-            {
-                "tag": "column",
-                "width": "weighted",
-                "weight": 1,
-                "vertical_align": "center",
-                "elements": [
-                    {
-                        "tag": "markdown",
-                        "text_align": "center",
-                        "content": f"**{selected}**\nGitHub",
-                    }
-                ],
-            },
-            {
-                "tag": "column",
-                "width": "weighted",
-                "weight": 1,
-                "vertical_align": "center",
-                "elements": [
-                    {
-                        "tag": "markdown",
-                        "text_align": "center",
-                        "content": f"**{tech_count}**\nTech Pulse",
-                    }
-                ],
-            },
-            {
-                "tag": "column",
-                "width": "weighted",
-                "weight": 1,
-                "vertical_align": "center",
-                "elements": [
-                    {
-                        "tag": "markdown",
-                        "text_align": "center",
-                        "content": f"**{builder_count}**\nBuilders",
-                    }
-                ],
-            },
-            {
-                "tag": "column",
-                "width": "weighted",
-                "weight": 1,
-                "vertical_align": "center",
-                "elements": [
-                    {
-                        "tag": "markdown",
-                        "text_align": "center",
-                        "content": f"**{total_count}**\n候选池",
-                    }
-                ],
-            },
+            _metric_column(selected, "GitHub Core"),
+            _metric_column(tech_count, "Tech Signals"),
+            _metric_column(builder_count, "Builder Picks"),
+            _metric_column(total_count, "Candidate Pool"),
         ],
     }
 
@@ -748,6 +688,7 @@ def build_digest_card(
     github_copy = TRACK_COPY["github"]
     elements.append(
         _build_track_header(
+            track_key="github",
             title=github_copy["title"],
             subtitle=github_copy["subtitle"],
             count=len(all_items),
@@ -766,13 +707,15 @@ def build_digest_card(
             content = _render_section(f"**{title}**", section_items)
         if content is not None:
             elements.append({"tag": "markdown", "content": content})
-            elements.append({"tag": "hr"})
 
     tech_content = _render_tech_pulse_section(tech_items or [])
+    builder_content = _render_builder_watch_section(builder_sections or {})
     if tech_content is not None:
+        elements.append({"tag": "hr"})
         tech_copy = TRACK_COPY["tech"]
         elements.append(
             _build_track_header(
+                track_key="tech",
                 title=tech_copy["title"],
                 subtitle=tech_copy["subtitle"],
                 count=len(tech_items or []),
@@ -780,13 +723,16 @@ def build_digest_card(
             )
         )
         elements.append({"tag": "markdown", "content": tech_content})
-        elements.append({"tag": "hr"})
+        if builder_content is not None:
+            elements.append({"tag": "hr"})
 
-    builder_content = _render_builder_watch_section(builder_sections or {})
     if builder_content is not None:
+        if tech_content is None:
+            elements.append({"tag": "hr"})
         builder_copy = TRACK_COPY["builder"]
         elements.append(
             _build_track_header(
+                track_key="builder",
                 title=builder_copy["title"],
                 subtitle=builder_copy["subtitle"],
                 count=sum(len(items) for items in (builder_sections or {}).values()),
@@ -794,7 +740,6 @@ def build_digest_card(
             )
         )
         elements.append({"tag": "markdown", "content": builder_content})
-        elements.append({"tag": "hr"})
 
     # ── Footer ──
     footer = _render_footer(today, metadata)
