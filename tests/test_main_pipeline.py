@@ -655,4 +655,5 @@ def test_run_pipeline_builds_single_daily_brief_with_tech_and_builder_tracks(mon
 
     assert captured["items"]
     assert captured["tech_items"] == []
-    assert captured["builder_sections"]["x"][0]["title"] == "Swyx"
+    assert captured["builder_sections"]["x"][0]["title"].startswith("Swyx：")
+    assert "围绕" in captured["builder_sections"]["x"][0]["why_now"]

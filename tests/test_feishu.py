@@ -79,24 +79,24 @@ def test_build_digest_card_single_card_with_sections():
 
     # 验证概览面板（column_set 或文字版）
     assert "3" in all_text  # 精选数（3 条）
-    assert "GitHub Selected" in all_text
-    assert "Tech Pulse" in all_text
-    assert "Builders" in all_text
-    assert "Theme Coverage" in all_text
+    assert "主榜" in all_text
+    assert "热讯" in all_text
+    assert "观察" in all_text
+    assert "主题" in all_text
     assert "Candidate Pool" not in all_text
-    assert "<text_tag color='blue'>Primary Track</text_tag>" in all_text
+    assert "<text_tag color='blue'>主线</text_tag>" in all_text
     assert "GitHub 主榜 · 科技热讯 · Builder Watch" in all_text
     # 不再有 A/B 标签
     assert "🅰️" not in all_text
     assert "🅱️" not in all_text
     # 验证分区标题
-    assert "Core Projects" in all_text
-    assert "Skills & MCP" in all_text
-    assert "Discussion Signals" in all_text
+    assert "核心项目" in all_text
+    assert "技能与 MCP" in all_text
+    assert "讨论与提案" in all_text
     # 验证链接可点击
     assert "[owner/repo](https://github.com/owner/repo)" in all_text
     # 验证来源与更克制的 badge
-    assert "<link icon='platform_outlined' url='https://github.com/owner/repo'>GitHub</link>" in all_text
+    assert "<link icon='platform_outlined' url='https://github.com'>GitHub</link>" in all_text
     assert "+300★" in all_text
     # 验证画像字段分行显示
     assert "▸ 定位：" in all_text
@@ -128,8 +128,9 @@ def test_build_digest_card_renders_github_tech_and_builder_tracks():
         builder_sections={
             "x": [
                 {
-                    "title": "Swyx",
+                    "title": "Swyx：围绕「agent workbench」的一线观察",
                     "url": "https://x.com/swyx/status/1",
+                    "creator": "Swyx",
                     "why_now": "Builder 线程值得看",
                 }
             ]
@@ -139,26 +140,26 @@ def test_build_digest_card_renders_github_tech_and_builder_tracks():
     )
 
     all_text = _collect_card_text(card)
-    assert "GitHub Radar" in all_text
-    assert "Tech Pulse" in all_text
+    assert "GitHub 主榜" in all_text
+    assert "科技热讯" in all_text
     assert "Builder Watch" in all_text
-    assert "GitHub Selected" in all_text
-    assert "Tech Pulse" in all_text
-    assert "Builders" in all_text
-    assert "Theme Coverage" in all_text
+    assert "主榜" in all_text
+    assert "热讯" in all_text
+    assert "观察" in all_text
+    assert "主题" in all_text
     assert "Candidate Pool" not in all_text
-    assert "开源仓库、技能资产与讨论议题" in all_text
-    assert "产品发布、工程信号与外部科技动态" in all_text
-    assert "创作者观点、视频与长文线索" in all_text
+    assert "开源仓库、技能资产与讨论线索" in all_text
+    assert "发布动态、工程信号与外部热点" in all_text
+    assert "创作者观点、播客与长文解读" in all_text
     assert "GitHub 主榜 · 科技热讯 · Builder Watch" in all_text
-    assert "<text_tag color='blue'>Primary Track</text_tag>" in all_text
-    assert "<text_tag color='orange'>External Signals</text_tag>" in all_text
-    assert "<text_tag color='green'>People & Media</text_tag>" in all_text
+    assert "<text_tag color='blue'>主线</text_tag>" in all_text
+    assert "<text_tag color='orange'>外部</text_tag>" in all_text
+    assert "<text_tag color='green'>人物</text_tag>" in all_text
     assert "Product Hunt" in all_text
     assert "Swyx" in all_text
     assert "<link icon='internet_outlined' url='https://www.producthunt.com/r/1'>Product Hunt</link>" in all_text
     assert "信号：" in all_text
-    assert "**X · 1**" in all_text
+    assert "**X · 1**  ·  <link icon='internet_outlined' url='https://x.com'>X</link>" in all_text
 
 
 def test_build_digest_card_uses_structured_profile():
@@ -235,8 +236,8 @@ def test_build_digest_card_empty_discussion_omits_section():
 
     contents = [el.get("content", "") for el in card["card"]["elements"] if el.get("tag") == "markdown"]
     all_text = "\n".join(contents)
-    assert "Discussion Signals" not in all_text
-    assert "Skills & MCP" not in all_text  # 没有 skill 条目也不渲染
+    assert "讨论与提案" not in all_text
+    assert "技能与 MCP" not in all_text  # 没有 skill 条目也不渲染
 
 
 def test_build_digest_card_can_render_non_project_sections_first():
@@ -274,8 +275,8 @@ def test_build_digest_card_can_render_non_project_sections_first():
     contents = [el.get("content", "") for el in card["card"]["elements"] if el.get("tag") == "markdown"]
     all_text = "\n".join(contents)
 
-    assert all_text.index("Skills & MCP") < all_text.index("Core Projects")
-    assert all_text.index("Discussion Signals") < all_text.index("Core Projects")
+    assert all_text.index("技能与 MCP") < all_text.index("核心项目")
+    assert all_text.index("讨论与提案") < all_text.index("核心项目")
 
 
 def test_build_digest_card_is_single_card():
@@ -320,7 +321,7 @@ def test_build_digest_card_keeps_full_project_profiles_for_larger_lists():
     contents = [el.get("content", "") for el in card["card"]["elements"] if el.get("tag") == "markdown"]
     all_text = "\n".join(contents)
 
-    assert "Quick Scan · 2" in all_text
+    assert "延伸速览" in all_text
     assert all_text.count("▸ 定位：") == 4
     assert all_text.count("▸ 能力：") == 4
     assert all_text.count("▸ 价值：") == 4
@@ -343,8 +344,8 @@ def test_compact_items_inline_source_link_without_prefix():
     card = build_digest_card(items=items, today=date(2026, 4, 2))
     all_text = _collect_card_text(card)
 
-    assert "**Quick Scan · 1**" in all_text
-    assert "·  <link icon='platform_outlined' url='https://github.com/org/repo-4'>GitHub</link>" in all_text
+    assert "**延伸速览**" in all_text
+    assert "·  <link icon='platform_outlined' url='https://github.com/org/repo-4'>GitHub</link>" not in all_text
     assert "来源：" not in all_text
 
 
@@ -400,6 +401,54 @@ def test_surge_and_builder_subsections_surface_counts():
     assert "**Blog · 1**" in all_text
 
 
+def test_build_digest_card_uses_group_level_source_links_for_single_source_sections():
+    card = build_digest_card(
+        items=[
+            {
+                "kind": "project",
+                "title": "owner/repo",
+                "url": "https://github.com/owner/repo",
+                "summary": "repo",
+                "stars": 120,
+                "star_delta_1d": 0,
+                "star_velocity": "",
+            }
+        ],
+        builder_sections={
+            "x": [
+                {
+                    "title": "Claude：围绕「desktop redesign」的一线观察",
+                    "url": "https://x.com/claude/status/1",
+                    "creator": "Claude",
+                    "why_now": "围绕「desktop redesign」，给出一线观察。",
+                },
+                {
+                    "title": "Swyx：围绕「agent workbench」的一线观察",
+                    "url": "https://x.com/swyx/status/1",
+                    "creator": "Swyx",
+                    "why_now": "围绕「agent workbench」，给出一线观察。",
+                },
+            ],
+            "podcast": [
+                {
+                    "title": "Training Data：聊「From SEO to Agent-Led Growth」",
+                    "url": "https://www.youtube.com/watch?v=1",
+                    "creator": "Training Data",
+                    "why_now": "围绕「From SEO to Agent-Led Growth」，展开完整对谈。",
+                }
+            ],
+        },
+        today=date(2026, 4, 2),
+    )
+
+    all_text = _collect_card_text(card)
+
+    assert all_text.count("<link icon='internet_outlined' url='https://x.com'>X</link>") == 1
+    assert "<link icon='internet_outlined' url='https://x.com/claude/status/1'>X</link>" not in all_text
+    assert "<link icon='internet_outlined' url='https://x.com/swyx/status/1'>X</link>" not in all_text
+    assert all_text.count("<link icon='file-link-video_outlined' url='https://www.youtube.com'>YouTube</link>") == 1
+
+
 def test_alert_card_has_red_theme():
     cards = build_alert_cards(title="Alert", message="Something failed")
     assert len(cards) == 1
@@ -451,7 +500,7 @@ def test_footer_only_shows_date():
     contents = [el.get("content", "") for el in card["card"]["elements"] if el.get("tag") == "markdown"]
     all_text = "\n".join(contents)
 
-    assert "Date  ·  2026-04-02" in all_text
+    assert "日期  ·  2026-04-02" in all_text
     assert "候选 78" not in all_text
     assert "LLM 精编 5" not in all_text
     assert "Search 18" not in all_text

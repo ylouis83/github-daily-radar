@@ -64,8 +64,51 @@ def test_assemble_daily_brief_groups_builder_signals_by_section():
         builder_signals=signals,
     )
 
-    assert [item["title"] for item in brief.builder_watch["x"]] == ["Swyx"]
-    assert [item["title"] for item in brief.builder_watch["blog"]] == ["Builder essay"]
+    assert brief.builder_watch["x"][0]["title"].startswith("Swyx：")
+    assert brief.builder_watch["blog"][0]["title"].startswith("Builder：")
+
+
+def test_assemble_daily_brief_editorializes_builder_watch_copy():
+    signals = [
+        BuilderSignal(
+            source="x",
+            section="x",
+            title="Claude",
+            url="https://x.com/claude/status/1",
+            creator="Claude",
+            summary="Desktop redesign for parallel agents and multi-session workflow.",
+            score=120,
+            published_at="2026-04-16T00:00:00Z",
+        ),
+        BuilderSignal(
+            source="podcast",
+            section="podcast",
+            title="From SEO to Agent-Led Growth",
+            url="https://www.youtube.com/watch?v=1",
+            creator="Training Data",
+            summary="A conversation about growth loops, content, and agent workflow.",
+            score=0,
+            published_at="2026-04-16T00:00:00Z",
+        ),
+    ]
+
+    brief = assemble_daily_brief(
+        github_items=[],
+        tech_candidates=[],
+        builder_signals=signals,
+    )
+
+    x_item = brief.builder_watch["x"][0]
+    podcast_item = brief.builder_watch["podcast"][0]
+
+    assert x_item["title"] != "Claude"
+    assert x_item["title"].startswith("Claude：")
+    assert "围绕" in x_item["why_now"]
+    assert "workflow." not in x_item["why_now"]
+
+    assert podcast_item["title"].startswith("Training Data：")
+    assert "展开" in podcast_item["why_now"]
+    assert podcast_item["why_now"].endswith("。")
 
 
 def test_assemble_daily_brief_limits_tech_pulse_to_top_five_items():

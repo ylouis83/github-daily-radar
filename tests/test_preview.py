@@ -22,25 +22,25 @@ def test_build_preview_cards_contains_all_three_tracks():
                         text_parts.append(child.get("content", ""))
 
     all_text = "\n".join(text_parts)
-    assert "GitHub Radar" in all_text
-    assert "Tech Pulse" in all_text
+    assert "GitHub 主榜" in all_text
+    assert "科技热讯" in all_text
     assert "Builder Watch" in all_text
-    assert "GitHub Selected" in all_text
-    assert "Tech Pulse" in all_text
-    assert "Builders" in all_text
-    assert "Theme Coverage" in all_text
+    assert "主榜" in all_text
+    assert "热讯" in all_text
+    assert "观察" in all_text
+    assert "主题" in all_text
     assert "GitHub 主榜 · 科技热讯 · Builder Watch" in all_text
-    assert "<text_tag color='blue'>Primary Track</text_tag>" in all_text
-    assert "Focus Areas" in all_text
-    assert "Quick Scan · 1" in all_text
+    assert "<text_tag color='blue'>主线</text_tag>" in all_text
+    assert "关注主题" in all_text
+    assert "延伸速览" in all_text
     assert "Podcast" in all_text
     assert "Video / Podcast" not in all_text
     assert "**Momentum Leaders · 2**" in all_text
     assert "**X · 2**" in all_text
     assert "**Podcast · 1**" in all_text
     assert "**Blog · 1**" in all_text
-    assert "<link icon='platform_outlined'" in all_text
-    assert "<link icon='file-link-video_outlined'" in all_text
+    assert "<link icon='platform_outlined' url='https://github.com'>GitHub</link>" in all_text
+    assert "<link icon='file-link-video_outlined' url='https://www.youtube.com'>YouTube</link>" in all_text
     assert "2026-04-16" in all_text
 
 
@@ -63,13 +63,13 @@ def test_build_preview_cards_can_render_style_only_review_mode():
                         text_parts.append(child.get("content", ""))
 
     all_text = "\n".join(text_parts)
-    assert "GitHub Radar" in all_text
-    assert "Tech Pulse" in all_text
+    assert "GitHub 主榜" in all_text
+    assert "科技热讯" in all_text
     assert "Builder Watch" in all_text
-    assert "Style Review" in all_text
+    assert "样式预览" in all_text
     assert "仅预览卡片样式，不加载实时内容" in all_text
-    assert "GitHub Selected" in all_text
-    assert "Theme Coverage" in all_text
+    assert "主榜" in all_text
+    assert "主题" in all_text
     assert "anthropics/claude-code-desktop" not in all_text
     assert "Claude Code Routines" not in all_text
     assert "Swyx" not in all_text

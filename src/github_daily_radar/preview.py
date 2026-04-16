@@ -152,13 +152,13 @@ def build_preview_cards(*, today: date | None = None, style_only: bool = False) 
         builder_sections={
             "x": [
                 {
-                    "title": "Claude",
+                    "title": "Claude：聊桌面版多会话工作台",
                     "url": "https://x.com/claudeai/status/2044131493966909862",
                     "creator": "Claude",
                     "why_now": "新桌面版支持多会话管理和更流畅的并行协作体验。",
                 },
                 {
-                    "title": "Swyx",
+                    "title": "Swyx：围绕「agent workbench」的一线观察",
                     "url": "https://x.com/swyx/status/2044000000000000000",
                     "creator": "Swyx",
                     "why_now": "从 builder 视角解释为什么 agent 产品开始进入“工作台”阶段。",
@@ -166,7 +166,7 @@ def build_preview_cards(*, today: date | None = None, style_only: bool = False) 
             ],
             "podcast": [
                 {
-                    "title": "From SEO to Agent-Led Growth",
+                    "title": "Training Data：聊「From SEO to Agent-Led Growth」",
                     "url": "https://www.youtube.com/playlist?list=PLOhHNjZItNnMm5tdW61JpnyxeYH5NDDx8",
                     "creator": "Training Data",
                     "why_now": "把增长、内容和 agent workflow 放到同一条叙事线上。",
@@ -174,7 +174,7 @@ def build_preview_cards(*, today: date | None = None, style_only: bool = False) 
             ],
             "blog": [
                 {
-                    "title": "Redesigning Claude Code on desktop for parallel agents",
+                    "title": "Claude Blog：拆解桌面版并行 agent redesign",
                     "url": "https://claude.com/blog/claude-code-desktop-redesign",
                     "creator": "Claude Blog",
                     "why_now": "很适合作为 Builder Watch 的编辑式收尾内容。",

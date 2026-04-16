@@ -21,9 +21,9 @@ import httpx
 FEATURED_LIMIT = 4
 
 SECTION_ICONS = {
-    "project": "Core Projects",
-    "skill": "Skills & MCP",
-    "discussion": "Discussion Signals",
+    "project": "核心项目",
+    "skill": "技能与 MCP",
+    "discussion": "讨论与提案",
 }
 
 BUILDER_SECTION_LABELS = {
@@ -37,26 +37,26 @@ STYLE_REVIEW_NOTE = "仅预览卡片样式，不加载实时内容"
 
 TRACK_COPY = {
     "github": {
-        "title": "GitHub Radar",
-        "subtitle": "开源仓库、技能资产与讨论议题",
-        "metric_label": "Selected",
+        "title": "GitHub 主榜",
+        "subtitle": "开源仓库、技能资产与讨论线索",
+        "metric_label": "主榜",
     },
     "tech": {
-        "title": "Tech Pulse",
-        "subtitle": "产品发布、工程信号与外部科技动态",
-        "metric_label": "Signals",
+        "title": "科技热讯",
+        "subtitle": "发布动态、工程信号与外部热点",
+        "metric_label": "热讯",
     },
     "builder": {
         "title": "Builder Watch",
-        "subtitle": "创作者观点、视频与长文线索",
-        "metric_label": "Picks",
+        "subtitle": "创作者观点、播客与长文解读",
+        "metric_label": "观察",
     },
 }
 
 TRACK_BADGES = {
-    "github": {"label": "Primary Track", "color": "blue"},
-    "tech": {"label": "External Signals", "color": "orange"},
-    "builder": {"label": "People & Media", "color": "green"},
+    "github": {"label": "主线", "color": "blue"},
+    "tech": {"label": "外部", "color": "orange"},
+    "builder": {"label": "人物", "color": "green"},
 }
 
 # kind → 画像结构化字段标签
@@ -72,6 +72,12 @@ SOURCE_ICON_TOKENS = {
     "youtube": "file-link-video_outlined",
     "x": "internet_outlined",
     "web": "internet_outlined",
+}
+
+SOURCE_HOME_LINKS = {
+    "github": "https://github.com",
+    "youtube": "https://www.youtube.com",
+    "x": "https://x.com",
 }
 
 # star 速度 → text_tag 颜色
@@ -193,17 +199,57 @@ def _render_source_link(item: dict, *, fallback_label: str | None = None) -> str
     return label
 
 
+def _platform_source_link(source_key: str) -> str | None:
+    url = SOURCE_HOME_LINKS.get(source_key)
+    icon_token = SOURCE_ICON_TOKENS.get(source_key)
+    label = {"github": "GitHub", "youtube": "YouTube", "x": "X"}.get(source_key)
+    if not url or not icon_token or not label:
+        return None
+    return _format_source_link(label=label, url=url, icon_token=icon_token)
+
+
+def _shared_source_key(items: list[dict]) -> str | None:
+    source_keys = {
+        _source_key_from_url(str(item.get("url") or "").strip())
+        for item in items
+        if str(item.get("url") or "").strip()
+    }
+    if len(source_keys) != 1:
+        return None
+    source_key = next(iter(source_keys))
+    return source_key if source_key in SOURCE_HOME_LINKS else None
+
+
+def _format_section_heading(
+    label: str,
+    *,
+    count: int | None = None,
+    source_key: str | None = None,
+) -> str:
+    count_suffix = f" · {count}" if count is not None else ""
+    heading = f"**{label}{count_suffix}**"
+    source_link = _platform_source_link(source_key) if source_key else None
+    if source_link:
+        return f"{heading}  ·  {source_link}"
+    return heading
+
+
+def _title_mentions_creator(title: str, creator: str) -> bool:
+    title_norm = "".join(char for char in title.lower() if char.isalnum() or "\u4e00" <= char <= "\u9fff")
+    creator_norm = "".join(char for char in creator.lower() if char.isalnum() or "\u4e00" <= char <= "\u9fff")
+    return bool(title_norm and creator_norm and creator_norm in title_norm)
+
+
 def _build_track_header(*, track_key: str, title: str, subtitle: str, count: int, metric_label: str) -> dict:
     badge = TRACK_BADGES.get(track_key, {"label": "Track", "color": "grey"})
     return {
         "tag": "column_set",
-        "flex_mode": "bisect",
+        "flex_mode": "none",
         "horizontal_spacing": "default",
         "columns": [
             {
                 "tag": "column",
-                "width": "weighted",
-                "weight": 3,
+                "width": "auto",
                 "vertical_align": "center",
                 "elements": [
                     {
@@ -213,19 +259,6 @@ def _build_track_header(*, track_key: str, title: str, subtitle: str, count: int
                             f"<text_tag color='{badge['color']}'>{badge['label']}</text_tag>\n"
                             f"{subtitle}"
                         ),
-                    }
-                ],
-            },
-            {
-                "tag": "column",
-                "width": "weighted",
-                "weight": 1,
-                "vertical_align": "center",
-                "elements": [
-                    {
-                        "tag": "markdown",
-                        "text_align": "right",
-                        "content": f"**{count}**\n{metric_label}",
                     }
                 ],
             },
@@ -285,7 +318,7 @@ def _render_focus_strip(metadata: dict | None = None) -> str | None:
     readable = [_humanize_theme_name(str(theme)) for theme in themes if str(theme).strip()]
     if not readable:
         return None
-    return f"**Focus Areas**  ·  {'  ·  '.join(readable[:3])}"
+    return f"**关注主题**  ·  {'  ·  '.join(readable[:3])}"
 
 
 # ── Ecosystem Label ───────────────────────────────────────────────
@@ -365,7 +398,7 @@ def _render_surge_section(surge_items: list[dict]) -> str | None:
 
 # ── Item Rendering ────────────────────────────────────────────────
 
-def _render_featured_item(item: dict, index: int) -> str:
+def _render_featured_item(item: dict, index: int, *, include_source_link: bool = True) -> str:
     """渲染精编条目：标题 + 看点 + 画像三行"""
     title = item.get("title", "")
     url = item.get("url", "")
@@ -379,7 +412,8 @@ def _render_featured_item(item: dict, index: int) -> str:
     line1 = f"**{index}.** [{title}]({url}){badge_suffix}" if url else f"**{index}.** {title}{badge_suffix}"
 
     lines = [line1]
-    lines.append(_render_source_link(item, fallback_label="GitHub"))
+    if include_source_link:
+        lines.append(_render_source_link(item, fallback_label="GitHub"))
 
     # 行 3: 看点（一句话）
     external_heat = _format_external_heat(item)
@@ -405,21 +439,25 @@ def _render_featured_item(item: dict, index: int) -> str:
     return "\n".join(lines)
 
 
-def _render_compact_item(item: dict, index: int) -> str:
+def _render_compact_item(item: dict, index: int, *, include_source_link: bool = True) -> str:
     """渲染速览条目：单行 = 标题 + badge"""
     title = item.get("title", "")
     url = item.get("url", "")
     badge = _format_star_badge(item)
     badge_suffix = f"  {badge}" if badge else ""
-    source_line = _render_source_link(item, fallback_label="GitHub")
     external_heat = _format_external_heat(item)
-    heat_suffix = f"  ·  {external_heat}" if external_heat else ""
+    detail_parts = []
+    if include_source_link:
+        detail_parts.append(_render_source_link(item, fallback_label="GitHub"))
+    if external_heat:
+        detail_parts.append(external_heat)
+    detail_suffix = f"  ·  {'  ·  '.join(detail_parts)}" if detail_parts else ""
     if url:
-        return f"**{index}.** [{title}]({url}){badge_suffix}  ·  {source_line}{heat_suffix}"
-    return f"**{index}.** {title}{badge_suffix}  ·  {source_line}{heat_suffix}"
+        return f"**{index}.** [{title}]({url}){badge_suffix}{detail_suffix}"
+    return f"**{index}.** {title}{badge_suffix}{detail_suffix}"
 
 
-def _render_skill_item(item: dict, index: int) -> str:
+def _render_skill_item(item: dict, index: int, *, include_source_link: bool = True) -> str:
     """渲染技能条目：标题 + 生态标签 + trait"""
     title = item.get("title", "")
     url = item.get("url", "")
@@ -428,7 +466,11 @@ def _render_skill_item(item: dict, index: int) -> str:
     line1 = f"**{index}.** [{title}]({url}){badge_suffix}" if url else f"**{index}.** {title}{badge_suffix}"
 
     lines = [line1]
-    lines.append(f"{_render_source_link(item, fallback_label='GitHub')}  ·  适配栈：{_detect_ecosystem(item)}")
+    detail_parts = []
+    if include_source_link:
+        detail_parts.append(_render_source_link(item, fallback_label="GitHub"))
+    detail_parts.append(f"适配栈：{_detect_ecosystem(item)}")
+    lines.append("  ·  ".join(detail_parts))
     # 生态适配标签
     trait = item.get("trait", "")
     if trait:
@@ -444,22 +486,25 @@ def _render_project_section(items: list[dict], *, featured_limit: int = FEATURED
     if not items:
         return None
 
-    section_title = f"**{SECTION_ICONS['project']} · {len(items)}**"
+    section_title = _format_section_heading(
+        SECTION_ICONS["project"],
+        source_key=_shared_source_key(items),
+    )
     lines = [section_title, ""]
 
     # 精编区
     featured = items[:featured_limit]
     for i, item in enumerate(featured, 1):
-        lines.append(_render_featured_item(item, i))
+        lines.append(_render_featured_item(item, i, include_source_link=False))
         lines.append("")
 
     # 速览区
     compact = items[featured_limit:]
     if compact:
-        lines.append(f"**Quick Scan · {len(compact)}**")
+        lines.append("**延伸速览**")
         lines.append("")
         for i, item in enumerate(compact, featured_limit + 1):
-            lines.append(_render_compact_item(item, i))
+            lines.append(_render_compact_item(item, i, include_source_link=False))
 
     return "\n".join(lines)
 
@@ -469,10 +514,13 @@ def _render_skill_section(items: list[dict]) -> str | None:
     if not items:
         return None
 
-    section_title = f"**{SECTION_ICONS['skill']} · {len(items)}**"
+    section_title = _format_section_heading(
+        SECTION_ICONS["skill"],
+        source_key=_shared_source_key(items),
+    )
     lines = [section_title, ""]
     for i, item in enumerate(items, 1):
-        lines.append(_render_skill_item(item, i))
+        lines.append(_render_skill_item(item, i, include_source_link=False))
         lines.append("")
     return "\n".join(lines)
 
@@ -482,10 +530,13 @@ def _render_discussion_section(items: list[dict]) -> str | None:
     if not items:
         return None
 
-    section_title = f"**{SECTION_ICONS['discussion']} · {len(items)}**"
+    section_title = _format_section_heading(
+        SECTION_ICONS["discussion"],
+        source_key=_shared_source_key(items),
+    )
     lines = [section_title, ""]
     for i, item in enumerate(items, 1):
-        lines.append(_render_featured_item(item, i))
+        lines.append(_render_featured_item(item, i, include_source_link=False))
         lines.append("")
     return "\n".join(lines)
 
@@ -519,7 +570,13 @@ def _render_builder_watch_section(sections: dict[str, list[dict]]) -> str | None
         items = sections.get(key) or []
         if not items:
             continue
-        lines.append(f"**{BUILDER_SECTION_LABELS.get(key, key.title())} · {len(items)}**")
+        lines.append(
+            _format_section_heading(
+                BUILDER_SECTION_LABELS.get(key, key.title()),
+                count=len(items),
+                source_key=_shared_source_key(items),
+            )
+        )
         for index, item in enumerate(items, 1):
             title = item.get("title", "")
             url = item.get("url", "")
@@ -528,8 +585,7 @@ def _render_builder_watch_section(sections: dict[str, list[dict]]) -> str | None
             line = f"**{index}.** [{title}]({url})" if url else f"**{index}.** {title}"
             lines.append(line)
             detail_parts = []
-            detail_parts.append(_render_source_link(item, fallback_label=creator or key.title()))
-            if creator:
+            if creator and not _title_mentions_creator(title, creator):
                 detail_parts.append(f"作者：{creator}")
             if why_now:
                 detail_parts.append(f"信号：{_truncate_text(why_now, 72)}")
@@ -581,10 +637,10 @@ def _build_stats_panel(
         "background_style": "grey",
         "horizontal_spacing": "default",
         "columns": [
-            _build_metric_column(selected, "GitHub Selected"),
-            _build_metric_column(tech_count, "Tech Pulse"),
-            _build_metric_column(builder_count, "Builders"),
-            _build_metric_column(theme_n, "Theme Coverage"),
+            _build_metric_column(selected, "主榜"),
+            _build_metric_column(tech_count, "热讯"),
+            _build_metric_column(builder_count, "观察"),
+            _build_metric_column(theme_n, "主题"),
         ],
     }
 
@@ -610,8 +666,8 @@ def _render_footer(today: date | None = None, metadata: dict | None = None) -> s
     total = meta.get("count", 0)
     selected = meta.get("item_count", 0)
     if total and selected:
-        return f"Date  ·  {today.isoformat()}  ·  Sources  ·  GitHub / OSSInsight / Buzzing / Follow Builders  ·  {total} 候选 → {selected} 精选"
-    return f"Date  ·  {today.isoformat()}  ·  Sources  ·  GitHub / OSSInsight / Buzzing / Follow Builders"
+        return f"日期  ·  {today.isoformat()}  ·  来源  ·  GitHub / OSSInsight / Buzzing / Follow Builders  ·  {total} 候选 → {selected} 精选"
+    return f"日期  ·  {today.isoformat()}  ·  来源  ·  GitHub / OSSInsight / Buzzing / Follow Builders"
 
 
 def _section_order(*, project_first: bool) -> list[str]:
@@ -773,15 +829,15 @@ def build_style_review_card(*, today: date | None = None) -> dict:
             "background_style": "grey",
             "horizontal_spacing": "default",
             "columns": [
-                _build_metric_column("—", "GitHub Selected"),
-                _build_metric_column("—", "Tech Pulse"),
-                _build_metric_column("—", "Builders"),
-                _build_metric_column("—", "Theme Coverage"),
+                _build_metric_column("—", "主榜"),
+                _build_metric_column("—", "热讯"),
+                _build_metric_column("—", "观察"),
+                _build_metric_column("—", "主题"),
             ],
         },
         {
             "tag": "markdown",
-            "content": f"**Style Review**  ·  {STYLE_REVIEW_NOTE}",
+            "content": f"**样式预览**  ·  {STYLE_REVIEW_NOTE}",
         },
         {"tag": "hr"},
     ]
@@ -800,9 +856,12 @@ def build_style_review_card(*, today: date | None = None) -> dict:
         {
             "tag": "markdown",
             "content": (
-                "**Core Projects · —**\n样式占位：检查标题、数字面板与主区留白。\n\n"
-                "**Skills & MCP · —**\n样式占位：检查次级栏目密度与信息层级。\n\n"
-                "**Discussion Signals · —**\n样式占位：检查正文节奏与分区间距。"
+                "**核心项目**  ·  <link icon='platform_outlined' url='https://github.com'>GitHub</link>\n"
+                "样式占位：检查标题、数字面板与主区留白。\n\n"
+                "**技能与 MCP**  ·  <link icon='platform_outlined' url='https://github.com'>GitHub</link>\n"
+                "样式占位：检查次级栏目密度与信息层级。\n\n"
+                "**讨论与提案**  ·  <link icon='platform_outlined' url='https://github.com'>GitHub</link>\n"
+                "样式占位：检查正文节奏与分区间距。"
             ),
         }
     )
@@ -821,7 +880,7 @@ def build_style_review_card(*, today: date | None = None) -> dict:
     elements.append(
         {
             "tag": "markdown",
-            "content": "**Style Review · Tech Pulse**\n样式占位：检查副栏目是否足够轻，不抢 GitHub 主区。",
+            "content": "**样式预览 · 科技热讯**\n样式占位：检查副栏目是否足够轻，不抢 GitHub 主区。",
         }
     )
     elements.append({"tag": "hr"})
@@ -840,16 +899,18 @@ def build_style_review_card(*, today: date | None = None) -> dict:
         {
             "tag": "markdown",
             "content": (
-                "**X · —**\n样式占位：检查人物流的标题节奏。\n\n"
-                "**Podcast · —**\n样式占位：检查媒体型条目的密度。\n\n"
-                "**Blog · —**\n样式占位：检查收尾区的视觉重量。"
+                "**X**  ·  <link icon='internet_outlined' url='https://x.com'>X</link>\n"
+                "样式占位：检查人物流的标题节奏。\n\n"
+                "**Podcast**  ·  <link icon='file-link-video_outlined' url='https://www.youtube.com'>YouTube</link>\n"
+                "样式占位：检查媒体型条目的密度。\n\n"
+                "**Blog**\n样式占位：检查收尾区的视觉重量。"
             ),
         }
     )
     elements.append(
         {
             "tag": "markdown",
-            "content": f"Date  ·  {date_str}  ·  Review Mode  ·  Style-only preview",
+            "content": f"日期  ·  {date_str}  ·  模式  ·  样式预览",
             "text_size": "notation",
         }
     )

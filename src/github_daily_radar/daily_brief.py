@@ -15,6 +15,91 @@ _BUILDER_SECTION_LIMITS = {
     "blog": 2,
 }
 _TECH_PULSE_LIMIT = 5
+_WHITESPACE_RE = re.compile(r"\s+")
+_URL_RE = re.compile(r"https?://\S+")
+_TOPIC_SPLIT_RE = re.compile(r"(?:\r?\n|(?<=[。！？.!?])\s+)")
+
+
+def _has_cjk(text: str) -> bool:
+    return any("\u4e00" <= char <= "\u9fff" for char in text)
+
+
+def _truncate_text(text: str, max_len: int = 42) -> str:
+    cleaned = (text or "").strip()
+    if len(cleaned) <= max_len:
+        return cleaned
+    cut = cleaned[:max_len].rstrip()
+    if " " in cut:
+        boundary = cut.rfind(" ")
+        if boundary >= max_len // 2:
+            cut = cut[:boundary].rstrip(" ,.;:!?-_/")
+    return cut.rstrip(" ,.;:!?-_/") + "…"
+
+
+def _clean_builder_text(text: str) -> str:
+    cleaned = _URL_RE.sub("", str(text or "")).strip()
+    cleaned = _WHITESPACE_RE.sub(" ", cleaned)
+    return cleaned.strip(" -|")
+
+
+def _same_identity(left: str, right: str) -> bool:
+    left_norm = re.sub(r"[^a-z0-9\u4e00-\u9fff]+", "", left.lower())
+    right_norm = re.sub(r"[^a-z0-9\u4e00-\u9fff]+", "", right.lower())
+    return bool(left_norm) and left_norm == right_norm
+
+
+def _pick_builder_topic(signal: BuilderSignal) -> str:
+    candidates = [signal.summary, signal.title]
+    for raw in candidates:
+        cleaned = _clean_builder_text(raw)
+        if not cleaned or _same_identity(cleaned, signal.creator):
+            continue
+        topic = _TOPIC_SPLIT_RE.split(cleaned, maxsplit=1)[0].strip(" \"'“”‘’")
+        if not topic or _same_identity(topic, signal.creator):
+            continue
+        if not _has_cjk(topic) and len(topic) < 8:
+            continue
+        return _truncate_text(topic, 34 if _has_cjk(topic) else 40)
+    return ""
+
+
+def _builder_watch_title(signal: BuilderSignal) -> str:
+    creator = str(signal.creator or "Builder").strip()
+    topic = _pick_builder_topic(signal)
+    if signal.section == "x":
+        if topic:
+            return f"{creator}：围绕「{topic}」"
+        return f"{creator}：一线观察"
+
+    if topic:
+        lead = "聊" if signal.section == "podcast" else "拆解"
+        return f"{creator}：{lead}「{topic}」"
+
+    section_label = "播客" if signal.section == "podcast" else "长文"
+    return f"{creator}：本期{section_label}"
+
+
+def _builder_watch_why_now(signal: BuilderSignal) -> str:
+    summary = _clean_builder_text(signal.summary)
+    if summary and _has_cjk(summary):
+        sentence = _truncate_text(summary, 52)
+        if sentence.endswith(("。", "！", "？")):
+            return sentence
+        return f"{sentence}。"
+
+    topic = _pick_builder_topic(signal)
+    if signal.section == "x":
+        action = "给出一线观察"
+    elif signal.section == "podcast":
+        action = "展开完整对谈"
+    else:
+        action = "做了长文拆解"
+
+    if topic:
+        return f"围绕「{topic}」，{action}。"
+
+    creator = str(signal.creator or "Builder").strip()
+    return f"{creator}{action}，值得后续跟进。"
 
 
 def _extract_repo_full_name(*, title: str, url: str) -> str | None:
@@ -147,13 +232,15 @@ def assemble_daily_brief(
 
     builder_grouped: dict[str, list[dict]] = defaultdict(list)
     for signal in sorted(builder_signals, key=lambda item: item.score, reverse=True):
+        editorial_title = _builder_watch_title(signal)
+        editorial_why_now = _builder_watch_why_now(signal)
         builder_grouped[signal.section].append(
             {
-                "title": signal.title,
+                "title": editorial_title,
                 "url": signal.url,
                 "creator": signal.creator,
-                "summary": signal.summary,
-                "why_now": signal.summary or signal.creator,
+                "summary": editorial_why_now,
+                "why_now": editorial_why_now,
                 "score": signal.score,
                 "published_at": signal.published_at,
                 "source": signal.source,
