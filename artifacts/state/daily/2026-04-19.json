@@ -1,0 +1,207 @@
+{
+  "cards": [
+    {
+      "msg_type": "interactive",
+      "card": {
+        "config": {
+          "wide_screen_mode": true
+        },
+        "header": {
+          "title": {
+            "tag": "plain_text",
+            "content": "AI Builder Radar · 2026-04-19"
+          },
+          "template": "indigo"
+        },
+        "elements": [
+          {
+            "tag": "markdown",
+            "content": "GitHub 主榜 · 科技热讯 · Builder Watch",
+            "text_size": "notation"
+          },
+          {
+            "tag": "hr"
+          },
+          {
+            "tag": "column_set",
+            "flex_mode": "none",
+            "horizontal_spacing": "default",
+            "columns": [
+              {
+                "tag": "column",
+                "width": "auto",
+                "vertical_align": "center",
+                "elements": [
+                  {
+                    "tag": "markdown",
+                    "content": "**GitHub 主榜**  <text_tag color='blue'>主线</text_tag>\n开源仓库、技能资产与讨论线索"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "tag": "markdown",
+            "content": "**热度跃升**\n\n**1.** [NousResearch/hermes-agent](https://github.com/NousResearch/hermes-agent)  +47053⭐  99.3K⭐\n**2.** [multica-ai/andrej-karpathy-skills](https://github.com/multica-ai/andrej-karpathy-skills)  +42267⭐  57.8K⭐\n**3.** [sponsors/thedotmack](https://github.com/sponsors/thedotmack)  +14033⭐  62.4K⭐\n**4.** [multica-ai/multica](https://github.com/multica-ai/multica)  +10056⭐  16.1K⭐\n**5.** [shiyu-coder/Kronos](https://github.com/shiyu-coder/Kronos)  +6511⭐  19.3K⭐\n\n*来源：GitHub Trending / OSSInsight*"
+          },
+          {
+            "tag": "markdown",
+            "content": "**核心项目**  ·  <link icon='platform_outlined' url='https://github.com'>GitHub</link>\n\n**1.** [anthropics/skills](https://github.com/anthropics/skills)  +123⭐\n信号：过去一周星数增长迅速，反映社区高度关注。\n▸ 定位：Anthropic 官方公开的 Agent 技能资源库。\n▸ 能力：展示智能体技能的标准定义与实现示例。\n▸ 价值：了解官方智能体能力边界的最佳窗口。\n\n**2.** [ClickHouse/ClickHouse](https://github.com/ClickHouse/ClickHouse)  46.9K⭐\n信号：长期稳居热门，持续更新维护值得跟进。\n▸ 定位：高性能实时分析数据库管理系统。\n▸ 能力：支持大规模数据的即时查询与分析。\n▸ 价值：大数据场景下不可或缺的分析引擎。\n\n**3.** [run-llama/llama_index](https://github.com/run-llama/llama_index)  +147⭐\n信号：近期反应数增长显著，显示社区活跃度回升。\n▸ 定位：LLM 工具集合中的热门数据框架项目。\n▸ 能力：提供大语言模型数据连接与索引能力。\n▸ 价值：构建检索增强生成应用的关键组件。\n\n**4.** [langfuse/langfuse](https://github.com/langfuse/langfuse)  +282⭐\n信号：过去四周内星数增长显著且社区反应热烈\n▸ 定位：LLM 工具集合中备受关注的可观测性方案\n▸ 能力：提供大模型应用的性能追踪与调试能力\n▸ 价值：构建可靠 AI 应用需要透明的监控体系\n\n**延伸速览**\n\n- [continuedev/continue](https://github.com/continuedev/continue)  +110⭐\n- [FreshRSS/FreshRSS](https://github.com/FreshRSS/FreshRSS)  14.8K⭐\n- [TabbyML/tabby](https://github.com/TabbyML/tabby)  +76⭐\n另有 8 个项目未展开"
+          },
+          {
+            "tag": "markdown",
+            "content": "**技能与 MCP**  ·  <link icon='platform_outlined' url='https://github.com'>GitHub</link>\n\n**1.** [obra/superpowers](https://github.com/obra/superpowers)  +1124⭐\n适配栈：Skill 生态\n▸ 定位：首个将代理技能框架与软件开发方法论结合的系统性方案。\n\n**2.** [VoltAgent/awesome-design-md](https://github.com/VoltAgent/awesome-design-md)  +1197⭐\n适配栈：Agent\n▸ 定位：用DESIGN.md文件替代Figma，让代理直接生成品牌级UI。\n\n**3.** [krusemediallc/arcads-claude-code](https://github.com/krusemediallc/arcads-claude-code)  107⭐\n适配栈：Claude Code\n▸ 定位：围绕 Claude Code 的终端工作流，社区验证较强\n\n**4.** [iusztinpaul/designing-real-world-ai-agents-workshop](https://github.com/iusztinpaul/designing-real-world-ai-agents-workshop)  114⭐\n适配栈：MCP\n▸ 定位：聚焦 MCP 工具接入与编排，社区验证较强\n\n**5.** [Dicklesworthstone/jeffreysprompts.com](https://github.com/Dicklesworthstone/jeffreysprompts.com)  98⭐\n适配栈：Claude Code\n▸ 定位：围绕 Claude Code 的终端工作流\n"
+          },
+          {
+            "tag": "hr"
+          },
+          {
+            "tag": "column_set",
+            "flex_mode": "none",
+            "horizontal_spacing": "default",
+            "columns": [
+              {
+                "tag": "column",
+                "width": "auto",
+                "vertical_align": "center",
+                "elements": [
+                  {
+                    "tag": "markdown",
+                    "content": "**科技热讯**  <text_tag color='orange'>外部</text_tag>\n发布动态、工程信号与外部热点"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "tag": "markdown",
+            "content": "**1.** [Cockpit AI - 在所有渠道部署收入专员](https://www.producthunt.com/r/ZSATDD5TGHHICH)\n<link icon='internet_outlined' url='https://www.producthunt.com/r/ZSATDD5TGHHICH'>Product Hunt</link>  ·  信号：Product Hunt 热度高 · 304 热度 / 29 评论\n\n**2.** [Zoer.ai - 从数据库开始构建全栈网络应用程序](https://www.producthunt.com/r/DGY2WXDYLQPHS5)\n<link icon='internet_outlined' url='https://www.producthunt.com/r/DGY2WXDYLQPHS5'>Product Hunt</link>  ·  信号：Product Hunt 热度高 · 256 热度 / 34 评论\n\n**3.** [Tobira.ai - 人工智能代理为人类寻找交易的网络](https://www.producthunt.com/r/G5JOBDQ3XBHBER)\n<link icon='internet_outlined' url='https://www.producthunt.com/r/G5JOBDQ3XBHBER'>Product Hunt</link>  ·  信号：Product Hunt 热度高 · 238 热度 / 47 评论\n\n**4.** [YouTube Transcript Tool - 立即将 YouTube 视频转换为文本](https://www.producthunt.com/r/OOPFDATLCXGHJX)\n<link icon='internet_outlined' url='https://www.producthunt.com/r/OOPFDATLCXGHJX'>Product Hunt</link>  ·  信号：Product Hunt 热度高 · 213 热度 / 22 评论\n\n**5.** [InsideOrg - 适用于任何公司的免费组织结构图查看器](https://www.producthunt.com/r/SZCX7EGZ2ZDGUA)\n<link icon='internet_outlined' url='https://www.producthunt.com/r/SZCX7EGZ2ZDGUA'>Product Hunt</link>  ·  信号：Product Hunt 热度高 · 209 热度 / 14 评论\n\n**6.** [Crossnode - 将 Vibe Code 的 AI 代理设置为付费内容](https://www.producthunt.com/r/37A2GEWBOXLPGI)\n<link icon='internet_outlined' url='https://www.producthunt.com/r/37A2GEWBOXLPGI'>Product Hunt</link>  ·  信号：Product Hunt 热度高 · 208 热度 / 40 评论\n"
+          },
+          {
+            "tag": "hr"
+          },
+          {
+            "tag": "column_set",
+            "flex_mode": "none",
+            "horizontal_spacing": "default",
+            "columns": [
+              {
+                "tag": "column",
+                "width": "auto",
+                "vertical_align": "center",
+                "elements": [
+                  {
+                    "tag": "markdown",
+                    "content": "**Builder Watch**  <text_tag color='green'>人物</text_tag>\n创作者观点、播客与长文解读"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "tag": "markdown",
+            "content": "**X**  ·  <link icon='internet_outlined' url='https://x.com'>X</link>\n**1.** [Claude：围绕「Claude for Word is now available on…」](https://x.com/claudeai/status/2045222254699511855)\n信号：围绕「Claude for Word is now available on…」，给出一线观察。\n**2.** [Kevin Weil：围绕「Today is my last day at OpenAI, as…」](https://x.com/kevinweil/status/2045230426210648348)\n信号：围绕「Today is my last day at OpenAI, as…」，给出一线观察。\n**3.** [Aaron Levie：围绕「Agents are going to use software 100X…」](https://x.com/levie/status/2045137708620906573)\n信号：围绕「Agents are going to use software 100X…」，给出一线观察。\n\n**播客**  ·  <link icon='file-link-video_outlined' url='https://www.youtube.com'>YouTube</link>\n**1.** [No Priors：聊「Speaker 1 | 00:00 - 00:40 The cost to…」](https://www.youtube.com/@NoPriorsPodcast)\n信号：围绕「Speaker 1 | 00:00 - 00:40 The cost to…」，展开完整对谈。\n"
+          },
+          {
+            "tag": "markdown",
+            "content": "日期  ·  2026-04-19  ·  来源  ·  GitHub / OSSInsight / Buzzing / Follow Builders  ·  120 候选 → 30 精选",
+            "text_size": "notation"
+          }
+        ]
+      }
+    }
+  ],
+  "count": 120,
+  "selected_count": 30,
+  "summary": {
+    "count": 120,
+    "editorial": 22,
+    "api_usage": {
+      "total_budget": 60,
+      "search_budget": 38,
+      "graphql_budget": 600,
+      "search_used": 30,
+      "graphql_used": 1
+    },
+    "collector_stats": {
+      "trending": {
+        "count": 15,
+        "kinds": {
+          "project": 15
+        }
+      },
+      "ossinsight": {
+        "count": 58,
+        "kinds": {
+          "project": 58
+        }
+      },
+      "repos": {
+        "count": 67,
+        "kinds": {
+          "project": 67
+        }
+      },
+      "star_growth": {
+        "count": 64,
+        "kinds": {
+          "project": 64
+        }
+      },
+      "discussions": {
+        "count": 0,
+        "kinds": {}
+      },
+      "issues_prs": {
+        "count": 0,
+        "kinds": {}
+      },
+      "skills": {
+        "count": 20,
+        "kinds": {
+          "skill": 11,
+          "project": 9
+        }
+      },
+      "buzzing": {
+        "count": 924,
+        "kinds": {
+          "tech": 924
+        }
+      },
+      "builders": {
+        "count": 17,
+        "kinds": {
+          "builder": 17
+        }
+      }
+    },
+    "surge_count": 5,
+    "filtered_kind_counts": {
+      "project": 115,
+      "skill": 5
+    },
+    "published_kind_counts": {
+      "project": 15,
+      "skill": 5
+    },
+    "theme_counts": {
+      "skill_assets": 2,
+      "ai_project": 14,
+      "agent_framework": 1,
+      "claude_code": 2,
+      "mcp": 1
+    },
+    "top_themes": [
+      "ai_project",
+      "skill_assets",
+      "claude_code"
+    ],
+    "github_count": 20,
+    "tech_pulse_candidate_count": 924,
+    "tech_pulse_count": 6,
+    "builder_signal_count": 17,
+    "builder_count": 4,
+    "item_count": 30
+  }
+}
