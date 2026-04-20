@@ -1,0 +1,207 @@
+{
+  "cards": [
+    {
+      "msg_type": "interactive",
+      "card": {
+        "config": {
+          "wide_screen_mode": true
+        },
+        "header": {
+          "title": {
+            "tag": "plain_text",
+            "content": "AI Builder Radar · 2026-04-21"
+          },
+          "template": "indigo"
+        },
+        "elements": [
+          {
+            "tag": "markdown",
+            "content": "GitHub 主榜 · 科技热讯 · Builder Watch",
+            "text_size": "notation"
+          },
+          {
+            "tag": "hr"
+          },
+          {
+            "tag": "column_set",
+            "flex_mode": "none",
+            "horizontal_spacing": "default",
+            "columns": [
+              {
+                "tag": "column",
+                "width": "auto",
+                "vertical_align": "center",
+                "elements": [
+                  {
+                    "tag": "markdown",
+                    "content": "**GitHub 主榜**  <text_tag color='blue'>主线</text_tag>\n开源仓库、技能资产与讨论线索"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "tag": "markdown",
+            "content": "**热度跃升**\n\n**1.** [forrestchang/andrej-karpathy-skills](https://github.com/forrestchang/andrej-karpathy-skills)  +45381⭐  66.2K⭐\n**2.** [NousResearch/hermes-agent](https://github.com/NousResearch/hermes-agent)  +38194⭐  105.2K⭐\n**3.** [sponsors/thedotmack](https://github.com/sponsors/thedotmack)  +14556⭐  64.3K⭐\n**4.** [lsdefine/GenericAgent](https://github.com/lsdefine/GenericAgent)  +3512⭐  5.0K⭐\n**5.** [EvoMap/evolver](https://github.com/EvoMap/evolver)  +3434⭐  6.0K⭐\n\n*来源：GitHub Trending / OSSInsight*"
+          },
+          {
+            "tag": "markdown",
+            "content": "**核心项目**  ·  <link icon='platform_outlined' url='https://github.com'>GitHub</link>\n\n**1.** [shanraisshan/claude-code-best-practice](https://github.com/shanraisshan/claude-code-best-practice)  +129⭐\n信号：随着 Claude 使用率激增，规范化实践成为本周热门话题。\n▸ 定位：专注于从 vibe coding 转向代理工程的最佳实践指南。\n▸ 能力：总结了一套让 Claude 编码表现更完美的实操方法。\n▸ 价值：帮助开发者跨越随意编码与工程化落地之间的鸿沟。\n\n**2.** [ArduPilot/ardupilot](https://github.com/ArduPilot/ardupilot)  14.9K⭐\n信号：低空经济热潮下值得深入研究其成熟架构。\n▸ 定位：开源无人机自动驾驶仪领域的事实标准代码库。\n▸ 能力：支持飞机、直升机等多种载体的自主导航控制。\n▸ 价值：机器人开发者需要可靠的底层飞行控制源码作为参考。\n\n**3.** [PostHog/posthog](https://github.com/PostHog/posthog)  32.7K⭐\n信号：产品驱动增长趋势下它是替代繁琐堆栈的理想选择。\n▸ 定位：唯一集成产品分析与功能标志的全合一开发者平台。\n▸ 能力：提供从数据分析到会话回放的一站式产品洞察能力。\n▸ 价值：团队需要统一工具链以减少数据孤岛和维护成本。\n\n**4.** [mvanhorn/last30days-skill](https://github.com/mvanhorn/last30days-skill)  23.0K⭐\n信号：信息过载时代需要自动化手段获取最新趋势。\n▸ 定位：跨多个社交平台进行深度调研的 AI 代理技能。\n▸ 能力：自动聚合 Reddit、X 等多源信息并生成综述。\n▸ 价值：人工搜集近期热点效率低下且容易遗漏。\n\n**延伸速览**\n\n- [pubkey/rxdb](https://github.com/pubkey/rxdb)  23.2K⭐\n- [marimo-team/marimo](https://github.com/marimo-team/marimo)  20.5K⭐\n- [opensearch-project/OpenSearch](https://github.com/opensearch-project/OpenSearch)  12.8K⭐\n另有 9 个项目未展开"
+          },
+          {
+            "tag": "markdown",
+            "content": "**技能与 MCP**  ·  <link icon='platform_outlined' url='https://github.com'>GitHub</link>\n\n**1.** [obra/superpowers](https://github.com/obra/superpowers)  +1584⭐\n适配栈：Skill 生态\n▸ 定位：这是一个真正可用的代理技能框架与软件开发方法论。\n\n**2.** [yzhao062/agent-style](https://github.com/yzhao062/agent-style)  141⭐\n适配栈：Claude Code\n▸ 定位：围绕 Claude Code 的终端工作流，社区验证较强\n\n**3.** [WoJiSama/skill-based-architecture](https://github.com/WoJiSama/skill-based-architecture)  113⭐\n适配栈：Claude Code\n▸ 定位：围绕 Claude Code 的终端工作流，社区验证较强\n\n**4.** [apify/apify-mcp-server](https://github.com/apify/apify-mcp-server)  1.1K⭐\n适配栈：MCP\n▸ 定位：专为 AI 代理设计的模型上下文协议服务器。\n"
+          },
+          {
+            "tag": "hr"
+          },
+          {
+            "tag": "column_set",
+            "flex_mode": "none",
+            "horizontal_spacing": "default",
+            "columns": [
+              {
+                "tag": "column",
+                "width": "auto",
+                "vertical_align": "center",
+                "elements": [
+                  {
+                    "tag": "markdown",
+                    "content": "**科技热讯**  <text_tag color='orange'>外部</text_tag>\n发布动态、工程信号与外部热点"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "tag": "markdown",
+            "content": "**1.** [Cockpit AI - 在所有渠道部署收入专员](https://www.producthunt.com/r/ZSATDD5TGHHICH)\n<link icon='internet_outlined' url='https://www.producthunt.com/r/ZSATDD5TGHHICH'>Product Hunt</link>  ·  信号：Product Hunt 热度高 · 304 热度 / 29 评论\n\n**2.** [蒂姆·库克将出任苹果执行董事长](https://www.apple.com/newsroom/2026/04/tim-cook-to-become-apple-executive-chairman-john-ternus-to-become-apple-ceo/)\n<link icon='internet_outlined' url='https://www.apple.com/newsroom/2026/04/tim-cook-to-become-apple-executive-chairman-john-ternus-to-become-apple-ceo/'>Hacker News</link>  ·  信号：Hacker News 热度高 · 213 热度 / 60 评论\n\n**3.** [YouTube Transcript Tool - 立即将 YouTube 视频转换为文本](https://www.producthunt.com/r/OOPFDATLCXGHJX)\n<link icon='internet_outlined' url='https://www.producthunt.com/r/OOPFDATLCXGHJX'>Product Hunt</link>  ·  信号：Product Hunt 热度高 · 213 热度 / 22 评论\n\n**4.** [InsideOrg - 适用于任何公司的免费组织结构图查看器](https://www.producthunt.com/r/SZCX7EGZ2ZDGUA)\n<link icon='internet_outlined' url='https://www.producthunt.com/r/SZCX7EGZ2ZDGUA'>Product Hunt</link>  ·  信号：Product Hunt 热度高 · 209 热度 / 14 评论\n\n**5.** [Crossnode - 将 Vibe Code 的 AI 代理设置为付费内容](https://www.producthunt.com/r/37A2GEWBOXLPGI)\n<link icon='internet_outlined' url='https://www.producthunt.com/r/37A2GEWBOXLPGI'>Product Hunt</link>  ·  信号：Product Hunt 热度高 · 208 热度 / 40 评论\n\n**6.** [Apparent for Gmail - 让 Gmail 更易于阅读和管理。](https://www.producthunt.com/r/MVLWQNIV4PJAZJ)\n<link icon='internet_outlined' url='https://www.producthunt.com/r/MVLWQNIV4PJAZJ'>Product Hunt</link>  ·  信号：Product Hunt 热度高 · 208 热度 / 19 评论\n"
+          },
+          {
+            "tag": "hr"
+          },
+          {
+            "tag": "column_set",
+            "flex_mode": "none",
+            "horizontal_spacing": "default",
+            "columns": [
+              {
+                "tag": "column",
+                "width": "auto",
+                "vertical_align": "center",
+                "elements": [
+                  {
+                    "tag": "markdown",
+                    "content": "**Builder Watch**  <text_tag color='green'>人物</text_tag>\n创作者观点、播客与长文解读"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "tag": "markdown",
+            "content": "**X**  ·  <link icon='internet_outlined' url='https://x.com'>X</link>\n**1.** [Guillermo Rauch：围绕「Here's my update to the broader…」](https://x.com/rauchg/status/2045995362499076169)\n信号：围绕「Here's my update to the broader…」，给出一线观察。\n**2.** [Peter Yang：围绕「Went from having multiple terminals…」](https://x.com/petergyang/status/2045909612315172936)\n信号：围绕「Went from having multiple terminals…」，给出一线观察。\n**3.** [Aaron Levie：围绕「What gets missed with AI productivity…」](https://x.com/levie/status/2046067263326028108)\n信号：围绕「What gets missed with AI productivity…」，给出一线观察。\n\n**播客**  ·  <link icon='file-link-video_outlined' url='https://www.youtube.com'>YouTube</link>\n**1.** [Unsupervised Learning：聊「Speaker 1 | 00:00 - 00:09 I definitely…」](https://www.youtube.com/watch?v=vK1qEF3a3WM)\n信号：围绕「Speaker 1 | 00:00 - 00:09 I definitely…」，展开完整对谈。\n"
+          },
+          {
+            "tag": "markdown",
+            "content": "日期  ·  2026-04-21  ·  来源  ·  GitHub / OSSInsight / Buzzing / Follow Builders  ·  135 候选 → 30 精选",
+            "text_size": "notation"
+          }
+        ]
+      }
+    }
+  ],
+  "count": 135,
+  "selected_count": 30,
+  "summary": {
+    "count": 135,
+    "editorial": 23,
+    "api_usage": {
+      "total_budget": 60,
+      "search_budget": 38,
+      "graphql_budget": 600,
+      "search_used": 30,
+      "graphql_used": 1
+    },
+    "collector_stats": {
+      "trending": {
+        "count": 15,
+        "kinds": {
+          "project": 15
+        }
+      },
+      "ossinsight": {
+        "count": 54,
+        "kinds": {
+          "project": 54
+        }
+      },
+      "repos": {
+        "count": 93,
+        "kinds": {
+          "project": 93
+        }
+      },
+      "star_growth": {
+        "count": 63,
+        "kinds": {
+          "project": 63
+        }
+      },
+      "discussions": {
+        "count": 0,
+        "kinds": {}
+      },
+      "issues_prs": {
+        "count": 0,
+        "kinds": {}
+      },
+      "skills": {
+        "count": 20,
+        "kinds": {
+          "skill": 11,
+          "project": 9
+        }
+      },
+      "buzzing": {
+        "count": 915,
+        "kinds": {
+          "tech": 915
+        }
+      },
+      "builders": {
+        "count": 10,
+        "kinds": {
+          "builder": 10
+        }
+      }
+    },
+    "surge_count": 5,
+    "filtered_kind_counts": {
+      "project": 130,
+      "skill": 5
+    },
+    "published_kind_counts": {
+      "project": 16,
+      "skill": 4
+    },
+    "theme_counts": {
+      "claude_code": 7,
+      "ai_project": 10,
+      "skill_assets": 1,
+      "browser_automation": 1,
+      "mcp": 1
+    },
+    "top_themes": [
+      "ai_project",
+      "claude_code",
+      "skill_assets"
+    ],
+    "github_count": 20,
+    "tech_pulse_candidate_count": 915,
+    "tech_pulse_count": 6,
+    "builder_signal_count": 10,
+    "builder_count": 4,
+    "item_count": 30
+  }
+}
