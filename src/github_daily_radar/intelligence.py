@@ -1,13 +1,16 @@
 from __future__ import annotations
 
+import re
 from collections import defaultdict
 from dataclasses import dataclass
-import re
 
 from github_daily_radar.collectors.buzzing import SOURCE_LABELS
 from github_daily_radar.models import BuilderSignal, Candidate, ExternalTechCandidate
 
-_REPO_REF_RE = re.compile(r"(?:github\.com/)?([A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+)")
+_GITHUB_URL_REPO_REF_RE = re.compile(r"https?://(?:www\.)?github\.com/([A-Za-z0-9][A-Za-z0-9-]{0,38}/[A-Za-z0-9_.-]+)")
+_BARE_REPO_REF_RE = re.compile(r"(?<![A-Za-z0-9_.-])([A-Za-z0-9][A-Za-z0-9-]{0,38}/[A-Za-z0-9_.-]{2,100})(?![A-Za-z0-9_.-])")
+_URL_RE = re.compile(r"https?://\S+")
+_HOST_PATH_RE = re.compile(r"\b[A-Za-z0-9.-]+\.[A-Za-z]{2,}/\S+")
 _TOKEN_RE = re.compile(r"[A-Za-z0-9_.-]+")
 _GENERIC_REPO_ALIASES = {
     "agent",
@@ -27,6 +30,26 @@ _GENERIC_REPO_ALIASES = {
     "tool",
     "tools",
     "workflow",
+}
+_LOW_SIGNAL_MAINTAINERS = {
+    "github",
+    "open-source",
+    "opensource",
+    "oss",
+    "sponsors",
+}
+_NON_REPO_OWNERS = {
+    "blog",
+    "blogs",
+    "post",
+    "posts",
+    "status",
+    "topic",
+    "topics",
+    "video",
+    "videos",
+    "watch",
+    "www",
 }
 
 
@@ -94,9 +117,30 @@ def _extract_repo_refs(*parts: str) -> list[str]:
     for part in parts:
         if not isinstance(part, str) or not part.strip():
             continue
-        for match in _REPO_REF_RE.findall(part):
-            refs.append(match.lower().strip(" /"))
+        for match in _GITHUB_URL_REPO_REF_RE.findall(part):
+            normalized = match.lower().strip(" /")
+            if _is_probable_repo_ref(normalized):
+                refs.append(normalized)
+        cleaned = _URL_RE.sub(" ", part)
+        cleaned = _HOST_PATH_RE.sub(" ", cleaned)
+        for match in _BARE_REPO_REF_RE.findall(cleaned):
+            normalized = match.lower().strip(" /")
+            if _is_probable_repo_ref(normalized):
+                refs.append(normalized)
     return list(dict.fromkeys(ref for ref in refs if "/" in ref))
+
+
+def _is_probable_repo_ref(ref: str) -> bool:
+    if "/" not in ref:
+        return False
+    owner, repo = ref.split("/", 1)
+    owner = owner.strip().lower()
+    repo = repo.strip().lower()
+    if not owner or not repo or "." in owner or owner in _NON_REPO_OWNERS:
+        return False
+    if not any(char.isalpha() for char in repo):
+        return False
+    return True
 
 
 def _match_aliases(text: str, alias_index: dict[str, set[str]]) -> set[str]:
@@ -231,7 +275,12 @@ def _build_maintainer_items(
         raw_signals = candidate.raw_signals or {}
         maintainer_key = str(raw_signals.get("maintainer_key") or "").strip()
         maintainer_name = str(raw_signals.get("maintainer_name") or "").strip()
-        if not maintainer_key or not maintainer_name:
+        if (
+            not maintainer_key
+            or not maintainer_name
+            or maintainer_name.lower() in _GENERIC_REPO_ALIASES
+            or maintainer_name.lower() in _LOW_SIGNAL_MAINTAINERS
+        ):
             continue
         group = grouped.setdefault(
             maintainer_key,

@@ -104,3 +104,107 @@ def test_enrich_radar_context_builds_maintainer_items_from_multi_repo_owner():
 
     assert enrichment.maintainer_items
     assert enrichment.maintainer_items[0]["title"].startswith("acme：2 个仓库同时冒头")
+
+
+def test_enrich_radar_context_does_not_treat_x_status_url_as_repo_ref():
+    repo = _candidate(
+        "project:owner/repo",
+        repo_full_name="owner/repo",
+        raw_signals={"trending_item": {"repo_name": "owner/repo"}},
+        source_query="github-trending:daily",
+    )
+    signal = BuilderSignal(
+        source="x",
+        section="x",
+        title="Swyx",
+        url="https://x.com/swyx/status/2046330825265086712",
+        creator="Swyx",
+        summary="Talking about agent shells today.",
+        score=42,
+        published_at="2026-04-10T00:00:00Z",
+    )
+
+    enrichment = enrich_radar_context(
+        candidates=[repo],
+        tech_candidates=[],
+        builder_signals=[signal],
+    )
+
+    assert enrichment.builder_matches[signal.url]["matched_repos"] == []
+
+
+def test_enrich_radar_context_does_not_treat_external_blog_url_as_repo_ref():
+    repo = _candidate(
+        "project:owner/repo",
+        repo_full_name="owner/repo",
+        raw_signals={"trending_item": {"repo_name": "owner/repo"}},
+        source_query="github-trending:daily",
+    )
+    signal = BuilderSignal(
+        source="blog",
+        section="blog",
+        title="Claude launch notes",
+        url="https://claude.com/blog/claude-code-best-practices",
+        creator="Claude",
+        summary="Launch notes for a new release.",
+        score=0,
+        published_at="2026-04-10T00:00:00Z",
+    )
+
+    enrichment = enrich_radar_context(
+        candidates=[repo],
+        tech_candidates=[],
+        builder_signals=[signal],
+    )
+
+    assert enrichment.builder_matches[signal.url]["matched_repos"] == []
+
+
+def test_enrich_radar_context_still_matches_repo_mentions_inside_builder_copy():
+    repo = _candidate(
+        "project:owner/repo",
+        repo_full_name="owner/repo",
+        raw_signals={"trending_item": {"repo_name": "owner/repo"}},
+        source_query="github-trending:daily",
+    )
+    signal = BuilderSignal(
+        source="x",
+        section="x",
+        title="OpenAI",
+        url="https://x.com/openai/status/1",
+        creator="OpenAI",
+        summary="We are shipping owner/repo into production this week.",
+        score=128,
+        published_at="2026-04-10T00:00:00Z",
+    )
+
+    enrichment = enrich_radar_context(
+        candidates=[repo],
+        tech_candidates=[],
+        builder_signals=[signal],
+    )
+
+    assert enrichment.builder_matches[signal.url]["matched_repos"] == ["owner/repo"]
+
+
+def test_enrich_radar_context_skips_low_signal_maintainer_names():
+    repo_a = _candidate(
+        "project:sponsors/repo-a",
+        repo_full_name="sponsors/repo-a",
+        raw_signals={"ossinsight_item": {"repo_name": "sponsors/repo-a"}},
+        source_query="ossinsight:trending:past_24_hours",
+    )
+    repo_b = _candidate(
+        "project:sponsors/repo-b",
+        repo_full_name="sponsors/repo-b",
+        raw_signals={"trending_item": {"repo_name": "sponsors/repo-b"}},
+        source_query="github-trending:daily",
+    )
+
+    enrichment = enrich_radar_context(
+        candidates=[repo_a, repo_b],
+        tech_candidates=[],
+        builder_signals=[],
+    )
+
+    assert enrichment.maintainer_items == []
