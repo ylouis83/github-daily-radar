@@ -1,0 +1,207 @@
+{
+  "cards": [
+    {
+      "msg_type": "interactive",
+      "card": {
+        "config": {
+          "wide_screen_mode": true
+        },
+        "header": {
+          "title": {
+            "tag": "plain_text",
+            "content": "AI Builder Radar · 2026-04-22"
+          },
+          "template": "indigo"
+        },
+        "elements": [
+          {
+            "tag": "markdown",
+            "content": "GitHub 主榜 · 科技热讯 · Builder Watch",
+            "text_size": "notation"
+          },
+          {
+            "tag": "hr"
+          },
+          {
+            "tag": "column_set",
+            "flex_mode": "none",
+            "horizontal_spacing": "default",
+            "columns": [
+              {
+                "tag": "column",
+                "width": "auto",
+                "vertical_align": "center",
+                "elements": [
+                  {
+                    "tag": "markdown",
+                    "content": "**GitHub 主榜**  <text_tag color='blue'>主线</text_tag>\n开源仓库、技能资产与讨论线索"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "tag": "markdown",
+            "content": "**热度跃升**\n\n**1.** [forrestchang/andrej-karpathy-skills](https://github.com/forrestchang/andrej-karpathy-skills)  +44394⭐  71.8K⭐\n**2.** [NousResearch/hermes-agent](https://github.com/NousResearch/hermes-agent)  +30630⭐  108.0K⭐\n**3.** [sponsors/thedotmack](https://github.com/sponsors/thedotmack)  +12472⭐  65.1K⭐\n**4.** [Lordog/dive-into-llms](https://github.com/Lordog/dive-into-llms)  +5703⭐  33.3K⭐\n**5.** [EvoMap/evolver](https://github.com/EvoMap/evolver)  +4032⭐  6.3K⭐\n\n*来源：GitHub Trending / OSSInsight*"
+          },
+          {
+            "tag": "markdown",
+            "content": "**核心项目**  ·  <link icon='platform_outlined' url='https://github.com'>GitHub</link>\n\n**1.** [google-gemini/gemini-cli](https://github.com/google-gemini/gemini-cli)  102.0K⭐\n信号：星数突破十万大关，标志着终端 AI 交互的新里程碑。\n▸ 定位：谷歌官方出品的终端 AI 代理工具。\n▸ 能力：将 Gemini 模型能力直接注入命令行工作流。\n▸ 价值：终端开发者获取原生 AI 辅助的首选开源方案。\n\n**2.** [github/spec-kit](https://github.com/github/spec-kit)  89.9K⭐\n信号：规格驱动开发模式正在成为行业新趋势。\n▸ 定位：专为规范驱动开发流程设计的辅助工具包。\n▸ 能力：协助团队快速生成产品需求与技术规范文档。\n▸ 价值：引入后可有效标准化早期软件开发流程。\n\n**3.** [swiftlang/swift](https://github.com/swiftlang/swift)  69.9K⭐\n信号：语言特性持续更新值得开发者保持关注。\n▸ 定位：现代高性能编程语言的官方开源实现仓库。\n▸ 能力：支撑苹果全平台应用的安全高效构建能力。\n▸ 价值：苹果生态开发者必须掌握的核心技术基础。\n\n**4.** [PX4/PX4-Autopilot](https://github.com/PX4/PX4-Autopilot)  11.6K⭐\n信号：低空经济发展带动无人机技术关注度上升。\n▸ 定位：业界领先的开源无人机自动驾驶软件项目。\n▸ 能力：实现多机型自主飞行与复杂避障控制。\n▸ 价值：从事机器人开发领域不可或缺的基础参考。\n\n**延伸速览**\n\n- [GoogleCloudPlatform/python-docs-samples](https://github.com/GoogleCloudPlatform/python-docs-samples)  8.0K⭐\n- [gnachman/iTerm2](https://github.com/gnachman/iTerm2)  17.4K⭐\n- [ethereum/ethereum-org-website](https://github.com/ethereum/ethereum-org-website)  5.9K⭐\n另有 9 个项目未展开"
+          },
+          {
+            "tag": "markdown",
+            "content": "**技能与 MCP**  ·  <link icon='platform_outlined' url='https://github.com'>GitHub</link>\n\n**1.** [anthropics/claude-cookbooks](https://github.com/anthropics/claude-cookbooks)  +1035⭐\n适配栈：通用 AI 工具\n▸ 定位：官方维护的 Claude 应用技巧与食谱合集。\n\n**2.** [vishalsachdev/canvas-mcp](https://github.com/vishalsachdev/canvas-mcp)  107⭐\n适配栈：MCP\n▸ 定位：针对 Canvas LMS 定制的 MCP 服务器实现。\n\n**3.** [askalf/dario](https://github.com/askalf/dario)  91⭐\n适配栈：MCP\n▸ 定位：聚焦 MCP 工具接入与编排\n\n**4.** [HenryLach/taskplane](https://github.com/HenryLach/taskplane)  116⭐\n适配栈：Agent\n▸ 定位：偏 Agent 编排，社区验证较强\n"
+          },
+          {
+            "tag": "hr"
+          },
+          {
+            "tag": "column_set",
+            "flex_mode": "none",
+            "horizontal_spacing": "default",
+            "columns": [
+              {
+                "tag": "column",
+                "width": "auto",
+                "vertical_align": "center",
+                "elements": [
+                  {
+                    "tag": "markdown",
+                    "content": "**科技热讯**  <text_tag color='orange'>外部</text_tag>\n发布动态、工程信号与外部热点"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "tag": "markdown",
+            "content": "**1.** [Cockpit AI - 在所有渠道部署收入专员](https://www.producthunt.com/r/ZSATDD5TGHHICH)\n<link icon='internet_outlined' url='https://www.producthunt.com/r/ZSATDD5TGHHICH'>Product Hunt</link>  ·  信号：Product Hunt 热度高 · 304 热度 / 29 评论\n\n**2.** [蒂姆·库克将出任苹果执行董事长](https://www.apple.com/newsroom/2026/04/tim-cook-to-become-apple-executive-chairman-john-ternus-to-become-apple-ceo/)\n<link icon='internet_outlined' url='https://www.apple.com/newsroom/2026/04/tim-cook-to-become-apple-executive-chairman-john-ternus-to-become-apple-ceo/'>Hacker News</link>  ·  信号：Hacker News 热度高 · 213 热度 / 60 评论\n\n**3.** [YouTube Transcript Tool - 立即将 YouTube 视频转换为文本](https://www.producthunt.com/r/OOPFDATLCXGHJX)\n<link icon='internet_outlined' url='https://www.producthunt.com/r/OOPFDATLCXGHJX'>Product Hunt</link>  ·  信号：Product Hunt 热度高 · 213 热度 / 22 评论\n\n**4.** [InsideOrg - 适用于任何公司的免费组织结构图查看器](https://www.producthunt.com/r/SZCX7EGZ2ZDGUA)\n<link icon='internet_outlined' url='https://www.producthunt.com/r/SZCX7EGZ2ZDGUA'>Product Hunt</link>  ·  信号：Product Hunt 热度高 · 209 热度 / 14 评论\n\n**5.** [Crossnode - 将 Vibe Code 的 AI 代理设置为付费内容](https://www.producthunt.com/r/37A2GEWBOXLPGI)\n<link icon='internet_outlined' url='https://www.producthunt.com/r/37A2GEWBOXLPGI'>Product Hunt</link>  ·  信号：Product Hunt 热度高 · 208 热度 / 40 评论\n\n**6.** [Apparent for Gmail - 让 Gmail 更易于阅读和管理。](https://www.producthunt.com/r/MVLWQNIV4PJAZJ)\n<link icon='internet_outlined' url='https://www.producthunt.com/r/MVLWQNIV4PJAZJ'>Product Hunt</link>  ·  信号：Product Hunt 热度高 · 208 热度 / 19 评论\n"
+          },
+          {
+            "tag": "hr"
+          },
+          {
+            "tag": "column_set",
+            "flex_mode": "none",
+            "horizontal_spacing": "default",
+            "columns": [
+              {
+                "tag": "column",
+                "width": "auto",
+                "vertical_align": "center",
+                "elements": [
+                  {
+                    "tag": "markdown",
+                    "content": "**Builder Watch**  <text_tag color='green'>人物</text_tag>\n创作者观点、播客与长文解读"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "tag": "markdown",
+            "content": "**X**  ·  <link icon='internet_outlined' url='https://x.com'>X</link>\n**1.** [Sam Altman：围绕「Tim Cook is a legend.」](https://x.com/sama/status/2046330825265086712)\n信号：围绕「Tim Cook is a legend.」，给出一线观察。\n**2.** [Claude：围绕「In Cowork, Claude can now build live…」](https://x.com/claudeai/status/2046328619249684989)\n信号：围绕「In Cowork, Claude can now build live…」，给出一线观察。\n**3.** [Peter Steinberger：围绕「Kudos to the folks from Tencent for…」](https://x.com/steipete/status/2046259696722465113)\n信号：围绕「Kudos to the folks from Tencent for…」，给出一线观察。\n\n**播客**  ·  <link icon='file-link-video_outlined' url='https://www.youtube.com'>YouTube</link>\n**1.** [No Priors：聊「Speaker 1 | 00:05 - 00:19 Today I know…」](https://www.youtube.com/watch?v=eyobeqMdbeI)\n信号：围绕「Speaker 1 | 00:05 - 00:19 Today I know…」，展开完整对谈。\n\n**长文**\n**1.** [Claude Blog：拆解「Earlier this week, we announced…」](https://claude.com/blog/preparing-your-security-program-for-ai-accelerated-offense)\n信号：围绕「Earlier this week, we announced…」，做了长文拆解。\n"
+          },
+          {
+            "tag": "markdown",
+            "content": "日期  ·  2026-04-22  ·  来源  ·  GitHub / OSSInsight / Buzzing / Follow Builders  ·  109 候选 → 31 精选",
+            "text_size": "notation"
+          }
+        ]
+      }
+    }
+  ],
+  "count": 109,
+  "selected_count": 31,
+  "summary": {
+    "count": 109,
+    "editorial": 24,
+    "api_usage": {
+      "total_budget": 60,
+      "search_budget": 38,
+      "graphql_budget": 600,
+      "search_used": 30,
+      "graphql_used": 1
+    },
+    "collector_stats": {
+      "trending": {
+        "count": 15,
+        "kinds": {
+          "project": 15
+        }
+      },
+      "ossinsight": {
+        "count": 53,
+        "kinds": {
+          "project": 53
+        }
+      },
+      "repos": {
+        "count": 71,
+        "kinds": {
+          "project": 71
+        }
+      },
+      "star_growth": {
+        "count": 71,
+        "kinds": {
+          "project": 71
+        }
+      },
+      "discussions": {
+        "count": 0,
+        "kinds": {}
+      },
+      "issues_prs": {
+        "count": 0,
+        "kinds": {}
+      },
+      "skills": {
+        "count": 15,
+        "kinds": {
+          "skill": 8,
+          "project": 7
+        }
+      },
+      "buzzing": {
+        "count": 919,
+        "kinds": {
+          "tech": 919
+        }
+      },
+      "builders": {
+        "count": 19,
+        "kinds": {
+          "builder": 19
+        }
+      }
+    },
+    "surge_count": 5,
+    "filtered_kind_counts": {
+      "project": 104,
+      "skill": 5
+    },
+    "published_kind_counts": {
+      "project": 16,
+      "skill": 4
+    },
+    "theme_counts": {
+      "mcp": 1,
+      "ai_project": 14,
+      "claude_code": 3,
+      "agent_framework": 1,
+      "inference": 1
+    },
+    "top_themes": [
+      "ai_project",
+      "claude_code",
+      "mcp"
+    ],
+    "github_count": 20,
+    "tech_pulse_candidate_count": 919,
+    "tech_pulse_count": 6,
+    "builder_signal_count": 19,
+    "builder_count": 5,
+    "item_count": 31
+  }
+}
