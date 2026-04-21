@@ -31,6 +31,7 @@ BUILDER_SECTION_LABELS = {
     "x": "X",
     "podcast": "播客",
     "blog": "长文",
+    "maintainer": "维护者",
 }
 
 CARD_SUBTITLE = "GitHub 主榜 · 科技热讯 · Builder Watch"
@@ -529,7 +530,7 @@ def _render_builder_watch_section(sections: dict[str, list[dict]]) -> str | None
         return None
 
     lines = []
-    for key in ("x", "podcast", "blog"):
+    for key in ("x", "podcast", "blog", "maintainer"):
         items = sections.get(key) or []
         if not items:
             continue

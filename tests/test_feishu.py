@@ -469,6 +469,37 @@ def test_build_digest_card_uses_group_level_source_links_for_single_source_secti
     assert all_text.count("<link icon='file-link-video_outlined' url='https://www.youtube.com'>YouTube</link>") == 1
 
 
+def test_build_digest_card_can_render_maintainer_subsection():
+    card = build_digest_card(
+        items=[
+            {
+                "kind": "project",
+                "title": "owner/repo",
+                "url": "https://github.com/owner/repo",
+                "summary": "repo",
+                "stars": 120,
+                "star_delta_1d": 0,
+                "star_velocity": "",
+            }
+        ],
+        builder_sections={
+            "maintainer": [
+                {
+                    "title": "acme：2 个仓库同时冒头",
+                    "url": "https://github.com/acme",
+                    "creator": "acme",
+                    "why_now": "关注 acme/repo-a、acme/repo-b，信号来自 Trending / OSSInsight",
+                }
+            ]
+        },
+        today=date(2026, 4, 2),
+    )
+
+    all_text = _collect_card_text(card)
+    assert "**维护者**" in all_text
+    assert "acme：2 个仓库同时冒头" in all_text
+
+
 def test_alert_card_has_red_theme():
     cards = build_alert_cards(title="Alert", message="Something failed")
     assert len(cards) == 1

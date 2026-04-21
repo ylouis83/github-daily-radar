@@ -33,6 +33,7 @@ from github_daily_radar.discovery import (
     load_skill_per_repo_cap,
     load_trending_urls,
 )
+from github_daily_radar.intelligence import enrich_radar_context
 from github_daily_radar.collectors.ossinsight import OSSInsightCollector
 from github_daily_radar.collectors.discussions import DiscussionCollector
 from github_daily_radar.collectors.issues_prs import IssuesPrsCollector
@@ -398,7 +399,6 @@ def run_pipeline(settings: Settings, alert_only: bool = False) -> dict:
         else:
             filtered.append(candidate)
 
-    ranked_candidates = sorted(filtered, key=score_candidate, reverse=True)
     previous_run_summary = state.read_last_run_summary() or {}
     blocked_themes: set[str] = set()
     prev_top_themes = previous_run_summary.get("top_themes")
@@ -418,6 +418,41 @@ def run_pipeline(settings: Settings, alert_only: bool = False) -> dict:
                 top_prev.append((theme, count_value))
             top_prev.sort(key=lambda item: item[1], reverse=True)
             blocked_themes = {theme for theme, count in top_prev[:3] if count > 0}
+
+    tech_candidates = []
+    builder_signals = []
+    external_notes: list[str] = []
+    try:
+        tech_candidates = BuzzingCollector().collect()
+        collector_stats["buzzing"] = {
+            "count": len(tech_candidates),
+            "kinds": {"tech": len(tech_candidates)},
+        }
+    except Exception as exc:  # noqa: BLE001 - external source should not block main brief
+        collector_stats["buzzing"] = {"count": 0, "kinds": {}, "error": str(exc)}
+        external_notes.append("Tech Pulse unavailable due to Buzzing feed failure.")
+
+    try:
+        builder_feed = fetch_feeds()
+        builder_signals = extract_builder_signals(builder_feed)
+        collector_stats["builders"] = {
+            "count": len(builder_signals),
+            "kinds": {"builder": len(builder_signals)},
+        }
+        if builder_feed.get("errors"):
+            external_notes.append("Builder Watch is partially degraded due to feed fetch errors.")
+    except Exception as exc:  # noqa: BLE001 - external source should not block main brief
+        collector_stats["builders"] = {"count": 0, "kinds": {}, "error": str(exc)}
+        external_notes.append("Builder Watch unavailable due to follow-builders fetch failure.")
+
+    enrichment = enrich_radar_context(
+        candidates=filtered,
+        tech_candidates=tech_candidates,
+        builder_signals=builder_signals,
+    )
+    filtered = enrichment.candidates
+    ranked_candidates = sorted(filtered, key=score_candidate, reverse=True)
+
     fallback_models = [settings.fallback_model] if settings.fallback_model else []
     llm = EditorialLLM(
         api_key=settings.qwen_api_key,
@@ -476,6 +511,8 @@ def run_pipeline(settings: Settings, alert_only: bool = False) -> dict:
     api_usage = client._budget.snapshot()
     metadata["api_usage"] = api_usage
     metadata["collector_stats"] = collector_stats
+    metadata["cluster_count"] = enrichment.cluster_count
+    metadata["maintainer_count"] = len(enrichment.maintainer_items)
 
     # ── 爆款提取（从全部去重候选，不受 cooldown 影响）──
     # 爆款 = 日增 ≥200⭐ 的爆发项目，即使近期已推送也应展示
@@ -529,43 +566,24 @@ def run_pipeline(settings: Settings, alert_only: bool = False) -> dict:
     metadata["published_kind_counts"] = dict(published_kind_counts)
     metadata["theme_counts"] = dict(theme_counts)
     metadata["top_themes"] = top_themes
-    tech_candidates = []
-    builder_signals = []
-    external_notes: list[str] = []
-    try:
-        tech_candidates = BuzzingCollector().collect()
-        collector_stats["buzzing"] = {
-            "count": len(tech_candidates),
-            "kinds": {"tech": len(tech_candidates)},
-        }
-    except Exception as exc:  # noqa: BLE001 - external source should not block main brief
-        collector_stats["buzzing"] = {"count": 0, "kinds": {}, "error": str(exc)}
-        external_notes.append("Tech Pulse unavailable due to Buzzing feed failure.")
-
-    try:
-        builder_feed = fetch_feeds()
-        builder_signals = extract_builder_signals(builder_feed)
-        collector_stats["builders"] = {
-            "count": len(builder_signals),
-            "kinds": {"builder": len(builder_signals)},
-        }
-        if builder_feed.get("errors"):
-            external_notes.append("Builder Watch is partially degraded due to feed fetch errors.")
-    except Exception as exc:  # noqa: BLE001 - external source should not block main brief
-        collector_stats["builders"] = {"count": 0, "kinds": {}, "error": str(exc)}
-        external_notes.append("Builder Watch unavailable due to follow-builders fetch failure.")
-
     brief = assemble_daily_brief(
         github_items=published_items,
         tech_candidates=tech_candidates,
         builder_signals=builder_signals,
+        tech_context=enrichment.tech_matches,
+        builder_context=enrichment.builder_matches,
+        maintainer_items=enrichment.maintainer_items,
         metadata=metadata,
     )
     if external_notes:
         brief.coverage_notes.extend(external_notes)
         brief.stats["coverage_note"] = "；".join(brief.coverage_notes)
 
-    brief_item_count = len(brief.github_radar) + len(brief.tech_pulse) + sum(len(items) for items in brief.builder_watch.values())
+    brief_item_count = (
+        len(brief.github_radar)
+        + len(brief.tech_pulse)
+        + sum(len(items) for key, items in brief.builder_watch.items() if key != "maintainer")
+    )
     brief.stats["item_count"] = brief_item_count
 
     card = build_digest_card(

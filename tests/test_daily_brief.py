@@ -34,6 +34,43 @@ def test_assemble_daily_brief_promotes_repo_like_buzzing_item_to_github_track():
     assert brief.tech_pulse == []
 
 
+def test_assemble_daily_brief_uses_context_to_promote_alias_matched_tech_item():
+    github_items = [
+        {
+            "kind": "project",
+            "title": "owner/repo",
+            "url": "https://github.com/owner/repo",
+            "repo_full_name": "owner/repo",
+        }
+    ]
+    tech_candidates = [
+        ExternalTechCandidate(
+            source="producthunt",
+            title="A new CLI launch",
+            url="https://example.com/cli-launch",
+            summary="People are shipping owner/repo into production",
+            score=180,
+            comments=12,
+            tags=["GitHub"],
+            published_at="2026-04-16T00:00:00Z",
+        )
+    ]
+
+    brief = assemble_daily_brief(
+        github_items=github_items,
+        tech_candidates=tech_candidates,
+        builder_signals=[],
+        tech_context={
+            "https://example.com/cli-launch": {
+                "matched_repos": ["owner/repo"],
+            }
+        },
+    )
+
+    assert brief.github_radar[0]["external_heat"]["source"] == "producthunt"
+    assert brief.tech_pulse == []
+
+
 def test_assemble_daily_brief_groups_builder_signals_by_section():
     signals = [
         BuilderSignal(
@@ -142,3 +179,22 @@ def test_assemble_daily_brief_limits_tech_pulse_to_top_six_items():
     ]
     assert brief.stats["tech_pulse_count"] == 6
     assert brief.stats["tech_pulse_candidate_count"] == 8
+
+
+def test_assemble_daily_brief_appends_maintainer_items():
+    brief = assemble_daily_brief(
+        github_items=[],
+        tech_candidates=[],
+        builder_signals=[],
+        maintainer_items=[
+            {
+                "title": "acme：2 个仓库同时冒头",
+                "url": "https://github.com/acme",
+                "creator": "acme",
+                "why_now": "关注 acme/repo-a、acme/repo-b，信号来自 Trending / OSSInsight",
+                "source": "github",
+            }
+        ],
+    )
+
+    assert brief.builder_watch["maintainer"][0]["title"].startswith("acme：")

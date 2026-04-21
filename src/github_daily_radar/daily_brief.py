@@ -13,6 +13,7 @@ _BUILDER_SECTION_LIMITS = {
     "x": 3,
     "podcast": 2,
     "blog": 2,
+    "maintainer": 2,
 }
 _TECH_PULSE_LIMIT = 6
 _WHITESPACE_RE = re.compile(r"\s+")
@@ -79,27 +80,47 @@ def _builder_watch_title(signal: BuilderSignal) -> str:
     return f"{creator}：本期{section_label}"
 
 
-def _builder_watch_why_now(signal: BuilderSignal) -> str:
+def _builder_watch_why_now(signal: BuilderSignal, context: dict | None = None) -> str:
     summary = _clean_builder_text(signal.summary)
+    matched_repos = [
+        repo
+        for repo in (context or {}).get("matched_repos", [])
+        if isinstance(repo, str) and repo.strip()
+    ]
+    cluster_sources = [
+        label
+        for label in (context or {}).get("cluster_sources", [])
+        if isinstance(label, str) and label.strip()
+    ]
     if summary and _has_cjk(summary):
         sentence = _truncate_text(summary, 52)
         if sentence.endswith(("。", "！", "？")):
-            return sentence
-        return f"{sentence}。"
-
-    topic = _pick_builder_topic(signal)
-    if signal.section == "x":
-        action = "给出一线观察"
-    elif signal.section == "podcast":
-        action = "展开完整对谈"
+            base = sentence
+        else:
+            base = f"{sentence}。"
     else:
-        action = "做了长文拆解"
+        topic = _pick_builder_topic(signal)
+        if signal.section == "x":
+            action = "给出一线观察"
+        elif signal.section == "podcast":
+            action = "展开完整对谈"
+        else:
+            action = "做了长文拆解"
 
-    if topic:
-        return f"围绕「{topic}」，{action}。"
+        if topic:
+            base = f"围绕「{topic}」，{action}。"
+        else:
+            creator = str(signal.creator or "Builder").strip()
+            base = f"{creator}{action}，值得后续跟进。"
 
-    creator = str(signal.creator or "Builder").strip()
-    return f"{creator}{action}，值得后续跟进。"
+    additions: list[str] = []
+    if matched_repos:
+        additions.append(f"关联 GitHub：{'、'.join(matched_repos[:2])}")
+    if len(cluster_sources) >= 2:
+        additions.append(f"同题也出现在 {' / '.join(cluster_sources[:3])}")
+    if additions:
+        return f"{base.rstrip('。')}；{'；'.join(additions)}。"
+    return base
 
 
 def _extract_repo_full_name(*, title: str, url: str) -> str | None:
@@ -187,6 +208,9 @@ def assemble_daily_brief(
     github_items: list[dict],
     tech_candidates: list[ExternalTechCandidate],
     builder_signals: list[BuilderSignal],
+    tech_context: dict[str, dict] | None = None,
+    builder_context: dict[str, dict] | None = None,
+    maintainer_items: list[dict] | None = None,
     metadata: dict | None = None,
 ) -> DailyBrief:
     github_radar = [dict(item) for item in github_items]
@@ -199,8 +223,21 @@ def assemble_daily_brief(
     coverage_notes: list[str] = []
 
     for candidate in sorted(tech_candidates, key=lambda item: (item.score, item.comments), reverse=True):
-        repo_full_name = _extract_repo_full_name(title=candidate.title, url=candidate.url)
-        github_item = github_by_repo.get(repo_full_name or "")
+        context = (tech_context or {}).get(candidate.url, {})
+        matched_repos = [
+            repo
+            for repo in context.get("matched_repos", [])
+            if isinstance(repo, str) and repo.strip()
+        ]
+        if not matched_repos:
+            repo_full_name = _extract_repo_full_name(title=candidate.title, url=candidate.url)
+            matched_repos = [repo_full_name] if repo_full_name else []
+
+        github_item = None
+        for repo_full_name in matched_repos:
+            github_item = github_by_repo.get(repo_full_name or "")
+            if github_item is not None:
+                break
         if github_item is not None:
             existing_heat = github_item.get("external_heat") or {}
             if candidate.score >= int(existing_heat.get("score", 0)):
@@ -232,8 +269,9 @@ def assemble_daily_brief(
 
     builder_grouped: dict[str, list[dict]] = defaultdict(list)
     for signal in sorted(builder_signals, key=lambda item: item.score, reverse=True):
+        context = (builder_context or {}).get(signal.url, {})
         editorial_title = _builder_watch_title(signal)
-        editorial_why_now = _builder_watch_why_now(signal)
+        editorial_why_now = _builder_watch_why_now(signal, context=context)
         builder_grouped[signal.section].append(
             {
                 "title": editorial_title,
@@ -246,6 +284,9 @@ def assemble_daily_brief(
                 "source": signal.source,
             }
         )
+
+    if maintainer_items:
+        builder_grouped["maintainer"].extend(dict(item) for item in maintainer_items)
 
     builder_watch = {
         section: items[: _BUILDER_SECTION_LIMITS.get(section, 2)]

@@ -186,6 +186,41 @@ def test_build_display_items_creates_distinct_project_profiles():
     assert items[0]["why_now"] == "近 7 天 +250⭐"
 
 
+def test_build_display_items_prefers_cross_source_signal_in_why_now():
+    candidate = Candidate(
+        candidate_id="project:owner/repo",
+        kind="project",
+        source_query="topic:agent",
+        title="owner/repo",
+        url="https://github.com/owner/repo",
+        repo_full_name="owner/repo",
+        author="owner",
+        created_at="2026-04-01T00:00:00Z",
+        updated_at="2026-04-02T00:00:00Z",
+        body_excerpt="repo",
+        topics=["agent"],
+        labels=[],
+        metrics=CandidateMetrics(stars=120, forks=10, star_growth_7d=250),
+        raw_signals={
+            "cluster": {
+                "source_labels": ["Trending", "OSSInsight", "Builder X"],
+                "builder_hits": 1,
+                "tech_hits": 0,
+            },
+            "maintainer_activity": {
+                "display_name": "owner",
+                "repo_count": 2,
+            },
+        },
+        rule_scores={},
+        dedupe_key="owner/repo",
+    )
+
+    items = build_display_items([candidate], editorial=[])
+
+    assert "Trending / OSSInsight / Builder X 同时出现" in items[0]["why_now"]
+
+
 def test_score_candidate_prioritizes_skill_growth_before_total_stars():
     hot_skill = Candidate(
         candidate_id="skill:owner/hot-skill",

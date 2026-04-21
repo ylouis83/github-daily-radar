@@ -72,17 +72,27 @@ _FOCUS_PATTERNS: list[tuple[tuple[str, ...], str]] = [
 
 def score_candidate(candidate: Candidate) -> float:
     metrics = candidate.metrics
+    cluster = (candidate.raw_signals or {}).get("cluster") or {}
+    maintainer_activity = (candidate.raw_signals or {}).get("maintainer_activity") or {}
+    cross_source_boost = (
+        log1p(max(len(cluster.get("source_labels", [])) - 1, 0)) * 1.6
+        + log1p(max(int(cluster.get("builder_hits", 0)), 0)) * 0.9
+        + log1p(max(int(cluster.get("tech_hits", 0)), 0)) * 0.7
+        + log1p(max(int(maintainer_activity.get("repo_count", 0)) - 1, 0)) * 0.6
+    )
     if candidate.kind == "skill":
         return (
             log1p(metrics.star_growth_7d) * 6.0
             + log1p(metrics.stars) * 1.2
             + log1p(metrics.forks) * 0.3
             + log1p(metrics.comments + metrics.reactions) * 0.2
+            + cross_source_boost
         )
     return (
         log1p(metrics.stars) * 0.6
         + log1p(metrics.forks) * 0.3
         + log1p(metrics.comments + metrics.reactions) * 0.5
+        + cross_source_boost
     )
 
 
@@ -94,6 +104,16 @@ def _fallback_summary(candidate: Candidate) -> str:
 def _fallback_why_now(candidate: Candidate) -> str:
     """简短信号，不超过 1 句。"""
     m = candidate.metrics
+    cluster = (candidate.raw_signals or {}).get("cluster") or {}
+    maintainer_activity = (candidate.raw_signals or {}).get("maintainer_activity") or {}
+    source_labels = [label for label in cluster.get("source_labels", []) if isinstance(label, str) and label.strip()]
+    if len(source_labels) >= 2:
+        source_text = " / ".join(source_labels[:3])
+        maintainer_name = str(maintainer_activity.get("display_name") or "").strip()
+        repo_count = int(maintainer_activity.get("repo_count", 0) or 0)
+        if maintainer_name and repo_count >= 2:
+            return f"{source_text} 同时出现 · {maintainer_name} 本期 {repo_count} 个仓库冒头"
+        return f"{source_text} 同时出现"
     if candidate.source_query.startswith("ossinsight:") and m.stars:
         if m.star_growth_7d >= 1000:
             return f"OSSInsight 热度爆发 · +{m.star_growth_7d}⭐"
@@ -364,6 +384,8 @@ def build_display_items(candidates: list[Candidate], editorial: list[dict]) -> l
             "metrics": candidate.metrics.model_dump(),
             "rule_scores": dict(candidate.rule_scores),
             "score": score_candidate(candidate),
+            "cluster": dict((candidate.raw_signals or {}).get("cluster") or {}),
+            "maintainer_activity": dict((candidate.raw_signals or {}).get("maintainer_activity") or {}),
             # star 相关字段供 feishu 卡片渲染 badge
             "stars": candidate.metrics.stars,
             # OSSInsight past_week 返回的是 7 天增量，不应当作 1 天增量
