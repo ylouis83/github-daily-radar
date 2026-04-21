@@ -8,9 +8,6 @@ from github_daily_radar.collectors.buzzing import SOURCE_LABELS
 from github_daily_radar.models import BuilderSignal, Candidate, ExternalTechCandidate
 
 _GITHUB_URL_REPO_REF_RE = re.compile(r"https?://(?:www\.)?github\.com/([A-Za-z0-9][A-Za-z0-9-]{0,38}/[A-Za-z0-9_.-]+)")
-_BARE_REPO_REF_RE = re.compile(r"(?<![A-Za-z0-9_.-])([A-Za-z0-9][A-Za-z0-9-]{0,38}/[A-Za-z0-9_.-]{2,100})(?![A-Za-z0-9_.-])")
-_URL_RE = re.compile(r"https?://\S+")
-_HOST_PATH_RE = re.compile(r"\b[A-Za-z0-9.-]+\.[A-Za-z]{2,}/\S+")
 _TOKEN_RE = re.compile(r"[A-Za-z0-9_.-]+")
 _GENERIC_REPO_ALIASES = {
     "agent",
@@ -118,12 +115,6 @@ def _extract_repo_refs(*parts: str) -> list[str]:
         if not isinstance(part, str) or not part.strip():
             continue
         for match in _GITHUB_URL_REPO_REF_RE.findall(part):
-            normalized = match.lower().strip(" /")
-            if _is_probable_repo_ref(normalized):
-                refs.append(normalized)
-        cleaned = _URL_RE.sub(" ", part)
-        cleaned = _HOST_PATH_RE.sub(" ", cleaned)
-        for match in _BARE_REPO_REF_RE.findall(cleaned):
             normalized = match.lower().strip(" /")
             if _is_probable_repo_ref(normalized):
                 refs.append(normalized)
