@@ -1,0 +1,208 @@
+{
+  "cards": [
+    {
+      "msg_type": "interactive",
+      "card": {
+        "config": {
+          "wide_screen_mode": true
+        },
+        "header": {
+          "title": {
+            "tag": "plain_text",
+            "content": "AI Builder Radar · 2026-04-24"
+          },
+          "template": "indigo"
+        },
+        "elements": [
+          {
+            "tag": "markdown",
+            "content": "GitHub 主榜 · 科技热讯 · Builder Watch",
+            "text_size": "notation"
+          },
+          {
+            "tag": "hr"
+          },
+          {
+            "tag": "column_set",
+            "flex_mode": "none",
+            "horizontal_spacing": "default",
+            "columns": [
+              {
+                "tag": "column",
+                "width": "auto",
+                "vertical_align": "center",
+                "elements": [
+                  {
+                    "tag": "markdown",
+                    "content": "**GitHub 主榜**  <text_tag color='blue'>主线</text_tag>\n开源仓库、技能资产与讨论线索"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "tag": "markdown",
+            "content": "**热度跃升**\n\n**1.** [Alishahryar1/free-claude-code](https://github.com/Alishahryar1/free-claude-code)  +2388⭐  5.4K⭐\n**2.** [Z4nzu/hackingtool](https://github.com/Z4nzu/hackingtool)  +1366⭐  60.9K⭐\n**3.** [zilliztech/claude-context](https://github.com/zilliztech/claude-context)  +1023⭐  8.4K⭐\n**4.** [sponsors/open-metadata](https://github.com/sponsors/open-metadata)  +771⭐  12.9K⭐\n**5.** [HKUDS/RAG-Anything](https://github.com/HKUDS/RAG-Anything)  +574⭐  18.1K⭐\n\n*来源：GitHub Trending / OSSInsight*"
+          },
+          {
+            "tag": "markdown",
+            "content": "**核心项目**  ·  <link icon='platform_outlined' url='https://github.com'>GitHub</link>\n\n**1.** [grafana/grafana](https://github.com/grafana/grafana)  73.4K⭐\n信号：作为行业标杆项目，其持续维护状态值得定期查阅。\n▸ 定位：这是一个开放且可组合的观测性与数据可视化平台。\n▸ 能力：它支持从多种数据源可视化指标、日志和追踪信息。\n▸ 价值：统一监控视图是维护复杂系统稳定性的必要基础。\n\n**2.** [ultralytics/yolov5](https://github.com/ultralytics/yolov5)  57.3K⭐\n信号：经典模型库的更新动态对开发者技术选型具有参考价值。\n▸ 定位：这是一个支持多格式导出的经典目标检测模型实现。\n▸ 能力：它实现了从 PyTorch 到移动端等多种环境的无缝部署。\n▸ 价值：快速落地视觉检测任务仍需依赖此类成熟方案。\n\n**3.** [JetBrains/intellij-community](https://github.com/JetBrains/intellij-community)  20.0K⭐\n信号：作为开发工具链的核心环节，其设计思想始终具有参考价值。\n▸ 定位：它是 IntelliJ 平台社区版的官方源代码仓库。\n▸ 能力：支持开发者构建自定义 IDE 或扩展现有 Java 开发环境。\n▸ 价值：任何希望深入理解现代 IDE 架构的工程师都应关注此项目。\n\n**4.** [facebook/flow](https://github.com/facebook/flow)  22.2K⭐\n信号：对比研究不同类型的 JavaScript 方案有助于拓宽技术视野。\n▸ 定位：它是 Facebook 开源的 JavaScript 静态类型检查器。\n▸ 能力：能够在不改变运行时行为的前提下提升代码健壮性。\n▸ 价值：追求更高代码质量的前端团队需要类型工具来规避错误。\n\n**延伸速览**\n\n- [WebKit/WebKit](https://github.com/WebKit/WebKit)  9.8K⭐\n- [ed-donner/llm_engineering](https://github.com/ed-donner/llm_engineering)  5.7K⭐\n- [apache/groovy](https://github.com/apache/groovy)  5.4K⭐\n另有 10 个项目未展开"
+          },
+          {
+            "tag": "markdown",
+            "content": "**技能与 MCP**  ·  <link icon='platform_outlined' url='https://github.com'>GitHub</link>\n\n**1.** [obra/superpowers](https://github.com/obra/superpowers)  +1309⭐\n适配栈：Skill 生态\n▸ 定位：这是一个真正可用的代理技能框架与软件开发方法论。\n\n**2.** [yvgude/lean-ctx](https://github.com/yvgude/lean-ctx)  779⭐\n适配栈：MCP\n▸ 定位：这是一个零遥测的单文件 Rust 二进制工具。\n\n**3.** [Power-Agent/PowerMCP](https://github.com/Power-Agent/PowerMCP)  108⭐\n适配栈：MCP\n▸ 定位：这是专为电力系统软件设计的开源 MCP 服务器集合。\n"
+          },
+          {
+            "tag": "hr"
+          },
+          {
+            "tag": "column_set",
+            "flex_mode": "none",
+            "horizontal_spacing": "default",
+            "columns": [
+              {
+                "tag": "column",
+                "width": "auto",
+                "vertical_align": "center",
+                "elements": [
+                  {
+                    "tag": "markdown",
+                    "content": "**科技热讯**  <text_tag color='orange'>外部</text_tag>\n发布动态、工程信号与外部热点"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "tag": "markdown",
+            "content": "**1.** [蒂姆·库克将出任苹果执行董事长](https://www.apple.com/newsroom/2026/04/tim-cook-to-become-apple-executive-chairman-john-ternus-to-become-apple-ceo/)\n<link icon='internet_outlined' url='https://www.apple.com/newsroom/2026/04/tim-cook-to-become-apple-executive-chairman-john-ternus-to-become-apple-ceo/'>Hacker News</link>  ·  信号：Hacker News 热度高 · 213 热度 / 60 评论\n\n**2.** [Apparent for Gmail - 让 Gmail 更易于阅读和管理。](https://www.producthunt.com/r/MVLWQNIV4PJAZJ)\n<link icon='internet_outlined' url='https://www.producthunt.com/r/MVLWQNIV4PJAZJ'>Product Hunt</link>  ·  信号：Product Hunt 热度高 · 208 热度 / 19 评论\n\n**3.** [Aera Browser - 专为自动化设计的浏览器](https://www.producthunt.com/r/45ASS7UPWHFNKV)\n<link icon='internet_outlined' url='https://www.producthunt.com/r/45ASS7UPWHFNKV'>Product Hunt</link>  ·  信号：Product Hunt 热度高 · 203 热度 / 22 评论\n\n**4.** [SoulLink - 移动端3D Vibe编程合作伙伴](https://www.producthunt.com/r/WDAZDHMMZORTEO)\n<link icon='internet_outlined' url='https://www.producthunt.com/r/WDAZDHMMZORTEO'>Product Hunt</link>  ·  信号：Product Hunt 热度高 · 202 热度 / 41 评论\n\n**5.** [CrabTalk - 这款代理守护进程毫无保留。8MB。开源](https://www.producthunt.com/r/ZAAIAYTYC43FIJ)\n<link icon='internet_outlined' url='https://www.producthunt.com/r/ZAAIAYTYC43FIJ'>Product Hunt</link>  ·  信号：Product Hunt 热度高 · 196 热度 / 14 评论\n\n**6.** [Suno v5.5 - 用你的声音进行创作，根据你的声音调整模型](https://www.producthunt.com/r/S25VKIT6BZUNGW)\n<link icon='internet_outlined' url='https://www.producthunt.com/r/S25VKIT6BZUNGW'>Product Hunt</link>  ·  信号：Product Hunt 热度高 · 196 热度 / 3 评论\n"
+          },
+          {
+            "tag": "hr"
+          },
+          {
+            "tag": "column_set",
+            "flex_mode": "none",
+            "horizontal_spacing": "default",
+            "columns": [
+              {
+                "tag": "column",
+                "width": "auto",
+                "vertical_align": "center",
+                "elements": [
+                  {
+                    "tag": "markdown",
+                    "content": "**Builder Watch**  <text_tag color='green'>人物</text_tag>\n创作者观点、播客与长文解读"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "tag": "markdown",
+            "content": "**X**  ·  <link icon='internet_outlined' url='https://x.com'>X</link>\n**1.** [Claude：围绕「Interactive charts and diagrams are…」](https://x.com/claudeai/status/2047047633416397076)\n信号：围绕「Interactive charts and diagrams are…」，给出一线观察。\n**2.** [Sam Altman：围绕「These are cool!」](https://x.com/sama/status/2047017964105597009)\n信号：围绕「These are cool!」，给出一线观察。\n**3.** [Ryo Lu：围绕「overcooking you've seen this: someone…」](https://x.com/ryolu_/status/2046957675079237668)\n信号：围绕「overcooking you've seen this: someone…」，给出一线观察。\n\n**播客**  ·  <link icon='file-link-video_outlined' url='https://www.youtube.com'>YouTube</link>\n**1.** [AI & I by Every：聊「Speaker 1 | 00:00 - 00:03 Humans are…」](https://www.youtube.com/watch?v=G0LTv8hQ5Cs)\n信号：围绕「Speaker 1 | 00:00 - 00:03 Humans are…」，展开完整对谈。\n\n**长文**\n**1.** [Claude Blog：拆解「It includes a new sidebar for managing…」](https://claude.com/blog/claude-code-desktop-redesign)\n信号：围绕「It includes a new sidebar for managing…」，做了长文拆解。\n"
+          },
+          {
+            "tag": "markdown",
+            "content": "日期  ·  2026-04-24  ·  来源  ·  GitHub / OSSInsight / Buzzing / Follow Builders  ·  116 候选 → 31 精选",
+            "text_size": "notation"
+          }
+        ]
+      }
+    }
+  ],
+  "count": 116,
+  "selected_count": 31,
+  "summary": {
+    "count": 116,
+    "editorial": 24,
+    "api_usage": {
+      "total_budget": 60,
+      "search_budget": 38,
+      "graphql_budget": 600,
+      "search_used": 30,
+      "graphql_used": 1
+    },
+    "collector_stats": {
+      "trending": {
+        "count": 15,
+        "kinds": {
+          "project": 15
+        }
+      },
+      "ossinsight": {
+        "count": 58,
+        "kinds": {
+          "project": 58
+        }
+      },
+      "repos": {
+        "count": 44,
+        "kinds": {
+          "project": 44
+        }
+      },
+      "star_growth": {
+        "count": 68,
+        "kinds": {
+          "project": 68
+        }
+      },
+      "discussions": {
+        "count": 0,
+        "kinds": {}
+      },
+      "issues_prs": {
+        "count": 0,
+        "kinds": {}
+      },
+      "skills": {
+        "count": 20,
+        "kinds": {
+          "skill": 13,
+          "project": 7
+        }
+      },
+      "buzzing": {
+        "count": 921,
+        "kinds": {
+          "tech": 921
+        }
+      },
+      "builders": {
+        "count": 17,
+        "kinds": {
+          "builder": 17
+        }
+      }
+    },
+    "surge_count": 5,
+    "filtered_kind_counts": {
+      "project": 113,
+      "skill": 3
+    },
+    "published_kind_counts": {
+      "project": 17,
+      "skill": 3
+    },
+    "theme_counts": {
+      "ai_project": 12,
+      "ml_framework": 1,
+      "skill_assets": 1,
+      "claude_code": 2,
+      "browser_automation": 2,
+      "mcp": 2
+    },
+    "top_themes": [
+      "ai_project",
+      "claude_code",
+      "browser_automation"
+    ],
+    "github_count": 20,
+    "tech_pulse_candidate_count": 921,
+    "tech_pulse_count": 6,
+    "builder_signal_count": 17,
+    "builder_count": 5,
+    "item_count": 31
+  }
+}
