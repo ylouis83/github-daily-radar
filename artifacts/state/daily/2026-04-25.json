@@ -1,0 +1,210 @@
+{
+  "cards": [
+    {
+      "msg_type": "interactive",
+      "card": {
+        "config": {
+          "wide_screen_mode": true
+        },
+        "header": {
+          "title": {
+            "tag": "plain_text",
+            "content": "AI Builder Radar · 2026-04-25"
+          },
+          "template": "indigo"
+        },
+        "elements": [
+          {
+            "tag": "markdown",
+            "content": "GitHub 主榜 · 科技热讯 · Builder Watch",
+            "text_size": "notation"
+          },
+          {
+            "tag": "hr"
+          },
+          {
+            "tag": "column_set",
+            "flex_mode": "none",
+            "horizontal_spacing": "default",
+            "columns": [
+              {
+                "tag": "column",
+                "width": "auto",
+                "vertical_align": "center",
+                "elements": [
+                  {
+                    "tag": "markdown",
+                    "content": "**GitHub 主榜**  <text_tag color='blue'>主线</text_tag>\n开源仓库、技能资产与讨论线索"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "tag": "markdown",
+            "content": "**热度跃升**\n\n**1.** [forrestchang/andrej-karpathy-skills](https://github.com/forrestchang/andrej-karpathy-skills)  +32115⭐  83.5K⭐\n**2.** [lsdefine/GenericAgent](https://github.com/lsdefine/GenericAgent)  +3536⭐  6.8K⭐\n**3.** [huggingface/ml-intern](https://github.com/huggingface/ml-intern)  +2981⭐  5.2K⭐\n**4.** [SimoneAvogadro/android-reverse-engineering-skill](https://github.com/SimoneAvogadro/android-reverse-engineering-skill)  +2702⭐  4.8K⭐\n**5.** [Alishahryar1/free-claude-code](https://github.com/Alishahryar1/free-claude-code)  +2640⭐  8.7K⭐\n\n*来源：GitHub Trending / OSSInsight*"
+          },
+          {
+            "tag": "markdown",
+            "content": "**核心项目**  ·  <link icon='platform_outlined' url='https://github.com'>GitHub</link>\n\n**1.** [googleapis/mcp-toolbox](https://github.com/googleapis/mcp-toolbox)  14.8K⭐\n信号：近期星标稳步增长，契合当前 AI 智能体与数据库集成方案的爆发趋势。\n▸ 定位：专为数据库场景打造的开源模型上下文协议服务端。\n▸ 能力：统一对接多种主流关系型与 NoSQL 数据库，为 AI 智能体提供标准化数据查询接口。\n▸ 价值：打通大模型与业务数据之间的壁垒，是构建企业级 AI 应用的关键基础设施。\n\n**2.** [google-labs-code/design.md](https://github.com/google-labs-code/design.md)  +6810⭐\n信号：本周星标数爆发式增长，标志着设计工程化标准正被广泛采纳。\n▸ 定位：面向代码代理的标准化视觉设计规范描述协议。\n▸ 能力：为人工智能编程工具提供持久化且结构化的设计系统上下文。\n▸ 价值：有效弥合设计稿与代码实现之间的语义鸿沟，提升自动化开发准确率。\n\n**3.** [YouMind-OpenLab/awesome-gpt-image-2](https://github.com/YouMind-OpenLab/awesome-gpt-image-2)  +137⭐\n信号：近期获得大量关注与互动，是探索 OpenAI 最新图像生成能力的实用指南。\n▸ 定位：专注 GPT Image 2 模型的精选提示词库，支持多语言与商业级插画生成。\n▸ 能力：提供跨图像一致性、像素级文本渲染及高质量图像生成的提示词方案。\n▸ 价值：帮助开发者与创作者快速掌握新一代图像模型的核心用法，降低提示词调试成本。\n\n**4.** [mksglu/context-mode](https://github.com/mksglu/context-mode)  +68⭐\n信号：OSSInsight 近期 +68⭐\n▸ 定位：偏 Agent 编排\n▸ 能力：把外部工具和能力封装成更容易接入的调用层。\n▸ 价值：热度已在抬升，适合快速判断是否值得关注。\n\n**延伸速览**\n\n- [SpaceTimee/Fusion-JetBrainsMapleMono](https://github.com/SpaceTimee/Fusion-JetBrainsMapleMono)  2.0K⭐\n- [garrytan/gbrain](https://github.com/garrytan/gbrain)  +65⭐\n- [BowTiedDevil/degenbot](https://github.com/BowTiedDevil/degenbot)  538⭐\n另有 9 个项目未展开"
+          },
+          {
+            "tag": "markdown",
+            "content": "**技能与 MCP**  ·  <link icon='platform_outlined' url='https://github.com'>GitHub</link>\n\n**1.** [obra/superpowers](https://github.com/obra/superpowers)  +1135⭐\n适配栈：Skill 生态\n▸ 定位：将代理技能与软件开发方法论深度融合的实战框架。\n\n**2.** [cporter202/agentic-ai-starters](https://github.com/cporter202/agentic-ai-starters)  107⭐\n适配栈：Agent\n▸ 定位：提供即插即用的自主智能体应用开发蓝图与实战模板。\n\n**3.** [portel-dev/photon](https://github.com/portel-dev/photon)  91⭐\n适配栈：MCP\n▸ 定位：单文件意图定义即可多端自动分发。\n\n**4.** [minhnv0807/fullstack-mkt-skills](https://github.com/minhnv0807/fullstack-mkt-skills)  142⭐\n适配栈：Skill 生态\n▸ 定位：针对主流编程助手深度优化的全套营销自动化技能包。\n"
+          },
+          {
+            "tag": "hr"
+          },
+          {
+            "tag": "column_set",
+            "flex_mode": "none",
+            "horizontal_spacing": "default",
+            "columns": [
+              {
+                "tag": "column",
+                "width": "auto",
+                "vertical_align": "center",
+                "elements": [
+                  {
+                    "tag": "markdown",
+                    "content": "**科技热讯**  <text_tag color='orange'>外部</text_tag>\n发布动态、工程信号与外部热点"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "tag": "markdown",
+            "content": "**1.** [蒂姆·库克将出任苹果执行董事长](https://www.apple.com/newsroom/2026/04/tim-cook-to-become-apple-executive-chairman-john-ternus-to-become-apple-ceo/)\n<link icon='internet_outlined' url='https://www.apple.com/newsroom/2026/04/tim-cook-to-become-apple-executive-chairman-john-ternus-to-become-apple-ceo/'>Hacker News</link>  ·  信号：Hacker News 热度高 · 213 热度 / 60 评论\n\n**2.** [Apparent for Gmail - 让 Gmail 更易于阅读和管理。](https://www.producthunt.com/r/MVLWQNIV4PJAZJ)\n<link icon='internet_outlined' url='https://www.producthunt.com/r/MVLWQNIV4PJAZJ'>Product Hunt</link>  ·  信号：Product Hunt 热度高 · 208 热度 / 19 评论\n\n**3.** [SoulLink - 移动端3D Vibe编程合作伙伴](https://www.producthunt.com/r/WDAZDHMMZORTEO)\n<link icon='internet_outlined' url='https://www.producthunt.com/r/WDAZDHMMZORTEO'>Product Hunt</link>  ·  信号：Product Hunt 热度高 · 202 热度 / 41 评论\n\n**4.** [CrabTalk - 这款代理守护进程毫无保留。8MB。开源](https://www.producthunt.com/r/ZAAIAYTYC43FIJ)\n<link icon='internet_outlined' url='https://www.producthunt.com/r/ZAAIAYTYC43FIJ'>Product Hunt</link>  ·  信号：Product Hunt 热度高 · 196 热度 / 14 评论\n\n**5.** [Capso - 适用于 Mac 的免费开源截图与屏幕录制工具](https://www.producthunt.com/r/KVNMIQB5OS55J7)\n<link icon='internet_outlined' url='https://www.producthunt.com/r/KVNMIQB5OS55J7'>Product Hunt</link>  ·  信号：Product Hunt 热度高 · 194 热度 / 20 评论\n\n**6.** [Drift - 一款随时间推移逐渐淡出的极简主义日记应用](https://www.producthunt.com/r/77I2D7OKQILF7O)\n<link icon='internet_outlined' url='https://www.producthunt.com/r/77I2D7OKQILF7O'>Product Hunt</link>  ·  信号：Product Hunt 热度高 · 193 热度 / 34 评论\n"
+          },
+          {
+            "tag": "hr"
+          },
+          {
+            "tag": "column_set",
+            "flex_mode": "none",
+            "horizontal_spacing": "default",
+            "columns": [
+              {
+                "tag": "column",
+                "width": "auto",
+                "vertical_align": "center",
+                "elements": [
+                  {
+                    "tag": "markdown",
+                    "content": "**Builder Watch**  <text_tag color='green'>人物</text_tag>\n创作者观点、播客与长文解读"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "tag": "markdown",
+            "content": "**X**  ·  <link icon='internet_outlined' url='https://x.com'>X</link>\n**1.** [Sam Altman：围绕「We tried a new thing with NVIDIA to…」](https://x.com/sama/status/2047395562501411058)\n信号：围绕「We tried a new thing with NVIDIA to…」，给出一线观察。\n**2.** [Claude：围绕「Memory on Claude Managed Agents is now…」](https://x.com/claudeai/status/2047421844311949513)\n信号：围绕「Memory on Claude Managed Agents is now…」，给出一线观察。\n**3.** [Amanda Askell：围绕「It's odd to be living through what…」](https://x.com/AmandaAskell/status/2047429629263454377)\n信号：围绕「It's odd to be living through what…」，给出一线观察。\n\n**播客**  ·  <link icon='file-link-video_outlined' url='https://www.youtube.com'>YouTube</link>\n**1.** [Unsupervised Learning：聊「Speaker 1 | 00:00 - 00:03 Isn't that…」](https://www.youtube.com/@RedpointAI)\n信号：围绕「Speaker 1 | 00:00 - 00:03 Isn't that…」，展开完整对谈。\n\n**长文**\n**1.** [Anthropic Engineering：拆解「Over the past month, we’ve been…」](https://www.anthropic.com/engineering/april-23-postmortem)\n信号：围绕「Over the past month, we’ve been…」，做了长文拆解。\n**2.** [Claude Blog：拆解「Today we’re expanding what you can…」](https://claude.com/blog/connectors-for-everyday-life)\n信号：围绕「Today we’re expanding what you can…」，做了长文拆解。\n"
+          },
+          {
+            "tag": "markdown",
+            "content": "日期  ·  2026-04-25  ·  来源  ·  GitHub / OSSInsight / Buzzing / Follow Builders  ·  127 候选 → 32 精选",
+            "text_size": "notation"
+          }
+        ]
+      }
+    }
+  ],
+  "count": 127,
+  "selected_count": 32,
+  "summary": {
+    "count": 127,
+    "editorial": 24,
+    "api_usage": {
+      "total_budget": 60,
+      "search_budget": 38,
+      "graphql_budget": 600,
+      "search_used": 30,
+      "graphql_used": 1
+    },
+    "collector_stats": {
+      "trending": {
+        "count": 15,
+        "kinds": {
+          "project": 15
+        }
+      },
+      "ossinsight": {
+        "count": 60,
+        "kinds": {
+          "project": 60
+        }
+      },
+      "repos": {
+        "count": 51,
+        "kinds": {
+          "project": 51
+        }
+      },
+      "star_growth": {
+        "count": 71,
+        "kinds": {
+          "project": 71
+        }
+      },
+      "discussions": {
+        "count": 0,
+        "kinds": {}
+      },
+      "issues_prs": {
+        "count": 0,
+        "kinds": {}
+      },
+      "skills": {
+        "count": 20,
+        "kinds": {
+          "project": 7,
+          "skill": 13
+        }
+      },
+      "buzzing": {
+        "count": 926,
+        "kinds": {
+          "tech": 926
+        }
+      },
+      "builders": {
+        "count": 19,
+        "kinds": {
+          "builder": 19
+        }
+      }
+    },
+    "surge_count": 5,
+    "filtered_kind_counts": {
+      "project": 122,
+      "skill": 5
+    },
+    "published_kind_counts": {
+      "project": 16,
+      "skill": 4
+    },
+    "theme_counts": {
+      "mcp": 5,
+      "agent_framework": 7,
+      "skill_assets": 2,
+      "prompt_assets": 1,
+      "agent_workflow": 1,
+      "claude_code": 2,
+      "rag": 1,
+      "codex": 1
+    },
+    "top_themes": [
+      "agent_framework",
+      "mcp",
+      "skill_assets"
+    ],
+    "github_count": 20,
+    "tech_pulse_candidate_count": 925,
+    "tech_pulse_count": 6,
+    "builder_signal_count": 19,
+    "builder_count": 6,
+    "item_count": 32
+  }
+}
