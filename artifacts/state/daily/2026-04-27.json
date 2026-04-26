@@ -1,0 +1,210 @@
+{
+  "cards": [
+    {
+      "msg_type": "interactive",
+      "card": {
+        "config": {
+          "wide_screen_mode": true
+        },
+        "header": {
+          "title": {
+            "tag": "plain_text",
+            "content": "AI Builder Radar · 2026-04-27"
+          },
+          "template": "indigo"
+        },
+        "elements": [
+          {
+            "tag": "markdown",
+            "content": "GitHub 主榜 · 科技热讯 · Builder Watch",
+            "text_size": "notation"
+          },
+          {
+            "tag": "hr"
+          },
+          {
+            "tag": "column_set",
+            "flex_mode": "none",
+            "horizontal_spacing": "default",
+            "columns": [
+              {
+                "tag": "column",
+                "width": "auto",
+                "vertical_align": "center",
+                "elements": [
+                  {
+                    "tag": "markdown",
+                    "content": "**GitHub 主榜**  <text_tag color='blue'>主线</text_tag>\n开源仓库、技能资产与讨论线索"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "tag": "markdown",
+            "content": "**热度跃升**\n\n**1.** [forrestchang/andrej-karpathy-skills](https://github.com/forrestchang/andrej-karpathy-skills)  +29917⭐  90.6K⭐\n**2.** [sponsors/Fincept-Corporation](https://github.com/sponsors/Fincept-Corporation)  +10185⭐  15.5K⭐\n**3.** [sponsors/mattpocock](https://github.com/sponsors/mattpocock)  +2507⭐  23.3K⭐\n**4.** [Z4nzu/hackingtool](https://github.com/Z4nzu/hackingtool)  +1724⭐  65.4K⭐\n**5.** [Alishahryar1/free-claude-code](https://github.com/Alishahryar1/free-claude-code)  +1694⭐  13.4K⭐\n\n*来源：GitHub Trending / OSSInsight*"
+          },
+          {
+            "tag": "markdown",
+            "content": "**核心项目**  ·  <link icon='platform_outlined' url='https://github.com'>GitHub</link>\n\n**1.** [VoltAgent/awesome-design-md](https://github.com/VoltAgent/awesome-design-md)  +1178⭐\n信号：登上本周趋势榜单并收获大量互动，证明设计驱动型 AI 开发正成为新热点。\n▸ 定位：聚合多套知名品牌设计规范的开源设计文档仓库。\n▸ 能力：为 AI 编码工具提供即插即用的视觉风格定义，驱动自动化界面构建。\n▸ 价值：统一设计语言与代码生成的标准，减少人工调整样式的时间成本。\n\n**2.** [openai/codex](https://github.com/openai/codex)  78.0K⭐\n信号：随着终端开发工作流的回归，该工具精准契合了开发者对轻量级、高响应速度编程助手的迫切需求。\n▸ 定位：专为终端环境设计的轻量级编程智能体，无需复杂配置即可直接调用。\n▸ 能力：在命令行中直接理解自然语言指令并生成、执行或调试代码。\n▸ 价值：为开发者提供低门槛的终端内自动化编程辅助，显著提升日常编码效率。\n\n**3.** [elizaOS/eliza](https://github.com/elizaOS/eliza)  18.2K⭐\n信号：智能体技术正从概念验证走向规模化应用，该框架为抢占去中心化社交与自动化交互先机提供了核心引擎。\n▸ 定位：面向全场景的开源自主智能体框架，支持跨平台插件扩展与多智能体协同。\n▸ 能力：快速部署具备记忆、检索增强与工具调用能力的个性化代理，并实现多平台消息互通。\n▸ 价值：降低自主智能体的开发门槛，使个人与中小企业能够低成本构建定制化自动化服务。\n\n**4.** [charmbracelet/crush](https://github.com/charmbracelet/crush)  23.5K⭐\n信号：近期在 AI 编程工具赛道中迅速积累高星关注，值得跟进其代理工作流设计。\n▸ 定位：专注于提供优雅且直观的代理式编程体验。\n▸ 能力：集成大语言模型实现自动化代码生成与交互。\n▸ 价值：降低开发者使用 AI 编程代理的门槛并提升交互美感。\n\n**延伸速览**\n\n- [abhigyanpatwari/GitNexus](https://github.com/abhigyanpatwari/GitNexus)  +167⭐\n- [badlogic/pi-mono](https://github.com/badlogic/pi-mono)  +143⭐\n- [LearningCircuit/local-deep-research](https://github.com/LearningCircuit/local-deep-research)  4.4K⭐\n另有 11 个项目未展开"
+          },
+          {
+            "tag": "markdown",
+            "content": "**技能与 MCP**  ·  <link icon='platform_outlined' url='https://github.com'>GitHub</link>\n\n**1.** [obra/superpowers](https://github.com/obra/superpowers)  +1745⭐\n适配栈：Skill 生态\n▸ 定位：提供一套经过验证的代理技能框架与配套软件开发方法论。\n\n**2.** [jabrena/cursor-rules-java](https://github.com/jabrena/cursor-rules-java)  362⭐\n适配栈：Prompt / Rules\n▸ 定位：专为 Java 企业级开发定制的 AI 代理技能与规则集合。\n"
+          },
+          {
+            "tag": "hr"
+          },
+          {
+            "tag": "column_set",
+            "flex_mode": "none",
+            "horizontal_spacing": "default",
+            "columns": [
+              {
+                "tag": "column",
+                "width": "auto",
+                "vertical_align": "center",
+                "elements": [
+                  {
+                    "tag": "markdown",
+                    "content": "**科技热讯**  <text_tag color='orange'>外部</text_tag>\n发布动态、工程信号与外部热点"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "tag": "markdown",
+            "content": "**1.** [蒂姆·库克将出任苹果执行董事长](https://www.apple.com/newsroom/2026/04/tim-cook-to-become-apple-executive-chairman-john-ternus-to-become-apple-ceo/)\n<link icon='internet_outlined' url='https://www.apple.com/newsroom/2026/04/tim-cook-to-become-apple-executive-chairman-john-ternus-to-become-apple-ceo/'>Hacker News</link>  ·  信号：Hacker News 热度高 · 213 热度 / 60 评论\n\n**2.** [SoulLink - 移动端3D Vibe编程合作伙伴](https://www.producthunt.com/r/WDAZDHMMZORTEO)\n<link icon='internet_outlined' url='https://www.producthunt.com/r/WDAZDHMMZORTEO'>Product Hunt</link>  ·  信号：Product Hunt 热度高 · 202 热度 / 41 评论\n\n**3.** [Capso - 适用于 Mac 的免费开源截图与屏幕录制工具](https://www.producthunt.com/r/KVNMIQB5OS55J7)\n<link icon='internet_outlined' url='https://www.producthunt.com/r/KVNMIQB5OS55J7'>Product Hunt</link>  ·  信号：Product Hunt 热度高 · 194 热度 / 20 评论\n\n**4.** [Drift - 一款随时间推移逐渐淡出的极简主义日记应用](https://www.producthunt.com/r/77I2D7OKQILF7O)\n<link icon='internet_outlined' url='https://www.producthunt.com/r/77I2D7OKQILF7O'>Product Hunt</link>  ·  信号：Product Hunt 热度高 · 193 热度 / 34 评论\n\n**5.** [AgentMail - AI 代理的电子邮件收件箱](https://www.producthunt.com/r/M4HONGJQGO5663)\n<link icon='internet_outlined' url='https://www.producthunt.com/r/M4HONGJQGO5663'>Product Hunt</link>  ·  信号：Product Hunt 热度高 · 192 热度 / 45 评论\n\n**6.** [Google Finance - 提出复杂的金融问题，获得基于人工智能的解答](https://www.producthunt.com/r/GNTCPZ4KQWJ6AP)\n<link icon='internet_outlined' url='https://www.producthunt.com/r/GNTCPZ4KQWJ6AP'>Product Hunt</link>  ·  信号：Product Hunt 热度高 · 190 热度 / 3 评论\n"
+          },
+          {
+            "tag": "hr"
+          },
+          {
+            "tag": "column_set",
+            "flex_mode": "none",
+            "horizontal_spacing": "default",
+            "columns": [
+              {
+                "tag": "column",
+                "width": "auto",
+                "vertical_align": "center",
+                "elements": [
+                  {
+                    "tag": "markdown",
+                    "content": "**Builder Watch**  <text_tag color='green'>人物</text_tag>\n创作者观点、播客与长文解读"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "tag": "markdown",
+            "content": "**X**  ·  <link icon='internet_outlined' url='https://x.com'>X</link>\n**1.** [Sam Altman：围绕「we still get looksmaxxed on frontend a…」](https://x.com/sama/status/2048160404376105179)\n信号：围绕「we still get looksmaxxed on frontend a…」，给出一线观察。\n**2.** [Aaron Levie：围绕「Great read.」](https://x.com/levie/status/2048223146063609965)\n信号：围绕「Great read.」，给出一线观察。\n**3.** [Amjad Masad：围绕「2000s: every company is an internet…」](https://x.com/amasad/status/2048265772775162078)\n信号：围绕「2000s: every company is an internet…」，给出一线观察。\n\n**播客**  ·  <link icon='file-link-video_outlined' url='https://www.youtube.com'>YouTube</link>\n**1.** [No Priors：聊「Speaker 1 | 00:00 - 00:40 The cost to…」](https://www.youtube.com/watch?v=tNNFJa5pUEg)\n信号：围绕「Speaker 1 | 00:00 - 00:40 The cost to…」，展开完整对谈。\n"
+          },
+          {
+            "tag": "markdown",
+            "content": "日期  ·  2026-04-27  ·  来源  ·  GitHub / OSSInsight / Buzzing / Follow Builders  ·  128 候选 → 30 精选",
+            "text_size": "notation"
+          }
+        ]
+      }
+    }
+  ],
+  "count": 128,
+  "selected_count": 30,
+  "summary": {
+    "count": 128,
+    "editorial": 24,
+    "api_usage": {
+      "total_budget": 60,
+      "search_budget": 38,
+      "graphql_budget": 600,
+      "search_used": 30,
+      "graphql_used": 1
+    },
+    "collector_stats": {
+      "trending": {
+        "count": 15,
+        "kinds": {
+          "project": 15
+        }
+      },
+      "ossinsight": {
+        "count": 56,
+        "kinds": {
+          "project": 56
+        }
+      },
+      "repos": {
+        "count": 64,
+        "kinds": {
+          "project": 64
+        }
+      },
+      "star_growth": {
+        "count": 69,
+        "kinds": {
+          "project": 69
+        }
+      },
+      "discussions": {
+        "count": 0,
+        "kinds": {}
+      },
+      "issues_prs": {
+        "count": 0,
+        "kinds": {}
+      },
+      "skills": {
+        "count": 20,
+        "kinds": {
+          "skill": 16,
+          "project": 4
+        }
+      },
+      "buzzing": {
+        "count": 924,
+        "kinds": {
+          "tech": 924
+        }
+      },
+      "builders": {
+        "count": 13,
+        "kinds": {
+          "builder": 13
+        }
+      }
+    },
+    "surge_count": 5,
+    "filtered_kind_counts": {
+      "project": 125,
+      "skill": 3
+    },
+    "published_kind_counts": {
+      "project": 18,
+      "skill": 2
+    },
+    "theme_counts": {
+      "agent_framework": 9,
+      "codex": 2,
+      "skill_assets": 2,
+      "claude_code": 1,
+      "browser_automation": 2,
+      "rag": 1,
+      "mcp": 2,
+      "prompt_assets": 1
+    },
+    "top_themes": [
+      "agent_framework",
+      "codex",
+      "skill_assets"
+    ],
+    "github_count": 20,
+    "tech_pulse_candidate_count": 924,
+    "tech_pulse_count": 6,
+    "builder_signal_count": 13,
+    "builder_count": 4,
+    "item_count": 30
+  }
+}
