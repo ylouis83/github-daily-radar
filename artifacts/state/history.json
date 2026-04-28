@@ -19778,6 +19778,497 @@
       "title": "Z4nzu/hackingtool",
       "url": "https://github.com/Z4nzu/hackingtool",
       "source_query": "github-trending:trending"
+    },
+    {
+      "candidate_id": "project:paperclipai/paperclip",
+      "date": "2026-04-29",
+      "event": "published",
+      "metrics": {
+        "stars": 60217,
+        "forks": 10507,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "scores": {},
+      "kind": "project",
+      "title": "paperclipai/paperclip",
+      "url": "https://github.com/paperclipai/paperclip",
+      "source_query": "stars:>5000 pushed:>2026-04-21 sort:stars-desc"
+    },
+    {
+      "candidate_id": "project:llvm/llvm-project",
+      "date": "2026-04-29",
+      "event": "published",
+      "metrics": {
+        "stars": 38084,
+        "forks": 16995,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "scores": {},
+      "kind": "project",
+      "title": "llvm/llvm-project",
+      "url": "https://github.com/llvm/llvm-project",
+      "source_query": "stars:>5000 pushed:>2026-04-21 sort:stars-desc"
+    },
+    {
+      "candidate_id": "repo:obra/superpowers",
+      "date": "2026-04-29",
+      "event": "published",
+      "metrics": {
+        "stars": 171488,
+        "forks": 15126,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 1628,
+        "previous_star_growth_7d": 0,
+        "has_new_release": true,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "scores": {
+        "seed_repo_hit": 1.0,
+        "observed_star_growth_7d": 1628.0,
+        "skill_shape_score": 2.5,
+        "project_scale_score": 264.2473197863287,
+        "skill_min_stars_hit": 1.0,
+        "project_min_stars_hit": 1.0,
+        "skill_bucket": "skill",
+        "skill_final_score": 272.2473197863287
+      },
+      "kind": "skill",
+      "title": "obra/superpowers",
+      "url": "https://github.com/obra/superpowers",
+      "source_query": "seed_repo:obra/superpowers"
+    },
+    {
+      "candidate_id": "project:NixOS/nixpkgs",
+      "date": "2026-04-29",
+      "event": "published",
+      "metrics": {
+        "stars": 24486,
+        "forks": 18733,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "scores": {},
+      "kind": "project",
+      "title": "NixOS/nixpkgs",
+      "url": "https://github.com/NixOS/nixpkgs",
+      "source_query": "stars:>5000 pushed:>2026-04-21 sort:stars-desc"
+    },
+    {
+      "candidate_id": "project:yhirose/cpp-httplib",
+      "date": "2026-04-29",
+      "event": "published",
+      "metrics": {
+        "stars": 16413,
+        "forks": 2669,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "scores": {},
+      "kind": "project",
+      "title": "yhirose/cpp-httplib",
+      "url": "https://github.com/yhirose/cpp-httplib",
+      "source_query": "stars:>5000 pushed:>2026-04-21 sort:stars-desc"
+    },
+    {
+      "candidate_id": "skill:microsoft/fabric-rti-mcp",
+      "date": "2026-04-29",
+      "event": "published",
+      "metrics": {
+        "stars": 113,
+        "forks": 76,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 3,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "scores": {
+        "observed_star_growth_7d": 3.0,
+        "skill_shape_score": 1.5,
+        "project_scale_score": 68.20396349002488,
+        "skill_min_stars_hit": 1.0,
+        "project_min_stars_hit": 0.0,
+        "skill_bucket": "skill",
+        "skill_final_score": 72.70396349002488
+      },
+      "kind": "skill",
+      "title": "microsoft/fabric-rti-mcp",
+      "url": "https://github.com/microsoft/fabric-rti-mcp",
+      "source_query": "mcp server tool in:name,description stars:>50 sort:stars-desc pushed:>2026-03-29"
+    },
+    {
+      "candidate_id": "project:esphome/esphome",
+      "date": "2026-04-29",
+      "event": "published",
+      "metrics": {
+        "stars": 10990,
+        "forks": 5241,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "scores": {},
+      "kind": "project",
+      "title": "esphome/esphome",
+      "url": "https://github.com/esphome/esphome",
+      "source_query": "stars:>5000 pushed:>2026-04-21 sort:stars-desc"
+    },
+    {
+      "candidate_id": "trending:sponsors/EbookFoundation",
+      "date": "2026-04-29",
+      "event": "published",
+      "metrics": {
+        "stars": 386596,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 133,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "scores": {
+        "trending_daily_stars": 133.0
+      },
+      "kind": "project",
+      "title": "EbookFoundation 赞助页面",
+      "url": "https://github.com/sponsors/EbookFoundation",
+      "source_query": "github-trending:trending"
+    },
+    {
+      "candidate_id": "project:jackocnr/intl-tel-input",
+      "date": "2026-04-29",
+      "event": "published",
+      "metrics": {
+        "stars": 8191,
+        "forks": 1997,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "scores": {},
+      "kind": "project",
+      "title": "jackocnr/intl-tel-input",
+      "url": "https://github.com/jackocnr/intl-tel-input",
+      "source_query": "stars:>5000 pushed:>2026-04-21 sort:stars-desc"
+    },
+    {
+      "candidate_id": "trending:donnemartin/system-design-primer",
+      "date": "2026-04-29",
+      "event": "published",
+      "metrics": {
+        "stars": 345812,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 734,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "scores": {
+        "trending_daily_stars": 734.0
+      },
+      "kind": "project",
+      "title": "donnemartin/system-design-primer",
+      "url": "https://github.com/donnemartin/system-design-primer",
+      "source_query": "github-trending:trending"
+    },
+    {
+      "candidate_id": "project:webstudio-is/webstudio",
+      "date": "2026-04-29",
+      "event": "published",
+      "metrics": {
+        "stars": 8490,
+        "forks": 1530,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "scores": {},
+      "kind": "project",
+      "title": "webstudio-is/webstudio",
+      "url": "https://github.com/webstudio-is/webstudio",
+      "source_query": "stars:>5000 pushed:>2026-04-21 sort:stars-desc"
+    },
+    {
+      "candidate_id": "project:Kaggle/kaggle-cli",
+      "date": "2026-04-29",
+      "event": "published",
+      "metrics": {
+        "stars": 7275,
+        "forks": 1348,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "scores": {},
+      "kind": "project",
+      "title": "Kaggle/kaggle-cli",
+      "url": "https://github.com/Kaggle/kaggle-cli",
+      "source_query": "stars:>5000 pushed:>2026-04-21 sort:stars-desc"
+    },
+    {
+      "candidate_id": "project:RIOT-OS/RIOT",
+      "date": "2026-04-29",
+      "event": "published",
+      "metrics": {
+        "stars": 5718,
+        "forks": 2084,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "scores": {},
+      "kind": "project",
+      "title": "RIOT-OS/RIOT",
+      "url": "https://github.com/RIOT-OS/RIOT",
+      "source_query": "stars:>5000 pushed:>2026-04-21 sort:stars-desc"
+    },
+    {
+      "candidate_id": "project:onsi/ginkgo",
+      "date": "2026-04-29",
+      "event": "published",
+      "metrics": {
+        "stars": 8986,
+        "forks": 697,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "scores": {},
+      "kind": "project",
+      "title": "onsi/ginkgo",
+      "url": "https://github.com/onsi/ginkgo",
+      "source_query": "stars:>5000 pushed:>2026-04-21 sort:stars-desc"
+    },
+    {
+      "candidate_id": "project:ineo6/hosts",
+      "date": "2026-04-29",
+      "event": "published",
+      "metrics": {
+        "stars": 5321,
+        "forks": 457,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "scores": {},
+      "kind": "project",
+      "title": "ineo6/hosts",
+      "url": "https://github.com/ineo6/hosts",
+      "source_query": "stars:>5000 pushed:>2026-04-21 sort:stars-desc"
+    },
+    {
+      "candidate_id": "project:gentoo/gentoo",
+      "date": "2026-04-29",
+      "event": "published",
+      "metrics": {
+        "stars": 2381,
+        "forks": 2209,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "scores": {},
+      "kind": "project",
+      "title": "gentoo/gentoo",
+      "url": "https://github.com/gentoo/gentoo",
+      "source_query": "stars:>500 pushed:>2026-04-25 sort:updated-desc"
+    },
+    {
+      "candidate_id": "project:common-voice/common-voice",
+      "date": "2026-04-29",
+      "event": "published",
+      "metrics": {
+        "stars": 3459,
+        "forks": 870,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "scores": {},
+      "kind": "project",
+      "title": "common-voice/common-voice",
+      "url": "https://github.com/common-voice/common-voice",
+      "source_query": "stars:>500 pushed:>2026-04-25 sort:updated-desc"
+    },
+    {
+      "candidate_id": "project:bluealloy/revm",
+      "date": "2026-04-29",
+      "event": "published",
+      "metrics": {
+        "stars": 2180,
+        "forks": 996,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "scores": {},
+      "kind": "project",
+      "title": "bluealloy/revm",
+      "url": "https://github.com/bluealloy/revm",
+      "source_query": "stars:>500 pushed:>2026-04-25 sort:updated-desc"
+    },
+    {
+      "candidate_id": "project:firebase/firebase-android-sdk",
+      "date": "2026-04-29",
+      "event": "published",
+      "metrics": {
+        "stars": 2504,
+        "forks": 684,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "scores": {},
+      "kind": "project",
+      "title": "firebase/firebase-android-sdk",
+      "url": "https://github.com/firebase/firebase-android-sdk",
+      "source_query": "stars:>500 pushed:>2026-04-25 sort:updated-desc"
+    },
+    {
+      "candidate_id": "project:adysec/nuclei_poc",
+      "date": "2026-04-29",
+      "event": "published",
+      "metrics": {
+        "stars": 2053,
+        "forks": 544,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "scores": {},
+      "kind": "project",
+      "title": "adysec/nuclei_poc",
+      "url": "https://github.com/adysec/nuclei_poc",
+      "source_query": "stars:>500 pushed:>2026-04-25 sort:updated-desc"
+    },
+    {
+      "candidate_id": "trending:forrestchang/andrej-karpathy-skills",
+      "date": "2026-04-29",
+      "event": "published",
+      "scores": {},
+      "kind": "project",
+      "title": "forrestchang/andrej-karpathy-skills",
+      "url": "https://github.com/forrestchang/andrej-karpathy-skills",
+      "source_query": "github-trending:trending"
+    },
+    {
+      "candidate_id": "trending:Z4nzu/hackingtool",
+      "date": "2026-04-29",
+      "event": "published",
+      "scores": {},
+      "kind": "project",
+      "title": "Z4nzu/hackingtool",
+      "url": "https://github.com/Z4nzu/hackingtool",
+      "source_query": "github-trending:trending"
+    },
+    {
+      "candidate_id": "trending:sponsors/mattpocock",
+      "date": "2026-04-29",
+      "event": "published",
+      "scores": {},
+      "kind": "project",
+      "title": "sponsors/mattpocock",
+      "url": "https://github.com/sponsors/mattpocock",
+      "source_query": "github-trending:trending"
+    },
+    {
+      "candidate_id": "trending:Alishahryar1/free-claude-code",
+      "date": "2026-04-29",
+      "event": "published",
+      "scores": {},
+      "kind": "project",
+      "title": "Alishahryar1/free-claude-code",
+      "url": "https://github.com/Alishahryar1/free-claude-code",
+      "source_query": "github-trending:trending"
+    },
+    {
+      "candidate_id": "trending:sponsors/abhigyanpatwari",
+      "date": "2026-04-29",
+      "event": "published",
+      "scores": {},
+      "kind": "project",
+      "title": "sponsors/abhigyanpatwari",
+      "url": "https://github.com/sponsors/abhigyanpatwari",
+      "source_query": "github-trending:trending"
     }
   ],
   "candidate_index": {
@@ -19961,22 +20452,22 @@
     },
     "trending:Alishahryar1/free-claude-code": {
       "candidate_id": "trending:Alishahryar1/free-claude-code",
-      "last_seen_at": "2026-04-28",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
-        "stars": 15979,
+        "stars": 17448,
         "forks": 0,
         "comments": 0,
         "reactions": 0,
-        "star_growth_7d": 2973,
+        "star_growth_7d": 1706,
         "previous_star_growth_7d": 0,
         "has_new_release": false,
         "days_since_previous_release": null,
         "comment_growth_rate": 0.0
       },
       "last_seen_scores": {
-        "trending_daily_stars": 2973.0
+        "trending_daily_stars": 1706.0
       },
-      "last_published_at": "2026-04-28",
+      "last_published_at": "2026-04-29",
       "last_published_scores": {}
     },
     "project:anthropics/claude-code": {
@@ -20124,20 +20615,20 @@
     },
     "project:NousResearch/hermes-agent": {
       "candidate_id": "project:NousResearch/hermes-agent",
-      "last_seen_at": "2026-04-28",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
-        "stars": 2366,
-        "forks": 478,
+        "stars": 2091,
+        "forks": 426,
         "comments": 0,
-        "reactions": 9982,
-        "star_growth_7d": 2366,
+        "reactions": 8741,
+        "star_growth_7d": 2091,
         "previous_star_growth_7d": 0,
         "has_new_release": false,
         "days_since_previous_release": null,
         "comment_growth_rate": 0.0
       },
       "last_seen_scores": {
-        "ossinsight_total_score": 9982.2934,
+        "ossinsight_total_score": 8741.9354,
         "ossinsight_source": "ossinsight:trending:past_week",
         "ossinsight_collection": ""
       },
@@ -20198,20 +20689,20 @@
     },
     "project:badlogic/pi-mono": {
       "candidate_id": "project:badlogic/pi-mono",
-      "last_seen_at": "2026-04-28",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
-        "stars": 174,
-        "forks": 12,
+        "stars": 65,
+        "forks": 11,
         "comments": 0,
-        "reactions": 892,
-        "star_growth_7d": 174,
+        "reactions": 474,
+        "star_growth_7d": 65,
         "previous_star_growth_7d": 0,
         "has_new_release": false,
         "days_since_previous_release": null,
         "comment_growth_rate": 0.0
       },
       "last_seen_scores": {
-        "ossinsight_total_score": 892.8686,
+        "ossinsight_total_score": 474.344,
         "ossinsight_source": "ossinsight:trending:past_24_hours",
         "ossinsight_collection": ""
       },
@@ -20478,20 +20969,20 @@
     },
     "project:seaweedfs/seaweedfs": {
       "candidate_id": "project:seaweedfs/seaweedfs",
-      "last_seen_at": "2026-04-28",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
-        "stars": 104,
+        "stars": 108,
         "forks": 0,
         "comments": 0,
-        "reactions": 27504,
-        "star_growth_7d": 104,
+        "reactions": 27511,
+        "star_growth_7d": 108,
         "previous_star_growth_7d": 0,
         "has_new_release": false,
         "days_since_previous_release": null,
         "comment_growth_rate": 0.0
       },
       "last_seen_scores": {
-        "ossinsight_total_score": 27504.0,
+        "ossinsight_total_score": 27511.0,
         "ossinsight_source": "ossinsight:collection:Distributed File Storage:past_28_days",
         "ossinsight_collection": "Distributed File Storage"
       },
@@ -20515,20 +21006,20 @@
     },
     "project:minio/minio": {
       "candidate_id": "project:minio/minio",
-      "last_seen_at": "2026-04-28",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
-        "stars": 47,
+        "stars": 51,
         "forks": 0,
         "comments": 0,
-        "reactions": 57674,
-        "star_growth_7d": 47,
+        "reactions": 57679,
+        "star_growth_7d": 51,
         "previous_star_growth_7d": 0,
         "has_new_release": false,
         "days_since_previous_release": null,
         "comment_growth_rate": 0.0
       },
       "last_seen_scores": {
-        "ossinsight_total_score": 57674.0,
+        "ossinsight_total_score": 57679.0,
         "ossinsight_source": "ossinsight:collection:Distributed File Storage:past_28_days",
         "ossinsight_collection": "Distributed File Storage"
       },
@@ -20552,12 +21043,12 @@
     },
     "project:ceph/ceph": {
       "candidate_id": "project:ceph/ceph",
-      "last_seen_at": "2026-04-28",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
         "stars": 20,
         "forks": 0,
         "comments": 0,
-        "reactions": 16279,
+        "reactions": 16280,
         "star_growth_7d": 20,
         "previous_star_growth_7d": 0,
         "has_new_release": false,
@@ -20565,7 +21056,7 @@
         "comment_growth_rate": 0.0
       },
       "last_seen_scores": {
-        "ossinsight_total_score": 16279.0,
+        "ossinsight_total_score": 16280.0,
         "ossinsight_source": "ossinsight:collection:Distributed File Storage:past_28_days",
         "ossinsight_collection": "Distributed File Storage"
       },
@@ -20589,20 +21080,20 @@
     },
     "project:juicedata/juicefs": {
       "candidate_id": "project:juicedata/juicefs",
-      "last_seen_at": "2026-04-28",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
-        "stars": 21,
+        "stars": 22,
         "forks": 0,
         "comments": 0,
-        "reactions": 12208,
-        "star_growth_7d": 21,
+        "reactions": 12209,
+        "star_growth_7d": 22,
         "previous_star_growth_7d": 0,
         "has_new_release": false,
         "days_since_previous_release": null,
         "comment_growth_rate": 0.0
       },
       "last_seen_scores": {
-        "ossinsight_total_score": 12208.0,
+        "ossinsight_total_score": 12209.0,
         "ossinsight_source": "ossinsight:collection:Distributed File Storage:past_28_days",
         "ossinsight_collection": "Distributed File Storage"
       },
@@ -20626,7 +21117,7 @@
     },
     "project:s3fs-fuse/s3fs-fuse": {
       "candidate_id": "project:s3fs-fuse/s3fs-fuse",
-      "last_seen_at": "2026-04-28",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
         "stars": 6,
         "forks": 0,
@@ -20663,7 +21154,7 @@
     },
     "project:littlefs-project/littlefs": {
       "candidate_id": "project:littlefs-project/littlefs",
-      "last_seen_at": "2026-04-28",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
         "stars": 13,
         "forks": 0,
@@ -20700,7 +21191,7 @@
     },
     "project:apache/hadoop": {
       "candidate_id": "project:apache/hadoop",
-      "last_seen_at": "2026-04-28",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
         "stars": 7,
         "forks": 0,
@@ -20737,7 +21228,7 @@
     },
     "project:gluster/glusterfs": {
       "candidate_id": "project:gluster/glusterfs",
-      "last_seen_at": "2026-04-28",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
         "stars": 2,
         "forks": 0,
@@ -20779,7 +21270,7 @@
     },
     "project:storj/storj": {
       "candidate_id": "project:storj/storj",
-      "last_seen_at": "2026-04-28",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
         "stars": 1,
         "forks": 0,
@@ -20816,7 +21307,7 @@
     },
     "project:cubefs/cubefs": {
       "candidate_id": "project:cubefs/cubefs",
-      "last_seen_at": "2026-04-28",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
         "stars": 2,
         "forks": 0,
@@ -20858,7 +21349,7 @@
     },
     "project:Alluxio/alluxio": {
       "candidate_id": "project:Alluxio/alluxio",
-      "last_seen_at": "2026-04-28",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
         "stars": 3,
         "forks": 0,
@@ -20895,7 +21386,7 @@
     },
     "project:kahing/goofys": {
       "candidate_id": "project:kahing/goofys",
-      "last_seen_at": "2026-04-28",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
         "stars": 3,
         "forks": 0,
@@ -20932,7 +21423,7 @@
     },
     "project:apache/ozone": {
       "candidate_id": "project:apache/ozone",
-      "last_seen_at": "2026-04-28",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
         "stars": 3,
         "forks": 0,
@@ -20969,7 +21460,7 @@
     },
     "project:moosefs/moosefs": {
       "candidate_id": "project:moosefs/moosefs",
-      "last_seen_at": "2026-04-28",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
         "stars": 1,
         "forks": 0,
@@ -21043,20 +21534,20 @@
     },
     "project:langgenius/dify": {
       "candidate_id": "project:langgenius/dify",
-      "last_seen_at": "2026-04-28",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
-        "stars": 821,
+        "stars": 805,
         "forks": 0,
         "comments": 0,
-        "reactions": 111030,
-        "star_growth_7d": 821,
+        "reactions": 111037,
+        "star_growth_7d": 805,
         "previous_star_growth_7d": 0,
         "has_new_release": false,
         "days_since_previous_release": null,
         "comment_growth_rate": 0.0
       },
       "last_seen_scores": {
-        "ossinsight_total_score": 111030.0,
+        "ossinsight_total_score": 111037.0,
         "ossinsight_source": "ossinsight:collection:LLM Tools:past_28_days",
         "ossinsight_collection": "LLM Tools"
       },
@@ -21080,20 +21571,20 @@
     },
     "project:langchain-ai/langchain": {
       "candidate_id": "project:langchain-ai/langchain",
-      "last_seen_at": "2026-04-28",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
-        "stars": 640,
+        "stars": 632,
         "forks": 0,
         "comments": 0,
-        "reactions": 116397,
-        "star_growth_7d": 640,
+        "reactions": 116407,
+        "star_growth_7d": 632,
         "previous_star_growth_7d": 0,
         "has_new_release": false,
         "days_since_previous_release": null,
         "comment_growth_rate": 0.0
       },
       "last_seen_scores": {
-        "ossinsight_total_score": 116397.0,
+        "ossinsight_total_score": 116407.0,
         "ossinsight_source": "ossinsight:collection:LLM Tools:past_28_days",
         "ossinsight_collection": "LLM Tools"
       },
@@ -21117,12 +21608,12 @@
     },
     "project:mem0ai/mem0": {
       "candidate_id": "project:mem0ai/mem0",
-      "last_seen_at": "2026-04-28",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
         "stars": 490,
         "forks": 0,
         "comments": 0,
-        "reactions": 39707,
+        "reactions": 39715,
         "star_growth_7d": 490,
         "previous_star_growth_7d": 0,
         "has_new_release": false,
@@ -21130,7 +21621,7 @@
         "comment_growth_rate": 0.0
       },
       "last_seen_scores": {
-        "ossinsight_total_score": 39707.0,
+        "ossinsight_total_score": 39715.0,
         "ossinsight_source": "ossinsight:collection:LLM Tools:past_28_days",
         "ossinsight_collection": "LLM Tools"
       },
@@ -21154,12 +21645,12 @@
     },
     "project:langfuse/langfuse": {
       "candidate_id": "project:langfuse/langfuse",
-      "last_seen_at": "2026-04-28",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
         "stars": 331,
         "forks": 0,
         "comments": 0,
-        "reactions": 16348,
+        "reactions": 16354,
         "star_growth_7d": 331,
         "previous_star_growth_7d": 0,
         "has_new_release": false,
@@ -21167,7 +21658,7 @@
         "comment_growth_rate": 0.0
       },
       "last_seen_scores": {
-        "ossinsight_total_score": 16348.0,
+        "ossinsight_total_score": 16354.0,
         "ossinsight_source": "ossinsight:collection:LLM Tools:past_28_days",
         "ossinsight_collection": "LLM Tools"
       },
@@ -21191,20 +21682,20 @@
     },
     "project:iflytek/astron-agent": {
       "candidate_id": "project:iflytek/astron-agent",
-      "last_seen_at": "2026-04-28",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
-        "stars": 160,
+        "stars": 157,
         "forks": 0,
         "comments": 0,
-        "reactions": 4328,
-        "star_growth_7d": 160,
+        "reactions": 4330,
+        "star_growth_7d": 157,
         "previous_star_growth_7d": 0,
         "has_new_release": false,
         "days_since_previous_release": null,
         "comment_growth_rate": 0.0
       },
       "last_seen_scores": {
-        "ossinsight_total_score": 4328.0,
+        "ossinsight_total_score": 4330.0,
         "ossinsight_source": "ossinsight:collection:LLM Tools:past_28_days",
         "ossinsight_collection": "LLM Tools"
       },
@@ -21228,20 +21719,20 @@
     },
     "project:iflytek/astron-rpa": {
       "candidate_id": "project:iflytek/astron-rpa",
-      "last_seen_at": "2026-04-28",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
-        "stars": 155,
+        "stars": 153,
         "forks": 0,
         "comments": 0,
-        "reactions": 3088,
-        "star_growth_7d": 155,
+        "reactions": 3090,
+        "star_growth_7d": 153,
         "previous_star_growth_7d": 0,
         "has_new_release": false,
         "days_since_previous_release": null,
         "comment_growth_rate": 0.0
       },
       "last_seen_scores": {
-        "ossinsight_total_score": 3088.0,
+        "ossinsight_total_score": 3090.0,
         "ossinsight_source": "ossinsight:collection:LLM Tools:past_28_days",
         "ossinsight_collection": "LLM Tools"
       },
@@ -21265,20 +21756,20 @@
     },
     "project:FlowiseAI/Flowise": {
       "candidate_id": "project:FlowiseAI/Flowise",
-      "last_seen_at": "2026-04-28",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
-        "stars": 201,
+        "stars": 199,
         "forks": 0,
         "comments": 0,
-        "reactions": 42412,
-        "star_growth_7d": 201,
+        "reactions": 42414,
+        "star_growth_7d": 199,
         "previous_star_growth_7d": 0,
         "has_new_release": false,
         "days_since_previous_release": null,
         "comment_growth_rate": 0.0
       },
       "last_seen_scores": {
-        "ossinsight_total_score": 42412.0,
+        "ossinsight_total_score": 42414.0,
         "ossinsight_source": "ossinsight:collection:LLM Tools:past_28_days",
         "ossinsight_collection": "LLM Tools"
       },
@@ -21302,20 +21793,20 @@
     },
     "project:keploy/keploy": {
       "candidate_id": "project:keploy/keploy",
-      "last_seen_at": "2026-04-28",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
-        "stars": 62,
+        "stars": 54,
         "forks": 0,
         "comments": 0,
-        "reactions": 13060,
-        "star_growth_7d": 62,
+        "reactions": 13062,
+        "star_growth_7d": 54,
         "previous_star_growth_7d": 0,
         "has_new_release": false,
         "days_since_previous_release": null,
         "comment_growth_rate": 0.0
       },
       "last_seen_scores": {
-        "ossinsight_total_score": 13060.0,
+        "ossinsight_total_score": 13062.0,
         "ossinsight_source": "ossinsight:collection:LLM Tools:past_28_days",
         "ossinsight_collection": "LLM Tools"
       },
@@ -21339,20 +21830,20 @@
     },
     "project:VoltAgent/voltagent": {
       "candidate_id": "project:VoltAgent/voltagent",
-      "last_seen_at": "2026-04-28",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
-        "stars": 256,
+        "stars": 255,
         "forks": 0,
         "comments": 0,
-        "reactions": 3965,
-        "star_growth_7d": 256,
+        "reactions": 3966,
+        "star_growth_7d": 255,
         "previous_star_growth_7d": 0,
         "has_new_release": false,
         "days_since_previous_release": null,
         "comment_growth_rate": 0.0
       },
       "last_seen_scores": {
-        "ossinsight_total_score": 3965.0,
+        "ossinsight_total_score": 3966.0,
         "ossinsight_source": "ossinsight:collection:LLM Tools:past_28_days",
         "ossinsight_collection": "LLM Tools"
       },
@@ -21376,13 +21867,13 @@
     },
     "project:run-llama/llama_index": {
       "candidate_id": "project:run-llama/llama_index",
-      "last_seen_at": "2026-04-28",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
-        "stars": 147,
+        "stars": 143,
         "forks": 0,
         "comments": 0,
         "reactions": 43089,
-        "star_growth_7d": 147,
+        "star_growth_7d": 143,
         "previous_star_growth_7d": 0,
         "has_new_release": false,
         "days_since_previous_release": null,
@@ -21413,20 +21904,20 @@
     },
     "project:confident-ai/deepeval": {
       "candidate_id": "project:confident-ai/deepeval",
-      "last_seen_at": "2026-04-28",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
-        "stars": 103,
+        "stars": 106,
         "forks": 0,
         "comments": 0,
-        "reactions": 9943,
-        "star_growth_7d": 103,
+        "reactions": 9947,
+        "star_growth_7d": 106,
         "previous_star_growth_7d": 0,
         "has_new_release": false,
         "days_since_previous_release": null,
         "comment_growth_rate": 0.0
       },
       "last_seen_scores": {
-        "ossinsight_total_score": 9943.0,
+        "ossinsight_total_score": 9947.0,
         "ossinsight_source": "ossinsight:collection:LLM Tools:past_28_days",
         "ossinsight_collection": "LLM Tools"
       },
@@ -21450,13 +21941,13 @@
     },
     "project:langchain-ai/langchainjs": {
       "candidate_id": "project:langchain-ai/langchainjs",
-      "last_seen_at": "2026-04-28",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
-        "stars": 46,
+        "stars": 45,
         "forks": 0,
         "comments": 0,
         "reactions": 15188,
-        "star_growth_7d": 46,
+        "star_growth_7d": 45,
         "previous_star_growth_7d": 0,
         "has_new_release": false,
         "days_since_previous_release": null,
@@ -21492,20 +21983,20 @@
     },
     "project:deepset-ai/haystack": {
       "candidate_id": "project:deepset-ai/haystack",
-      "last_seen_at": "2026-04-28",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
-        "stars": 65,
+        "stars": 64,
         "forks": 0,
         "comments": 0,
-        "reactions": 21903,
-        "star_growth_7d": 65,
+        "reactions": 21904,
+        "star_growth_7d": 64,
         "previous_star_growth_7d": 0,
         "has_new_release": false,
         "days_since_previous_release": null,
         "comment_growth_rate": 0.0
       },
       "last_seen_scores": {
-        "ossinsight_total_score": 21903.0,
+        "ossinsight_total_score": 21904.0,
         "ossinsight_source": "ossinsight:collection:LLM Tools:past_28_days",
         "ossinsight_collection": "LLM Tools"
       },
@@ -21529,12 +22020,12 @@
     },
     "project:Chainlit/chainlit": {
       "candidate_id": "project:Chainlit/chainlit",
-      "last_seen_at": "2026-04-28",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
         "stars": 35,
         "forks": 0,
         "comments": 0,
-        "reactions": 10119,
+        "reactions": 10120,
         "star_growth_7d": 35,
         "previous_star_growth_7d": 0,
         "has_new_release": false,
@@ -21542,7 +22033,7 @@
         "comment_growth_rate": 0.0
       },
       "last_seen_scores": {
-        "ossinsight_total_score": 10119.0,
+        "ossinsight_total_score": 10120.0,
         "ossinsight_source": "ossinsight:collection:LLM Tools:past_28_days",
         "ossinsight_collection": "LLM Tools"
       },
@@ -21566,12 +22057,12 @@
     },
     "project:TransformerOptimus/SuperAGI": {
       "candidate_id": "project:TransformerOptimus/SuperAGI",
-      "last_seen_at": "2026-04-28",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
         "stars": 33,
         "forks": 0,
         "comments": 0,
-        "reactions": 16111,
+        "reactions": 16112,
         "star_growth_7d": 33,
         "previous_star_growth_7d": 0,
         "has_new_release": false,
@@ -21579,7 +22070,7 @@
         "comment_growth_rate": 0.0
       },
       "last_seen_scores": {
-        "ossinsight_total_score": 16111.0,
+        "ossinsight_total_score": 16112.0,
         "ossinsight_source": "ossinsight:collection:LLM Tools:past_28_days",
         "ossinsight_collection": "LLM Tools"
       },
@@ -21603,13 +22094,13 @@
     },
     "project:ShishirPatil/gorilla": {
       "candidate_id": "project:ShishirPatil/gorilla",
-      "last_seen_at": "2026-04-28",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
-        "stars": 18,
+        "stars": 17,
         "forks": 0,
         "comments": 0,
         "reactions": 11908,
-        "star_growth_7d": 18,
+        "star_growth_7d": 17,
         "previous_star_growth_7d": 0,
         "has_new_release": false,
         "days_since_previous_release": null,
@@ -21640,7 +22131,7 @@
     },
     "project:Fast-Editor/Lynkr": {
       "candidate_id": "project:Fast-Editor/Lynkr",
-      "last_seen_at": "2026-04-28",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
         "stars": 5,
         "forks": 0,
@@ -21751,7 +22242,7 @@
     },
     "project:openai/chatgpt-retrieval-plugin": {
       "candidate_id": "project:openai/chatgpt-retrieval-plugin",
-      "last_seen_at": "2026-04-28",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
         "stars": 7,
         "forks": 0,
@@ -21788,20 +22279,20 @@
     },
     "project:cline/cline": {
       "candidate_id": "project:cline/cline",
-      "last_seen_at": "2026-04-28",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
-        "stars": 232,
+        "stars": 233,
         "forks": 0,
         "comments": 0,
-        "reactions": 48836,
-        "star_growth_7d": 232,
+        "reactions": 48841,
+        "star_growth_7d": 233,
         "previous_star_growth_7d": 0,
         "has_new_release": false,
         "days_since_previous_release": null,
         "comment_growth_rate": 0.0
       },
       "last_seen_scores": {
-        "ossinsight_total_score": 48836.0,
+        "ossinsight_total_score": 48841.0,
         "ossinsight_source": "ossinsight:collection:LLM DevTools:past_28_days",
         "ossinsight_collection": "LLM DevTools"
       },
@@ -21825,20 +22316,20 @@
     },
     "project:Aider-AI/aider": {
       "candidate_id": "project:Aider-AI/aider",
-      "last_seen_at": "2026-04-28",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
-        "stars": 216,
+        "stars": 214,
         "forks": 0,
         "comments": 0,
-        "reactions": 35810,
-        "star_growth_7d": 216,
+        "reactions": 35812,
+        "star_growth_7d": 214,
         "previous_star_growth_7d": 0,
         "has_new_release": false,
         "days_since_previous_release": null,
         "comment_growth_rate": 0.0
       },
       "last_seen_scores": {
-        "ossinsight_total_score": 35810.0,
+        "ossinsight_total_score": 35812.0,
         "ossinsight_source": "ossinsight:collection:LLM DevTools:past_28_days",
         "ossinsight_collection": "LLM DevTools"
       },
@@ -21862,7 +22353,7 @@
     },
     "project:continuedev/continue": {
       "candidate_id": "project:continuedev/continue",
-      "last_seen_at": "2026-04-28",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
         "stars": 110,
         "forks": 0,
@@ -21899,20 +22390,20 @@
     },
     "project:TabbyML/tabby": {
       "candidate_id": "project:TabbyML/tabby",
-      "last_seen_at": "2026-04-28",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
-        "stars": 55,
+        "stars": 56,
         "forks": 0,
         "comments": 0,
-        "reactions": 31142,
-        "star_growth_7d": 55,
+        "reactions": 31143,
+        "star_growth_7d": 56,
         "previous_star_growth_7d": 0,
         "has_new_release": false,
         "days_since_previous_release": null,
         "comment_growth_rate": 0.0
       },
       "last_seen_scores": {
-        "ossinsight_total_score": 31142.0,
+        "ossinsight_total_score": 31143.0,
         "ossinsight_source": "ossinsight:collection:LLM DevTools:past_28_days",
         "ossinsight_collection": "LLM DevTools"
       },
@@ -21936,13 +22427,13 @@
     },
     "project:BloopAI/bloop": {
       "candidate_id": "project:BloopAI/bloop",
-      "last_seen_at": "2026-04-28",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
-        "stars": 3,
+        "stars": 2,
         "forks": 0,
         "comments": 0,
         "reactions": 9215,
-        "star_growth_7d": 3,
+        "star_growth_7d": 2,
         "previous_star_growth_7d": 0,
         "has_new_release": false,
         "days_since_previous_release": null,
@@ -21973,7 +22464,7 @@
     },
     "project:fauxpilot/fauxpilot": {
       "candidate_id": "project:fauxpilot/fauxpilot",
-      "last_seen_at": "2026-04-28",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
         "stars": 3,
         "forks": 0,
@@ -22010,7 +22501,7 @@
     },
     "project:smallcloudai/refact": {
       "candidate_id": "project:smallcloudai/refact",
-      "last_seen_at": "2026-04-28",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
         "stars": 3,
         "forks": 0,
@@ -22047,7 +22538,7 @@
     },
     "project:codefuse-ai/codefuse-chatbot": {
       "candidate_id": "project:codefuse-ai/codefuse-chatbot",
-      "last_seen_at": "2026-04-28",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
         "stars": 1,
         "forks": 0,
@@ -22084,7 +22575,7 @@
     },
     "project:jessicabat/daily-news-product": {
       "candidate_id": "project:jessicabat/daily-news-product",
-      "last_seen_at": "2026-04-28",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
         "stars": 0,
         "forks": 0,
@@ -22129,7 +22620,7 @@
     },
     "project:SkintLabs/WonderwallAi": {
       "candidate_id": "project:SkintLabs/WonderwallAi",
-      "last_seen_at": "2026-04-04",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
         "stars": 2,
         "forks": 0,
@@ -22868,26 +23359,26 @@
     },
     "skill:modelcontextprotocol/inspector": {
       "candidate_id": "skill:modelcontextprotocol/inspector",
-      "last_seen_at": "2026-04-28",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
-        "stars": 9583,
-        "forks": 1284,
+        "stars": 9594,
+        "forks": 1285,
         "comments": 0,
         "reactions": 0,
-        "star_growth_7d": 19,
+        "star_growth_7d": 11,
         "previous_star_growth_7d": 0,
         "has_new_release": false,
         "days_since_previous_release": null,
         "comment_growth_rate": 0.0
       },
       "last_seen_scores": {
-        "observed_star_growth_7d": 19.0,
+        "observed_star_growth_7d": 11.0,
         "skill_shape_score": 1.5,
-        "project_scale_score": 137.64244748342114,
+        "project_scale_score": 125.39068190275917,
         "skill_min_stars_hit": 1.0,
         "project_min_stars_hit": 1.0,
         "skill_bucket": "project",
-        "skill_final_score": 143.14244748342114
+        "skill_final_score": 130.89068190275918
       },
       "last_published_at": "2026-04-18",
       "last_published_metrics": {
@@ -22913,26 +23404,25 @@
     },
     "skill:microsoft/mcp": {
       "candidate_id": "skill:microsoft/mcp",
-      "last_seen_at": "2026-04-21",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
-        "stars": 3007,
-        "forks": 459,
+        "stars": 3069,
+        "forks": 469,
         "comments": 0,
         "reactions": 0,
-        "star_growth_7d": 4,
+        "star_growth_7d": 0,
         "previous_star_growth_7d": 0,
         "has_new_release": false,
         "days_since_previous_release": null,
         "comment_growth_rate": 0.0
       },
       "last_seen_scores": {
-        "observed_star_growth_7d": 4.0,
         "skill_shape_score": 1.5,
-        "project_scale_score": 95.87753374306149,
+        "project_scale_score": 57.40569608554362,
         "skill_min_stars_hit": 1.0,
         "project_min_stars_hit": 1.0,
         "skill_bucket": "project",
-        "skill_final_score": 101.37753374306149
+        "skill_final_score": 62.90569608554362
       },
       "last_published_at": "2026-04-21",
       "last_published_metrics": {
@@ -25270,25 +25760,26 @@
     },
     "skill:Dicklesworthstone/jeffreysprompts.com": {
       "candidate_id": "skill:Dicklesworthstone/jeffreysprompts.com",
-      "last_seen_at": "2026-04-28",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
-        "stars": 98,
+        "stars": 100,
         "forks": 7,
         "comments": 0,
         "reactions": 0,
-        "star_growth_7d": 0,
+        "star_growth_7d": 2,
         "previous_star_growth_7d": 0,
         "has_new_release": false,
         "days_since_previous_release": null,
         "comment_growth_rate": 0.0
       },
       "last_seen_scores": {
+        "observed_star_growth_7d": 2.0,
         "skill_shape_score": 4.5,
-        "project_scale_score": 30.689881413327292,
+        "project_scale_score": 57.17658034160194,
         "skill_min_stars_hit": 1.0,
         "project_min_stars_hit": 0.0,
         "skill_bucket": "skill",
-        "skill_final_score": 41.18988141332729
+        "skill_final_score": 67.67658034160195
       },
       "last_published_at": "2026-04-19",
       "last_published_metrics": {
@@ -25513,20 +26004,20 @@
     },
     "project:VoltAgent/awesome-design-md": {
       "candidate_id": "project:VoltAgent/awesome-design-md",
-      "last_seen_at": "2026-04-28",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
-        "stars": 840,
-        "forks": 105,
+        "stars": 744,
+        "forks": 90,
         "comments": 0,
-        "reactions": 3502,
-        "star_growth_7d": 840,
+        "reactions": 3065,
+        "star_growth_7d": 744,
         "previous_star_growth_7d": 0,
         "has_new_release": false,
         "days_since_previous_release": null,
         "comment_growth_rate": 0.0
       },
       "last_seen_scores": {
-        "ossinsight_total_score": 3502.511,
+        "ossinsight_total_score": 3065.7929,
         "ossinsight_source": "ossinsight:trending:past_week",
         "ossinsight_collection": ""
       },
@@ -25535,20 +26026,20 @@
     },
     "project:addyosmani/agent-skills": {
       "candidate_id": "project:addyosmani/agent-skills",
-      "last_seen_at": "2026-04-28",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
-        "stars": 234,
-        "forks": 28,
+        "stars": 78,
+        "forks": 11,
         "comments": 0,
-        "reactions": 1061,
-        "star_growth_7d": 234,
+        "reactions": 542,
+        "star_growth_7d": 78,
         "previous_star_growth_7d": 0,
         "has_new_release": false,
         "days_since_previous_release": null,
         "comment_growth_rate": 0.0
       },
       "last_seen_scores": {
-        "ossinsight_total_score": 1061.28,
+        "ossinsight_total_score": 542.5231,
         "ossinsight_source": "ossinsight:trending:past_24_hours",
         "ossinsight_collection": ""
       },
@@ -25572,20 +26063,20 @@
     },
     "project:rtk-ai/rtk": {
       "candidate_id": "project:rtk-ai/rtk",
-      "last_seen_at": "2026-04-28",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
-        "stars": 172,
-        "forks": 13,
+        "stars": 76,
+        "forks": 3,
         "comments": 0,
-        "reactions": 847,
-        "star_growth_7d": 172,
+        "reactions": 501,
+        "star_growth_7d": 76,
         "previous_star_growth_7d": 0,
         "has_new_release": false,
         "days_since_previous_release": null,
         "comment_growth_rate": 0.0
       },
       "last_seen_scores": {
-        "ossinsight_total_score": 847.3292,
+        "ossinsight_total_score": 501.9703,
         "ossinsight_source": "ossinsight:trending:past_24_hours",
         "ossinsight_collection": ""
       },
@@ -25609,20 +26100,20 @@
     },
     "project:abhigyanpatwari/GitNexus": {
       "candidate_id": "project:abhigyanpatwari/GitNexus",
-      "last_seen_at": "2026-04-28",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
-        "stars": 224,
-        "forks": 28,
+        "stars": 130,
+        "forks": 11,
         "comments": 0,
-        "reactions": 1077,
-        "star_growth_7d": 224,
+        "reactions": 750,
+        "star_growth_7d": 130,
         "previous_star_growth_7d": 0,
         "has_new_release": false,
         "days_since_previous_release": null,
         "comment_growth_rate": 0.0
       },
       "last_seen_scores": {
-        "ossinsight_total_score": 1077.5728,
+        "ossinsight_total_score": 750.0231,
         "ossinsight_source": "ossinsight:trending:past_24_hours",
         "ossinsight_collection": ""
       },
@@ -25683,7 +26174,7 @@
     },
     "project:zilliztech/GPTCache": {
       "candidate_id": "project:zilliztech/GPTCache",
-      "last_seen_at": "2026-04-28",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
         "stars": 7,
         "forks": 0,
@@ -25749,7 +26240,7 @@
     },
     "project:buildngrowsv/pubroot-website": {
       "candidate_id": "project:buildngrowsv/pubroot-website",
-      "last_seen_at": "2026-04-28",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
         "stars": 1,
         "forks": 2,
@@ -26360,25 +26851,23 @@
     },
     "trending:sponsors/abhigyanpatwari": {
       "candidate_id": "trending:sponsors/abhigyanpatwari",
-      "last_seen_at": "2026-04-28",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
-        "stars": 31444,
+        "stars": 32597,
         "forks": 0,
         "comments": 0,
         "reactions": 0,
-        "star_growth_7d": 1074,
+        "star_growth_7d": 1565,
         "previous_star_growth_7d": 0,
         "has_new_release": false,
         "days_since_previous_release": null,
         "comment_growth_rate": 0.0
       },
       "last_seen_scores": {
-        "trending_daily_stars": 1074.0
+        "trending_daily_stars": 1565.0
       },
-      "last_published_at": "2026-04-27",
-      "last_published_scores": {
-        "trending_daily_stars": 667.0
-      },
+      "last_published_at": "2026-04-29",
+      "last_published_scores": {},
       "last_published_metrics": {
         "stars": 30107,
         "forks": 0,
@@ -26770,26 +27259,25 @@
     },
     "skill:getsentry/XcodeBuildMCP": {
       "candidate_id": "skill:getsentry/XcodeBuildMCP",
-      "last_seen_at": "2026-04-21",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
-        "stars": 5284,
-        "forks": 254,
+        "stars": 5354,
+        "forks": 261,
         "comments": 0,
         "reactions": 0,
-        "star_growth_7d": 22,
+        "star_growth_7d": 0,
         "previous_star_growth_7d": 0,
         "has_new_release": false,
         "days_since_previous_release": null,
         "comment_growth_rate": 0.0
       },
       "last_seen_scores": {
-        "observed_star_growth_7d": 22.0,
         "skill_shape_score": 2.5,
-        "project_scale_score": 134.99952388986327,
+        "project_scale_score": 59.867232652932735,
         "skill_min_stars_hit": 1.0,
         "project_min_stars_hit": 1.0,
         "skill_bucket": "project",
-        "skill_final_score": 142.49952388986327
+        "skill_final_score": 67.36723265293273
       },
       "last_published_at": "2026-04-21",
       "last_published_metrics": {
@@ -26865,26 +27353,26 @@
     },
     "skill:moltis-org/moltis": {
       "candidate_id": "skill:moltis-org/moltis",
-      "last_seen_at": "2026-04-21",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
-        "stars": 2576,
-        "forks": 304,
+        "stars": 2616,
+        "forks": 310,
         "comments": 0,
         "reactions": 0,
-        "star_growth_7d": 0,
+        "star_growth_7d": 14,
         "previous_star_growth_7d": 0,
         "has_new_release": false,
         "days_since_previous_release": null,
         "comment_growth_rate": 0.0
       },
       "last_seen_scores": {
-        "observed_star_growth_7d": 0.0,
+        "observed_star_growth_7d": 14.0,
         "skill_shape_score": 2.5,
-        "project_scale_score": 55.70675492882531,
+        "project_scale_score": 120.82159760990277,
         "skill_min_stars_hit": 1.0,
         "project_min_stars_hit": 1.0,
         "skill_bucket": "project",
-        "skill_final_score": 63.20675492882531
+        "skill_final_score": 128.32159760990277
       },
       "last_published_at": "2026-04-21",
       "last_published_metrics": {
@@ -26960,26 +27448,26 @@
     },
     "skill:oracle/mcp": {
       "candidate_id": "skill:oracle/mcp",
-      "last_seen_at": "2026-04-23",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
-        "stars": 328,
-        "forks": 102,
+        "stars": 337,
+        "forks": 101,
         "comments": 0,
         "reactions": 0,
-        "star_growth_7d": 0,
+        "star_growth_7d": 9,
         "previous_star_growth_7d": 0,
         "has_new_release": false,
         "days_since_previous_release": null,
         "comment_growth_rate": 0.0
       },
       "last_seen_scores": {
-        "observed_star_growth_7d": 0.0,
+        "observed_star_growth_7d": 9.0,
         "skill_shape_score": 1.5,
-        "project_scale_score": 41.728439986936685,
+        "project_scale_score": 97.13777682468162,
         "skill_min_stars_hit": 1.0,
         "project_min_stars_hit": 1.0,
         "skill_bucket": "project",
-        "skill_final_score": 47.228439986936685
+        "skill_final_score": 102.63777682468162
       }
     },
     "skill:sammcj/mcp-devtools": {
@@ -27070,65 +27558,67 @@
     },
     "skill:microsoft/fabric-rti-mcp": {
       "candidate_id": "skill:microsoft/fabric-rti-mcp",
-      "last_seen_at": "2026-04-23",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
-        "stars": 110,
+        "stars": 113,
         "forks": 76,
         "comments": 0,
         "reactions": 0,
-        "star_growth_7d": 0,
+        "star_growth_7d": 3,
         "previous_star_growth_7d": 0,
         "has_new_release": false,
         "days_since_previous_release": null,
         "comment_growth_rate": 0.0
       },
       "last_seen_scores": {
+        "observed_star_growth_7d": 3.0,
         "skill_shape_score": 1.5,
-        "project_scale_score": 34.77288934065453,
+        "project_scale_score": 68.20396349002488,
         "skill_min_stars_hit": 1.0,
         "project_min_stars_hit": 0.0,
         "skill_bucket": "skill",
-        "skill_final_score": 39.27288934065453
+        "skill_final_score": 72.70396349002488
       },
-      "last_published_at": "2026-04-10",
+      "last_published_at": "2026-04-29",
       "last_published_metrics": {
-        "stars": 106,
-        "forks": 74,
+        "stars": 113,
+        "forks": 76,
         "comments": 0,
         "reactions": 0,
-        "star_growth_7d": 0,
+        "star_growth_7d": 3,
         "previous_star_growth_7d": 0,
         "has_new_release": false,
         "days_since_previous_release": null,
         "comment_growth_rate": 0.0
       },
       "last_published_scores": {
+        "observed_star_growth_7d": 3.0,
         "skill_shape_score": 1.5,
-        "project_scale_score": 48.17635095953602,
+        "project_scale_score": 68.20396349002488,
         "skill_min_stars_hit": 1.0,
         "project_min_stars_hit": 0.0,
         "skill_bucket": "skill",
-        "skill_final_score": 65.17635095953602
+        "skill_final_score": 72.70396349002488
       }
     },
     "trending:forrestchang/andrej-karpathy-skills": {
       "candidate_id": "trending:forrestchang/andrej-karpathy-skills",
-      "last_seen_at": "2026-04-27",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
-        "stars": 90825,
+        "stars": 96778,
         "forks": 0,
         "comments": 0,
         "reactions": 0,
-        "star_growth_7d": 29944,
+        "star_growth_7d": 28522,
         "previous_star_growth_7d": 0,
         "has_new_release": false,
         "days_since_previous_release": null,
         "comment_growth_rate": 0.0
       },
       "last_seen_scores": {
-        "trending_daily_stars": 29944.0
+        "trending_daily_stars": 28522.0
       },
-      "last_published_at": "2026-04-27",
+      "last_published_at": "2026-04-29",
       "last_published_metrics": {
         "stars": 7999,
         "forks": 0,
@@ -27495,7 +27985,7 @@
     },
     "project:dreamiurg/claude-session-topics": {
       "candidate_id": "project:dreamiurg/claude-session-topics",
-      "last_seen_at": "2026-04-28",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
         "stars": 1,
         "forks": 1,
@@ -28120,20 +28610,20 @@
     },
     "project:multica-ai/multica": {
       "candidate_id": "project:multica-ai/multica",
-      "last_seen_at": "2026-04-28",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
-        "stars": 111,
-        "forks": 12,
+        "stars": 49,
+        "forks": 5,
         "comments": 0,
-        "reactions": 647,
-        "star_growth_7d": 111,
+        "reactions": 412,
+        "star_growth_7d": 49,
         "previous_star_growth_7d": 0,
         "has_new_release": false,
         "days_since_previous_release": null,
         "comment_growth_rate": 0.0
       },
       "last_seen_scores": {
-        "ossinsight_total_score": 647.2286,
+        "ossinsight_total_score": 412.3503,
         "ossinsight_source": "ossinsight:trending:past_24_hours",
         "ossinsight_collection": ""
       },
@@ -28157,13 +28647,13 @@
     },
     "project:iflytek/astronclaw-tutorial": {
       "candidate_id": "project:iflytek/astronclaw-tutorial",
-      "last_seen_at": "2026-04-28",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
-        "stars": 161,
+        "stars": 159,
         "forks": 0,
         "comments": 0,
         "reactions": 213,
-        "star_growth_7d": 161,
+        "star_growth_7d": 159,
         "previous_star_growth_7d": 0,
         "has_new_release": false,
         "days_since_previous_release": null,
@@ -28433,7 +28923,7 @@
     },
     "project:mycologistbigsiouxriver198/daily-news": {
       "candidate_id": "project:mycologistbigsiouxriver198/daily-news",
-      "last_seen_at": "2026-04-28",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
         "stars": 0,
         "forks": 0,
@@ -28481,7 +28971,7 @@
     },
     "project:vp9920/cyber-amber-mcp": {
       "candidate_id": "project:vp9920/cyber-amber-mcp",
-      "last_seen_at": "2026-04-28",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
         "stars": 0,
         "forks": 0,
@@ -28558,7 +29048,7 @@
     },
     "project:Kalwmw/Zip-Password-Recovery": {
       "candidate_id": "project:Kalwmw/Zip-Password-Recovery",
-      "last_seen_at": "2026-04-28",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
         "stars": 0,
         "forks": 0,
@@ -28606,7 +29096,7 @@
     },
     "project:Mamoutou7/MedLearn-Agent": {
       "candidate_id": "project:Mamoutou7/MedLearn-Agent",
-      "last_seen_at": "2026-04-28",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
         "stars": 0,
         "forks": 0,
@@ -28635,9 +29125,9 @@
     },
     "project:liyedanpdx/reddit-ai-trends": {
       "candidate_id": "project:liyedanpdx/reddit-ai-trends",
-      "last_seen_at": "2026-04-28",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
-        "stars": 826,
+        "stars": 828,
         "forks": 81,
         "comments": 0,
         "reactions": 0,
@@ -28664,7 +29154,7 @@
     },
     "project:gauravfs-14/CognitiveSky": {
       "candidate_id": "project:gauravfs-14/CognitiveSky",
-      "last_seen_at": "2026-04-28",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
         "stars": 7,
         "forks": 0,
@@ -28847,7 +29337,7 @@
     },
     "project:gautam-bigdata/Starting-with-Data-Engineering": {
       "candidate_id": "project:gautam-bigdata/Starting-with-Data-Engineering",
-      "last_seen_at": "2026-04-28",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
         "stars": 0,
         "forks": 0,
@@ -28969,7 +29459,7 @@
     },
     "project:KontolKambings/ai-inference-resources": {
       "candidate_id": "project:KontolKambings/ai-inference-resources",
-      "last_seen_at": "2026-04-28",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
         "stars": 0,
         "forks": 0,
@@ -30027,26 +30517,26 @@
     },
     "skill:waybarrios/vllm-mlx": {
       "candidate_id": "skill:waybarrios/vllm-mlx",
-      "last_seen_at": "2026-04-27",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
-        "stars": 998,
-        "forks": 149,
+        "stars": 1032,
+        "forks": 151,
         "comments": 0,
         "reactions": 0,
-        "star_growth_7d": 3,
+        "star_growth_7d": 37,
         "previous_star_growth_7d": 0,
         "has_new_release": false,
         "days_since_previous_release": null,
         "comment_growth_rate": 0.0
       },
       "last_seen_scores": {
-        "observed_star_growth_7d": 3.0,
+        "observed_star_growth_7d": 37.0,
         "skill_shape_score": 2.5,
-        "project_scale_score": 82.22754627991307,
+        "project_scale_score": 136.4792234294205,
         "skill_min_stars_hit": 1.0,
         "project_min_stars_hit": 1.0,
         "skill_bucket": "project",
-        "skill_final_score": 89.72754627991307
+        "skill_final_score": 143.9792234294205
       },
       "last_published_at": "2026-04-11",
       "last_published_metrics": {
@@ -30638,10 +31128,10 @@
     },
     "project:NixOS/nixpkgs": {
       "candidate_id": "project:NixOS/nixpkgs",
-      "last_seen_at": "2026-04-27",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
-        "stars": 24456,
-        "forks": 18718,
+        "stars": 24486,
+        "forks": 18733,
         "comments": 0,
         "reactions": 0,
         "star_growth_7d": 0,
@@ -30651,10 +31141,10 @@
         "comment_growth_rate": 0.0
       },
       "last_seen_scores": {},
-      "last_published_at": "2026-04-15",
+      "last_published_at": "2026-04-29",
       "last_published_metrics": {
-        "stars": 24288,
-        "forks": 18595,
+        "stars": 24486,
+        "forks": 18733,
         "comments": 0,
         "reactions": 0,
         "star_growth_7d": 0,
@@ -30667,10 +31157,10 @@
     },
     "project:openclaw/openclaw": {
       "candidate_id": "project:openclaw/openclaw",
-      "last_seen_at": "2026-04-27",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
-        "stars": 364638,
-        "forks": 74672,
+        "stars": 365859,
+        "forks": 75007,
         "comments": 0,
         "reactions": 0,
         "star_growth_7d": 0,
@@ -30975,10 +31465,10 @@
     },
     "project:anomalyco/opencode": {
       "candidate_id": "project:anomalyco/opencode",
-      "last_seen_at": "2026-04-27",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
-        "stars": 150002,
-        "forks": 17237,
+        "stars": 151338,
+        "forks": 17404,
         "comments": 0,
         "reactions": 0,
         "star_growth_7d": 0,
@@ -31446,7 +31936,7 @@
     },
     "project:rust-lang/crates.io-index": {
       "candidate_id": "project:rust-lang/crates.io-index",
-      "last_seen_at": "2026-04-28",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
         "stars": 701,
         "forks": 268,
@@ -32427,10 +32917,10 @@
     },
     "project:llvm/llvm-project": {
       "candidate_id": "project:llvm/llvm-project",
-      "last_seen_at": "2026-04-25",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
-        "stars": 38029,
-        "forks": 16958,
+        "stars": 38084,
+        "forks": 16995,
         "comments": 0,
         "reactions": 0,
         "star_growth_7d": 0,
@@ -32440,10 +32930,10 @@
         "comment_growth_rate": 0.0
       },
       "last_seen_scores": {},
-      "last_published_at": "2026-04-11",
+      "last_published_at": "2026-04-29",
       "last_published_metrics": {
-        "stars": 37807,
-        "forks": 16827,
+        "stars": 38084,
+        "forks": 16995,
         "comments": 0,
         "reactions": 0,
         "star_growth_7d": 0,
@@ -32514,10 +33004,10 @@
     },
     "project:microsoft/winget-pkgs": {
       "candidate_id": "project:microsoft/winget-pkgs",
-      "last_seen_at": "2026-04-28",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
-        "stars": 10527,
-        "forks": 6831,
+        "stars": 10532,
+        "forks": 6832,
         "comments": 0,
         "reactions": 0,
         "star_growth_7d": 0,
@@ -32935,7 +33425,7 @@
     },
     "project:SahebST/StoryBoard-Gamaxa": {
       "candidate_id": "project:SahebST/StoryBoard-Gamaxa",
-      "last_seen_at": "2026-04-17",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
         "stars": 0,
         "forks": 0,
@@ -33256,7 +33746,7 @@
     },
     "project:ineo6/hosts": {
       "candidate_id": "project:ineo6/hosts",
-      "last_seen_at": "2026-04-27",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
         "stars": 5321,
         "forks": 457,
@@ -33269,10 +33759,10 @@
         "comment_growth_rate": 0.0
       },
       "last_seen_scores": {},
-      "last_published_at": "2026-04-13",
+      "last_published_at": "2026-04-29",
       "last_published_metrics": {
-        "stars": 5311,
-        "forks": 458,
+        "stars": 5321,
+        "forks": 457,
         "comments": 0,
         "reactions": 0,
         "star_growth_7d": 0,
@@ -33651,10 +34141,10 @@
     },
     "project:adysec/nuclei_poc": {
       "candidate_id": "project:adysec/nuclei_poc",
-      "last_seen_at": "2026-04-12",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
-        "stars": 2030,
-        "forks": 540,
+        "stars": 2053,
+        "forks": 544,
         "comments": 0,
         "reactions": 0,
         "star_growth_7d": 0,
@@ -33663,7 +34153,20 @@
         "days_since_previous_release": null,
         "comment_growth_rate": 0.0
       },
-      "last_seen_scores": {}
+      "last_seen_scores": {},
+      "last_published_at": "2026-04-29",
+      "last_published_metrics": {
+        "stars": 2053,
+        "forks": 544,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_published_scores": {}
     },
     "project:code-golf/code-golf": {
       "candidate_id": "project:code-golf/code-golf",
@@ -33757,26 +34260,26 @@
     },
     "skill:IAAR-Shanghai/Awesome-AI-Memory": {
       "candidate_id": "skill:IAAR-Shanghai/Awesome-AI-Memory",
-      "last_seen_at": "2026-04-26",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
-        "stars": 783,
-        "forks": 70,
+        "stars": 796,
+        "forks": 73,
         "comments": 0,
         "reactions": 0,
-        "star_growth_7d": 12,
+        "star_growth_7d": 13,
         "previous_star_growth_7d": 0,
         "has_new_release": false,
         "days_since_previous_release": null,
         "comment_growth_rate": 0.0
       },
       "last_seen_scores": {
-        "observed_star_growth_7d": 12.0,
+        "observed_star_growth_7d": 13.0,
         "skill_shape_score": 1.5,
-        "project_scale_score": 107.9392585167413,
+        "project_scale_score": 109.87860162331377,
         "skill_min_stars_hit": 1.0,
         "project_min_stars_hit": 1.0,
         "skill_bucket": "project",
-        "skill_final_score": 113.4392585167413
+        "skill_final_score": 115.37860162331377
       },
       "last_published_at": "2026-04-12",
       "last_published_metrics": {
@@ -33890,26 +34393,26 @@
     },
     "skill:haoruilee/awesome-agent-native-services": {
       "candidate_id": "skill:haoruilee/awesome-agent-native-services",
-      "last_seen_at": "2026-04-26",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
-        "stars": 277,
-        "forks": 11,
+        "stars": 302,
+        "forks": 13,
         "comments": 0,
         "reactions": 0,
-        "star_growth_7d": 11,
+        "star_growth_7d": 25,
         "previous_star_growth_7d": 0,
         "has_new_release": false,
         "days_since_previous_release": null,
         "comment_growth_rate": 0.0
       },
       "last_seen_scores": {
-        "observed_star_growth_7d": 11.0,
+        "observed_star_growth_7d": 25.0,
         "skill_shape_score": 1.5,
-        "project_scale_score": 97.13084625173784,
+        "project_scale_score": 116.43529973999468,
         "skill_min_stars_hit": 1.0,
         "project_min_stars_hit": 1.0,
         "skill_bucket": "project",
-        "skill_final_score": 102.63084625173784
+        "skill_final_score": 121.93529973999468
       },
       "last_published_at": "2026-04-14",
       "last_published_metrics": {
@@ -34660,10 +35163,10 @@
     },
     "project:gentoo/gentoo": {
       "candidate_id": "project:gentoo/gentoo",
-      "last_seen_at": "2026-04-13",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
-        "stars": 2367,
-        "forks": 2210,
+        "stars": 2381,
+        "forks": 2209,
         "comments": 0,
         "reactions": 0,
         "star_growth_7d": 0,
@@ -34673,10 +35176,10 @@
         "comment_growth_rate": 0.0
       },
       "last_seen_scores": {},
-      "last_published_at": "2026-04-13",
+      "last_published_at": "2026-04-29",
       "last_published_metrics": {
-        "stars": 2367,
-        "forks": 2210,
+        "stars": 2381,
+        "forks": 2209,
         "comments": 0,
         "reactions": 0,
         "star_growth_7d": 0,
@@ -35669,20 +36172,20 @@
     },
     "project:nashsu/llm_wiki": {
       "candidate_id": "project:nashsu/llm_wiki",
-      "last_seen_at": "2026-04-26",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
-        "stars": 64,
+        "stars": 52,
         "forks": 5,
         "comments": 0,
-        "reactions": 474,
-        "star_growth_7d": 64,
+        "reactions": 432,
+        "star_growth_7d": 52,
         "previous_star_growth_7d": 0,
         "has_new_release": false,
         "days_since_previous_release": null,
         "comment_growth_rate": 0.0
       },
       "last_seen_scores": {
-        "ossinsight_total_score": 474.687,
+        "ossinsight_total_score": 432.7431,
         "ossinsight_source": "ossinsight:trending:past_24_hours",
         "ossinsight_collection": ""
       },
@@ -36526,7 +37029,7 @@
     },
     "project:hasanf7711/ai-engineering-interview-questions": {
       "candidate_id": "project:hasanf7711/ai-engineering-interview-questions",
-      "last_seen_at": "2026-04-28",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
         "stars": 0,
         "forks": 0,
@@ -36632,19 +37135,23 @@
     },
     "project:gastownhall/beads": {
       "candidate_id": "project:gastownhall/beads",
-      "last_seen_at": "2026-04-15",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
-        "stars": 20728,
-        "forks": 1392,
+        "stars": 49,
+        "forks": 3,
         "comments": 0,
-        "reactions": 0,
-        "star_growth_7d": 0,
+        "reactions": 411,
+        "star_growth_7d": 49,
         "previous_star_growth_7d": 0,
         "has_new_release": false,
         "days_since_previous_release": null,
         "comment_growth_rate": 0.0
       },
-      "last_seen_scores": {}
+      "last_seen_scores": {
+        "ossinsight_total_score": 411.2983,
+        "ossinsight_source": "ossinsight:trending:past_24_hours",
+        "ossinsight_collection": ""
+      }
     },
     "project:screenpipe/screenpipe": {
       "candidate_id": "project:screenpipe/screenpipe",
@@ -37350,20 +37857,20 @@
     },
     "trending:public-apis/public-apis": {
       "candidate_id": "trending:public-apis/public-apis",
-      "last_seen_at": "2026-04-16",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
-        "stars": 423853,
+        "stars": 428083,
         "forks": 0,
         "comments": 0,
         "reactions": 0,
-        "star_growth_7d": 950,
+        "star_growth_7d": 600,
         "previous_star_growth_7d": 0,
         "has_new_release": false,
         "days_since_previous_release": null,
         "comment_growth_rate": 0.0
       },
       "last_seen_scores": {
-        "trending_daily_stars": 950.0
+        "trending_daily_stars": 600.0
       },
       "last_published_at": "2026-04-16",
       "last_published_metrics": {
@@ -37773,7 +38280,7 @@
     },
     "project:aaronrene/knowtation": {
       "candidate_id": "project:aaronrene/knowtation",
-      "last_seen_at": "2026-04-28",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
         "stars": 1,
         "forks": 0,
@@ -40281,10 +40788,10 @@
     },
     "project:home-assistant/core": {
       "candidate_id": "project:home-assistant/core",
-      "last_seen_at": "2026-04-26",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
-        "stars": 86232,
-        "forks": 37342,
+        "stars": 86839,
+        "forks": 37389,
         "comments": 0,
         "reactions": 0,
         "star_growth_7d": 0,
@@ -42218,10 +42725,10 @@
     },
     "project:mongodb-js/compass": {
       "candidate_id": "project:mongodb-js/compass",
-      "last_seen_at": "2026-04-16",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
-        "stars": 1449,
-        "forks": 256,
+        "stars": 1453,
+        "forks": 258,
         "comments": 0,
         "reactions": 0,
         "star_growth_7d": 0,
@@ -42404,13 +42911,13 @@
     },
     "repo:obra/superpowers": {
       "candidate_id": "repo:obra/superpowers",
-      "last_seen_at": "2026-04-28",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
-        "stars": 169860,
-        "forks": 14993,
+        "stars": 171488,
+        "forks": 15126,
         "comments": 0,
         "reactions": 0,
-        "star_growth_7d": 1378,
+        "star_growth_7d": 1628,
         "previous_star_growth_7d": 0,
         "has_new_release": true,
         "days_since_previous_release": null,
@@ -42418,21 +42925,21 @@
       },
       "last_seen_scores": {
         "seed_repo_hit": 1.0,
-        "observed_star_growth_7d": 1378.0,
+        "observed_star_growth_7d": 1628.0,
         "skill_shape_score": 2.5,
-        "project_scale_score": 260.1782555742411,
+        "project_scale_score": 264.2473197863287,
         "skill_min_stars_hit": 1.0,
         "project_min_stars_hit": 1.0,
         "skill_bucket": "skill",
-        "skill_final_score": 268.1782555742411
+        "skill_final_score": 272.2473197863287
       },
-      "last_published_at": "2026-04-28",
+      "last_published_at": "2026-04-29",
       "last_published_metrics": {
-        "stars": 169860,
-        "forks": 14993,
+        "stars": 171488,
+        "forks": 15126,
         "comments": 0,
         "reactions": 0,
-        "star_growth_7d": 1378,
+        "star_growth_7d": 1628,
         "previous_star_growth_7d": 0,
         "has_new_release": true,
         "days_since_previous_release": null,
@@ -42440,24 +42947,24 @@
       },
       "last_published_scores": {
         "seed_repo_hit": 1.0,
-        "observed_star_growth_7d": 1378.0,
+        "observed_star_growth_7d": 1628.0,
         "skill_shape_score": 2.5,
-        "project_scale_score": 260.1782555742411,
+        "project_scale_score": 264.2473197863287,
         "skill_min_stars_hit": 1.0,
         "project_min_stars_hit": 1.0,
         "skill_bucket": "skill",
-        "skill_final_score": 268.1782555742411
+        "skill_final_score": 272.2473197863287
       }
     },
     "repo:f/prompts.chat": {
       "candidate_id": "repo:f/prompts.chat",
-      "last_seen_at": "2026-04-28",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
-        "stars": 160914,
-        "forks": 21026,
+        "stars": 161043,
+        "forks": 21043,
         "comments": 0,
         "reactions": 0,
-        "star_growth_7d": 135,
+        "star_growth_7d": 129,
         "previous_star_growth_7d": 0,
         "has_new_release": false,
         "days_since_previous_release": null,
@@ -42465,13 +42972,13 @@
       },
       "last_seen_scores": {
         "seed_repo_hit": 1.0,
-        "observed_star_growth_7d": 135.0,
+        "observed_star_growth_7d": 129.0,
         "skill_shape_score": 1.5,
-        "project_scale_score": 204.76585049086512,
+        "project_scale_score": 203.6889803465378,
         "skill_min_stars_hit": 1.0,
         "project_min_stars_hit": 1.0,
         "skill_bucket": "skill",
-        "skill_final_score": 210.76585049086512
+        "skill_final_score": 209.6889803465378
       },
       "last_published_at": "2026-04-17",
       "last_published_metrics": {
@@ -42498,13 +43005,13 @@
     },
     "repo:punkpeye/awesome-mcp-servers": {
       "candidate_id": "repo:punkpeye/awesome-mcp-servers",
-      "last_seen_at": "2026-04-28",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
-        "stars": 85777,
-        "forks": 9570,
+        "stars": 85860,
+        "forks": 9604,
         "comments": 0,
         "reactions": 0,
-        "star_growth_7d": 80,
+        "star_growth_7d": 83,
         "previous_star_growth_7d": 0,
         "has_new_release": false,
         "days_since_previous_release": null,
@@ -42512,13 +43019,13 @@
       },
       "last_seen_scores": {
         "seed_repo_hit": 1.0,
-        "observed_star_growth_7d": 80.0,
+        "observed_star_growth_7d": 83.0,
         "skill_shape_score": 1.5,
-        "project_scale_score": 187.37362622447785,
+        "project_scale_score": 188.25757171650983,
         "skill_min_stars_hit": 1.0,
         "project_min_stars_hit": 1.0,
         "skill_bucket": "skill",
-        "skill_final_score": 193.37362622447785
+        "skill_final_score": 194.25757171650983
       },
       "last_published_at": "2026-04-16",
       "last_published_metrics": {
@@ -42544,13 +43051,13 @@
     },
     "repo:openai/openai-cookbook": {
       "candidate_id": "repo:openai/openai-cookbook",
-      "last_seen_at": "2026-04-28",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
-        "stars": 73039,
-        "forks": 12324,
+        "stars": 73065,
+        "forks": 12331,
         "comments": 0,
         "reactions": 0,
-        "star_growth_7d": 28,
+        "star_growth_7d": 26,
         "previous_star_growth_7d": 0,
         "has_new_release": false,
         "days_since_previous_release": null,
@@ -42558,13 +43065,13 @@
       },
       "last_seen_scores": {
         "seed_repo_hit": 1.0,
-        "observed_star_growth_7d": 28.0,
+        "observed_star_growth_7d": 26.0,
         "skill_shape_score": 1.5,
-        "project_scale_score": 162.13675250965483,
+        "project_scale_score": 160.42472449516498,
         "skill_min_stars_hit": 1.0,
         "project_min_stars_hit": 1.0,
         "skill_bucket": "skill",
-        "skill_final_score": 168.13675250965483
+        "skill_final_score": 166.42472449516498
       },
       "last_published_at": "2026-04-16",
       "last_published_metrics": {
@@ -42635,13 +43142,13 @@
     },
     "repo:PatrickJS/awesome-cursorrules": {
       "candidate_id": "repo:PatrickJS/awesome-cursorrules",
-      "last_seen_at": "2026-04-28",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
-        "stars": 39282,
-        "forks": 3352,
+        "stars": 39293,
+        "forks": 3353,
         "comments": 0,
         "reactions": 0,
-        "star_growth_7d": 21,
+        "star_growth_7d": 11,
         "previous_star_growth_7d": 0,
         "has_new_release": false,
         "days_since_previous_release": null,
@@ -42649,13 +43156,13 @@
       },
       "last_seen_scores": {
         "seed_repo_hit": 1.0,
-        "observed_star_growth_7d": 21.0,
+        "observed_star_growth_7d": 11.0,
         "skill_shape_score": 2.5,
-        "project_scale_score": 149.83271780608345,
+        "project_scale_score": 135.2875856951634,
         "skill_min_stars_hit": 1.0,
         "project_min_stars_hit": 1.0,
         "skill_bucket": "skill",
-        "skill_final_score": 157.83271780608345
+        "skill_final_score": 143.2875856951634
       },
       "last_published_at": "2026-04-16",
       "last_published_metrics": {
@@ -42681,10 +43188,10 @@
     },
     "repo:crewAIInc/crewAI-examples": {
       "candidate_id": "repo:crewAIInc/crewAI-examples",
-      "last_seen_at": "2026-04-28",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
-        "stars": 5910,
-        "forks": 2093,
+        "stars": 5915,
+        "forks": 2097,
         "comments": 0,
         "reactions": 0,
         "star_growth_7d": 5,
@@ -42697,11 +43204,11 @@
         "seed_repo_hit": 1.0,
         "observed_star_growth_7d": 5.0,
         "skill_shape_score": 1.5,
-        "project_scale_score": 106.57989615356526,
+        "project_scale_score": 106.58783188789182,
         "skill_min_stars_hit": 1.0,
         "project_min_stars_hit": 1.0,
         "skill_bucket": "skill",
-        "skill_final_score": 112.57989615356526
+        "skill_final_score": 112.58783188789182
       },
       "last_published_at": "2026-04-17",
       "last_published_metrics": {
@@ -42728,13 +43235,13 @@
     },
     "repo:ai-boost/awesome-prompts": {
       "candidate_id": "repo:ai-boost/awesome-prompts",
-      "last_seen_at": "2026-04-28",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
-        "stars": 7725,
+        "stars": 7740,
         "forks": 707,
         "comments": 0,
         "reactions": 0,
-        "star_growth_7d": 10,
+        "star_growth_7d": 15,
         "previous_star_growth_7d": 0,
         "has_new_release": false,
         "days_since_previous_release": null,
@@ -42742,13 +43249,13 @@
       },
       "last_seen_scores": {
         "seed_repo_hit": 1.0,
-        "observed_star_growth_7d": 10.0,
+        "observed_star_growth_7d": 15.0,
         "skill_shape_score": 1.5,
-        "project_scale_score": 121.10723194705884,
+        "project_scale_score": 130.1115124175236,
         "skill_min_stars_hit": 1.0,
         "project_min_stars_hit": 1.0,
         "skill_bucket": "skill",
-        "skill_final_score": 127.10723194705884
+        "skill_final_score": 136.1115124175236
       },
       "last_published_at": "2026-04-17",
       "last_published_metrics": {
@@ -42775,13 +43282,13 @@
     },
     "repo:leerob/directories": {
       "candidate_id": "repo:leerob/directories",
-      "last_seen_at": "2026-04-28",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
         "stars": 3926,
-        "forks": 672,
+        "forks": 674,
         "comments": 0,
         "reactions": 0,
-        "star_growth_7d": 1,
+        "star_growth_7d": 0,
         "previous_star_growth_7d": 0,
         "has_new_release": false,
         "days_since_previous_release": null,
@@ -42789,13 +43296,13 @@
       },
       "last_seen_scores": {
         "seed_repo_hit": 1.0,
-        "observed_star_growth_7d": 1.0,
+        "observed_star_growth_7d": 0.0,
         "skill_shape_score": 2.5,
-        "project_scale_score": 76.05693665537383,
+        "project_scale_score": 59.42585536377686,
         "skill_min_stars_hit": 1.0,
         "project_min_stars_hit": 1.0,
         "skill_bucket": "skill",
-        "skill_final_score": 84.05693665537383
+        "skill_final_score": 67.42585536377686
       },
       "last_published_at": "2026-04-18",
       "last_published_metrics": {
@@ -43664,13 +44171,13 @@
     },
     "repo:VoltAgent/awesome-design-md": {
       "candidate_id": "repo:VoltAgent/awesome-design-md",
-      "last_seen_at": "2026-04-27",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
-        "stars": 65974,
-        "forks": 8139,
+        "stars": 67488,
+        "forks": 8292,
         "comments": 0,
         "reactions": 0,
-        "star_growth_7d": 1178,
+        "star_growth_7d": 1514,
         "previous_star_growth_7d": 0,
         "has_new_release": false,
         "days_since_previous_release": null,
@@ -43678,13 +44185,13 @@
       },
       "last_seen_scores": {
         "seed_repo_hit": 1.0,
-        "observed_star_growth_7d": 1178.0,
+        "observed_star_growth_7d": 1514.0,
         "skill_shape_score": 1.5,
-        "project_scale_score": 249.82713076962096,
+        "project_scale_score": 256.0091672310266,
         "skill_min_stars_hit": 1.0,
         "project_min_stars_hit": 1.0,
         "skill_bucket": "skill",
-        "skill_final_score": 255.82713076962096
+        "skill_final_score": 262.0091672310266
       },
       "last_published_at": "2026-04-27",
       "last_published_metrics": {
@@ -44955,9 +45462,9 @@
     },
     "project:Delibread0601/askaipods": {
       "candidate_id": "project:Delibread0601/askaipods",
-      "last_seen_at": "2026-04-28",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
-        "stars": 1,
+        "stars": 2,
         "forks": 0,
         "comments": 0,
         "reactions": 0,
@@ -45061,10 +45568,10 @@
     },
     "project:microsoft/vscode": {
       "candidate_id": "project:microsoft/vscode",
-      "last_seen_at": "2026-04-24",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
-        "stars": 184189,
-        "forks": 39374,
+        "stars": 184366,
+        "forks": 39513,
         "comments": 0,
         "reactions": 0,
         "star_growth_7d": 0,
@@ -45513,26 +46020,26 @@
     },
     "skill:krusemediallc/arcads-claude-code": {
       "candidate_id": "skill:krusemediallc/arcads-claude-code",
-      "last_seen_at": "2026-04-28",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
-        "stars": 200,
-        "forks": 58,
+        "stars": 205,
+        "forks": 60,
         "comments": 0,
         "reactions": 0,
-        "star_growth_7d": 6,
+        "star_growth_7d": 5,
         "previous_star_growth_7d": 0,
         "has_new_release": false,
         "days_since_previous_release": null,
         "comment_growth_rate": 0.0
       },
       "last_seen_scores": {
-        "observed_star_growth_7d": 6.0,
+        "observed_star_growth_7d": 5.0,
         "skill_shape_score": 5.5,
-        "project_scale_score": 84.63797919154054,
+        "project_scale_score": 81.13579507047078,
         "skill_min_stars_hit": 1.0,
         "project_min_stars_hit": 1.0,
         "skill_bucket": "skill",
-        "skill_final_score": 97.13797919154054
+        "skill_final_score": 93.63579507047078
       },
       "last_published_at": "2026-04-19",
       "last_published_metrics": {
@@ -46146,20 +46653,20 @@
     },
     "project:heygen-com/hyperframes": {
       "candidate_id": "project:heygen-com/hyperframes",
-      "last_seen_at": "2026-04-28",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
-        "stars": 128,
-        "forks": 10,
+        "stars": 62,
+        "forks": 0,
         "comments": 0,
-        "reactions": 670,
-        "star_growth_7d": 128,
+        "reactions": 441,
+        "star_growth_7d": 62,
         "previous_star_growth_7d": 0,
         "has_new_release": false,
         "days_since_previous_release": null,
         "comment_growth_rate": 0.0
       },
       "last_seen_scores": {
-        "ossinsight_total_score": 670.4905,
+        "ossinsight_total_score": 441.5706,
         "ossinsight_source": "ossinsight:trending:past_24_hours",
         "ossinsight_collection": ""
       },
@@ -46828,7 +47335,7 @@
     },
     "project:ritvikmahajan0201-blip/AI-Research-agent": {
       "candidate_id": "project:ritvikmahajan0201-blip/AI-Research-agent",
-      "last_seen_at": "2026-04-28",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
         "stars": 0,
         "forks": 0,
@@ -50960,22 +51467,22 @@
     },
     "trending:Z4nzu/hackingtool": {
       "candidate_id": "trending:Z4nzu/hackingtool",
-      "last_seen_at": "2026-04-28",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
-        "stars": 67024,
+        "stars": 67962,
         "forks": 0,
         "comments": 0,
         "reactions": 0,
-        "star_growth_7d": 1839,
+        "star_growth_7d": 8378,
         "previous_star_growth_7d": 0,
         "has_new_release": false,
         "days_since_previous_release": null,
         "comment_growth_rate": 0.0
       },
       "last_seen_scores": {
-        "trending_daily_stars": 1839.0
+        "trending_daily_stars": 8378.0
       },
-      "last_published_at": "2026-04-28",
+      "last_published_at": "2026-04-29",
       "last_published_scores": {}
     },
     "trending:vercel-labs/skills": {
@@ -51191,7 +51698,7 @@
     },
     "project:alainfurter/crew-ai-search-playground": {
       "candidate_id": "project:alainfurter/crew-ai-search-playground",
-      "last_seen_at": "2026-04-28",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
         "stars": 0,
         "forks": 0,
@@ -51300,7 +51807,7 @@
     },
     "project:usernameisthebestofthebest/claude-recap": {
       "candidate_id": "project:usernameisthebestofthebest/claude-recap",
-      "last_seen_at": "2026-04-28",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
         "stars": 1,
         "forks": 0,
@@ -51348,7 +51855,7 @@
     },
     "project:gprecious/research-engine": {
       "candidate_id": "project:gprecious/research-engine",
-      "last_seen_at": "2026-04-28",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
         "stars": 0,
         "forks": 0,
@@ -51364,7 +51871,7 @@
     },
     "project:Gangto326/mcp-session-router": {
       "candidate_id": "project:Gangto326/mcp-session-router",
-      "last_seen_at": "2026-04-28",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
         "stars": 0,
         "forks": 0,
@@ -51492,7 +51999,7 @@
     },
     "project:danielrosehill/Claude-Knowledge-Documentation-Plugin": {
       "candidate_id": "project:danielrosehill/Claude-Knowledge-Documentation-Plugin",
-      "last_seen_at": "2026-04-28",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
         "stars": 0,
         "forks": 0,
@@ -51508,7 +52015,7 @@
     },
     "project:nishant880/entirecommerce-content-strategy": {
       "candidate_id": "project:nishant880/entirecommerce-content-strategy",
-      "last_seen_at": "2026-04-28",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
         "stars": 0,
         "forks": 0,
@@ -51854,10 +52361,10 @@
     },
     "project:bluealloy/revm": {
       "candidate_id": "project:bluealloy/revm",
-      "last_seen_at": "2026-04-23",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
-        "stars": 2176,
-        "forks": 993,
+        "stars": 2180,
+        "forks": 996,
         "comments": 0,
         "reactions": 0,
         "star_growth_7d": 0,
@@ -51866,7 +52373,20 @@
         "days_since_previous_release": null,
         "comment_growth_rate": 0.0
       },
-      "last_seen_scores": {}
+      "last_seen_scores": {},
+      "last_published_at": "2026-04-29",
+      "last_published_metrics": {
+        "stars": 2180,
+        "forks": 996,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_published_scores": {}
     },
     "project:GoogleCloudPlatform/magic-modules": {
       "candidate_id": "project:GoogleCloudPlatform/magic-modules",
@@ -52449,10 +52969,10 @@
     },
     "project:kabde/seo-skills": {
       "candidate_id": "project:kabde/seo-skills",
-      "last_seen_at": "2026-04-26",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
-        "stars": 1,
-        "forks": 0,
+        "stars": 4,
+        "forks": 1,
         "comments": 0,
         "reactions": 0,
         "star_growth_7d": 0,
@@ -52513,7 +53033,7 @@
     },
     "project:confluentinc/claude-code-confluent-plugin": {
       "candidate_id": "project:confluentinc/claude-code-confluent-plugin",
-      "last_seen_at": "2026-04-28",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
         "stars": 12,
         "forks": 1,
@@ -53011,9 +53531,9 @@
     },
     "project:levelsio/superlevels": {
       "candidate_id": "project:levelsio/superlevels",
-      "last_seen_at": "2026-04-28",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
-        "stars": 420,
+        "stars": 427,
         "forks": 44,
         "comments": 0,
         "reactions": 0,
@@ -53296,20 +53816,20 @@
     },
     "project:forrestchang/andrej-karpathy-skills": {
       "candidate_id": "project:forrestchang/andrej-karpathy-skills",
-      "last_seen_at": "2026-04-28",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
-        "stars": 4369,
-        "forks": 497,
+        "stars": 3869,
+        "forks": 420,
         "comments": 0,
-        "reactions": 17276,
-        "star_growth_7d": 4369,
+        "reactions": 15096,
+        "star_growth_7d": 3869,
         "previous_star_growth_7d": 0,
         "has_new_release": false,
         "days_since_previous_release": null,
         "comment_growth_rate": 0.0
       },
       "last_seen_scores": {
-        "ossinsight_total_score": 17276.3694,
+        "ossinsight_total_score": 15096.4149,
         "ossinsight_source": "ossinsight:trending:past_week",
         "ossinsight_collection": ""
       }
@@ -53412,7 +53932,7 @@
     },
     "project:orlanqur/docs-intelligence-mcp": {
       "candidate_id": "project:orlanqur/docs-intelligence-mcp",
-      "last_seen_at": "2026-04-28",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
         "stars": 0,
         "forks": 0,
@@ -53428,7 +53948,7 @@
     },
     "project:cukas/codex-ai-buddies": {
       "candidate_id": "project:cukas/codex-ai-buddies",
-      "last_seen_at": "2026-04-28",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
         "stars": 3,
         "forks": 0,
@@ -53444,7 +53964,7 @@
     },
     "project:radektomasek/ai-architecture-rfcs": {
       "candidate_id": "project:radektomasek/ai-architecture-rfcs",
-      "last_seen_at": "2026-04-28",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
         "stars": 0,
         "forks": 0,
@@ -53460,7 +53980,7 @@
     },
     "project:williajm/mcp_kafka": {
       "candidate_id": "project:williajm/mcp_kafka",
-      "last_seen_at": "2026-04-28",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
         "stars": 1,
         "forks": 0,
@@ -53604,21 +54124,21 @@
     },
     "project:op7418/guizang-ppt-skill": {
       "candidate_id": "project:op7418/guizang-ppt-skill",
-      "last_seen_at": "2026-04-28",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
-        "stars": 95,
-        "forks": 13,
+        "stars": 614,
+        "forks": 68,
         "comments": 0,
-        "reactions": 601,
-        "star_growth_7d": 95,
+        "reactions": 2655,
+        "star_growth_7d": 614,
         "previous_star_growth_7d": 0,
         "has_new_release": false,
         "days_since_previous_release": null,
         "comment_growth_rate": 0.0
       },
       "last_seen_scores": {
-        "ossinsight_total_score": 601.501,
-        "ossinsight_source": "ossinsight:trending:past_24_hours",
+        "ossinsight_total_score": 2655.1592,
+        "ossinsight_source": "ossinsight:trending:past_week",
         "ossinsight_collection": ""
       },
       "last_published_at": "2026-04-26",
@@ -53641,10 +54161,10 @@
     },
     "project:deepseek-ai/TileKernels": {
       "candidate_id": "project:deepseek-ai/TileKernels",
-      "last_seen_at": "2026-04-28",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
-        "stars": 1279,
-        "forks": 104,
+        "stars": 1316,
+        "forks": 109,
         "comments": 0,
         "reactions": 0,
         "star_growth_7d": 0,
@@ -53856,10 +54376,10 @@
     },
     "project:0x0funky/agent-sprite-forge": {
       "candidate_id": "project:0x0funky/agent-sprite-forge",
-      "last_seen_at": "2026-04-28",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
-        "stars": 864,
-        "forks": 81,
+        "stars": 1024,
+        "forks": 103,
         "comments": 0,
         "reactions": 0,
         "star_growth_7d": 0,
@@ -53885,10 +54405,10 @@
     },
     "project:future-agi/future-agi": {
       "candidate_id": "project:future-agi/future-agi",
-      "last_seen_at": "2026-04-28",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
-        "stars": 640,
-        "forks": 102,
+        "stars": 701,
+        "forks": 115,
         "comments": 0,
         "reactions": 0,
         "star_growth_7d": 0,
@@ -53914,10 +54434,10 @@
     },
     "project:wuyoscar/gpt_image_2_skill": {
       "candidate_id": "project:wuyoscar/gpt_image_2_skill",
-      "last_seen_at": "2026-04-28",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
-        "stars": 814,
-        "forks": 79,
+        "stars": 944,
+        "forks": 92,
         "comments": 0,
         "reactions": 0,
         "star_growth_7d": 0,
@@ -53972,10 +54492,10 @@
     },
     "project:GammaLabTechnologies/harmonist": {
       "candidate_id": "project:GammaLabTechnologies/harmonist",
-      "last_seen_at": "2026-04-28",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
-        "stars": 741,
-        "forks": 294,
+        "stars": 829,
+        "forks": 306,
         "comments": 0,
         "reactions": 0,
         "star_growth_7d": 0,
@@ -54031,40 +54551,40 @@
     },
     "trending:sponsors/mattpocock": {
       "candidate_id": "trending:sponsors/mattpocock",
-      "last_seen_at": "2026-04-28",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
-        "stars": 29830,
+        "stars": 37018,
         "forks": 0,
         "comments": 0,
         "reactions": 0,
-        "star_growth_7d": 5551,
+        "star_growth_7d": 7429,
         "previous_star_growth_7d": 0,
         "has_new_release": false,
         "days_since_previous_release": null,
         "comment_growth_rate": 0.0
       },
       "last_seen_scores": {
-        "trending_daily_stars": 5551.0
+        "trending_daily_stars": 7429.0
       },
-      "last_published_at": "2026-04-28",
+      "last_published_at": "2026-04-29",
       "last_published_scores": {}
     },
     "trending:davila7/claude-code-templates": {
       "candidate_id": "trending:davila7/claude-code-templates",
-      "last_seen_at": "2026-04-28",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
-        "stars": 25763,
+        "stars": 26137,
         "forks": 0,
         "comments": 0,
         "reactions": 0,
-        "star_growth_7d": 181,
+        "star_growth_7d": 347,
         "previous_star_growth_7d": 0,
         "has_new_release": false,
         "days_since_previous_release": null,
         "comment_growth_rate": 0.0
       },
       "last_seen_scores": {
-        "trending_daily_stars": 181.0
+        "trending_daily_stars": 347.0
       }
     },
     "trending:RooCodeInc/Roo-Code": {
@@ -54087,20 +54607,20 @@
     },
     "trending:CJackHwang/ds2api": {
       "candidate_id": "trending:CJackHwang/ds2api",
-      "last_seen_at": "2026-04-28",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
-        "stars": 1814,
+        "stars": 2298,
         "forks": 0,
         "comments": 0,
         "reactions": 0,
-        "star_growth_7d": 144,
+        "star_growth_7d": 418,
         "previous_star_growth_7d": 0,
         "has_new_release": false,
         "days_since_previous_release": null,
         "comment_growth_rate": 0.0
       },
       "last_seen_scores": {
-        "trending_daily_stars": 144.0
+        "trending_daily_stars": 418.0
       }
     },
     "trending:Universal-Commerce-Protocol/ucp": {
@@ -54123,20 +54643,20 @@
     },
     "trending:ComposioHQ/awesome-codex-skills": {
       "candidate_id": "trending:ComposioHQ/awesome-codex-skills",
-      "last_seen_at": "2026-04-28",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
-        "stars": 2727,
+        "stars": 3945,
         "forks": 0,
         "comments": 0,
         "reactions": 0,
-        "star_growth_7d": 637,
+        "star_growth_7d": 961,
         "previous_star_growth_7d": 0,
         "has_new_release": false,
         "days_since_previous_release": null,
         "comment_growth_rate": 0.0
       },
       "last_seen_scores": {
-        "trending_daily_stars": 637.0
+        "trending_daily_stars": 961.0
       },
       "last_published_at": "2026-04-27",
       "last_published_metrics": {
@@ -54272,7 +54792,7 @@
     },
     "project:avaykumar0006/stock-nse-india": {
       "candidate_id": "project:avaykumar0006/stock-nse-india",
-      "last_seen_at": "2026-04-28",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
         "stars": 0,
         "forks": 0,
@@ -54844,10 +55364,10 @@
     },
     "project:chekusu/wanman": {
       "candidate_id": "project:chekusu/wanman",
-      "last_seen_at": "2026-04-28",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
-        "stars": 386,
-        "forks": 64,
+        "stars": 413,
+        "forks": 66,
         "comments": 0,
         "reactions": 0,
         "star_growth_7d": 0,
@@ -54860,10 +55380,10 @@
     },
     "project:alash3al/stash": {
       "candidate_id": "project:alash3al/stash",
-      "last_seen_at": "2026-04-28",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
-        "stars": 412,
-        "forks": 18,
+        "stars": 505,
+        "forks": 21,
         "comments": 0,
         "reactions": 0,
         "star_growth_7d": 0,
@@ -54889,10 +55409,10 @@
     },
     "project:seulee26/mckinsey-pptx": {
       "candidate_id": "project:seulee26/mckinsey-pptx",
-      "last_seen_at": "2026-04-28",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
-        "stars": 312,
-        "forks": 65,
+        "stars": 333,
+        "forks": 66,
         "comments": 0,
         "reactions": 0,
         "star_growth_7d": 0,
@@ -55205,7 +55725,7 @@
     },
     "project:GGGODLIN/daily-topic-radar": {
       "candidate_id": "project:GGGODLIN/daily-topic-radar",
-      "last_seen_at": "2026-04-28",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
         "stars": 0,
         "forks": 0,
@@ -55237,7 +55757,7 @@
     },
     "project:xhrisxavis23/paper_suggestion": {
       "candidate_id": "project:xhrisxavis23/paper_suggestion",
-      "last_seen_at": "2026-04-28",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
         "stars": 0,
         "forks": 0,
@@ -55269,7 +55789,7 @@
     },
     "project:WEBSTUDIIO/MBBS-FLASHCARD-GENERATOR": {
       "candidate_id": "project:WEBSTUDIIO/MBBS-FLASHCARD-GENERATOR",
-      "last_seen_at": "2026-04-28",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
         "stars": 0,
         "forks": 0,
@@ -55285,7 +55805,7 @@
     },
     "project:BuildWithDileep/Table_Topics": {
       "candidate_id": "project:BuildWithDileep/Table_Topics",
-      "last_seen_at": "2026-04-28",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
         "stars": 0,
         "forks": 0,
@@ -55301,7 +55821,7 @@
     },
     "project:BuildWithDileep/table-topics": {
       "candidate_id": "project:BuildWithDileep/table-topics",
-      "last_seen_at": "2026-04-28",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
         "stars": 0,
         "forks": 0,
@@ -55317,7 +55837,7 @@
     },
     "project:vobedience65-cyber/obedience-ai-driven-social-media-content-41556": {
       "candidate_id": "project:vobedience65-cyber/obedience-ai-driven-social-media-content-41556",
-      "last_seen_at": "2026-04-28",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
         "stars": 0,
         "forks": 0,
@@ -55333,7 +55853,7 @@
     },
     "project:Yashwant-Vadhan/AI-Video-Explainer": {
       "candidate_id": "project:Yashwant-Vadhan/AI-Video-Explainer",
-      "last_seen_at": "2026-04-28",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
         "stars": 0,
         "forks": 0,
@@ -55349,7 +55869,7 @@
     },
     "project:ArshiAbolghasemi/Groot": {
       "candidate_id": "project:ArshiAbolghasemi/Groot",
-      "last_seen_at": "2026-04-28",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
         "stars": 0,
         "forks": 0,
@@ -55535,10 +56055,10 @@
     },
     "project:victorchen96/deepseek_v4_rolepaly_instruct": {
       "candidate_id": "project:victorchen96/deepseek_v4_rolepaly_instruct",
-      "last_seen_at": "2026-04-28",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
-        "stars": 1289,
-        "forks": 65,
+        "stars": 1452,
+        "forks": 74,
         "comments": 0,
         "reactions": 0,
         "star_growth_7d": 0,
@@ -55628,10 +56148,10 @@
     },
     "project:openclaw/clawsweeper": {
       "candidate_id": "project:openclaw/clawsweeper",
-      "last_seen_at": "2026-04-28",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
-        "stars": 1188,
-        "forks": 125,
+        "stars": 1265,
+        "forks": 136,
         "comments": 0,
         "reactions": 0,
         "star_growth_7d": 0,
@@ -55702,23 +56222,19 @@
     },
     "project:freestylefly/awesome-gpt-image-2": {
       "candidate_id": "project:freestylefly/awesome-gpt-image-2",
-      "last_seen_at": "2026-04-28",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
-        "stars": 149,
-        "forks": 23,
+        "stars": 1687,
+        "forks": 292,
         "comments": 0,
-        "reactions": 782,
-        "star_growth_7d": 149,
+        "reactions": 0,
+        "star_growth_7d": 0,
         "previous_star_growth_7d": 0,
         "has_new_release": false,
         "days_since_previous_release": null,
         "comment_growth_rate": 0.0
       },
-      "last_seen_scores": {
-        "ossinsight_total_score": 782.6912,
-        "ossinsight_source": "ossinsight:trending:past_24_hours",
-        "ossinsight_collection": ""
-      },
+      "last_seen_scores": {},
       "last_published_at": "2026-04-27",
       "last_published_metrics": {
         "stars": 557,
@@ -55735,9 +56251,9 @@
     },
     "project:ksimback/tech-debt-skill": {
       "candidate_id": "project:ksimback/tech-debt-skill",
-      "last_seen_at": "2026-04-28",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
-        "stars": 270,
+        "stars": 283,
         "forks": 19,
         "comments": 0,
         "reactions": 0,
@@ -55825,7 +56341,7 @@
     },
     "project:bishopaccepting325/LLM-Code-Hot-100": {
       "candidate_id": "project:bishopaccepting325/LLM-Code-Hot-100",
-      "last_seen_at": "2026-04-28",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
         "stars": 0,
         "forks": 0,
@@ -55857,7 +56373,7 @@
     },
     "project:dominicjtaylor/media-generator": {
       "candidate_id": "project:dominicjtaylor/media-generator",
-      "last_seen_at": "2026-04-27",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
         "stars": 0,
         "forks": 0,
@@ -55953,7 +56469,7 @@
     },
     "project:Sotiris01/Auto-Debate---Two-Agent-Local-LLM-Debate-App": {
       "candidate_id": "project:Sotiris01/Auto-Debate---Two-Agent-Local-LLM-Debate-App",
-      "last_seen_at": "2026-04-28",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
         "stars": 0,
         "forks": 0,
@@ -56580,10 +57096,10 @@
     },
     "project:AKCodez/hackingtool-plugin": {
       "candidate_id": "project:AKCodez/hackingtool-plugin",
-      "last_seen_at": "2026-04-28",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
-        "stars": 232,
-        "forks": 52,
+        "stars": 246,
+        "forks": 59,
         "comments": 0,
         "reactions": 0,
         "star_growth_7d": 0,
@@ -56637,20 +57153,20 @@
     },
     "trending:microsoft/VibeVoice": {
       "candidate_id": "trending:microsoft/VibeVoice",
-      "last_seen_at": "2026-04-28",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
-        "stars": 43019,
+        "stars": 44720,
         "forks": 0,
         "comments": 0,
         "reactions": 0,
-        "star_growth_7d": 771,
+        "star_growth_7d": 1523,
         "previous_star_growth_7d": 0,
         "has_new_release": false,
         "days_since_previous_release": null,
         "comment_growth_rate": 0.0
       },
       "last_seen_scores": {
-        "trending_daily_stars": 771.0
+        "trending_daily_stars": 1523.0
       }
     },
     "trending:TauricResearch/TradingAgents": {
@@ -56706,25 +57222,40 @@
     },
     "trending:donnemartin/system-design-primer": {
       "candidate_id": "trending:donnemartin/system-design-primer",
-      "last_seen_at": "2026-04-28",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
-        "stars": 345113,
+        "stars": 345812,
         "forks": 0,
         "comments": 0,
         "reactions": 0,
-        "star_growth_7d": 396,
+        "star_growth_7d": 734,
         "previous_star_growth_7d": 0,
         "has_new_release": false,
         "days_since_previous_release": null,
         "comment_growth_rate": 0.0
       },
       "last_seen_scores": {
-        "trending_daily_stars": 396.0
+        "trending_daily_stars": 734.0
+      },
+      "last_published_at": "2026-04-29",
+      "last_published_metrics": {
+        "stars": 345812,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 734,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_published_scores": {
+        "trending_daily_stars": 734.0
       }
     },
     "project:julio-olvera-epam/claude-agentic-loop": {
       "candidate_id": "project:julio-olvera-epam/claude-agentic-loop",
-      "last_seen_at": "2026-04-28",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
         "stars": 0,
         "forks": 0,
@@ -56740,7 +57271,7 @@
     },
     "project:yguo/aimem": {
       "candidate_id": "project:yguo/aimem",
-      "last_seen_at": "2026-04-28",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
         "stars": 0,
         "forks": 0,
@@ -56756,7 +57287,7 @@
     },
     "project:DuaneNielsen/claude-waybar-status": {
       "candidate_id": "project:DuaneNielsen/claude-waybar-status",
-      "last_seen_at": "2026-04-28",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
         "stars": 0,
         "forks": 0,
@@ -56788,7 +57319,7 @@
     },
     "project:Romosk728/ros2unbag": {
       "candidate_id": "project:Romosk728/ros2unbag",
-      "last_seen_at": "2026-04-28",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
         "stars": 0,
         "forks": 0,
@@ -56852,7 +57383,7 @@
     },
     "project:ahgraber/AIMLbling-about": {
       "candidate_id": "project:ahgraber/AIMLbling-about",
-      "last_seen_at": "2026-04-28",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
         "stars": 1,
         "forks": 0,
@@ -56945,7 +57476,7 @@
     },
     "project:unnita1235-code/medcomply": {
       "candidate_id": "project:unnita1235-code/medcomply",
-      "last_seen_at": "2026-04-28",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
         "stars": 0,
         "forks": 0,
@@ -57259,10 +57790,10 @@
     },
     "project:evanklem/evanflow": {
       "candidate_id": "project:evanklem/evanflow",
-      "last_seen_at": "2026-04-28",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
-        "stars": 272,
-        "forks": 6,
+        "stars": 333,
+        "forks": 11,
         "comments": 0,
         "reactions": 0,
         "star_growth_7d": 0,
@@ -57275,10 +57806,10 @@
     },
     "project:NyxTides/ppt-image-first": {
       "candidate_id": "project:NyxTides/ppt-image-first",
-      "last_seen_at": "2026-04-28",
+      "last_seen_at": "2026-04-29",
       "last_seen_metrics": {
-        "stars": 295,
-        "forks": 28,
+        "stars": 381,
+        "forks": 41,
         "comments": 0,
         "reactions": 0,
         "star_growth_7d": 0,
@@ -57331,6 +57862,951 @@
         "skill_bucket": "project",
         "skill_final_score": 43.60149134046663
       }
+    },
+    "trending:HunxByts/GhostTrack": {
+      "candidate_id": "trending:HunxByts/GhostTrack",
+      "last_seen_at": "2026-04-29",
+      "last_seen_metrics": {
+        "stars": 10560,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 976,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_seen_scores": {
+        "trending_daily_stars": 976.0
+      }
+    },
+    "trending:fspecii/ace-step-ui": {
+      "candidate_id": "trending:fspecii/ace-step-ui",
+      "last_seen_at": "2026-04-29",
+      "last_seen_metrics": {
+        "stars": 1637,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 263,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_seen_scores": {
+        "trending_daily_stars": 263.0
+      }
+    },
+    "trending:sponsors/EbookFoundation": {
+      "candidate_id": "trending:sponsors/EbookFoundation",
+      "last_seen_at": "2026-04-29",
+      "last_seen_metrics": {
+        "stars": 386596,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 133,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_seen_scores": {
+        "trending_daily_stars": 133.0
+      },
+      "last_published_at": "2026-04-29",
+      "last_published_metrics": {
+        "stars": 386596,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 133,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_published_scores": {
+        "trending_daily_stars": 133.0
+      }
+    },
+    "trending:sponsors/iamgio": {
+      "candidate_id": "trending:sponsors/iamgio",
+      "last_seen_at": "2026-04-29",
+      "last_seen_metrics": {
+        "stars": 11947,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 797,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_seen_scores": {
+        "trending_daily_stars": 797.0
+      }
+    },
+    "project:openai/symphony": {
+      "candidate_id": "project:openai/symphony",
+      "last_seen_at": "2026-04-29",
+      "last_seen_metrics": {
+        "stars": 134,
+        "forks": 5,
+        "comments": 0,
+        "reactions": 784,
+        "star_growth_7d": 134,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_seen_scores": {
+        "ossinsight_total_score": 784.0724,
+        "ossinsight_source": "ossinsight:trending:past_24_hours",
+        "ossinsight_collection": ""
+      }
+    },
+    "project:PurpleAILAB/Decepticon": {
+      "candidate_id": "project:PurpleAILAB/Decepticon",
+      "last_seen_at": "2026-04-29",
+      "last_seen_metrics": {
+        "stars": 41,
+        "forks": 7,
+        "comments": 0,
+        "reactions": 396,
+        "star_growth_7d": 41,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_seen_scores": {
+        "ossinsight_total_score": 396.9607,
+        "ossinsight_source": "ossinsight:trending:past_24_hours",
+        "ossinsight_collection": ""
+      }
+    },
+    "project:ccn-daryna-v/wez-ai-status": {
+      "candidate_id": "project:ccn-daryna-v/wez-ai-status",
+      "last_seen_at": "2026-04-29",
+      "last_seen_metrics": {
+        "stars": 0,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_seen_scores": {}
+    },
+    "project:gabsn/claude-tab-titles": {
+      "candidate_id": "project:gabsn/claude-tab-titles",
+      "last_seen_at": "2026-04-29",
+      "last_seen_metrics": {
+        "stars": 0,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_seen_scores": {}
+    },
+    "project:GiantClam/auto-viral-article-writer": {
+      "candidate_id": "project:GiantClam/auto-viral-article-writer",
+      "last_seen_at": "2026-04-29",
+      "last_seen_metrics": {
+        "stars": 0,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_seen_scores": {}
+    },
+    "project:wonfull888/geo-writer": {
+      "candidate_id": "project:wonfull888/geo-writer",
+      "last_seen_at": "2026-04-29",
+      "last_seen_metrics": {
+        "stars": 0,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_seen_scores": {}
+    },
+    "project:pink-tools/pink-agent": {
+      "candidate_id": "project:pink-tools/pink-agent",
+      "last_seen_at": "2026-04-29",
+      "last_seen_metrics": {
+        "stars": 1,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_seen_scores": {}
+    },
+    "project:epechuzal/claude-skill-recall": {
+      "candidate_id": "project:epechuzal/claude-skill-recall",
+      "last_seen_at": "2026-04-29",
+      "last_seen_metrics": {
+        "stars": 0,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_seen_scores": {}
+    },
+    "project:bokuno-studio/zenn-post-cc-plugin": {
+      "candidate_id": "project:bokuno-studio/zenn-post-cc-plugin",
+      "last_seen_at": "2026-04-29",
+      "last_seen_metrics": {
+        "stars": 0,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_seen_scores": {}
+    },
+    "project:ckulkarni13/Nexus-Research-Agent": {
+      "candidate_id": "project:ckulkarni13/Nexus-Research-Agent",
+      "last_seen_at": "2026-04-29",
+      "last_seen_metrics": {
+        "stars": 1,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_seen_scores": {}
+    },
+    "project:LogapriyaBalaraman/RAG-Project-": {
+      "candidate_id": "project:LogapriyaBalaraman/RAG-Project-",
+      "last_seen_at": "2026-04-29",
+      "last_seen_metrics": {
+        "stars": 0,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_seen_scores": {}
+    },
+    "project:LogapriyaBalaraman/RAG-Project": {
+      "candidate_id": "project:LogapriyaBalaraman/RAG-Project",
+      "last_seen_at": "2026-04-29",
+      "last_seen_metrics": {
+        "stars": 0,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_seen_scores": {}
+    },
+    "project:Ashish1896/agentic-ai-research-assistant": {
+      "candidate_id": "project:Ashish1896/agentic-ai-research-assistant",
+      "last_seen_at": "2026-04-29",
+      "last_seen_metrics": {
+        "stars": 0,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_seen_scores": {}
+    },
+    "project:Faheem-Musthafa/The-Signal": {
+      "candidate_id": "project:Faheem-Musthafa/The-Signal",
+      "last_seen_at": "2026-04-29",
+      "last_seen_metrics": {
+        "stars": 0,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_seen_scores": {}
+    },
+    "project:kalam432/ai-study-coach-rag": {
+      "candidate_id": "project:kalam432/ai-study-coach-rag",
+      "last_seen_at": "2026-04-29",
+      "last_seen_metrics": {
+        "stars": 0,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_seen_scores": {}
+    },
+    "project:miromito/review_processor": {
+      "candidate_id": "project:miromito/review_processor",
+      "last_seen_at": "2026-04-29",
+      "last_seen_metrics": {
+        "stars": 0,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_seen_scores": {}
+    },
+    "project:VinceVi83/discord-local-llm-bridge": {
+      "candidate_id": "project:VinceVi83/discord-local-llm-bridge",
+      "last_seen_at": "2026-04-29",
+      "last_seen_metrics": {
+        "stars": 0,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_seen_scores": {}
+    },
+    "project:rickramos1/ai-media-analysis-tool": {
+      "candidate_id": "project:rickramos1/ai-media-analysis-tool",
+      "last_seen_at": "2026-04-29",
+      "last_seen_metrics": {
+        "stars": 0,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_seen_scores": {}
+    },
+    "project:sonukumar5043/AI-Blog-Generator": {
+      "candidate_id": "project:sonukumar5043/AI-Blog-Generator",
+      "last_seen_at": "2026-04-29",
+      "last_seen_metrics": {
+        "stars": 0,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_seen_scores": {}
+    },
+    "project:RepairTheSystem/Topic-Coverage-in-Financial-LLM-Benchmarks-Structure-Analysis-and-Recommendations": {
+      "candidate_id": "project:RepairTheSystem/Topic-Coverage-in-Financial-LLM-Benchmarks-Structure-Analysis-and-Recommendations",
+      "last_seen_at": "2026-04-29",
+      "last_seen_metrics": {
+        "stars": 0,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_seen_scores": {}
+    },
+    "project:SyedMuqeeth23/ExamGenie-AI": {
+      "candidate_id": "project:SyedMuqeeth23/ExamGenie-AI",
+      "last_seen_at": "2026-04-29",
+      "last_seen_metrics": {
+        "stars": 0,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_seen_scores": {}
+    },
+    "project:AsadBinImtiaz/HotelReviewAnalyzer": {
+      "candidate_id": "project:AsadBinImtiaz/HotelReviewAnalyzer",
+      "last_seen_at": "2026-04-29",
+      "last_seen_metrics": {
+        "stars": 0,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_seen_scores": {}
+    },
+    "project:Pragyan2027/AI-powered-CRM-module--HCP-Interaction-Logging-": {
+      "candidate_id": "project:Pragyan2027/AI-powered-CRM-module--HCP-Interaction-Logging-",
+      "last_seen_at": "2026-04-29",
+      "last_seen_metrics": {
+        "stars": 1,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_seen_scores": {}
+    },
+    "project:2542167251lyh-spec/ai-roundtable": {
+      "candidate_id": "project:2542167251lyh-spec/ai-roundtable",
+      "last_seen_at": "2026-04-29",
+      "last_seen_metrics": {
+        "stars": 0,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_seen_scores": {}
+    },
+    "project:jayf0x/PIIPAYA": {
+      "candidate_id": "project:jayf0x/PIIPAYA",
+      "last_seen_at": "2026-04-29",
+      "last_seen_metrics": {
+        "stars": 0,
+        "forks": 0,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_seen_scores": {}
+    },
+    "project:RIOT-OS/RIOT": {
+      "candidate_id": "project:RIOT-OS/RIOT",
+      "last_seen_at": "2026-04-29",
+      "last_seen_metrics": {
+        "stars": 5718,
+        "forks": 2084,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_seen_scores": {},
+      "last_published_at": "2026-04-29",
+      "last_published_metrics": {
+        "stars": 5718,
+        "forks": 2084,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_published_scores": {}
+    },
+    "project:hatchet-dev/hatchet": {
+      "candidate_id": "project:hatchet-dev/hatchet",
+      "last_seen_at": "2026-04-29",
+      "last_seen_metrics": {
+        "stars": 7020,
+        "forks": 359,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_seen_scores": {}
+    },
+    "project:esphome/esphome": {
+      "candidate_id": "project:esphome/esphome",
+      "last_seen_at": "2026-04-29",
+      "last_seen_metrics": {
+        "stars": 10990,
+        "forks": 5241,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_seen_scores": {},
+      "last_published_at": "2026-04-29",
+      "last_published_metrics": {
+        "stars": 10990,
+        "forks": 5241,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_published_scores": {}
+    },
+    "project:jackocnr/intl-tel-input": {
+      "candidate_id": "project:jackocnr/intl-tel-input",
+      "last_seen_at": "2026-04-29",
+      "last_seen_metrics": {
+        "stars": 8191,
+        "forks": 1997,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_seen_scores": {},
+      "last_published_at": "2026-04-29",
+      "last_published_metrics": {
+        "stars": 8191,
+        "forks": 1997,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_published_scores": {}
+    },
+    "project:warpdotdev/warp": {
+      "candidate_id": "project:warpdotdev/warp",
+      "last_seen_at": "2026-04-29",
+      "last_seen_metrics": {
+        "stars": 31460,
+        "forks": 1233,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_seen_scores": {}
+    },
+    "project:nrwl/nx": {
+      "candidate_id": "project:nrwl/nx",
+      "last_seen_at": "2026-04-29",
+      "last_seen_metrics": {
+        "stars": 28615,
+        "forks": 2714,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_seen_scores": {}
+    },
+    "project:webstudio-is/webstudio": {
+      "candidate_id": "project:webstudio-is/webstudio",
+      "last_seen_at": "2026-04-29",
+      "last_seen_metrics": {
+        "stars": 8490,
+        "forks": 1530,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_seen_scores": {},
+      "last_published_at": "2026-04-29",
+      "last_published_metrics": {
+        "stars": 8490,
+        "forks": 1530,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_published_scores": {}
+    },
+    "project:onsi/ginkgo": {
+      "candidate_id": "project:onsi/ginkgo",
+      "last_seen_at": "2026-04-29",
+      "last_seen_metrics": {
+        "stars": 8986,
+        "forks": 697,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_seen_scores": {},
+      "last_published_at": "2026-04-29",
+      "last_published_metrics": {
+        "stars": 8986,
+        "forks": 697,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_published_scores": {}
+    },
+    "project:paperclipai/paperclip": {
+      "candidate_id": "project:paperclipai/paperclip",
+      "last_seen_at": "2026-04-29",
+      "last_seen_metrics": {
+        "stars": 60217,
+        "forks": 10507,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_seen_scores": {},
+      "last_published_at": "2026-04-29",
+      "last_published_metrics": {
+        "stars": 60217,
+        "forks": 10507,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_published_scores": {}
+    },
+    "project:yhirose/cpp-httplib": {
+      "candidate_id": "project:yhirose/cpp-httplib",
+      "last_seen_at": "2026-04-29",
+      "last_seen_metrics": {
+        "stars": 16413,
+        "forks": 2669,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_seen_scores": {},
+      "last_published_at": "2026-04-29",
+      "last_published_metrics": {
+        "stars": 16413,
+        "forks": 2669,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_published_scores": {}
+    },
+    "project:Kaggle/kaggle-cli": {
+      "candidate_id": "project:Kaggle/kaggle-cli",
+      "last_seen_at": "2026-04-29",
+      "last_seen_metrics": {
+        "stars": 7275,
+        "forks": 1348,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_seen_scores": {},
+      "last_published_at": "2026-04-29",
+      "last_published_metrics": {
+        "stars": 7275,
+        "forks": 1348,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_published_scores": {}
+    },
+    "project:nexu-io/open-design": {
+      "candidate_id": "project:nexu-io/open-design",
+      "last_seen_at": "2026-04-29",
+      "last_seen_metrics": {
+        "stars": 1013,
+        "forks": 109,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_seen_scores": {}
+    },
+    "project:earthtojake/text-to-cad": {
+      "candidate_id": "project:earthtojake/text-to-cad",
+      "last_seen_at": "2026-04-29",
+      "last_seen_metrics": {
+        "stars": 1080,
+        "forks": 164,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_seen_scores": {}
+    },
+    "project:Mentra-Community/MentraOS": {
+      "candidate_id": "project:Mentra-Community/MentraOS",
+      "last_seen_at": "2026-04-29",
+      "last_seen_metrics": {
+        "stars": 1893,
+        "forks": 255,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_seen_scores": {}
+    },
+    "project:Johnng007/Live-Forensicator": {
+      "candidate_id": "project:Johnng007/Live-Forensicator",
+      "last_seen_at": "2026-04-29",
+      "last_seen_metrics": {
+        "stars": 618,
+        "forks": 90,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_seen_scores": {}
+    },
+    "project:theroyallab/tabbyAPI": {
+      "candidate_id": "project:theroyallab/tabbyAPI",
+      "last_seen_at": "2026-04-29",
+      "last_seen_metrics": {
+        "stars": 1199,
+        "forks": 151,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_seen_scores": {}
+    },
+    "project:common-voice/common-voice": {
+      "candidate_id": "project:common-voice/common-voice",
+      "last_seen_at": "2026-04-29",
+      "last_seen_metrics": {
+        "stars": 3459,
+        "forks": 870,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_seen_scores": {},
+      "last_published_at": "2026-04-29",
+      "last_published_metrics": {
+        "stars": 3459,
+        "forks": 870,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_published_scores": {}
+    },
+    "project:firebase/firebase-android-sdk": {
+      "candidate_id": "project:firebase/firebase-android-sdk",
+      "last_seen_at": "2026-04-29",
+      "last_seen_metrics": {
+        "stars": 2504,
+        "forks": 684,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_seen_scores": {},
+      "last_published_at": "2026-04-29",
+      "last_published_metrics": {
+        "stars": 2504,
+        "forks": 684,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_published_scores": {}
+    },
+    "project:browser-use/bux": {
+      "candidate_id": "project:browser-use/bux",
+      "last_seen_at": "2026-04-29",
+      "last_seen_metrics": {
+        "stars": 248,
+        "forks": 19,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_seen_scores": {}
+    },
+    "project:machinepulse-ai/world2agent": {
+      "candidate_id": "project:machinepulse-ai/world2agent",
+      "last_seen_at": "2026-04-29",
+      "last_seen_metrics": {
+        "stars": 247,
+        "forks": 6,
+        "comments": 0,
+        "reactions": 0,
+        "star_growth_7d": 0,
+        "previous_star_growth_7d": 0,
+        "has_new_release": false,
+        "days_since_previous_release": null,
+        "comment_growth_rate": 0.0
+      },
+      "last_seen_scores": {}
     }
   },
   "run_summaries": [
@@ -60758,6 +62234,93 @@
           "count": 14,
           "kinds": {
             "builder": 14
+          }
+        }
+      },
+      "collector_errors": [],
+      "api_usage": {
+        "total_budget": 60,
+        "search_budget": 38,
+        "graphql_budget": 600,
+        "search_used": 30,
+        "graphql_used": 1
+      },
+      "timezone": "Asia/Shanghai"
+    },
+    {
+      "date": "2026-04-29",
+      "candidate_count": 210,
+      "raw_candidate_count": 230,
+      "selected_count": 30,
+      "filtered_kind_counts": {
+        "project": 127,
+        "skill": 3
+      },
+      "published_kind_counts": {
+        "project": 18,
+        "skill": 2
+      },
+      "theme_counts": {
+        "ai_project": 17,
+        "skill_assets": 1,
+        "mcp": 1,
+        "rag": 1
+      },
+      "top_themes": [
+        "ai_project",
+        "skill_assets",
+        "mcp"
+      ],
+      "collector_stats": {
+        "trending": {
+          "count": 15,
+          "kinds": {
+            "project": 15
+          }
+        },
+        "ossinsight": {
+          "count": 56,
+          "kinds": {
+            "project": 56
+          }
+        },
+        "repos": {
+          "count": 74,
+          "kinds": {
+            "project": 74
+          }
+        },
+        "star_growth": {
+          "count": 65,
+          "kinds": {
+            "project": 65
+          }
+        },
+        "discussions": {
+          "count": 0,
+          "kinds": {}
+        },
+        "issues_prs": {
+          "count": 0,
+          "kinds": {}
+        },
+        "skills": {
+          "count": 20,
+          "kinds": {
+            "skill": 12,
+            "project": 8
+          }
+        },
+        "buzzing": {
+          "count": 922,
+          "kinds": {
+            "tech": 922
+          }
+        },
+        "builders": {
+          "count": 13,
+          "kinds": {
+            "builder": 13
           }
         }
       },
