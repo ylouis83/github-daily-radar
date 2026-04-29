@@ -1,0 +1,211 @@
+{
+  "cards": [
+    {
+      "msg_type": "interactive",
+      "card": {
+        "config": {
+          "wide_screen_mode": true
+        },
+        "header": {
+          "title": {
+            "tag": "plain_text",
+            "content": "AI Builder Radar · 2026-04-30"
+          },
+          "template": "indigo"
+        },
+        "elements": [
+          {
+            "tag": "markdown",
+            "content": "GitHub 主榜 · 科技热讯 · Builder Watch",
+            "text_size": "notation"
+          },
+          {
+            "tag": "hr"
+          },
+          {
+            "tag": "column_set",
+            "flex_mode": "none",
+            "horizontal_spacing": "default",
+            "columns": [
+              {
+                "tag": "column",
+                "width": "auto",
+                "vertical_align": "center",
+                "elements": [
+                  {
+                    "tag": "markdown",
+                    "content": "**GitHub 主榜**  <text_tag color='blue'>主线</text_tag>\n开源仓库、技能资产与讨论线索"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "tag": "markdown",
+            "content": "**热度跃升**\n\n**1.** [warpdotdev/warp](https://github.com/warpdotdev/warp)  +11955⭐  43.4K⭐\n**2.** [sponsors/mattpocock](https://github.com/sponsors/mattpocock)  +7356⭐  44.2K⭐\n**3.** [microsoft/VibeVoice](https://github.com/microsoft/VibeVoice)  +1688⭐  45.6K⭐\n**4.** [sponsors/obra](https://github.com/sponsors/obra)  +1683⭐  173.0K⭐\n**5.** [ComposioHQ/awesome-codex-skills](https://github.com/ComposioHQ/awesome-codex-skills)  +1180⭐  4.7K⭐\n\n*来源：GitHub Trending / OSSInsight*"
+          },
+          {
+            "tag": "markdown",
+            "content": "**核心项目**  ·  <link icon='platform_outlined' url='https://github.com'>GitHub</link>\n\n**1.** [NousResearch/hermes-agent](https://github.com/NousResearch/hermes-agent)  +280⭐\n信号：本周在开源社区迅速走红，展现出下一代自适应代理的潜力。\n▸ 定位：具备持续学习与自我进化能力的智能体架构。\n▸ 能力：能够根据用户交互习惯动态调整策略并扩展任务执行范围。\n▸ 价值：满足个性化工作流需求，降低重复性人工干预成本。\n\n**2.** [pytorch/pytorch](https://github.com/pytorch/pytorch)  99.5K⭐\n信号：持续保持近十万星标的行业统治力，其底层优化直接影响前沿模型进展。\n▸ 定位：业界领先的动态计算图深度学习框架。\n▸ 能力：提供高性能张量运算、自动求导与广泛的模型生态支持。\n▸ 价值：作为人工智能研发的基础设施，是构建与训练各类神经网络的首选工具。\n\n**3.** [web-platform-tests/wpt](https://github.com/web-platform-tests/wpt)  5.9K⭐\n信号：持续收录最新规范用例，帮助前端工程师快速定位跨浏览器渲染差异。\n▸ 定位：由主流浏览器厂商共同维护的跨平台测试套件，是 Web 标准一致性的权威基准。\n▸ 能力：自动化验证 HTML、CSS 与 JavaScript 等核心 Web 技术的实现兼容性。\n▸ 价值：浏览器碎片化严重，统一测试标准是保障 Web 生态健康发展的基石。\n\n**4.** [LMCache/LMCache](https://github.com/LMCache/LMCache)  8.2K⭐\n信号：随着大模型应用规模化落地，推理加速已成为基础设施建设的当务之急。\n▸ 定位：专为大语言模型推理设计的极速键值缓存加速层。\n▸ 能力：通过高效缓存机制显著降低推理延迟并提升系统吞吐量。\n▸ 价值：解决大模型部署中显存瓶颈与推理成本过高的核心痛点。\n\n**延伸速览**\n\n- [openai/symphony](https://github.com/openai/symphony)  +143⭐\n- [raphamorim/rio](https://github.com/raphamorim/rio)  6.7K⭐\n- [nexu-io/open-design](https://github.com/nexu-io/open-design)  4.2K⭐\n另有 5 个项目未展开"
+          },
+          {
+            "tag": "markdown",
+            "content": "**技能与 MCP**  ·  <link icon='platform_outlined' url='https://github.com'>GitHub</link>\n\n**1.** [PatrickJS/awesome-cursorrules](https://github.com/PatrickJS/awesome-cursorrules)  39.3K⭐\n适配栈：Prompt / Rules\n▸ 定位：专门针对代码编辑器定制行为规则的配置文件合集。\n\n**2.** [bitjaru/styleseed](https://github.com/bitjaru/styleseed)  331⭐\n适配栈：通用 AI 工具\n▸ 定位：面向智能编码助手的现代化界面设计规范与组件库。\n\n**3.** [obra/superpowers](https://github.com/obra/superpowers)  +1554⭐\n适配栈：Skill 生态\n▸ 定位：专注于可落地的智能体技能框架与软件开发方法论。\n\n**4.** [punkpeye/awesome-mcp-servers](https://github.com/punkpeye/awesome-mcp-servers)  +81⭐\n适配栈：MCP\n▸ 定位：专注聚合模型上下文协议服务器的精选清单。\n\n**5.** [openai/openai-cookbook](https://github.com/openai/openai-cookbook)  73.1K⭐\n适配栈：通用 AI 工具\n▸ 定位：官方维护的接口实战指南与示例集合。\n\n**6.** [sceneview/sceneview](https://github.com/sceneview/sceneview)  1.2K⭐\n适配栈：通用 AI 工具\n▸ 定位：原生支持声明式界面框架的跨平台三维与增强现实开发工具包。\n"
+          },
+          {
+            "tag": "hr"
+          },
+          {
+            "tag": "column_set",
+            "flex_mode": "none",
+            "horizontal_spacing": "default",
+            "columns": [
+              {
+                "tag": "column",
+                "width": "auto",
+                "vertical_align": "center",
+                "elements": [
+                  {
+                    "tag": "markdown",
+                    "content": "**科技热讯**  <text_tag color='orange'>外部</text_tag>\n发布动态、工程信号与外部热点"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "tag": "markdown",
+            "content": "**1.** [Ghostty 即将离开 GitHub](https://mitchellh.com/writing/ghostty-leaving-github)\n<link icon='internet_outlined' url='https://mitchellh.com/writing/ghostty-leaving-github'>Hacker News</link>  ·  信号：Hacker News 热度高 · 244 热度 / 38 评论\n\n**2.** [SoulLink - 移动端3D Vibe编程合作伙伴](https://www.producthunt.com/r/WDAZDHMMZORTEO)\n<link icon='internet_outlined' url='https://www.producthunt.com/r/WDAZDHMMZORTEO'>Product Hunt</link>  ·  信号：Product Hunt 热度高 · 202 热度 / 41 评论\n\n**3.** [Capso - 适用于 Mac 的免费开源截图与屏幕录制工具](https://www.producthunt.com/r/KVNMIQB5OS55J7)\n<link icon='internet_outlined' url='https://www.producthunt.com/r/KVNMIQB5OS55J7'>Product Hunt</link>  ·  信号：Product Hunt 热度高 · 194 热度 / 20 评论\n\n**4.** [Drift - 一款随时间推移逐渐淡出的极简主义日记应用](https://www.producthunt.com/r/77I2D7OKQILF7O)\n<link icon='internet_outlined' url='https://www.producthunt.com/r/77I2D7OKQILF7O'>Product Hunt</link>  ·  信号：Product Hunt 热度高 · 193 热度 / 34 评论\n\n**5.** [AgentMail - AI 代理的电子邮件收件箱](https://www.producthunt.com/r/M4HONGJQGO5663)\n<link icon='internet_outlined' url='https://www.producthunt.com/r/M4HONGJQGO5663'>Product Hunt</link>  ·  信号：Product Hunt 热度高 · 192 热度 / 45 评论\n\n**6.** [Google Finance - 提出复杂的金融问题，获得基于人工智能的解答](https://www.producthunt.com/r/GNTCPZ4KQWJ6AP)\n<link icon='internet_outlined' url='https://www.producthunt.com/r/GNTCPZ4KQWJ6AP'>Product Hunt</link>  ·  信号：Product Hunt 热度高 · 190 热度 / 3 评论\n"
+          },
+          {
+            "tag": "hr"
+          },
+          {
+            "tag": "column_set",
+            "flex_mode": "none",
+            "horizontal_spacing": "default",
+            "columns": [
+              {
+                "tag": "column",
+                "width": "auto",
+                "vertical_align": "center",
+                "elements": [
+                  {
+                    "tag": "markdown",
+                    "content": "**Builder Watch**  <text_tag color='green'>人物</text_tag>\n创作者观点、播客与长文解读"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "tag": "markdown",
+            "content": "**X**  ·  <link icon='internet_outlined' url='https://x.com'>X</link>\n**1.** [Claude：围绕「Claude now connects to the tools…」](https://x.com/claudeai/status/2049143438281445811)\n信号：围绕「Claude now connects to the tools…」，给出一线观察。\n**2.** [Sam Altman：一线观察](https://x.com/sama/status/2049241518540808440)\n信号：Sam Altman给出一线观察，值得后续跟进。\n**3.** [Peter Steinberger：围绕「I smell a leak.」](https://x.com/steipete/status/2049290265026773172)\n信号：围绕「I smell a leak.」，给出一线观察。\n"
+          },
+          {
+            "tag": "markdown",
+            "content": "日期  ·  2026-04-30  ·  来源  ·  GitHub / OSSInsight / Buzzing / Follow Builders  ·  119 候选 → 27 精选",
+            "text_size": "notation"
+          }
+        ]
+      }
+    }
+  ],
+  "count": 119,
+  "selected_count": 27,
+  "summary": {
+    "count": 119,
+    "editorial": 24,
+    "api_usage": {
+      "total_budget": 60,
+      "search_budget": 38,
+      "graphql_budget": 600,
+      "search_used": 30,
+      "graphql_used": 1
+    },
+    "collector_stats": {
+      "trending": {
+        "count": 15,
+        "kinds": {
+          "project": 15
+        }
+      },
+      "ossinsight": {
+        "count": 56,
+        "kinds": {
+          "project": 56
+        }
+      },
+      "repos": {
+        "count": 54,
+        "kinds": {
+          "project": 54
+        }
+      },
+      "star_growth": {
+        "count": 64,
+        "kinds": {
+          "project": 64
+        }
+      },
+      "discussions": {
+        "count": 0,
+        "kinds": {}
+      },
+      "issues_prs": {
+        "count": 0,
+        "kinds": {}
+      },
+      "skills": {
+        "count": 20,
+        "kinds": {
+          "skill": 14,
+          "project": 6
+        }
+      },
+      "buzzing": {
+        "count": 920,
+        "kinds": {
+          "tech": 920
+        }
+      },
+      "builders": {
+        "count": 14,
+        "kinds": {
+          "builder": 14
+        }
+      }
+    },
+    "surge_count": 5,
+    "filtered_kind_counts": {
+      "project": 113,
+      "skill": 6
+    },
+    "published_kind_counts": {
+      "project": 12,
+      "skill": 6
+    },
+    "theme_counts": {
+      "agent_framework": 3,
+      "ml_framework": 1,
+      "prompt_assets": 1,
+      "browser_automation": 2,
+      "inference": 1,
+      "claude_code": 4,
+      "skill_assets": 2,
+      "rag": 2,
+      "mcp": 2
+    },
+    "top_themes": [
+      "claude_code",
+      "agent_framework",
+      "browser_automation"
+    ],
+    "github_count": 18,
+    "tech_pulse_candidate_count": 920,
+    "tech_pulse_count": 6,
+    "builder_signal_count": 14,
+    "builder_count": 3,
+    "item_count": 27
+  }
+}
