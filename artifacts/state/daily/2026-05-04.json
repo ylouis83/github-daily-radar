@@ -1,0 +1,208 @@
+{
+  "cards": [
+    {
+      "msg_type": "interactive",
+      "card": {
+        "config": {
+          "wide_screen_mode": true
+        },
+        "header": {
+          "title": {
+            "tag": "plain_text",
+            "content": "AI Builder Radar · 2026-05-04"
+          },
+          "template": "indigo"
+        },
+        "elements": [
+          {
+            "tag": "markdown",
+            "content": "GitHub 主榜 · 科技热讯 · Builder Watch",
+            "text_size": "notation"
+          },
+          {
+            "tag": "hr"
+          },
+          {
+            "tag": "column_set",
+            "flex_mode": "none",
+            "horizontal_spacing": "default",
+            "columns": [
+              {
+                "tag": "column",
+                "width": "auto",
+                "vertical_align": "center",
+                "elements": [
+                  {
+                    "tag": "markdown",
+                    "content": "**GitHub 主榜**  <text_tag color='blue'>主线</text_tag>\n开源仓库、技能资产与讨论线索"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "tag": "markdown",
+            "content": "**热度跃升**\n\n**1.** [sponsors/mattpocock](https://github.com/sponsors/mattpocock)  +35324⭐  56.9K⭐\n**2.** [Alishahryar1/free-claude-code](https://github.com/Alishahryar1/free-claude-code)  +9364⭐  20.7K⭐\n**3.** [Z4nzu/hackingtool](https://github.com/Z4nzu/hackingtool)  +7210⭐  70.9K⭐\n**4.** [ComposioHQ/awesome-codex-skills](https://github.com/ComposioHQ/awesome-codex-skills)  +4290⭐  6.1K⭐\n**5.** [refactoringhq/tolaria](https://github.com/refactoringhq/tolaria)  +3384⭐  9.2K⭐\n\n*来源：GitHub Trending / OSSInsight*"
+          },
+          {
+            "tag": "markdown",
+            "content": "**核心项目**  ·  <link icon='platform_outlined' url='https://github.com'>GitHub</link>\n\n**1.** [heygen-com/hyperframes](https://github.com/heygen-com/hyperframes)  14.1K⭐\n信号：近期在 AI 视频生成与自动化工作流领域热度攀升，为开发者提供了开箱即用的智能体视频渲染方案。\n▸ 定位：专为智能体设计的 HTML 转视频渲染框架，支持通过编写代码直接生成动态视频。\n▸ 能力：结合 Puppeteer 与 FFmpeg 实现网页动画到视频的高效转换，并提供 MCP 协议接口供 AI…\n▸ 价值：填补了 AI 智能体直接生成高质量动态视频的技术空白，降低视频内容自动化生产门槛。\n\n**2.** [virattt/dexter](https://github.com/virattt/dexter)  +115⭐\n信号：过去二十四小时内热度飙升，展示了 AI 在垂直专业领域自主工作的最新突破。\n▸ 定位：面向深度金融研究的自主智能体，能够独立执行复杂的数据搜集与分析任务。\n▸ 能力：自动抓取金融数据、生成研究报告并提供多维度的市场洞察。\n▸ 价值：传统金融研究耗时费力，引入自主代理可显著提升信息处理效率与决策速度。\n\n**3.** [withastro/flue](https://github.com/withastro/flue)  +146⭐\n信号：OSSInsight 近期 +146⭐\n▸ 定位：偏 Agent 编排\n▸ 能力：把复杂任务拆成可调度、可复用的 Agent 流程。\n▸ 价值：热度已在抬升，适合快速判断是否值得关注。\n\n**4.** [browser-use/browser-harness](https://github.com/browser-use/browser-harness)  +100⭐\n信号：OSSInsight 近期 +100⭐\n▸ 定位：面向浏览器自动化\n▸ 能力：把浏览器操作自动化成可编排的动作流。\n▸ 价值：热度已在抬升，适合快速判断是否值得关注。\n\n**延伸速览**\n\n- [TransformerOptimus/SuperAGI](https://github.com/TransformerOptimus/SuperAGI)  26⭐\n- [ceph/ceph](https://github.com/ceph/ceph)  21⭐\n- [juicedata/juicefs](https://github.com/juicedata/juicefs)  22⭐\n另有 6 个项目未展开"
+          },
+          {
+            "tag": "markdown",
+            "content": "**技能与 MCP**  ·  <link icon='platform_outlined' url='https://github.com'>GitHub</link>\n\n**1.** [obra/superpowers](https://github.com/obra/superpowers)  +1773⭐\n适配栈：Skill 生态\n▸ 定位：提供一套经过验证的代理技能框架与软件开发方法论。\n\n**2.** [iusztinpaul/designing-real-world-ai-agents-workshop](https://github.com/iusztinpaul/designing-real-world-ai-agents-workshop)  203⭐\n适配栈：MCP\n▸ 定位：提供从零构建多智能体系统的完整实战教程与配套资料。\n\n**3.** [zhuyansen/agent-skills-hub](https://github.com/zhuyansen/agent-skills-hub)  208⭐\n适配栈：MCP\n▸ 定位：专注智能体技能与 MCP 服务器的自动化发现与质量评估平台。\n\n**4.** [Julpygo/Claude-Code-AI-Design](https://github.com/Julpygo/Claude-Code-AI-Design)  220⭐\n适配栈：Claude Code\n▸ 定位：专为 Claude Code 打造的 Figma 转代码与设计系统自动化技能包。\n\n**5.** [Dicklesworthstone/jeffreysprompts.com](https://github.com/Dicklesworthstone/jeffreysprompts.com)  102⭐\n适配栈：Claude Code\n▸ 定位：提供经过实战检验的代理编程提示词集合与一键安装服务。\n\n**6.** [redongreen/uSpec](https://github.com/redongreen/uSpec)  166⭐\n适配栈：通用 AI 工具\n▸ 定位：专为 AI 编程代理设计的 UI 组件设计系统文档生成器，支持直接输出至 Figma 或…\n"
+          },
+          {
+            "tag": "hr"
+          },
+          {
+            "tag": "column_set",
+            "flex_mode": "none",
+            "horizontal_spacing": "default",
+            "columns": [
+              {
+                "tag": "column",
+                "width": "auto",
+                "vertical_align": "center",
+                "elements": [
+                  {
+                    "tag": "markdown",
+                    "content": "**科技热讯**  <text_tag color='orange'>外部</text_tag>\n发布动态、工程信号与外部热点"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "tag": "markdown",
+            "content": "**1.** [Ghostty 即将离开 GitHub](https://mitchellh.com/writing/ghostty-leaving-github)\n<link icon='internet_outlined' url='https://mitchellh.com/writing/ghostty-leaving-github'>Hacker News</link>  ·  信号：Hacker News 热度高 · 244 热度 / 38 评论\n\n**2.** [SoulLink - 移动端3D Vibe编程合作伙伴](https://www.producthunt.com/r/WDAZDHMMZORTEO)\n<link icon='internet_outlined' url='https://www.producthunt.com/r/WDAZDHMMZORTEO'>Product Hunt</link>  ·  信号：Product Hunt 热度高 · 202 热度 / 41 评论\n\n**3.** [Capso - 适用于 Mac 的免费开源截图与屏幕录制工具](https://www.producthunt.com/r/KVNMIQB5OS55J7)\n<link icon='internet_outlined' url='https://www.producthunt.com/r/KVNMIQB5OS55J7'>Product Hunt</link>  ·  信号：Product Hunt 热度高 · 194 热度 / 20 评论\n\n**4.** [Drift - 一款随时间推移逐渐淡出的极简主义日记应用](https://www.producthunt.com/r/77I2D7OKQILF7O)\n<link icon='internet_outlined' url='https://www.producthunt.com/r/77I2D7OKQILF7O'>Product Hunt</link>  ·  信号：Product Hunt 热度高 · 193 热度 / 34 评论\n\n**5.** [AgentMail - AI 代理的电子邮件收件箱](https://www.producthunt.com/r/M4HONGJQGO5663)\n<link icon='internet_outlined' url='https://www.producthunt.com/r/M4HONGJQGO5663'>Product Hunt</link>  ·  信号：Product Hunt 热度高 · 192 热度 / 45 评论\n\n**6.** [Google Finance - 提出复杂的金融问题，获得基于人工智能的解答](https://www.producthunt.com/r/GNTCPZ4KQWJ6AP)\n<link icon='internet_outlined' url='https://www.producthunt.com/r/GNTCPZ4KQWJ6AP'>Product Hunt</link>  ·  信号：Product Hunt 热度高 · 190 热度 / 3 评论\n"
+          },
+          {
+            "tag": "hr"
+          },
+          {
+            "tag": "column_set",
+            "flex_mode": "none",
+            "horizontal_spacing": "default",
+            "columns": [
+              {
+                "tag": "column",
+                "width": "auto",
+                "vertical_align": "center",
+                "elements": [
+                  {
+                    "tag": "markdown",
+                    "content": "**Builder Watch**  <text_tag color='green'>人物</text_tag>\n创作者观点、播客与长文解读"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "tag": "markdown",
+            "content": "**X**  ·  <link icon='internet_outlined' url='https://x.com'>X</link>\n**1.** [Sam Altman：围绕「i keep thinking i want the models to…」](https://x.com/sama/status/2050671161915371998)\n信号：围绕「i keep thinking i want the models to…」，给出一线观察。\n**2.** [Peter Steinberger：围绕「🦀 Crabbox 0.3.0 is out.」](https://x.com/steipete/status/2050490163810230579)\n信号：围绕「🦀 Crabbox 0.3.0 is out.」，给出一线观察。\n**3.** [Aaron Levie：围绕「If you think AI replaces software…」](https://x.com/levie/status/2050684160151617603)\n信号：围绕「If you think AI replaces software…」，给出一线观察。\n\n**播客**  ·  <link icon='file-link-video_outlined' url='https://www.youtube.com'>YouTube</link>\n**1.** [Training Data：聊「Speaker 1 | 00:02 - 00:24 So Greg…」](https://www.youtube.com/playlist?list=PLOhHNjZItNnMm5tdW61JpnyxeYH5NDDx8)\n信号：围绕「Speaker 1 | 00:02 - 00:24 So Greg…」，展开完整对谈。\n\n**长文**\n**1.** [Anthropic Engineering：拆解「Get started with Claude Managed Agents…」](https://www.anthropic.com/engineering/managed-agents)\n信号：围绕「Get started with Claude Managed Agents…」，做了长文拆解。\n"
+          },
+          {
+            "tag": "markdown",
+            "content": "日期  ·  2026-05-04  ·  来源  ·  GitHub / OSSInsight / Buzzing / Follow Builders  ·  146 候选 → 30 精选",
+            "text_size": "notation"
+          }
+        ]
+      }
+    }
+  ],
+  "count": 146,
+  "selected_count": 30,
+  "summary": {
+    "count": 146,
+    "editorial": 24,
+    "api_usage": {
+      "total_budget": 60,
+      "search_budget": 38,
+      "graphql_budget": 600,
+      "search_used": 30,
+      "graphql_used": 1
+    },
+    "collector_stats": {
+      "trending": {
+        "count": 15,
+        "kinds": {
+          "project": 15
+        }
+      },
+      "ossinsight": {
+        "count": 56,
+        "kinds": {
+          "project": 56
+        }
+      },
+      "repos": {
+        "count": 61,
+        "kinds": {
+          "project": 61
+        }
+      },
+      "star_growth": {
+        "count": 59,
+        "kinds": {
+          "project": 59
+        }
+      },
+      "discussions": {
+        "count": 0,
+        "kinds": {}
+      },
+      "issues_prs": {
+        "count": 0,
+        "kinds": {}
+      },
+      "skills": {
+        "count": 20,
+        "kinds": {
+          "skill": 10,
+          "project": 10
+        }
+      },
+      "buzzing": {
+        "count": 908,
+        "kinds": {
+          "tech": 908
+        }
+      },
+      "builders": {
+        "count": 13,
+        "kinds": {
+          "builder": 13
+        }
+      }
+    },
+    "surge_count": 5,
+    "filtered_kind_counts": {
+      "project": 140,
+      "skill": 6
+    },
+    "published_kind_counts": {
+      "project": 13,
+      "skill": 6
+    },
+    "theme_counts": {
+      "mcp": 3,
+      "agent_framework": 4,
+      "skill_assets": 1,
+      "browser_automation": 1,
+      "rag": 7,
+      "claude_code": 3
+    },
+    "top_themes": [
+      "rag",
+      "agent_framework",
+      "mcp"
+    ],
+    "github_count": 19,
+    "tech_pulse_candidate_count": 907,
+    "tech_pulse_count": 6,
+    "builder_signal_count": 13,
+    "builder_count": 5,
+    "item_count": 30
+  }
+}
