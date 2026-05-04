@@ -1,0 +1,207 @@
+{
+  "cards": [
+    {
+      "msg_type": "interactive",
+      "card": {
+        "config": {
+          "wide_screen_mode": true
+        },
+        "header": {
+          "title": {
+            "tag": "plain_text",
+            "content": "AI Builder Radar · 2026-05-05"
+          },
+          "template": "indigo"
+        },
+        "elements": [
+          {
+            "tag": "markdown",
+            "content": "GitHub 主榜 · 科技热讯 · Builder Watch",
+            "text_size": "notation"
+          },
+          {
+            "tag": "hr"
+          },
+          {
+            "tag": "column_set",
+            "flex_mode": "none",
+            "horizontal_spacing": "default",
+            "columns": [
+              {
+                "tag": "column",
+                "width": "auto",
+                "vertical_align": "center",
+                "elements": [
+                  {
+                    "tag": "markdown",
+                    "content": "**GitHub 主榜**  <text_tag color='blue'>主线</text_tag>\n开源仓库、技能资产与讨论线索"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "tag": "markdown",
+            "content": "**热度跃升**\n\n**1.** [ruvnet/ruflo](https://github.com/ruvnet/ruflo)  +2594⭐  41.3K⭐\n**2.** [TauricResearch/TradingAgents](https://github.com/TauricResearch/TradingAgents)  +2181⭐  67.4K⭐\n**3.** [Hmbown/DeepSeek-TUI](https://github.com/Hmbown/DeepSeek-TUI)  +1277⭐  3.9K⭐\n**4.** [sponsors/soxoj](https://github.com/sponsors/soxoj)  +1116⭐  24.8K⭐\n**5.** [sponsors/msitarzewski](https://github.com/sponsors/msitarzewski)  +828⭐  92.6K⭐\n\n*来源：GitHub Trending / OSSInsight*"
+          },
+          {
+            "tag": "markdown",
+            "content": "**核心项目**  ·  <link icon='platform_outlined' url='https://github.com'>GitHub</link>\n\n**1.** [denoland/deno](https://github.com/denoland/deno)  106.6K⭐\n信号：作为长期高星项目持续活跃，是评估现代运行时技术演进的重要参考。\n▸ 定位：采用原生安全模型与零配置体验重新定义现代运行环境。\n▸ 能力：提供高性能的 JavaScript 与 TypeScript 执行环境，内置包管理与测试工具。\n▸ 价值：为前端与全栈开发提供比传统环境更安全的替代方案。\n\n**2.** [zed-industries/zed](https://github.com/zed-industries/zed)  81.7K⭐\n信号：凭借八万星基础与持续迭代，持续引领下一代开发工具的性能标杆。\n▸ 定位：由 Atom 与 Tree-sitter 核心开发者打造的高性能多人协作编辑器。\n▸ 能力：提供极速代码编辑体验，支持实时多人协同与深度语法解析。\n▸ 价值：满足现代开发团队对低延迟编辑器与原生协作功能的迫切需求。\n\n**3.** [gorhill/uBlock](https://github.com/gorhill/uBlock)  64.4K⭐\n信号：历经多年验证仍保持六万星热度，其轻量高效架构值得持续借鉴。\n▸ 定位：以极低资源占用实现跨浏览器的高效内容拦截。\n▸ 能力：提供精准的网页广告与追踪器过滤功能，保障浏览速度与隐私安全。\n▸ 价值：是维护网络安全环境与提升浏览体验的必备基础工具。\n\n**4.** [ray-project/ray](https://github.com/ray-project/ray)  42.4K⭐\n信号：大模型规模化落地进入关键期，开发者急需稳定高效的底层算力调度方案。\n▸ 定位：专为人工智能计算设计的分布式运行时核心，无缝集成多种主流机器学习库。\n▸ 能力：提供高性能并行计算与超参数优化，支持大模型推理与强化学习工作负载加速。\n▸ 价值：现代人工智能训练与部署高度依赖弹性分布式架构，该项目能显著降低集群管理复杂度。\n\n**延伸速览**\n\n- [mongodb/mongo](https://github.com/mongodb/mongo)  28.3K⭐\n- [gcc-mirror/gcc](https://github.com/gcc-mirror/gcc)  10.9K⭐\n- [google/gvisor](https://github.com/google/gvisor)  18.2K⭐\n另有 12 个项目未展开"
+          },
+          {
+            "tag": "markdown",
+            "content": "**技能与 MCP**  ·  <link icon='platform_outlined' url='https://github.com'>GitHub</link>\n\n**1.** [VoltAgent/awesome-design-md](https://github.com/VoltAgent/awesome-design-md)  +1199⭐\n适配栈：Agent\n▸ 定位：提供标准化设计文档模板，直接对接编程代理实现界面自动生成。\n"
+          },
+          {
+            "tag": "hr"
+          },
+          {
+            "tag": "column_set",
+            "flex_mode": "none",
+            "horizontal_spacing": "default",
+            "columns": [
+              {
+                "tag": "column",
+                "width": "auto",
+                "vertical_align": "center",
+                "elements": [
+                  {
+                    "tag": "markdown",
+                    "content": "**科技热讯**  <text_tag color='orange'>外部</text_tag>\n发布动态、工程信号与外部热点"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "tag": "markdown",
+            "content": "**1.** [Ghostty 即将离开 GitHub](https://mitchellh.com/writing/ghostty-leaving-github)\n<link icon='internet_outlined' url='https://mitchellh.com/writing/ghostty-leaving-github'>Hacker News</link>  ·  信号：Hacker News 热度高 · 244 热度 / 38 评论\n\n**2.** [SoulLink - 移动端3D Vibe编程合作伙伴](https://www.producthunt.com/r/WDAZDHMMZORTEO)\n<link icon='internet_outlined' url='https://www.producthunt.com/r/WDAZDHMMZORTEO'>Product Hunt</link>  ·  信号：Product Hunt 热度高 · 202 热度 / 41 评论\n\n**3.** [Capso - 适用于 Mac 的免费开源截图与屏幕录制工具](https://www.producthunt.com/r/KVNMIQB5OS55J7)\n<link icon='internet_outlined' url='https://www.producthunt.com/r/KVNMIQB5OS55J7'>Product Hunt</link>  ·  信号：Product Hunt 热度高 · 194 热度 / 20 评论\n\n**4.** [Drift - 一款随时间推移逐渐淡出的极简主义日记应用](https://www.producthunt.com/r/77I2D7OKQILF7O)\n<link icon='internet_outlined' url='https://www.producthunt.com/r/77I2D7OKQILF7O'>Product Hunt</link>  ·  信号：Product Hunt 热度高 · 193 热度 / 34 评论\n\n**5.** [AgentMail - AI 代理的电子邮件收件箱](https://www.producthunt.com/r/M4HONGJQGO5663)\n<link icon='internet_outlined' url='https://www.producthunt.com/r/M4HONGJQGO5663'>Product Hunt</link>  ·  信号：Product Hunt 热度高 · 192 热度 / 45 评论\n\n**6.** [Google Finance - 提出复杂的金融问题，获得基于人工智能的解答](https://www.producthunt.com/r/GNTCPZ4KQWJ6AP)\n<link icon='internet_outlined' url='https://www.producthunt.com/r/GNTCPZ4KQWJ6AP'>Product Hunt</link>  ·  信号：Product Hunt 热度高 · 190 热度 / 3 评论\n"
+          },
+          {
+            "tag": "hr"
+          },
+          {
+            "tag": "column_set",
+            "flex_mode": "none",
+            "horizontal_spacing": "default",
+            "columns": [
+              {
+                "tag": "column",
+                "width": "auto",
+                "vertical_align": "center",
+                "elements": [
+                  {
+                    "tag": "markdown",
+                    "content": "**Builder Watch**  <text_tag color='green'>人物</text_tag>\n创作者观点、播客与长文解读"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "tag": "markdown",
+            "content": "**X**  ·  <link icon='internet_outlined' url='https://x.com'>X</link>\n**1.** [Sam Altman：围绕「it has been a real pleasure to work…」](https://x.com/sama/status/2050964008480723059)\n信号：围绕「it has been a real pleasure to work…」，给出一线观察。\n**2.** [Peter Steinberger：围绕「brb calling @sama」](https://x.com/steipete/status/2051044240013083133)\n信号：围绕「brb calling @sama」，给出一线观察。\n**3.** [Aaron Levie：围绕「Whether it’s existing consulting…」](https://x.com/levie/status/2051057677984469277)\n信号：围绕「Whether it’s existing consulting…」，给出一线观察。\n\n**播客**  ·  <link icon='file-link-video_outlined' url='https://www.youtube.com'>YouTube</link>\n**1.** [Training Data：聊「Speaker 1 | 00:02 - 00:42 We're so…」](https://www.youtube.com/playlist?list=PLOhHNjZItNnMm5tdW61JpnyxeYH5NDDx8)\n信号：围绕「Speaker 1 | 00:02 - 00:42 We're so…」，展开完整对谈。\n"
+          },
+          {
+            "tag": "markdown",
+            "content": "日期  ·  2026-05-05  ·  来源  ·  GitHub / OSSInsight / Buzzing / Follow Builders  ·  146 候选 → 30 精选",
+            "text_size": "notation"
+          }
+        ]
+      }
+    }
+  ],
+  "count": 146,
+  "selected_count": 30,
+  "summary": {
+    "count": 146,
+    "editorial": 24,
+    "api_usage": {
+      "total_budget": 60,
+      "search_budget": 38,
+      "graphql_budget": 600,
+      "search_used": 30,
+      "graphql_used": 1
+    },
+    "collector_stats": {
+      "trending": {
+        "count": 15,
+        "kinds": {
+          "project": 15
+        }
+      },
+      "ossinsight": {
+        "count": 57,
+        "kinds": {
+          "project": 57
+        }
+      },
+      "repos": {
+        "count": 58,
+        "kinds": {
+          "project": 58
+        }
+      },
+      "star_growth": {
+        "count": 59,
+        "kinds": {
+          "project": 59
+        }
+      },
+      "discussions": {
+        "count": 0,
+        "kinds": {}
+      },
+      "issues_prs": {
+        "count": 0,
+        "kinds": {}
+      },
+      "skills": {
+        "count": 20,
+        "kinds": {
+          "skill": 6,
+          "project": 14
+        }
+      },
+      "buzzing": {
+        "count": 908,
+        "kinds": {
+          "tech": 908
+        }
+      },
+      "builders": {
+        "count": 11,
+        "kinds": {
+          "builder": 11
+        }
+      }
+    },
+    "surge_count": 5,
+    "filtered_kind_counts": {
+      "project": 145,
+      "skill": 1
+    },
+    "published_kind_counts": {
+      "project": 19,
+      "skill": 1
+    },
+    "theme_counts": {
+      "ai_project": 15,
+      "agent_framework": 1,
+      "browser_automation": 1,
+      "inference": 1,
+      "claude_code": 2
+    },
+    "top_themes": [
+      "ai_project",
+      "claude_code",
+      "agent_framework"
+    ],
+    "github_count": 20,
+    "tech_pulse_candidate_count": 907,
+    "tech_pulse_count": 6,
+    "builder_signal_count": 11,
+    "builder_count": 4,
+    "item_count": 30
+  }
+}
