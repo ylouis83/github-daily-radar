@@ -1,0 +1,210 @@
+{
+  "cards": [
+    {
+      "msg_type": "interactive",
+      "card": {
+        "config": {
+          "wide_screen_mode": true
+        },
+        "header": {
+          "title": {
+            "tag": "plain_text",
+            "content": "AI Builder Radar · 2026-05-07"
+          },
+          "template": "indigo"
+        },
+        "elements": [
+          {
+            "tag": "markdown",
+            "content": "GitHub 主榜 · 科技热讯 · Builder Watch",
+            "text_size": "notation"
+          },
+          {
+            "tag": "hr"
+          },
+          {
+            "tag": "column_set",
+            "flex_mode": "none",
+            "horizontal_spacing": "default",
+            "columns": [
+              {
+                "tag": "column",
+                "width": "auto",
+                "vertical_align": "center",
+                "elements": [
+                  {
+                    "tag": "markdown",
+                    "content": "**GitHub 主榜**  <text_tag color='blue'>主线</text_tag>\n开源仓库、技能资产与讨论线索"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "tag": "markdown",
+            "content": "**热度跃升**\n\n**1.** [Hmbown/DeepSeek-TUI](https://github.com/Hmbown/DeepSeek-TUI)  +6184⭐  13.6K⭐\n**2.** [ruvnet/ruflo](https://github.com/ruvnet/ruflo)  +2190⭐  45.2K⭐\n**3.** [sponsors/D4Vinci](https://github.com/sponsors/D4Vinci)  +1184⭐  46.2K⭐\n**4.** [docusealco/docuseal](https://github.com/docusealco/docuseal)  +772⭐  14.8K⭐\n**5.** [virattt/dexter](https://github.com/virattt/dexter)  +666⭐  24.3K⭐\n\n*来源：GitHub Trending / OSSInsight*"
+          },
+          {
+            "tag": "markdown",
+            "content": "**核心项目**  ·  <link icon='platform_outlined' url='https://github.com'>GitHub</link>\n\n**1.** [elastic/elasticsearch](https://github.com/elastic/elasticsearch)  76.6K⭐\n信号：长期稳居七万六千余星标，持续引领开源搜索技术栈的演进方向。\n▸ 定位：基于分布式架构构建的开源全文检索与数据分析引擎。\n▸ 能力：支持海量数据的实时索引、复杂查询与高可用集群管理。\n▸ 价值：作为现代搜索与日志分析基础设施的核心组件，具备不可替代的工程价值。\n\n**2.** [NVIDIA/NemoClaw](https://github.com/NVIDIA/NemoClaw)  20.2K⭐\n信号：背靠英伟达生态持续优化，为 AI 代理的规模化部署提供硬件级保障。\n▸ 定位：依托英伟达底层算力与推理管理技术打造的安全 AI 代理运行环境。\n▸ 能力：在受控沙箱内执行复杂任务并提供企业级推理资源调度。\n▸ 价值：解决了开源 AI 代理在生产环境中面临的权限管控与资源隔离难题。\n\n**3.** [vitessio/vitess](https://github.com/vitessio/vitess)  20.9K⭐\n信号：历经多年生产验证并持续活跃，仍是云原生数据库架构演进的重要参考。\n▸ 定位：专为 MySQL 水平扩展设计的云原生数据库集群管理系统。\n▸ 能力：实现自动分片、连接池管理与跨数据中心的高可用数据路由。\n▸ 价值：是应对高并发业务场景下传统关系型数据库性能瓶颈的关键基础设施。\n\n**4.** [MystenLabs/sui](https://github.com/MystenLabs/sui)  7.7K⭐\n信号：近期生态持续扩展，Move 语言特性在开发者社区引发新一轮技术关注。\n▸ 定位：基于 Move 语言构建的面向资产编程模型，专为高并发场景设计。\n▸ 能力：提供高吞吐量与低延迟的下一代智能合约执行环境。\n▸ 价值：解决传统区块链性能瓶颈，为去中心化应用提供可扩展的基础设施。\n\n**延伸速览**\n\n- [NixOS/nix](https://github.com/NixOS/nix)  16.8K⭐\n- [apache/beam](https://github.com/apache/beam)  8.6K⭐\n- [keystonejs/keystone](https://github.com/keystonejs/keystone)  9.9K⭐\n另有 6 个项目未展开"
+          },
+          {
+            "tag": "markdown",
+            "content": "**技能与 MCP**  ·  <link icon='platform_outlined' url='https://github.com'>GitHub</link>\n\n**1.** [obra/superpowers](https://github.com/obra/superpowers)  +1313⭐\n适配栈：Skill 生态\n▸ 定位：提供一套经过验证的代理技能框架与软件开发方法论。\n\n**2.** [VoltAgent/awesome-design-md](https://github.com/VoltAgent/awesome-design-md)  +1133⭐\n适配栈：Agent\n▸ 定位：汇集主流品牌设计系统风格的标准化设计文档模板。\n\n**3.** [lukiIabs/skills](https://github.com/lukiIabs/skills)  +78⭐\n适配栈：Prompt / Rules\n▸ 定位：专为 Cursor 与 Claude 等主流开发环境定制的开源技能提示词库。\n\n**4.** [apify/apify-mcp-server](https://github.com/apify/apify-mcp-server)  1.2K⭐\n适配栈：MCP\n▸ 定位：将海量现成爬虫与自动化工具无缝接入模型上下文协议的标准服务器。\n\n**5.** [ersinkoc/project-architect](https://github.com/ersinkoc/project-architect)  138⭐\n适配栈：通用 AI 工具\n▸ 定位：采用文档优先理念的项目规划代理技能插件。\n\n**6.** [aws/agent-toolkit-for-aws](https://github.com/aws/agent-toolkit-for-aws)  110⭐\n适配栈：MCP\n▸ 定位：聚焦 MCP 工具接入与编排，社区验证较强\n"
+          },
+          {
+            "tag": "hr"
+          },
+          {
+            "tag": "column_set",
+            "flex_mode": "none",
+            "horizontal_spacing": "default",
+            "columns": [
+              {
+                "tag": "column",
+                "width": "auto",
+                "vertical_align": "center",
+                "elements": [
+                  {
+                    "tag": "markdown",
+                    "content": "**科技热讯**  <text_tag color='orange'>外部</text_tag>\n发布动态、工程信号与外部热点"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "tag": "markdown",
+            "content": "**1.** [不是人工智能删除了你的数据库，是你自己删的](https://idiallo.com/blog/ai-didnt-delete-your-database-you-did)\n<link icon='internet_outlined' url='https://idiallo.com/blog/ai-didnt-delete-your-database-you-did'>Hacker News</link>  ·  信号：Hacker News 热度高 · 463 热度 / 249 评论\n\n**2.** [Google Chrome 在未经用户同意的情况下，会在您的设备上悄然安装一个 4 GB 的人工智能模型](https://www.thatprivacyguy.com/blog/chrome-silent-nano-install/)\n<link icon='internet_outlined' url='https://www.thatprivacyguy.com/blog/chrome-silent-nano-install/'>Hacker News</link>  ·  信号：Hacker News 热度高 · 385 热度 / 392 评论\n\n**3.** [加速 Gemma 4：利用多令牌预测生成器实现更快的推理](https://blog.google/innovation-and-ai/technology/developers-tools/multi-token-prediction-gemma-4/)\n<link icon='internet_outlined' url='https://blog.google/innovation-and-ai/technology/developers-tools/multi-token-prediction-gemma-4/'>Hacker News</link>  ·  信号：Hacker News 热度高 · 335 热度 / 146 评论\n\n**4.** [从零开始训练你自己的大型语言模型](https://github.com/angelos-p/llm-from-scratch)\n<link icon='platform_outlined' url='https://github.com/angelos-p/llm-from-scratch'>GitHub</link>  ·  信号：Hacker News 热度高 · 293 热度 / 32 评论\n\n**5.** [人工智能的三条反向定律](https://susam.net/inverse-laws-of-robotics.html)\n<link icon='internet_outlined' url='https://susam.net/inverse-laws-of-robotics.html'>Hacker News</link>  ·  信号：Hacker News 热度高 · 287 热度 / 194 评论\n\n**6.** [Kilo Code v7 for VS Code - 并行代理、差异审查员和多模型比较](https://www.producthunt.com/r/SNLH5TXRYOCJUJ)\n<link icon='internet_outlined' url='https://www.producthunt.com/r/SNLH5TXRYOCJUJ'>Product Hunt</link>  ·  信号：Product Hunt 热度高 · 259 热度 / 44 评论\n"
+          },
+          {
+            "tag": "hr"
+          },
+          {
+            "tag": "column_set",
+            "flex_mode": "none",
+            "horizontal_spacing": "default",
+            "columns": [
+              {
+                "tag": "column",
+                "width": "auto",
+                "vertical_align": "center",
+                "elements": [
+                  {
+                    "tag": "markdown",
+                    "content": "**Builder Watch**  <text_tag color='green'>人物</text_tag>\n创作者观点、播客与长文解读"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "tag": "markdown",
+            "content": "**X**  ·  <link icon='internet_outlined' url='https://x.com'>X</link>\n**1.** [Sam Altman：围绕「we are gonna do something nice for…」](https://x.com/sama/status/2051318922805436896)\n信号：围绕「we are gonna do something nice for…」，给出一线观察。\n**2.** [Guillermo Rauch：围绕「𝚗𝚙𝚡 𝚍𝚎𝚎𝚙𝚜𝚎𝚌 We're introducing an…」](https://x.com/rauchg/status/2051386798899888539)\n信号：围绕「𝚗𝚙𝚡 𝚍𝚎𝚎𝚙𝚜𝚎𝚌 We're introducing an…」，给出一线观察。\n**3.** [Aaron Levie：围绕「Both Anthropic and OpenAI have new…」](https://x.com/levie/status/2051344780328858040)\n信号：围绕「Both Anthropic and OpenAI have new…」，给出一线观察。\n\n**播客**  ·  <link icon='file-link-video_outlined' url='https://www.youtube.com'>YouTube</link>\n**1.** [Training Data：聊「Speaker 1 | 00:02 - 00:17 We have an…」](https://www.youtube.com/playlist?list=PLOhHNjZItNnMm5tdW61JpnyxeYH5NDDx8)\n信号：围绕「Speaker 1 | 00:02 - 00:17 We have an…」，展开完整对谈。\n\n**长文**\n**1.** [Anthropic Engineering：拆解「By default, Claude Code asks users for…」](https://www.anthropic.com/engineering/claude-code-auto-mode)\n信号：围绕「By default, Claude Code asks users for…」，做了长文拆解。\n"
+          },
+          {
+            "tag": "markdown",
+            "content": "日期  ·  2026-05-07  ·  来源  ·  GitHub / OSSInsight / Buzzing / Follow Builders  ·  141 候选 → 30 精选",
+            "text_size": "notation"
+          }
+        ]
+      }
+    }
+  ],
+  "count": 141,
+  "selected_count": 30,
+  "summary": {
+    "count": 141,
+    "editorial": 24,
+    "api_usage": {
+      "total_budget": 60,
+      "search_budget": 38,
+      "graphql_budget": 600,
+      "search_used": 30,
+      "graphql_used": 1
+    },
+    "collector_stats": {
+      "trending": {
+        "count": 15,
+        "kinds": {
+          "project": 15
+        }
+      },
+      "ossinsight": {
+        "count": 60,
+        "kinds": {
+          "project": 60
+        }
+      },
+      "repos": {
+        "count": 59,
+        "kinds": {
+          "project": 59
+        }
+      },
+      "star_growth": {
+        "count": 60,
+        "kinds": {
+          "project": 60
+        }
+      },
+      "discussions": {
+        "count": 0,
+        "kinds": {}
+      },
+      "issues_prs": {
+        "count": 0,
+        "kinds": {}
+      },
+      "skills": {
+        "count": 20,
+        "kinds": {
+          "skill": 10,
+          "project": 10
+        }
+      },
+      "buzzing": {
+        "count": 911,
+        "kinds": {
+          "tech": 911
+        }
+      },
+      "builders": {
+        "count": 14,
+        "kinds": {
+          "builder": 14
+        }
+      }
+    },
+    "surge_count": 5,
+    "filtered_kind_counts": {
+      "project": 134,
+      "skill": 7
+    },
+    "published_kind_counts": {
+      "project": 13,
+      "skill": 6
+    },
+    "theme_counts": {
+      "ai_project": 9,
+      "inference": 1,
+      "skill_assets": 2,
+      "agent_framework": 1,
+      "claude_code": 2,
+      "mcp": 2,
+      "ml_framework": 1,
+      "agent_workflow": 1
+    },
+    "top_themes": [
+      "ai_project",
+      "skill_assets",
+      "claude_code"
+    ],
+    "github_count": 19,
+    "tech_pulse_candidate_count": 911,
+    "tech_pulse_count": 6,
+    "builder_signal_count": 14,
+    "builder_count": 5,
+    "item_count": 30
+  }
+}
